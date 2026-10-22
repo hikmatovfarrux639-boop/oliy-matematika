@@ -1141,24 +1141,61 @@ Qat'iy qoidalar:
           requestBody.tools = [{ google_search: {} }];
         }
 
-        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+        const candidateModels = [
+          'gemini-3.8-flash',
+          'gemini-3.5-flash-lite',
+          'gemini-2.0-flash'
+        ];
 
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        });
+        let res: Response | null = null;
+        let lastErrorMsg = "";
 
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData?.error?.message || `Server javobida xatolik (${res.status})`);
+        for (const modelName of candidateModels) {
+          try {
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const attempt = await fetch(endpoint, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(requestBody)
+            });
+
+            if (attempt.ok) {
+              res = attempt;
+              break;
+            } else {
+              const errData = await attempt.json().catch(() => ({}));
+              lastErrorMsg = errData?.error?.message || `Model ${modelName} xatosi (${attempt.status})`;
+              // If invalid key or quota, don't keep hammering other models
+              if (lastErrorMsg.includes('API key') || lastErrorMsg.includes('QUOTA')) {
+                throw new Error(lastErrorMsg);
+              }
+            }
+          } catch (e: any) {
+            if (e.message && (e.message.includes('API key') || e.message.includes('QUOTA'))) {
+              throw e;
+            }
+            lastErrorMsg = e.message || String(e);
+          }
+        }
+
+        if (!res || !res.ok) {
+          throw new Error(lastErrorMsg || "Gemini modellariga ulanib bo'lmadi.");
         }
 
         const data = await res.json();
         const candidate = data.candidates?.[0];
-        const rawText = candidate?.content?.parts?.[0]?.text || "Yechim hosil qilib bo'lmadi.";
+        
+        // Extract text parts (excluding internal thinking thoughts if present)
+        const partsList = candidate?.content?.parts || [];
+        const nonThoughtTexts = partsList
+          .filter((p: any) => !p.thought && p.text)
+          .map((p: any) => p.text);
+        
+        const rawText = nonThoughtTexts.length > 0
+          ? nonThoughtTexts.join('\n\n')
+          : (partsList[0]?.text || "Yechim hosil qilib bo'lmadi.");
         lastRawSolutionText = rawText;
 
         if (solutionBody) {
