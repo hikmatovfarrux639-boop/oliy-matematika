@@ -1,0 +1,589 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import katex from 'katex';
+
+function renderMath(latex: string, displayMode = false): string {
+  try {
+    return katex.renderToString(latex, {
+      displayMode,
+      throwOnError: false,
+      output: 'html'
+    });
+  } catch {
+    return latex;
+  }
+}
+
+const F = {
+  det2: renderMath('\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc', true),
+  det3: renderMath('\\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix} = a_1 b_2 c_3 + b_1 c_2 a_3 + c_1 a_2 b_3 - (c_1 b_2 a_3 + b_1 a_2 c_3 + a_1 c_2 b_3)', true),
+  kramer: renderMath('x_1 = \\frac{\\Delta_1}{\\Delta}, \\quad x_2 = \\frac{\\Delta_2}{\\Delta}, \\quad x_n = \\frac{\\Delta_n}{\\Delta}', true),
+  invMat: renderMath('A^{-1} = \\frac{1}{\\det A} A^*', true),
+  lim1: renderMath('\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{\\tan x}{x} = 1', true),
+  lim2: renderMath('\\lim_{x \\to \\infty} \\left(1 + \\frac{1}{x}\\right)^x = e, \\quad \\lim_{x \\to 0} (1 + x)^{1/x} = e', true),
+  lopital: renderMath("\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)}", true),
+  urinma: renderMath("y - y_0 = f'(x_0) \\cdot (x - x_0)", true),
+  normal: renderMath("y - y_0 = -\\frac{1}{f'(x_0)} \\cdot (x - x_0)", true),
+  bolaklab: renderMath('\\int u \\, dv = u v - \\int v \\, du', true),
+  nyuton: renderMath('\\int_{a}^{b} f(x) \\, dx = F(b) - F(a)', true),
+  yuza: renderMath('S = \\int_{a}^{b} [f(x) - g(x)] \\, dx', true),
+  hajm: renderMath('V_x = \\pi \\int_{a}^{b} [f(x)]^2 \\, dx', true),
+  ajraladigan: renderMath('M(x)dx + N(y)dy = 0 \\implies \\int M(x)dx + \\int N(y)dy = C', true),
+  bernulli: renderMath("y' + P(x)y = Q(x)y^n \\quad (n \\neq 0, 1)", true),
+};
+---
+
+<BaseLayout 
+  title="Yuklab olinadigan PDF Shpargalkalar va Konspektlar — Oliy Matematika"
+  description="Imtihon va sessiyadan oldin telefoningizga PDF qilib saqlab oladigan yoki A4 qog'ozga chiqaradigan 1 varaqli qulay matematik konspektlar."
+>
+  <div class="shpargalka-header-banner">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <span class="badge badge-active">📄 Sessiya & Imtihon Ma'lumotnomalari</span>
+      <span style="font-size: 0.85rem; color: var(--text-subtle);">A4 chop etishga moslangan</span>
+    </div>
+
+    <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-main);">
+      Yuklab olinadigan PDF Shpargalkalar va Qisqa Konspektlar
+    </h1>
+    <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.6; margin: 0 0 1.5rem 0;">
+      Imtihon, oraliq nazorat va laboratoriya oldidan barcha qoidalar, xarakterli formulalar va "tuzoq"lar <strong>1 varaqli A4 formatida</strong> jamlandi. Istalgan konspektni bitta tugma bilan telefoningizga <strong>PDF</strong> qilib yuklab oling yoki qog'ozga chop eting.
+    </p>
+
+    <!-- Navigation & Print Controls -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+      <div class="sheet-tabs">
+        <button class="sheet-tab active" data-target="sheet-algebra">1. Matritsalar & Algebra</button>
+        <button class="sheet-tab" data-target="sheet-limitlar">2. Limitlar & Ekvivalentlik</button>
+        <button class="sheet-tab" data-target="sheet-hosilalar">3. Hosilalar & Urinma</button>
+        <button class="sheet-tab" data-target="sheet-integrallar">4. Integrallar Jadvali</button>
+        <button class="sheet-tab" data-target="sheet-diff">5. Differensial Tenglamalar</button>
+      </div>
+
+      <button id="print-current-sheet-btn" class="btn btn-primary" style="background: #2563eb; border-color: #2563eb; font-weight: 700; padding: 0.65rem 1.4rem;">
+        <span>🖨️ Shu varaqni PDF / Chop etish</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 1: CHIZIQLI ALGEBRA ================= -->
+  <div id="sheet-algebra" class="shpargalka-sheet active-sheet">
+    <div class="sheet-header">
+      <div class="sheet-badge">1-VARALIQ MA'LUMOTNOMA</div>
+      <h2>Chiziqli Algebra, Matritsalar va Determinantlar</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <!-- Section A: Determinantlar -->
+      <div class="sheet-card">
+        <h3>1. Determinantlar (2- va 3-tartibli)</h3>
+        <div class="formula-block" set:html={F.det2} />
+        <p class="sheet-desc"><strong>3-tartibli determinant (Sarryus qoidasi):</strong></p>
+        <div class="formula-block" set:html={F.det3} />
+        <div class="sheet-tip">
+          <strong>⚠️ Eslab qoling:</strong> Agar determinantda 2 ta bir xil yoki proporsional satr bo'lsa, uning qiymati darhol <strong>0</strong> ga teng!
+        </div>
+      </div>
+
+      <!-- Section B: Kramer Usuli -->
+      <div class="sheet-card">
+        <h3>2. Kramer Usuli (CHATS)</h3>
+        <p class="sheet-desc">Kvadrat sistema asosiy determinant nol bo'lmaganda yagona yechimga ega:</p>
+        <div class="formula-block" set:html={F.kramer} />
+        <p class="sheet-desc">bu yerda har bir ustun ozod hadlar ustuni bilan almashtiriladi.</p>
+        <div class="sheet-tip">
+          <strong>⚠️ Yechimlar soni:</strong>
+          <br />• Determinant nol bo'lmasa: yagona yechim.
+          <br />• Barcha determinantlar nol bo'lsa: cheksiz ko'p yechim.
+          <br />• Asosiy nol bo'lib, yordamchi nol bo'lmasa: yechim yo'q!
+        </div>
+      </div>
+
+      <!-- Section C: Teskari Matritsa -->
+      <div class="sheet-card">
+        <h3>3. Teskari Matritsa</h3>
+        <div class="formula-block" set:html={F.invMat} />
+        <p class="sheet-desc">bu yerda A* — algebraik to'ldiruvchilarning transponirlangan matritsasidir.</p>
+      </div>
+
+      <!-- Section D: Gauss Usuli -->
+      <div class="sheet-card">
+        <h3>4. Gauss Usuli Algoritmi</h3>
+        <ol class="sheet-steps">
+          <li>Kengaytirilgan (A|B) matritsa yoziladi.</li>
+          <li>Elementar satr almashtirishlari orqali bosh diagonal tagidagi barcha sonlar nolga aylantiriladi.</li>
+          <li>Pastdan yuqoriga teskari yurish orqali noma'lumlar topiladi.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 2: LIMITLAR ================= -->
+  <div id="sheet-limitlar" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">2-VARALIQ MA'LUMOTNOMA</div>
+      <h2>Limitlar, Ajoyib Limitlar va Ekvivalentliklar</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <!-- Section A: Ajoyib Limitlar -->
+      <div class="sheet-card">
+        <h3>1. Birinchi va Ikkinchi Ajoyib Limitlar</h3>
+        <div class="formula-block" set:html={F.lim1} />
+        <div class="formula-block" set:html={F.lim2} />
+      </div>
+
+      <!-- Section B: Cheksiz Kichiklar Ekvivalentligi -->
+      <div class="sheet-card">
+        <h3>2. Ekvivalentlik Jadvali (x nolga intilganda)</h3>
+        <p class="sheet-desc">Ko'paytma va bo'linmada ifodani uning ekvivalenti bilan almashtirish mumkin:</p>
+        <ul class="sheet-equiv-list">
+          <li>sin(x) ~ x</li>
+          <li>tan(x) ~ x</li>
+          <li>arcsin(x) ~ x</li>
+          <li>arctan(x) ~ x</li>
+          <li>1 - cos(x) ~ x² / 2</li>
+          <li>eˣ - 1 ~ x</li>
+          <li>ln(1 + x) ~ x</li>
+          <li>√(1 + x) - 1 ~ x / 2</li>
+        </ul>
+        <div class="sheet-tip">
+          <strong>⚠️ Katta xato:</strong> Ayirish yoki qo'shish amallarida ekvivalentlikni to'g'ridan-to'g'ri almashtirish mumkin emas! (Faqat ko'paytma/bo'linmada).
+        </div>
+      </div>
+
+      <!-- Section C: Lopital Qoidasi -->
+      <div class="sheet-card">
+        <h3>3. Lopital Qoidasi</h3>
+        <p class="sheet-desc">Faqat 0/0 yoki ∞/∞ aniqmasliklar uchun:</p>
+        <div class="formula-block" set:html={F.lopital} />
+        <p class="sheet-desc"><em>Muhim:</em> Bo'linmaning hosilasi emas, balki suratning hosilasi alohida, maxrajning hosilasi alohida olinadi!</p>
+      </div>
+
+      <!-- Section D: 7 ta Aniqmaslik -->
+      <div class="sheet-card">
+        <h3>4. Barcha 7 ta Aniqmaslik Ko'rinishi</h3>
+        <div class="sheet-tags-group">
+          <span class="tag-badge">0 / 0</span>
+          <span class="tag-badge">∞ / ∞</span>
+          <span class="tag-badge">0 · ∞</span>
+          <span class="tag-badge">∞ - ∞</span>
+          <span class="tag-badge">1^∞</span>
+          <span class="tag-badge">0^0</span>
+          <span class="tag-badge">∞^0</span>
+        </div>
+        <p class="sheet-desc" style="margin-top: 0.5rem;">Qolgan barcha hollar (masalan, c / 0 = ∞, 0 / c = 0, 0^∞ = 0) aniqmaslik EMAS, darhol hisoblanadi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 3: HOSILALAR ================= -->
+  <div id="sheet-hosilalar" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">3-VARALIQ MA'LUMOTNOMA</div>
+      <h2>Hosilalar, Differensiallash Qoidalari va Urinma</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <!-- Section A: 4 Asosiy Qoida -->
+      <div class="sheet-card">
+        <h3>1. Differensiallashning 4 Qoidasi</h3>
+        <ul class="sheet-rules-list">
+          <li><strong>Yig'indi:</strong> (u ± v)' = u' ± v'</li>
+          <li><strong>O'zgarmas son:</strong> (C · u)' = C · u'</li>
+          <li><strong>Ko'paytma:</strong> (u · v)' = u'v + uv'</li>
+          <li><strong>Bo'linma:</strong> (u / v)' = (u'v - uv') / v²</li>
+          <li><strong>Murakkab funksiya:</strong> [f(g(x))]' = f'(g(x)) · g'(x)</li>
+        </ul>
+      </div>
+
+      <!-- Section B: Urinma va Normal -->
+      <div class="sheet-card">
+        <h3>2. Urinma va Normal Tenglamasi</h3>
+        <div class="formula-block" set:html={F.urinma} />
+        <div class="formula-block" set:html={F.normal} />
+        <p class="sheet-desc">Burchak koeffitsiyenti: k = tan(α) = f'(x₀).</p>
+      </div>
+
+      <!-- Section C: Funksiyani tekshirish -->
+      <div class="sheet-card" style="grid-column: span 2;">
+        <h3>3. Ekstremum va Botiqlik Shartlari</h3>
+        <ul class="sheet-rules-list">
+          <li><strong>O'sish oralig'i:</strong> f'(x) &gt; 0</li>
+          <li><strong>Kamayish oralig'i:</strong> f'(x) &lt; 0</li>
+          <li><strong>Kritik nuqtalar:</strong> f'(x) = 0 yoki mavjud emas</li>
+          <li><strong>Qavariqlik (botiqlik pastga):</strong> f''(x) &lt; 0</li>
+          <li><strong>Botiqlik (botiqlik yuqoriga):</strong> f''(x) &gt; 0</li>
+          <li><strong>Burilish nuqtasi:</strong> f''(x) = 0 va ishorasini o'zgartiradi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 4: INTEGRALLAR ================= -->
+  <div id="sheet-integrallar" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">4-VARALIQ MA'LUMOTNOMA</div>
+      <h2>Integrallar, Bo'laklab Integrallash va Nyuton-Leybnits</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <!-- Section A: Bo'laklab integrallash -->
+      <div class="sheet-card">
+        <h3>1. Bo'laklab Integrallash</h3>
+        <div class="formula-block" set:html={F.bolaklab} />
+        <p class="sheet-desc"><strong>u ni tanlashning LIATE qoidasi (ustuvorlik tartibi):</strong></p>
+        <ol class="sheet-steps">
+          <li><strong>L</strong> — Logarifmik (ln x)</li>
+          <li><strong>I</strong> — Inverse trig (arcsin x, arctan x)</li>
+          <li><strong>A</strong> — Algebraik (x, x², x+3)</li>
+          <li><strong>T</strong> — Trigonometrik (sin x, cos x)</li>
+          <li><strong>E</strong> — Eksponensial (eˣ, 2ˣ)</li>
+        </ol>
+      </div>
+
+      <!-- Section B: Aniq Integral -->
+      <div class="sheet-card">
+        <h3>2. Nyuton-Leybnits Formulasi</h3>
+        <div class="formula-block" set:html={F.nyuton} />
+        <div class="sheet-tip">
+          <strong>⚠️ Almashtirish kiritganda:</strong> Aniq integralda o'zgaruvchi almashtirilsa, integrallash chegaralari ham mos ravishda almashtirilishi <strong>shart</strong>!
+        </div>
+      </div>
+
+      <!-- Section C: Egri chiziq yuzi va hajm -->
+      <div class="sheet-card" style="grid-column: span 2;">
+        <h3>3. Geometrik Tatbiqlar (Yuza va Hajm)</h3>
+        <div class="formula-block" set:html={F.yuza} />
+        <div class="formula-block" set:html={F.hajm} />
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 5: DIFFERENSIAL TENGLAMALAR ================= -->
+  <div id="sheet-diff" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">5-VARALIQ MA'LUMOTNOMA</div>
+      <h2>Differensial Tenglamalar (1- va 2-tartibli)</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <!-- Section A: 1-tartibli turlar -->
+      <div class="sheet-card">
+        <h3>1. O'zgaruvchilari Ajraladigan Tenglama</h3>
+        <div class="formula-block" set:html={F.ajraladigan} />
+        <p class="sheet-desc">Har bir x ni dx oldiga, y ni dy oldiga o'tkazib, ikkala tomoni alohida integrallanadi.</p>
+      </div>
+
+      <!-- Section B: 1-tartibli Chiziqli Tenglama & Bernulli -->
+      <div class="sheet-card">
+        <h3>2. Chiziqli va Bernulli Tenglamasi</h3>
+        <p class="sheet-desc"><strong>Chiziqli:</strong> y' + P(x)y = Q(x)</p>
+        <p class="sheet-desc">Bernulli usuli bo'yicha y = u(x) · v(x) almashtirish kiritiladi.</p>
+        <hr style="border: 0; border-top: 1px dashed var(--border-color); margin: 0.5rem 0;" />
+        <p class="sheet-desc"><strong>Bernulli tenglamasi:</strong></p>
+        <div class="formula-block" set:html={F.bernulli} />
+        <p class="sheet-desc">Tenglamaning ikkala tomonini yⁿ ga bo'lib, z = y¹⁻ⁿ yangi o'zgaruvchi kiritiladi va oddiy chiziqli tenglamaga keladi!</p>
+      </div>
+
+      <!-- Section C: 2-tartibli Doimiy Koeffitsiyentli -->
+      <div class="sheet-card" style="grid-column: span 2;">
+        <h3>3. 2-tartibli Bir Jinsli Chiziqli Tenglama (y'' + py' + qy = 0)</h3>
+        <p class="sheet-desc">Xarakteristik tenglama tuziladi: k² + pk + q = 0 va uning diskriminanti D = p² - 4q topiladi:</p>
+        
+        <div class="sheet-diff-table">
+          <div class="table-row table-head">
+            <div>Diskriminant</div>
+            <div>Xarakteristik ildizlar</div>
+            <div>Umumiy yechim formasi</div>
+          </div>
+          <div class="table-row">
+            <div>D &gt; 0</div>
+            <div>Ikkita har xil haqiqiy (k₁ ≠ k₂)</div>
+            <div><strong>y = C₁ e^(k₁ x) + C₂ e^(k₂ x)</strong></div>
+          </div>
+          <div class="table-row">
+            <div>D = 0</div>
+            <div>Bitta karrali haqiqiy (k₁ = k₂ = k)</div>
+            <div><strong>y = (C₁ + C₂ x) e^(kx)</strong></div>
+          </div>
+          <div class="table-row">
+            <div>D &lt; 0</div>
+            <div>Kompleks qo'shma (k = α ± iβ)</div>
+            <div><strong>y = e^(αx) (C₁ cos(βx) + C₂ sin(βx))</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .shpargalka-header-banner {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .sheet-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .sheet-tab {
+    padding: 0.5rem 0.95rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .sheet-tab:hover {
+    color: var(--text-main);
+    border-color: var(--primary);
+  }
+  .sheet-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  /* Sheet Layout */
+  .shpargalka-sheet {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  .sheet-header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .sheet-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .sheet-header h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--text-main);
+  }
+  .sheet-meta {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+  }
+
+  .sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .sheet-card {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .sheet-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .sheet-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .formula-block {
+    margin: 0.65rem 0;
+    padding: 0.5rem;
+    background: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    overflow-x: auto;
+  }
+
+  .sheet-tip {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: rgba(239, 68, 68, 0.07);
+    border-left: 3px solid #ef4444;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-main);
+  }
+
+  .sheet-steps {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-main);
+  }
+
+  .sheet-equiv-list, .sheet-rules-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .sheet-tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag-badge {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .sheet-diff-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+  .table-row {
+    display: grid;
+    grid-template-columns: 80px 200px 1fr;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    align-items: center;
+  }
+  .table-head {
+    font-weight: 700;
+    background: var(--bg-muted);
+    color: var(--text-subtle);
+  }
+
+  /* ================= PRINT STYLES FOR A4 ================= */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+    header, nav, aside, .shpargalka-header-banner, .community-banner {
+      display: none !important;
+    }
+    body {
+      background: white !important;
+      color: black !important;
+      font-size: 9.5pt !important;
+      line-height: 1.35 !important;
+    }
+    .shpargalka-sheet {
+      display: block !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      page-break-after: always;
+    }
+    .shpargalka-sheet:last-child {
+      page-break-after: avoid;
+    }
+    .sheet-card {
+      border: 1px solid #777 !important;
+      background: white !important;
+      break-inside: avoid;
+      padding: 0.65rem !important;
+    }
+    .sheet-card h3 {
+      color: black !important;
+      font-size: 10pt !important;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 2px;
+    }
+    .formula-block {
+      background: #f9f9f9 !important;
+      border: 1px dashed #bbb;
+      color: black !important;
+    }
+    .table-row {
+      border: 1px solid #777 !important;
+      color: black !important;
+    }
+    .sheet-tip {
+      background: #f5f5f5 !important;
+      border-left: 3px solid #333 !important;
+      color: black !important;
+    }
+  }
+</style>
+
+<script>
+  function setupShpargalkalar() {
+    const tabs = document.querySelectorAll('.sheet-tab');
+    const sheets = document.querySelectorAll('.shpargalka-sheet');
+    const printBtn = document.getElementById('print-current-sheet-btn');
+
+    if (!tabs.length || (tabs[0] as any)._hasTabInit) return;
+    (tabs[0] as any)._hasTabInit = true;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const targetId = tab.getAttribute('data-target');
+        sheets.forEach(s => {
+          if (s.id === targetId) {
+            (s as HTMLElement).style.display = 'block';
+            s.classList.add('active-sheet');
+          } else {
+            (s as HTMLElement).style.display = 'none';
+            s.classList.remove('active-sheet');
+          }
+        });
+      });
+    });
+
+    printBtn?.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  setupShpargalkalar();
+  document.addEventListener('astro:page-load', setupShpargalkalar);
+  document.addEventListener('astro:after-swap', setupShpargalkalar);
+</script>

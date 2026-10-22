@@ -1,0 +1,116 @@
+---
+title: "Ishorasi almashinuvchi qatorlar va Leybnits alomati"
+module: "qatorlar"
+order: 3
+description: "Ishorasi almashinuvchi qatorlar, Leybnits teoremasi, qator qoldig'ini baholash, mutlaq va shartli yaqinlashish hamda Riman paradoksi."
+---
+
+## Kirish: Musbat va manfiy hadlarning o'zaro kurashi
+
+Oldingi darsda barcha hadlari musbat bo'lgan qatorlarni o'rgandik. U yerda har bir yangi had yig'indini faqat kattalashtirar edi. Ammo hadlarning ishorasi galma-galdan almashinib kelsa:
+$$
+1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \dots
+$$
+har bir manfiy had oldingi musbat hadning ta'sirini kamaytiradi (kompensatsiya qiladi). Natijada, musbat holda uzoqlashuvchi bo'lgan garmonik qator ishorasi almashinganda **ajoyib tarzda yaqinlashadi** (va uning yig'indisi $\ln 2 \approx 0.693$ ga teng bo'ladi!).
+
+---
+
+## 1. Ishorasi almashinuvchi qator ta'rifi
+
+> **Ta'rif:** Ketma-ket kelgan ixtiyoriy ikkita hadining ishorasi qarama-qarshi bo'lgan qator **ishorasi almashinuvchi qator** deyiladi:
+>
+> $$
+> \sum_{n=1}^\infty (-1)^{n-1} a_n = a_1 - a_2 + a_3 - a_4 + \dots \quad (a_n > 0)
+> $$
+
+---
+
+## 2. Leybnits alomati
+
+> **Leybnits teoremasi:** Agar ishorasi almashinuvchi qator uchun quyidagi ikkita shart bir vaqtda bajarilsa:
+> 1. Hadlarning modullari monoton kamayuvchi bo'lsa:
+>    $$
+>    a_1 > a_2 > a_3 > \dots > a_n > a_{n+1} > \dots
+>    $$
+> 2. Umumiy hadning moduli cheksizlikda nolga intilsa:
+>    $$
+>    \lim_{n \to \infty} a_n = 0
+>    $$
+>
+> u holda qator **YAQINLASHADI**, uning yig'indisi $S$ musbat bo'lib, birinchi hadidan oshmaydi: $0 < S < a_1$.
+
+---
+
+## 3. Qator qoldig'ini baholash (Kompyuter hisoblashlari uchun)
+
+Leybnits qatorining dastlabki $n$ ta hadi yig'indisi $S_n$ hisoblanganda yo'l qo'yiladigan xatolik (qoldiq $R_n = S - S_n$) keyingi tashlab yuborilgan birinchi hadning modulidan oshmaydi:
+
+$$
+\lvert R_n \rvert \le a_{n+1}
+$$
+
+Masalan, agar xatolik $0.001$ dan oshmasligi kerak bo'lsa, shunchaki $a_{n+1} \le 0.001$ shartni qanoatlantiruvchi $n$ ni topish kifoya!
+
+---
+
+## 4. Mutlaq va shartli yaqinlashish
+
+Ixtiyoriy ishorali $\sum u_n$ qator berilgan bo'lsin. Uning modullaridan tuzilgan $\sum \lvert u_n \rvert$ qatorni tuzamiz.
+
+> **Ta'riflar:**
+> 1. Agar modullardan tuzilgan $\sum \lvert u_n \rvert$ qator yaqinlashsa, dastlabki $\sum u_n$ qator **MUTLAQ YAQINLASHUVCHI** deyiladi.
+> 2. Agar dastlabki $\sum u_n$ qator yaqinlashsa-yu, lekin modullardan tuzilgan $\sum \lvert u_n \rvert$ qator uzoqlashsa, dastlabki qator **SHARTLI YAQINLASHUVCHI** deyiladi.
+
+### Misollar:
+- $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^2}$: modullari $\sum \frac{1}{n^2}$ yaqinlashadi ($p=2 > 1$). Demak, **mutlaq yaqinlashadi**.
+- $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}$: Leybnits bo'yicha yaqinlashadi, lekin modullari $\sum \frac{1}{n}$ garmonik qator bo'lib uzoqlashadi. Demak, **shartli yaqinlashadi**.
+
+---
+
+## 5. Riman teoremasi (Aql bovar qilmas paradoks)
+
+Maktabdan bilamizki, qo'shiluvchilarning o'rni almashgani bilan yig'indi o'zgarmaydi. Mutlaq yaqinlashuvchi qatorlarda bu qoida saqlanadi.
+
+Ammo **shartli yaqinlashuvchi** qatorlarda bu qoida mutlaqo buziladi!
+
+> **Riman teoremasi:** Shartli yaqinlashuvchi qator hadlarining o'rnini almashtirish orqali uning yig'indisini **oldindan berilgan istalgan ixtiyoriy son** $L \in \mathbb{R}$ ga teng qilish, hatto uni $+\infty$ yoki $-\infty$ ga intiladigan qilish mumkin!
+
+---
+
+## Amaliy namunaviy misol
+
+Qatorni mutlaq va shartli yaqinlashishga tekshiring:
+$$
+\sum_{n=1}^\infty \frac{(-1)^{n-1}}{\sqrt{n}}
+$$
+
+**Yechilishi:**
+1. **1-qadam: Modullar qatorini tuzamiz:**
+   $$\sum_{n=1}^\infty \left\lvert \frac{(-1)^{n-1}}{\sqrt{n}} \right\rvert = \sum_{n=1}^\infty \frac{1}{n^{1/2}}$$
+   Bu Dirixle umumlashgan garmonik qatori bo'lib, $p = \frac{1}{2} \le 1$ bo'lgani uchun **uzoqlashadi**.
+   Demak, qator mutlaq yaqinlashmaydi.
+
+2. **2-qadam: Dastlabki qatorni Leybnits alomati bilan tekshiramiz:**
+   - Hadlar moduli: $a_n = \frac{1}{\sqrt{n}}$.
+   - $1 > \frac{1}{\sqrt{2}} > \frac{1}{\sqrt{3}} > \dots$ — monoton kamayuvchi;
+   - $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$ — limit nolga teng.
+   Leybnits shartlari to'liq bajarildi, demak qator yaqinlashadi.
+
+3. **Xulosa:** Qator **shartli yaqinlashuvchi**.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{2n - 1}$ qator shartli yaqinlashuvchimi yoki mutlaq yaqinlashuvchimi?
+2. $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n!}$ qator mutlaq yaqinlashishini ko'rsating.
+3. $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^3}$ qator yig'indisini $0.01$ aniqlikda hisoblash uchun nechta had olish yetarli?
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> Modullar $\sum \frac{1}{2n-1}$ uzoqlashadi ($p=1$). Leybnits bo'yicha o'zi yaqinlashadi. Demak: shartli yaqinlashuvchi.</p>
+    <p><strong>2-masala:</strong> Modullar qatori $\sum \frac{1}{n!}$ Dalamber bo'yicha yaqinlashadi ($D = 0 < 1$). Shuning uchun mutlaq yaqinlashadi.</p>
+    <p><strong>3-masala:</strong> $|R_n| \le \frac{1}{(n+1)^3} \le 0.01 \implies (n+1)^3 \ge 100 \implies n+1 \ge 5 \implies n \ge 4$. Dastlabki 4 ta had yetarli!</p>
+  </div>
+</details>

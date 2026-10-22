@@ -1,0 +1,144 @@
+---
+title: "Qutb koordinatalarida ikki karrali integral"
+module: "karrali-integrallar"
+order: 2
+description: "Qutb koordinatalariga o'tish, o'tish Yakobiani (r ko'paytuvchi siri), doiraviy sohalarda integrallash va mashhur Puasson-Gauss integrali."
+---
+
+## Kirish: Doirada Dekart koordinatalari noqulay
+
+Agar integrallash sohasi to'g'ri to'rtburchak emas, balki **aylana, doira yoki doiraviy halqa** ($x^2 + y^2 \le R^2$) bo'lsa, Dekart koordinatalarida ishlash juda og'ir kechadi: chegaralarda noqulay $\pm\sqrt{R^2 - x^2}$ ildizlar paydo bo'ladi.
+
+Bunday aylanma simmetriyaga ega sohalarda integrallashni osonlashtirish uchun **qutb koordinatalari sistemasiga** o'tiladi.
+
+---
+
+## 1. Qutb koordinatalari formulalari
+
+Tekislikdagi har bir nuqta ikkita kattalik bilan aniqlanadi:
+- $r$ — qutb radiusi (koordinata boshidan nuqtagacha bo'lgan masofa, $r \ge 0$);
+- $\varphi$ — qutb burchagi ($Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchak, $0 \le \varphi < 2\pi$).
+
+### O'tish formulalari:
+$$
+\begin{cases}
+x = r \cos \varphi \\
+y = r \sin \varphi
+\end{cases}
+$$
+Bu holda:
+$$
+x^2 + y^2 = (r\cos\varphi)^2 + (r\sin\varphi)^2 = r^2(\cos^2\varphi + \sin^2\varphi) = r^2
+$$
+
+---
+
+## 2. Yuza elementi va Yakobian siri
+
+O'zgaruvchilarni almashtirganda yuza elementi $dx dy$ shunchaki $dr d\varphi$ ga teng bo'lib qolmaydi! Ular orasidagi mutanosiblik koeffitsiyenti — **almashtirish Yakobiani ($J$)** deb ataladi:
+
+$$
+J = \begin{vmatrix}
+\frac{\partial x}{\partial r} & \frac{\partial x}{\partial \varphi} \\
+\frac{\partial y}{\partial r} & \frac{\partial y}{\partial \varphi}
+\end{vmatrix} = \begin{vmatrix}
+\cos \varphi & -r \sin \varphi \\
+\sin \varphi & r \cos \varphi
+\end{vmatrix} = r \cos^2 \varphi - (-r \sin^2 \varphi) = r(\cos^2 \varphi + \sin^2 \varphi) = r
+$$
+
+> **Oltin qoida (Talabalarning eng katta xatosi):**
+> Qutb koordinatalariga o'tganda $dx dy$ o'rniga doimo **$r \, dr d\varphi$** yozilishi shart:
+>
+> $$
+> dx dy = r \, dr d\varphi
+> $$
+>
+> Integral formulasi:
+> $$
+> \iint_D f(x, y) \, dx dy = \iint_{D^*} f(r\cos\varphi, \, r\sin\varphi) \cdot r \, dr d\varphi
+> $$
+
+---
+
+## 3. Doira bo'yicha integrallash chegaralari
+
+Agar $D$ markazi koordinatalar boshida va radiusi $R$ bo'lgan to'liq doira bo'lsa ($x^2 + y^2 \le R^2$):
+- $\varphi$ burchak to'liq bir aylanadi: $0 \le \varphi \le 2\pi$;
+- $r$ radius markazdan aylanagacha o'zgaradi: $0 \le r \le R$.
+
+Takroriy integralga keltirish:
+$$
+\iint_D f(x^2 + y^2) \, dx dy = \int_0^{2\pi} d\varphi \int_0^R f(r^2) \cdot r \, dr
+$$
+
+---
+
+## 4. Matematika durdonasi: Puasson-Gauss integrali
+
+Ehtimollar nazariyasida va kvant mexanikasida eng muhim integral:
+$$
+I = \int_{-\infty}^{+\infty} e^{-x^2} \, dx
+$$
+Uning boshlang'ich funksiyasini elementar funksiyalarda ifodalab bo'lmaydi (Liuvill teoremasi). Ammo ikki karrali integral va qutb koordinatalari yordamida uning aniq qiymatini hisoblash mumkin!
+
+### Isbot:
+Kvadratini olamiz:
+$$
+I^2 = \left(\int_{-\infty}^{+\infty} e^{-x^2} dx\right) \left(\int_{-\infty}^{+\infty} e^{-y^2} dy\right) = \iint_{\mathbb{R}^2} e^{-(x^2 + y^2)} \, dx dy
+$$
+Qutb koordinatalariga o'tamiz ($x^2 + y^2 = r^2, \, dx dy = r dr d\varphi$):
+$$
+I^2 = \int_0^{2\pi} d\varphi \int_0^\infty e^{-r^2} \cdot r \, dr
+$$
+- Burchak bo'yicha: $\int_0^{2\pi} d\varphi = 2\pi$.
+- Radius bo'yicha ($r dr = \frac{1}{2} d(r^2)$):
+  $$\int_0^\infty e^{-r^2} r dr = \frac{1}{2} \left[ -e^{-r^2} \right]_0^\infty = \frac{1}{2} (0 - (-1)) = \frac{1}{2}$$
+Ko'paytiramiz:
+$$
+I^2 = 2\pi \cdot \frac{1}{2} = \pi \implies I = \sqrt{\pi}
+$$
+
+**Natija:** $\int_{-\infty}^{+\infty} e^{-x^2} dx = \sqrt{\pi}$. Bu matematikaning eng go'zal natijalaridan biridir!
+
+---
+
+## Amaliy namunaviy misol
+
+Hisoblang:
+$$
+\iint_D \sqrt{x^2 + y^2} \, dx dy
+$$
+bu yerda $D$ — markazi $(0, 0)$ va radiusi $R = 3$ bo'lgan doira.
+
+**Yechilishi:**
+1. Qutb koordinatalariga o'tamiz:
+   $\sqrt{x^2 + y^2} = \sqrt{r^2} = r$.
+   $dx dy = r \, dr d\varphi$.
+2. Chegaralar: $0 \le \varphi \le 2\pi$, $0 \le r \le 3$.
+3. Integralni tuzamiz:
+   $$I = \int_0^{2\pi} d\varphi \int_0^3 r \cdot (r \, dr) = \left( \int_0^{2\pi} d\varphi \right) \left( \int_0^3 r^2 \, dr \right)$$
+4. Hisoblaymiz:
+   $$\int_0^{2\pi} d\varphi = 2\pi$$
+   $$\int_0^3 r^2 \, dr = \left[ \frac{r^3}{3} \right]_0^3 = \frac{27}{3} = 9$$
+5. Ko'paytma:
+   $$I = 2\pi \cdot 9 = 18\pi$$
+
+**Javob:** $18\pi$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. Qutb koordinatalariga o'tganda yuza elementi $dx dy$ nimaga almashadi?
+2. $D$ — $x^2 + y^2 \le 4$ doiraning 1-chorakdagi qismi bo'lsa, $\varphi$ burchak qaysi oraliqda o'zgaradi?
+3. $\iint_D (x^2 + y^2) \, dx dy$ integralni $x^2 + y^2 \le 1$ birlik doirada hisoblang.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $dx dy = r \, dr d\varphi$ ga (Yakobian $r$).</p>
+    <p><strong>2-masala:</strong> 1-chorak bo'lgani uchun $0 \le \varphi \le \frac{\pi}{2}$.</p>
+    <p><strong>3-masala:</strong> $\int_0^{2\pi} d\varphi \int_0^1 r^2 \cdot r dr = 2\pi \left[\frac{r^4}{4}\right]_0^1 = 2\pi \cdot \frac{1}{4} = \frac{\pi}{2}$.</p>
+  </div>
+</details>

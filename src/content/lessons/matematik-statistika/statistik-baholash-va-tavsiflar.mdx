@@ -1,0 +1,118 @@
+---
+title: "Statistik baholar, tanlanma o'rtacha, dispersiya va ishonchlilik oralig'i"
+module: "matematik-statistika"
+order: 2
+description: "Nuqtaviy baholar talablari, tanlanma o'rtacha, tanlanma dispersiya, Bessel tuzatmasi (s^2), standart og'ish va ishonchlilik oralig'i (confidence interval)."
+---
+
+## Kirish: Tanlanmadan bosh to'plamni bashorat qilish
+
+Biz butun bosh to'plamni (masalan, mamlakatdagi barcha fuqarolarning o'rtacha daromadini) to'liq bila olmaymiz. Bizda faqat 1000 kishidan olingan tanlanma bor. 
+
+Bu 1000 kishining o'rtacha daromadi butun xalqning o'rtacha daromadidan qanchalik farq qiladi? Xatolik chegarasi qancha? Bunga javob berish uchun statistik baholar va **ishonchlilik oraliqlari (confidence intervals)** qo'llaniladi.
+
+---
+
+## 1. Statistik baholar va ularga qo'yiladigan talablar
+
+Tanlanma bo'yicha hisoblangan har qanday ko'rsatkich (masalan, o'rtacha qiymat) no'malum parametrning **bahosi** deyiladi. Baho yaxshi bo'lishi uchun 3 ta xossaga ega bo'lishi shart:
+
+1. **Siljimaganlik (Unbiasedness):** Bahoning matematik kutilmasi baholanayotgan haqiqiy parametrga teng bo'lishi kerak ($M(\theta^*) = \theta$). Tizimli xatolik bo'lmasligi kerak.
+2. **Samaradorlik (Efficiency):** Ushbu bahoning dispersiyasi (tasodifiy tebranishi) barcha mumkin bo'lgan baholar orasida eng kichigi bo'lishi kerak.
+3. **Asoslilik (Consistency):** Tanlanma hajmi oshgan sari ($n \to \infty$) baho haqiqiy parametrga ehtimollik bo'yicha intilishi kerak.
+
+---
+
+## 2. Nuqtaviy statistik tavsiflar
+
+### 1. Tanlanma o'rtacha qiymat ($\bar{x}_v$):
+Bosh to'plamning matematik kutilmasi $M(X)$ uchun eng yaxshi siljimagan baho:
+$$
+\bar{x}_v = \frac{1}{n} \sum_{i=1}^k x_i \cdot n_i = \sum_{i=1}^k x_i \cdot w_i
+$$
+
+### 2. Tanlanma dispersiya ($D_v$):
+$$
+D_v = \frac{1}{n} \sum_{i=1}^k (x_i - \bar{x}_v)^2 \cdot n_i = \overline{x^2} - (\bar{x}_v)^2
+$$
+
+### 3. Nega $n$ ga emas, $n - 1$ ga bo'linadi? (Bessel tuzatmasi):
+Matematik isbot ko'rsatadiki, $D_v$ tanlanma dispersiyaning matematik kutilmasi haqiqiy dispersiyadan bir oz kichik bo'ladi:
+$$
+M(D_v) = \frac{n - 1}{n} \cdot D(X)
+$$
+Ya'ni $D_v$ siljigan (kamaytirilgan) baho hisoblanadi!
+
+Haqiqiy siljimagan bahoni olish uchun uni $\frac{n}{n-1}$ koeffitsiyentga ko'paytiriladi. Bu **tuzatilgan (to'g'rilangan) dispersiya** $s^2$ deyiladi:
+
+$$
+s^2 = \frac{n}{n - 1} D_v = \frac{1}{n - 1} \sum_{i=1}^k (x_i - \bar{x}_v)^2 \cdot n_i
+$$
+
+- Standart og'ish (tuzatilgan):
+  $$
+  s = \sqrt{s^2}
+  $$
+
+(Katta $n > 100$ bo'lganda $\frac{n}{n-1} \approx 1$ bo'lib farq sezilmaydi, ammo kichik $n \le 30$ tanlanmalarda bu tuzatma hal qiluvchi ahamiyatga ega!).
+
+---
+
+## 3. Ishonchlilik oralig'i (Interval baholash)
+
+Nuqtaviy baho bitta son beradi, lekin uning aniqligini ko'rsatmaydi. Interval baholash esa haqiqiy parametr yotadigan oraliqni beradi.
+
+> **Ta'rif:** Berilgan $\gamma = 1 - \alpha$ ishonchlilik ehtimoli bilan (odatda $\gamma = 0.95$ yoki $95\%$) no'malum parametrni o'z ichiga oluvchi $(\bar{x} - \varepsilon; \bar{x} + \varepsilon)$ oraliq **ishonchlilik oralig'i** deyiladi:
+>
+> $$
+> P(\bar{x}_v - \varepsilon < a < \bar{x}_v + \varepsilon) = \gamma
+> $$
+
+Agar tanlanma hajmi $n$ katta bo'lsa:
+$$
+\varepsilon = t \cdot \frac{s}{\sqrt{n}}
+$$
+bu yerda $t$ — normal taqsimot jadvalidan $\Phi(t) = \frac{\gamma}{2}$ shartdan topiladigan koeffitsiyent ($95\%$ ishonchlilik uchun $t \approx 1.96$).
+
+---
+
+## Amaliy namunaviy misol
+
+Zavodda 5 ta detalning o'lchami o'lchandi ($n = 5$):
+$10, 12, 10, 14, 14$.
+
+$\bar{x}_v$, $D_v$ va tuzatilgan $s^2$ ni hisoblang.
+
+**Yechilishi:**
+1. Tanlanma o'rtacha:
+   $$\bar{x}_v = \frac{10 + 12 + 10 + 14 + 14}{5} = \frac{60}{5} = 12$$
+2. O'rtachadan og'ishlar kvadratlari:
+   - $(10 - 12)^2 = 4$
+   - $(12 - 12)^2 = 0$
+   - $(10 - 12)^2 = 4$
+   - $(14 - 12)^2 = 4$
+   - $(14 - 12)^2 = 4$
+   Kvadratlar yig'indisi: $4 + 0 + 4 + 4 + 4 = 16$.
+3. Tanlanma dispersiya:
+   $$D_v = \frac{16}{5} = 3.2$$
+4. Tuzatilgan dispersiya ($n - 1 = 4$ ga bo'lamiz):
+   $$s^2 = \frac{16}{5 - 1} = \frac{16}{4} = 4.0$$
+5. Tuzatilgan standart og'ish:
+   $$s = \sqrt{4} = 2.0$$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $3, 5, 7$ tanlanmaning o'rtacha qiymatini hisoblang.
+2. Nega kichik tanlanmalarda dispersiyani hisoblashda $n$ ga emas, $n-1$ ga bo'lish to'g'riroq hisoblanadi?
+3. Tanlanma hajmi $n = 100$, $\bar{x} = 50$, $s = 10$ bo'lsa, o'rtacha qiymatning standart xatosi $\frac{s}{\sqrt{n}}$ nimaga teng?
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $\bar{x} = \frac{3 + 5 + 7}{3} = \frac{15}{3} = 5$.</p>
+    <p><strong>2-masala:</strong> Chunki oddiy tanlanma dispersiya $D_v$ tizimli ravishda haqiqiy dispersiyani kamaytirib ko'rsatadi ($M(D_v) = \frac{n-1}{n}D$). $n-1$ ga bo'lish (Bessel tuzatmasi) bahoni siljimagan qiladi.</p>
+    <p><strong>3-masala:</strong> $SE = \frac{10}{\sqrt{100}} = \frac{10}{10} = 1.0$.</p>
+  </div>
+</details>

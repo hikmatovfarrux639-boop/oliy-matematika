@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { MODULES } from '../data/modules';
+
+const activeCount = MODULES.filter(m => m.isActive).length;
+const totalCount = MODULES.length;
+---
+
+<BaseLayout title="Oliy Matematika — Bosh sahifa">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-light); color: var(--primary); padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">
+      <span>🚀</span>
+      <span>Barcha 14 ta modul, PDF Shpargalkalar va AI Yechuvchi to'liq faol! (55 ta dars)</span>
+    </div>
+
+    <h1>Oliy Matematikani O'zbek Tilida Noldan O'rganing</h1>
+    <p>
+      Universitet talabalari, abituriyentlar va mustaqil o'rganuvchilar uchun formulalar, sun'iy intellektli masala yechuvchi va tushunarli misollar bilan boyitilgan bepul platforma.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/testlar" class="btn btn-primary" style="background: #2563eb; border-color: #2563eb; font-weight: 700;">
+        <span>📝 HEMIS Testlari</span>
+        <span>→</span>
+      </a>
+      <a href="/shpargalkalar" class="btn btn-secondary" style="border-color: #f59e0b; color: #f59e0b; font-weight: 700;">
+        <span>📄 Shpargalkalar (PDF)</span>
+      </a>
+      <a href="/ai-yechuvchi" class="btn btn-secondary" style="border-color: #10b981; color: #10b981; font-weight: 700;">
+        <span>🤖 AI Yechuvchi</span>
+      </a>
+      <a href="/formulalar" class="btn btn-secondary">
+        <span>📐 Formulalar</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- HEMIS & AI DUAL PROMO BANNER -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+    <!-- HEMIS Test Banner -->
+    <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.15) 100%); border: 1.5px solid #3b82f6; border-radius: var(--radius-lg); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+          <span style="font-size: 1.3rem;">📝</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: var(--text-main);">HEMIS Oraliq va Yakuniy Testlar</span>
+          <span style="font-size: 0.7rem; background: #3b82f6; color: white; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;">Yangi</span>
+        </div>
+        <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+          Universitet HEMIS imtihonlari va nazorat ishlari uchun saralangan testlar bazasi. Har bir savolning qadamma-qadam to'liq KaTeX yechimi va 5, 4, 3 baholar shkalasi bilan!
+        </p>
+      </div>
+      <a href="/testlar" class="btn btn-primary" style="align-self: flex-start; padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+        Testlarni topshirish →
+      </a>
+    </div>
+
+    <!-- AI Solver Banner -->
+    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.18) 100%); border: 1.5px solid #10b981; border-radius: var(--radius-lg); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+          <span style="font-size: 1.3rem;">🤖</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: var(--text-main);">Gemini AI Masala Yechuvchi</span>
+          <span style="font-size: 0.7rem; background: #10b981; color: white; padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 700;">Jonli</span>
+        </div>
+        <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;">
+          Qo'lyozma misol rasmini yuklang yoki matnini kiriting. Tizim uni tahlil qilib, qaysi qoida va teoremalar ishlatilganini maydalab tushuntirib beradi.
+        </p>
+      </div>
+      <a href="/ai-yechuvchi" class="btn" style="background: #10b981; color: white; align-self: flex-start; padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+        Misol yechish →
+      </a>
+    </div>
+  </div>
+
+  <!-- Quick Features -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;">
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-md);">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚡</div>
+      <div style="font-weight: 700; margin-bottom: 0.25rem;">To'liq O'zbek Tili</div>
+      <div style="font-size: 0.875rem; color: var(--text-muted);">
+        Barcha mavzular sof va akademik o'zbek matematika atamalari bilan ifodalangan.
+      </div>
+    </div>
+
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-md);">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
+      <div style="font-weight: 700; margin-bottom: 0.25rem;">Interaktiv Grafiklar</div>
+      <div style="font-size: 0.875rem; color: var(--text-muted);">
+        Darslar ichida harakatlanuvchi urinmalar va jonli grafiklar bilan vizual tushunish.
+      </div>
+    </div>
+
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-md);">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
+      <div style="font-weight: 700; margin-bottom: 0.25rem;">Taraqqiyot Xotirasi</div>
+      <div style="font-size: 0.875rem; color: var(--text-muted);">
+        O'zlashtirilgan darslar brauzeringizda avtomatik saqlanib boradi.
+      </div>
+    </div>
+  </div>
+
+  <!-- Modules List -->
+  <section id="modullar">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 800;">Oliy Matematika Kurslari (14 ta Modul)</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Barcha {totalCount} ta modul bo'yicha jami 55 ta to'liq dars o'rganishga tayyor:
+        </p>
+      </div>
+    </div>
+
+    <div class="module-grid">
+      {MODULES.map(m => (
+        <a href={`/modullar/${m.slug}`} class={`module-card ${!m.isActive ? 'inactive' : ''}`}>
+          <div class="module-card-header">
+            <span class="module-title">{m.title}</span>
+            {m.isActive ? (
+              <span class="badge badge-active">Faol</span>
+            ) : (
+              <span class="badge badge-soon">Tez orada</span>
+            )}
+          </div>
+
+          <p class="module-desc">{m.description}</p>
+
+          <div class="module-meta">
+            {m.isActive ? (
+              <span style="color: var(--accent); font-weight: 600;">Darslarga o'tish →</span>
+            ) : (
+              <span>Rejalashtirilgan</span>
+            )}
+            <span>{m.topics.length} ta asosiy mavzu</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Telegram Community Banner on Home -->
+  <section style="margin-top: 3.5rem; background: linear-gradient(135deg, rgba(14, 165, 233, 0.09) 0%, rgba(37, 99, 235, 0.15) 100%); border: 1.5px solid rgba(14, 165, 233, 0.35); border-radius: var(--radius-lg); padding: 2rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+      <div style="max-width: 620px;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(14, 165, 233, 0.15); color: #0284c7; padding: 0.3rem 0.75rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem;">
+          <span>💬</span>
+          <span>Rasmiy Telegram Hamjamiyati</span>
+        </div>
+        <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+          Matematikadan savolingiz bormi yoki misolga qiynalyapsizmi?
+        </h2>
+        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+          O'zbekistondagi barcha oliy o'quv yurtlari (TATU, O'zMU, TDTU, SamDU va boshqalar) talabalari hamda ustozlari jamlangan Telegram guruhimizga a'zo bo'ling. Misollarni birga yeching, HEMIS oraliq savollarini muhokama qiling!
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; min-width: 240px;">
+        <a 
+          href="https://t.me/oliy_matematika_1" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn" 
+          style="background: #0284c7; color: white; font-weight: 700; padding: 0.85rem 1.5rem; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; text-decoration: none; border-radius: var(--radius-md); box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          <span>Telegram guruhga ulanish</span>
+        </a>
+        <a 
+          href="/shpargalkalar" 
+          class="btn btn-secondary" 
+          style="text-align: center; font-weight: 700; color: #f59e0b; border-color: #f59e0b; font-size: 0.9rem;"
+        >
+          📄 PDF Shpargalkalarni ko'rish
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

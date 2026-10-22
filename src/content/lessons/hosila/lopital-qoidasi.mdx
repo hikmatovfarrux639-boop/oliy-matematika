@@ -1,0 +1,139 @@
+---
+title: "Lopital qoidasi: Aniqmasliklarni hosila orqali ochish"
+module: "hosila"
+order: 5
+description: "Giyom Lopital va Iogann Bernulli teoremasi. [0/0] va [∞/∞] noaniqliklarni surat va maxraj hosilalari orqali qulay va tezkor hisoblash usuli."
+---
+
+## Kirish: Tarixdagi eng mashhur qoida
+
+Biz 3-modulda aniqmasliklarni ochishning algebraik usullarini ko'rgan edik: ko'paytuvchilarga ajratish, qo'shmaga ko'paytirish, trigonometrik ayniyatlar. Biroq ifodada bir vaqtning o'zida ham trigonometriya, ham eksponenta, ham ko'phad qatnashsa, bunday soddalashtirishlar juda qiyinlashib ketishi mumkin.
+
+XVIII asrda fransuz matematigi Giyom Lopital (Iogann Bernulli bilan hamkorlikda) aniqmasliklarni **hosila yordamida bir zumda yechish** usulini e'lon qildi. Bu usul hozirgi kunda universitet oliy matematika kursining eng sevimli qurolidir!
+
+---
+
+## Lopital teoremasi
+
+> **Teorema:** Agar $x \to a$ da $f(x)$ va $g(x)$ funksiyalarning ikkalasi ham nolga yoki ikkalasi ham cheksizlikka intilsa (ya'ni $\left[\frac{0}{0}\right]$ yoki $\left[\frac{\infty}{\infty}\right]$ noaniqlik yuz bersa) va ularning hosilalari nisbati mavjud bo'lsa, u holda funksiyalar nisbatining limiti ularning **hosilalari nisbatining limiti**ga teng bo'ladi:
+>
+> $$
+> \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}
+> $$
+
+> [!CAUTION]
+> **Eng muhim ogohlantirish:** Bu yerda bo'linmaning hosilasi $\left(\frac{u}{v}\right)'$ formulasi qo'llanilmaydi! Surat alohida differensiallanadi ($f'(x)$), maxraj esa alohida differensiallanadi ($g'(x)$)!
+
+---
+
+## Qoidani takroran qo'llash
+
+Agar bir marta differensiallagandan keyin ham yana $\left[\frac{0}{0}\right]$ yoki $\left[\frac{\infty}{\infty}\right]$ aniqmaslik saqlanib qolsa, qoidani ikkinchi, uchinchi va kerak bo'lsa bir necha bor ketma-ket qo'llash mumkin:
+
+$$
+\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)} = \lim_{x \to a} \frac{f''(x)}{g''(x)}
+$$
+
+---
+
+## Boshqa noaniqliklarni keltirish
+
+Agar noaniqlik $[0 \cdot \infty]$ yoki $[\infty - \infty]$ ko'rinishida bo'lsa:
+- $[0 \cdot \infty]$ uchun: $A \cdot B = \frac{A}{1/B}$ shaklida yozilib, $\left[\frac{0}{0}\right]$ yoki $\left[\frac{\infty}{\infty}\right]$ ga keltiriladi;
+- So'ngra Lopital qoidasi qo'llaniladi.
+
+---
+
+## Amaliy misollar va yechimlar
+
+### 1-misol: Qoidani ikki marta ketma-ket qo'llash
+Limitni hisoblang:
+
+$$
+\lim_{x \to 0} \frac{e^x - x - 1}{x^2}
+$$
+
+**Yechilishi:**
+1. $x = 0$ qo'yamiz:
+   $$\frac{e^0 - 0 - 1}{0^2} = \frac{1 - 1}{0} = \left[\frac{0}{0}\right]$$
+2. Lopital qoidasini qo'llaymiz (surat va maxrajdan alohida hosila olamiz):
+   $$\lim_{x \to 0} \frac{(e^x - x - 1)'}{(x^2)'} = \lim_{x \to 0} \frac{e^x - 1}{2x}$$
+3. Yana tekshiramiz: $x = 0$ da $\frac{e^0 - 1}{2(0)} = \left[\frac{0}{0}\right]$. Yana noaniqlik!
+4. Lopital qoidasini ikkinchi marta qo'llaymiz:
+   $$\lim_{x \to 0} \frac{(e^x - 1)'}{(2x)'} = \lim_{x \to 0} \frac{e^x}{2}$$
+5. Endi bevosita $x = 0$ qo'yish mumkin:
+   $$\frac{e^0}{2} = \frac{1}{2}$$
+
+**Javob:** $\frac{1}{2}$
+
+---
+
+### 2-misol: $\left[\frac{\infty}{\infty}\right]$ holati
+Limitni hisoblang:
+
+$$
+\lim_{x \to +\infty} \frac{\ln x}{x^2}
+$$
+
+**Yechilishi:**
+$x \to +\infty$ da $\ln x \to +\infty$ va $x^2 \to +\infty$, ya'ni $\left[\frac{\infty}{\infty}\right]$.
+
+Lopital qoidasi bo'yicha:
+$$\lim_{x \to +\infty} \frac{(\ln x)'}{(x^2)'} = \lim_{x \to +\infty} \frac{\frac{1}{x}}{2x} = \lim_{x \to +\infty} \frac{1}{2x^2}$$
+
+Maxraj cheksiz kattalashgani sari, kasr nolga intiladi:
+$$\lim_{x \to +\infty} \frac{1}{2x^2} = 0$$
+
+*(Xulosa: Ko'phad logarifmga qaraganda ancha tez o'sadi!)*
+
+**Javob:** $0$
+
+---
+
+### 3-misol: $[0 \cdot \infty]$ aniqmasligi
+Limitni hisoblang:
+
+$$
+\lim_{x \to 0^+} (x \cdot \ln x)
+$$
+
+**Yechilishi:**
+$x \to 0^+$ da $x \to 0$, lekin $\ln x \to -\infty$. Bu $[0 \cdot (-\infty)]$ aniqmaslikdir.
+
+$x$ ni maxrajga $\frac{1}{x}$ qilib tushiramiz:
+$$x \cdot \ln x = \frac{\ln x}{\frac{1}{x}}$$
+
+Endi bu $\left[\frac{-\infty}{+\infty}\right]$ ko'rinishiga keldi. Lopital qoidasini qo'llaymiz:
+$$\lim_{x \to 0^+} \frac{(\ln x)'}{\left(\frac{1}{x}\right)'} = \lim_{x \to 0^+} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim_{x \to 0^+} \left( \frac{1}{x} \cdot (-x^2) \right) = \lim_{x \to 0^+} (-x) = 0$$
+
+**Javob:** $0$
+
+---
+
+<div style="background: rgba(239, 68, 68, 0.07); border-left: 4px solid #ef4444; padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 2rem 0;">
+  <h4 style="margin: 0 0 0.75rem 0; color: #ef4444; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700;">
+    <span>⚠️</span> <span>Lopital qoidasida talabalar yo'l qo'yadigan 3 ta xato:</span>
+  </h4>
+  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.7; font-size: 0.95rem;">
+    <li><strong>Noaniqlik yo'q paytda ham Lopital qo'llash:</strong> Lopital qoidasi FAQAT $\left[\frac{0}{0}\right]$ yoki $\left[\frac{\infty}{\infty}\right]$ da ishlaydi. Masalan, $\lim_{x \to 0} \frac{x+1}{2x+3}$ ifodada $x=0$ da $\frac{1}{3}$ chiqadi. Agar bu yerda hosila olib ketsangiz $\frac{1}{2}$ chiqib, mutlaqo noto'g'ri natijaga olib keladi!</li>
+    <li><strong>Bo'linmaning hosilasini hisoblab yuborish:</strong> Formula bo'yicha $\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$ olinmaydi! Faqatgina suratning o'zidan alohida $f'(x)$, maxrajning o'zidan alohida $g'(x)$ olinadi.</li>
+    <li><strong>Soddalashtirishni unutib ketma-ket hosila olaverish:</strong> Har bir bosqichdan so'ng ifodani qisqartirish mumkinmi-yo'qligini tekshiring. Aks holda ifoda borgan sari kattalashib, hisoblash chalkashib ketadi.</li>
+  </ol>
+</div>
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $\lim_{x \to 0} \frac{\sin(3x)}{x}$ (Lopital qoidasi bilan tekshiring).
+2. $\lim_{x \to 0} \frac{x - \sin x}{x^3}$
+3. $\lim_{x \to \infty} \frac{x^2}{e^x}$
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $\lim_{x \to 0} \frac{3\cos(3x)}{1} = 3\cos(0) = 3$.</p>
+    <p><strong>2-masala:</strong> 1-hosila: $\frac{1-\cos x}{3x^2}$; 2-hosila: $\frac{\sin x}{6x}$; 3-hosila: $\frac{\cos x}{6} \to \frac{1}{6}$.</p>
+    <p><strong>3-masala:</strong> $\frac{2x}{e^x} \implies \frac{2}{e^x} \to 0$.</p>
+  </div>
+</details>

@@ -1,0 +1,351 @@
+---
+---
+
+<!-- Search Trigger Button (for Header) -->
+<button id="search-open-btn" class="search-trigger-btn" aria-label="Saytdan qidirish" title="Qidiruv (Ctrl+K)">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+  <span class="search-btn-text">Qidiruv...</span>
+  <kbd class="search-kbd">Ctrl K</kbd>
+</button>
+
+<!-- Search Modal Overlay -->
+<div id="search-modal-backdrop" class="search-modal-backdrop" style="display: none;">
+  <div class="search-modal-dialog">
+    <div class="search-input-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted); flex-shrink: 0;">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input 
+        type="text" 
+        id="search-input" 
+        placeholder="Darslar, mavzular va formulalarni qidirish..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="search-close-btn" class="search-close-btn" aria-label="Yopish">
+        <kbd>Esc</kbd>
+      </button>
+    </div>
+
+    <!-- Search Results List -->
+    <div id="search-results-container" class="search-results-list">
+      <div id="search-empty-state" class="search-empty-state">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+        <p style="font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem;">Matematika bo'yicha qidiring</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Masalan: <code>limit</code>, <code>hosila</code>, <code>urinma</code>, <code>parabola</code>, <code>koshi</code>
+        </p>
+      </div>
+      <div id="search-results-list" style="display: none;"></div>
+      <div id="search-no-results" style="display: none; text-align: center; padding: 2rem; color: var(--text-muted);">
+        Hech narsa topilmadi. Boshqa so'z bilan qidirib ko'ring.
+      </div>
+    </div>
+
+    <div class="search-modal-footer">
+      <span>Navigatsiya: <kbd>↑</kbd> <kbd>↓</kbd></span>
+      <span>Tanlash: <kbd>Enter</kbd></span>
+      <span>Yopish: <kbd>Esc</kbd></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .search-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .search-trigger-btn:hover {
+    border-color: var(--primary);
+    color: var(--text-main);
+  }
+
+  @media (max-width: 640px) {
+    .search-btn-text, .search-kbd {
+      display: none;
+    }
+    .search-trigger-btn {
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+    }
+  }
+
+  .search-kbd {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+    color: var(--text-subtle);
+  }
+
+  /* Modal Backdrop */
+  .search-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4rem 1rem 1rem;
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  .search-modal-dialog {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 640px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  .search-input-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  #search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    color: var(--text-main);
+  }
+
+  .search-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .search-close-btn kbd {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.15rem 0.4rem;
+    color: var(--text-muted);
+  }
+
+  .search-results-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+    max-height: 450px;
+  }
+
+  .search-empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+  }
+
+  .search-item-card {
+    display: block;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.5rem;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .search-item-card:hover, .search-item-card.selected {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+
+  .search-item-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search-item-excerpt {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .search-item-excerpt :global(mark) {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--primary);
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 0.2em;
+  }
+
+  .search-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .search-modal-footer kbd {
+    font-family: var(--font-mono);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 0.1rem 0.3rem;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  let pagefindInstance: any = null;
+
+  async function getPagefind() {
+    if (pagefindInstance) return pagefindInstance;
+    try {
+      // Dynamic browser-only import that bypasses Vite bundling
+      const loadModule = new Function('path', 'return import(path)');
+      pagefindInstance = await loadModule('/pagefind/pagefind.js');
+      await pagefindInstance.init();
+      return pagefindInstance;
+    } catch (e) {
+      console.warn("Pagefind indeksi hali yuklanmadi:", e);
+      return null;
+    }
+  }
+
+  function setupSearch() {
+    const openBtn = document.getElementById('search-open-btn');
+    const backdrop = document.getElementById('search-modal-backdrop');
+    const closeBtn = document.getElementById('search-close-btn');
+    const input = document.getElementById('search-input') as HTMLInputElement | null;
+    const emptyState = document.getElementById('search-empty-state');
+    const resultsContainer = document.getElementById('search-results-list');
+    const noResults = document.getElementById('search-no-results');
+
+    function openModal() {
+      if (!backdrop || !input) return;
+      backdrop.style.display = 'flex';
+      input.value = '';
+      if (emptyState) emptyState.style.display = 'block';
+      if (resultsContainer) resultsContainer.style.display = 'none';
+      if (noResults) noResults.style.display = 'none';
+      setTimeout(() => input.focus(), 50);
+      document.body.style.overflow = 'hidden';
+      getPagefind(); // Preload
+    }
+
+    function closeModal() {
+      if (!backdrop) return;
+      backdrop.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    openBtn?.addEventListener('click', openModal);
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop?.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+
+    // Keyboard shortcuts: Ctrl+K, Cmd+K, /
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (backdrop?.style.display === 'flex') {
+          closeModal();
+        } else {
+          openModal();
+        }
+      } else if (e.key === 'Escape' && backdrop?.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    // Real-time search query
+    let debounceTimer: any = null;
+    input?.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      const query = input.value.trim();
+
+      if (!query) {
+        if (emptyState) emptyState.style.display = 'block';
+        if (resultsContainer) resultsContainer.style.display = 'none';
+        if (noResults) noResults.style.display = 'none';
+        return;
+      }
+
+      debounceTimer = setTimeout(async () => {
+        const pf = await getPagefind();
+        if (!pf) {
+          if (noResults) {
+            noResults.textContent = "Qidiruv indeksi mavjud emas (npm run build orqali hosil qilinadi).";
+            noResults.style.display = 'block';
+          }
+          if (emptyState) emptyState.style.display = 'none';
+          return;
+        }
+
+        const search = await pf.search(query);
+        const dataPromises = search.results.slice(0, 8).map((r: any) => r.data());
+        const results = await Promise.all(dataPromises);
+
+        if (emptyState) emptyState.style.display = 'none';
+
+        if (results.length === 0) {
+          if (resultsContainer) resultsContainer.style.display = 'none';
+          if (noResults) noResults.style.display = 'block';
+        } else {
+          if (noResults) noResults.style.display = 'none';
+          if (resultsContainer) {
+            resultsContainer.style.display = 'block';
+            resultsContainer.innerHTML = results.map(item => `
+              <a href="${item.url}" class="search-item-card">
+                <div class="search-item-title">
+                  <span>${item.meta.title || 'Mavzu'}</span>
+                  <span style="font-size: 0.75rem; color: var(--text-subtle);">O'tish →</span>
+                </div>
+                <div class="search-item-excerpt">${item.excerpt}</div>
+              </a>
+            `).join('');
+
+            // Close modal when a search item is clicked
+            resultsContainer.querySelectorAll('a').forEach(a => {
+              a.addEventListener('click', closeModal);
+            });
+          }
+        }
+      }, 150);
+    });
+  }
+
+  setupSearch();
+  document.addEventListener('astro:after-swap', setupSearch);
+</script>

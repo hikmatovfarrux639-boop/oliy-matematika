@@ -1,0 +1,122 @@
+---
+title: "Bernulli differensial tenglamasi va uni yechish usullari"
+module: "differensial-tenglamalar"
+order: 5
+description: "Nochiziqli 1-tartibli Bernulli tenglamasi: z = y^(1-n) chiziqlashtirish usuli, Iogann Bernulli y = uv usuli va imtihon amaliyoti."
+---
+
+## Bernulli tenglamasi nima?
+
+Universitet differensial tenglamalar kursida chiziqli bo'lmagan, lekin maxsus usul bilan chiziqli tenglamaga osongina keltiriladigan eng mashhur tenglama bu **Bernulli tenglamasi**dir.
+
+Ushbu ko'rinishdagi 1-tartibli differensial tenglama Bernulli tenglamasi deyiladi:
+
+$$
+y' + P(x)y = Q(x) \cdot y^n
+$$
+
+Bu yerda:
+- $P(x)$ va $Q(x)$ — $x$ ga bog'liq uzluksiz funksiyalar (yoki o'zgarmas sonlar).
+- $n$ — ixtiyoriy haqiqiy son.
+
+> **Muhim eslatma:**
+> - Agar $n = 0$ bo'lsa: $y' + P(x)y = Q(x)$ oddiy **chiziqli tenglama** bo'ladi.
+> - Agar $n = 1$ bo'lsa: $y' + [P(x) - Q(x)]y = 0$ **o'zgaruvchilari ajraladigan** tenglama bo'ladi.
+> - Shu sababli, Bernulli tenglamasi faqat **$n \neq 0$ va $n \neq 1$** bo'lganda o'rganiladi!
+
+---
+
+## 1-Usul: Yangi o'zgaruvchi kiritish ($z = y^{1-n}$)
+
+Bu klassik usul bo'lib, uning yordamida tenglama to'g'ridan-to'g'ri chiziqli tenglamaga aylanadi:
+
+1. Tenglamaning ikkala tomonini $y^n$ ga bo'lamiz:
+   $$y^{-n} y' + P(x) y^{1-n} = Q(x)$$
+
+2. Yangi o'zgaruvchi kiritamiz:
+   $$z = y^{1-n}$$
+   Uning hosilasi:
+   $$z' = (1 - n) y^{-n} y' \implies y^{-n} y' = \frac{z'}{1 - n}$$
+
+3. Tenglamaga qo'yamiz:
+   $$\frac{z'}{1 - n} + P(x) z = Q(x) \implies z' + (1 - n)P(x) z = (1 - n)Q(x)$$
+
+Bu esa $z(x)$ funksiyaga nisbatan **odatiy 1-tartibli chiziqli differensial tenglamadir**! Uni yechib $z$ topiladi, so'ngra $y = z^{\frac{1}{1-n}}$ orqali $y$ ga qaytiladi.
+
+---
+
+## 2-Usul: Bernulli usuli ($y = u \cdot v$)
+
+Ko'pchilik talabalar va ustozlar $y = u(x) \cdot v(x)$ ko'paytma almashtirish usulini afzal ko'rishadi, chunki bu usul yangi $z$ formulasini yodda saqlashni talab qilmaydi:
+
+1. $y = uv \implies y' = u'v + uv'$ deb olinadi.
+2. Tenglamaga qo'yiladi:
+   $$u'v + uv' + P(x)uv = Q(x) (uv)^n \implies u'v + u(v' + P(x)v) = Q(x) u^n v^n$$
+3. $v' + P(x)v = 0$ shartdan $v(x)$ topiladi.
+4. Qolgan tenglama $u$ ga nisbatan o'zgaruvchilari ajraladigan tenglamaga aylanadi.
+
+---
+
+## Amaliy namunaviy misol
+
+Ushbu Bernulli tenglamasini to'liq yeching:
+
+$$
+y' + \frac{y}{x} = x y^2
+$$
+
+### Yechilishi ($y = uv$ usuli):
+
+Bu yerda $P(x) = \frac{1}{x}$, $Q(x) = x$, $n = 2$.
+Shuningdek, $y = 0$ yechim ekanligini darhol payqash mumkin.
+
+**1-qadam:** $y = uv$ va $y' = u'v + uv'$ almashtiramiz:
+$$u'v + uv' + \frac{uv}{x} = x u^2 v^2$$
+$$u'v + u\left(v' + \frac{v}{x}\right) = x u^2 v^2$$
+
+**2-qadam:** Qavs ichini nolga tenglashtirib, $v(x)$ ni topamiz:
+$$v' + \frac{v}{x} = 0 \implies \frac{dv}{dx} = -\frac{v}{x} \implies \frac{dv}{v} = -\frac{dx}{x}$$
+Integrallaymiz:
+$$\ln|v| = -\ln|x| = \ln\left(\frac{1}{x}\right) \implies v = \frac{1}{x}$$
+
+**3-qadam:** Topilgan $v = \frac{1}{x}$ ni asosiy tenglamaga qo'yamiz:
+$$u' \cdot \frac{1}{x} = x u^2 \left(\frac{1}{x}\right)^2 \implies u' \cdot \frac{1}{x} = \frac{x u^2}{x^2} = \frac{u^2}{x}$$
+Ikkala tomonni $x$ ga ko'paytiramiz:
+$$u' = u^2 \implies \frac{du}{dx} = u^2$$
+
+**4-qadam:** O'zgaruvchilarni ajratamiz:
+$$\frac{du}{u^2} = dx \implies \int u^{-2} du = \int dx$$
+$$-\frac{1}{u} = x + C \implies u = -\frac{1}{x + C}$$
+
+**5-qadam:** Umumiy yechimni tuzamiz ($y = uv$):
+$$y = \left(-\frac{1}{x + C}\right) \cdot \frac{1}{x} = -\frac{1}{x(x + C)}$$
+
+**Javob:** $y = -\frac{1}{x^2 + Cx}$ va $y = 0$.
+
+---
+
+<div style="background: rgba(239, 68, 68, 0.07); border-left: 4px solid #ef4444; padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 2rem 0;">
+  <h4 style="margin: 0 0 0.75rem 0; color: #ef4444; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700;">
+    <span>⚠️</span> <span>Bernulli tenglamasidagi 3 ta xato:</span>
+  </h4>
+  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.7; font-size: 0.95rem;">
+    <li><strong>$y = 0$ trivial yechimni tushirib qoldirish:</strong> Tenglama $y^n$ ga bo'linganda $y \neq 0$ sharti qo'yiladi. Ammo $y = 0$ funksiya dastlabki tenglamani qanoatlantiradi, shuning uchun javobda albatta $y = 0$ ko'rsatilishi kerak (chunki u ba'zan o'zgarmas $C$ ning hech bir qiymatida hosil bo'lmaydigan maxsus yechim bo'lishi mumkin).</li>
+    <li><strong>$z' = (1-n) y^{-n} y'$ dagi $(1-n)$ koeffitsiyentni unutish:</strong> Agar $z = y^{1-n}$ usuli qo'llanilsa, hosila olayotganda murakkab funksiya qoidasiga ko'ra oldinga $(1-n)$ tushadi. Ko'pchilik buni yozmay ketib, natijada butun integrallash xato ketadi.</li>
+    <li><strong>Tenglama shaklini chigallashtirib olish:</strong> Tenglamaning o'ng tomonida faqat $Q(x) y^n$ qolishi kerak. Agar tenglama $x y' + y = x^2 y^3$ ko'rinishida bo'lsa, oldin hamma hadni $x$ ga bo'lib olish shart.</li>
+  </ol>
+</div>
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $y' + 2xy = 2x y^3$ Bernulli tenglamasida $n$ nimaga teng va qanday almashtirish kiritiladi?
+2. $x y' + y = y^2 \ln x$ tenglamasini Bernulli usuli ($y = uv$) bilan yeching.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $n = 3$. Almashtirish: $z = y^{1-3} = y^{-2} = \frac{1}{y^2}$.</p>
+    <p><strong>2-masala:</strong> $v' + \frac{v}{x} = 0 \implies v = \frac{1}{x}$. So'ngra $u' \cdot \frac{1}{x} = \frac{1}{x^2} u^2 \ln x \implies \frac{du}{u^2} = \frac{\ln x}{x} dx \implies -\frac{1}{u} = \frac{\ln^2 x}{2} + C$. Natijada: $y = \frac{1}{x(C - \frac{1}{2}\ln^2 x)}$ va $y = 0$.</p>
+  </div>
+</details>

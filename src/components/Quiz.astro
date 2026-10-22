@@ -1,0 +1,1162 @@
+---
+import { QUIZ_DATABASE, EXAM_PRESETS } from '../data/quizzes';
+import { MODULES } from '../data/modules';
+
+interface Props {
+  initialModule?: string;
+  initialPreset?: string;
+  showSelector?: boolean;
+}
+
+const {
+  initialModule = '',
+  initialPreset = 'oraliq-1',
+  showSelector = true
+} = Astro.props;
+---
+
+<div class="quiz-widget-container" id="quiz-app" data-initial-preset={initialPreset} data-initial-module={initialModule}>
+  {showSelector && (
+    <div class="quiz-controls-panel">
+      <div class="preset-buttons-row">
+        {EXAM_PRESETS.map((preset) => (
+          <button 
+            type="button" 
+            class={`preset-tab-btn ${preset.id === initialPreset ? 'active' : ''}`}
+            data-preset-id={preset.id}
+          >
+            <span class="preset-tab-title">{preset.title}</span>
+            <span class="preset-tab-badge" style={`background-color: ${preset.badgeColor}15; color: ${preset.badgeColor}; border: 1px solid ${preset.badgeColor}40;`}>
+              {preset.badge}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div class="module-dropdown-filter">
+        <label for="module-select-filter" class="filter-label">
+          📚 Yoki ma'lum bir modulni tanlang:
+        </label>
+        <select id="module-select-filter" class="module-select">
+          <option value="">-- Barcha modullar (Umumiy) --</option>
+          {MODULES.map((m) => (
+            <option value={m.slug} selected={m.slug === initialModule}>
+              {m.title}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  )}
+
+  <!-- ACTIVE QUIZ CARD -->
+  <div id="quiz-active-card" class="quiz-card">
+    <div class="quiz-card-header">
+      <div class="quiz-meta-left">
+        <span id="quiz-category-tag" class="quiz-cat-tag">Oraliq Nazorat</span>
+        <span id="quiz-difficulty-tag" class="quiz-diff-tag diff-easy">Oson</span>
+      </div>
+      <div class="quiz-meta-right">
+        <span id="quiz-counter" class="quiz-counter-text">Savol 1 / 10</span>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="quiz-progress-bar-bg">
+      <div id="quiz-progress-fill" class="quiz-progress-bar-fill" style="width: 10%;"></div>
+    </div>
+
+    <!-- Question content -->
+    <div class="quiz-question-box">
+      <h3 id="quiz-question-text" class="quiz-question-title">
+        Savol yuklanmoqda...
+      </h3>
+    </div>
+
+    <!-- Options List -->
+    <div id="quiz-options-grid" class="quiz-options-grid">
+      <!-- Options injected via JavaScript -->
+    </div>
+
+    <!-- Explanation Box (Appears after answer) -->
+    <div id="quiz-explanation-box" class="quiz-explanation-card" style="display: none;">
+      <div class="explanation-header">
+        <div class="explanation-icon">💡</div>
+        <div>
+          <h4 id="explanation-title" class="explanation-title">To'g'ri yechim va tushuntirish:</h4>
+          <span class="explanation-subtitle">Oliy matematika qoidalari asosida</span>
+        </div>
+      </div>
+      <div id="quiz-explanation-content" class="explanation-body">
+        <!-- Rendered with KaTeX -->
+      </div>
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="quiz-card-footer">
+      <div class="score-live-pill">
+        To'g'ri: <strong id="live-score-correct" style="color: #10b981;">0</strong> / 
+        Noto'g'ri: <strong id="live-score-wrong" style="color: #ef4444;">0</strong>
+      </div>
+      <button id="quiz-next-btn" class="btn btn-primary" style="display: none;">
+        Keyingi savol ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- QUIZ COMPLETED / RESULTS SCREEN -->
+  <div id="quiz-result-card" class="quiz-card result-card" style="display: none;">
+    <div class="result-celebration">
+      <div id="result-emoji" class="result-big-icon">🏆</div>
+      <h2 id="result-headline" class="result-title">Imtihon yakunlandi!</h2>
+      <p id="result-subtext" class="result-desc">Natijangiz HEMIS baholash mezoniga ko'ra hisoblandi.</p>
+    </div>
+
+    <div class="result-score-panel">
+      <div class="score-circle-box">
+        <div id="result-percentage" class="score-percentage-text">0%</div>
+        <div id="result-fraction" class="score-fraction-text">0 / 0 ta to'g'ri</div>
+      </div>
+
+      <div class="hemis-grade-badge-box">
+        <div class="hemis-grade-label">HEMIS Tizimidagi Baho:</div>
+        <div id="result-grade-pill" class="hemis-grade-pill grade-excellent">
+          A'lo (5 baho)
+        </div>
+        <div id="result-feedback-text" class="hemis-feedback-desc">
+          Mukammal natija! Barcha oraliq va yakuniy nazoratlarga to'liq tayyorsiz.
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Section Toggle -->
+    <div class="result-actions-row">
+      <button id="quiz-restart-btn" class="btn btn-primary">
+        🔄 Qayta topshirish
+      </button>
+      <button id="quiz-toggle-review-btn" class="btn btn-secondary">
+        📋 Xatolarni tahlil qilish
+      </button>
+      <a href="/ai-yechuvchi" class="btn btn-secondary" style="color: var(--primary);">
+        🤖 AI Yechuvchidan so'rash
+      </a>
+    </div>
+
+    <!-- Detailed Review List -->
+    <div id="quiz-review-container" class="quiz-review-container" style="display: none;">
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-main);">
+        Barcha savollar tahlili:
+      </h3>
+      <div id="quiz-review-list" class="review-items-list">
+        <!-- Review cards injected here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KaTeX Stylesheet & Script imports for Quiz Engine -->
+<script>
+  import katex from 'katex';
+  import { QUIZ_DATABASE, EXAM_PRESETS, type QuizQuestion } from '../data/quizzes';
+
+  function initQuiz() {
+    const appContainer = document.getElementById('quiz-app');
+    if (!appContainer) return;
+
+    if ((appContainer as any)._isInitialized) return;
+    (appContainer as any)._isInitialized = true;
+
+    // State
+    const initialPreset = appContainer.getAttribute('data-initial-preset') || 'oraliq-1';
+    const initialModule = appContainer.getAttribute('data-initial-module') || '';
+
+    let currentPresetId = initialPreset;
+    let selectedModuleSlug = initialModule;
+    let activeQuestions: QuizQuestion[] = [];
+    let currentIndex = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
+    let userAnswers: { question: QuizQuestion; selectedIdx: number; isCorrect: boolean }[] = [];
+    let answeredCurrent = false;
+
+    // Elements
+    const activeCard = document.getElementById('quiz-active-card');
+    const resultCard = document.getElementById('quiz-result-card');
+    const categoryTag = document.getElementById('quiz-category-tag');
+    const difficultyTag = document.getElementById('quiz-difficulty-tag');
+    const counterText = document.getElementById('quiz-counter');
+    const progressFill = document.getElementById('quiz-progress-fill');
+    const questionTextEl = document.getElementById('quiz-question-text');
+    const optionsGrid = document.getElementById('quiz-options-grid');
+    const explanationBox = document.getElementById('quiz-explanation-box');
+    const explanationTitle = document.getElementById('explanation-title');
+    const explanationContent = document.getElementById('quiz-explanation-content');
+    const nextBtn = document.getElementById('quiz-next-btn');
+    const liveCorrect = document.getElementById('live-score-correct');
+    const liveWrong = document.getElementById('live-score-wrong');
+    const moduleSelect = document.getElementById('module-select-filter') as HTMLSelectElement | null;
+    const presetButtons = document.querySelectorAll('.preset-tab-btn');
+
+    // Result elements
+    const restartBtn = document.getElementById('quiz-restart-btn');
+    const toggleReviewBtn = document.getElementById('quiz-toggle-review-btn');
+    const reviewContainer = document.getElementById('quiz-review-container');
+    const reviewList = document.getElementById('quiz-review-list');
+    const resultEmoji = document.getElementById('result-emoji');
+    const resultHeadline = document.getElementById('result-headline');
+    const resultPercentage = document.getElementById('result-percentage');
+    const resultFraction = document.getElementById('result-fraction');
+    const resultGradePill = document.getElementById('result-grade-pill');
+    const resultFeedbackText = document.getElementById('result-feedback-text');
+
+    // Helper: Render LaTeX math in text
+    function renderMathText(str: string): string {
+      if (!str) return '';
+
+      // Block math: $$...$$
+      let output = str.replace(/\$\$([\s\S]*?)\$\$/g, (_, math) => {
+        try {
+          return katex.renderToString(math.trim(), { displayMode: true, throwOnError: false });
+        } catch {
+          return `<div class="katex-err">$$${math}$$</div>`;
+        }
+      });
+
+      // Inline math: $...$
+      output = output.replace(/\$([^\$\n]+?)\$/g, (_, math) => {
+        try {
+          return katex.renderToString(math.trim(), { displayMode: false, throwOnError: false });
+        } catch {
+          return `$${math}$`;
+        }
+      });
+
+      return output;
+    }
+
+    // Shuffle array utility (Fisher-Yates)
+    function shuffleArray<T>(arr: T[]): T[] {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    // Prepare questions based on preset or module
+    function prepareQuestions() {
+      let filtered: QuizQuestion[] = [];
+
+      if (selectedModuleSlug) {
+        filtered = QUIZ_DATABASE.filter(q => q.moduleId === selectedModuleSlug);
+      } else {
+        const preset = EXAM_PRESETS.find(p => p.id === currentPresetId) || EXAM_PRESETS[0];
+        filtered = QUIZ_DATABASE.filter(preset.filter);
+        const limit = preset.questionCount || 10;
+        filtered = shuffleArray(filtered).slice(0, limit);
+      }
+
+      if (filtered.length === 0) {
+        // Fallback to all questions
+        filtered = shuffleArray(QUIZ_DATABASE).slice(0, 10);
+      }
+
+      activeQuestions = filtered;
+      currentIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      userAnswers = [];
+      answeredCurrent = false;
+
+      updateLiveScore();
+      renderCurrentQuestion();
+
+      if (activeCard) activeCard.style.display = 'block';
+      if (resultCard) resultCard.style.display = 'none';
+      if (reviewContainer) reviewContainer.style.display = 'none';
+    }
+
+    function updateLiveScore() {
+      if (liveCorrect) liveCorrect.textContent = String(correctCount);
+      if (liveWrong) liveWrong.textContent = String(wrongCount);
+    }
+
+    function renderCurrentQuestion() {
+      if (!activeQuestions || activeQuestions.length === 0 || currentIndex >= activeQuestions.length) {
+        finishQuiz();
+        return;
+      }
+
+      const q = activeQuestions[currentIndex];
+      answeredCurrent = false;
+
+      // Update counters & progress
+      const total = activeQuestions.length;
+      if (counterText) counterText.textContent = `Savol ${currentIndex + 1} / ${total}`;
+      const percent = Math.round(((currentIndex + 1) / total) * 100);
+      if (progressFill) progressFill.style.width = `${percent}%`;
+
+      // Update tags
+      if (categoryTag) {
+        if (selectedModuleSlug) {
+          categoryTag.textContent = q.moduleName;
+        } else {
+          const currentPreset = EXAM_PRESETS.find(p => p.id === currentPresetId);
+          categoryTag.textContent = currentPreset ? currentPreset.title.split('(')[0].trim() : q.moduleName;
+        }
+      }
+
+      if (difficultyTag) {
+        difficultyTag.textContent = q.difficulty;
+        difficultyTag.className = 'quiz-diff-tag';
+        if (q.difficulty === 'Oson') difficultyTag.classList.add('diff-easy');
+        else if (q.difficulty === "O'rta") difficultyTag.classList.add('diff-medium');
+        else difficultyTag.classList.add('diff-hard');
+      }
+
+      // Render Question Title with KaTeX
+      if (questionTextEl) {
+        questionTextEl.innerHTML = renderMathText(q.question);
+      }
+
+      // Hide explanation & Next button
+      if (explanationBox) explanationBox.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+
+      // Render Option Buttons
+      if (optionsGrid) {
+        optionsGrid.innerHTML = '';
+        const letters = ['A', 'B', 'C', 'D'];
+
+        q.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'quiz-option-btn';
+          btn.setAttribute('data-index', String(idx));
+
+          const renderedOption = renderMathText(opt);
+          btn.innerHTML = `
+            <span class="option-letter-badge">${letters[idx]}</span>
+            <span class="option-content-text">${renderedOption}</span>
+            <span class="option-status-icon"></span>
+          `;
+
+          btn.addEventListener('click', () => handleOptionSelect(idx));
+          optionsGrid.appendChild(btn);
+        });
+      }
+    }
+
+    function handleOptionSelect(selectedIdx: number) {
+      if (answeredCurrent) return;
+      answeredCurrent = true;
+
+      const q = activeQuestions[currentIndex];
+      const isCorrect = selectedIdx === q.correctIndex;
+
+      if (isCorrect) {
+        correctCount++;
+      } else {
+        wrongCount++;
+      }
+      updateLiveScore();
+
+      userAnswers.push({
+        question: q,
+        selectedIdx,
+        isCorrect
+      });
+
+      // Highlight options
+      const buttons = optionsGrid?.querySelectorAll('.quiz-option-btn');
+      buttons?.forEach((btnEl) => {
+        const btn = btnEl as HTMLButtonElement;
+        const idx = Number(btn.getAttribute('data-index'));
+        btn.disabled = true;
+
+        const iconEl = btn.querySelector('.option-status-icon');
+
+        if (idx === q.correctIndex) {
+          btn.classList.add('option-correct');
+          if (iconEl) iconEl.innerHTML = '✓';
+        } else if (idx === selectedIdx && !isCorrect) {
+          btn.classList.add('option-wrong');
+          if (iconEl) iconEl.innerHTML = '✕';
+        } else {
+          btn.classList.add('option-dimmed');
+        }
+      });
+
+      // Show Explanation
+      if (explanationBox && explanationContent && explanationTitle) {
+        explanationTitle.textContent = isCorrect 
+          ? "✅ Barakalla! To'g'ri javob:" 
+          : "❌ Noto'g'ri. To'g'ri yechim:";
+        explanationContent.innerHTML = renderMathText(q.explanation);
+        explanationBox.style.display = 'block';
+      }
+
+      // Show Next / Finish button
+      if (nextBtn) {
+        const isLast = currentIndex === activeQuestions.length - 1;
+        nextBtn.textContent = isLast ? 'Natijalarni ko\'rish 🏆' : 'Keyingi savol ➔';
+        nextBtn.style.display = 'inline-flex';
+      }
+    }
+
+    function finishQuiz() {
+      if (activeCard) activeCard.style.display = 'none';
+      if (resultCard) resultCard.style.display = 'block';
+
+      const total = activeQuestions.length;
+      const percentage = Math.round((correctCount / total) * 100);
+
+      if (resultPercentage) resultPercentage.textContent = `${percentage}%`;
+      if (resultFraction) resultFraction.textContent = `${correctCount} / ${total} ta to'g'ri javob`;
+
+      // HEMIS Grading Scale:
+      // 86 - 100: 5 (A'lo)
+      // 71 - 85: 4 (Yaxshi)
+      // 55 - 70: 3 (Qoniqarli)
+      // < 55: 2 (Qoniqarsiz)
+      let gradeText = '';
+      let gradeClass = '';
+      let feedback = '';
+      let emoji = '🏆';
+      let headline = 'Imtihon yakunlandi!';
+
+      if (percentage >= 86) {
+        gradeText = "A'lo (5 baho)";
+        gradeClass = 'grade-excellent';
+        feedback = "Ajoyib natija! Siz barcha asosiy mavzular va formulalarni chuqur o'zlashtiribsiz. HEMIS oraliq/yakuniy nazoratlariga to'liq tayyorsiz.";
+        emoji = '🌟';
+        headline = "Qoyilmaqom natija!";
+      } else if (percentage >= 71) {
+        gradeText = "Yaxshi (4 baho)";
+        gradeClass = 'grade-good';
+        feedback = "Juda yaxshi natija! Nazariy tushunchalarni yaxshi bilasiz. Xatolar tahlilini ko'rib chiqib, o'z bilimingizni a'lo darajaga yetkaza olasiz.";
+        emoji = '👍';
+        headline = "Yaxshi ko'rsatkich!";
+      } else if (percentage >= 55) {
+        gradeText = "Qoniqarli (3 baho)";
+        gradeClass = 'grade-pass';
+        feedback = "Qoniqarli natija. Formulalar va integrallash/differensiallash qoidalarini platformadagi konspektlar orqali yana bir bor takrorlashni tavsiya qilamiz.";
+        emoji = '📖';
+        headline = "O'rtacha natija";
+      } else {
+        gradeText = "Qoniqarsiz (2 baho)";
+        gradeClass = 'grade-fail';
+        feedback = "Afsuski, o'tish baliga yetmadi. Xafa bo'lmang! Mavzular bo'limiga kirib darslarni boshidan o'rganing va AI Masala Yechuvchi orqali amaliyot qiling.";
+        emoji = '💪';
+        headline = "Harakatdan to'xtamang!";
+      }
+
+      if (resultEmoji) resultEmoji.textContent = emoji;
+      if (resultHeadline) resultHeadline.textContent = headline;
+
+      if (resultGradePill) {
+        resultGradePill.textContent = gradeText;
+        resultGradePill.className = `hemis-grade-pill ${gradeClass}`;
+      }
+
+      if (resultFeedbackText) {
+        resultFeedbackText.textContent = feedback;
+      }
+
+      // Build Review Cards
+      renderReviewCards();
+    }
+
+    function renderReviewCards() {
+      if (!reviewList) return;
+      reviewList.innerHTML = '';
+
+      userAnswers.forEach((ans, i) => {
+        const item = document.createElement('div');
+        item.className = `review-card ${ans.isCorrect ? 'review-card-correct' : 'review-card-wrong'}`;
+
+        const q = ans.question;
+        const letters = ['A', 'B', 'C', 'D'];
+        const userChoice = ans.selectedIdx >= 0 ? `${letters[ans.selectedIdx]}) ${q.options[ans.selectedIdx]}` : 'Javob berilmagan';
+        const correctChoice = `${letters[q.correctIndex]}) ${q.options[q.correctIndex]}`;
+
+        item.innerHTML = `
+          <div class="review-card-top">
+            <span class="review-index">#${i + 1}</span>
+            <span class="review-status-badge ${ans.isCorrect ? 'status-correct' : 'status-wrong'}">
+              ${ans.isCorrect ? "✓ To'g'ri" : "✕ Noto'g'ri"}
+            </span>
+            <span class="review-module-name">${q.moduleName}</span>
+          </div>
+          <div class="review-question-text">${renderMathText(q.question)}</div>
+          <div class="review-choices-compare">
+            <div class="user-choice-line ${ans.isCorrect ? 'text-green' : 'text-red'}">
+              <strong>Sizning javobingiz:</strong> ${renderMathText(userChoice)}
+            </div>
+            ${!ans.isCorrect ? `
+              <div class="correct-choice-line text-green">
+                <strong>To'g'ri javob:</strong> ${renderMathText(correctChoice)}
+              </div>
+            ` : ''}
+          </div>
+          <div class="review-explanation-toggle">
+            <strong>Yechish usuli:</strong> ${renderMathText(q.explanation)}
+          </div>
+        `;
+
+        reviewList.appendChild(item);
+      });
+    }
+
+    // Event Listeners
+    nextBtn?.addEventListener('click', () => {
+      currentIndex++;
+      renderCurrentQuestion();
+    });
+
+    restartBtn?.addEventListener('click', () => {
+      prepareQuestions();
+    });
+
+    toggleReviewBtn?.addEventListener('click', () => {
+      if (!reviewContainer) return;
+      const isHidden = reviewContainer.style.display === 'none';
+      reviewContainer.style.display = isHidden ? 'block' : 'none';
+      toggleReviewBtn.textContent = isHidden ? 'Xatolarni yashirish ⬆️' : '📋 Xatolarni tahlil qilish';
+      if (isHidden) {
+        reviewContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+
+    // Preset tab buttons
+    presetButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        presetButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPresetId = btn.getAttribute('data-preset-id') || 'oraliq-1';
+        selectedModuleSlug = '';
+        if (moduleSelect) moduleSelect.value = '';
+        prepareQuestions();
+      });
+    });
+
+    // Module dropdown filter
+    moduleSelect?.addEventListener('change', () => {
+      selectedModuleSlug = moduleSelect.value;
+      if (selectedModuleSlug) {
+        presetButtons.forEach(b => b.classList.remove('active'));
+      }
+      prepareQuestions();
+    });
+
+    // URL parameter support (e.g. ?modul=chiziqli-algebra or ?preset=yakuniy)
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramModule = urlParams.get('modul') || urlParams.get('module');
+    const paramPreset = urlParams.get('preset');
+
+    if (paramModule) {
+      selectedModuleSlug = paramModule;
+      if (moduleSelect) moduleSelect.value = paramModule;
+      presetButtons.forEach(b => b.classList.remove('active'));
+    } else if (paramPreset) {
+      currentPresetId = paramPreset;
+      presetButtons.forEach(b => {
+        if (b.getAttribute('data-preset-id') === paramPreset) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
+
+    // Initial Start
+    prepareQuestions();
+  }
+
+  // Support Astro View Transitions
+  document.addEventListener('astro:page-load', initQuiz);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuiz);
+  } else {
+    initQuiz();
+  }
+</script>
+
+<style>
+  .quiz-widget-container {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Preset & Filters Panel */
+  .quiz-controls-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .preset-buttons-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .preset-tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+  }
+
+  .preset-tab-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    background: var(--bg-card);
+  }
+
+  .preset-tab-btn.active {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  }
+
+  .preset-tab-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .preset-tab-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .module-dropdown-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 1rem;
+  }
+
+  .filter-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .module-select {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .module-select:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  /* Main Quiz Card */
+  .quiz-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s ease;
+  }
+
+  .quiz-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .quiz-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .quiz-cat-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+  }
+
+  .quiz-diff-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .diff-easy {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+  }
+
+  .diff-medium {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+  }
+
+  .diff-hard {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+  }
+
+  .quiz-counter-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  /* Progress Bar */
+  .quiz-progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-muted);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+  }
+
+  .quiz-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+  }
+
+  /* Question Box */
+  .quiz-question-box {
+    margin-bottom: 1.75rem;
+  }
+
+  .quiz-question-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text-main);
+  }
+
+  /* Options Grid */
+  .quiz-options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quiz-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-muted);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .quiz-option-btn:hover:not(:disabled) {
+    border-color: var(--primary);
+    background: var(--bg-card);
+    transform: translateX(4px);
+  }
+
+  .option-letter-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .quiz-option-btn:hover:not(:disabled) .option-letter-badge {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .option-content-text {
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .option-status-icon {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-left: auto;
+  }
+
+  /* Option Selected States */
+  .quiz-option-btn.option-correct {
+    border-color: #10b981 !important;
+    background: rgba(16, 185, 129, 0.12) !important;
+    color: var(--text-main);
+  }
+
+  .quiz-option-btn.option-correct .option-letter-badge {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+  }
+
+  .quiz-option-btn.option-correct .option-status-icon {
+    color: #10b981;
+  }
+
+  .quiz-option-btn.option-wrong {
+    border-color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.12) !important;
+  }
+
+  .quiz-option-btn.option-wrong .option-letter-badge {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+  }
+
+  .quiz-option-btn.option-wrong .option-status-icon {
+    color: #ef4444;
+  }
+
+  .quiz-option-btn.option-dimmed {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Explanation Card */
+  .quiz-explanation-card {
+    background: var(--bg-muted);
+    border-left: 4px solid #10b981;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .explanation-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .explanation-icon {
+    font-size: 1.4rem;
+  }
+
+  .explanation-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+  }
+
+  .explanation-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .explanation-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+  }
+
+  /* Card Footer */
+  .quiz-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.25rem;
+  }
+
+  .score-live-pill {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-muted);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  /* Results Screen */
+  .result-card {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .result-big-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 0.5rem;
+  }
+
+  .result-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-score-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .score-circle-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .score-percentage-text {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+  }
+
+  .score-fraction-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 0.4rem;
+  }
+
+  .hemis-grade-badge-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hemis-grade-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hemis-grade-pill {
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 0.4rem 1.25rem;
+    border-radius: 30px;
+  }
+
+  .grade-excellent {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .grade-good {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .grade-pass {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .grade-fail {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .hemis-feedback-desc {
+    max-width: 500px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+
+  .result-actions-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  /* Review List */
+  .quiz-review-container {
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+  }
+
+  .review-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .review-card-correct {
+    border-left: 4px solid #10b981;
+  }
+
+  .review-card-wrong {
+    border-left: 4px solid #ef4444;
+  }
+
+  .review-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .review-index {
+    font-weight: 800;
+    color: var(--text-muted);
+  }
+
+  .review-status-badge {
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  .status-correct {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .status-wrong {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+  }
+
+  .review-module-name {
+    color: var(--text-subtle);
+    margin-left: auto;
+  }
+
+  .review-question-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.85rem;
+  }
+
+  .review-choices-compare {
+    background: var(--bg-muted);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .text-green {
+    color: #10b981;
+  }
+
+  .text-red {
+    color: #ef4444;
+  }
+
+  .review-explanation-toggle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-main);
+    border-top: 1px dashed var(--border-color);
+    padding-top: 0.6rem;
+  }
+
+  @media (max-width: 640px) {
+    .quiz-card {
+      padding: 1.25rem;
+    }
+    .preset-buttons-row {
+      grid-template-columns: 1fr;
+    }
+    .result-score-panel {
+      padding: 1.25rem;
+    }
+  }
+</style>

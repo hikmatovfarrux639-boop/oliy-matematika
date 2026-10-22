@@ -1,0 +1,153 @@
+---
+title: "Elementar funksiyalar va ularning grafiklari"
+module: "funksiyalar-grafiklar"
+order: 1
+description: "Chiziqli, kvadratik, kubik, giperbolik va trigonometrik funksiyalarning xossalari hamda ularning interaktiv grafiklari."
+---
+import Graph from '../../../components/Graph.astro';
+
+## Kirish: Funksiya va uning geometrik surati
+
+Matematikada **funksiya** — biror to'plamdagi har bir $x$ elementga ikkinchi to'plamdan yagona $y$ elementni mos qo'yuvchi qoidadir:
+
+$$
+y = f(x)
+$$
+
+Bunda $x$ — erkli o'zgaruvchi (argument), $y$ esa erksiz o'zgaruvchi (funksiya qiymati) deyiladi. Funksiyaning grafigi esa koordinata tekisligidagi barcha $(x, f(x))$ nuqtalar to'plamidir. Grafik funksiyaning o'sishi, kamayishi, nollari va chegaralarini bir qarashda ko'rish imkonini beradi.
+
+Keling, oliy matematika kursida eng ko'p uchraydigan asosiy elementar funksiyalarni ko'rib chiqamiz.
+
+---
+
+## 1. Chiziqli funksiya
+
+Chiziqli funksiya quyidagi ko'rinishga ega:
+
+$$
+y = kx + b
+$$
+
+- $k$ — to'g'ri chiziqning burchak koeffitsiyenti (chiziqning $Ox$ o'qiga og'ish burchagi tangensi: $k = \tan \alpha$).
+- $b$ — to'g'ri chiziqning $Oy$ o'qi bilan kesishish nuqtasi.
+
+Agar $k > 0$ bo'lsa, funksiya butun sonlar o'qida **o'suvchi**; agar $k < 0$ bo'lsa, **kamayuvchi** bo'ladi.
+
+<Graph 
+  fn="2*x - 1" 
+  fn2="-x + 3" 
+  title="Chiziqli funksiyalar: y = 2x - 1 (ko'k) va y = -x + 3 (qizil)" 
+/>
+
+E'tibor bering: ko'k chiziq ($k = 2 > 0$) yuqoriga ko'tarilmoqda, qizil chiziq ($k = -1 < 0$) esa pastga tushmoqda.
+
+---
+
+## 2. Kvadratik funksiya (Parabola)
+
+Kvadratik funksiya umumiy holda:
+
+$$
+y = ax^2 + bx + c \quad (a \neq 0)
+$$
+
+Uning grafigi **parabola** deyiladi.
+- Agar $a > 0$ bo'lsa, parabolaning shoxlari yuqoriga qaragan bo'ladi.
+- Agar $a < 0$ bo'lsa, shoxlari pastga qaragan bo'ladi.
+- Parabola uchining koordinatalari: $x_0 = -\frac{b}{2a}, \quad y_0 = f(x_0)$.
+
+<Graph 
+  fn="x^2 - 4" 
+  fn2="-0.5*x^2 + 2" 
+  title="Parabolalar: y = x² - 4 (ko'k) va y = -0.5x² + 2 (qizil)" 
+/>
+
+Ko'rib turganingizdek, $y = x^2 - 4$ parabola $Ox$ o'qini $x = -2$ va $x = 2$ nuqtalarda kesib o'tadi (bu nuqtalar funksiyaning nollari deyiladi).
+
+---
+
+## 3. Kubik funksiya va darajali egri chiziqlar
+
+$$
+y = x^3 - 3x
+$$
+
+Bu toq funksiya bo'lib, uning grafigi koordinata boshiga nisbatan simmetrikdir. U o'zida ham o'sish, ham kamayish oraliqlarini va mahalliy ekstremumlarni (maksimum va minimum nuqtalarni) mujassam qiladi.
+
+<Graph 
+  fn="x^3 - 3*x" 
+  title="Kubik funksiya: y = x³ - 3x" 
+/>
+
+---
+
+## 4. Kasr-ratsional funksiya (Giperbola)
+
+Teskari proportsionallik funksiyasi:
+
+$$
+y = \frac{k}{x} \quad (x \neq 0)
+$$
+
+Uning grafigi **giperbola** deb ataladi. $x = 0$ nuqtada funksiya aniqlanmagan va $Oy$ o'qi vertikal asimptota hisoblanadi.
+
+<Graph 
+  fn="1/x" 
+  title="Giperbola: y = 1/x" 
+  yDomain={[-5, 5]}
+  xDomain={[-5, 5]}
+/>
+
+$x \to 0^+$ bo'lganda $y \to +\infty$ ga intiladi, $x \to 0^-$ bo'lganda esa $y \to -\infty$ ga intiladi.
+
+---
+
+## 5. Trigonometrik funksiyalar: $\sin(x)$ va $\cos(x)$
+
+Trigonometrik funksiyalar davriy bo'lib, ularning davri $T = 2\pi \approx 6.28$ ga teng. Aniqlanish sohasi butun sonlar o'qi, qiymatlar sohasi esa $[-1; 1]$ kesmadan iborat:
+
+$$
+-1 \le \sin(x) \le 1, \quad -1 \le \cos(x) \le 1
+$$
+
+<Graph 
+  fn="sin(x)" 
+  fn2="cos(x)" 
+  title="y = sin(x) (ko'k) va y = cos(x) (qizil)" 
+  xDomain={[-7, 7]}
+  yDomain={[-2, 2]}
+/>
+
+$\cos(x)$ grafigi $\sin(x)$ grafigining $\frac{\pi}{2}$ qadam chapga siljigan nusxasidir!
+
+---
+
+## Amaliy misollar va tahlil
+
+### 1-misol: Funksiyaning nollarini topish
+$f(x) = x^2 - 5x + 6$ funksiyaning koordinata o'qlari bilan kesishish nuqtalarini toping.
+
+**Yechilishi:**
+1. $Ox$ o'qi bilan kesishish nuqtalari uchun $y = 0$ deb olamiz:
+   $$x^2 - 5x + 6 = 0 \implies (x - 2)(x - 3) = 0 \implies x_1 = 2, \quad x_2 = 3$$
+   Kesishish nuqtalari: $(2; 0)$ va $(3; 0)$.
+2. $Oy$ o'qi bilan kesishish uchun $x = 0$ deb olamiz:
+   $$y = 0^2 - 5(0) + 6 = 6$$
+   Kesishish nuqtasi: $(0; 6)$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $y = 3x - 6$ to'g'ri chiziqning koordinata o'qlari bilan kesishish nuqtalarini toping.
+2. $y = -x^2 + 4$ parabolaning uchi qaysi koordinatada joylashgan?
+3. $y = \frac{2}{x - 1}$ funksiyaning vertikal asimptotasini aniqlang.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $Ox$ bilan: $3x - 6 = 0 \implies (2; 0)$; $Oy$ bilan: $(0; -6)$.</p>
+    <p><strong>2-masala:</strong> $x_0 = -\frac{0}{2(-1)} = 0 \implies y_0 = -(0)^2 + 4 = 4$. Parabola uchi: $(0; 4)$.</p>
+    <p><strong>3-masala:</strong> Maxraj nolga aylanadigan nuqta: $x - 1 = 0 \implies x = 1$ to'g'ri chizig'i vertikal asimptotadir.</p>
+  </div>
+</details>

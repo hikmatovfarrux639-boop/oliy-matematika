@@ -1,0 +1,144 @@
+---
+title: "Kompleks sonning trigonometrik va ko'rsatkichli (Eyler) shakli"
+module: "kompleks-sonlar"
+order: 3
+description: "Qutb koordinatalari, modul va argument (φ), Leonard Eyler formulasi hamda ko'paytirish va bo'lishning geometrik mohiyati."
+---
+
+## Kirish: Nega algebraik shakl yetarli emas?
+
+Agar sizdan $(1 + i\sqrt{3})^{100}$ ni hisoblash so'ralsa, qavslarni yuz marta ochib ko'paytirish deyarli imkonsiz! 
+Xuddi shuningdek, kompleks sondan ildiz chiqarish algebraik shaklda juda mashaqqatli.
+
+Shu sababli shveytsariyalik buyuk matematik Leonard Eyler kompleks sonlarni **trigonometrik** va **ko'rsatkichli** shaklga o'tkazish usulini yaratdi. Bu usul yordamida yuzinchi darajaga ko'tarish ham bir daqiqada hal bo'ladi!
+
+---
+
+## Modul va Argument ($\varphi$)
+
+Kompleks tekislikda har bir $z = a + bi$ soni $(a; b)$ nuqta orqali beriladi.
+Ushbu nuqtani to'g'ri burchakli koordinatalar o'rniga **qutb koordinatalari** ($r, \varphi$) orqali ifodalash mumkin:
+
+1. **Modul ($r$):** Boshlang'ich nuqtadan nuqtagacha bo'lgan masofa:
+   $$r = |z| = \sqrt{a^2 + b^2}$$
+2. **Argument ($\varphi$):** Musbat haqiqiy yarim o'q bilan nuqtaga yo'nalgan vektor orasidagi burchak (radianda):
+   $$\cos\varphi = \frac{a}{r}, \quad \sin\varphi = \frac{b}{r}$$
+
+Burchak $\varphi = \arg(z)$ bosh argument deyiladi va odatda $(-\pi; \pi]$ oralig'ida olinadi:
+- **I chorak ($a > 0, b > 0$):** $\varphi = \operatorname{arctg}\left(\frac{b}{a}\right)$
+- **II chorak ($a < 0, b > 0$):** $\varphi = \pi - \operatorname{arctg}\left|\frac{b}{a}\right|$
+- **III chorak ($a < 0, b < 0$):** $\varphi = -\pi + \operatorname{arctg}\left|\frac{b}{a}\right|$
+- **IV chorak ($a > 0, b < 0$):** $\varphi = -\operatorname{arctg}\left|\frac{b}{a}\right|$
+
+---
+
+## 1. Trigonometrik shakl
+
+$a = r\cos\varphi$ va $b = r\sin\varphi$ ekanligidan:
+
+$$
+z = r(\cos\varphi + i\sin\varphi)
+$$
+
+Bu ifoda kompleks sonning **trigonometrik shakli** deyiladi.
+
+---
+
+## 2. Eyler formulasi va Ko'rsatkichli shakl
+
+Matematika tarixidagi eng buyuk kashfiyotlardan biri — bu **Eyler formulasi**dir:
+
+$$
+e^{i\varphi} = \cos\varphi + i\sin\varphi
+$$
+
+Bu formula orqali kompleks sonni nihoyatda ixcham va go'zal **ko'rsatkichli shakl**da yozish mumkin:
+
+$$
+z = r e^{i\varphi}
+$$
+
+> **Matematikaning eng go'zal tenglamasi (Eyler ayniyati):**
+> Agar $\varphi = \pi$ deb olsak, $\cos\pi = -1$ va $\sin\pi = 0$ bo'lgani sababli:
+> $$e^{i\pi} = -1 \iff e^{i\pi} + 1 = 0$$
+> Bu formulada butun matematikaning 5 ta eng muhim soni birlashgan: $e, i, \pi, 1, 0$!
+
+---
+
+## Geometrik ko'paytirish va bo'lish
+
+Ko'rsatkichli shaklda ko'paytirish va bo'lish hayratlanarli darajada osonlashadi:
+
+### Ko'paytirish:
+$$z_1 \cdot z_2 = (r_1 e^{i\varphi_1}) \cdot (r_2 e^{i\varphi_2}) = (r_1 r_2) e^{i(\varphi_1 + \varphi_2)}$$
+
+> **Qoida:** Kompleks sonlarni ko'paytirganda ularning **modullari ko'paytiriladi**, **argumentlari esa qo'shiladi**! 
+> (Geometrik ma'nosi: vektor moduli cho'ziladi va $\varphi_2$ burchakka buriladi).
+
+### Bo'lish:
+$$\frac{z_1}{z_2} = \left(\frac{r_1}{r_2}\right) e^{i(\varphi_1 - \varphi_2)}$$
+
+> **Qoida:** Bo'lganda **modullar bo'linadi**, **argumentlar ayriladi**!
+
+---
+
+## Amaliy misollar va yechimlar
+
+### 1-misol: Trigonometrik va ko'rsatkichli shaklga o'tkazish
+$z = 1 + i\sqrt{3}$ sonini trigonometrik va ko'rsatkichli shaklga o'tkazing.
+
+**Yechilishi:**
+1. $a = 1, \quad b = \sqrt{3}$.
+2. Modulni topamiz:
+   $$r = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1 + 3} = \sqrt{4} = 2$$
+3. Argumentni topamiz: Nuqta I chorakda joylashgan ($a > 0, b > 0$):
+   $$\operatorname{tg}\varphi = \frac{b}{a} = \frac{\sqrt{3}}{1} = \sqrt{3} \implies \varphi = \frac{\pi}{3} \quad (60^\circ)$$
+4. Trigonometrik shakli:
+   $$z = 2\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right)$$
+5. Ko'rsatkichli shakli:
+   $$z = 2 e^{i\frac{\pi}{3}}$$
+
+---
+
+### 2-misol: II chorakdagi sonni o'tkazish
+$z = -1 + i$ sonini ko'rsatkichli shaklda yozing.
+
+**Yechilishi:**
+1. $a = -1, \quad b = 1$.
+2. Modul: $r = \sqrt{(-1)^2 + 1^2} = \sqrt{2}$.
+3. Nuqta II chorakda ($a < 0, b > 0$):
+   $$\varphi = \pi - \operatorname{arctg}\left|\frac{1}{-1}\right| = \pi - \frac{\pi}{4} = \frac{3\pi}{4}$$
+4. Natija:
+   $$z = \sqrt{2} e^{i\frac{3\pi}{4}}$$
+
+---
+
+### 3-misol: Tezkor ko'paytirish
+$z_1 = 3 e^{i\frac{\pi}{6}}$ va $z_2 = 2 e^{i\frac{\pi}{3}}$ sonlarining ko'paytmasini toping.
+
+**Yechilishi:**
+Modullarni ko'paytiramiz: $r = 3 \cdot 2 = 6$.
+Argumentlarni qo'shamiz:
+$$\varphi = \frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi + 2\pi}{6} = \frac{3\pi}{6} = \frac{\pi}{2}$$
+
+Demak:
+$$z_1 \cdot z_2 = 6 e^{i\frac{\pi}{2}} = 6\left(\cos\frac{\pi}{2} + i\sin\frac{\pi}{2}\right) = 6(0 + i \cdot 1) = 6i$$
+
+**Javob:** $6i$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $z = i$ sonining moduli va argumentini toping hamda ko'rsatkichli shaklda yozing.
+2. $z = -2$ haqiqiy sonini trigonometrik shaklda ifodalang.
+3. $z = 1 - i$ sonining argumenti nimaga teng?
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $r = 1, \quad \varphi = \frac{\pi}{2} \implies z = e^{i\frac{\pi}{2}}$.</p>
+    <p><strong>2-masala:</strong> $r = 2, \quad \varphi = \pi \implies z = 2(\cos\pi + i\sin\pi)$.</p>
+    <p><strong>3-masala:</strong> IV chorak: $\varphi = -\frac{\pi}{4}$.</p>
+  </div>
+</details>

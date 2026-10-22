@@ -1,0 +1,104 @@
+---
+title: "Differensial tenglamalar tushunchasi va Koshi masalasi"
+module: "differensial-tenglamalar"
+order: 1
+description: "Differensial tenglama nima, tenglamaning tartibi, umumiy va xususiy yechim, integral egri chiziqlar oilasi va Koshi boshlang'ich masalasi."
+---
+
+## Kirish: Tabiat qonunlari qanday tilda yozilgan?
+
+Mashhur fizik va matematik Galiley aytganidek: "Tabiat kitobi matematika tilida yozilgan". Agar chuqurroq qarasak, deyarli barcha fundamental tabiat qonunlari — Nyutonning 2-qonuni ($F = ma = m \frac{d^2 x}{dt^2}$), radioaktiv parchalanish qonuni ($\frac{dN}{dt} = -\lambda N$), to'lqinlar tenglamasi va Maksvell elektrodinamika tenglamalari — aynan **differensial tenglamalar** shaklida ifodalanadi.
+
+Chunki tabiatdagi o'zgarishlar miqdorning o'zi bilan uning o'zgarish tezligi (hosilasi) orasidagi munosabat orqali sodir bo'ladi!
+
+---
+
+## 1. Asosiy ta'riflar
+
+> **Ta'rif:** Noma'lum funksiya $y = y(x)$, uning argumenti $x$ va uning bir yoki bir nechta tartibli hosilalari ($y', y'', \dots, y^{(n)}$) orasidagi munosabatni ifodalovchi tenglama **oddiy differensial tenglama (ODT)** deyiladi:
+>
+> $$
+> F(x, y, y', y'', \dots, y^{(n)}) = 0
+> $$
+
+### Tenglamaning tartibi:
+Tenglamaga kirgan hosilaning **eng yuqori tartibiga** differensial tenglamaning tartibi deyiladi:
+- $y' + 2xy = e^x$ — **1-tartibli** differensial tenglama;
+- $y'' - 5y' + 6y = 0$ — **2-tartibli** differensial tenglama;
+- $y''' + x(y')^4 = 0$ — **3-tartibli** differensial tenglama (darajasi 4 bo'lsa ham, hosila tartibi 3!).
+
+---
+
+## 2. Umumiy va xususiy yechim
+
+Differensial tenglamani yechish — undan barcha hosilalarni integrallash yo'li bilan yo'qotib, asl $y(x)$ funksiyani topish demakdir.
+
+### 1. Umumiy yechim:
+$n$-tartibli differensial tenglamaning **umumiy yechimi** deb, tenglamani ayniyatga aylantiruvchi va o'z ichiga $n$ ta ixtiyoriy o'zgarmas sonni ($C_1, C_2, \dots, C_n$) olgan funksiyaga aytiladi:
+$$
+y = \varphi(x, C_1, C_2, \dots, C_n)
+$$
+
+Geometrik jihatdan umumiy yechim tekislikdagi bitta chiziq emas, balki butun bir **egri chiziqlar oilasini** ifodalaydi.
+
+### 2. Xususiy yechim:
+Ixtiyoriy o'zgarmaslarga aniq son qiymatlari berilganda hosil bo'ladigan yechim **xususiy yechim** deyiladi.
+
+---
+
+## 3. Koshi masalasi (Boshlang'ich shart)
+
+Cheksiz ko'p integral egri chiziqlar orasidan aynan bittasini ajratib olish uchun **boshlang'ich shart** beriladi.
+
+> **Koshi masalasi:**
+> 1-tartibli differensial tenglama $y' = f(x, y)$ va boshlang'ich shart:
+>
+> $$
+> y(x_0) = y_0
+> $$
+>
+> berilgan bo'lsin. Berilgan boshlang'ich shartni qanoatlantiruvchi yagona xususiy yechimni topish masalasi **Koshi masalasi** deyiladi.
+
+Geometrik ma'nosi: umumiy oiladagi barcha egri chiziqlar orasidan berilgan $M_0(x_0, y_0)$ nuqtadan o'tuvchi bitta egri chiziqni tanlab olish!
+
+---
+
+## Amaliy namunaviy misol: Koshi masalasini yechish
+
+Differensial tenglamaning umumiy yechimini toping va $y(0) = 5$ shartni qanoatlantiruvchi xususiy yechimini aniqlang:
+$$
+y' = 4x + 3
+$$
+
+**Yechilishi:**
+1. $y' = \frac{dy}{dx}$ ekanligini hisobga olsak:
+   $$\frac{dy}{dx} = 4x + 3 \implies dy = (4x + 3)dx$$
+2. Ikkala tomonni integrallaymiz:
+   $$\int dy = \int (4x + 3)dx$$
+   $$y = 4 \cdot \frac{x^2}{2} + 3x + C \implies y = 2x^2 + 3x + C$$
+   Bu funksiya — tenglamaning **umumiy yechimidir** ($C$ ixtiyoriy son).
+
+3. Boshlang'ich shart $y(0) = 5$ ni qo'llab, $C$ ning aniq qiymatini topamiz:
+   $$5 = 2(0)^2 + 3(0) + C \implies C = 5$$
+
+4. Topilgan $C = 5$ ni umumiy yechimga qo'yamiz:
+   $$y = 2x^2 + 3x + 5$$
+
+**Javob:** Umumiy yechim: $y = 2x^2 + 3x + C$. Xususiy yechim: $y = 2x^2 + 3x + 5$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $y'' + 4y = \sin x$ tenglamaning tartibini aniqlang.
+2. $y = C e^{3x}$ funksiya $y' - 3y = 0$ differensial tenglamaning yechimi bo'lishini tekshiring (hosila olib qo'ying).
+3. $y' = 6x^2$ tenglamaning $y(1) = 4$ shartni qanoatlantiruvchi xususiy yechimini toping.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> Eng yuqori hosila $y''$ bo'lgani sababli tartibi 2.</p>
+    <p><strong>2-masala:</strong> $y' = 3C e^{3x}$. Tenglamaga qo'yamiz: $3Ce^{3x} - 3(Ce^{3x}) = 0$. Ayniyat bajarildi, demak yechim!</p>
+    <p><strong>3-masala:</strong> $y = \int 6x^2 dx = 2x^3 + C$. $y(1) = 4 \implies 2(1)^3 + C = 4 \implies C = 2$. Xususiy yechim: $y = 2x^3 + 2$.</p>
+  </div>
+</details>

@@ -1,0 +1,116 @@
+---
+import SearchModal from './SearchModal.astro';
+const currentPath = Astro.url.pathname;
+---
+
+<header class="app-header">
+  <div class="header-container">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <button id="mobile-menu-open-btn" class="btn-icon mobile-nav-toggle" aria-label="Menyuni ochish">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <a href="/" class="brand-link">
+        <div class="brand-icon">∫</div>
+        <span>OliyMatematika</span>
+      </a>
+    </div>
+
+    <nav class="nav-links desktop-only">
+      <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Bosh sahifa</a>
+      <a href="/#modullar" class="nav-link">Barcha modullar</a>
+      <a href="/testlar" class={`nav-link ${currentPath.startsWith('/testlar') ? 'active' : ''}`} style="font-weight: 700; color: #10b981;">
+        📝 Testlar (HEMIS)
+      </a>
+      <a href="/ai-yechuvchi" class={`nav-link ${currentPath.startsWith('/ai-yechuvchi') ? 'active' : ''}`} style="color: var(--primary); font-weight: 700;">
+        🤖 AI Yechuvchi
+      </a>
+      <a href="/grafik" class={`nav-link ${currentPath.startsWith('/grafik') ? 'active' : ''}`}>Grafik</a>
+      <a href="/hosila" class={`nav-link ${currentPath.startsWith('/hosila') ? 'active' : ''}`}>Hosila</a>
+      <a href="/formulalar" class={`nav-link ${currentPath.startsWith('/formulalar') ? 'active' : ''}`}>Formulalar</a>
+      <a href="/shpargalkalar" class={`nav-link ${currentPath.startsWith('/shpargalkalar') ? 'active' : ''}`} style="font-weight: 700; color: #f59e0b;">
+        📄 Shpargalkalar
+      </a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Telegram Community Link -->
+      <a 
+        href="https://t.me/oliy_matematika_1" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn-icon" 
+        style="color: #0284c7;" 
+        aria-label="Telegram guruhimiz" 
+        title="Telegram hamjamiyatimizga qo'shiling"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+        </svg>
+      </a>
+
+      <!-- Search button -->
+      <SearchModal />
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle-btn" class="btn-icon" aria-label="Mavzuni almashtirish" title="Qorong'i/yorug' rejim">
+        <svg id="moon-icon" style="display: none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sun-icon" style="display: none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  function setupThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    const moonIcon = document.getElementById('moon-icon');
+    const sunIcon = document.getElementById('sun-icon');
+
+    function updateIcons(theme: string) {
+      if (!moonIcon || !sunIcon) return;
+      if (theme === 'dark') {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('math_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateIcons(savedTheme);
+
+    if (toggleBtn && !(toggleBtn as any)._hasThemeListener) {
+      (toggleBtn as any)._hasThemeListener = true;
+      toggleBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('math_theme', newTheme);
+        updateIcons(newTheme);
+      });
+    }
+  }
+
+  setupThemeToggle();
+  document.addEventListener('astro:page-load', setupThemeToggle);
+  document.addEventListener('astro:after-swap', setupThemeToggle);
+</script>

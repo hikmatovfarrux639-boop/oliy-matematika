@@ -1,0 +1,133 @@
+---
+title: "Ikki o'zgaruvchili funksiya ekstremumi va Lagranj usuli"
+module: "kop-ozgaruvchili-funksiyalar"
+order: 4
+description: "Lokal maksimum va minimum, statsionar nuqtalar, Gesse determinanti (Delta = AC - B^2) orqali ekstremumni tekshirish, egar nuqtasi va Lagranj ko'paytuvchilari."
+---
+
+## Kirish: Eng katta foyda va eng kichik xarajat
+
+Iqtisodiyotda xarajatlarni minimallashtirish, mashinasozlikda material sarfini kamaytirish va sun'iy intellekt modellarini o'qitishda (masalan, gradient tushish usuli orqali loss funksiyasini kamaytirish) ko'p o'zgaruvchili funksiyalarning **ekstremumlarini** (maksimum va minimumlarini) topish zarur bo'ladi.
+
+---
+
+## 1. Ekstremumning zaruriy sharti (Statsionar nuqtalar)
+
+> **Ferma teoremasi:** Agar $z = f(x, y)$ funksiya differensiallanuvchi bo'lib, $M_0(x_0, y_0)$ nuqtada lokal ekstremumga (minimum yoki maksimumga) erishsa, bu nuqtada uning birinchi tartibli xususiy hosilalari **nolga teng** bo'ladi:
+>
+> $$
+> \begin{cases}
+> \frac{\partial z}{\partial x} = 0 \\
+> \frac{\partial z}{\partial y} = 0
+> \end{cases}
+> $$
+
+Xususiy hosilalarni nolga tenglashtirib topilgan $(x_0, y_0)$ nuqtalar **statsionar nuqtalar** deyiladi.
+
+> **Muhim:** Statsionar nuqta har doim ham ekstremum bo'lavermaydi (xuddi 1 o'zgaruvchili $y = x^3$ funksiyaning $x = 0$ nuqtasi kabi). Buni aniqlash uchun yetarli shart tekshiriladi.
+
+---
+
+## 2. Ekstremumning yetarli sharti (Gesse determinanti)
+
+Statsionar $M_0(x_0, y_0)$ nuqtada ikkinchi tartibli xususiy hosilalarning son qiymatlarini hisoblaymiz:
+
+$$
+A = z''_{xx}(x_0, y_0), \qquad B = z''_{xy}(x_0, y_0), \qquad C = z''_{yy}(x_0, y_0)
+$$
+
+Ushbu qiymatlardan quyidagi determinantni (diskriminantni) tuzamiz:
+
+$$
+\Delta = \begin{vmatrix} A & B \\ B & C \end{vmatrix} = AC - B^2
+$$
+
+### Qoidalar:
+1. **Agar $\Delta > 0$ bo'lsa, ekstremum MAVJUD:**
+   - agar $A > 0$ bo'lsa — **lokal minimum**;
+   - agar $A < 0$ bo'lsa — **lokal maksimum**.
+2. **Agar $\Delta < 0$ bo'lsa, ekstremum MAVJUD EMAS:**
+   - Bu nuqta **egar nuqtasi** (tog' dovoni kabi: bir yo'nalishda minimum, ikkinchi yo'nalishda maksimum) deyiladi.
+3. **Agar $\Delta = 0$ bo'lsa:**
+   - Noaniq holat, qo'shimcha yuqori tartibli tekshirishlar talab etiladi.
+
+---
+
+## 3. Shartli ekstremum va Lagranj ko'paytuvchilari
+
+Amaliyotda ko'pincha argumentlar biror cheklov (aloqa tenglamasi) bilan bog'langan bo'ladi:
+$z = f(x, y)$ funksiyaning $\varphi(x, y) = 0$ shartdagi ekstremumini topish kerak bo'lsin.
+
+### Lagranj funksiyasi:
+$$
+L(x, y, \lambda) = f(x, y) + \lambda \cdot \varphi(x, y)
+$$
+bu yerda $\lambda$ — **Lagranj ko'paytuvchisi**.
+
+### Yechish tartibi:
+Quyidagi 3 ta tenglamadan iborat sistemani tuzamiz va yechamiz:
+$$
+\begin{cases}
+L'_x = f'_x + \lambda \varphi'_x = 0 \\
+L'_y = f'_y + \lambda \varphi'_y = 0 \\
+L'_\lambda = \varphi(x, y) = 0
+\end{cases}
+$$
+
+---
+
+## Amaliy namunaviy misol
+
+Funksiyaning ekstremumlarini toping:
+$$
+z = x^3 + y^3 - 3xy
+$$
+
+**Yechilishi:**
+1. **1-qadam: Statsionar nuqtalarni topamiz:**
+   $$
+   \begin{cases}
+   z'_x = 3x^2 - 3y = 0 \implies y = x^2 \\
+   z'_y = 3y^2 - 3x = 0 \implies x = y^2
+   \end{cases}
+   $$
+   $y = x^2$ ni ikkinchisiga qo'yamiz:
+   $$(x^2)^2 - x = 0 \implies x^4 - x = 0 \implies x(x^3 - 1) = 0$$
+   Ildizlar: $x_1 = 0 \implies y_1 = 0$; $x_2 = 1 \implies y_2 = 1$.
+   Demak, ikkita statsionar nuqta bor: $M_1(0, 0)$ va $M_2(1, 1)$.
+
+2. **2-qadam: 2-tartibli hosilalarni hisoblaymiz:**
+   $$z''_{xx} = 6x, \qquad z''_{xy} = -3, \qquad z''_{yy} = 6y$$
+
+3. **3-qadam: Har bir nuqtada $\Delta = AC - B^2$ ni tekshiramiz:**
+   - **$M_1(0, 0)$ nuqtada:**
+     $$A = 6(0) = 0, \quad B = -3, \quad C = 6(0) = 0$$
+     $$\Delta = 0 \cdot 0 - (-3)^2 = -9 < 0$$
+     $\Delta < 0$ bo'lgani uchun $M_1(0, 0)$ nuqtada **ekstremum yo'q** (egar nuqtasi).
+
+   - **$M_2(1, 1)$ nuqtada:**
+     $$A = 6(1) = 6, \quad B = -3, \quad C = 6(1) = 6$$
+     $$\Delta = 6 \cdot 6 - (-3)^2 = 36 - 9 = 27 > 0$$
+     $\Delta > 0$ va $A = 6 > 0$ bo'lgani uchun $M_2(1, 1)$ nuqtada **lokal minimum** mavjud!
+
+4. **4-qadam: Minimum qiymatini hisoblaymiz:**
+   $$z_{\min} = z(1, 1) = 1^3 + 1^3 - 3(1)(1) = 1 + 1 - 3 = -1$$
+
+**Javob:** $M(1, 1)$ nuqtada $z_{\min} = -1$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $z = x^2 + y^2 - 4x + 6y$ funksiyaning statsionar nuqtasini toping va uni ekstremumga tekshiring.
+2. $z = x^2 - y^2$ funksiyaning $(0, 0)$ nuqtasi qanday nuqta hisoblanadi?
+3. $x + y = 10$ shartida $f(x, y) = x \cdot y$ ko'paytmaning eng katta qiymatini toping.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $z'_x = 2x - 4 = 0 \implies x = 2$, $z'_y = 2y + 6 = 0 \implies y = -3$. Nuqta: $(2, -3)$. $A = 2, B = 0, C = 2 \implies \Delta = 4 > 0, A > 0$. Lokal minimum: $z_{\min} = 4 + 9 - 8 - 18 = -13$.</p>
+    <p><strong>2-masala:</strong> $A = 2, B = 0, C = -2 \implies \Delta = -4 < 0$. Egar nuqtasi (ekstremum yo'q).</p>
+    <p><strong>3-masala:</strong> $y = 10 - x \implies f(x) = x(10 - x) = 10x - x^2$. Hosila: $10 - 2x = 0 \implies x = 5 \implies y = 5$. Eng katta qiymat: $25$.</p>
+  </div>
+</details>

@@ -1,0 +1,147 @@
+---
+title: "Uch karrali integral, silindrik va sferik koordinatalar"
+module: "karrali-integrallar"
+order: 3
+description: "Uch karrali integral ta'rifi, fazoviy jism massasi va hajmi, silindrik koordinatalar, sferik koordinatalar va shar hajmini integrallash orqali keltirib chiqarish."
+---
+
+## Kirish: Haqiqiy uch o'lchamli dunyo
+
+Agar jism bir jinsli bo'lmasa — ya'ni uning zichligi har bir nuqtada turlicha o'zgarsa (masalan, Yer sayyorasining zichligi markazga yaqinlashgan sari ortadi), uning umumiy massasini, og'irlik markazini yoki inersiya momentini oddiy ko'paytirish bilan topib bo'lmaydi.
+
+Bunday fazoviy hisoblashlar uchun **uch karrali integral** va uch o'lchamli egri chiziqli koordinatalar (silindrik va sferik) qo'llaniladi.
+
+---
+
+## 1. Uch karrali integral ta'rifi
+
+Fazoviy uch o'lchamli $V$ soha va unda aniqlangan uzluksiz $f(x, y, z)$ funksiya berilgan bo'lsin.
+$V$ sohani mayda $\Delta V_i$ bo'lakchalarga bo'lib, integral yig'indining limitini olsak, **uch karrali integral** hosil bo'ladi:
+
+$$
+\iiint_V f(x, y, z) \, dx dy dz = \lim_{\operatorname{diam} \to 0} \sum_{i=1}^n f(\xi_i, \eta_i, \zeta_i) \Delta V_i
+$$
+
+### Tatbiqlari:
+1. **Fazoviy jism hajmi:**
+   $$
+   V = \iiint_V dx dy dz
+   $$
+2. **Jism massasi:** Agar $\rho(x, y, z)$ zichlik funksiyasi bo'lsa:
+   $$
+   M = \iiint_V \rho(x, y, z) \, dx dy dz
+   $$
+
+---
+
+## 2. Silindrik koordinatalar sistemasi
+
+Agar integrallash sohasi **silindr, konus yoki paraboloid** shaklida bo'lsa, silindrik koordinatalar eng qulayi hisoblanadi. U tekislikdagi qutb koordinatalari va vertikal $z$ o'qining birikmasidir:
+
+$$
+\begin{cases}
+x = r \cos \varphi \\
+y = r \sin \varphi \\
+z = z
+\end{cases}
+$$
+bu yerda $x^2 + y^2 = r^2$.
+
+### Hajm elementi:
+$$
+dx dy dz = r \, dr d\varphi dz
+$$
+
+---
+
+## 3. Sferik koordinatalar sistemasi
+
+Agar integrallash sohasi **shar yoki shar qatlami** ($x^2 + y^2 + z^2 \le R^2$) bo'lsa, sferik koordinatalar ishlatiladi:
+- $\rho$ — fazoviy radius (koordinata boshidan nuqtagacha masofa, $\rho \ge 0$);
+- $\theta$ — zenit burchagi ($Oz$ o'qi bilan hosil qilgan burchak, $0 \le \theta \le \pi$);
+- $\varphi$ — azimut burchagi ($Ox$ o'qi bilan tekislikdagi burchak, $0 \le \varphi < 2\pi$).
+
+### O'tish formulalari:
+$$
+\begin{cases}
+x = \rho \sin \theta \cos \varphi \\
+y = \rho \sin \theta \sin \varphi \\
+z = \rho \cos \theta
+\end{cases}
+$$
+bu yerda $x^2 + y^2 + z^2 = \rho^2$.
+
+### Hajm elementi (Sferik Yakobian):
+$$
+dx dy dz = \rho^2 \sin \theta \, d\rho d\theta d\varphi
+$$
+
+---
+
+## 4. Klassik isbot: Shar hajmi qayerdan kelgan?
+
+Maktab geometriya darslaridan ma'lumki, radiusi $R$ bo'lgan shar hajmi $V = \frac{4}{3}\pi R^3$ formulasi bilan hisoblanadi. Endi bu formulani sferik koordinatalar yordamida qat'iy isbotlaymiz!
+
+Shar uchun chegaralar:
+- $0 \le \rho \le R$;
+- $0 \le \theta \le \pi$;
+- $0 \le \varphi \le 2\pi$.
+
+$$
+V = \iiint_V dx dy dz = \int_0^{2\pi} d\varphi \int_0^\pi \sin \theta \, d\theta \int_0^R \rho^2 \, d\rho
+$$
+Uchala mustaqil integralni hisoblaymiz:
+1. $\int_0^{2\pi} d\varphi = 2\pi$
+2. $\int_0^\pi \sin \theta \, d\theta = [-\cos \theta]_0^\pi = -(-1) - (-1) = 2$
+3. $\int_0^R \rho^2 \, d\rho = \left[ \frac{\rho^3}{3} \right]_0^R = \frac{R^3}{3}$
+
+Barchasini ko'paytiramiz:
+$$
+V = 2\pi \cdot 2 \cdot \frac{R^3}{3} = \frac{4}{3} \pi R^3
+$$
+Formula to'liq isbotlandi!
+
+---
+
+## Amaliy namunaviy misol
+
+Hisoblang:
+$$
+\iiint_V z \, dx dy dz
+$$
+bu yerda $V$ — $x = 0, y = 0, z = 0, x + y + z = 1$ tekisliklar bilan chegaralangan tetraedr (piramida).
+
+**Yechilishi:**
+Chegaralarni aniqlaymiz:
+- $0 \le x \le 1$
+- $0 \le y \le 1 - x$
+- $0 \le z \le 1 - x - y$
+
+$$
+I = \int_0^1 dx \int_0^{1-x} dy \int_0^{1-x-y} z \, dz
+$$
+1. $z$ bo'yicha ichki integral:
+   $$\int_0^{1-x-y} z \, dz = \frac{(1 - x - y)^2}{2}$$
+2. $y$ bo'yicha o'rta integral:
+   $$\frac{1}{2} \int_0^{1-x} (1 - x - y)^2 dy = \frac{1}{2} \left[ -\frac{(1 - x - y)^3}{3} \right]_0^{1-x} = \frac{1}{6}(1 - x)^3$$
+3. $x$ bo'yicha tashqi integral:
+   $$\frac{1}{6} \int_0^1 (1 - x)^3 dx = \frac{1}{6} \left[ -\frac{(1 - x)^4}{4} \right]_0^1 = \frac{1}{24}$$
+
+**Javob:** $\frac{1}{24}$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. Silindrik koordinatalarda hajm elementi $dV$ nimaga teng?
+2. Sferik koordinatalarda $\rho^2$ nimaga teng?
+3. Radiusi $R = 2$ bo'lgan sharning hajmini hisoblang.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color British); border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $dV = r \, dr d\varphi dz$.</p>
+    <p><strong>2-masala:</strong> $\rho^2 = x^2 + y^2 + z^2$.</p>
+    <p><strong>3-masala:</strong> $V = \frac{4}{3}\pi R^3 = \frac{4}{3}\pi (8) = \frac{32\pi}{3} \approx 33.51$.</p>
+  </div>
+</details>

@@ -1,0 +1,138 @@
+---
+import { MODULES } from '../data/modules';
+const currentPath = Astro.url.pathname;
+---
+
+<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+<aside id="mobile-drawer" class="mobile-drawer">
+  <div class="drawer-header">
+    <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.1rem;">
+      <div class="brand-icon" style="width: 28px; height: 28px; font-size: 0.9rem;">∫</div>
+      <span>OliyMatematika</span>
+    </div>
+    <button id="mobile-menu-close-btn" class="btn-icon" aria-label="Menyuni yopish">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="drawer-body">
+    <!-- Mobile Theme Switcher -->
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: var(--bg-muted); border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+      <span style="font-size: 0.85rem; font-weight: 600;">Mavzu:</span>
+      <button id="mobile-theme-btn" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;">
+        🌓 Tungi / Kunduzgi
+      </button>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <div class="sidebar-section-title">Tezkor Sahifalar</div>
+      <ul class="module-nav-list">
+        <li class={`module-nav-item ${currentPath === '/' ? 'active' : ''}`}>
+          <a href="/">🏠 Bosh sahifa</a>
+        </li>
+        <li class={`module-nav-item ${currentPath.startsWith('/testlar') ? 'active' : ''}`} style="border-left: 3px solid #3b82f6;">
+          <a href="/testlar" style="font-weight: 700;">
+            <span>📝 Testlar (HEMIS)</span>
+            <span style="font-size: 0.65rem; background: #3b82f6; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">Top</span>
+          </a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/ai-yechuvchi' ? 'active' : ''}`} style="border-left: 3px solid #10b981;">
+          <a href="/ai-yechuvchi" style="color: var(--primary); font-weight: 700;">
+            <span>🤖 AI Masala Yechuvchi</span>
+            <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">Yangi</span>
+          </a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/grafik' ? 'active' : ''}`}>
+          <a href="/grafik">📈 Grafik chizgich</a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/hosila' ? 'active' : ''}`}>
+          <a href="/hosila">⚡ Hosila kalkulyatori</a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/formulalar' ? 'active' : ''}`}>
+          <a href="/formulalar">📐 Formulalar jadvali</a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/shpargalkalar' ? 'active' : ''}`} style="border-left: 3px solid #f59e0b;">
+          <a href="/shpargalkalar" style="font-weight: 700; color: #f59e0b;">
+            <span>📄 Shpargalkalar (PDF)</span>
+            <span style="font-size: 0.65rem; background: #f59e0b; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">A4</span>
+          </a>
+        </li>
+        <li class="module-nav-item" style="border-left: 3px solid #0284c7;">
+          <a href="https://t.me/oliy_matematika_1" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700;">
+            <span>💬 Telegram Hamjamiyat</span>
+            <span style="font-size: 0.65rem; background: #0284c7; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">Kanal</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Barcha 14 ta Modul</div>
+      <ul class="module-nav-list">
+        {MODULES.map(m => {
+          const isCurrent = currentPath === `/modullar/${m.slug}` || currentPath.includes(`/${m.slug}/`);
+          return (
+            <li class={`module-nav-item ${isCurrent ? 'active' : ''} ${!m.isActive ? 'inactive' : ''}`}>
+              <a href={`/modullar/${m.slug}`}>
+                <span style="font-size: 0.85rem;">{m.title}</span>
+                {m.isActive ? (
+                  <span style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--accent); flex-shrink: 0;"></span>
+                ) : (
+                  <span style="font-size: 0.65rem; color: var(--text-subtle);">Tez orada</span>
+                )}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<script>
+  function setupMobileDrawer() {
+    const drawer = document.getElementById('mobile-drawer');
+    if (!drawer || (drawer as any)._hasDrawerInit) return;
+    (drawer as any)._hasDrawerInit = true;
+
+    const openBtn = document.getElementById('mobile-menu-open-btn');
+    const closeBtn = document.getElementById('mobile-menu-close-btn');
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    function open() {
+      drawer?.classList.add('open');
+      overlay?.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      drawer?.classList.remove('open');
+      overlay?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    openBtn?.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    overlay?.addEventListener('click', close);
+
+    // Mobile theme toggle
+    const mobileThemeBtn = document.getElementById('mobile-theme-btn');
+    mobileThemeBtn?.addEventListener('click', () => {
+      const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('math_theme', newTheme);
+    });
+
+    const links = drawer?.querySelectorAll('a');
+    links?.forEach(link => link.addEventListener('click', close));
+  }
+
+  setupMobileDrawer();
+  document.addEventListener('astro:page-load', setupMobileDrawer);
+  document.addEventListener('astro:after-swap', setupMobileDrawer);
+</script>

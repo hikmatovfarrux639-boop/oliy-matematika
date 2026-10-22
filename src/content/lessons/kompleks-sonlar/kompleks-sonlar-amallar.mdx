@@ -1,0 +1,155 @@
+---
+title: "Kompleks sonlar ustida arifmetik amallar"
+module: "kompleks-sonlar"
+order: 2
+description: "Kompleks sonlarni qo'shish, ayirish, ko'paytirish, bo'lish, qo'shma son (z̄) tushunchasi va kompleks son moduli |z|."
+---
+
+## Kirish: Kompleks sonlar arifmetikasi
+
+Kompleks sonlar ustidagi amallar oddiy maktab algebrasidagi ko'phadlar ustidagi amallarga juda o'xshaydi. Yagona farq va asosiy oltin qoida: **qayerda $i^2$ paydo bo'lsa, uning o'rniga darhol $-1$ qo'yiladi!**
+
+Faraz qilaylik, ikkita kompleks son berilgan bo'lsin:
+
+$$
+z_1 = a + bi \quad \text{va} \quad z_2 = c + di
+$$
+
+---
+
+## 1. Qo'shish va ayirish
+
+Kompleks sonlarni qo'shish (ayirish) uchun ularning haqiqiy qismlari alohida, mavhum qismlari alohida qo'shiladi (ayriladi):
+
+$$
+z_1 + z_2 = (a + c) + (b + d)i
+$$
+
+$$
+z_1 - z_2 = (a - c) + (b - d)i
+$$
+
+*Geometrik ma'nosi:* Kompleks sonlarni qo'shish xuddi tekislikdagi vektorlarni parallelogramm qoidasi bo'yicha qo'shish bilan bir xildir.
+
+---
+
+## 2. Ko'paytirish
+
+Kompleks sonlar xuddi ikkihadni ikkihadga ko'paytirgandek qavslar ochilib ko'paytiriladi:
+
+$$
+z_1 \cdot z_2 = (a + bi)(c + di) = ac + adi + bci + bdi^2
+$$
+
+$i^2 = -1$ bo'lganligi uchun $bdi^2 = -bd$ bo'ladi. Haqiqiy va mavhum qismlarni guruhlaymiz:
+
+$$
+z_1 \cdot z_2 = (ac - bd) + (ad + bc)i
+$$
+
+---
+
+## 3. Qo'shma kompleks son ($\bar{z}$)
+
+> **Ta'rif:** Agar ikkita kompleks son faqat mavhum qismining ishorasi bilan farq qilsa, ular **o'zaro qo'shma kompleks sonlar** deyiladi. $z = a + bi$ sonining qo'shmasi $\bar{z}$ ("z chiziqcha") kabi belgilanadi:
+>
+> $$
+> \bar{z} = a - bi
+> $$
+
+### Qo'shma sonning eng muhim xossasi:
+Kompleks sonni o'zining qo'shmasiga ko'paytirganda doimo **musbat haqiqiy son** hosil bo'ladi:
+
+$$
+z \cdot \bar{z} = (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 - b^2 i^2 = a^2 + b^2
+$$
+
+---
+
+## 4. Kompleks son moduli ($|z|$)
+
+> **Ta'rif:** Kompleks tekislikda koordinata boshidan $(0; 0)$ $z(a; b)$ nuqtagacha bo'lgan masofa kompleks sonning **moduli** (yoki absolyut qiymati) deyiladi va $|z|$ yoki $r$ kabi belgilanadi:
+>
+> $$
+> |z| = \sqrt{a^2 + b^2}
+> $$
+
+Pifagor teoremasiga ko'ra: $z \cdot \bar{z} = |z|^2$.
+
+---
+
+## 5. Bo'lish amali
+
+Ikki kompleks sonni bo'lish uchun kasrning surati va maxraji **maxrajning qo'shmasiga ko'paytiriladi**. Natijada maxraj haqiqiy songa aylanadi va mavhumlikdan qutilinadi:
+
+$$
+\frac{z_1}{z_2} = \frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{(c + di)(c - di)} = \frac{(ac + bd) + (bc - ad)i}{c^2 + d^2}
+$$
+
+---
+
+## Amaliy misollar va yechimlar
+
+### 1-misol: Ko'paytirish
+$z_1 = 3 + 2i$ va $z_2 = 1 - 4i$ sonlarining ko'paytmasini toping.
+
+**Yechilishi:**
+Qavslarni ochamiz:
+$$z_1 \cdot z_2 = (3 + 2i)(1 - 4i) = 3(1) - 3(4i) + 2i(1) - 2i(4i)$$
+$$= 3 - 12i + 2i - 8i^2$$
+$i^2 = -1$ bo'lgani uchun $-8i^2 = +8$:
+$$= 3 - 10i + 8 = 11 - 10i$$
+
+**Javob:** $11 - 10i$
+
+---
+
+### 2-misol: Bo'lish amali
+Bo'linmani hisoblang:
+
+$$
+z = \frac{5 + 5i}{3 - 4i}
+$$
+
+**Yechilishi:**
+Surat va maxrajni maxrajning qo'shmasi bo'lgan $(3 + 4i)$ ga ko'paytiramiz:
+$$z = \frac{(5 + 5i)(3 + 4i)}{(3 - 4i)(3 + 4i)}$$
+
+Maxraj: $3^2 + 4^2 = 9 + 16 = 25$.
+Surat: $(5 + 5i)(3 + 4i) = 15 + 20i + 15i + 20i^2 = 15 + 35i - 20 = -5 + 35i$.
+
+Kasrni alohida bo'lamiz:
+$$z = \frac{-5 + 35i}{25} = -\frac{5}{25} + \frac{35}{25}i = -\frac{1}{5} + \frac{7}{5}i = -0.2 + 1.4i$$
+
+**Javob:** $-0.2 + 1.4i$
+
+---
+
+### 3-misol: Modulni hisoblash
+$z = \frac{4 + 3i}{1 + i\sqrt{3}}$ sonining modulini toping.
+
+**Yechilishi:**
+Modulning muhim xossasidan foydalanamiz: $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$.
+1. Surat moduli: $|4 + 3i| = \sqrt{4^2 + 3^2} = \sqrt{16 + 9} = \sqrt{25} = 5$.
+2. Maxraj moduli: $|1 + i\sqrt{3}| = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1 + 3} = \sqrt{4} = 2$.
+3. Bo'linma moduli:
+   $$|z| = \frac{5}{2} = 2.5$$
+
+**Javob:** $2.5$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $(2 - 3i) + (4 + 7i)$ yig'indisini hisoblang.
+2. $(1 + 2i)^2$ ifodani algebraik shaklga keltiring.
+3. $\frac{1}{i}$ ning qiymatini toping.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $(2 + 4) + (-3 + 7)i = 6 + 4i$.</p>
+    <p><strong>2-masala:</strong> $1^2 + 2(1)(2i) + (2i)^2 = 1 + 4i - 4 = -3 + 4i$.</p>
+    <p><strong>3-masala:</strong> $\frac{1 \cdot (-i)}{i \cdot (-i)} = \frac{-i}{-i^2} = \frac{-i}{1} = -i$.</p>
+  </div>
+</details>

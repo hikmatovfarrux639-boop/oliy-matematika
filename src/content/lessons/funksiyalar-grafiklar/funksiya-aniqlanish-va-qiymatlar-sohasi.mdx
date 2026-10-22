@@ -1,0 +1,127 @@
+---
+title: "Funksiyaning aniqlanish va qiymatlar sohasi"
+module: "funksiyalar-grafiklar"
+order: 2
+description: "D(f) va E(f) sohalarini topish, kasr maxraji, juft darajali ildizlar hamda logarifmlarning tabiiy cheklovlari."
+---
+
+## Kirish: Matematikada taqiqlangan zonalar
+
+Funksiya $y = f(x)$ qoidasi bo'yicha berilganda, unga har qanday sonni berish mumkinmi? Yo'q! 
+Maktab algebrasidanoq ma'lumki:
+- **Nolga bo'lish mumkin emas** (kasr maxraji hech qachon nol bo'lolmaydi);
+- **Haqiqiy sonlar to'plamida manfiy sondan juft darajali ildiz chiqarib bo'lmaydi**;
+- **Faqat musbat sonlarning logarifmi mavjud**.
+
+Ana shunday cheklovlar funksiyaning **aniqlanish sohasi**ni belgilaydi.
+
+---
+
+## Aniqlanish sohasi ($D(f)$)
+
+> **Ta'rif:** Erkli o'zgaruvchi $x$ qabul qilishi mumkin bo'lgan barcha haqiqiy sonlar to'plami $f(x)$ funksiyaning **aniqlanish sohasi** deyiladi va $D(f)$ yoki $\operatorname{dom}(f)$ deb belgilanadi.
+
+### Asosiy elementar cheklovlar:
+
+| Funksiya ko'rinishi | Shart (Cheklov) | Nima uchun? |
+|---|---|---|
+| $y = \frac{P(x)}{Q(x)}$ | $Q(x) \neq 0$ | Maxraj nolga teng bo'lmasligi kerak |
+| $y = \sqrt[2k]{f(x)}$ | $f(x) \ge 0$ | Juft ildiz osti nomanfiy bo'lishi kerak |
+| $y = \log_a(f(x))$ | $f(x) > 0$ | Logarifm osti qat'iy musbat bo'lishi kerak |
+| $y = \arcsin(f(x))$ | $-1 \le f(x) \le 1$ | Sinus faqat $[-1; 1]$ oralig'ida bo'ladi |
+| $y = \operatorname{tg}(x)$ | $x \neq \frac{\pi}{2} + \pi k$ | $\cos x \neq 0$ bo'lishi shart |
+
+---
+
+## Qiymatlar sohasi ($E(f)$)
+
+> **Ta'rif:** Argument $x$ o'zining aniqlanish sohasida o'zgarganda funksiya qabul qiladigan barcha $y$ qiymatlar to'plami funksiyaning **qiymatlar sohasi** (yoki o'zgarish sohasi) deyiladi va $E(f)$ yoki $\operatorname{range}(f)$ deb belgilanadi.
+
+Masalan:
+- $y = x^2 \implies E(f) = [0; +\infty)$ (kvadrat doim nomanfiy);
+- $y = \sin x \implies E(f) = [-1; 1]$;
+- $y = e^x \implies E(f) = (0; +\infty)$ (eksponenta doim musbat).
+
+---
+
+## Amaliy misollar va yechimlar
+
+### 1-misol: Kasr va ildizli ifoda aniqlanish sohasi
+Funksiyaning aniqlanish sohasini toping:
+
+$$
+f(x) = \frac{\sqrt{x + 3}}{x - 2}
+$$
+
+**Yechilishi:**
+Ikkita shart bir vaqtda bajarilishi kerak (tizim tuzamiz):
+1. Ildiz osti nomanfiy: $x + 3 \ge 0 \implies x \ge -3$
+2. Maxraj noldan farqli: $x - 2 \neq 0 \implies x \neq 2$
+
+Ikkala shartni birlashtiramiz:
+$$x \in [-3; 2) \cup (2; +\infty)$$
+
+**Javob:** $D(f) = [-3; 2) \cup (2; +\infty)$
+
+---
+
+### 2-misol: Logarifmik funksiya aniqlanish sohasi
+Funksiyaning aniqlanish sohasini toping:
+
+$$
+f(x) = \ln(x^2 - 4x + 3)
+$$
+
+**Yechilishi:**
+Natural logarifm ostidagi ifoda qat'iy musbat bo'lishi shart:
+$$x^2 - 4x + 3 > 0$$
+
+Kvadrat uchhadni ko'paytuvchilarga ajratamiz:
+$$(x - 1)(x - 3) > 0$$
+
+Intervallar usulidan foydalanamiz:
+Parabola nollari $x = 1$ va $x = 3$. Shoxlari yuqoriga qaragan, demak ifoda chetki oraliqlarda musbat:
+$$x \in (-\infty; 1) \cup (3; +\infty)$$
+
+**Javob:** $D(f) = (-\infty; 1) \cup (3; +\infty)$
+
+---
+
+### 3-misol: Qiymatlar sohasini topish
+Funksiyaning qiymatlar sohasini toping:
+
+$$
+y = 3 - 2\cos(x)
+$$
+
+**Yechilishi:**
+Biz bilamizki, har qanday $x$ uchun kosinus chegaralangan:
+$$-1 \le \cos(x) \le 1$$
+
+Tengsizlikning barcha qismini $-2$ ga ko'paytiramiz (manfiy songa ko'paytirilganda tengsizlik ishorasi teskarisiga o'zgaradi):
+$$2 \ge -2\cos(x) \ge -2 \iff -2 \le -2\cos(x) \le 2$$
+
+Endi barcha qismlarga $3$ sonini qo'shamiz:
+$$3 - 2 \le 3 - 2\cos(x) \le 3 + 2$$
+$$1 \le y \le 5$$
+
+Demak, funksiya eng kamida $1$, eng ko'pida $5$ qiymatni qabul qila oladi.
+
+**Javob:** $E(f) = [1; 5]$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $y = \frac{1}{\sqrt{5 - x}}$ funksiyaning aniqlanish sohasini toping.
+2. $y = \sqrt{x^2 - 9}$ funksiyaning aniqlanish sohasini toping.
+3. $y = x^2 + 4$ funksiyaning qiymatlar sohasini aniqlang.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> Maxraj va ildiz: $5 - x > 0 \implies x < 5$, ya'ni $(-\infty; 5)$.</p>
+    <p><strong>2-masala:</strong> $x^2 - 9 \ge 0 \implies x \in (-\infty; -3] \cup [3; +\infty)$.</p>
+    <p><strong>3-masala:</strong> $x^2 \ge 0 \implies x^2 + 4 \ge 4$. Qiymatlar sohasi: $[4; +\infty)$.</p>
+  </div>
+</details>

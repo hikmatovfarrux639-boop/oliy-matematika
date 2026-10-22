@@ -1,0 +1,933 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Interaktiv Grafik Chizgich — Oliy Matematika" 
+  description="Matematik funksiyalarni interaktiv chizish, 2D koordinata tekisligida tadqiq qilish va tahlil qilish vositasi."
+>
+  <div class="grafik-dashboard">
+    <!-- PAGE HEADER -->
+    <header class="grafik-header">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="badge badge-active">Interaktiv Laboratoriya</span>
+          <span style="font-size: 0.85rem; color: var(--text-subtle);">SVG 2D Koordinatalar Dvigateli</span>
+        </div>
+      </div>
+
+      <h1 style="font-size: 2rem; font-weight: 800; margin: 0.25rem 0 0.5rem; color: var(--text-main);">
+        📈 Interaktiv Funksiya Grafik Chizgichi
+      </h1>
+      <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 720px; line-height: 1.5; margin: 0;">
+        Ixtiyoriy funksiya formulasini kiriting (masalan: <code>x^2 - 4</code>, <code>2x</code>, <code>sin(x)</code>, <code>1/x</code>). Grafik bir zumda interaktiv koordinatalar tekisligida hosil bo'ladi.
+      </p>
+    </header>
+
+    <!-- Error message alert -->
+    <div id="graph-error-box" style="display: none; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; padding: 0.75rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; font-size: 0.95rem;">
+      <span id="graph-error-text">Funksiya ifodasida xatolik bor.</span>
+    </div>
+
+    <!-- MAIN TWO-COLUMN WORKSPACE -->
+    <div class="grafik-layout-grid">
+      <!-- LEFT COLUMN: CONTROLS & INPUTS -->
+      <div class="grafik-controls-card">
+        <div class="controls-card-header">
+          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--text-main);">
+            Funksiyalar formulasi:
+          </h3>
+          <button id="toggle-keypad-btn" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.25rem 0.6rem;">
+            ⌨️ Klaviaturani yashirish
+          </button>
+        </div>
+
+        <!-- Inputs List -->
+        <div class="fn-inputs-stack">
+          <!-- Function 1 -->
+          <div class="fn-input-row active-input-row" data-input-id="input-fn-1">
+            <span class="fn-color-dot" style="background: #2563eb;"></span>
+            <label for="input-fn-1" class="fn-label" style="color: #2563eb;">f₁(x) =</label>
+            <input 
+              type="text" 
+              id="input-fn-1" 
+              value="x^2 - 4" 
+              placeholder="masalan: x^2 - 4"
+              class="math-input"
+            />
+          </div>
+
+          <!-- Function 2 -->
+          <div class="fn-input-row" data-input-id="input-fn-2">
+            <span class="fn-color-dot" style="background: #dc2626;"></span>
+            <label for="input-fn-2" class="fn-label" style="color: #dc2626;">f₂(x) =</label>
+            <input 
+              type="text" 
+              id="input-fn-2" 
+              value="2 * x" 
+              placeholder="masalan: 2*x yoki 2x"
+              class="math-input"
+            />
+          </div>
+
+          <!-- Function 3 -->
+          <div class="fn-input-row" data-input-id="input-fn-3">
+            <span class="fn-color-dot" style="background: #16a34a;"></span>
+            <label for="input-fn-3" class="fn-label" style="color: #16a34a;">f₃(x) =</label>
+            <input 
+              type="text" 
+              id="input-fn-3" 
+              value="" 
+              placeholder="ixtiyoriy 3-funksiya (masalan: cos(x))"
+              class="math-input"
+            />
+          </div>
+        </div>
+
+        <!-- VISUAL MATH KEYPAD -->
+        <div id="math-keypad" class="math-keypad-panel">
+          <div class="keypad-header">
+            <span style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted);">
+              Faol kiritish: <strong id="active-fn-indicator" style="color: var(--primary);">f₁(x)</strong>
+            </span>
+            <button id="keypad-clear-btn" class="key-btn key-action" style="font-size: 0.72rem; padding: 0.15rem 0.45rem;">
+              Tozalash (AC)
+            </button>
+          </div>
+
+          <div class="keypad-grid">
+            <!-- Row 1: Common variables & powers -->
+            <button class="key-btn key-fn" data-insert="x">x</button>
+            <button class="key-btn key-fn" data-insert="^2">x²</button>
+            <button class="key-btn key-fn" data-insert="^">xⁿ</button>
+            <button class="key-btn key-fn" data-insert="sqrt()">√</button>
+            <button class="key-btn key-fn" data-insert="sin()">sin</button>
+            <button class="key-btn key-fn" data-insert="cos()">cos</button>
+            <button class="key-btn key-fn" data-insert="tan()">tg</button>
+
+            <!-- Row 2: Advanced functions & brackets -->
+            <button class="key-btn key-fn" data-insert="ln()">ln</button>
+            <button class="key-btn key-fn" data-insert="abs()">|x|</button>
+            <button class="key-btn key-fn" data-insert="exp()">eˣ</button>
+            <button class="key-btn key-fn" data-insert="pi">π</button>
+            <button class="key-btn key-fn" data-insert="(">(</button>
+            <button class="key-btn key-fn" data-insert=")">)</button>
+            <button class="key-btn key-op" data-insert=" / ">÷</button>
+
+            <!-- Row 3: Numbers row 1 -->
+            <button class="key-btn key-num" data-insert="7">7</button>
+            <button class="key-btn key-num" data-insert="8">8</button>
+            <button class="key-btn key-num" data-insert="9">9</button>
+            <button class="key-btn key-op" data-insert=" * ">×</button>
+            <button class="key-btn key-op" data-insert=" - ">−</button>
+            <button class="key-btn key-op" data-insert=" + ">+</button>
+            <button class="key-btn key-action" id="keypad-backspace-btn">⌫</button>
+
+            <!-- Row 4: Numbers row 2 -->
+            <button class="key-btn key-num" data-insert="4">4</button>
+            <button class="key-btn key-num" data-insert="5">5</button>
+            <button class="key-btn key-num" data-insert="6">6</button>
+            <button class="key-btn key-num" data-insert="1">1</button>
+            <button class="key-btn key-num" data-insert="2">2</button>
+            <button class="key-btn key-num" data-insert="3">3</button>
+            <button class="key-btn key-num" data-insert="0">0</button>
+          </div>
+        </div>
+
+        <!-- Presets Row -->
+        <div class="presets-section">
+          <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">
+            Tayyor namunalar:
+          </span>
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+            <button class="preset-btn" data-fn1="x^2 - 4" data-fn2="2*x" data-fn3="">Parabola & To'g'ri chiziq</button>
+            <button class="preset-btn" data-fn1="sin(x)" data-fn2="cos(x)" data-fn3="">Trigonometriya</button>
+            <button class="preset-btn" data-fn1="x^3 - 3*x" data-fn2="3*x^2 - 3" data-fn3="">Kubik & Hosilasi</button>
+            <button class="preset-btn" data-fn1="1/x" data-fn2="" data-fn3="">Giperbola (1/x)</button>
+            <button class="preset-btn" data-fn1="exp(x)" data-fn2="ln(x)" data-fn3="">Eksponenta & Logarifm</button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions-footer">
+          <button id="reset-view-btn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.55rem 0.85rem;">
+            ⟲ Markazga qaytarish
+          </button>
+          <button id="plot-render-btn" class="btn btn-primary" style="font-size: 0.95rem; font-weight: 700; padding: 0.55rem 1.4rem;">
+            Grafikni chizish ➔
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: INTERACTIVE PLOT CANVAS -->
+      <div class="grafik-canvas-card">
+        <div class="canvas-header-bar">
+          <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600;">
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem; color: #2563eb;">
+              <span style="width: 10px; height: 10px; border-radius: 2px; background: #2563eb;"></span> f₁(x)
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem; color: #dc2626;">
+              <span style="width: 10px; height: 10px; border-radius: 2px; background: #dc2626;"></span> f₂(x)
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem; color: #16a34a;">
+              <span style="width: 10px; height: 10px; border-radius: 2px; background: #16a34a;"></span> f₃(x)
+            </span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <button id="open-fullscreen-btn" class="fullscreen-toggle-btn" type="button" title="Grafikni katta ekranda ochish">
+              <span style="font-size: 1rem;">⛶</span>
+              <span>Katta ekranda ochish</span>
+            </button>
+            <span class="desktop-only" style="font-size: 0.78rem; color: var(--text-subtle);">
+              🖱️ Surish & Zoom
+            </span>
+          </div>
+        </div>
+
+        <div id="main-plotter-canvas" class="plotter-canvas-viewport">
+          <div style="color: var(--text-muted); font-size: 0.95rem;">Grafik yuklanmoqda...</div>
+        </div>
+
+        <div class="canvas-tip-footer">
+          💡 <strong>Qulaylik:</strong> Sichqoncha g'ildirakchasi (scroll) orqali masshtabni kattalashtirib-kichraytirishingiz, bosib surish orqali ixtiyoriy chorakka o'tishingiz mumkin.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN GRAPH MODAL (KATTAGA CHIQARISH) -->
+  <div id="plotter-fullscreen-modal" class="fullscreen-modal" style="display: none;">
+    <div class="fullscreen-modal-container">
+      <div class="fullscreen-modal-header">
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.4rem;">📊</span>
+            <strong style="font-size: 1.15rem; color: var(--text-main);">Katta Ekrandagi Grafik Tahlili</strong>
+          </div>
+          <div id="modal-active-formulas" style="display: flex; gap: 0.5rem; flex-wrap: wrap; font-size: 0.85rem; font-weight: 600;"></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <button id="modal-reset-view-btn" class="btn btn-secondary" type="button" style="font-size: 0.82rem; padding: 0.45rem 0.85rem;">
+            ⟲ Markazga qaytarish
+          </button>
+          <button id="close-fullscreen-btn" class="btn btn-close-modal" type="button" title="Yopish (Esc)">
+            ✕ Yopish
+          </button>
+        </div>
+      </div>
+
+      <div id="fullscreen-plotter-canvas" class="fullscreen-canvas-viewport">
+        <!-- SVG rendered here in huge size -->
+      </div>
+
+      <div class="fullscreen-modal-footer">
+        <span>💡 <strong>Qulaylik:</strong> Sichqoncha g'ildirakchasi orqali masshtabni kattalashtiring, surish orqali egri chiziqlarni batafsil ko'ring. Chiqish uchun <strong>Esc</strong> yoki <strong>✕ Yopish</strong> tugmasini bosing.</span>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import functionPlot from 'function-plot';
+
+  function initPlotter() {
+    function getPlotFn(mod: any) {
+      if (typeof mod === 'function') return mod;
+      if (typeof mod?.default === 'function') return mod.default;
+      if (typeof mod?.default?.default === 'function') return mod.default.default;
+      return null;
+    }
+
+    const plotFn = getPlotFn(functionPlot);
+    const canvas = document.getElementById('main-plotter-canvas');
+    const input1 = document.getElementById('input-fn-1') as HTMLInputElement | null;
+    const input2 = document.getElementById('input-fn-2') as HTMLInputElement | null;
+    const input3 = document.getElementById('input-fn-3') as HTMLInputElement | null;
+    const renderBtn = document.getElementById('plot-render-btn');
+    const resetBtn = document.getElementById('reset-view-btn');
+    const errorBox = document.getElementById('graph-error-box');
+    const errorText = document.getElementById('graph-error-text');
+
+    const keypad = document.getElementById('math-keypad');
+    const toggleKeypadBtn = document.getElementById('toggle-keypad-btn');
+    const activeFnIndicator = document.getElementById('active-fn-indicator');
+    const clearBtn = document.getElementById('keypad-clear-btn');
+    const backspaceBtn = document.getElementById('keypad-backspace-btn');
+
+    if (!canvas || !input1) return;
+
+    // GUARD: If already initialized on this DOM, just re-render the plot without re-attaching keypad listeners
+    if ((canvas as any)._hasKeypadInitialized) {
+      if (typeof (canvas as any)._redrawPlot === 'function') {
+        (canvas as any)._redrawPlot(false);
+      }
+      return;
+    }
+    (canvas as any)._hasKeypadInitialized = true;
+
+    let activeInput: HTMLInputElement = input1;
+    let currentXDomain = [-8, 8];
+    let currentYDomain = [-6, 6];
+
+    // Helper: Normalize mathematical syntax for student usability
+    function normalizeFormula(raw: string): string {
+      let str = raw.trim();
+      if (!str) return '';
+
+      // Normalize unicode symbols
+      str = str.replace(/−/g, '-').replace(/×/g, '*').replace(/÷/g, '/');
+
+      // Common Uzbek/Russian trigonometric symbols: tg -> tan, ctg -> 1/tan
+      str = str.replace(/\btg\s*\(/g, 'tan(');
+      str = str.replace(/\bctg\s*\(([^)]+)\)/g, '(1/tan($1))');
+      str = str.replace(/\bln\s*\(/g, 'log(');
+
+      // e^x or e^(...) -> exp(...)
+      str = str.replace(/\be\^([a-zA-Z0-9]+)/g, 'exp($1)');
+      str = str.replace(/\be\^\(([^)]+)\)/g, 'exp($1)');
+
+      // Implicit multiplication: 2x -> 2*x, 5sin(x) -> 5*sin(x), 3(x+1) -> 3*(x+1)
+      str = str.replace(/(\d+)\s*([a-zA-Z(])/g, '$1 * $2');
+
+      // |x| -> abs(x)
+      str = str.replace(/\|([^|]+)\|/g, 'abs($1)');
+
+      return str;
+    }
+
+    // Track active input focus
+    function setActiveInput(target: HTMLInputElement) {
+      activeInput = target;
+      document.querySelectorAll('.fn-input-row').forEach(row => {
+        const rowInputId = row.getAttribute('data-input-id');
+        if (rowInputId === target.id) {
+          row.classList.add('active-input-row');
+        } else {
+          row.classList.remove('active-input-row');
+        }
+      });
+
+      if (activeFnIndicator) {
+        if (target.id === 'input-fn-1') activeFnIndicator.textContent = 'f₁(x)';
+        else if (target.id === 'input-fn-2') activeFnIndicator.textContent = 'f₂(x)';
+        else if (target.id === 'input-fn-3') activeFnIndicator.textContent = 'f₃(x)';
+      }
+    }
+
+    [input1, input2, input3].forEach(input => {
+      input?.addEventListener('focus', () => {
+        setActiveInput(input);
+      });
+    });
+
+    // Toggle keypad visibility
+    toggleKeypadBtn?.addEventListener('click', () => {
+      if (!keypad) return;
+      if (keypad.style.display === 'none') {
+        keypad.style.display = 'block';
+        toggleKeypadBtn.textContent = '⌨️ Klaviaturani yashirish';
+      } else {
+        keypad.style.display = 'none';
+        toggleKeypadBtn.textContent = '⌨️ Klaviaturani ko\'rsatish';
+      }
+    });
+
+    // Insert text at cursor in active input
+    function insertAtCursor(text: string) {
+      if (!activeInput) return;
+      const start = activeInput.selectionStart ?? activeInput.value.length;
+      const end = activeInput.selectionEnd ?? activeInput.value.length;
+      const val = activeInput.value;
+
+      activeInput.value = val.substring(0, start) + text + val.substring(end);
+      
+      let newCursor = start + text.length;
+      if (text.endsWith('()')) {
+        newCursor -= 1; // Put cursor between ( and )
+      }
+      activeInput.focus();
+      activeInput.setSelectionRange(newCursor, newCursor);
+    }
+
+    // Attach keypad buttons
+    document.querySelectorAll('.key-btn[data-insert]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const text = btn.getAttribute('data-insert');
+        if (text) insertAtCursor(text);
+      });
+    });
+
+    // Clear active input
+    clearBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (activeInput) {
+        activeInput.value = '';
+        activeInput.focus();
+      }
+    });
+
+    // Backspace active input
+    backspaceBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!activeInput) return;
+      const start = activeInput.selectionStart ?? 0;
+      const end = activeInput.selectionEnd ?? 0;
+      const val = activeInput.value;
+
+      if (start === end && start > 0) {
+        activeInput.value = val.substring(0, start - 1) + val.substring(end);
+        activeInput.setSelectionRange(start - 1, start - 1);
+      } else if (start !== end) {
+        activeInput.value = val.substring(0, start) + val.substring(end);
+        activeInput.setSelectionRange(start, start);
+      }
+      activeInput.focus();
+    });
+
+    function showError(msg: string) {
+      if (!errorBox || !errorText) return;
+      errorText.textContent = msg;
+      errorBox.style.display = 'block';
+    }
+
+    function hideError() {
+      if (!errorBox) return;
+      errorBox.style.display = 'none';
+    }
+
+    function renderPlot(shouldScroll: boolean = false) {
+      hideError();
+      if (!plotFn) {
+        showError("Grafik chizish kutubxonasi yuklanmadi. Sahifani qayta yangilang.");
+        return;
+      }
+
+      const rawFn1 = input1?.value.trim() || '';
+      const rawFn2 = input2?.value.trim() || '';
+      const rawFn3 = input3?.value.trim() || '';
+
+      if (!rawFn1 && !rawFn2 && !rawFn3) {
+        showError("Kamida bitta funksiya formulasini kiriting (masalan: x^2 - 4).");
+        return;
+      }
+
+      const fn1 = normalizeFormula(rawFn1);
+      const fn2 = normalizeFormula(rawFn2);
+      const fn3 = normalizeFormula(rawFn3);
+
+      const data: any[] = [];
+      if (fn1) {
+        data.push({ fn: fn1, color: '#2563eb', graphType: 'polyline' });
+      }
+      if (fn2) {
+        data.push({ fn: fn2, color: '#dc2626', graphType: 'polyline' });
+      }
+      if (fn3) {
+        data.push({ fn: fn3, color: '#16a34a', graphType: 'polyline' });
+      }
+
+      const width = canvas.clientWidth > 100 ? canvas.clientWidth : 650;
+      const height = Math.max(460, Math.min(window.innerHeight - 280, 560));
+
+      try {
+        canvas.innerHTML = '';
+        plotFn({
+          target: canvas,
+          width: width,
+          height: height,
+          grid: true,
+          xAxis: { domain: currentXDomain },
+          yAxis: { domain: currentYDomain },
+          data: data,
+          disableZoom: false
+        });
+
+        if (shouldScroll && window.innerWidth < 960) {
+          canvas.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      } catch (err: any) {
+        console.error('Grafik chizish xatosi:', err);
+        showError(`Funksiya formulasida xatolik bor! Iltimos, ifodani tekshiring (masalan: ko'paytirish uchun 2*x yoki daraja uchun x^2 shaklida yozing).`);
+      }
+    }
+
+    renderBtn?.addEventListener('click', () => renderPlot(true));
+    
+    [input1, input2, input3].forEach(input => {
+      input?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') renderPlot(true);
+      });
+    });
+
+    // Presets
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const el = btn as HTMLElement;
+        if (input1) input1.value = el.dataset.fn1 || '';
+        if (input2) input2.value = el.dataset.fn2 || '';
+        if (input3) input3.value = el.dataset.fn3 || '';
+        currentXDomain = [-8, 8];
+        currentYDomain = [-6, 6];
+        renderPlot(false);
+      });
+    });
+
+    // Reset view
+    resetBtn?.addEventListener('click', () => {
+      currentXDomain = [-8, 8];
+      currentYDomain = [-6, 6];
+      renderPlot(false);
+    });
+
+    // Fullscreen Modal Handling
+    const openModalBtn = document.getElementById('open-fullscreen-btn');
+    const closeModalBtn = document.getElementById('close-fullscreen-btn');
+    const modal = document.getElementById('plotter-fullscreen-modal');
+    const modalCanvas = document.getElementById('fullscreen-plotter-canvas');
+    const modalResetBtn = document.getElementById('modal-reset-view-btn');
+    const modalFormulasInfo = document.getElementById('modal-active-formulas');
+
+    function renderModalPlot() {
+      if (!modalCanvas || !plotFn) return;
+      const rawFn1 = input1?.value.trim() || '';
+      const rawFn2 = input2?.value.trim() || '';
+      const rawFn3 = input3?.value.trim() || '';
+
+      const data: any[] = [];
+      if (rawFn1) data.push({ fn: normalizeFormula(rawFn1), color: '#2563eb', graphType: 'polyline' });
+      if (rawFn2) data.push({ fn: normalizeFormula(rawFn2), color: '#dc2626', graphType: 'polyline' });
+      if (rawFn3) data.push({ fn: normalizeFormula(rawFn3), color: '#16a34a', graphType: 'polyline' });
+
+      if (modalFormulasInfo) {
+        modalFormulasInfo.innerHTML = `
+          ${rawFn1 ? `<span style="color: #2563eb; background: rgba(37,99,235,0.12); padding: 0.2rem 0.55rem; border-radius: 4px;">f₁(x) = ${rawFn1}</span>` : ''}
+          ${rawFn2 ? `<span style="color: #dc2626; background: rgba(220,38,38,0.12); padding: 0.2rem 0.55rem; border-radius: 4px;">f₂(x) = ${rawFn2}</span>` : ''}
+          ${rawFn3 ? `<span style="color: #16a34a; background: rgba(22,163,74,0.12); padding: 0.2rem 0.55rem; border-radius: 4px;">f₃(x) = ${rawFn3}</span>` : ''}
+        `;
+      }
+
+      const mWidth = modalCanvas.clientWidth > 100 ? modalCanvas.clientWidth : (window.innerWidth - 60);
+      const mHeight = modalCanvas.clientHeight > 100 ? modalCanvas.clientHeight : (window.innerHeight - 180);
+
+      try {
+        modalCanvas.innerHTML = '';
+        plotFn({
+          target: modalCanvas,
+          width: mWidth,
+          height: mHeight,
+          grid: true,
+          xAxis: { domain: currentXDomain },
+          yAxis: { domain: currentYDomain },
+          data: data,
+          disableZoom: false
+        });
+      } catch (e) {
+        console.error('Modal plot render error:', e);
+      }
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        renderModalPlot();
+      }, 50);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      renderPlot(false);
+    }
+
+    openModalBtn?.addEventListener('click', openModal);
+    closeModalBtn?.addEventListener('click', closeModal);
+    modalResetBtn?.addEventListener('click', () => {
+      currentXDomain = [-10, 10];
+      currentYDomain = [-8, 8];
+      renderModalPlot();
+    });
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.style.display !== 'none') {
+        closeModal();
+      }
+    });
+
+    // Expose redraw functions for window resize
+    (canvas as any)._redrawPlot = renderPlot;
+    (canvas as any)._redrawModalPlot = renderModalPlot;
+
+    // Initial render
+    renderPlot(false);
+  }
+
+  // Support Astro View Transitions & initial load
+  initPlotter();
+  document.addEventListener('astro:page-load', initPlotter);
+  window.addEventListener('resize', () => {
+    const canvas = document.getElementById('main-plotter-canvas');
+    if (canvas && typeof (canvas as any)._redrawPlot === 'function') {
+      (canvas as any)._redrawPlot(false);
+    }
+    const modal = document.getElementById('plotter-fullscreen-modal');
+    if (modal && modal.style.display !== 'none' && canvas && typeof (canvas as any)._redrawModalPlot === 'function') {
+      (canvas as any)._redrawModalPlot();
+    }
+  });
+</script>
+
+<style>
+  .grafik-dashboard {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+  }
+
+  .grafik-header {
+    margin-bottom: 1.5rem;
+  }
+
+  /* 2-Column Responsive Layout */
+  .grafik-layout-grid {
+    display: grid;
+    grid-template-columns: 440px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .grafik-layout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Left Card: Controls */
+  .grafik-controls-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .controls-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .fn-inputs-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .fn-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bg-muted);
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.15s ease;
+  }
+
+  .fn-input-row.active-input-row {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.06);
+  }
+
+  .fn-color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .fn-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    width: 60px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .math-input {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.45rem 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .math-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Keypad styles */
+  .math-keypad-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+  }
+
+  .keypad-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.35rem;
+  }
+
+  .key-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.25rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s ease;
+  }
+
+  .key-btn:hover {
+    background: var(--bg-muted);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+  }
+
+  .key-btn:active {
+    transform: translateY(1px);
+  }
+
+  .key-fn {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.06);
+    font-family: serif;
+    font-style: italic;
+  }
+
+  .key-op {
+    background: var(--bg-muted);
+    font-weight: 700;
+  }
+
+  .key-action {
+    background: #fee2e2;
+    color: #b91c1c;
+    border-color: #fca5a5;
+  }
+
+  .presets-section {
+    border-top: 1px dashed var(--border-color);
+    padding-top: 0.75rem;
+  }
+
+  .preset-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: all 0.15s ease;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.08);
+  }
+
+  .actions-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.85rem;
+  }
+
+  /* Right Card: Canvas */
+  .grafik-canvas-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .canvas-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .plotter-canvas-viewport {
+    width: 100%;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+  }
+
+  .canvas-tip-footer {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* Fullscreen Toggle Button */
+  .fullscreen-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .fullscreen-toggle-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  }
+
+  /* Fullscreen Graph Modal Overlay */
+  .fullscreen-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 15, 29, 0.88);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem;
+    animation: fadeInModal 0.18s ease-out;
+  }
+
+  @keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .fullscreen-modal-container {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    max-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+  }
+
+  .fullscreen-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-close-modal {
+    background: #dc2626 !important;
+    border-color: #dc2626 !important;
+    color: white !important;
+    font-size: 0.85rem;
+    padding: 0.45rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+  .btn-close-modal:hover {
+    background: #b91c1c !important;
+    transform: translateY(-1px);
+  }
+
+  .fullscreen-canvas-viewport {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-body);
+  }
+
+  .fullscreen-modal-footer {
+    padding: 0.65rem 1.25rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+</style>

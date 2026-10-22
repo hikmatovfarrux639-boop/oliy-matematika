@@ -1,0 +1,139 @@
+---
+title: "Tekislikdagi to'g'ri chiziq va uning tenglamalari"
+module: "vektorlar-geometriya"
+order: 4
+description: "To'g'ri chiziqning umumiy, burchak koeffitsiyentli va kanonik tenglamalari, ikki to'g'ri chiziq orasidagi burchak, parallellik va masofa formulasi."
+---
+
+## Kirish: Chiziqli bog'lanishlarning geometrik qiyofasi
+
+Algebra darslarida chiziqli tenglama deb atalgan $ax + by = c$ ifoda geometrik jihatdan tekislikdagi **to'g'ri chiziqni** ifodalaydi. To'g'ri chiziq — eng sodda va eng muhim geometrik obyektdir. Oliy matematikada u teginma chiziqlar, chekli elementlar usuli va chiziqli dasturlash (iqtisodiy optimallashtirish) modellarida markaziy o'rin tutadi.
+
+---
+
+## 1. To'g'ri chiziqning asosiy tenglamalari
+
+### 1. To'g'ri chiziqning umumiy tenglamasi
+$$
+Ax + By + C = 0
+$$
+bu yerda $A$ va $B$ bir vaqtda nolga teng bo'lmagan sonlar.
+- Ushbu to'g'ri chiziqqa **perpendikulyar bo'lgan normal vektor**:
+  $$
+  \vec{n} = (A, B)
+  $$
+
+### 2. Burchak koeffitsiyentli tenglama
+$$
+y = kx + b
+$$
+- $k = \operatorname{tg} \alpha$ — **burchak koeffitsiyenti** (to'g'ri chiziqning $Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchagi tangensi);
+- $b$ — to'g'ri chiziqning $Oy$ o'qidan kesib olgan kesmasi ($x = 0 \implies y = b$).
+
+Agar umumiy tenglamadan $y$ ni ajratsak: $y = -\frac{A}{B}x - \frac{C}{B}$, demak $k = -\frac{A}{B}$.
+
+### 3. Berilgan nuqtadan o'tuvchi to'g'ri chiziq tenglamasi
+Agar to'g'ri chiziq $M_0(x_0, y_0)$ nuqtadan o'tsa va burchak koeffitsiyenti $k$ bo'lsa:
+$$
+y - y_0 = k(x - x_0)
+$$
+
+### 4. Kanonik tenglama
+Agar to'g'ri chiziq $M_0(x_0, y_0)$ nuqtadan o'tsa va unga parallel bo'lgan **yo'naltiruvchi vektor** $\vec{s} = (p, q)$ ma'lum bo'lsa:
+$$
+\frac{x - x_0}{p} = \frac{y - y_0}{q}
+$$
+
+### 5. Ikki berilgan nuqtadan o'tuvchi to'g'ri chiziq
+$M_1(x_1, y_1)$ va $M_2(x_2, y_2)$ nuqtalar orqali o'tuvchi chiziq:
+$$
+\frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1}
+$$
+
+---
+
+## 2. Ikki to'g'ri chiziqning o'zaro joylashuvi
+
+Ikkita to'g'ri chiziq berilgan bo'lsin:
+$L_1: A_1 x + B_1 y + C_1 = 0 \quad (y = k_1 x + b_1)$
+$L_2: A_2 x + B_2 y + C_2 = 0 \quad (y = k_2 x + b_2)$
+
+### 1. Ular orasidagi burchak:
+$$
+\cos \varphi = \frac{\lvert A_1 A_2 + B_1 B_2 \rvert}{\sqrt{A_1^2 + B_1^2} \cdot \sqrt{A_2^2 + B_2^2}}
+$$
+yoki burchak koeffitsiyentlari orqali:
+$$
+\operatorname{tg} \varphi = \left\lvert \frac{k_2 - k_1}{1 + k_1 k_2} \right\rvert
+$$
+
+### 2. Parallellik sharti ($L_1 \parallel L_2$):
+Normal vektorlari kollinear yoki burchak koeffitsiyentlari teng bo'ladi:
+$$
+\frac{A_1}{A_2} = \frac{B_1}{B_2} \iff k_1 = k_2
+$$
+
+### 3. Perpendikulyarlik sharti ($L_1 \perp L_2$):
+Normal vektorlar skalyar ko'paytmasi nolga teng bo'ladi:
+$$
+A_1 A_2 + B_1 B_2 = 0 \iff k_1 \cdot k_2 = -1 \quad \left(k_2 = -\frac{1}{k_1}\right)
+$$
+
+---
+
+## 3. Nuqtadan to'g'ri chiziqqacha bo'lgan masofa
+
+> **Formula:** $M_0(x_0, y_0)$ nuqtadan $Ax + By + C = 0$ to'g'ri chiziqqacha bo'lgan eng qisqa masofa $d$:
+>
+> $$
+> d = \frac{\lvert A x_0 + B y_0 + C \rvert}{\sqrt{A^2 + B^2}}
+> $$
+
+---
+
+## Amaliy namunaviy misollar
+
+### 1-misol: Ikki nuqtadan o'tuvchi to'g'ri chiziq
+$A(1, 3)$ va $B(4, -3)$ nuqtalardan o'tuvchi to'g'ri chiziqning umumiy va burchak koeffitsiyentli tenglamasini yozing.
+
+**Yechilishi:**
+Ikki nuqta formulasiga qo'yamiz:
+$$
+\frac{x - 1}{4 - 1} = \frac{y - 3}{-3 - 3} \implies \frac{x - 1}{3} = \frac{y - 3}{-6}
+$$
+Proporsiyani qisqartirib ko'paytiramiz:
+$$
+-2(x - 1) = y - 3 \implies -2x + 2 = y - 3 \implies 2x + y - 5 = 0
+$$
+- Umumiy tenglama: $2x + y - 5 = 0$.
+- Burchak koeffitsiyentli: $y = -2x + 5$ (bu yerda $k = -2, b = 5$).
+
+---
+
+### 2-misol: Masofani topish
+$M(2, -1)$ nuqtadan $3x - 4y + 5 = 0$ to'g'ri chiziqqacha bo'lgan masofani hisoblang.
+
+**Yechilishi:**
+Formulaga $x_0 = 2, y_0 = -1, A = 3, B = -4, C = 5$ qiymatlarni qo'yamiz:
+$$
+d = \frac{\lvert 3(2) - 4(-1) + 5 \rvert}{\sqrt{3^2 + (-4)^2}} = \frac{\lvert 6 + 4 + 5 \rvert}{\sqrt{9 + 16}} = \frac{15}{\sqrt{25}} = \frac{15}{5} = 3
+$$
+
+**Javob:** $d = 3$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $4x - 2y + 7 = 0$ to'g'ri chiziqning burchak koeffitsiyenti $k$ nimaga teng?
+2. $y = 3x - 1$ to'g'ri chiziqqa perpendikulyar bo'lgan to'g'ri chiziqning burchak koeffitsiyentini toping.
+3. Koordinatalar boshidan ($0, 0$) $5x + 12y - 26 = 0$ chiziqqacha masofani hisoblang.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $2y = 4x + 7 \implies y = 2x + 3.5 \implies k = 2$.</p>
+    <p><strong>2-masala:</strong> $k_\perp = -\frac{1}{k} = -\frac{1}{3}$.</p>
+    <p><strong>3-masala:</strong> $d = \frac{|0 + 0 - 26|}{\sqrt{25 + 144}} = \frac{26}{13} = 2$.</p>
+  </div>
+</details>

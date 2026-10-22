@@ -1,0 +1,1232 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="AI Masala Yechuvchi va Raqamli Repetitor — Oliy Matematika" 
+  description="Oliy matematika bo'yicha har qanday misol yoki masalani yozing yoki rasmini yuklang — Gemini AI va analitik dvigatel uni qadamma-qadam tushuntirib, KaTeX formulalari bilan yechib beradi."
+>
+  <div class="ai-solver-hero">
+    <div class="ai-hero-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <span class="badge badge-active" style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <span class="pulse-dot"></span> Sun'iy Intellekt va Analitik Yechuvchi
+        </span>
+        <span style="font-size: 0.85rem; color: var(--text-subtle);">
+          Gemini Multimodal + MathJS Analitik Dvigatel
+        </span>
+      </div>
+
+      <button id="api-key-settings-btn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">
+        ⚙️ Gemini API Kaliti <span id="api-key-status" class="key-status-dot not-set" title="Kalit belgilanmagan"></span>
+      </button>
+    </div>
+
+    <h1 style="font-size: 2.2rem; font-weight: 800; margin: 0.75rem 0 0.5rem; color: var(--text-main);">
+      🤖 AI Masala Yechuvchi va Repetitor
+    </h1>
+    <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 760px; line-height: 1.6;">
+      Oliy matematika bo'yicha ixtiyoriy misolni yozing yoki daftardagi <strong>rasmini suratga olib yuklang</strong>. Platforma uni qadamma-qadam tahlil qilib, qaysi qoida va formulalar qo'llanilganini batafsil tushuntirib beradi.
+    </p>
+
+    <!-- Error message alert -->
+    <div id="ai-error-box" style="display: none; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; padding: 0.85rem 1.25rem; border-radius: var(--radius-md); margin-top: 1rem; font-size: 0.95rem;">
+      <span id="ai-error-text">Xatolik yuz berdi.</span>
+    </div>
+
+    <!-- MAIN INPUT CARD -->
+    <div class="solver-input-card">
+      <div class="input-controls-top">
+        <label for="problem-input" style="font-weight: 700; color: var(--text-main); font-size: 0.95rem;">
+          Masala shartini kiriting yoki quyidagi namunalardan tanlang:
+        </label>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <label class="toggle-switch-label" title="Internetdagi ilmiy maqola va bazalardan qidirish">
+            <input type="checkbox" id="google-search-toggle" />
+            <span class="toggle-text">🌐 Google Qidiruv (Grounding)</span>
+          </label>
+        </div>
+      </div>
+
+      <textarea 
+        id="problem-input" 
+        rows="4" 
+        placeholder="Masalan: x + 1 = 3 yoki lim (x->0) (1 - cos(4*x)) / (x^2) yoki y'' - 5y' + 6y = 0 yoki [[2, 1], [3, 4]]..."
+        class="problem-textarea"
+      ></textarea>
+
+      <!-- Quick Math Symbols Toolbar -->
+      <div class="math-quick-bar">
+        <span style="font-size: 0.75rem; color: var(--text-subtle); margin-right: 0.25rem;">Tezkor belgilar:</span>
+        <button type="button" class="quick-sym" data-insert="^2">x²</button>
+        <button type="button" class="quick-sym" data-insert={'\\sqrt{}'}>√</button>
+        <button type="button" class="quick-sym" data-insert={'\\lim_{x \\to 0}'}>lim</button>
+        <button type="button" class="quick-sym" data-insert={'\\int '}>∫</button>
+        <button type="button" class="quick-sym" data-insert={'\\frac{dy}{dx}'}>dy/dx</button>
+        <button type="button" class="quick-sym" data-insert={'\\sum_{n=1}^\\infty'}>∑</button>
+        <button type="button" class="quick-sym" data-insert={'\\infty'}>∞</button>
+        <button type="button" class="quick-sym" data-insert={'\\pi'}>π</button>
+        <button type="button" class="quick-sym" data-insert={'\\le'}>≤</button>
+        <button type="button" class="quick-sym" data-insert={'\\ge'}>≥</button>
+        <button type="button" class="quick-sym" data-insert="=">=</button>
+        <button type="button" class="quick-sym" data-insert="+">+</button>
+        <button type="button" class="quick-sym" data-insert="-">−</button>
+      </div>
+
+      <!-- SEPARATED FILE INPUTS (NO BUBBLING ISSUES) -->
+      <input type="file" id="camera-file-input" accept="image/*" capture="environment" style="display: none;" />
+      <input type="file" id="gallery-file-input" accept="image/*" style="display: none;" />
+
+      <!-- PHOTO & CAMERA SECTION -->
+      <div class="image-upload-wrapper">
+        <div class="upload-options-bar">
+          <button type="button" id="camera-btn" class="photo-btn camera-btn">
+            <span class="btn-icon">📸</span>
+            <div class="btn-text-group">
+              <strong>Kameradan suratga olish</strong>
+              <small>Daftar yoki kitobingizni rasmga oling</small>
+            </div>
+          </button>
+
+          <button type="button" id="gallery-btn" class="photo-btn gallery-btn">
+            <span class="btn-icon">📁</span>
+            <div class="btn-text-group">
+              <strong>Fayl yoki galereyadan tanlash</strong>
+              <small>Qurilmadagi mavjud rasmni yuklang</small>
+            </div>
+          </button>
+        </div>
+
+        <!-- Drag & drop / Clipboard paste area -->
+        <div id="drop-zone" class="drop-zone">
+          <div class="drop-zone-content">
+            <span style="font-size: 1.25rem;">📋</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">
+              Yoki rasmni bu yerga tortib tashlang / klaviaturadan <strong>Ctrl + V</strong> bosing
+            </span>
+          </div>
+        </div>
+
+        <!-- Image Preview (hidden by default) -->
+        <div id="image-preview-container" class="image-preview-container" style="display: none;">
+          <img id="image-preview" src="" alt="Yuklangan misol rasmi" />
+          <div class="image-preview-info">
+            <div style="display: flex; flex-direction: column;">
+              <span id="image-name" style="font-size: 0.85rem; color: var(--text-main); font-weight: 700;">rasm.jpg</span>
+              <span style="font-size: 0.75rem; color: #10b981; font-weight: 600;">🟢 Rasm tayyor (AI Multimodal tahlili uchun)</span>
+            </div>
+            <button type="button" id="remove-image-btn" class="btn-remove-image" title="Rasmni o'chirish">
+              ✕ O'chirish
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="input-actions-bottom">
+        <button type="button" id="clear-problem-btn" class="btn btn-secondary" style="font-size: 0.9rem;">
+          🧹 Tozalash
+        </button>
+        <button type="button" id="solve-problem-btn" class="btn btn-primary btn-solve" style="font-size: 1rem; padding: 0.75rem 1.85rem;">
+          <span id="solve-btn-text">🚀 Masalani yechish</span>
+          <span id="solve-btn-spinner" class="spinner" style="display: none;"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PRESETS: Quick 1-Click Samples -->
+    <div class="presets-section">
+      <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.65rem; display: block;">
+        ⚡ Tayyor namunaviy masalalarni 1 bosishda sinab ko'ring:
+      </span>
+      <div class="presets-grid">
+        <button type="button" class="preset-card" data-problem={'x + 1 = 3'}>
+          <span class="preset-tag">1-modul: Chiziqli tenglama</span>
+          <span class="preset-math">{'x + 1 = 3'}</span>
+        </button>
+        <button type="button" class="preset-card" data-problem={'x^2 - 5x + 6 = 0'}>
+          <span class="preset-tag">1-modul: Kvadrat tenglama</span>
+          <span class="preset-math">{'x^2 - 5x + 6 = 0'}</span>
+        </button>
+        <button type="button" class="preset-card" data-problem={'Limitni hisoblang: lim_{x \\to 0} \\frac{1 - \\cos(4x)}{x^2}'}>
+          <span class="preset-tag">5-modul: Limit</span>
+          <span class="preset-math">{'\\lim_{x \\to 0} \\frac{1 - \\cos 4x}{x^2}'}</span>
+        </button>
+        <button type="button" class="preset-card" data-problem={'Integralni bo\'laklab integrallash usuli bilan hisoblang: \\int x \\cdot \\cos(2x) \\, dx'}>
+          <span class="preset-tag">8-modul: Integral</span>
+          <span class="preset-math">{'\\int x \\cos(2x) \\, dx'}</span>
+        </button>
+        <button type="button" class="preset-card" data-problem={'2-tartibli differensial tenglamaning umumiy yechimini toping: y\'\' - 5y\' + 6y = 0'}>
+          <span class="preset-tag">12-modul: Diff. tenglama</span>
+          <span class="preset-math">{'y\'\' - 5y\' + 6y = 0'}</span>
+        </button>
+        <button type="button" class="preset-card" data-problem={'Matritsa determinantini hisoblang: [[2, 1, -1], [3, 0, 2], [1, -2, 1]]'}>
+          <span class="preset-tag">2-modul: Matritsa</span>
+          <span class="preset-math">{'\\det \\begin{pmatrix} 2 & 1 & -1 \\\\ 3 & 0 & 2 \\\\ 1 & -2 & 1 \\end{pmatrix}'}</span>
+        </button>
+        <button type="button" class="preset-card" data-problem={'Muavr formulasi yordamida hisoblang: (1 + i\\sqrt{3})^{12}'}>
+          <span class="preset-tag">4-modul: Kompleks son</span>
+          <span class="preset-math">{'(1 + i\\sqrt{3})^{12}'}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION OUTPUT CONTAINER -->
+  <div id="solution-container" class="solution-container" style="display: none;">
+    <div class="solution-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 1.5rem;">📝</span>
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 0;">
+          Qadamma-qadam Yechim
+        </h2>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button type="button" id="copy-solution-btn" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.65rem;">
+          📋 Nusxalash
+        </button>
+        <button type="button" id="print-solution-btn" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.65rem;">
+          🖨️ Chop etish (PDF)
+        </button>
+      </div>
+    </div>
+
+    <!-- Grounding Web Sources (if used) -->
+    <div id="grounding-sources" style="display: none; margin-bottom: 1rem; padding: 0.75rem 1rem; background: var(--bg-muted); border-radius: var(--radius-md); font-size: 0.85rem; border: 1px solid var(--border-color);">
+      <span style="font-weight: 700; color: var(--primary);">🌐 Google Qidiruv Manbalari:</span>
+      <ul id="sources-list" style="margin: 0.5rem 0 0 1.25rem; padding: 0; color: var(--text-muted);"></ul>
+    </div>
+
+    <!-- Solution Body (Rendered with KaTeX and Markdown) -->
+    <div id="solution-body" class="solution-body markdown-body">
+      <!-- Generated solution goes here -->
+    </div>
+  </div>
+
+  <!-- MODAL: WEBCAM LIVE CAPTURE -->
+  <div id="webcam-modal-backdrop" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-main);">
+          📸 Kamera orqali misolni suratga olish
+        </h3>
+        <button type="button" id="webcam-close-btn" class="btn-close" aria-label="Yopish">✕</button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Daftar yoki kitobdagi misolni kamera ro'parasiga to'g'rilab, "Suratga olish" tugmasini bosing:
+        </p>
+        <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; background: #0f172a; aspect-ratio: 4/3; max-height: 340px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+          <video id="webcam-video" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+          <canvas id="webcam-canvas" style="display: none;"></canvas>
+          <div id="webcam-loading-spinner" style="position: absolute; color: white; font-size: 0.9rem;">
+            Kamera ishga tushirilmoqda...
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="webcam-cancel-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
+          Bekor qilish
+        </button>
+        <button type="button" id="webcam-snap-btn" class="btn btn-primary" style="font-size: 0.95rem; font-weight: 700; padding: 0.5rem 1.5rem;">
+          📸 Suratga olish
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: API KEY CONFIGURATION -->
+  <div id="api-modal-backdrop" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text-main);">
+          ⚙️ Gemini API Kaliti Sozlamalari
+        </h3>
+        <button type="button" id="modal-close-btn" class="btn-close" aria-label="Yopish">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+          Standart algebraik tenglamalar (chiziqli, kvadrat, hosilalar, determinantlar) <strong>100% oflayn va tekinga</strong> yechiladi. Qo'lyozma rasm va darslik fotosuratlarini sun'iy intellekt orqali tahlil qilish uchun Google Gemini bepul API kalitini kiritishingiz mumkin.
+        </p>
+
+        <div style="background: var(--bg-muted); padding: 0.75rem 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; font-size: 0.85rem; border: 1px solid var(--border-color);">
+          <strong>1 daqiqada bepul kalit olish:</strong>
+          <ol style="margin: 0.35rem 0 0 1.25rem; padding: 0;">
+            <li><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">aistudio.google.com/app/apikey</a> saytiga kiring.</li>
+            <li>Google akkauntingiz bilan kiring va <strong>"Create API key"</strong> tugmasini bosing.</li>
+            <li>Hosil bo'lgan kalitni nusxalab, quyidagi maydonga qo'ying.</li>
+          </ol>
+        </div>
+
+        <label for="api-key-input" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.35rem; color: var(--text-main);">
+          Sizning Gemini API Kalitingiz:
+        </label>
+        <input 
+          type="password" 
+          id="api-key-input" 
+          placeholder="AIzaSy..." 
+          style="width: 100%; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 0.5rem;"
+        />
+        <div style="font-size: 0.75rem; color: var(--text-subtle);">
+          🔒 Kalitingiz faqat o'zingizning brauzeringiz xotirasida (localStorage) saqlanadi va begonalarga yuborilmaydi.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="remove-key-btn" class="btn btn-secondary" style="font-size: 0.85rem; color: #dc2626;">
+          Kalitni o'chirish
+        </button>
+        <button type="button" id="save-key-btn" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.25rem;">
+          Saqlash
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .ai-solver-hero {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .ai-hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulseAnimation 1.8s infinite;
+  }
+
+  @keyframes pulseAnimation {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
+  .key-status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-left: 0.25rem;
+  }
+  .key-status-dot.set { background: #10b981; }
+  .key-status-dot.not-set { background: #f59e0b; }
+
+  /* Input Card */
+  .solver-input-card {
+    margin-top: 1.5rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+
+  .input-controls-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .toggle-switch-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .toggle-switch-label input {
+    cursor: pointer;
+  }
+
+  .problem-textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .problem-textarea:focus {
+    border-color: var(--primary);
+  }
+
+  /* Math Quick Bar */
+  .math-quick-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+  }
+  .quick-sym {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    transition: all 0.1s ease;
+  }
+  .quick-sym:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  /* Photo & Camera Section */
+  .image-upload-wrapper {
+    margin-top: 1rem;
+  }
+  .upload-options-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .photo-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease;
+  }
+  .photo-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    transform: translateY(-1px);
+  }
+  .camera-btn {
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+  .btn-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .btn-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .btn-text-group strong {
+    font-size: 0.9rem;
+    color: var(--text-main);
+  }
+  .btn-text-group small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .drop-zone {
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 1rem;
+    text-align: center;
+    background: var(--bg-surface);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .drop-zone:hover, .drop-zone.dragover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  .drop-zone-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .image-preview-container {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.85rem;
+  }
+  .image-preview-container img {
+    max-height: 70px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    object-fit: cover;
+  }
+  .image-preview-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .btn-remove-image {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn-remove-image:hover {
+    background: #fee2e2;
+  }
+
+  /* Actions */
+  .input-actions-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+
+  .btn-solve {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+  }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Presets */
+  .presets-section {
+    margin-top: 1.5rem;
+  }
+  .presets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.65rem;
+  }
+  .preset-card {
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .preset-card:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    transform: translateY(-1px);
+  }
+  .preset-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .preset-math {
+    font-size: 0.9rem;
+    color: var(--text-main);
+  }
+
+  /* Solution Container */
+  .solution-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    animation: fadeIn 0.25s ease-out;
+  }
+  .solution-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.25rem;
+  }
+
+  .solution-body {
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: var(--text-main);
+  }
+  .solution-body :global(h2), .solution-body :global(h3) {
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .solution-body :global(.step-box) {
+    background: var(--bg-muted);
+    border-left: 4px solid var(--primary);
+    padding: 0.85rem 1.25rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin: 1rem 0;
+  }
+  .solution-body :global(.answer-box) {
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid #10b981;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin: 1.25rem 0;
+    font-size: 1.15rem;
+  }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.15s ease-out;
+  }
+  .modal-dialog {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .modal-body {
+    padding: 1.25rem 1.5rem;
+  }
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: var(--bg-muted);
+    border-top: 1px solid var(--border-color);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media print {
+    .ai-solver-hero, .presets-section, .solution-header button {
+      display: none !important;
+    }
+    .solution-container {
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+  }
+</style>
+
+<script>
+  import katex from 'katex';
+  import { solveLocally } from '../utils/localSolver';
+
+  function setupAiSolver() {
+    const input = document.getElementById('problem-input') as HTMLTextAreaElement | null;
+    const solveBtn = document.getElementById('solve-problem-btn');
+    const solveBtnText = document.getElementById('solve-btn-text');
+    const solveBtnSpinner = document.getElementById('solve-btn-spinner');
+    const clearBtn = document.getElementById('clear-problem-btn');
+    const errorBox = document.getElementById('ai-error-box');
+    const errorText = document.getElementById('ai-error-text');
+
+    const searchToggle = document.getElementById('google-search-toggle') as HTMLInputElement | null;
+    const dropZone = document.getElementById('drop-zone');
+    const cameraInput = document.getElementById('camera-file-input') as HTMLInputElement | null;
+    const galleryInput = document.getElementById('gallery-file-input') as HTMLInputElement | null;
+    const cameraBtn = document.getElementById('camera-btn');
+    const galleryBtn = document.getElementById('gallery-btn');
+    const previewContainer = document.getElementById('image-preview-container');
+    const imagePreview = document.getElementById('image-preview') as HTMLImageElement | null;
+    const imageName = document.getElementById('image-name');
+    const removeImageBtn = document.getElementById('remove-image-btn');
+
+    // Webcam Modal Elements
+    const webcamModal = document.getElementById('webcam-modal-backdrop');
+    const webcamVideo = document.getElementById('webcam-video') as HTMLVideoElement | null;
+    const webcamCanvas = document.getElementById('webcam-canvas') as HTMLCanvasElement | null;
+    const webcamCloseBtn = document.getElementById('webcam-close-btn');
+    const webcamCancelBtn = document.getElementById('webcam-cancel-btn');
+    const webcamSnapBtn = document.getElementById('webcam-snap-btn');
+    const webcamLoading = document.getElementById('webcam-loading-spinner');
+    let webcamStream: MediaStream | null = null;
+
+    const solutionContainer = document.getElementById('solution-container');
+    const solutionBody = document.getElementById('solution-body');
+    const copySolutionBtn = document.getElementById('copy-solution-btn');
+    const printSolutionBtn = document.getElementById('print-solution-btn');
+    const groundingContainer = document.getElementById('grounding-sources');
+    const sourcesList = document.getElementById('sources-list');
+
+    // API Key Modal Elements
+    const apiKeyModal = document.getElementById('api-modal-backdrop');
+    const apiKeySettingsBtn = document.getElementById('api-key-settings-btn');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const apiKeyInput = document.getElementById('api-key-input') as HTMLInputElement | null;
+    const saveKeyBtn = document.getElementById('save-key-btn');
+    const removeKeyBtn = document.getElementById('remove-key-btn');
+    const apiKeyStatus = document.getElementById('api-key-status');
+
+    if (!input || !solveBtn) return;
+
+    if ((input as any)._hasAiSolverInitialized) return;
+    (input as any)._hasAiSolverInitialized = true;
+
+    let selectedImageBase64: string | null = null;
+    let selectedImageMime: string | null = null;
+    let lastRawSolutionText = "";
+
+    // 0. Render KaTeX on Preset formula labels
+    document.querySelectorAll('.preset-math').forEach(el => {
+      const txt = (el.textContent || '').trim();
+      if (!txt) return;
+      try {
+        const clean = txt.replace(/^\$+|\$+$/g, '');
+        katex.render(clean, el as HTMLElement, { throwOnError: false, displayMode: false });
+      } catch {
+        // Fallback to text
+      }
+    });
+
+    // 1. API Key status check
+    function updateKeyStatus() {
+      const key = localStorage.getItem('gemini_user_api_key');
+      if (key && key.trim()) {
+        apiKeyStatus?.classList.remove('not-set');
+        apiKeyStatus?.classList.add('set');
+        if (apiKeyStatus) apiKeyStatus.title = "Gemini API kaliti o'rnatilgan";
+      } else {
+        apiKeyStatus?.classList.remove('set');
+        apiKeyStatus?.classList.add('not-set');
+        if (apiKeyStatus) apiKeyStatus.title = "Gemini API kaliti o'rnatilmagan (Bosing)";
+      }
+    }
+    updateKeyStatus();
+
+    // Modal Events
+    apiKeySettingsBtn?.addEventListener('click', () => {
+      if (!apiKeyModal || !apiKeyInput) return;
+      apiKeyInput.value = localStorage.getItem('gemini_user_api_key') || '';
+      apiKeyModal.style.display = 'flex';
+      apiKeyInput.focus();
+    });
+
+    modalCloseBtn?.addEventListener('click', () => {
+      if (apiKeyModal) apiKeyModal.style.display = 'none';
+    });
+
+    apiKeyModal?.addEventListener('click', (e) => {
+      if (e.target === apiKeyModal) apiKeyModal.style.display = 'none';
+    });
+
+    saveKeyBtn?.addEventListener('click', () => {
+      const key = apiKeyInput?.value.trim() || '';
+      if (key) {
+        localStorage.setItem('gemini_user_api_key', key);
+      } else {
+        localStorage.removeItem('gemini_user_api_key');
+      }
+      updateKeyStatus();
+      if (apiKeyModal) apiKeyModal.style.display = 'none';
+    });
+
+    removeKeyBtn?.addEventListener('click', () => {
+      localStorage.removeItem('gemini_user_api_key');
+      if (apiKeyInput) apiKeyInput.value = '';
+      updateKeyStatus();
+      if (apiKeyModal) apiKeyModal.style.display = 'none';
+    });
+
+    // 2. Quick Symbol Buttons
+    document.querySelectorAll('.quick-sym').forEach(btn => {
+      if ((btn as any)._hasQuickSym) return;
+      (btn as any)._hasQuickSym = true;
+      btn.addEventListener('click', () => {
+        const el = btn as HTMLElement;
+        const sym = el.dataset.insert || '';
+        const start = input.selectionStart ?? input.value.length;
+        const end = input.selectionEnd ?? input.value.length;
+        const text = input.value;
+        input.value = text.substring(0, start) + sym + text.substring(end);
+        input.setSelectionRange(start + sym.length, start + sym.length);
+        input.focus();
+      });
+    });
+
+    // 3. Presets 1-Click
+    document.querySelectorAll('.preset-card').forEach(btn => {
+      if ((btn as any)._hasPresetCard) return;
+      (btn as any)._hasPresetCard = true;
+      btn.addEventListener('click', () => {
+        const el = btn as HTMLElement;
+        const prob = el.dataset.problem || '';
+        input.value = prob;
+        input.focus();
+        handleSolve();
+      });
+    });
+
+    // 4. File and Photo Uploading
+    function handleFile(file: File) {
+      if (!file.type.startsWith('image/')) {
+        showError("Faqat rasm fayllarini (JPG, PNG, WebP) yuklash mumkin.");
+        return;
+      }
+      hideError();
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        selectedImageBase64 = result.split(',')[1];
+        selectedImageMime = file.type;
+
+        if (imagePreview && previewContainer && imageName) {
+          imagePreview.src = result;
+          const sizeKb = Math.round(file.size / 1024);
+          imageName.textContent = `${file.name} (${sizeKb} KB)`;
+          previewContainer.style.display = 'flex';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Direct Camera and File Triggers
+    cameraBtn?.addEventListener('click', () => {
+      cameraInput?.click();
+    });
+
+    galleryBtn?.addEventListener('click', () => {
+      galleryInput?.click();
+    });
+
+    dropZone?.addEventListener('click', () => {
+      galleryInput?.click();
+    });
+
+    cameraInput?.addEventListener('change', (e) => {
+      const files = (e.target as HTMLInputElement).files;
+      if (files && files[0]) handleFile(files[0]);
+    });
+
+    galleryInput?.addEventListener('change', (e) => {
+      const files = (e.target as HTMLInputElement).files;
+      if (files && files[0]) handleFile(files[0]);
+    });
+
+    // Drag and drop
+    dropZone?.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+    dropZone?.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone?.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer?.files && e.dataTransfer.files[0]) {
+        handleFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    // Paste image from clipboard
+    window.addEventListener('paste', (e) => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.startsWith('image/')) {
+          const file = items[i].getAsFile();
+          if (file) handleFile(file);
+          break;
+        }
+      }
+    });
+
+    removeImageBtn?.addEventListener('click', () => {
+      selectedImageBase64 = null;
+      selectedImageMime = null;
+      if (cameraInput) cameraInput.value = '';
+      if (galleryInput) galleryInput.value = '';
+      if (previewContainer) previewContainer.style.display = 'none';
+      if (imagePreview) imagePreview.src = '';
+    });
+
+    clearBtn?.addEventListener('click', () => {
+      input.value = '';
+      selectedImageBase64 = null;
+      selectedImageMime = null;
+      if (cameraInput) cameraInput.value = '';
+      if (galleryInput) galleryInput.value = '';
+      if (previewContainer) previewContainer.style.display = 'none';
+      if (solutionContainer) solutionContainer.style.display = 'none';
+      hideError();
+    });
+
+    function showError(msg: string) {
+      if (!errorBox || !errorText) return;
+      errorText.textContent = msg;
+      errorBox.style.display = 'block';
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideError() {
+      if (!errorBox) return;
+      errorBox.style.display = 'none';
+    }
+
+    // 5. Render Markdown with KaTeX Display and Inline Math
+    function renderMathMarkdown(raw: string): string {
+      let content = raw;
+
+      // Extract and replace block math: $$...$$
+      const blockMathMap: string[] = [];
+      content = content.replace(/\$\$([\s\S]*?)\$\$/g, (_, mathStr) => {
+        try {
+          const rendered = katex.renderToString(mathStr.trim(), { displayMode: true, throwOnError: false, output: 'html' });
+          blockMathMap.push(rendered);
+        } catch {
+          blockMathMap.push(`<div class="katex-err">$$${mathStr}$$</div>`);
+        }
+        return `___BLOCK_MATH_${blockMathMap.length - 1}___`;
+      });
+
+      // Extract and replace inline math: $...$
+      const inlineMathMap: string[] = [];
+      content = content.replace(/\$([^\$\n]+?)\$/g, (_, mathStr) => {
+        try {
+          const rendered = katex.renderToString(mathStr.trim(), { displayMode: false, throwOnError: false, output: 'html' });
+          inlineMathMap.push(rendered);
+        } catch {
+          inlineMathMap.push(`$${mathStr}$`);
+        }
+        return `___INLINE_MATH_${inlineMathMap.length - 1}___`;
+      });
+
+      // Basic Markdown transformations
+      content = content.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+      content = content.replace(/^## (.*$)/gim, '<h2 style="color: var(--primary); margin-top: 1.25rem;">$1</h2>');
+      content = content.replace(/^# (.*$)/gim, '<h1 style="color: var(--primary);">$1</h1>');
+
+      content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      content = content.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+      content = content.replace(/^(Qadam \d+:|1-qadam:|2-qadam:|3-qadam:|4-qadam:|5-qadam:)(.*$)/gim, '<div class="step-box"><strong>$1</strong>$2</div>');
+      content = content.replace(/^(Javob:|Yakuniy javob:)(.*$)/gim, '<div class="answer-box"><strong>✅ $1</strong>$2</div>');
+
+      content = content.replace(/\n\n/g, '<br><br>');
+
+      // Restore inline math
+      inlineMathMap.forEach((m, idx) => {
+        content = content.replace(`___INLINE_MATH_${idx}___`, m);
+      });
+
+      // Restore block math
+      blockMathMap.forEach((m, idx) => {
+        content = content.replace(`___BLOCK_MATH_${idx}___`, m);
+      });
+
+      return content;
+    }
+
+    // 6. Dual-Engine Solver Execution
+    async function handleSolve() {
+      hideError();
+      const problemText = input.value.trim();
+
+      if (!problemText && !selectedImageBase64) {
+        showError("Iltimos, masala shartini yozing yoki uning rasmini yuklang.");
+        return;
+      }
+
+      // STEP 1: Try Local Analytical Engine first if there's text
+      if (problemText) {
+        const localResult = solveLocally(problemText);
+        if (localResult && localResult.solved && localResult.markdown) {
+          lastRawSolutionText = localResult.markdown;
+          if (solutionBody) {
+            solutionBody.innerHTML = renderMathMarkdown(localResult.markdown);
+          }
+          if (groundingContainer) groundingContainer.style.display = 'none';
+          if (solutionContainer) {
+            solutionContainer.style.display = 'block';
+            solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          return; // Solved instantly offline!
+        }
+      }
+
+      // STEP 2: Online Gemini AI Engine (For photos or advanced questions)
+      let apiKey = localStorage.getItem('gemini_user_api_key') || '';
+
+      if (!apiKey) {
+        // If no API key is set, show friendly inline onboarding card in solution area!
+        if (solutionBody && solutionContainer) {
+          solutionBody.innerHTML = `
+            <div style="background: var(--bg-muted); border: 2px dashed var(--primary); border-radius: var(--radius-md); padding: 1.5rem; text-align: center;">
+              <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">✨</span>
+              <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+                ${selectedImageBase64 ? "Misol rasmi muvaffaqiyatli qabul qilindi!" : "Murakkab masalani AI bilan yechish"}
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; margin: 0 auto 1.25rem; line-height: 1.6;">
+                Daftardagi qo'lyozma misol yoki darslikdagi masalani <strong>Gemini Multimodal Sun'iy Intellekt</strong> orqali tahlil qilish uchun Google Gemini bepul API kalitingizni bir marta kiriting (karta talab qilinmaydi, oyiga 1500+ so'rov bepul).
+              </p>
+
+              <div style="max-width: 520px; margin: 0 auto; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                <input 
+                  type="password" 
+                  id="inline-api-key-input" 
+                  placeholder="AIzaSy... kalitini bu yerga qo'ying" 
+                  style="flex: 1; min-width: 240px; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-family: var(--font-mono); font-size: 0.9rem;"
+                />
+                <button type="button" id="inline-save-key-btn" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-weight: 700;">
+                  Saqlash va Yechish 🚀
+                </button>
+              </div>
+
+              <div style="margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.85rem;">
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700; text-decoration: underline;">
+                  👉 1 daqiqada bepul API kalit olish (aistudio.google.com)
+                </a>
+                <button type="button" id="demo-preview-btn" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">
+                  ⚡ Namunaviy yechimni ko'rish (Demo)
+                </button>
+              </div>
+            </div>
+          `;
+
+          solutionContainer.style.display = 'block';
+          solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          const inlineInput = document.getElementById('inline-api-key-input') as HTMLInputElement | null;
+          const inlineSave = document.getElementById('inline-save-key-btn');
+          inlineSave?.addEventListener('click', () => {
+            const val = inlineInput?.value.trim() || '';
+            if (val) {
+              localStorage.setItem('gemini_user_api_key', val);
+              updateKeyStatus();
+              handleSolve(); // Retry solving immediately
+            } else {
+              alert("Iltimos, API kalitingizni kiriting!");
+            }
+          });
+
+          const demoBtn = document.getElementById('demo-preview-btn');
+          demoBtn?.addEventListener('click', () => {
+            const demoSol = solveLocally("Integralni bo'laklab integrallash usuli bilan hisoblang: \\int x \\cdot \\cos(2x) \\, dx");
+            if (demoSol && demoSol.markdown && solutionBody) {
+              lastRawSolutionText = demoSol.markdown;
+              solutionBody.innerHTML = renderMathMarkdown(demoSol.markdown);
+            }
+          });
+        }
+        return;
+      }
+
+      // UI Loading state
+      solveBtn.setAttribute('disabled', 'true');
+      if (solveBtnText) solveBtnText.textContent = "AI hisoblamoqda...";
+      if (solveBtnSpinner) solveBtnSpinner.style.display = 'inline-block';
+
+      try {
+        const useGoogleSearch = searchToggle?.checked || false;
+
+        const systemPrompt = `Siz Oliy Matematika bo'yicha professional O'zbekistonlik universitet professori va do'stona repetitorsiz.
+Vazifangiz: Talaba bergan oliy matematika masalasini (xoh u matn, xoh rasm ko'rinishida bo'lsin) mukammal, to'liq, 100% ilmiy-akademik O'zbek tilida (lotin yozuvida) yechib berish.
+
+Qat'iy qoidalar:
+1. Barcha matematik formulalarni KaTeX formatida yozing: qator ichida $...$, alohida qatorda $$...$$.
+2. Yechimni aniq 5 ta bo'limga ajrating:
+   - ## 1. Masala tahlili va berilganlar
+   - ## 2. Qo'llaniladigan qoidalar va teoremalar
+   - ## 3. Qadamma-qadam yechish (har bir algebraik o'tishni maydalab tushuntiring)
+   - ## 4. Yakuniy javob (alohida aniq qilib)
+   - ## 5. OliyMatematika saytidagi tavsiya etilgan mavzu (masalan: 1-modul Tenglamalar, 2-modul Matritsalar, 5-modul Limitlar, 7-modul Hosila, 8-modul Integrallar yoki 12-modul Differensial tenglamalar).
+3. Agar rasm yuklangan bo'lsa, avval rasmdagi qo'lyozma yoki bosma misolning aniq formulasini matn ko'rinishida keltiring.
+4. Javobingiz ravon, xatosiz va talabaga tushunarli bo'lsin.`;
+
+        const parts: any[] = [];
+
+        if (selectedImageBase64 && selectedImageMime) {
+          parts.push({
+            inline_data: {
+              mime_type: selectedImageMime,
+              data: selectedImageBase64
+            }
+          });
+        }
+
+        const queryText = problemText 
+          ? `Iltimos, ushbu oliy matematika masalasini qadamma-qadam to'liq yechib bering:\n${problemText}`
+          : `Iltimos, ushbu rasmdagi oliy matematika masalasini o'qib, uni qadamma-qadam to'liq yechib bering.`;
+
+        parts.push({ text: queryText });
+
+        const requestBody: any = {
+          system_instruction: {
+            parts: [{ text: systemPrompt }]
+          },
+          contents: [
+            {
+              parts: parts
+            }
+          ],
+          generationConfig: {
+            temperature: 0.15
+          }
+        };
+
+        if (useGoogleSearch) {
+          requestBody.tools = [{ google_search: {} }];
+        }
+
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestBody)
+        });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData?.error?.message || `Server javobida xatolik (${res.status})`);
+        }
+
+        const data = await res.json();
+        const candidate = data.candidates?.[0];
+        const rawText = candidate?.content?.parts?.[0]?.text || "Yechim hosil qilib bo'lmadi.";
+        lastRawSolutionText = rawText;
+
+        if (solutionBody) {
+          solutionBody.innerHTML = renderMathMarkdown(rawText);
+        }
+
+        const metadata = candidate?.groundingMetadata;
+        if (groundingContainer && sourcesList) {
+          if (metadata && metadata.groundingChunks && metadata.groundingChunks.length > 0) {
+            sourcesList.innerHTML = metadata.groundingChunks
+              .filter((c: any) => c.web?.uri)
+              .map((c: any) => `<li><a href="${c.web.uri}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: underline;">${c.web.title || c.web.uri}</a></li>`)
+              .join('');
+            groundingContainer.style.display = 'block';
+          } else {
+            groundingContainer.style.display = 'none';
+          }
+        }
+
+        if (solutionContainer) {
+          solutionContainer.style.display = 'block';
+          solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+      } catch (err: any) {
+        console.error("AI Masala yechishda xatolik:", err);
+        const errMsg = err.message || '';
+        if (errMsg.includes('API key not valid') || errMsg.includes('API_KEY_INVALID') || errMsg.includes('API key')) {
+          localStorage.removeItem('gemini_user_api_key');
+          updateKeyStatus();
+          showError("⚠️ Kiritilgan Gemini API kaliti yaroqsiz bo'lib chiqdi va avtomatik tozalandi. Iltimos, aistudio.google.com/app/apikey manzilidan 1 daqiqada bepul kalit oling yoki standart masalalarni to'g'ridan-to'g'ri kiriting (ular API kalitsiz 100% bepul yechiladi).");
+        } else {
+          showError(`AI xatoligi: ${errMsg || 'Tarmoqqa ulanishda xatolik yuz berdi. API kalitingiz to\'g\'riligini tekshiring.'}`);
+        }
+      } finally {
+        solveBtn.removeAttribute('disabled');
+        if (solveBtnText) solveBtnText.textContent = "🚀 Masalani yechish";
+        if (solveBtnSpinner) solveBtnSpinner.style.display = 'none';
+      }
+    }
+
+    solveBtn.addEventListener('click', handleSolve);
+
+    // Allow Enter key to trigger solve when pressing Shift+Enter or Ctrl+Enter
+    input.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        handleSolve();
+      }
+    });
+
+    // Copy solution
+    copySolutionBtn?.addEventListener('click', () => {
+      if (!lastRawSolutionText) return;
+      navigator.clipboard.writeText(lastRawSolutionText).then(() => {
+        copySolutionBtn.textContent = "✅ Nusxalandi!";
+        setTimeout(() => { copySolutionBtn.textContent = "📋 Nusxalash"; }, 2000);
+      });
+    });
+
+    // Print solution
+    printSolutionBtn?.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Astro 5 page-load listener
+  document.addEventListener('astro:page-load', setupAiSolver);
+  // Also run initially
+  setupAiSolver();
+</script>

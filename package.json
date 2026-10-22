@@ -1,0 +1,24 @@
+{
+  "name": "oliy-matematika",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.1.0",
+    "@google/genai": "^2.30.0",
+    "astro": "^5.4.0",
+    "function-plot": "^1.26.0",
+    "katex": "^0.16.21",
+    "mathjs": "^14.3.1",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "pagefind": "^1.3.0"
+  }
+}

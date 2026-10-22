@@ -1,0 +1,74 @@
+---
+import { MODULES } from '../data/modules';
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar-nav">
+  <div style="margin-bottom: 1.5rem;">
+    <div class="sidebar-section-title">Oliy Matematika Modullari</div>
+    <ul class="module-nav-list">
+      {MODULES.map(m => {
+        const isCurrent = currentPath === `/modullar/${m.slug}` || currentPath.includes(`/${m.slug}/`);
+        return (
+          <li class={`module-nav-item ${isCurrent ? 'active' : ''} ${!m.isActive ? 'inactive' : ''}`}>
+            <a href={`/modullar/${m.slug}`} title={m.title}>
+              <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 190px;">
+                {m.title}
+              </span>
+              {m.isActive ? (
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent);" title="Faol modul"></span>
+              ) : (
+                <span style="font-size: 0.65rem; color: var(--text-subtle); background: var(--bg-muted); padding: 0.15rem 0.35rem; border-radius: 4px;">Tez orada</span>
+              )}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+    <div class="sidebar-section-title">Interaktiv Uskunalar</div>
+    <ul class="module-nav-list">
+      <li class={`module-nav-item ${currentPath.startsWith('/testlar') ? 'active' : ''}`} style="border-left: 3px solid #3b82f6; margin-bottom: 0.25rem;">
+        <a href="/testlar" style="font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+          <span>📝 Testlar (HEMIS)</span>
+          <span style="font-size: 0.65rem; background: #3b82f6; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Top</span>
+        </a>
+      </li>
+      <li class={`module-nav-item ${currentPath === '/ai-yechuvchi' ? 'active' : ''}`} style="border-left: 3px solid #10b981; margin-bottom: 0.25rem;">
+        <a href="/ai-yechuvchi" style="color: var(--primary); font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+          <span>🤖 AI Yechuvchi</span>
+          <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Yangi</span>
+        </a>
+      </li>
+      <li class={`module-nav-item ${currentPath === '/grafik' ? 'active' : ''}`}>
+        <a href="/grafik">
+          <span>📈 Grafik chizgich</span>
+        </a>
+      </li>
+      <li class={`module-nav-item ${currentPath === '/hosila' ? 'active' : ''}`}>
+        <a href="/hosila">
+          <span>⚡ Hosila kalkulyatori</span>
+        </a>
+      </li>
+      <li class={`module-nav-item ${currentPath === '/formulalar' ? 'active' : ''}`}>
+        <a href="/formulalar">
+          <span>📐 Formulalar jadvali</span>
+        </a>
+      </li>
+      <li class={`module-nav-item ${currentPath === '/shpargalkalar' ? 'active' : ''}`} style="border-left: 3px solid #f59e0b;">
+        <a href="/shpargalkalar" style="font-weight: 700; color: #f59e0b; display: flex; align-items: center; justify-content: space-between;">
+          <span>📄 Shpargalkalar</span>
+          <span style="font-size: 0.65rem; background: #f59e0b; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">PDF</span>
+        </a>
+      </li>
+      <li class="module-nav-item" style="border-left: 3px solid #0284c7; margin-top: 0.5rem;">
+        <a href="https://t.me/oliy_matematika_1" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+          <span>💬 Telegram Guruh</span>
+          <span style="font-size: 0.65rem; background: #0284c7; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Kanal</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</aside>

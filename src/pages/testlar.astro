@@ -1,0 +1,464 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Quiz from '../components/Quiz.astro';
+import { MODULES } from '../data/modules';
+---
+
+<BaseLayout 
+  title="HEMIS va Nazorat Testlari — Oliy Matematika Imtihon Simulyatori"
+  description="Oliy matematika fanidan O'zbekiston OTMlari HEMIS tizimi, Oraliq va Yakuniy nazoratlar uchun saralangan interaktiv testlar. Har bir savolning qadamma-qadam KaTeX yechimi bilan."
+>
+  <div class="testlar-page-container">
+    <!-- HERO HEADER -->
+    <header class="testlar-hero">
+      <div class="hero-badge-row">
+        <span class="hero-badge">
+          <span class="badge-sparkle">✨</span> HEMIS & Nazorat Ishlari 2026
+        </span>
+        <span class="hero-badge-sub">O'zbekiston OTMlari Standarti</span>
+      </div>
+
+      <h1 class="hero-title">
+        📝 Oliy Matematika Testlari va HEMIS Imtihon Markazi
+      </h1>
+      <p class="hero-desc">
+        Oraliq va yakuniy nazoratlarga mustaqil tayyorlaning. Har bir test savoliga javob berishingiz bilan 
+        <strong>to'liq matematik isbot va yechish bosqichlari</strong> ekranda namoyon bo'ladi.
+      </p>
+
+      <!-- Key Value Highlights -->
+      <div class="test-highlights-grid">
+        <div class="highlight-item">
+          <div class="hl-icon">🎯</div>
+          <div class="hl-text">
+            <strong>Oraliq & Yakuniy</strong>
+            <span>1-semestr va 2-semestr HEMIS standartlari</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hl-icon">💡</div>
+          <div class="hl-text">
+            <strong>To'liq Tushuntirish</strong>
+            <span>Har bir savolning qadamma-qadam yechimi</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hl-icon">📊</div>
+          <div class="hl-text">
+            <strong>HEMIS Baholash</strong>
+            <span>Avtomatik 5, 4, 3 baholar shkalasi</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hl-icon">⚡</div>
+          <div class="hl-text">
+            <strong>Cheksiz & Bepul</strong>
+            <span>Tasodifiy savollar, qayta-qayta mashq qiling</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- INTERACTIVE QUIZ ENGINE -->
+    <section class="test-runner-section" id="quiz-section">
+      <Quiz initialPreset="oraliq-1" showSelector={true} />
+    </section>
+
+    <!-- QUICK MODULE ACCESS CARDS -->
+    <section class="modules-quick-section">
+      <div class="section-heading-box">
+        <h2 class="section-title">📚 Modullar bo'yicha alohida tayyorgarlik</h2>
+        <p class="section-subtitle">
+          Biror aniq mavzu bo'yicha test topshirmoqchi bo'lsangiz, quyidagi modullardan birini tanlang:
+        </p>
+      </div>
+
+      <div class="module-cards-grid">
+        {MODULES.map((m) => (
+          <a href={`/testlar?modul=${m.slug}`} class="module-test-card">
+            <div class="mod-card-top">
+              <span class="mod-num">#{m.id}</span>
+              <span class="mod-action">Testni boshlash ➔</span>
+            </div>
+            <h3 class="mod-title">{m.title}</h3>
+            <p class="mod-desc">{m.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- PREPARATION GUIDE & TIPS -->
+    <section class="guide-section">
+      <div class="guide-card">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">
+          🎓 Imtihonda yuqori ball (A'lo) olish uchun tavsiyalar:
+        </h2>
+        <div class="guide-steps-list">
+          <div class="guide-step">
+            <div class="step-num">1</div>
+            <div class="step-info">
+              <strong>Formulalarni yodda tuting:</strong>
+              <p>Determinantlar, hosila jadvali va asosiy integrallar formulasini platformaning <a href="/formulalar" style="color: var(--primary); text-decoration: underline;">Formulalar bo'limi</a> orqali takrorlang.</p>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="step-num">2</div>
+            <div class="step-info">
+              <strong>Xatolaringiz ustida ishlang:</strong>
+              <p>Test yakunlangach "Xatolarni tahlil qilish" tugmasini bosing va noto'g'ri belgilangan savollarning tushuntirishlarini diqqat bilan o'rganing.</p>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="step-num">3</div>
+            <div class="step-info">
+              <strong>Tushunarsiz masalalarni AI Repetitorga yuklang:</strong>
+              <p>Agar biror misolning mohiyatiga yetolmayotgan bo'lsangiz, <a href="/ai-yechuvchi" style="color: var(--primary); text-decoration: underline;">AI Masala Yechuvchi</a> orqali fotosuratini yuklang yoki matnini kiriting — u har bir bosqichni maydalab tushuntiradi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">
+        ❓ Ko'p beriladigan savollar:
+      </h2>
+      <div class="faq-accordion">
+        <details class="faq-item">
+          <summary class="faq-question">
+            Test savollari qaysi mezonlarga asoslangan?
+          </summary>
+          <div class="faq-answer">
+            Barcha savollar O'zbekiston Respublikasi Oliy ta'lim, fan va innovatsiyalar vazirligi tomonidan tasdiqlangan davlat ta'lim standartlari (DTS) hamda universitetlar (TATU, O'zMU, ToshDTU, SamDU va b.) HEMIS tizimidagi oraliq/yakuniy nazoratlar bazasi asosida akademik darajada tuzilgan.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            Testlarni qayta topshirish mumkinmi va savollar o'zgaradimi?
+          </summary>
+          <div class="faq-answer">
+            Ha! Siz testlarni istalgancha bepul qayta topshirishingiz mumkin. "Qayta topshirish" tugmasini bosganingizda savollar va variantlar avtomatik ravishda tasodifiy (random) aralashtirilib taqdim etiladi.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            Saytdan foydalanish yoki testlarni yechish pullikmi?
+          </summary>
+          <div class="faq-answer">
+            Yo'q, mutlaqo bepul! Platforma barcha talabalar, abituriyentlar va o'qituvchilar uchun 100% ochiq va bepul ilmiy ta'lim manbasi sifatida yaratilgan. Hech qanday ro'yxatdan o'tish yoki to'lov talab etilmaydi.
+          </div>
+        </details>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .testlar-page-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  /* Hero Section */
+  .testlar-hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-badge-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    padding: 0.3rem 0.85rem;
+    border-radius: 30px;
+  }
+
+  .hero-badge {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .hero-badge-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    border-left: 1px solid rgba(37, 99, 235, 0.2);
+    padding-left: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1.25;
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+
+  /* Highlights Grid */
+  .test-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hl-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .hl-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .hl-text strong {
+    font-size: 0.88rem;
+    color: var(--text-main);
+  }
+
+  .hl-text span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* Section Styling */
+  .test-runner-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-heading-box {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.35rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* Module Cards Grid */
+  .modules-quick-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .module-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .module-test-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .module-test-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .mod-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .mod-num {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+  }
+
+  .mod-action {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .module-test-card:hover .mod-action {
+    color: var(--primary);
+  }
+
+  .mod-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+  }
+
+  .mod-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Guide Section */
+  .guide-section {
+    margin-bottom: 3rem;
+  }
+
+  .guide-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .guide-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .guide-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-info strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 0.2rem;
+  }
+
+  .step-info p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-muted);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover {
+    color: var(--primary);
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    border-top: 1px dashed var(--border-color);
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+    .hero-title {
+      font-size: 1.7rem;
+    }
+    .test-highlights-grid {
+      grid-template-columns: 1fr;
+    }
+    .module-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    .guide-card, .faq-section {
+      padding: 1.25rem;
+    }
+  }
+</style>

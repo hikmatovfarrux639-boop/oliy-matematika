@@ -1,0 +1,97 @@
+---
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import MobileDrawer from '../components/MobileDrawer.astro';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showSidebar?: boolean;
+}
+
+const {
+  title = "Oliy Matematika — O'zbek tilidagi ta'lim platformasi",
+  description = "Universitet oliy matematika kursi: limitlar, hosila, integrallar, funksiyalar va grafiklar tushunarli tilda.",
+  showSidebar = true
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∫</text></svg>" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#3b82f6" />
+  <!-- Open Graph / Facebook / Telegram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content="uz_UZ" />
+  <meta property="og:site_name" content="Oliy Matematika Platformasi" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <ClientRouter />
+
+  <!-- Inline Theme Script to prevent flash of wrong theme and persist across page navigation -->
+  <script is:inline>
+    (function() {
+      function applyTheme(doc) {
+        try {
+          const target = doc || document;
+          const savedTheme = localStorage.getItem('math_theme');
+          const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          target.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          console.error('Theme apply error:', e);
+        }
+      }
+
+      // Initial apply
+      applyTheme(document);
+
+      // Astro View Transitions lifecycle hooks
+      document.addEventListener('astro:before-swap', function(ev) {
+        if (ev && ev.newDocument) {
+          applyTheme(ev.newDocument);
+        }
+      });
+      document.addEventListener('astro:after-swap', function() {
+        applyTheme(document);
+      });
+      document.addEventListener('astro:page-load', function() {
+        applyTheme(document);
+      });
+    })();
+  </script>
+</head>
+<body>
+  <Header />
+  <MobileDrawer />
+
+  <div class="layout-container">
+    {showSidebar && <Sidebar />}
+    <main class="main-content" data-pagefind-body>
+      <slot />
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+      <p style="font-weight: 600; color: var(--text-main);">Oliy Matematika — Ochiq va qulay ta'lim platformasi</p>
+      <p style="color: var(--text-muted); font-size: 0.8rem;">
+        Talabalar va o'rganuvchilar uchun maxsus tayyorlangan. Barcha nazariya va formulalar o'zbek tilida (lotin yozuvida).
+      </p>
+      <p style="color: var(--text-subtle); font-size: 0.75rem;">
+        Hech qanday server yoki ma'lumotlar bazasisiz — 100% statik va o'ta tezkor.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

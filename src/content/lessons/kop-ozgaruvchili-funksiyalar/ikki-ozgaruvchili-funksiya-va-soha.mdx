@@ -1,0 +1,114 @@
+---
+title: "Ikki o'zgaruvchili funksiya va uning aniqlanish sohasi"
+module: "kop-ozgaruvchili-funksiyalar"
+order: 1
+description: "Ko'p o'zgaruvchili funksiya tushunchasi, z = f(x, y) geometrik qiyofasi (sirt), aniqlanish sohasini tekislikda chizish va sath chiziqlari."
+---
+
+## Kirish: Real dunyo ko'p o'lchamli
+
+Bir o'zgaruvchili funksiyalarda ($y = f(x)$) faqat bitta erkin o'zgaruvchi mavjud edi. Ammo real hayotdagi hodisalar deyarli har doim bir nechta omilga bog'liq bo'ladi:
+- Gazning bosimi $P$ uning hajmi $V$ va harorati $T$ ga bog'liq: $P = \frac{\nu R T}{V}$;
+- Firma foydasi $Z$ ishlab chiqarilgan mahsulot soni $x$ va reklama byudjeti $y$ ga bog'liq: $Z = f(x, y)$;
+- Xaritadagi yer yuzasining balandligi $z$ uning kenglik $x$ va uzunlik $y$ koordinatalariga bog'liq: $z = h(x, y)$.
+
+Bunday bog'lanishlar **ko'p o'zgaruvchili funksiyalar** orqali o'rganiladi.
+
+---
+
+## 1. Ikki o'zgaruvchili funksiya ta'rifi
+
+> **Ta'rif:** Agar $D \subset \mathbb{R}^2$ tekislikning har bir $(x, y)$ nuqtasiga ma'lum bir qoida bo'yicha yagona haqiqiy $z$ soni mos qo'yilgan bo'lsa, $D$ to'plamda aniqlangan **ikki o'zgaruvchili funksiya** berilgan deyiladi va quyidagicha yoziladi:
+>
+> $$
+> z = f(x, y)
+> $$
+>
+> bu yerda:
+> - $x, y$ — erkli o'zgaruvchilar (argumentlar);
+> - $z$ — erksiz o'zgaruvchi (funksiya qiymati);
+> - $D$ — funksiyaning **aniqlanish sohasi** (tekislikdagi nuqtalar to'plami).
+
+---
+
+## 2. Geometrik ma'nosi: 3D fazodagi sirt
+
+Bir o'zgaruvchili $y = f(x)$ funksiyaning grafigi tekislikdagi **egri chiziqni** ifodalasa, ikki o'zgaruvchili $z = f(x, y)$ funksiyaning grafigi uch o'lchamli fazodagi **sirtni (yuzani)** ifodalaydi.
+
+Masalan:
+- $z = Ax + By + C$ — fazodagi tekislik;
+- $z = x^2 + y^2$ — aylanma paraboloid (kosa shaklidagi sirt);
+- $z = \sqrt{R^2 - x^2 - y^2}$ — radiusi $R$ bo'lgan yuqori yarimsfera.
+
+---
+
+## 3. Aniqlanish sohasini topish va chizish
+
+Ko'p o'zgaruvchili funksiyalarning aniqlanish sohasi tekislikdagi biror geometrik soha (doira, polosa, yarimtekislik yoki burchak) bo'ladi.
+
+Asosiy cheklovlar bir o'zgaruvchili funksiyalar bilan bir xil:
+1. Maxraj nolga teng bo'lmasligi kerak: $\frac{1}{f(x, y)} \implies f(x, y) \neq 0$;
+2. Juft darajali ildiz osti nomanfiy bo'lishi kerak: $\sqrt{f(x, y)} \implies f(x, y) \ge 0$;
+3. Logarifm osti qat'iy musbat bo'lishi kerak: $\ln(f(x, y)) \implies f(x, y) > 0$;
+4. Arksinus va arkkosinus argumenti $[-1; 1]$ kesmada yotishi kerak: $-1 \le f(x, y) \le 1$.
+
+---
+
+## 4. Sath chiziqlari (Izoliniyalar)
+
+Murakkab 3D sirtlarni 2D tekislikda tasvirlash uchun **sath chiziqlari** (fransuzcha *isolignes*) tushunchasi ishlatiladi:
+
+> **Ta'rif:** Sirtning $z = C$ gorizontal tekisliklar bilan kesilishidan hosil bo'lgan tekislikdagi egri chiziqlar to'plami **sath chiziqlari** deyiladi:
+>
+> $$
+> f(x, y) = C \quad (C = \text{const})
+> $$
+
+### Real hayotdagi misollar:
+- **Topografik xaritalar:** balandliklari bir xil bo'lgan nuqtalarni tutashtiruvchi gorizontallar (izogipslar);
+- **Ob-havo xaritalari:** bir xil haroratli chiziqlar (izotermalar) va bir xil bosimli chiziqlar (izobaralar).
+
+Masalan, $z = x^2 + y^2$ paraboloidi uchun sath chiziqlari:
+$x^2 + y^2 = C$ — markazi $(0, 0)$ nuqtada va radiusi $\sqrt{C}$ bo'lgan konsentrik aylanalar to'plamidir.
+
+---
+
+## Amaliy namunaviy misol
+
+Funksiyaning aniqlanish sohasini toping va tekislikda tasvirlang:
+$$
+z = \ln(4 - x^2 - y^2) + \frac{1}{\sqrt{y - x}}
+$$
+
+**Yechilishi:**
+Ikki funksiyaning bir vaqtda mavjud bo'lish shartlarini sistema shaklida yozamiz:
+$$
+\begin{cases}
+4 - x^2 - y^2 > 0 \\
+y - x > 0
+\end{cases} \implies \begin{cases}
+x^2 + y^2 < 4 \\
+y > x
+\end{cases}
+$$
+
+1. $x^2 + y^2 < 4$ — markazi $(0, 0)$ va radiusi $R = 2$ bo'lgan doiraning ichki qismi (chegara aylanasi kirmaydi, chunki qat'iy $<$ tengsizlik, chegarasi punktir bilan chiziladi).
+2. $y > x$ — $y = x$ bissektrisasidan yuqorida yotgan yarimtekislik ($y = x$ chizig'i kirmaydi).
+3. Bu ikki sohaning umumiy kesishmasi: radiusi 2 bo'lgan doiraning $y = x$ to'g'ri chiziqdan yuqoridagi yarim doira qismi.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $z = \sqrt{9 - x^2 - y^2}$ funksiyaning aniqlanish sohasini va uning qiymatlar to'plamini toping.
+2. $z = x^2 - y^2$ funksiyaning $z = 0$ va $z = 1$ dagi sath chiziqlari qanday egri chiziqlardan iborat?
+3. $z = \arcsin(2x + y)$ funksiya aniqlanish sohasini tengsizliklar orqali ifodalang.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> Aniqlanish sohasi: $x^2 + y^2 \le 9$ (radiusi 3 bo'lgan yopiq doira). Qiymatlar sohasi: $z \in [0; 3]$.</p>
+    <p><strong>2-masala:</strong> $z = 0 \implies x^2 - y^2 = 0 \implies y = \pm x$ (ikkita kesishuvchi to'g'ri chiziq). $z = 1 \implies x^2 - y^2 = 1$ (teng tomonli giperbola).</p>
+    <p><strong>3-masala:</strong> $-1 \le 2x + y \le 1 \implies -2x - 1 \le y \le -2x + 1$ (ikkita parallel to'g'ri chiziq orasidagi polosa).</p>
+  </div>
+</details>

@@ -1,0 +1,149 @@
+---
+title: "Trigonometriya asoslari va asosiy ayniyatlar"
+module: "maktab-kursi"
+order: 3
+description: "Birlik aylana, radian va gradus, asosiy trigonometrik ayniyatlar, keltirish formulalari va elementar trigonometrik tenglamalar."
+---
+
+## Kirish: Trigonometriya oliy matematikada nima uchun kerak?
+
+Oliy matematikada burchaklar deyarli har doim **radianlarda** o'lchanadi. Trigonometrik funksiyalar:
+- 1-ajoyib limitda: $\lim_{x \to 0} \frac{\sin x}{x} = 1$;
+- Trigonometrik integrallarda: $\int \sin^m x \cos^n x \, dx$;
+- Kompleks sonlarning trigonometrik va Eyler shaklida: $z = r(\cos \varphi + i\sin \varphi)$;
+- Furye qatorlarida va to'lqin jarayonlarini ifodalashda
+asosiy poydevor hisoblanadi.
+
+---
+
+## 1. Radian o'lchovi va Birlik aylana
+
+Trigonometrik funksiyalarning umumiy ta'rifi markazi koordinatalar boshida bo'lgan birlik aylana ($R = 1$) orqali beriladi:
+- Gorizontal o'q ($Ox$) — **kosinuslar o'qi** ($\cos \alpha$);
+- Vertikal o'q ($Oy$) — **sinuslar o'qi** ($\sin \alpha$).
+
+### Radian va gradus bog'liqligi:
+$$
+\pi \text{ rad} = 180^\circ \implies 1 \text{ rad} = \frac{180^\circ}{\pi} \approx 57.3^\circ
+$$
+
+| Gradus | $0^\circ$ | $30^\circ$ | $45^\circ$ | $60^\circ$ | $90^\circ$ | $180^\circ$ | $270^\circ$ | $360^\circ$ |
+|---|---|---|---|---|---|---|---|---|
+| Radian | $0$ | $\frac{\pi}{6}$ | $\frac{\pi}{4}$ | $\frac{\pi}{3}$ | $\frac{\pi}{2}$ | $\pi$ | $\frac{3\pi}{2}$ | $2\pi$ |
+
+---
+
+## 2. Asosiy trigonometrik ayniyatlar
+
+1. **Pifagor ayniyati:**
+   $$
+   \sin^2 \alpha + \cos^2 \alpha = 1
+   $$
+2. Tangens va kotangens ta'rifi:
+   $$
+   \operatorname{tg} \alpha = \frac{\sin \alpha}{\cos \alpha}, \qquad \operatorname{ctg} \alpha = \frac{\cos \alpha}{\sin \alpha}
+   $$
+3. O'zaro ko'paytmasi:
+   $$
+   \operatorname{tg} \alpha \cdot \operatorname{ctg} \alpha = 1 \quad \left(\alpha \neq \frac{\pi k}{2}\right)
+   $$
+4. Tangens va kosinus bog'liqligi:
+   $$
+   1 + \operatorname{tg}^2 \alpha = \frac{1}{\cos^2 \alpha}, \qquad 1 + \operatorname{ctg}^2 \alpha = \frac{1}{\sin^2 \alpha}
+   $$
+
+---
+
+## 3. Qo'shish va karrali burchak formulalari
+
+Integrallash va limitlarni hisoblashda eng ko'p zarur bo'ladigan ayniyatlar:
+
+### Qo'shish formulalari:
+$$
+\sin(\alpha \pm \beta) = \sin \alpha \cos \beta \pm \cos \alpha \sin \beta
+$$
+$$
+\cos(\alpha \pm \beta) = \cos \alpha \cos \beta \mp \sin \alpha \sin \beta
+$$
+
+### Ikkilangan burchak formulalari:
+$$
+\sin(2\alpha) = 2\sin \alpha \cos \alpha
+$$
+$$
+\cos(2\alpha) = \cos^2 \alpha - \sin^2 \alpha = 2\cos^2 \alpha - 1 = 1 - 2\sin^2 \alpha
+$$
+
+### Darajani pasaytirish formulalari (Integrallar uchun juda muhim!):
+$$
+\sin^2 \alpha = \frac{1 - \cos(2\alpha)}{2}
+$$
+$$
+\cos^2 \alpha = \frac{1 + \cos(2\alpha)}{2}
+$$
+
+> **Maslahat:** $\int \sin^2 x \, dx$ yoki $\int \cos^2 x \, dx$ integrallarini hisoblashda darajani pasaytirish formulasisiz yechish deyarli imkonsizdir!
+
+---
+
+## 4. Ko'paytmani yig'indiga aylantirish
+
+$$
+\sin \alpha \cos \beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - \beta)]
+$$
+$$
+\cos \alpha \cos \beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)]
+$$
+$$
+\sin \alpha \sin \beta = \frac{1}{2}[\cos(\alpha - \beta) - \cos(\alpha + \beta)]
+$$
+
+---
+
+## 5. Keltirish formulalari (Mnemotexnik qoida)
+
+$\frac{\pi}{2} \cdot k \pm \alpha$ ko'rinishidagi burchaklar uchun ikkita oddiy savol beriladi:
+1. **Funksiya nomi o'zgaradimi?**
+   - Agar burchak vertikal o'qda bo'lsa ($\frac{\pi}{2}, \frac{3\pi}{2}$ — ya'ni $k$ toq bo'lsa), bosh chayqaladi: **HA, o'zgaradi** ($\sin \leftrightarrow \cos$, $\operatorname{tg} \leftrightarrow \operatorname{ctg}$).
+   - Agar burchak gorizontal o'qda bo'lsa ($\pi, 2\pi$ — ya'ni $k$ juft bo'lsa), bosh gorizontal chayqaladi: **YO'Q, o'zgarmaydi**.
+2. **Oldidagi ishora qanday bo'ladi?**
+   - Dastlabki burchak joylashgan chorakdagi **dastlabki funksiyaning** ishorasi qo'yiladi.
+
+**Misol:** $\cos\left(\frac{3\pi}{2} - \alpha\right)$.
+- $\frac{3\pi}{2}$ vertikal o'qda $\implies \cos \to \sin$.
+- $\frac{3\pi}{2} - \alpha$ — 3-chorak. 3-chorakda kosinus manfiy ($-$).
+- Natija: $-\sin \alpha$.
+
+---
+
+## 6. Asosiy trigonometrik tenglamalar
+
+1. $\sin x = a \quad (\lvert a \rvert \le 1)$:
+   $$
+   x = (-1)^k \arcsin a + \pi k, \quad k \in \mathbb{Z}
+   $$
+2. $\cos x = a \quad (\lvert a \rvert \le 1)$:
+   $$
+   x = \pm \arccos a + 2\pi k, \quad k \in \mathbb{Z}
+   $$
+3. $\operatorname{tg} x = a \quad (a \in \mathbb{R})$:
+   $$
+   x = \operatorname{arctg} a + \pi k, \quad k \in \mathbb{Z}
+   $$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $\sin^2\left(\frac{\pi}{8}\right)$ ning aniq qiymatini darajani pasaytirish formulasi orqali hisoblang.
+2. $\cos(2x) = 0$ tenglamaning barcha yechimlarini toping.
+3. Keltirish formulasi yordamida soddalashtiring: $\sin(\pi + \alpha) + \cos\left(\frac{\pi}{2} + \alpha\right)$.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $\sin^2\left(\frac{\pi}{8}\right) = \frac{1 - \cos(\pi/4)}{2} = \frac{1 - \sqrt{2}/2}{2} = \frac{2 - \sqrt{2}}{4}$.</p>
+    <p><strong>2-masala:</strong> $2x = \frac{\pi}{2} + \pi k \implies x = \frac{\pi}{4} + \frac{\pi k}{2}, \quad k \in \mathbb{Z}$.</p>
+    <p><strong>3-masala:</strong> $\sin(\pi + \alpha) = -\sin \alpha$. $\cos\left(\frac{\pi}{2} + \alpha\right) = -\sin \alpha$. Yig'indi: $-2\sin \alpha$.</p>
+  </div>
+</details>

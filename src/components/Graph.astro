@@ -1,0 +1,185 @@
+---
+interface Props {
+  fn: string;
+  fn2?: string;
+  fn3?: string;
+  title?: string;
+  xDomain?: [number, number];
+  yDomain?: [number, number];
+  height?: number;
+  tangentX?: number;
+}
+
+const {
+  fn,
+  fn2,
+  fn3,
+  title,
+  xDomain = [-6, 6],
+  yDomain = [-6, 6],
+  height = 350,
+  tangentX,
+} = Astro.props;
+
+const graphId = `plot-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="graph-wrapper" style="margin: 1.5rem 0; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; overflow: hidden;">
+  {title && (
+    <div style="font-weight: 700; font-size: 1rem; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+      <span>{title}</span>
+      <span style="font-size: 0.8rem; color: var(--text-subtle); font-family: var(--font-mono);">
+        y = {fn} {fn2 ? ` | y₂ = ${fn2}` : ''}
+      </span>
+    </div>
+  )}
+
+  <div 
+    id={graphId} 
+    class="graph-container"
+    data-fn={fn}
+    data-fn2={fn2 || ''}
+    data-fn3={fn3 || ''}
+    data-xdomain={JSON.stringify(xDomain)}
+    data-ydomain={JSON.stringify(yDomain)}
+    data-height={height}
+    data-tangent={tangentX !== undefined ? tangentX : ''}
+    style={`width: 100%; min-height: ${height}px; display: flex; justify-content: center; align-items: center;`}
+  >
+    <div style="color: var(--text-muted); font-size: 0.85rem;">Grafik yuklanmoqda...</div>
+  </div>
+
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+        <span style="width: 10px; height: 10px; background: #2563eb; border-radius: 2px;"></span>
+        <span>f(x)</span>
+      </span>
+      {fn2 && (
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <span style="width: 10px; height: 10px; background: #dc2626; border-radius: 2px;"></span>
+          <span>f₂(x)</span>
+        </span>
+      )}
+      {fn3 && (
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <span style="width: 10px; height: 10px; background: #16a34a; border-radius: 2px;"></span>
+          <span>f₃(x)</span>
+        </span>
+      )}
+    </div>
+    <span style="color: var(--text-subtle);">🖱️ Sichqoncha bilan surish (pan) va kattalashtirish (zoom) mumkin</span>
+  </div>
+</div>
+
+<script>
+  import functionPlot from 'function-plot';
+
+  function initGraphs() {
+    function getPlotFn(mod: any) {
+      if (typeof mod === 'function') return mod;
+      if (typeof mod?.default === 'function') return mod.default;
+      if (typeof mod?.default?.default === 'function') return mod.default.default;
+      return null;
+    }
+
+    function normalizeFormula(raw: string): string {
+      let str = raw.trim();
+      if (!str) return '';
+      str = str.replace(/−/g, '-').replace(/×/g, '*').replace(/÷/g, '/');
+      str = str.replace(/\btg\s*\(/g, 'tan(');
+      str = str.replace(/\bctg\s*\(([^)]+)\)/g, '(1/tan($1))');
+      str = str.replace(/\bln\s*\(/g, 'log(');
+      str = str.replace(/\be\^([a-zA-Z0-9]+)/g, 'exp($1)');
+      str = str.replace(/\be\^\(([^)]+)\)/g, 'exp($1)');
+      str = str.replace(/(\d+)\s*([a-zA-Z(])/g, '$1 * $2');
+      str = str.replace(/\|([^|]+)\|/g, 'abs($1)');
+      return str;
+    }
+
+    const containers = document.querySelectorAll('.graph-container');
+    const plotFn = getPlotFn(functionPlot);
+    if (!plotFn) return;
+
+    containers.forEach((el) => {
+      const container = el as HTMLElement;
+      if (container.dataset.initialized === 'true') return;
+
+      const rawFn = container.dataset.fn;
+      if (!rawFn) return;
+
+      const rawFn2 = container.dataset.fn2;
+      const rawFn3 = container.dataset.fn3;
+      const xDomain = JSON.parse(container.dataset.xdomain || '[-6, 6]');
+      const yDomain = JSON.parse(container.dataset.ydomain || '[-6, 6]');
+      const height = parseInt(container.dataset.height || '350', 10);
+      const tangentStr = container.dataset.tangent;
+
+      const width = Math.min(container.parentElement?.clientWidth ? container.parentElement.clientWidth - 40 : 600, 700);
+
+      const data: any[] = [
+        {
+          fn: normalizeFormula(rawFn),
+          color: '#2563eb',
+          graphType: 'polyline'
+        }
+      ];
+
+      // Derivative tangent line if specified
+      if (tangentStr !== '' && tangentStr !== undefined) {
+        const x0 = parseFloat(tangentStr);
+        data[0].derivative = {
+          fn: '', // function-plot computes derivative automatically or via math.js
+          x0: x0,
+          updateOnMouseMove: true
+        };
+      }
+
+      if (rawFn2) {
+        data.push({
+          fn: normalizeFormula(rawFn2),
+          color: '#dc2626',
+          graphType: 'polyline'
+        });
+      }
+
+      if (rawFn3) {
+        data.push({
+          fn: normalizeFormula(rawFn3),
+          color: '#16a34a',
+          graphType: 'polyline'
+        });
+      }
+
+      try {
+        container.innerHTML = '';
+        plotFn({
+          target: container,
+          width: width,
+          height: height,
+          grid: true,
+          xAxis: { domain: xDomain },
+          yAxis: { domain: yDomain },
+          data: data,
+          disableZoom: false
+        });
+        container.dataset.initialized = 'true';
+      } catch (err) {
+        console.error('Grafik chizishda xatolik:', err);
+        container.innerHTML = `<div style="color: #ef4444; font-size: 0.9rem;">Grafikni chizishda xatolik yuz berdi: ${rawFn}</div>`;
+      }
+    });
+  }
+
+  // Run on load and after Astro page transitions
+  initGraphs();
+  document.addEventListener('astro:page-load', initGraphs);
+  document.addEventListener('astro:after-swap', initGraphs);
+  window.addEventListener('resize', () => {
+    // Re-render graphs on window resize for responsiveness
+    document.querySelectorAll('.graph-container').forEach(el => {
+      (el as HTMLElement).dataset.initialized = 'false';
+    });
+    initGraphs();
+  });
+</script>

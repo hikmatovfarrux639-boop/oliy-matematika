@@ -1,0 +1,139 @@
+---
+title: "Fazodagi tekislik va to'g'ri chiziq"
+module: "vektorlar-geometriya"
+order: 5
+description: "Fazoda tekislik tenglamalari, normal vektor, fazodagi to'g'ri chiziqning kanonik va parametrik ko'rinishlari, tekislik va to'g'ri chiziqning kesishishi hamda masofa."
+---
+
+## Kirish: Uch o'lchamli fazoga qadam
+
+Ikki o'lchamli tekislikda $Ax + By + C = 0$ to'g'ri chiziqni ifodalasa, uch o'lchamli fazoda (3D) bitta chiziqli tenglama $Ax + By + Cz + D = 0$ butun bir **tekislikni** ifodalaydi. Fazoda to'g'ri chiziq hosil qilish uchun esa ikkita tekislikning kesishmasi yoki yo'naltiruvchi vektor bilan berilgan parametrik tenglamalar kerak bo'ladi.
+
+3D modellashtirish, arxitektura, SAPR (AutoCAD) tizimlari va fizika mexanikasida fazoviy tenglamalar hal qiluvchi rol o'ynaydi.
+
+---
+
+## 1. Fazoda tekislik tenglamasi
+
+### 1. Nuqta va normal vektor orqali tekislik
+Agar tekislik $M_0(x_0, y_0, z_0)$ nuqtadan o'tsa va unga perpendikulyar bo'lgan **normal vektor** $\vec{n} = (A, B, C)$ ma'lum bo'lsa:
+
+$$
+A(x - x_0) + B(y - y_0) + C(z - z_0) = 0
+$$
+
+Qavslarni ochib, $D = -(Ax_0 + By_0 + Cz_0)$ desak, tekislikning **umumiy tenglamasi** kelib chiqadi:
+$$
+Ax + By + Cz + D = 0
+$$
+
+### 2. Uchta nuqta orqali o'tuvchi tekislik
+Bitta to'g'ri chiziqda yotmaydigan $M_1(x_1, y_1, z_1)$, $M_2(x_2, y_2, z_2)$ va $M_3(x_3, y_3, z_3)$ nuqtalar orqali yagona tekislik o'tadi:
+
+$$
+\begin{vmatrix}
+x - x_1 & y - y_1 & z - z_1 \\
+x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\
+x_3 - x_1 & y_3 - y_1 & z_3 - z_1
+\end{vmatrix} = 0
+$$
+
+### 3. Nuqtadan tekislikkacha bo'lgan masofa
+$M_0(x_0, y_0, z_0)$ nuqtadan $Ax + By + Cz + D = 0$ tekislikkacha bo'lgan eng qisqa masofa:
+
+$$
+d = \frac{\lvert A x_0 + B y_0 + C z_0 + D \rvert}{\sqrt{A^2 + B^2 + C^2}}
+$$
+
+---
+
+## 2. Fazoda to'g'ri chiziq tenglamalari
+
+Fazoda to'g'ri chiziq $M_0(x_0, y_0, z_0)$ nuqta va unga parallel bo'lgan **yo'naltiruvchi vektor** $\vec{s} = (p, q, r)$ orqali aniqlanadi:
+
+### 1. Kanonik tenglamalar:
+$$
+\frac{x - x_0}{p} = \frac{y - y_0}{q} = \frac{z - z_0}{r}
+$$
+
+### 2. Parametrik tenglamalar:
+Kanonik nisbatlarni $t$ parametrga tenglashtiramiz:
+$$
+\begin{cases}
+x = x_0 + p \cdot t \\
+y = y_0 + q \cdot t \\
+z = z_0 + r \cdot t
+\end{cases} \quad (t \in \mathbb{R})
+$$
+
+Parametrik shakl dasturlashda va to'g'ri chiziqning boshqa figuralar bilan kesishish nuqtalarini topishda eng qulay usuldir!
+
+---
+
+## 3. To'g'ri chiziq va tekislikning o'zaro kesishuvi
+
+Fazoda to'g'ri chiziq va tekislik berilgan bo'lsin:
+- Tekislik: $Ax + By + Cz + D = 0$ (normali $\vec{n} = (A, B, C)$);
+- To'g'ri chiziq: parametrik shaklda berilgan.
+
+### Kesishish nuqtasini topish algoritmi:
+1. To'g'ri chiziqning parametrik $x(t), y(t), z(t)$ formulalarini tekislik tenglamasiga olib borib qo'yamiz.
+2. $t$ noma'lumga nisbatan bitta chiziqli tenglama yechiladi va $t_0$ topiladi.
+3. Topilgan $t_0$ parametrni parametrik tenglamaga qaytarib qo'yib, kesishish nuqtasi $M_k(x(t_0), y(t_0), z(t_0))$ koordinatalari topiladi.
+
+---
+
+## Amaliy namunaviy misollar
+
+### 1-misol: Tekislik tenglamasini tuzish
+$M_0(1, -2, 3)$ nuqtadan o'tuvchi va $\vec{n} = (2, -3, 4)$ vektorga perpendikulyar tekislik tenglamasini yozing.
+
+**Yechilishi:**
+Nuqta va normal formulasi bo'yicha:
+$$
+2(x - 1) - 3(y - (-2)) + 4(z - 3) = 0
+$$
+$$
+2(x - 1) - 3(y + 2) + 4(z - 3) = 0
+$$
+$$
+2x - 2 - 3y - 6 + 4z - 12 = 0 \implies 2x - 3y + 4z - 20 = 0
+$$
+
+**Javob:** $2x - 3y + 4z - 20 = 0$.
+
+---
+
+### 2-misol: To'g'ri chiziq va tekislikning kesishish nuqtasi
+To'g'ri chiziq: $\frac{x - 1}{2} = \frac{y + 1}{-1} = \frac{z}{3}$ va tekislik: $2x + 3y + z - 1 = 0$ ning kesishish nuqtasini toping.
+
+**Yechilishi:**
+1. To'g'ri chiziqni parametrik shaklga o'tkazamiz:
+   $$x = 1 + 2t, \quad y = -1 - t, \quad z = 3t$$
+2. Tekislik tenglamasiga qo'yamiz:
+   $$2(1 + 2t) + 3(-1 - t) + (3t) - 1 = 0$$
+   $$2 + 4t - 3 - 3t + 3t - 1 = 0$$
+   $$4t - 2 = 0 \implies 4t = 2 \implies t = 0.5$$
+3. $t = 0.5$ ni koordinatalarga qo'yamiz:
+   $$x = 1 + 2(0.5) = 2$$
+   $$y = -1 - 0.5 = -1.5$$
+   $$z = 3(0.5) = 1.5$$
+
+**Javob:** Kesishish nuqtasi $M(2; \, -1.5; \, 1.5)$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $3x - 4y + 12z - 26 = 0$ tekislikning normal vektorini va koordinata boshidan ungacha bo'lgan masofani toping.
+2. $A(2, 3, -1)$ nuqtadan o'tuvchi va $\vec{s} = (1, -2, 5)$ yo'naltiruvchi vektorga ega to'g'ri chiziqning parametrik tenglamasini yozing.
+3. Ikki tekislik $x + 2y - z = 0$ va $2x + 4y - 2z + 5 = 0$ o'zaro qanday joylashgan?
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $\vec{n} = (3, -4, 12)$. Masofa: $d = \frac{|-26|}{\sqrt{9 + 16 + 144}} = \frac{26}{\sqrt{169}} = \frac{26}{13} = 2$.</p>
+    <p><strong>2-masala:</strong> $x = 2 + t, \, y = 3 - 2t, \, z = -1 + 5t$.</p>
+    <p><strong>3-masala:</strong> Normal vektorlari proporsional: $\frac{1}{2} = \frac{2}{4} = \frac{-1}{-2}$, lekin ozod hadlar teng emas ($0 \neq 5$). Demak, tekisliklar o'zaro parallel ($P_1 \parallel P_2$).</p>
+  </div>
+</details>

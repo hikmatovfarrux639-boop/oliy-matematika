@@ -1,0 +1,346 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getModuleBySlug, MODULES } from '../../data/modules';
+
+export async function getStaticPaths() {
+  const allLessons = await getCollection('lessons');
+  
+  // Sort lessons by module and order
+  const sortedLessons = allLessons.sort((a, b) => {
+    if (a.data.module !== b.data.module) {
+      return a.data.module.localeCompare(b.data.module);
+    }
+    return a.data.order - b.data.order;
+  });
+
+  return sortedLessons.map((lesson, index) => {
+    // Determine previous and next lesson in same or adjacent sequence
+    const moduleLessons = sortedLessons.filter(l => l.data.module === lesson.data.module);
+    const currentIndexInModule = moduleLessons.findIndex(l => l.id === lesson.id);
+    const prevLesson = currentIndexInModule > 0 ? moduleLessons[currentIndexInModule - 1] : null;
+    const nextLesson = currentIndexInModule < moduleLessons.length - 1 ? moduleLessons[currentIndexInModule + 1] : null;
+
+    // Clean slug from id
+    const cleanSlug = lesson.id.replace(/\.mdx?$/, '');
+
+    return {
+      params: { slug: cleanSlug },
+      props: {
+        lesson,
+        prevLesson,
+        nextLesson,
+        moduleLessons,
+        cleanSlug
+      },
+    };
+  });
+}
+
+interface Props {
+  lesson: any;
+  prevLesson: any;
+  nextLesson: any;
+  moduleLessons: any[];
+  cleanSlug: string;
+}
+
+const { lesson, prevLesson, nextLesson, moduleLessons, cleanSlug } = Astro.props;
+const { Content, headings } = await render(lesson);
+const moduleInfo = getModuleBySlug(lesson.data.module);
+
+const rawText = lesson.body || '';
+const wordCount = rawText.split(/\s+/).filter(Boolean).length;
+const readTime = Math.max(3, Math.ceil(wordCount / 140));
+---
+
+<BaseLayout 
+  title={`${lesson.data.title} — ${moduleInfo?.title || 'Oliy Matematika'}`}
+  description={lesson.data.description}
+>
+  <!-- Toast Notification Container -->
+  <div id="lesson-toast" style="display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 100; background: var(--bg-surface); border: 1px solid var(--accent); color: var(--text-main); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; align-items: center; gap: 0.75rem; animation: slideUp 0.25s ease-out;">
+    <span style="font-size: 1.25rem;">🎉</span>
+    <span id="toast-text" style="font-size: 0.9rem; font-weight: 600;">Dars o'zlashtirildi deb belgilandi!</span>
+  </div>
+
+  <!-- Breadcrumb -->
+  <nav style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-wrap: wrap;">
+    <a href="/" style="color: var(--primary);">Bosh sahifa</a>
+    <span>/</span>
+    {moduleInfo ? (
+      <a href={`/modullar/${moduleInfo.slug}`} style="color: var(--primary);">{moduleInfo.title}</a>
+    ) : (
+      <span>{lesson.data.module}</span>
+    )}
+    <span>/</span>
+    <span style="color: var(--text-main); font-weight: 500;">{lesson.data.title}</span>
+  </nav>
+
+  <!-- Lesson Header Banner -->
+  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 2rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+      <span class="badge badge-active">{moduleInfo?.title || lesson.data.module}</span>
+      <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: var(--text-subtle);">
+        <span>⏱️ ~{readTime} daqiqalik o'qish</span>
+        <span>{lesson.data.order}-dars</span>
+      </div>
+    </div>
+
+    <h1 style="font-size: 2.1rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem; color: var(--text-main);">
+      {lesson.data.title}
+    </h1>
+
+    <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem;">
+      {lesson.data.description}
+    </p>
+
+    <!-- Progress checkbox and status -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; user-select: none;">
+        <input 
+          type="checkbox" 
+          id="complete-lesson-checkbox" 
+          data-lesson-slug={cleanSlug}
+          style="width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer;"
+        />
+        <span id="complete-lesson-label" style="font-weight: 600; font-size: 0.95rem; color: var(--text-main);">
+          Darsni o'zlashtirdim deb belgilash
+        </span>
+      </label>
+
+      <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+        <span>Modul bo'yicha darslar:</span>
+        <strong style="color: var(--accent);">{lesson.data.order} / {moduleLessons.length}</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout: Table of Contents (if headings exist) & Content -->
+  <div style="display: flex; gap: 2rem; align-items: flex-start;">
+    <!-- Article Body -->
+    <article class="lesson-article" style="flex: 1; min-width: 0;">
+      <div class="prose-content">
+        <Content />
+      </div>
+
+      <!-- Telegram & Community Interactive Card -->
+      <div class="community-banner" style="margin-top: 3.5rem; background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(37, 99, 235, 0.12) 100%); border: 1.5px solid rgba(14, 165, 233, 0.35); border-radius: var(--radius-lg); padding: 1.75rem;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+          <div style="max-width: 540px;">
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(14, 165, 233, 0.15); color: #0284c7; padding: 0.25rem 0.65rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem;">
+              <span>💬</span>
+              <span>Oliy Matematika Hamjamiyati</span>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+              Dars bo'yicha savolingiz bormi yoki misolga tushunmadingizmi?
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+              O'zbekistondagi oliygoh talabalari va ustozlar jamlangan rasmiy Telegram guruhimizda bepul savol bering yoki boshqalarning masalalarini birga yeching!
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.65rem; min-width: 220px; align-self: center;">
+            <a 
+              href="https://t.me/oliy_matematika_1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn" 
+              style="background: #0284c7; color: white; font-weight: 700; padding: 0.75rem 1.25rem; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; border-radius: var(--radius-md); box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+              </svg>
+              <span>Telegramda so'rash</span>
+            </a>
+
+            <div style="display: flex; gap: 0.5rem;">
+              <a 
+                href="/ai-yechuvchi" 
+                class="btn btn-secondary" 
+                style="flex: 1; font-size: 0.8rem; padding: 0.45rem 0.6rem; text-align: center; border-color: #10b981; color: #10b981;"
+                title="Sun'iy intellekt orqali masalani avtomatik yechish"
+              >
+                🤖 AI Yechuvchi
+              </a>
+              <a 
+                href="/testlar" 
+                class="btn btn-secondary" 
+                style="flex: 1; font-size: 0.8rem; padding: 0.45rem 0.6rem; text-align: center; border-color: #3b82f6; color: #3b82f6;"
+                title="Mavzu bo'yicha HEMIS testlarini ishlash"
+              >
+                📝 HEMIS Test
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation: Prev / Next Lesson -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+        {prevLesson ? (
+          <a href={`/dars/${prevLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-secondary">
+            <span>← Oldingi dars</span>
+          </a>
+        ) : (
+          <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-secondary">
+            <span>← Modul mundarijasi</span>
+          </a>
+        )}
+
+        {nextLesson ? (
+          <a href={`/dars/${nextLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-primary">
+            <span>Keyingi dars →</span>
+          </a>
+        ) : (
+          <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-primary">
+            <span>Modul sahifasiga qaytish ✓</span>
+          </a>
+        )}
+      </div>
+    </article>
+
+    <!-- On-this-page Table of Contents (Desktop) -->
+    {headings && headings.length > 0 && (
+      <aside class="toc-sidebar" style="width: 240px; position: sticky; top: 80px; flex-shrink: 0; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+        <div style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-subtle); margin-bottom: 0.75rem;">
+          Mundarija
+        </div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+          {headings.filter(h => h.depth <= 3).map(h => (
+            <li style={`padding-left: ${(h.depth - 2) * 0.75}rem;`}>
+              <a href={`#${h.slug}`} style="color: var(--text-muted); line-height: 1.4; display: block;" class="toc-link">
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  @media (max-width: 1024px) {
+    .toc-sidebar {
+      display: none !important;
+    }
+  }
+
+  .prose-content {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-main);
+  }
+
+  .prose-content :global(h2) {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .prose-content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-content :global(ul), .prose-content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-content :global(blockquote) {
+    border-left: 4px solid var(--primary);
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-muted);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .prose-content :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--bg-muted);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+  }
+
+  .toc-link:hover {
+    color: var(--primary) !important;
+  }
+</style>
+
+<script>
+  function setupLessonCompletion() {
+    const checkbox = document.getElementById('complete-lesson-checkbox') as HTMLInputElement | null;
+    const label = document.getElementById('complete-lesson-label');
+    if (!checkbox) return;
+
+    const slug = checkbox.getAttribute('data-lesson-slug');
+    if (!slug) return;
+
+    // Load state from localStorage
+    const getCompleted = (): string[] => {
+      try {
+        return JSON.parse(localStorage.getItem('math_completed_lessons') || '[]');
+      } catch {
+        return [];
+      }
+    };
+
+    const updateUI = (isDone: boolean) => {
+      checkbox.checked = isDone;
+      if (label) {
+        label.textContent = isDone ? "✓ Dars o'zlashtirildi (Tugallandi)" : "Darsni o'zlashtirdim deb belgilash";
+        label.style.color = isDone ? "var(--accent)" : "var(--text-main)";
+      }
+    };
+
+    const completedList = getCompleted();
+    updateUI(completedList.includes(slug));
+
+    // Handle toggle
+    checkbox.addEventListener('change', () => {
+      const currentList = getCompleted();
+      let updated: string[];
+      if (checkbox.checked) {
+        updated = Array.from(new Set([...currentList, slug]));
+      } else {
+        updated = currentList.filter(s => s !== slug);
+      }
+      localStorage.setItem('math_completed_lessons', JSON.stringify(updated));
+      updateUI(checkbox.checked);
+
+      // Toast feedback
+      const toast = document.getElementById('lesson-toast');
+      const toastText = document.getElementById('toast-text');
+      if (toast && toastText) {
+        if (checkbox.checked) {
+          toastText.textContent = "Barakalla! Dars o'zlashtirildi deb belgilandi.";
+          toast.style.display = 'flex';
+          setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        } else {
+          toast.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  setupLessonCompletion();
+  document.addEventListener('astro:after-swap', setupLessonCompletion);
+</script>

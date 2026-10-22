@@ -1,0 +1,140 @@
+---
+title: "Juft, toq va davriy funksiyalar: Geometrik simmetriya"
+module: "funksiyalar-grafiklar"
+order: 3
+description: "Funksiyalarning simmetriya xossalari, koordinata o'qlari va boshiga nisbatan simmetriklik hamda trigonometrik funksiyalar davriyligi."
+---
+import Graph from '../../../components/Graph.astro';
+
+## Kirish: Tabiatdagi simmetriya matematikada
+
+Tabiatda kapalak qanotlari yoki inson tanasi simmetriyaga ega bo'lganidek, matematik funksiyalar grafiklarida ham ajoyib simmetriyalar mavjud. 
+
+Funksiyaning juft yoki toqligini bilish uning grafigini chizish ishini **ikki barobar qisqartiradi**: chunki siz musbat yarim o'qda ($x \ge 0$) grafikni chizib olsangiz, qolgan yarmini shunchaki ko'zgu kabi akslantirishingiz kifoya!
+
+---
+
+## Juft funksiyalar: $f(-x) = f(x)$
+
+> **Ta'rif:** Agar funksiyaning aniqlanish sohasidagi ixtiyoriy $x$ uchun $-x$ ham shu sohaga tegishli bo'lib:
+>
+> $$
+> f(-x) = f(x)
+> $$
+>
+> tenglik bajarilsa, u holda $f(x)$ **juft funksiya** deyiladi.
+
+### Geometrik xossasi:
+Juft funksiyaning grafigi **$Oy$ (ordinata) o'qiga nisbatan simmetrik** bo'ladi.
+
+*Mashhur misollar:* $y = x^2, \quad y = x^4, \quad y = \cos x, \quad y = |x|$.
+
+---
+
+## Toq funksiyalar: $f(-x) = -f(x)$
+
+> **Ta'rif:** Agar ixtiyoriy $x$ uchun:
+>
+> $$
+> f(-x) = -f(x)
+> $$
+>
+> tenglik bajarilsa, $f(x)$ **toq funksiya** deyiladi.
+
+### Geometrik xossasi:
+Toq funksiyaning grafigi **koordinatalar boshiga $(0; 0)$ nisbatan markaziy simmetrik** bo'ladi (ya'ni grafikni $180^\circ$ ga burilsa, o'z ustiga tushadi).
+
+*Mashhur misollar:* $y = x, \quad y = x^3, \quad y = \sin x, \quad y = \operatorname{tg} x, \quad y = \frac{1}{x}$.
+
+Quyidagi grafikda juft funksiya $y = x^2$ (ko'k) va toq funksiya $y = x^3$ (qizil) ning geometrik simmetriyasini taqqoslashingiz mumkin:
+
+<Graph 
+  fn="x^2" 
+  fn2="x^3" 
+  title="Simmetriya: Juft funksiya y = x² (Oy ga nisbatan) va Toq funksiya y = x³ (Markazga nisbatan)" 
+  xDomain={[-3, 3]}
+  yDomain={[-4, 4]}
+/>
+
+---
+
+## Davriy funksiyalar
+
+> **Ta'rif:** Agar shunday noldan farqli $T \neq 0$ soni topilsaki, barcha $x$ lar uchun:
+>
+> $$
+> f(x + T) = f(x)
+> $$
+>
+> tenglik bajarilsa, $f(x)$ **davriy funksiya**, $T$ soni esa uning **davri** deyiladi. Bunday funksiyalarning eng kichik musbat davri **asosiy davr** deyiladi.
+
+Trigonometrik funksiyalarning asosiy davrlari:
+- $\sin(kx)$ va $\cos(kx)$ uchun: $T = \frac{2\pi}{k}$
+- $\operatorname{tg}(kx)$ va $\operatorname{ctg}(kx)$ uchun: $T = \frac{\pi}{k}$
+
+---
+
+## Amaliy misollar va yechimlar
+
+### 1-misol: Juftlikka tekshirish
+Funksiyani juft yoki toqlikka tekshiring:
+
+$$
+f(x) = 3x^4 - 5x^2 + 7
+$$
+
+**Yechilishi:**
+$x$ o'rniga $-x$ qo'yamiz:
+$$f(-x) = 3(-x)^4 - 5(-x)^2 + 7 = 3x^4 - 5x^2 + 7$$
+Ko'rib turibmizki, $f(-x) = f(x)$. 
+
+**Javob:** Funksiya **juft**.
+
+---
+
+### 2-misol: Toqlikka tekshirish
+Funksiyani tekshiring:
+
+$$
+f(x) = \frac{\sin x}{x^2 + 4}
+$$
+
+**Yechilishi:**
+$$f(-x) = \frac{\sin(-x)}{(-x)^2 + 4}$$
+Sinus toq funksiya bo'lgani uchun $\sin(-x) = -\sin x$, maxraj esa $(-x)^2 = x^2$:
+$$f(-x) = \frac{-\sin x}{x^2 + 4} = -\frac{\sin x}{x^2 + 4} = -f(x)$$
+Demak, $f(-x) = -f(x)$.
+
+**Javob:** Funksiya **toq**.
+
+---
+
+### 3-misol: Davrni topish
+Funksiyaning asosiy davrini toping:
+
+$$
+f(x) = \cos(4x)
+$$
+
+**Yechilishi:**
+Kosinus uchun standart davr $2\pi$ ga teng. $x$ oldidagi koeffitsiyent $k = 4$.
+$$T = \frac{2\pi}{k} = \frac{2\pi}{4} = \frac{\pi}{2}$$
+
+**Javob:** Asosiy davr $T = \frac{\pi}{2}$.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. $f(x) = x^3 - 2x$ juftmi yoki toq?
+2. $f(x) = x^2 + 3x$ funksiya juft yoki toqligini aniqlang.
+3. $y = \sin(6x)$ funksiyaning asosiy davrini toping.
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $(-x)^3 - 2(-x) = -x^3 + 2x = -(x^3 - 2x) = -f(x) \implies$ <strong>toq</strong>.</p>
+    <p><strong>2-masala:</strong> $(-x)^2 + 3(-x) = x^2 - 3x \neq f(x)$ va $\neq -f(x) \implies$ <strong>umumiy ko'rinishdagi funksiya (na juft, na toq)</strong>.</p>
+    <p><strong>3-masala:</strong> $T = \frac{2\pi}{6} = \frac{\pi}{3}$.</p>
+  </div>
+</details>

@@ -1,0 +1,113 @@
+---
+title: "Bernulli sxemasi, Laplas va Puasson teoremalari"
+module: "ehtimollar-nazariyasi"
+order: 3
+description: "Bog'liq bo'lmagan takroriy sinovlar, Bernulli formulasi, eng katta ehtimolli son, kam uchraydigan hodisalar uchun Puasson qonuni va Laplas teoremalari."
+---
+
+## Kirish: Qaytariluvchi tajribalar
+
+Agar tanga 1 marta emas, balki 100 marta tashlansa, aynan 50 marta raqam tomoni tushishi ehtimoli qancha? Yoki zavodda 10 000 ta mikrosxema ishlab chiqarilganda, ularning aynan 3 tasi yaroqsiz chiqishi ehtimolini qanday hisoblash mumkin?
+
+Har bir sinovda hodisaning ro'y berish ehtimoli o'zgarmasdan saqlanadigan bunday mustaqil takroriy sinovlar zanjiri **Bernulli sxemasi** deb ataladi.
+
+---
+
+## 1. Bernulli formulasi
+
+Faraz qilaylik, $n$ ta mustaqil sinov o'tkazilmoqda. Har bir sinovda:
+- $A$ hodisaning ro'y berish (muvaffaqiyat) ehtimoli: $P(A) = p$;
+- $A$ hodisaning ro'y bermaslik (muvaffaqiyatsizlik) ehtimoli: $q = 1 - p$.
+
+> **Bernulli formulasi:**
+> $n$ ta mustaqil sinovda $A$ hodisaning **aynan $k$ marta** ro'y berishi ehtimoli:
+>
+> $$
+> P_n(k) = C_n^k \cdot p^k \cdot q^{n - k} = \frac{n!}{k!(n - k)!} p^k q^{n - k}
+> $$
+
+---
+
+## 2. Eng katta ehtimolli son ($k_0$)
+
+$n$ ta sinovda hodisaning ro'y berish ehtimoli qaysi $k$ sonda eng maksimal qiymatga erishadi? Bu son **eng katta ehtimolli son** $k_0$ deyiladi va quyidagi qo'shaloq tengsizlikdan topiladi:
+
+$$
+n p - q \le k_0 \le n p + p
+$$
+
+Oradagi masofa $(np + p) - (np - q) = p + q = 1$ ga teng bo'lganligi sababli, bu oraliqda odatda yagona bitta butun son yotadi.
+
+---
+
+## 3. Puasson asimptotik formulasi (Kam uchraydigan hodisalar)
+
+Agar sinovlar soni $n$ juda katta ($n \to \infty$) va hodisaning har bir sinovda ro'y berish ehtimoli $p$ juda kichik ($p \to 0$) bo'lsa, Bernulli formulasidagi faktoriallarni hisoblash kompyuterlar uchun ham qiyinlashadi.
+
+Bunday holatda $\lambda = n \cdot p$ ko'paytma o'zgarmas deb olinadi va **Puasson formulasi** qo'llaniladi:
+
+$$
+P_n(k) \approx \frac{\lambda^k \cdot e^{-\lambda}}{k!} \quad (\lambda = n \cdot p)
+$$
+
+### Qo'llanish sohalari:
+- Serverga sekundiga kelib tushadigan so'rovlar soni (DDoS yoki odatiy trafik);
+- Yo'l-transport hodisalari soni;
+- Matbaa kitobidagi bosma xatolar soni;
+- Bankomatdagi navbatlar.
+
+---
+
+## 4. Muavr-Laplas teoremalari ($n$ katta, $p$ o'rtacha bo'lganda)
+
+Agar $n$ katta bo'lib, $p$ nolga yoki birga juda yaqin bo'lmasa ($npq \ge 10$):
+
+### 1. Laplasning lokal formulasi (aynan $k$ marta ro'y berishi):
+$$
+P_n(k) \approx \frac{1}{\sqrt{npq}} \cdot \varphi(x), \quad x = \frac{k - np}{\sqrt{npq}}
+$$
+bu yerda $\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$ — standart Gauss funksiyasi (maxsus jadvallardan olinadi).
+
+### 2. Laplasning integral formulasi ($k_1$ dan $k_2$ gacha oraliqda):
+$$
+P(k_1 \le k \le k_2) \approx \Phi\left(\frac{k_2 - np}{\sqrt{npq}}\right) - \Phi\left(\frac{k_1 - np}{\sqrt{npq}}\right)
+$$
+bu yerda $\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_0^x e^{-\frac{t^2}{2}} dt$ — Laplas funksiyasi.
+
+---
+
+## Amaliy namunaviy misollar
+
+### 1-misol: Bernulli formulasi
+Tanga 5 marta tashlandi. Aynan 3 marta gerb tushishi ehtimolini hisoblang.
+
+**Yechilishi:**
+$n = 5, \, k = 3, \, p = 0.5, \, q = 0.5$.
+$$P_5(3) = C_5^3 \cdot (0.5)^3 \cdot (0.5)^{5-3} = \frac{5 \cdot 4}{2 \cdot 1} \cdot (0.5)^5 = 10 \cdot \frac{1}{32} = \frac{10}{32} = \frac{5}{16} = 0.3125 \quad (31.25\%)$$
+
+---
+
+### 2-misol: Puasson formulasi
+Zavodda har 1000 ta mahsulotdan o'rtacha 2 tasi yaroqsiz chiqadi ($p = 0.002$). 500 ta mahsulot orasida aynan 1 ta yaroqsiz mahsulot bo'lishi ehtimolini toping.
+
+**Yechilishi:**
+1. Parametrni topamiz: $\lambda = n \cdot p = 500 \cdot 0.002 = 1$.
+2. Puasson formulasiga $k = 1$ ni qo'yamiz:
+   $$P_{500}(1) \approx \frac{1^1 \cdot e^{-1}}{1!} = \frac{1}{e} \approx \frac{1}{2.718} \approx 0.368 \quad (36.8\%)$$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+1. O'yin suyagi 4 marta tashlandi. Aynan 2 marta 6 ochko tushishi ehtimolini toping ($p = 1/6$).
+2. 100 ta sinovda hodisa ehtimoli $p = 0.8$ bo'lsa, eng katta ehtimolli son $k_0$ ni toping.
+3. Serverga soatiga o'rtacha $\lambda = 3$ ta nosozlik to'g'ri kelsa, 1 soat ichida umuman nosozlik bo'lmasligi ($k = 0$) ehtimoli qancha?
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $C_4^2 (1/6)^2 (5/6)^2 = 6 \cdot \frac{1}{36} \cdot \frac{25}{36} = \frac{25}{216} \approx 0.116$.</p>
+    <p><strong>2-masala:</strong> $np - q = 100(0.8) - 0.2 = 79.8 \le k_0 \le 80 + 0.8 = 80.8 \implies k_0 = 80$.</p>
+    <p><strong>3-masala:</strong> $P(0) = \frac{3^0 e^{-3}}{0!} = e^{-3} \approx 0.0498$ (taxminan 5%).</p>
+  </div>
+</details>

@@ -1,0 +1,186 @@
+---
+title: "Limit hisoblashning asosiy qoidalari va teoremalari"
+module: "limitlar"
+order: 2
+description: "Limitlar ustida arifmetik amallar, o'zgarmas ko'paytuvchini chiqarish, bevosita hisoblash usuli va oraliq funksiya (qisish) teoremasi."
+---
+import Graph from '../../../components/Graph.astro';
+
+## Kirish: Chekli limitlar ustida amallar
+
+Oldingi darsda biz limitning intuitiv ma'nosi va Koshi bo'yicha ta'rifi bilan tanishdik. Endi esa amaliyotda har safar $\varepsilon - \delta$ ta'rifiga murojaat qilmasdan, limitlarni tez va ishonchli hisoblash imkonini beruvchi asosiy arifmetik qoidalar va teoremalarni o'rganamiz.
+
+Faraz qilaylik, $x \to a$ da $f(x)$ va $g(x)$ funksiyalarning chekli limitlari mavjud bo'lsin:
+
+$$
+\lim_{x \to a} f(x) = A \quad \text{va} \quad \lim_{x \to a} g(x) = B
+$$
+
+U holda quyidagi asosiy xossalar o'rinlidir.
+
+---
+
+## Asosiy teoremalar (Limitlar arifmetikasi)
+
+### 1. Yig'indi va ayirmaning limiti
+Ikki funksiya yig'indisi (yoki ayirmasi)ning limiti ularning limitlari yig'indisi (ayirmasi)ga teng:
+
+$$
+\lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x) = A \pm B
+$$
+
+### 2. O'zgarmas sonni limit belgisidan tashqariga chiqarish
+Ixtiyoriy o'zgarmas $c$ soni uchun:
+
+$$
+\lim_{x \to a} [c \cdot f(x)] = c \cdot \lim_{x \to a} f(x) = c \cdot A
+$$
+
+### 3. Ko'paytmaning limiti
+Funksiyalar ko'paytmasining limiti ularning limitlari ko'paytmasiga teng:
+
+$$
+\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x) = A \cdot B
+$$
+
+### 4. Bo'linma (kasr)ning limiti
+Agar maxrajning limiti nolga teng bo'lmasa ($B \neq 0$), kasrning limiti limitlar nisbatiga teng:
+
+$$
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)} = \frac{A}{B} \quad (B \neq 0)
+$$
+
+### 5. Darajaga ko'tarish
+Ixtiyoriy natural $n$ (va umuman, funksiya aniqlangan har qanday haqiqiy daraja) uchun:
+
+$$
+\lim_{x \to a} [f(x)]^n = \left[ \lim_{x \to a} f(x) \right]^n = A^n
+$$
+
+---
+
+## Bevosita qo'yish usuli (Direct Substitution)
+
+Har qanday elementar funksiya (ko'phadlar, trigonometrik, ko'rsatkichli, logarifmik funksiyalar) o'zining aniqlanish sohasidagi barcha nuqtalarda **uzluksizdir**.
+
+> **Oltin qoida:** Agar $x = a$ qiymatni funksiyaga qo'yganda hech qanday maxraji nolga aylanish yoki manfiy sondan juft ildiz chiqish kabi noaniqlik yuz bermasa, limit shunchaki funksiyaning shu nuqtadagi qiymatiga teng bo'ladi:
+>
+> $$
+> \lim_{x \to a} f(x) = f(a)
+> $$
+
+---
+
+## Oraliq funksiya haqida teorema (Qisish teoremasi)
+
+Matematik analizda juda mashhur va chiroyli teorema mavjud bo'lib, u ko'pincha **"qisish teoremasi"** (inglizcha *Squeeze theorem*) deb ataladi:
+
+> **Teorema:** Agar $a$ nuqtaning biror atrofida barcha $x$ lar uchun:
+>
+> $$g(x) \le f(x) \le h(x)$$
+>
+> tengsizlik bajarilsa va chetki funksiyalarning limitlari bir xil songa intilsa:
+>
+> $$\lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$$
+>
+> u holda o'rtadagi $f(x)$ funksiyaning ham limiti majburan $L$ ga teng bo'ladi:
+>
+> $$\lim_{x \to a} f(x) = L$$
+
+Quyidagi grafikda $f(x) = x^2 \sin(1/x)$ funksiyasi $g(x) = -x^2$ va $h(x) = x^2$ parabolalari orasida qisilib, $x \to 0$ da $0$ ga intilishi yaqqol ko'rinadi:
+
+<Graph 
+  fn="x^2" 
+  fn2="-x^2" 
+  fn3="x^2 * sin(1/x)" 
+  title="Qisish teoremasi: y = x² (ko'k), y = -x² (qizil) va oradagi funksiya (yashil)" 
+  xDomain={[-1.5, 1.5]}
+  yDomain={[-1.5, 1.5]}
+/>
+
+---
+
+## Amaliy misollar va yechimlar
+
+### 1-misol: Ratsional kasr limitini bevosita hisoblash
+Limitni hisoblang:
+
+$$
+\lim_{x \to 2} \frac{3x^2 - 5x + 2}{x^2 + 1}
+$$
+
+**Yechilishi:**
+Maxrajni tekshiramiz: $x = 2$ da $2^2 + 1 = 5 \neq 0$. Demak, bo'linma teoremasidan foydalanib, $x$ o'rniga to'g'ridan-to'g'ri $2$ ni qo'yishimiz mumkin:
+
+$$
+\lim_{x \to 2} \frac{3x^2 - 5x + 2}{x^2 + 1} = \frac{3(2)^2 - 5(2) + 2}{2^2 + 1} = \frac{3(4) - 10 + 2}{4 + 1} = \frac{12 - 10 + 2}{5} = \frac{4}{5} = 0.8
+$$
+
+**Javob:** $\frac{4}{5}$
+
+---
+
+### 2-misol: Ildizli ifoda limiti
+Limitni hisoblang:
+
+$$
+\lim_{x \to 4} \frac{\sqrt{2x + 1} - 1}{\sqrt{x} + 2}
+$$
+
+**Yechilishi:**
+$x = 4$ nuqtani qo'yib tekshiramiz:
+- Surat: $\sqrt{2(4) + 1} - 1 = \sqrt{9} - 1 = 3 - 1 = 2$
+- Maxraj: $\sqrt{4} + 2 = 2 + 2 = 4$
+
+Maxraj nolga teng emas, shuning uchun bevosita nisbatni hisoblaymiz:
+
+$$
+\lim_{x \to 4} \frac{\sqrt{2x + 1} - 1}{\sqrt{x} + 2} = \frac{2}{4} = \frac{1}{2}
+$$
+
+**Javob:** $\frac{1}{2}$
+
+---
+
+### 3-misol: Qisish teoremasi yordamida hisoblash
+Ushbu limitni toping:
+
+$$
+\lim_{x \to 0} x^4 \cos\left(\frac{2}{x}\right)
+$$
+
+**Yechilishi:**
+$x \to 0$ da $\frac{2}{x}$ cheksizlikka intiladi, shuning uchun $\cos\left(\frac{2}{x}\right)$ ning aniq qiymati mavjud emas, u $[-1; 1]$ oralig'ida tinimsiz tebranadi. 
+
+Biroq har qanday argument uchun kosinus chegaralangan:
+$$-1 \le \cos\left(\frac{2}{x}\right) \le 1$$
+
+Tengsizlikning barcha qismlarini musbat $x^4 > 0$ ga ko'paytiramiz:
+$$-x^4 \le x^4 \cos\left(\frac{2}{x}\right) \le x^4$$
+
+Endi $x \to 0$ dagi chetki limitlarni hisoblaymiz:
+$$\lim_{x \to 0} (-x^4) = 0 \quad \text{va} \quad \lim_{x \to 0} x^4 = 0$$
+
+Chetki limitlar nolga teng bo'lgani sababli, oraliq funksiya teoremasiga ko'ra:
+$$\lim_{x \to 0} x^4 \cos\left(\frac{2}{x}\right) = 0$$
+
+**Javob:** $0$
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+Quyidagi limitlarni hisoblang:
+
+1. $\lim_{x \to 3} \frac{x^3 - 2x + 5}{2x - 1}$
+2. $\lim_{x \to 0} \frac{\cos(x) + 3}{e^x + 1}$
+3. $\lim_{x \to 0} x^2 \sin\left(\frac{5}{x^3}\right)$
+
+<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
+  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+    <p><strong>1-masala:</strong> $\frac{3^3 - 2(3) + 5}{2(3) - 1} = \frac{27 - 6 + 5}{5} = \frac{26}{5} = 5.2$</p>
+    <p><strong>2-masala:</strong> $\cos(0) = 1, e^0 = 1 \implies \frac{1 + 3}{1 + 1} = \frac{4}{2} = 2$</p>
+    <p><strong>3-masala:</strong> Sinus $[-1; 1]$ oralig'ida chegaralangan, $x^2 \to 0$. Qisish teoremasiga ko'ra javob: $0$.</p>
+  </div>
+</details>
