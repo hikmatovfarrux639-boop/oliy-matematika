@@ -205,6 +205,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/integrallar/taqribiy-integrallash-simpson-va-trapetsiyalar</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/egri-chiziqli-integrallar-va-grin-formulasi</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -217,7 +229,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/sirkulyatsiya-va-stoks-formulasi</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/uch-karrali-integral-va-silindrik-sferik</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/vektor-maydon-oqimi-va-divergensiya</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -236,6 +260,18 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/kompleks-sonlar/muavr-formulasi-va-ildiz-chiqarish</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/kompleks-sonlar/operatsion-hisob-va-laplas-almashtirishi</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/kompleks-sonlar/tfkp-va-koshi-riman-shartlari</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -344,6 +380,12 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/qatorlar/darajali-qatorlar-teylor-makloren</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -524,6 +566,12 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/testlar</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/vektor</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

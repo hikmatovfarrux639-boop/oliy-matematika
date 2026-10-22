@@ -60,10 +60,17 @@ export const MODULES: ModuleInfo[] = [
     id: 4,
     slug: 'kompleks-sonlar',
     title: '4. Kompleks sonlar',
-    description: "Algebraik, trigonometrik va ko'rsatkichli (Eyler) shakllar, Muavr formulasi va n-darajali ildiz chiqarish.",
+    description: "Algebraik, trigonometrik va ko'rsatkichli (Eyler) shakllar, Muavr formulasi, TFKP, Koshi-Riman shartlari va Laplas almashtirishi.",
     isActive: true,
-    estimatedLessons: 4,
-    topics: ['Kompleks son tushunchasi va algebraik shakl', 'Kompleks sonlar ustida amallar', 'Trigonometrik va ko\'rsatkichli (Eyler) shakl', 'Muavr formulasi va ildiz chiqarish']
+    estimatedLessons: 6,
+    topics: [
+      'Kompleks son tushunchasi va algebraik shakl',
+      'Kompleks sonlar ustida amallar',
+      'Trigonometrik va ko\'rsatkichli (Eyler) shakl',
+      'Muavr formulasi va ildiz chiqarish',
+      'TFKP: Koshi-Riman shartlari va kompleks integrallar',
+      'Operatsion hisob va Laplas almashtirishi'
+    ]
   },
   {
     id: 5,
@@ -96,10 +103,16 @@ export const MODULES: ModuleInfo[] = [
     id: 8,
     slug: 'integrallar',
     title: '8. Integrallar',
-    description: "Boshlang'ich funksiya, aniqmas integral jadvali, o'zgaruvchini almashtirish, bo'laklab integrallash va Nyuton-Leybnits formulasi.",
+    description: "Boshlang'ich funksiya, aniqmas integral jadvali, o'zgaruvchini almashtirish, bo'laklab integrallash, Nyuton-Leybnits va taqribiy integrallash (Simpson/Trapetsiyalar).",
     isActive: true,
-    estimatedLessons: 4,
-    topics: ['Boshlang\'ich funksiya va aniqmas integral jadvali', 'O\'zgaruvchini almashtirish usuli', 'Bo\'laklab integrallash', 'Aniq integral va Nyuton-Leybnits formulasi']
+    estimatedLessons: 5,
+    topics: [
+      'Boshlang\'ich funksiya va aniqmas integral jadvali',
+      'O\'zgaruvchini almashtirish usuli',
+      'Bo\'laklab integrallash',
+      'Aniq integral va Nyuton-Leybnits formulasi',
+      'Taqribiy integrallash: Trapetsiyalar va Simpson usullari'
+    ]
   },
   {
     id: 9,
@@ -113,20 +126,33 @@ export const MODULES: ModuleInfo[] = [
   {
     id: 10,
     slug: 'karrali-integrallar',
-    title: '10. Karrali va egri chiziqli integrallar',
-    description: "Ikki karrali integral, qutb koordinatalariga o'tish, Puasson-Gauss integrali, uch karrali integral va sferik koordinatalar.",
+    title: '10. Karrali, egri chiziqli integrallar va vektor tahlili',
+    description: "Ikki va uch karrali integrallar, egri chiziqli integrallar, Grin formulasi, vektor maydon oqimi, divergensiya, Gauss-Ostrogradskiy va Stoks teoremalari.",
     isActive: true,
-    estimatedLessons: 3,
-    topics: ['Ikki karrali integral va hisoblash', 'Qutb koordinatalarida ikki karrali integral', 'Uch karrali integral, silindrik va sferik']
+    estimatedLessons: 6,
+    topics: [
+      'Ikki karrali integral va hisoblash',
+      'Qutb koordinatalarida ikki karrali integral',
+      'Uch karrali integral, silindrik va sferik',
+      'Egri chiziqli integrallar va Grin formulasi',
+      'Vektor maydon oqimi, Divergensiya va Gauss-Ostrogradskiy',
+      'Vektor maydon sirkulyatsiyasi, Rotor va Stoks formulasi'
+    ]
   },
   {
     id: 11,
     slug: 'qatorlar',
-    title: '11. Qatorlar',
-    description: "Sonli qatorlar, Dalamber va Koshi alomatlari, Leybnits alomati, darajali qatorlar, Teylor va Makloren yoyilmalari.",
+    title: '11. Qatorlar va Fure tahlili',
+    description: "Sonli qatorlar, Dalamber va Koshi alomatlari, Leybnits alomati, darajali qatorlar, Teylor, Makloren hamda trigonometrik Fure qatorlari.",
     isActive: true,
-    estimatedLessons: 4,
-    topics: ['Sonli qatorlar va yaqinlashish', 'Musbat hadli qatorlar alomatlari', 'Ishorasi almashinuvchi qatorlar (Leybnits)', 'Darajali qatorlar, Teylor va Makloren']
+    estimatedLessons: 5,
+    topics: [
+      'Sonli qatorlar va yaqinlashish',
+      'Musbat hadli qatorlar alomatlari',
+      'Ishorasi almashinuvchi qatorlar (Leybnits)',
+      'Darajali qatorlar, Teylor va Makloren',
+      'Fure qatorlari va trigonometrik yoyilmalar'
+    ]
   },
   {
     id: 12,
