@@ -661,20 +661,41 @@ const {
 
   .module-select {
     width: 100%;
-    padding: 0.6rem 0.85rem;
-    background: var(--bg-main);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    color: var(--text-main);
+    padding: 0.65rem 0.85rem;
+    background-color: var(--bg-surface, #ffffff);
+    border: 1.5px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+    color: var(--text-main, #0f172a);
     font-size: 0.95rem;
     font-family: inherit;
+    font-weight: 500;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: all 0.2s;
+    color-scheme: light dark;
+  }
+
+  :global([data-theme="dark"]) .module-select {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+    color-scheme: dark !important;
+  }
+
+  .module-select option {
+    background-color: #ffffff;
+    color: #0f172a;
+    padding: 0.5rem;
+  }
+
+  :global([data-theme="dark"]) .module-select option {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
   }
 
   .module-select:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: var(--primary, #2563eb);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   }
 
   /* Main Quiz Card */
