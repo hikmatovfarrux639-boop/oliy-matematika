@@ -16,6 +16,9 @@ const {
   description = "Universitet oliy matematika kursi: limitlar, hosila, integrallar, funksiyalar va grafiklar tushunarli tilda.",
   showSidebar = true
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, 'https://oliy-matematika.vercel.app').href;
+const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
 ---
 
 <!DOCTYPE html>
@@ -24,22 +27,33 @@ const {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.json" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="oliy matematika, oliy matematika darslari, oliy matematika vercel, matritsa kalkulyatori, hemis matematika, tuit lms, determinant hisoblash, limitlar, hosila, integrallar, differensial tenglamalar, oliy matematika uzbekcha, oliy matematika misollar yechish" />
-  <link rel="canonical" href="https://oliy-matematika.vercel.app/" />
+  <meta name="keywords" content="oliy matematika, oliy matematika darslari, oliy matematika vercel, vektor kalkulyatori, matritsa kalkulyatori, hemis matematika, tuit lms, determinant hisoblash, limitlar, hosila, integrallar, differensial tenglamalar, oliy matematika uzbekcha, oliy matematika misollar yechish" />
+  <link rel="canonical" href={canonicalUrl} />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#3b82f6" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
   <!-- Open Graph / Facebook / Telegram -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageUrl} />
   <meta property="og:locale" content="uz_UZ" />
   <meta property="og:site_name" content="Oliy Matematika Platformasi" />
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalUrl} />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
   <ClientRouter />
 
   <!-- Inline Theme Script to prevent flash of wrong theme and persist across page navigation -->

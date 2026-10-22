@@ -129,6 +129,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </button>
     </div>
 
+    <!-- 2D Canvas Visualization Box (Active in 2D mode) -->
+    <div id="vector-canvas-card" class="vector-canvas-card" style="display: none;">
+      <div class="canvas-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.25rem;">📊</span>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0; color: var(--text-main);">2D Vektorlarning Vizual Grafigi</h3>
+        </div>
+        <div class="canvas-legend">
+          <span class="legend-item"><span class="legend-color" style="background: #2563eb;"></span> a⃗ vektor</span>
+          <span class="legend-item"><span class="legend-color" style="background: #10b981;"></span> b⃗ vektor</span>
+          <span class="legend-item"><span class="legend-color" style="background: #a855f7;"></span> a⃗ + b⃗ yig'indi</span>
+        </div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="vec-canvas" width="680" height="420" style="width: 100%; max-width: 680px; height: auto; display: block; margin: 0 auto; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-color);"></canvas>
+      </div>
+      <p class="canvas-hint">💡 Koordinatalar to'ri kiritilgan sonlarga qarab avtomatik masshtablanadi. Parallelogramm qoidasi bo'yicha yig'indi vektori ko'rsatilgan.</p>
+    </div>
+
     <!-- Results Section -->
     <div class="results-container" id="results-box" style="display: none;">
       <div class="results-header">
@@ -228,6 +247,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 1.25rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  }
+
+  .vector-canvas-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .canvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .canvas-legend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-main);
+  }
+
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .canvas-hint {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
   }
 
   .presets-row {
@@ -481,6 +548,174 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     return Number.isInteger(n) ? n.toString() : n.toFixed(3);
   }
 
+  function drawArrow(ctx, fromX, fromY, toX, toY, color, width, label) {
+    const headlen = 10;
+    const dx = toX - fromX;
+    const dy = toY - fromY;
+    const angle = Math.atan2(dy, dx);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.lineWidth = width;
+
+    // Line
+    ctx.beginPath();
+    ctx.moveTo(fromX, fromY);
+    ctx.lineTo(toX, toY);
+    ctx.stroke();
+
+    // Arrowhead
+    ctx.beginPath();
+    ctx.moveTo(toX, toY);
+    ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+    ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+    ctx.closePath();
+    ctx.fill();
+
+    // Label
+    if (label) {
+      ctx.font = 'bold 12px system-ui, -apple-system, sans-serif';
+      const offsetX = Math.cos(angle) * 14 + Math.sin(angle) * 8;
+      const offsetY = Math.sin(angle) * 14 - Math.cos(angle) * 8;
+      ctx.fillText(label, toX + offsetX, toY + offsetY);
+    }
+  }
+
+  function draw2DVectorCanvas(a, b) {
+    const card = document.getElementById('vector-canvas-card');
+    const canvas = document.getElementById('vec-canvas');
+    if (!card || !canvas) return;
+
+    if (dim !== 2) {
+      card.style.display = 'none';
+      return;
+    }
+    card.style.display = 'block';
+
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width;
+    const H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)';
+    const axisColor = isDark ? '#94a3b8' : '#64748b';
+    const textColor = isDark ? '#cbd5e1' : '#475569';
+
+    const sumX = a.x + b.x;
+    const sumY = a.y + b.y;
+
+    const maxCoord = Math.max(
+      Math.abs(a.x), Math.abs(a.y),
+      Math.abs(b.x), Math.abs(b.y),
+      Math.abs(sumX), Math.abs(sumY),
+      3
+    );
+
+    const limit = Math.ceil(maxCoord * 1.3);
+    const cx = W / 2;
+    const cy = H / 2;
+    const scale = Math.min((W / 2 - 40) / limit, (H / 2 - 40) / limit);
+
+    function toCanvas(x, y) {
+      return { x: cx + x * scale, y: cy - y * scale };
+    }
+
+    // Grid lines
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = -limit; i <= limit; i++) {
+      if (i === 0) continue;
+      const p1 = toCanvas(i, -limit);
+      const p2 = toCanvas(i, limit);
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+
+      const q1 = toCanvas(-limit, i);
+      const q2 = toCanvas(limit, i);
+      ctx.moveTo(q1.x, q1.y);
+      ctx.lineTo(q2.x, q2.y);
+    }
+    ctx.stroke();
+
+    // Axes
+    ctx.strokeStyle = axisColor;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(25, cy);
+    ctx.lineTo(W - 25, cy);
+    ctx.moveTo(cx, H - 25);
+    ctx.lineTo(cx, 25);
+    ctx.stroke();
+
+    // Axis Arrows
+    ctx.fillStyle = axisColor;
+    ctx.beginPath();
+    ctx.moveTo(W - 20, cy);
+    ctx.lineTo(W - 30, cy - 5);
+    ctx.lineTo(W - 30, cy + 5);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(cx, 20);
+    ctx.lineTo(cx - 5, 30);
+    ctx.lineTo(cx + 5, 30);
+    ctx.closePath();
+    ctx.fill();
+
+    // Axis Labels
+    ctx.font = 'bold 13px system-ui, sans-serif';
+    ctx.fillText('X', W - 18, cy - 10);
+    ctx.fillText('Y', cx + 12, 25);
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillText('0', cx - 12, cy + 14);
+
+    // Number ticks
+    const step = Math.max(1, Math.round(limit / 5));
+    for (let i = -limit; i <= limit; i += step) {
+      if (i === 0) continue;
+      const px = toCanvas(i, 0);
+      ctx.fillText(i.toString(), px.x - 4, cy + 15);
+      const py = toCanvas(0, i);
+      ctx.fillText(i.toString(), cx + 6, py.y + 4);
+    }
+
+    const pos0 = toCanvas(0, 0);
+    const posA = toCanvas(a.x, a.y);
+    const posB = toCanvas(b.x, b.y);
+    const posSum = toCanvas(sumX, sumY);
+
+    // Parallelogram dashed lines
+    if (a.x !== 0 || a.y !== 0 || b.x !== 0 || b.y !== 0) {
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = isDark ? '#64748b' : '#94a3b8';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(posA.x, posA.y);
+      ctx.lineTo(posSum.x, posSum.y);
+      ctx.moveTo(posB.x, posB.y);
+      ctx.lineTo(posSum.x, posSum.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Sum vector (purple)
+    if (sumX !== 0 || sumY !== 0) {
+      drawArrow(ctx, pos0.x, pos0.y, posSum.x, posSum.y, '#a855f7', 2.5, `a⃗+b⃗ (${sumX}, ${sumY})`);
+    }
+
+    // Vector B (emerald green)
+    if (b.x !== 0 || b.y !== 0) {
+      drawArrow(ctx, pos0.x, pos0.y, posB.x, posB.y, '#10b981', 3, `b⃗ (${b.x}, ${b.y})`);
+    }
+
+    // Vector A (blue)
+    if (a.x !== 0 || a.y !== 0) {
+      drawArrow(ctx, pos0.x, pos0.y, posA.x, posA.y, '#2563eb', 3, `a⃗ (${a.x}, ${a.y})`);
+    }
+  }
+
   function renderLatex(tex, isBlock = false) {
     if (window.katex) {
       try {
@@ -624,6 +859,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     }
 
+    // Render 2D Vector Canvas if in 2D mode
+    draw2DVectorCanvas(a, b);
+
     box.scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -663,6 +901,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         document.querySelectorAll('.coord-z').forEach(el => {
           el.style.display = dim === 2 ? 'none' : '';
         });
+        if (dim === 2) {
+          draw2DVectorCanvas(getVector('a'), getVector('b'));
+        } else {
+          const card = document.getElementById('vector-canvas-card');
+          if (card) card.style.display = 'none';
+        }
+      });
+    });
+
+    // Live update canvas on input in 2D mode
+    ['ax', 'ay', 'bx', 'by'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', () => {
+        if (dim === 2) {
+          draw2DVectorCanvas(getVector('a'), getVector('b'));
+        }
       });
     });
 

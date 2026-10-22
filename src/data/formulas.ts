@@ -1,6 +1,6 @@
 export interface FormulaItem {
   id: string;
-  category: 'hosilalar' | 'limitlar' | 'qoidalar' | 'integrallar' | 'algebra' | 'trigonometriya';
+  category: 'hosilalar' | 'limitlar' | 'qoidalar' | 'integrallar' | 'algebra' | 'trigonometriya' | 'vektorlar' | 'diff' | 'qatorlar' | 'kompleks' | 'ehtimollik';
   categoryLabel: string;
   title: string;
   latex: string;
@@ -323,5 +323,150 @@ export const FORMULAS: FormulaItem[] = [
     latex: "\\cos(2x) = \\cos^2 x - \\sin^2 x",
     note: "= 2cos²x - 1 = 1 - 2sin²x",
     keywords: "cos 2x kosinus daraja pasaytirish"
+  },
+
+  // Vektorlar va Analitik Geometriya
+  {
+    id: 'v-1',
+    category: 'vektorlar',
+    categoryLabel: 'Vektorlar',
+    title: "Skalyar ko'paytma va modul",
+    latex: "\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\varphi = x_1 x_2 + y_1 y_2 + z_1 z_2",
+    note: "Ortogonallik: a · b = 0",
+    keywords: "skalyar kopaytma burchak modul vektor ortogonal"
+  },
+  {
+    id: 'v-2',
+    category: 'vektorlar',
+    categoryLabel: 'Vektorlar',
+    title: "Vektor ko'paytma",
+    latex: "\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ x_1 & y_1 & z_1 \\\\ x_2 & y_2 & z_2 \\end{vmatrix}, \\quad S_{\\text{par}} = |\\vec{a} \\times \\vec{b}|",
+    note: "Kollinearlik: a × b = 0",
+    keywords: "vektor kopaytma determinant yuza parallelogramm kollinear"
+  },
+  {
+    id: 'v-3',
+    category: 'vektorlar',
+    categoryLabel: 'Vektorlar',
+    title: "Aralash ko'paytma va tetraedr hajmi",
+    latex: "(\\vec{a}, \\vec{b}, \\vec{c}) = \\begin{vmatrix} x_1 & y_1 & z_1 \\\\ x_2 & y_2 & z_2 \\\\ x_3 & y_3 & z_3 \\end{vmatrix}, \\quad V_{\\text{pir}} = \\frac{1}{6}|(\\vec{a}, \\vec{b}, \\vec{c})|",
+    note: "Komplanarlik: (a, b, c) = 0",
+    keywords: "aralash kopaytma hajm piramida komplanar"
+  },
+  {
+    id: 'v-4',
+    category: 'vektorlar',
+    categoryLabel: 'Vektorlar',
+    title: "Nuqtadan tekislikkacha masofa",
+    latex: "d = \\frac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}",
+    note: "Tekislik: Ax + By + Cz + D = 0",
+    keywords: "masofa tekislik nuqta geometriya"
+  },
+
+  // Differensial Tenglamalar
+  {
+    id: 'd-1',
+    category: 'diff',
+    categoryLabel: 'Diff Tenglama',
+    title: "1-tartibli chiziqli tenglama (Bernulli usuli)",
+    latex: "y' + P(x)y = Q(x) \\implies y = u(x)v(x)",
+    note: "u'v + u(v' + P v) = Q",
+    keywords: "differensial tenglama chiziqli bernulli koshi"
+  },
+  {
+    id: 'd-2',
+    category: 'diff',
+    categoryLabel: 'Diff Tenglama',
+    title: "2-tartibli chiziqli o'zgarmas koeffitsiyentli",
+    latex: "y'' + p y' + q y = 0 \\implies k^2 + p k + q = 0",
+    note: "k₁, k₂ xarakteristik ildizlar",
+    keywords: "ikkinchi tartibli xarakteristik tenglama ildiz"
+  },
+
+  // Qatorlar va Fure
+  {
+    id: 'q-1',
+    category: 'qatorlar',
+    categoryLabel: 'Qatorlar',
+    title: "Dalamber yaqinlashish alomati",
+    latex: "D = \\lim_{n \\to \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| < 1 \\implies \\text{yaqinlashadi}",
+    note: "D > 1 bo'lsa uzoqlashadi",
+    keywords: "dalamber alomat qator yaqinlashish limit"
+  },
+  {
+    id: 'q-2',
+    category: 'qatorlar',
+    categoryLabel: 'Qatorlar',
+    title: "Leybnits alomati (ishorasi almashinuvchi)",
+    latex: "\\sum_{n=1}^\\infty (-1)^{n-1} a_n \\quad (a_{n+1} \\le a_n, \\; \\lim_{n\\to\\infty} a_n = 0)",
+    note: "Qoldiq had: |R_n| ≤ a_{n+1}",
+    keywords: "leybnits ishora almashinuvchi qator yaqinlashish"
+  },
+  {
+    id: 'q-3',
+    category: 'qatorlar',
+    categoryLabel: 'Qatorlar',
+    title: "Trigonometrik Fure qatori",
+    latex: "f(x) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty \\left( a_n \\cos(nx) + b_n \\sin(nx) \\right)",
+    note: "Eyler-Fure koeffitsiyentlari",
+    keywords: "fure qatori trigonometrik garmonika davriy"
+  },
+
+  // Kompleks sonlar & Laplas
+  {
+    id: 'k-1',
+    category: 'kompleks',
+    categoryLabel: 'Kompleks & Laplas',
+    title: "Muavr formulasi",
+    latex: "[r(\\cos\\varphi + i\\sin\\varphi)]^n = r^n(\\cos(n\\varphi) + i\\sin(n\\varphi))",
+    note: "Darajaga ko'tarish",
+    keywords: "muavr kompleks son modul argument daraja"
+  },
+  {
+    id: 'k-2',
+    category: 'kompleks',
+    categoryLabel: 'Kompleks & Laplas',
+    title: "Koshi–Riman differensiallashuv shartlari",
+    latex: "\\frac{\\partial u}{\\partial x} = \\frac{\\partial v}{\\partial y}, \\quad \\frac{\\partial u}{\\partial y} = -\\frac{\\partial v}{\\partial x}",
+    note: "f(z) = u + iv analitiklik sharti",
+    keywords: "koshi riman tfkp analitik garmonik hosila"
+  },
+  {
+    id: 'k-3',
+    category: 'kompleks',
+    categoryLabel: 'Kompleks & Laplas',
+    title: "Laplas almashtirishida hosila tasviri",
+    latex: "\\mathcal{L}\\{y'\\} = p Y(p) - y(0), \\quad \\mathcal{L}\\{y''\\} = p^2 Y(p) - p y(0) - y'(0)",
+    note: "Koshi masalasini yechish",
+    keywords: "laplas almashtirish operatsion hisob differensial"
+  },
+
+  // Ehtimollar Nazariyasi
+  {
+    id: 'e-1',
+    category: 'ehtimollik',
+    categoryLabel: 'Ehtimollik',
+    title: "Kombinatorika: O'rinlashtirish va Guruhlash",
+    latex: "A_n^k = \\frac{n!}{(n-k)!}, \\quad C_n^k = \\frac{n!}{k!(n-k)!}, \\quad P_n = n!",
+    note: "Klassik ehtimollik: P = m / n",
+    keywords: "kombinatorika orinlashtirish guruhlash faktorial"
+  },
+  {
+    id: 'e-2',
+    category: 'ehtimollik',
+    categoryLabel: 'Ehtimollik',
+    title: "Bayes formulasi (Gipotezalar)",
+    latex: "P(H_i|A) = \\frac{P(H_i) P(A|H_i)}{\\sum_{j=1}^n P(H_j) P(A|H_j)}",
+    note: "Aprioridan aposterioriga o'tish",
+    keywords: "bayes tola ehtimol gipoteza shartli ehtimollik"
+  },
+  {
+    id: 'e-3',
+    category: 'ehtimollik',
+    categoryLabel: 'Ehtimollik',
+    title: "Bernulli formulasi va Parametrlar",
+    latex: "P_n(k) = C_n^k p^k q^{n-k}, \\quad M(X) = np, \\quad D(X) = npq",
+    note: "q = 1 - p",
+    keywords: "bernulli sxemasi matematik kutilma dispersiya ehtimol"
   }
 ];

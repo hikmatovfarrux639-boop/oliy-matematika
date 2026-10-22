@@ -30,6 +30,44 @@ const F = {
   hajm: renderMath('V_x = \\pi \\int_{a}^{b} [f(x)]^2 \\, dx', true),
   ajraladigan: renderMath('M(x)dx + N(y)dy = 0 \\implies \\int M(x)dx + \\int N(y)dy = C', true),
   bernulli: renderMath("y' + P(x)y = Q(x)y^n \\quad (n \\neq 0, 1)", true),
+
+  // Vektorlar
+  skalyar: renderMath('\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\varphi = x_1 x_2 + y_1 y_2 + z_1 z_2', true),
+  cosPhi: renderMath('\\cos\\varphi = \\frac{x_1 x_2 + y_1 y_2 + z_1 z_2}{\\sqrt{x_1^2 + y_1^2 + z_1^2}\\sqrt{x_2^2 + y_2^2 + z_2^2}}', true),
+  vektorK: renderMath('\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ x_1 & y_1 & z_1 \\\\ x_2 & y_2 & z_2 \\end{vmatrix}, \\quad S_{\\text{par}} = |\\vec{a} \\times \\vec{b}|', true),
+  aralash: renderMath('(\\vec{a}, \\vec{b}, \\vec{c}) = \\begin{vmatrix} x_1 & y_1 & z_1 \\\\ x_2 & y_2 & z_2 \\\\ x_3 & y_3 & z_3 \\end{vmatrix}, \\quad V_{\\text{pir}} = \\frac{1}{6}|(\\vec{a}, \\vec{b}, \\vec{c})|', true),
+  tekislik: renderMath('A(x - x_0) + B(y - y_0) + C(z - z_0) = 0', true),
+  masofa: renderMath('d = \\frac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}', true),
+  kanonik: renderMath('\\frac{x - x_0}{m} = \\frac{y - y_0}{n} = \\frac{z - z_0}{p}', true),
+
+  // Kompleks & Laplas
+  kompleksShakl: renderMath('z = x + iy = r(\\cos\\varphi + i\\sin\\varphi) = r e^{i\\varphi}', true),
+  muavr: renderMath('[r(\\cos\\varphi + i\\sin\\varphi)]^n = r^n (\\cos(n\\varphi) + i\\sin(n\\varphi))', true),
+  ildizN: renderMath('\\sqrt[n]{z} = \\sqrt[n]{r} \\left(\\cos\\frac{\\varphi + 2\\pi k}{n} + i\\sin\\frac{\\varphi + 2\\pi k}{n}\\right)', true),
+  koshir: renderMath('\\frac{\\partial u}{\\partial x} = \\frac{\\partial v}{\\partial y}, \\quad \\frac{\\partial u}{\\partial y} = -\\frac{\\partial v}{\\partial x}', true),
+  laplasDef: renderMath('F(p) = \\mathcal{L}\\{f(t)\\} = \\int_0^\\infty f(t)e^{-pt}\\,dt', true),
+  laplasHosila: renderMath("\\mathcal{L}\\{y'\\} = pY(p) - y(0), \\quad \\mathcal{L}\\{y''\\} = p^2 Y(p) - py(0) - y'(0)", true),
+  laplasJadval: renderMath('\\mathcal{L}\\{1\\} = \\frac{1}{p}, \\quad \\mathcal{L}\\{e^{at}\\} = \\frac{1}{p - a}, \\quad \\mathcal{L}\\{\\sin(\\omega t)\\} = \\frac{\\omega}{p^2 + \\omega^2}', true),
+
+  // Karrali & Vektor maydon
+  qutb: renderMath('x = r\\cos\\varphi, \\quad y = r\\sin\\varphi, \\quad dx\\,dy = r\\,dr\\,d\\varphi', true),
+  grin: renderMath('\\oint_L P\\,dx + Q\\,dy = \\iint_D \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right) dx\\,dy', true),
+  gauss: renderMath('\\iint_S \\vec{a}\\cdot\\vec{n}\\,dS = \\iiint_V \\text{div}\\,\\vec{a}\\,dV = \\iiint_V \\left(\\frac{\\partial P}{\\partial x} + \\frac{\\partial Q}{\\partial y} + \\frac{\\partial R}{\\partial z}\\right) dV', true),
+  stoks: renderMath('\\oint_L \\vec{a}\\cdot d\\vec{r} = \\iint_S \\text{rot}\\,\\vec{a}\\cdot\\vec{n}\\,dS', true),
+
+  // Qatorlar & Fure
+  dalamber: renderMath('D = \\lim_{n\\to\\infty} \\frac{a_{n+1}}{a_n} < 1 \\implies \\text{yaqinlashadi}', true),
+  leybnits: renderMath('a_1 - a_2 + a_3 - \\dots \\quad (|a_{n+1}| \\le |a_n|, \\; \\lim a_n = 0)', true),
+  fure: renderMath('f(x) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty (a_n\\cos(nx) + b_n\\sin(nx))', true),
+  fureKoeff: renderMath('a_n = \\frac{1}{\\pi}\\int_{-\\pi}^\\pi f(x)\\cos(nx)\\,dx, \\quad b_n = \\frac{1}{\\pi}\\int_{-\\pi}^\\pi f(x)\\sin(nx)\\,dx', true),
+  maklorenExp: renderMath('e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^\\infty \\frac{x^n}{n!}', true),
+  maklorenTrig: renderMath('\\sin x = x - \\frac{x^3}{3!} + \\dots, \\quad \\cos x = 1 - \\frac{x^2}{2!} + \\dots', true),
+
+  // Ehtimollik & Statistika
+  kombi: renderMath('C_n^k = \\frac{n!}{k!(n-k)!}, \\quad A_n^k = \\frac{n!}{(n-k)!}, \\quad P_n = n!', true),
+  bayes: renderMath('P(A_i|B) = \\frac{P(A_i)P(B|A_i)}{\\sum_{j=1}^n P(A_j)P(B|A_j)}', true),
+  bernulliProb: renderMath('P_n(k) = C_n^k p^k q^{n-k}, \\quad M(X) = np, \\quad D(X) = npq', true),
+  statistika: renderMath('\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i, \\quad s^2 = \\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2', true),
 };
 ---
 
@@ -54,10 +92,15 @@ const F = {
     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
       <div class="sheet-tabs">
         <button class="sheet-tab active" data-target="sheet-algebra">1. Matritsalar & Algebra</button>
-        <button class="sheet-tab" data-target="sheet-limitlar">2. Limitlar & Ekvivalentlik</button>
-        <button class="sheet-tab" data-target="sheet-hosilalar">3. Hosilalar & Urinma</button>
+        <button class="sheet-tab" data-target="sheet-limitlar">2. Limitlar</button>
+        <button class="sheet-tab" data-target="sheet-hosilalar">3. Hosilalar</button>
         <button class="sheet-tab" data-target="sheet-integrallar">4. Integrallar Jadvali</button>
         <button class="sheet-tab" data-target="sheet-diff">5. Differensial Tenglamalar</button>
+        <button class="sheet-tab" data-target="sheet-vektor">6. Vektorlar & Geometriya</button>
+        <button class="sheet-tab" data-target="sheet-kompleks">7. Kompleks & Laplas</button>
+        <button class="sheet-tab" data-target="sheet-karrali">8. Karrali & Maydon</button>
+        <button class="sheet-tab" data-target="sheet-qatorlar">9. Qatorlar & Fure</button>
+        <button class="sheet-tab" data-target="sheet-statistika">10. Ehtimollik & Statistika</button>
       </div>
 
       <button id="print-current-sheet-btn" class="btn btn-primary" style="background: #2563eb; border-color: #2563eb; font-weight: 700; padding: 0.65rem 1.4rem;">
@@ -318,6 +361,227 @@ const F = {
             <div><strong>y = e^(αx) (C₁ cos(βx) + C₂ sin(βx))</strong></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- ================= SHEET 6: VEKTORLAR VA ANALITIK GEOMETRIYA ================= -->
+  <div id="sheet-vektor" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">6-VARAQLI MA'LUMOTNOMA</div>
+      <h2>Vektorlar va Analitik Geometriya</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <div class="sheet-card">
+        <h3>1. Skalyar Ko'paytma va Burchak</h3>
+        <div class="formula-block" set:html={F.skalyar} />
+        <p class="sheet-desc">Vektorlar orasidagi burchak kosinusi:</p>
+        <div class="formula-block" set:html={F.cosPhi} />
+        <div class="sheet-tip">
+          <strong>Ortogonallik alomati:</strong> Agar skalyar ko'paytma nolga teng bo'lsa, vektorlar o'zaro perpendikulyar (90 gradus).
+        </div>
+      </div>
+
+      <div class="sheet-card">
+        <h3>2. Vektor Ko'paytma va Yuzalar</h3>
+        <div class="formula-block" set:html={F.vektorK} />
+        <p class="sheet-desc">• Uchburchak yuzi: S = |a × b| / 2</p>
+        <div class="sheet-tip">
+          <strong>Kollinearlik alomati:</strong> Agar vektor ko'paytma nol bo'lsa, mos koordinatalar proporsional: x1/x2 = y1/y2 = z1/z2 (parallel vektorlar).
+        </div>
+      </div>
+
+      <div class="sheet-card">
+        <h3>3. Aralash Ko'paytma va Hajmlar</h3>
+        <div class="formula-block" set:html={F.aralash} />
+        <p class="sheet-desc">• Parallelepiped hajmi: V = |(a, b, c)|</p>
+        <p class="sheet-desc">• Piramida (tetraedr) hajmi: V = |(a, b, c)| / 6</p>
+        <div class="sheet-tip">
+          <strong>Komplanarlik alomati:</strong> Agar aralash ko'paytma nolga teng bo'lsa, uchta vektor bitta tekislikda yotadi.
+        </div>
+      </div>
+
+      <div class="sheet-card">
+        <h3>4. Fazodagi Tekislik va To'g'ri Chiziq</h3>
+        <p class="sheet-desc"><strong>Tekislikning umumiy tenglamasi:</strong></p>
+        <div class="formula-block" set:html={F.tekislik} />
+        <p class="sheet-desc"><strong>Nuqtadan tekislikkacha masofa:</strong></p>
+        <div class="formula-block" set:html={F.masofa} />
+        <p class="sheet-desc"><strong>To'g'ri chiziqning kanonik tenglamasi:</strong></p>
+        <div class="formula-block" set:html={F.kanonik} />
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 7: KOMPLEKS SONLAR VA LAPLAS ================= -->
+  <div id="sheet-kompleks" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">7-VARAQLI MA'LUMOTNOMA</div>
+      <h2>Kompleks Sonlar, TFKP va Laplas Almashtirishi</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <div class="sheet-card">
+        <h3>1. Kompleks Son Shakllari</h3>
+        <div class="formula-block" set:html={F.kompleksShakl} />
+        <p class="sheet-desc">• Algebraik shakl: z = x + iy (i² = -1)</p>
+        <p class="sheet-desc">• Modul: r = √(x² + y²), Argument: tg(φ) = y / x</p>
+        <p class="sheet-desc">• Eyler ayniyati: e^(iπ) + 1 = 0</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>2. Muavr Formulasi va Ildizlar</h3>
+        <div class="formula-block" set:html={F.muavr} />
+        <p class="sheet-desc"><strong>n-darajali ildiz chiqarish formulasi:</strong></p>
+        <div class="formula-block" set:html={F.ildizN} />
+        <div class="sheet-tip">
+          <strong>Geometrik ma'nosi:</strong> n-darajali ildizlar kompleks tekislikda aylanaga ichki chizilgan to'g'ri n-burchak uchlarida joylashadi.
+        </div>
+      </div>
+
+      <div class="sheet-card">
+        <h3>3. TFKP: Koshi–Riman Shartlari</h3>
+        <p class="sheet-desc">f(z) = u(x, y) + i v(x, y) funksiya differensiallanuvchi (analitik) bo'lishi sharti:</p>
+        <div class="formula-block" set:html={F.koshir} />
+        <p class="sheet-desc">• Agar shart bajarilsa: f'(z) = ∂u/∂x + i ∂v/∂x = ∂v/∂y - i ∂u/∂y</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>4. Laplas Almashtirishi</h3>
+        <div class="formula-block" set:html={F.laplasDef} />
+        <p class="sheet-desc"><strong>Hosilalarning tasvirlari (Koshi masalasi):</strong></p>
+        <div class="formula-block" set:html={F.laplasHosila} />
+        <p class="sheet-desc"><strong>Elementar funksiyalar:</strong></p>
+        <div class="formula-block" set:html={F.laplasJadval} />
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 8: KARRALI VA MAYDON NAZARIYASI ================= -->
+  <div id="sheet-karrali" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">8-VARAQLI MA'LUMOTNOMA</div>
+      <h2>Karrali, Egri Chiziqli Integrallar va Maydon Nazariyasi</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <div class="sheet-card">
+        <h3>1. Qutb Koordinatalariga O'tish</h3>
+        <div class="formula-block" set:html={F.qutb} />
+        <p class="sheet-desc">Doiraviy sohalarda integrallashda Yakobian ko'paytuvchisini (r) unutmaslik shart:</p>
+        <p class="sheet-desc">∬ f(x, y) dx dy = ∬ f(r cos φ, r sin φ) r dr dφ</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>2. Tekislikdagi Grin Formulasi</h3>
+        <p class="sheet-desc">Yopiq L kontur bo'yicha egri chiziqli integralni 2-karrali integralga o'tkazish:</p>
+        <div class="formula-block" set:html={F.grin} />
+        <p class="sheet-desc">• Agar ∂Q/∂x = ∂P/∂y bo'lsa, integral yo'lga bog'liq emas va yopiq konturda 0 ga teng.</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>3. Vektor Maydon Oqimi va Gauss-Ostrogradskiy</h3>
+        <p class="sheet-desc">Sirt oqimini 3-karrali hajm integraliga keltirish:</p>
+        <div class="formula-block" set:html={F.gauss} />
+        <p class="sheet-desc">• div a &gt; 0 bo'lsa manba, div a &lt; 0 bo'lsa o'pirilish/botqoqlik (stok).</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>4. Sirkulyatsiya va Stoks Formulasi</h3>
+        <p class="sheet-desc">Kontur bo'ylab sirkulyatsiyani sirt integrali bilan bog'lovchi formula:</p>
+        <div class="formula-block" set:html={F.stoks} />
+        <p class="sheet-desc">• Agar rot a = 0 bo'lsa, maydon uyurmasiz (potensial) maydon hisoblanadi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 9: QATORLAR VA FURE ================= -->
+  <div id="sheet-qatorlar" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">9-VARAQLI MA'LUMOTNOMA</div>
+      <h2>Sonli Qatorlar, Yaqinlashish va Fure Qatorlari</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <div class="sheet-card">
+        <h3>1. Musbat Hadli Qatorlar Alomatlari</h3>
+        <p class="sheet-desc"><strong>Dalamber alomati:</strong></p>
+        <div class="formula-block" set:html={F.dalamber} />
+        <p class="sheet-desc">• Radikal Koshi: agar lim (a_n)^(1/n) &lt; 1 bo'lsa yaqinlashadi.</p>
+        <p class="sheet-desc">• Garmonik qator ∑ 1/n^p: p &gt; 1 bo'lsa yaqinlashadi, p ≤ 1 bo'lsa uzoqlashadi.</p>
+        <div class="sheet-tip">
+          <strong>Eslatma:</strong> Agar D = 1 bo'lsa, Dalamber va Koshi alomatlari javob bermaydi!
+        </div>
+      </div>
+
+      <div class="sheet-card">
+        <h3>2. Ishorasi Almashinuvchi Qatorlar (Leybnits)</h3>
+        <div class="formula-block" set:html={F.leybnits} />
+        <p class="sheet-desc">1. Hadlarning moduli kamayuvchi: |a_1| ≥ |a_2| ≥ |a_3| ≥ ...</p>
+        <p class="sheet-desc">2. Umumiy had limiti: lim a_n = 0</p>
+        <p class="sheet-desc">Qoldiq had xatolik bahosi: |R_n| ≤ a_(n+1)</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>3. Asosiy Makloren Qatorlari (x → 0)</h3>
+        <div class="formula-block" set:html={F.maklorenExp} />
+        <div class="formula-block" set:html={F.maklorenTrig} />
+        <p class="sheet-desc">• ln(1+x) = x - x²/2 + x³/3 - ... (-1 &lt; x ≤ 1)</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>4. Trigonometrik Fure Qatorlari</h3>
+        <div class="formula-block" set:html={F.fure} />
+        <div class="formula-block" set:html={F.fureKoeff} />
+        <p class="sheet-desc">• Juft funksiyada b_n = 0 (faqat kosinuslar qoladi).</p>
+        <p class="sheet-desc">• Toq funksiyada a_0 = 0, a_n = 0 (faqat sinuslar qoladi).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHEET 10: EHTIMOLLIK VA STATISTIKA ================= -->
+  <div id="sheet-statistika" class="shpargalka-sheet" style="display: none;">
+    <div class="sheet-header">
+      <div class="sheet-badge">10-VARAQLI MA'LUMOTNOMA</div>
+      <h2>Ehtimollar Nazariyasi va Matematik Statistika</h2>
+      <div class="sheet-meta">Oliy Matematika • Imtihon Konspekti</div>
+    </div>
+
+    <div class="sheet-grid">
+      <div class="sheet-card">
+        <h3>1. Kombinatorika va Klassik Ehtimollik</h3>
+        <div class="formula-block" set:html={F.kombi} />
+        <p class="sheet-desc">• Klassik ehtimollik: P(A) = m / n (qulay hodisalar / jami hodisalar)</p>
+        <p class="sheet-desc">• Qarama-qarshi hodisa: P(not A) = 1 - P(A)</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>2. To'la Ehtimol va Bayes Formulalari</h3>
+        <div class="formula-block" set:html={F.bayes} />
+        <p class="sheet-desc">• To'la ehtimol: P(A) = ∑ P(H_i) P(A|H_i)</p>
+        <p class="sheet-desc">• Bog'liqsiz hodisalar ko'paytmasi: P(AB) = P(A) · P(B)</p>
+        <p class="sheet-desc">• Ehtimollarni qo'shish: P(A + B) = P(A) + P(B) - P(AB)</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>3. Bernulli Sxemasi va Sonli Xarakteristikalar</h3>
+        <div class="formula-block" set:html={F.bernulliProb} />
+        <p class="sheet-desc">• Matematik kutilma: M(X) = n · p</p>
+        <p class="sheet-desc">• Dispersiya: D(X) = n · p · q (q = 1 - p)</p>
+        <p class="sheet-desc">• O'rtacha kvadratik chetlanish: σ(X) = √(npq)</p>
+      </div>
+
+      <div class="sheet-card">
+        <h3>4. Matematik Statistika Asoslari</h3>
+        <div class="formula-block" set:html={F.statistika} />
+        <p class="sheet-desc">• Tanlanma dispersiya: s² = [1 / (n-1)] · ∑ (x_i - x̄)²</p>
+        <p class="sheet-desc">• Standart xatolik: S_e = s / √n</p>
+        <p class="sheet-desc">• Variatsiya koeffitsiyenti: V = (s / x̄) · 100%</p>
       </div>
     </div>
   </div>
