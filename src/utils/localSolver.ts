@@ -409,25 +409,279 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 10. Equations & Inequalities (Module 1)
-  if (s.includes('=') || s.includes('>') || s.includes('<') || low.includes('\\le') || low.includes('\\ge')) {
+  // 10. Trigonometry (Module 1 & 6)
+  const isTrig =
+    /\\(sin|cos|tan|tg|ctg|cot|sec|csc|arcsin|arccos|arctg|arcctg)/i.test(s) ||
+    /(sin|cos|tan|tg|ctg|cot|sec|csc|arcsin|arccos|arctg|arcctg)\s*\(/i.test(s) ||
+    /\b(sin|cos|tan|tg|ctg|cot|sec|csc|arcsin|arccos|arctg|arcctg)\b/i.test(s) ||
+    /\b(sinx|cosx|tgx|ctgx|tanx|cotx|siny|cosy)\b/i.test(s) ||
+    /(sin|cos|tan|tg|ctg)\^/i.test(s) ||
+    low.includes('trigonometr');
+
+  if (isTrig) {
+    const isEq = s.includes('=') || s.includes('>') || s.includes('<');
     return {
-      id: 'equations',
+      id: 'trigonometry',
       moduleId: 1,
       moduleTitle: '1-modul: Maktab kursini takrorlash',
       moduleUrl: '/modullar/maktab-kursi',
-      topicName: 'Tenglamalar va tengsizliklar',
-      difficulty: "Boshlang'ich",
-      whyThisTopic: "Masalada noma'lum x qatnashgan tenglama yoki tengsizlik berilgan.",
-      primaryLesson: { title: 'Tenglamalar va tengsizliklar (Intervallar usuli)', url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar', badge: 'Asosiy dars' },
+      topicName: isEq ? 'Trigonometrik tenglamalar va ayniyatlar' : 'Trigonometriya asoslari va funksiyalari',
+      difficulty: "O'rta (Maktab / 1-kurs)",
+      whyThisTopic: isEq
+        ? "Masalada trigonometrik funksiyalar (sin, cos, tg, ctg) qatnashgan tenglama berilgan."
+        : "Masalada burchaklar yoki trigonometrik funksiyalar ifodasi berilgan.",
+      primaryLesson: {
+        title: 'Trigonometriya asoslari',
+        url: '/dars/maktab-kursi/trigonometriya-asoslari',
+        badge: 'Asosiy dars'
+      },
       relatedLessons: [
-        { title: 'Algebraik ayniyatlar va qisqa ko\'paytirish', url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish' },
-        { title: 'Trigonometriya asoslari', url: '/dars/maktab-kursi/trigonometriya-asoslari' }
+        { title: 'Juft, toq va davriy funksiyalar', url: '/dars/funksiyalar-grafiklar/juft-toq-va-davriy-funksiyalar' },
+        { title: 'Trigonometrik va ko\'rsatkichli shakl', url: '/dars/kompleks-sonlar/trigonometrik-va-korsatkichli-shakl' },
+        { title: '1- va 2-ajoyib limitlar', url: '/dars/limitlar/ajoyib-limitlar' },
+        { title: 'Tenglamalar va tengsizliklar', url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar' }
       ],
       keyFormulas: [
-        { name: 'Kvadrat tenglama', latex: 'D = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{2a}' }
+        { name: 'Sinus tenglamasi', latex: '\\sin x = a \\implies x = (-1)^k \\arcsin a + \\pi k, \\quad k \\in \\mathbb{Z}' },
+        { name: 'Kosinus tenglamasi', latex: '\\cos x = a \\implies x = \\pm \\arccos a + 2\\pi k, \\quad k \\in \\mathbb{Z}' },
+        { name: 'Tangens tenglamasi', latex: '\\mathrm{tg}\\,x = a \\implies x = \\mathrm{arctg}\\,a + \\pi k, \\quad k \\in \\mathbb{Z}' },
+        { name: 'Asosiy ayniyat', latex: '\\sin^2 x + \\cos^2 x = 1, \\quad \\mathrm{tg}\\,x \\cdot \\mathrm{ctg}\\,x = 1' }
       ],
-      studyAdvice: "Tengsizliklarni yechishda Intervallar usulidan foydalaning va nolga bo'lishdan ehtiyot bo'ling."
+      studyAdvice:
+        "Xususiy holatlarni doimo yodda tuting: sin(x) = 1 da x = pi/2 + 2*pi*k; sin(x) = 0 da x = pi*k; cos(x) = 1 da x = 2*pi*k; cos(x) = 0 da x = pi/2 + pi*k.",
+      graphFn: 'sin(x)'
+    };
+  }
+
+  // 11. Exponential & Logarithmic expressions/equations
+  const isLogExp =
+    /\\(log|ln)/i.test(s) ||
+    /\b(log|ln)\s*\(/i.test(s) ||
+    /\b(log|ln)\b/i.test(s) ||
+    /\b(logx|lnx)\b/i.test(s) ||
+    /\b\d+\^x\b|\be\^x\b|\ba\^x\b/i.test(s) ||
+    low.includes('logarifm') ||
+    low.includes('korsatkichli') ||
+    low.includes("ko'rsatkichli");
+
+  if (isLogExp) {
+    const isEq = s.includes('=');
+    return {
+      id: 'log-exp',
+      moduleId: 1,
+      moduleTitle: '1-modul: Maktab kursini takrorlash',
+      moduleUrl: '/modullar/maktab-kursi',
+      topicName: isEq ? "Ko'rsatkichli va logarifmik tenglamalar" : "Ko'rsatkichli va logarifmik ifodalar",
+      difficulty: "O'rta (Maktab / 1-kurs)",
+      whyThisTopic: "Masalada logarifm (log, ln) yoki ko'rsatkichli funksiya (a^x, e^x) qatnashgan.",
+      primaryLesson: {
+        title: "Ko'rsatkichli va logarifmik ifodalar",
+        url: '/dars/maktab-kursi/korsatkichli-va-logarifmik-ifodalar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Elementar funksiyalar', url: '/dars/funksiyalar-grafiklar/elementar-funksiyalar' },
+        { title: 'Tenglamalar va tengsizliklar', url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar' },
+        { title: 'Differensiallash qoidalari va hosilalar jadvali', url: '/dars/hosila/differensiallash-qoidalari-va-jadval' }
+      ],
+      keyFormulas: [
+        { name: "Logarifm ta'rifi", latex: 'a^x = b \\iff x = \\log_a b \\quad (a > 0, a \\neq 1, b > 0)' },
+        { name: 'Natural logarifm', latex: 'e^x = b \\iff x = \\ln b' },
+        { name: "Ko'paytma logarifmi", latex: '\\ln(ab) = \\ln a + \\ln b, \\quad \\ln(a^k) = k\\ln a' }
+      ],
+      studyAdvice:
+        "Logarifm ostidagi ifoda qat'iy musbat bo'lishi shartini (aniqlanish sohasi: x > 0) doimo birinchi bo'lib tekshiring."
+    };
+  }
+
+  // 12. Vectors & Analytic Geometry (Module 3)
+  const isVector =
+    low.includes('vektor') ||
+    low.includes('skalyar') ||
+    low.includes('aralash') ||
+    low.includes('ortogonal') ||
+    low.includes('kollinear') ||
+    low.includes('tekislik') ||
+    low.includes('fazodagi') ||
+    /\bvec\b|\\vec|\([+-]?\d+,\s*[+-]?\d+,\s*[+-]?\d+\)/.test(low);
+
+  if (isVector) {
+    return {
+      id: 'vectors',
+      moduleId: 3,
+      moduleTitle: '3-modul: Vektorlar va analitik geometriya',
+      moduleUrl: '/modullar/vektorlar-geometriya',
+      topicName: 'Vektorlar algebrasi va analitik geometriya',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada vektorlar, fazodagi tekislik yoki to'g'ri chiziq berilgan.",
+      primaryLesson: {
+        title: 'Vektorlar va ular ustida chiziqli amallar',
+        url: '/dars/vektorlar-geometriya/vektorlar-va-chiziqli-amallar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: "Skalyar ko'paytma va uning tatbiqlari", url: '/dars/vektorlar-geometriya/skalyar-kopaytma' },
+        { title: "Vektor va aralash ko'paytma", url: '/dars/vektorlar-geometriya/vektor-va-aralash-kopaytma' },
+        { title: "Fazodagi tekislik va to'g'ri chiziq", url: '/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq' },
+        { title: 'Ikkinchi tartibli chiziqlar va sirtlar', url: '/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar' }
+      ],
+      keyFormulas: [
+        { name: "Skalyar ko'paytma", latex: '\\vec{a} \\cdot \\vec{b} = x_1 x_2 + y_1 y_2 + z_1 z_2 = |\\vec{a}||\\vec{b}|\\cos\\varphi' },
+        { name: 'Vektor uzunligi', latex: '|\\vec{a}| = \\sqrt{x^2 + y^2 + z^2}' },
+        { name: 'Ortogonallik sharti', latex: '\\vec{a} \\cdot \\vec{b} = 0 \\iff \\vec{a} \\perp \\vec{b}' }
+      ],
+      studyAdvice:
+        "Skalyar ko'paytma son beradi (vektorlar orasidagi burchak kosinusini topishda ishlatiladi), vektor ko'paytma esa yangi vektor beradi."
+    };
+  }
+
+  // 13. Multivariable & Partial Derivatives (Module 9)
+  const isMultivar =
+    low.includes('\\partial') ||
+    low.includes('partial') ||
+    low.includes('xususiy hosila') ||
+    low.includes('toliq differensial') ||
+    low.includes("to'liq differensial") ||
+    low.includes('gradient');
+
+  if (isMultivar) {
+    return {
+      id: 'multivariable',
+      moduleId: 9,
+      moduleTitle: "9-modul: Ko'p o'zgaruvchili funksiyalar",
+      moduleUrl: '/modullar/kop-ozgaruvchili-funksiyalar',
+      topicName: "Ko'p o'zgaruvchili funksiyalar va xususiy hosilalar",
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada ko'p o'zgaruvchili funksiya yoki xususiy hosila berilgan.",
+      primaryLesson: {
+        title: 'Xususiy hosilalar',
+        url: '/dars/kop-ozgaruvchili-funksiyalar/xususiy-hosilalar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: "Ikki o'zgaruvchili funksiya tushunchasi va aniqlanish sohasi", url: '/dars/kop-ozgaruvchili-funksiyalar/ikki-ozgaruvchili-funksiya-va-soha' },
+        { title: "To'liq differensial va taqribiy hisoblash", url: '/dars/kop-ozgaruvchili-funksiyalar/toliq-differensial-va-taqribiy-hisoblash' },
+        { title: "Ikki o'zgaruvchili funksiyaning ekstremumlari", url: '/dars/kop-ozgaruvchili-funksiyalar/ikki-ozgaruvchili-funksiya-ekstremumi' }
+      ],
+      keyFormulas: [
+        { name: 'Xususiy hosila', latex: '\\frac{\\partial z}{\\partial x} = (f(x,y))\'_x \\quad (y = \\mathrm{const})' },
+        { name: "To'liq differensial", latex: 'dz = \\frac{\\partial z}{\\partial x}dx + \\frac{\\partial z}{\\partial y}dy' }
+      ],
+      studyAdvice: "x bo'yicha hosila olayotganda y ni oddiy o'zgarmas son (konstanta) deb qarang."
+    };
+  }
+
+  // 14. Mathematical Statistics (Module 14)
+  const isStats =
+    low.includes('statistika') ||
+    low.includes('tanlanma') ||
+    low.includes('dispersiya') ||
+    low.includes('gipoteza') ||
+    low.includes('orta arifmetik') ||
+    low.includes("o'rta arifmetik");
+
+  if (isStats) {
+    return {
+      id: 'statistics',
+      moduleId: 14,
+      moduleTitle: '14-modul: Matematik statistika',
+      moduleUrl: '/modullar/matematik-statistika',
+      topicName: 'Matematik statistika va tanlanma tahlili',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada statistik ma'lumotlar, tanlanma ko'rsatkichlari yoki gipotezalar berilgan.",
+      primaryLesson: {
+        title: 'Statistik baholash va tavsiflar',
+        url: '/dars/matematik-statistika/statistik-baholash-va-tavsiflar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: "Bosh to'plam va tanlanma", url: '/dars/matematik-statistika/bosh-toplam-va-tanlanma' },
+        { title: 'Statistik gipotezalarni tekshirish', url: '/dars/matematik-statistika/statistik-gipotezalarni-tekshirish' }
+      ],
+      keyFormulas: [
+        { name: "Tanlanma o'rtachasi", latex: '\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i' },
+        { name: 'Tanlanma dispersiyasi', latex: 'S^2 = \\frac{1}{n-1} \\sum_{i=1}^n (x_i - \\bar{x})^2' }
+      ],
+      studyAdvice: "Tanlanma hajmi n va har bir qiymatning chastotasini to'g'ri hisoblab oling."
+    };
+  }
+
+  // 15. Algebraic Equations & Inequalities (Module 1)
+  if (s.includes('=') || s.includes('>') || s.includes('<') || low.includes('\\le') || low.includes('\\ge')) {
+    const isIneq = s.includes('>') || s.includes('<') || low.includes('\\le') || low.includes('\\ge');
+    const isQuad = /x\^2|x\*\*2|\bx2\b/.test(low) || /(?:x.*){2}/.test(s);
+
+    if (isIneq) {
+      return {
+        id: 'inequalities',
+        moduleId: 1,
+        moduleTitle: '1-modul: Maktab kursini takrorlash',
+        moduleUrl: '/modullar/maktab-kursi',
+        topicName: 'Tengsizliklar va intervallar usuli',
+        difficulty: "Boshlang'ich",
+        whyThisTopic: "Masalada noma'lum x qatnashgan algebraik tengsizlik berilgan.",
+        primaryLesson: {
+          title: 'Tenglamalar va tengsizliklar (Intervallar usuli)',
+          url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar',
+          badge: 'Asosiy dars'
+        },
+        relatedLessons: [
+          { title: "Algebraik ayniyatlar va qisqa ko'paytirish", url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish' },
+          { title: 'Funksiya aniqlanish va qiymatlar sohasi', url: '/dars/funksiyalar-grafiklar/funksiya-aniqlanish-va-qiymatlar-sohasi' }
+        ],
+        keyFormulas: [
+          { name: 'Intervallar usuli', latex: '(x - x_1)(x - x_2) > 0 \\implies x \\in (-\\infty, x_1) \\cup (x_2, \\infty)' },
+          { name: 'Kasr-ratsional tengsizlik', latex: '\\frac{P(x)}{Q(x)} \\ge 0 \\iff P(x)Q(x) \\ge 0 \\quad (Q(x) \\neq 0)' }
+        ],
+        studyAdvice: "Tengsizliklarni yechishda Intervallar usulidan foydalaning va nolga bo'lishdan ehtiyot bo'ling."
+      };
+    }
+
+    if (isQuad) {
+      return {
+        id: 'quadratic-equations',
+        moduleId: 1,
+        moduleTitle: '1-modul: Maktab kursini takrorlash',
+        moduleUrl: '/modullar/maktab-kursi',
+        topicName: 'Kvadrat tenglamalar (Diskriminant va Viyet)',
+        difficulty: "Boshlang'ich",
+        whyThisTopic: "Masalada 2-darajali (kvadrat) tenglama berilgan.",
+        primaryLesson: {
+          title: 'Tenglamalar va tengsizliklar (Intervallar usuli)',
+          url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar',
+          badge: 'Asosiy dars'
+        },
+        relatedLessons: [
+          { title: "Algebraik ayniyatlar va qisqa ko'paytirish", url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish' }
+        ],
+        keyFormulas: [
+          { name: 'Diskriminant', latex: 'D = b^2 - 4ac, \\quad x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{2a}' },
+          { name: 'Viyet teoremasi', latex: 'x_1 + x_2 = -\\frac{b}{a}, \\quad x_1 x_2 = \\frac{c}{a}' }
+        ],
+        studyAdvice: "D > 0 da 2 ta turli haqiqiy ildiz, D = 0 da 1 ta (karrali) ildiz, D < 0 da haqiqiy ildiz yo'q (kompleks ildizlar)."
+      };
+    }
+
+    return {
+      id: 'linear-equations',
+      moduleId: 1,
+      moduleTitle: '1-modul: Maktab kursini takrorlash',
+      moduleUrl: '/modullar/maktab-kursi',
+      topicName: 'Chiziqli algebraik tenglamalar',
+      difficulty: "Boshlang'ich",
+      whyThisTopic: "Masalada noma'lum x qatnashgan 1-darajali chiziqli tenglama berilgan.",
+      primaryLesson: {
+        title: 'Tenglamalar va tengsizliklar (Intervallar usuli)',
+        url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: "Algebraik ayniyatlar va qisqa ko'paytirish", url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish' }
+      ],
+      keyFormulas: [
+        { name: 'Chiziqli tenglama', latex: 'ax + b = 0 \\implies x = -\\frac{b}{a} \\quad (a \\neq 0)' }
+      ],
+      studyAdvice: "Noma'lumlarni tenglikning chap tomoniga, ma'lum sonlarni o'ng tomoniga o'tkazing."
     };
   }
 
@@ -1106,37 +1360,203 @@ $$\\mathbf{x = ${xFmt}, \\quad y = ${yFmt}}$$`
 function trySolveEquation(raw: string): LocalSolveResult | null {
   const diagnosis = diagnoseTopic(raw);
 
-  // Trig equation: sin(x) = 1/2 or cos(x) = 1/2
-  const trigEqMatch = raw.replace(/\s+/g, '').match(/^(sin|cos)\(x\)=([+-]?\d*(?:\/\d+)?)$/i);
+  // 1. Trig equation: sin(x) = 1, sinx=1, \sin(x)=1/2, cos(x)=0, tg(x)=1, etc.
+  const cleanTrig = raw.replace(/\s+/g, '').replace(/\\/g, '');
+  const trigEqMatch = cleanTrig.match(/^(sin|cos|tg|tan|ctg|cot)(?:\(x\)|x)=(.+)$/i);
   if (trigEqMatch) {
-    const fn = trigEqMatch[1].toLowerCase();
-    const valStr = trigEqMatch[2];
-    const val = Number(math.evaluate(valStr));
+    const rawFn = trigEqMatch[1].toLowerCase();
+    const fn = rawFn === 'tan' ? 'tg' : rawFn === 'cot' ? 'ctg' : rawFn;
+    const valRaw = trigEqMatch[2];
 
-    if (Math.abs(val) <= 1) {
+    let val = NaN;
+    try {
+      const sVal = valRaw
+        .replace(/sqrt\{(\d+)\}/g, 'sqrt($1)')
+        .replace(/frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)')
+        .replace(/pi/gi, String(Math.PI));
+      val = Number(math.evaluate(normalizeMathString(sVal)));
+    } catch {
+      val = parseFloat(valRaw);
+    }
+
+    if (!isNaN(val)) {
       let ans = '';
+      let explanation = '';
+      const fnTex = fn === 'tg' ? '\\mathrm{tg}' : fn === 'ctg' ? '\\mathrm{ctg}' : `\\${fn}`;
+
       if (fn === 'sin') {
-        ans = val === 0 ? 'x = \\pi k' : val === 1 ? 'x = \\frac{\\pi}{2} + 2\\pi k' : val === -1 ? 'x = -\\frac{\\pi}{2} + 2\\pi k' : `x = (-1)^k \\arcsin(${valStr}) + \\pi k`;
-        if (Math.abs(val - 0.5) < 1e-6) ans = 'x = (-1)^k \\frac{\\pi}{6} + \\pi k';
-      } else {
-        ans = val === 0 ? 'x = \\frac{\\pi}{2} + \\pi k' : val === 1 ? 'x = 2\\pi k' : val === -1 ? 'x = \\pi + 2\\pi k' : `x = \\pm \\arccos(${valStr}) + 2\\pi k`;
-        if (Math.abs(val - 0.5) < 1e-6) ans = 'x = \\pm \\frac{\\pi}{3} + 2\\pi k';
+        if (Math.abs(val) > 1 + 1e-6) {
+          ans = "\\text{Haqiqiy yechim yo'q}";
+          explanation = "Sinus funksiyasining qiymatlar sohasi $[-1, 1]$ kesmada yotadi. Qiymat bu oraliqqa tegishli bo'lmagani uchun tenglama haqiqiy sonlarda yechimga ega emas.";
+        } else if (Math.abs(val - 1) < 1e-5) {
+          ans = 'x = \\frac{\\pi}{2} + 2\\pi k';
+          explanation = "Bu sinusning eng muhim **xususiy holati**dir. Birlik trigonometrik aylanada ordinatasi $1$ bo'lgan yagona nuqta mavjud bo'lib, u aylananing eng yuqori nuqtasi ($\\frac{\\pi}{2}$ radian) dir. Sinusning davri $2\\pi$ bo'lgani sababli yechim $2\\pi k$ qadamda takrorlanadi.";
+        } else if (Math.abs(val - (-1)) < 1e-5) {
+          ans = 'x = -\\frac{\\pi}{2} + 2\\pi k';
+          explanation = "Bu sinusning xususiy holatidir. Birlik aylanada ordinatasi $-1$ bo'lgan nuqta eng pastki nuqta ($-\\frac{\\pi}{2}$ radian) hisoblanadi.";
+        } else if (Math.abs(val) < 1e-5) {
+          ans = 'x = \\pi k';
+          explanation = "Bu sinusning xususiy holatidir. Sinus qiymati 0 bo'lgan nuqtalar koordinata boshidan o'tuvchi gorizontal o'qdagi nuqtalar: $0, \\pi, 2\\pi, \\dots$ ($x = \\pi k$).";
+        } else if (Math.abs(val - 0.5) < 1e-4) {
+          ans = 'x = (-1)^k \\frac{\\pi}{6} + \\pi k';
+          explanation = "\\arcsin(1/2) = \\frac{\\pi}{6} \\; (30^\\circ). Umumiy formula: $x = (-1)^k \\arcsin(a) + \\pi k$.";
+        } else if (Math.abs(val - (-0.5)) < 1e-4) {
+          ans = 'x = (-1)^{k+1} \\frac{\\pi}{6} + \\pi k';
+          explanation = "\\arcsin(-1/2) = -\\frac{\\pi}{6}.";
+        } else if (Math.abs(val - Math.SQRT2 / 2) < 1e-4) {
+          ans = 'x = (-1)^k \\frac{\\pi}{4} + \\pi k';
+          explanation = "\\arcsin(\\sqrt{2}/2) = \\frac{\\pi}{4} \\; (45^\\circ).";
+        } else if (Math.abs(val - (-Math.SQRT2 / 2)) < 1e-4) {
+          ans = 'x = (-1)^{k+1} \\frac{\\pi}{4} + \\pi k';
+          explanation = "\\arcsin(-\\sqrt{2}/2) = -\\frac{\\pi}{4}.";
+        } else if (Math.abs(val - Math.sqrt(3) / 2) < 1e-4) {
+          ans = 'x = (-1)^k \\frac{\\pi}{3} + \\pi k';
+          explanation = "\\arcsin(\\sqrt{3}/2) = \\frac{\\pi}{3} \\; (60^\\circ).";
+        } else if (Math.abs(val - (-Math.sqrt(3) / 2)) < 1e-4) {
+          ans = 'x = (-1)^{k+1} \\frac{\\pi}{3} + \\pi k';
+          explanation = "\\arcsin(-\\sqrt{3}/2) = -\\frac{\\pi}{3}.";
+        } else {
+          ans = `x = (-1)^k \\arcsin(${valRaw}) + \\pi k`;
+          explanation = `Umumiy formula: $x = (-1)^k \\arcsin(a) + \\pi k$.`;
+        }
+      } else if (fn === 'cos') {
+        if (Math.abs(val) > 1 + 1e-6) {
+          ans = "\\text{Haqiqiy yechim yo'q}";
+          explanation = "Kosinus funksiyasining qiymatlar sohasi $[-1, 1]$ bo'lib, berilgan qiymat bu oraliqqa kirmaydi.";
+        } else if (Math.abs(val - 1) < 1e-5) {
+          ans = 'x = 2\\pi k';
+          explanation = "Kosinusning xususiy holati: birlik aylananing eng o'ng nuqtasi ($x = 0, 2\\pi, 4\\pi$).";
+        } else if (Math.abs(val - (-1)) < 1e-5) {
+          ans = 'x = \\pi + 2\\pi k';
+          explanation = "Kosinusning xususiy holati: birlik aylananing eng chap nuqtasi ($x = \\pi, 3\\pi$).";
+        } else if (Math.abs(val) < 1e-5) {
+          ans = 'x = \\frac{\\pi}{2} + \\pi k';
+          explanation = "Kosinus 0 ga teng bo'lgan nuqtalar vertikal o'qdagi: $\\frac{\\pi}{2}, \\frac{3\\pi}{2}, \\dots$.";
+        } else if (Math.abs(val - 0.5) < 1e-4) {
+          ans = 'x = \\pm \\frac{\\pi}{3} + 2\\pi k';
+          explanation = "\\arccos(1/2) = \\frac{\\pi}{3}. Umumiy formula: $x = \\pm \\arccos(a) + 2\\pi k$.";
+        } else if (Math.abs(val - (-0.5)) < 1e-4) {
+          ans = 'x = \\pm \\frac{2\\pi}{3} + 2\\pi k';
+          explanation = "\\arccos(-1/2) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}.";
+        } else if (Math.abs(val - Math.SQRT2 / 2) < 1e-4) {
+          ans = 'x = \\pm \\frac{\\pi}{4} + 2\\pi k';
+          explanation = "\\arccos(\\sqrt{2}/2) = \\frac{\\pi}{4}.";
+        } else if (Math.abs(val - (-Math.SQRT2 / 2)) < 1e-4) {
+          ans = 'x = \\pm \\frac{3\\pi}{4} + 2\\pi k';
+          explanation = "\\arccos(-\\sqrt{2}/2) = \\frac{3\\pi}{4}.";
+        } else if (Math.abs(val - Math.sqrt(3) / 2) < 1e-4) {
+          ans = 'x = \\pm \\frac{\\pi}{6} + 2\\pi k';
+          explanation = "\\arccos(\\sqrt{3}/2) = \\frac{\\pi}{6}.";
+        } else if (Math.abs(val - (-Math.sqrt(3) / 2)) < 1e-4) {
+          ans = 'x = \\pm \\frac{5\\pi}{6} + 2\\pi k';
+          explanation = "\\arccos(-\\sqrt{3}/2) = \\frac{5\\pi}{6}.";
+        } else {
+          ans = `x = \\pm \\arccos(${valRaw}) + 2\\pi k`;
+          explanation = `Umumiy formula: $x = \\pm \\arccos(a) + 2\\pi k$.`;
+        }
+      } else if (fn === 'tg') {
+        if (Math.abs(val) < 1e-5) {
+          ans = 'x = \\pi k';
+          explanation = "\\mathrm{arctg}(0) = 0.";
+        } else if (Math.abs(val - 1) < 1e-5) {
+          ans = 'x = \\frac{\\pi}{4} + \\pi k';
+          explanation = "\\mathrm{arctg}(1) = \\frac{\\pi}{4}.";
+        } else if (Math.abs(val - (-1)) < 1e-5) {
+          ans = 'x = -\\frac{\\pi}{4} + \\pi k';
+          explanation = "\\mathrm{arctg}(-1) = -\\frac{\\pi}{4}.";
+        } else if (Math.abs(val - Math.sqrt(3)) < 1e-4) {
+          ans = 'x = \\frac{\\pi}{3} + \\pi k';
+          explanation = "\\mathrm{arctg}(\\sqrt{3}) = \\frac{\\pi}{3}.";
+        } else if (Math.abs(val - (-Math.sqrt(3))) < 1e-4) {
+          ans = 'x = -\\frac{\\pi}{3} + \\pi k';
+          explanation = "\\mathrm{arctg}(-\\sqrt{3}) = -\\frac{\\pi}{3}.";
+        } else if (Math.abs(val - 1 / Math.sqrt(3)) < 1e-4) {
+          ans = 'x = \\frac{\\pi}{6} + \\pi k';
+          explanation = "\\mathrm{arctg}(1/\\sqrt{3}) = \\frac{\\pi}{6}.";
+        } else if (Math.abs(val - (-1 / Math.sqrt(3))) < 1e-4) {
+          ans = 'x = -\\frac{\\pi}{6} + \\pi k';
+          explanation = "\\mathrm{arctg}(-1/\\sqrt{3}) = -\\frac{\\pi}{6}.";
+        } else {
+          ans = `x = \\mathrm{arctg}(${valRaw}) + \\pi k`;
+          explanation = `Umumiy formula: $x = \\mathrm{arctg}(a) + \\pi k$.`;
+        }
+      } else if (fn === 'ctg') {
+        if (Math.abs(val) < 1e-5) {
+          ans = 'x = \\frac{\\pi}{2} + \\pi k';
+          explanation = "\\mathrm{arcctg}(0) = \\frac{\\pi}{2}.";
+        } else if (Math.abs(val - 1) < 1e-5) {
+          ans = 'x = \\frac{\\pi}{4} + \\pi k';
+          explanation = "\\mathrm{arcctg}(1) = \\frac{\\pi}{4}.";
+        } else if (Math.abs(val - (-1)) < 1e-5) {
+          ans = 'x = \\frac{3\\pi}{4} + \\pi k';
+          explanation = "\\mathrm{arcctg}(-1) = \\frac{3\\pi}{4}.";
+        } else if (Math.abs(val - Math.sqrt(3)) < 1e-4) {
+          ans = 'x = \\frac{\\pi}{6} + \\pi k';
+          explanation = "\\mathrm{arcctg}(\\sqrt{3}) = \\frac{\\pi}{6}.";
+        } else if (Math.abs(val - 1 / Math.sqrt(3)) < 1e-4) {
+          ans = 'x = \\frac{\\pi}{3} + \\pi k';
+          explanation = "\\mathrm{arcctg}(1/\\sqrt{3}) = \\frac{\\pi}{3}.";
+        } else {
+          ans = `x = \\mathrm{arcctg}(${valRaw}) + \\pi k`;
+          explanation = `Umumiy formula: $x = \\mathrm{arcctg}(a) + \\pi k$.`;
+        }
       }
 
+      const shortAns = ans.includes("yo'q") ? ans : `${ans}, \\; k \\in \\mathbb{Z}`;
       return {
         solved: true,
         type: 'Elementar trigonometrik tenglama',
-        shortAnswer: `${ans}, \\; k \\in \\mathbb{Z}`,
+        shortAnswer: shortAns,
         diagnosis,
         markdown: `## 1. Masala tahlili
-$$\\${fn}(x) = ${valStr}$$
+Berilgan tenglama:
+$$${fnTex}(x) = ${valRaw}$$
 
-## 2. Trigonometrik tenglama ildizlari
-$$x = ${ans}, \\quad k \\in \\mathbb{Z}$$
+## 2. Yechish va nazariy asos
+${explanation}
+
+## 3. Umumiy yechim
+$$${ans}${ans.includes("yo'q") ? '' : ', \\quad k \\in \\mathbb{Z}'}$$
 
 ## 4. Yakuniy javob
 Javob:
-$$\\mathbf{${ans}, \\quad k \\in \\mathbb{Z}}$$`
+$$\\mathbf{${shortAns}}$$`
+      };
+    }
+  }
+
+  // 2. Exponential equations: a^x = b, e^x = b
+  const expMatch = cleanTrig.match(/^(\d+|e)\^x=([0-9.]+)$/i);
+  if (expMatch) {
+    const base = expMatch[1];
+    const val = parseFloat(expMatch[2]);
+    if (val > 0) {
+      let ans = '';
+      if (base === 'e') {
+        ans = `x = \\ln(${val}) \\approx ${fmtNum(Math.log(val))}`;
+      } else {
+        const bNum = parseFloat(base);
+        const xVal = Math.log(val) / Math.log(bNum);
+        ans = Math.abs(xVal - Math.round(xVal)) < 1e-6
+          ? `x = ${Math.round(xVal)}`
+          : `x = \\log_{${base}}(${val}) \\approx ${fmtNum(xVal)}`;
+      }
+      return {
+        solved: true,
+        type: "Ko'rsatkichli tenglama",
+        shortAnswer: ans,
+        diagnosis,
+        markdown: `## 1. Masala tahlili
+Berilgan tenglama:
+$$${base}^x = ${val}$$
+
+## 2. Logarifm ta'rifi bo'yicha yechish
+Ikkala tomonni asos bo'yicha logarifmlaymiz:
+$$x = \\log_{${base}}(${val}) = \\frac{\\ln(${val})}{\\ln(${base})}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${ans}}$$`
       };
     }
   }
@@ -1203,6 +1623,9 @@ $$\\mathbf{${ans}}$$`
   const leftStr = parts[0].trim();
   const rightStr = parts[1].trim();
   if (!leftStr || !rightStr) return null;
+
+  // Guard: If it's a non-polynomial expression (trig, log, exp, etc.), don't force quadratic/linear polynomial fit!
+  if (/sin|cos|tg|tan|ctg|cot|sec|csc|log|ln|exp/i.test(leftStr + rightStr)) return null;
 
   const variable = 'x';
   const exprStr = `(${normalizeMathString(leftStr)}) - (${normalizeMathString(rightStr)})`;
