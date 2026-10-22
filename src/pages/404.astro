@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Sahifa topilmadi | Oliy Matematika" description="Kechirasiz, siz qidirgan sahifa mavjud emas yoki boshqa manzilga ko'chirilgan." showSidebar={false}>
+  <div class="not-found-container">
+    <div class="not-found-card">
+      <div class="badge">404 ERROR</div>
+      <div class="math-glitch">
+        <span class="symbol">lim</span>
+        <span class="sub">x → ∞</span>
+        <span class="expr">f(x) = ∄</span>
+      </div>
+
+      <h1>Sahifa topilmadi</h1>
+      <p class="desc">
+        Kechirasiz, siz tashrif buyurgan sahifa mavjud emas, nomi o'zgartirilgan yoki vaqtincha olib tashlangan bo'lishi mumkin.
+      </p>
+
+      <div class="action-buttons">
+        <a href="/" class="btn btn-primary">
+          <span>🏠 Bosh sahifaga qaytish</span>
+        </a>
+        <a href="/ai-yechuvchi" class="btn btn-outline">
+          <span>🤖 AI Yechuvchi</span>
+        </a>
+        <a href="/testlar" class="btn btn-outline">
+          <span>📝 HEMIS Testlar</span>
+        </a>
+        <a href="/formulalar" class="btn btn-outline">
+          <span>📐 Formulalar</span>
+        </a>
+      </div>
+
+      <div class="hint-box">
+        <span class="hint-icon">💡</span>
+        <span>Maslahat: Kerakli mavzuni yuqoridagi qidiruv panelidan (Ctrl+K) tezkor qidirishingiz mumkin.</span>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+  }
+  .not-found-card {
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+  }
+  .math-glitch {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-family: 'KaTeX_Math', 'Times New Roman', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary, #2563eb);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .math-glitch .sub {
+    font-size: 1.1rem;
+    color: var(--text-muted, #6b7280);
+    transform: translateY(0.4rem);
+  }
+  .math-glitch .expr {
+    color: #ef4444;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-color, #111827);
+    margin-bottom: 0.75rem;
+  }
+  .desc {
+    color: var(--text-muted, #6b7280);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--primary, #2563eb);
+    color: #ffffff;
+  }
+  .btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text-color, #374151);
+    border: 1px solid var(--border-color, #d1d5db);
+  }
+  .btn-outline:hover {
+    background: var(--bg-hover, #f3f4f6);
+    border-color: var(--primary, #2563eb);
+    color: var(--primary, #2563eb);
+    transform: translateY(-1px);
+  }
+  .hint-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-hover, #f9fafb);
+    border-radius: 0.75rem;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.85rem;
+    text-align: left;
+  }
+  .hint-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+</style>
