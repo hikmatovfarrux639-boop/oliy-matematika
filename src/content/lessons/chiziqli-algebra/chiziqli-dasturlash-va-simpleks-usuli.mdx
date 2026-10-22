@@ -1,0 +1,112 @@
+---
+title: "Chiziqli dasturlash masalasi va simpleks usuli"
+module: "chiziqli-algebra"
+order: 10
+description: "Chiziqli dasturlash masalasining qo'yilishi, geometrik talqini (grafik usul), simpleks jadval algoritmi va ikkilanish nazariyasi."
+---
+
+## Kirish: Optimallashtirish va amaliy matematika
+
+Muhandislik, dasturlash va iqtisodiyotdagi eng asosiy savollardan biri: **«Cheklangan resurslar (vaqt, xomashyo, xarajat) sharoitida qanday qilib maksimal foyda yoki minimal chiqimga erishish mumkin?»**
+
+Bu kabi masalalarni yechish bilan matematika va operatsiyalarni tekshirish fanining muhim tarmog'i — **Chiziqli Dasturlash (Linear Programming)** shug'ullanadi. TATU va barcha axborot texnologiyalari OTMlarida bu mavzu amaliy matematikaning eng yuqori cho'qqisi sifatida o'rganiladi.
+
+---
+
+## 1. Chiziqli dasturlash masalasining (ChDM) matematik modeli
+
+Umumiy holda ChDM quyidagi 3 ta komponentdan iborat:
+
+1. **Maqsad funksiyasi (Target function):** Maksimal yoki minimal qiymati qidirilayotgan chiziqli ifoda:
+   $$
+   F(X) = c_1 x_1 + c_2 x_2 + \dots + c_n x_n \longrightarrow \max \; (\text{yoki } \min)
+   $$
+
+2. **Chegaraviy shartlar sistemasi (Constraints):**
+   $$
+   \begin{cases}
+   a_{11} x_1 + a_{12} x_2 + \dots + a_{1n} x_n \le b_1 \\
+   a_{21} x_1 + a_{22} x_2 + \dots + a_{2n} x_n \le b_2 \\
+   \dots\dots\dots\dots\dots\dots\dots\dots\dots\dots \\
+   a_{m1} x_1 + a_{m2} x_2 + \dots + a_{mn} x_n \le b_m
+   \end{cases}
+   $$
+
+3. **Nomanfiylik shartlari:**
+   $$
+   x_1 \ge 0, \; x_2 \ge 0, \; \dots, \; x_n \ge 0
+   $$
+
+---
+
+## 2. Geometrik talqin va Grafik usul (2 ta o'zgaruvchi uchun)
+
+Ikkita o'zgaruvchi ($x_1, x_2$) qatnashgan masalalarni tekislikda chizma orqali juda oson va ko'rgazmali yechish mumkin:
+
+1. Har bir chegaraviy tengsizlik tekislikda yarimtekislikni ajratadi.
+2. Barcha chegaralarning umumiy kesishmasi **mumkin bo'lgan yechimlar sohasi (qavariq ko'pburchak)**ni hosil qiladi.
+3. **Fundamental Teorema:** *Maqsad funksiyasi o'zining optimal (maksimal yoki minimal) qiymatiga qavariq ko'pburchakning uchlaridan (cho'qqilaridan) birida erishadi!*
+
+### Grafik usul bosqichlari:
+- Chegaralarni to'g'ri chiziqlar sifatida chizish va umumiy sohani shtrixlash.
+- Maqsad funksiyasining sath chizig'ini (gradient vektori $\vec{c} = (c_1, c_2)$ bo'yicha) ko'chirish.
+- Sohani eng oxirgi tark etgan cho'qqi — optimal yechim nuqtasi bo'ladi!
+
+---
+
+## 3. ChDM ning kanonik shakli
+
+Masalani kompyuterda yoki jadval usulida yechish uchun barcha tengsizliklarni tenglamaga aylantirish kerak. Buning uchun **qo'shimcha (balanslovchi) o'zgaruvchilar** kiritiladi:
+
+Agar shart $a_{11} x_1 + a_{12} x_2 \le b_1$ bo'lsa, yetishmayotgan qoldiq resurs sifatida $x_3 \ge 0$ ni qo'shamiz:
+
+$$
+a_{11} x_1 + a_{12} x_2 + x_3 = b_1
+$$
+
+Barcha chegaralar tenglamalarga keltirilgan va barcha o'zgaruvchilar nomanfiy bo'lgan shakl **kanonik shakl** deyiladi.
+
+---
+
+## 4. Simpleks usuli (Dantzig algoritmi)
+
+Noma'lumlar soni 3 va undan ko'p bo'lganda grafik chizib bo'lmaydi. Bu holatda butun dunyoda George Dantzig tomonidan yaratilgan **Simpleks usuli** qo'llaniladi.
+
+### Simpleks usulining g'oyasi:
+Qavariq ko'pburchakning cheksiz ko'p ichki nuqtalarini tekshirib o'tirmasdan, bir cho'qqidan (bazis yechimdan) maqsad funksiyasini oshiruvchi qo'shni cho'qqiga qadamma-qadam o'tib borish. Cho'qqilar soni chekli bo'lgani uchun algoritm bir necha qadamda aniq optimal yechimga yetib boradi.
+
+### Simpleks jadvalining tuzilishi
+
+| Bazis | $C_{b}$ | Reja ($A_0$) | $x_1$ | $x_2$ | $x_3$ (qo'sh.) | $x_4$ (qo'sh.) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| $x_3$ | $0$ | $b_1$ | $a_{11}$ | $a_{12}$ | $1$ | $0$ |
+| $x_4$ | $0$ | $b_2$ | $a_{21}$ | $a_{22}$ | $0$ | $1$ |
+| **Baholar ($\Delta_j$)** | | $F_0$ | $\Delta_1$ | $\Delta_2$ | $0$ | $0$ |
+
+Bu yerda **baholar satri (indeks satri):**
+$$
+\Delta_j = \sum (C_{b} \cdot a_{ij}) - c_j
+$$
+
+### Optimallik mezoni (Maksimum masalasi uchun):
+- Agar barcha $\Delta_j \ge 0$ bo'lsa $\implies$ joriy yechim **optimaldir**, hisoblash to'xtatiladi!
+- Agar manfiy baholar ($\Delta_j < 0$) bo'lsa $\implies$ yechimni yanada yaxshilash mumkin. Eng kichik (moduli eng katta manfiy) $\Delta_j$ ustuni **hal qiluvchi (yetakchi) ustun** qilib tanlanadi.
+- Hal qiluvchi satr esa $\min \left(\frac{b_i}{a_{ik}}\right)$ ($a_{ik} > 0$) nisbat bo'yicha aniqlanadi.
+- Tanlangan element (pivot) bo'yicha Jordan almashtirishlari bajarilib, keyingi simpleks jadvalga o'tiladi.
+
+---
+
+## 5. Ikkilanish nazariyasi (Dual Problem)
+
+Har bir to'g'ri chiziqli dasturlash masalasiga unga uzviy bog'langan **ikkilangan (dual) masala** mos keladi:
+
+- Agar to'g'ri masalada foydani **maksimallashtirish** talab etilsa, ikkilangan masalada resurslar qiymatini **minimallashtirish** qaraladi.
+- To'g'ri masalaning chegaralari soni ikkilangan masalaning o'zgaruvchilari soniga teng bo'ladi.
+
+> **Ikkilanishning 1-teoremasi:** Agar to'g'ri va ikkilangan masalalardan biri optimal yechimga ega bo'lsa, ikkinchisi ham albatta optimal yechimga ega bo'ladi va ularning optimal qiymatlari teng bo'ladi:
+>
+> $$
+> F_{\max} = Z_{\min}
+> $$
+
+Bu qoida iqtisodiy tahlilda har bir resursning yashirin bahosini (soya baholar / shadow prices) aniqlash imkonini beradi.

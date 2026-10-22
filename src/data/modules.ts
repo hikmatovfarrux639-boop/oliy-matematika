@@ -23,19 +23,38 @@ export const MODULES: ModuleInfo[] = [
     id: 2,
     slug: 'chiziqli-algebra',
     title: '2. Chiziqli algebra',
-    description: "Matritsalar, determinantlar, chiziqli tenglamalar sistemasi, Kramer qoidasi va Gauss usuli.",
+    description: "Matritsalar, determinantlar, Laplas teoremasi, FYS, chiziqli fazolar, kvadratik formalar, simpleks va transport masalalari (TATU to'liq dasturi).",
     isActive: true,
-    estimatedLessons: 5,
-    topics: ['Matritsalar va ular ustida amallar', 'Determinantlar va xossalari', 'Teskari matritsa va matritsa rangi', 'Chiziqli tenglamalar sistemalari (Kramer)', 'Gauss usuli (Amaliy to\'liq qo\'llanma)']
+    estimatedLessons: 11,
+    topics: [
+      'Matritsalar va ular ustida amallar',
+      'Determinantlar va xossalari',
+      'Teskari matritsa va matritsa rangi',
+      'Chiziqli tenglamalar sistemalari (Kramer)',
+      'Gauss usuli (Amaliy to\'liq qo\'llanma)',
+      'Minor, algebraik to\'ldiruvchi va Laplas teoremasi',
+      'Bir jinsli tenglamalar va FYS',
+      'Chiziqli fazo, bazis va operatorlar',
+      'Kvadratik formalar va Silvestr mezoni',
+      'Chiziqli dasturlash va Simpleks usuli',
+      'Transport masalasi va Potensiallar usuli'
+    ]
   },
   {
     id: 3,
     slug: 'vektorlar-geometriya',
     title: '3. Vektorlar va analitik geometriya',
-    description: "Fazoda vektorlar, skalyar, vektor va aralash ko'paytmalar, tekislik va to'g'ri chiziq tenglamalari.",
+    description: "Fazoda vektorlar, skalyar, vektor va aralash ko'paytmalar, to'g'ri chiziq va tekislik, hamda ikkinchi tartibli sirtlar.",
     isActive: true,
-    estimatedLessons: 5,
-    topics: ['Vektorlar va chiziqli amallar', 'Skalyar ko\'paytma va burchak', 'Vektor va aralash ko\'paytma', 'Tekislikdagi to\'g\'ri chiziq', 'Fazodagi tekislik va to\'g\'ri chiziq']
+    estimatedLessons: 6,
+    topics: [
+      'Vektorlar va chiziqli amallar',
+      'Skalyar ko\'paytma va burchak',
+      'Vektor va aralash ko\'paytma',
+      'Tekislikdagi to\'g\'ri chiziq',
+      'Fazodagi tekislik va to\'g\'ri chiziq',
+      'Ikkinchi tartibli chiziqlar va fazodagi sirtlar'
+    ]
   },
   {
     id: 4,

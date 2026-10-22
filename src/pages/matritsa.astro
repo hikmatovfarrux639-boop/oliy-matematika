@@ -1,0 +1,1342 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Interaktiv Matritsa Kalkulyatori — Qadamma-qadam Yechim | Oliy Matematika" 
+  description="Matritsa determinanti, teskari matritsa, rangi, Kramer va Gauss-Jordan usuli bilan tenglamalar sistemasini yechish, algebraik to'ldiruvchilar va xos sonlarni bosqichma-bosqich hisoblash."
+>
+  <div class="matrix-page-wrapper">
+    <!-- Header Banner -->
+    <header class="matrix-hero">
+      <div class="hero-top-badge">
+        <span class="badge-pill">🔢 Chiziqli Algebra & TATU Dasturi</span>
+        <span class="badge-sub">Qadamma-qadam KaTeX Yechimi</span>
+      </div>
+      <h1 class="page-title">Interaktiv Matritsa Kalkulyatori</h1>
+      <p class="page-subtitle">
+        Determinant (det A), teskari matritsa (A⁻¹), matritsa rangi, Kramer va Gauss usullarida tenglamalar sistemasini yeching. Har bir hisoblash bosqichi matematik qoidalar bilan batafsil yoritib beriladi.
+      </p>
+
+      <!-- Operation Mode Selector Tabs -->
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="single">
+          <span>🎯 Kvadrat Matritsa Tahlili</span>
+          <small>det, A⁻¹, rang, xos sonlar</small>
+        </button>
+        <button class="mode-tab" data-mode="sle">
+          <span>⚖️ Tenglamalar Sistemasi (AX = B)</span>
+          <small>Kramer qoidasi & Gauss usuli</small>
+        </button>
+        <button class="mode-tab" data-mode="binary">
+          <span>✖️ Ikkita Matritsa (A ± B, A × B)</span>
+          <small>Qo'shish, ayirish, ko'paytirish</small>
+        </button>
+      </div>
+    </header>
+
+    <!-- Controls & Quick Presets -->
+    <div class="controls-card">
+      <div class="controls-row">
+        <!-- Dimension controls -->
+        <div class="dimension-picker">
+          <label class="control-label">Matritsa o'lchami:</label>
+          <div class="size-buttons">
+            <button class="size-btn" data-size="2">2 × 2</button>
+            <button class="size-btn active" data-size="3">3 × 3</button>
+            <button class="size-btn" data-size="4">4 × 4</button>
+          </div>
+        </div>
+
+        <!-- Presets for University Problems -->
+        <div class="presets-box">
+          <label class="control-label">TATU & HEMIS namunaviy misollari:</label>
+          <div class="presets-list">
+            <button class="preset-btn" data-preset="tatu-det">TATU: 3×3 Determinant & A⁻¹</button>
+            <button class="preset-btn" data-preset="tatu-sle">HEMIS: 3 noma'lumli ChTS</button>
+            <button class="preset-btn" data-preset="tatu-rank">Gauss: Matritsa rangi</button>
+            <button class="preset-btn" data-preset="tatu-eigen">Xos sonlar (2×2)</button>
+            <button class="preset-btn reset-btn" data-preset="clear">🗑️ Tozalash</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Matrices Grid Area -->
+    <div class="matrices-area">
+      <!-- Matrix A Container -->
+      <div class="matrix-card" id="card-matrix-a">
+        <div class="matrix-header">
+          <div class="matrix-title-badge">
+            <span class="m-letter">A</span>
+            <span class="m-desc">Matritsasi</span>
+          </div>
+          <span class="m-size-tag" id="label-size-a">3 × 3</span>
+        </div>
+
+        <div class="matrix-bracket-wrapper">
+          <div class="bracket bracket-left"></div>
+          <div class="matrix-grid" id="grid-matrix-a">
+            <!-- Dynamically populated inputs -->
+          </div>
+          <div class="bracket bracket-right"></div>
+        </div>
+      </div>
+
+      <!-- Binary Operator / System Vector B Container -->
+      <div class="matrix-card" id="card-matrix-b" style="display: none;">
+        <div class="matrix-header">
+          <div class="matrix-title-badge">
+            <span class="m-letter" id="label-letter-b">B</span>
+            <span class="m-desc" id="label-desc-b">Ozod sonlar ustuni</span>
+          </div>
+          <span class="m-size-tag" id="label-size-b">3 × 1</span>
+        </div>
+
+        <div class="matrix-bracket-wrapper">
+          <div class="bracket bracket-left"></div>
+          <div class="matrix-grid" id="grid-matrix-b">
+            <!-- Dynamically populated inputs -->
+          </div>
+          <div class="bracket bracket-right"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Toolbar -->
+    <div class="action-toolbar" id="toolbar-single">
+      <button class="calc-action-btn primary" data-action="all">
+        <span>⚡ Barcha Ko'rsatkichlarni Hisoblash</span>
+      </button>
+      <button class="calc-action-btn" data-action="det">
+        <span>|A| Determinant</span>
+      </button>
+      <button class="calc-action-btn" data-action="inv">
+        <span>A⁻¹ Teskari Matritsa</span>
+      </button>
+      <button class="calc-action-btn" data-action="rank">
+        <span>rang(A) Matritsa Rangi</span>
+      </button>
+      <button class="calc-action-btn" data-action="eigen">
+        <span>λ Xos Sonlar</span>
+      </button>
+      <button class="calc-action-btn" data-action="trans">
+        <span>Aᵀ Transponirlash</span>
+      </button>
+    </div>
+
+    <!-- Action Toolbar for SLE -->
+    <div class="action-toolbar" id="toolbar-sle" style="display: none;">
+      <button class="calc-action-btn primary" data-action="sle-both">
+        <span>⚖️ Kramer & Gauss Usulida Yechish</span>
+      </button>
+      <button class="calc-action-btn" data-action="sle-cramer">
+        <span>📐 Faqat Kramer Qoidasi (Δ, Δᵢ)</span>
+      </button>
+      <button class="calc-action-btn" data-action="sle-gauss">
+        <span>🪜 Faqat Gauss-Jordan Usuli</span>
+      </button>
+    </div>
+
+    <!-- Action Toolbar for Binary Operations -->
+    <div class="action-toolbar" id="toolbar-binary" style="display: none;">
+      <button class="calc-action-btn primary" data-action="bin-mul">
+        <span>✖️ A × B Ko'paytirish</span>
+      </button>
+      <button class="calc-action-btn" data-action="bin-add">
+        <span>➕ A + B Qo'shish</span>
+      </button>
+      <button class="calc-action-btn" data-action="bin-sub">
+        <span>➖ A - B Ayirish</span>
+      </button>
+    </div>
+
+    <!-- Error Alert Box -->
+    <div id="matrix-error-box" class="error-alert" style="display: none;">
+      <div class="error-icon">⚠️</div>
+      <div class="error-msg" id="matrix-error-text"></div>
+    </div>
+
+    <!-- Results Display Section -->
+    <section class="results-section" id="results-section">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">💡</div>
+        <h3>Matritsa elementlarini kiriting va kerakli amalni tanlang</h3>
+        <p>Yuqoridagi kataklarga butun, o'nli yoki kasr sonlarni (masalan: <code>3</code>, <code>-2</code>, <code>1/2</code>) kiritishingiz mumkin.</p>
+      </div>
+
+      <div id="solution-content" style="display: none;">
+        <!-- Overview Summary Cards -->
+        <div class="summary-cards-grid" id="summary-cards"></div>
+
+        <!-- Step-by-Step Detailed Explanations -->
+        <div class="steps-container" id="steps-container"></div>
+      </div>
+    </section>
+
+    <!-- Theoretical Quick Reference -->
+    <section class="theory-reference-card">
+      <div class="theory-header">
+        <span class="theory-icon">📖</span>
+        <h2>Chiziqli Algebra: Qoidalar va Teoremalar</h2>
+      </div>
+      <div class="theory-grid">
+        <div class="theory-item">
+          <h3>Sarryus Qoidasi (3×3)</h3>
+          <p>Bosh diagonal va unga parallel uchburchaklar ko'paytmasi yig'indisidan yordamchi diagonal va unga parallel uchburchaklar ayirib tashlanadi.</p>
+        </div>
+        <div class="theory-item">
+          <h3>Teskari Matritsa Mavjudligi</h3>
+          <p>Kvadrat matritsaning teskarisi mavjud bo'lishi uchun uning determinanti nolga teng bo'lmasligi zarur va yetarli: det(A) ≠ 0.</p>
+        </div>
+        <div class="theory-item">
+          <h3>Kramer Qoidasi</h3>
+          <p>Agar Δ = det(A) ≠ 0 bo'lsa, tizim yagona yechimga ega bo'ladi: x_i = Δ_i / Δ, bu yerda Δ_i — i-ustun ozod sonlar bilan almashtirilgan determinant.</p>
+        </div>
+        <div class="theory-item">
+          <h3>Kroneker-Kapelli Teoremasi</h3>
+          <p>Chiziqli tenglamalar sistemasi birgalikda bo'lishi uchun asosiy matritsa rangi kengaytirilgan matritsa rangiga teng bo'lishi zarur va yetarli: rang(A) = rang(A|B).</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .matrix-page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .matrix-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-light, #eff6ff);
+    color: var(--primary, #2563eb);
+    padding: 0.35rem 0.95rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+  }
+
+  .badge-sub {
+    color: var(--text-muted, #64748b);
+    font-weight: 500;
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+    padding-left: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--text-main, #0f172a);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted, #64748b);
+    font-size: 1.05rem;
+    max-width: 780px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* Mode Tabs */
+  .mode-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .mode-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-surface, #ffffff);
+    border: 2px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-md, 10px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-main, #0f172a);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .mode-tab small {
+    font-size: 0.75rem;
+    color: var(--text-muted, #64748b);
+    font-weight: 500;
+  }
+
+  .mode-tab:hover {
+    border-color: var(--primary, #2563eb);
+    transform: translateY(-1px);
+  }
+
+  .mode-tab.active {
+    background: var(--primary-light, #eff6ff);
+    border-color: var(--primary, #2563eb);
+    color: var(--primary, #2563eb);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+  }
+
+  .mode-tab.active small {
+    color: var(--primary, #2563eb);
+  }
+
+  /* Controls card */
+  .controls-card {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-lg, 16px);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow, 0 1px 3px rgba(0,0,0,0.1));
+  }
+
+  .controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .control-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted, #64748b);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .size-buttons, .presets-list {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .size-btn, .preset-btn {
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-sm, 6px);
+    border: 1px solid var(--border-color, #e2e8f0);
+    background: var(--bg-muted, #f1f5f9);
+    color: var(--text-main, #0f172a);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .size-btn:hover, .preset-btn:hover {
+    background: var(--bg-surface, #ffffff);
+    border-color: var(--primary, #2563eb);
+    color: var(--primary, #2563eb);
+  }
+
+  .size-btn.active {
+    background: var(--primary, #2563eb);
+    color: #ffffff;
+    border-color: var(--primary, #2563eb);
+  }
+
+  .reset-btn {
+    color: #dc2626;
+  }
+  .reset-btn:hover {
+    border-color: #dc2626 !important;
+    color: #dc2626 !important;
+    background: #fef2f2 !important;
+  }
+
+  /* Matrices Area */
+  .matrices-area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .matrix-card {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-lg, 16px);
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow, 0 2px 4px rgba(0,0,0,0.05));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 280px;
+  }
+
+  .matrix-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+  }
+
+  .matrix-title-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .m-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--primary, #2563eb);
+    color: white;
+    font-weight: 800;
+    font-size: 1rem;
+    font-family: serif;
+    font-style: italic;
+  }
+
+  .m-desc {
+    font-weight: 700;
+    color: var(--text-main, #0f172a);
+    font-size: 0.95rem;
+  }
+
+  .m-size-tag {
+    font-size: 0.75rem;
+    background: var(--bg-muted, #f1f5f9);
+    color: var(--text-muted, #64748b);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .matrix-bracket-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 0.5rem;
+  }
+
+  .bracket {
+    width: 10px;
+    align-self: stretch;
+    border-top: 2.5px solid var(--text-main, #0f172a);
+    border-bottom: 2.5px solid var(--text-main, #0f172a);
+  }
+
+  .bracket-left {
+    border-left: 2.5px solid var(--text-main, #0f172a);
+    border-radius: 4px 0 0 4px;
+    margin-right: 0.5rem;
+  }
+
+  .bracket-right {
+    border-right: 2.5px solid var(--text-main, #0f172a);
+    border-radius: 0 4px 4px 0;
+    margin-left: 0.5rem;
+  }
+
+  .matrix-grid {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  :global(.matrix-cell-input) {
+    width: 64px;
+    height: 48px;
+    text-align: center;
+    border: 1px solid var(--border-color, #cbd5e1);
+    border-radius: var(--radius-sm, 6px);
+    background: var(--bg-surface-elevated, #ffffff);
+    color: var(--text-main, #0f172a);
+    font-family: var(--font-mono, monospace);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+  }
+
+  :global(.matrix-cell-input:focus) {
+    outline: none;
+    border-color: var(--primary, #2563eb);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    background: var(--primary-light, #eff6ff);
+  }
+
+  /* Action Toolbars */
+  .action-toolbar {
+    display: flex;
+    gap: 0.65rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .calc-action-btn {
+    padding: 0.7rem 1.25rem;
+    border-radius: var(--radius-md, 10px);
+    border: 1px solid var(--border-color, #e2e8f0);
+    background: var(--bg-surface, #ffffff);
+    color: var(--text-main, #0f172a);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.15s ease;
+  }
+
+  .calc-action-btn:hover {
+    border-color: var(--primary, #2563eb);
+    color: var(--primary, #2563eb);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  }
+
+  .calc-action-btn.primary {
+    background: var(--primary, #2563eb);
+    color: #ffffff;
+    border-color: var(--primary, #2563eb);
+  }
+
+  .calc-action-btn.primary:hover {
+    background: var(--primary-hover, #1d4ed8);
+    color: #ffffff;
+  }
+
+  /* Error Alert */
+  .error-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md, 10px);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .error-icon {
+    font-size: 1.4rem;
+  }
+
+  /* Results Section */
+  .results-section {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-lg, 16px);
+    padding: 2rem;
+    box-shadow: var(--card-shadow, 0 2px 6px rgba(0,0,0,0.06));
+    margin-bottom: 2.5rem;
+    min-height: 200px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--text-muted, #64748b);
+  }
+
+  .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .empty-state h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main, #0f172a);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Summary Cards */
+  .summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.sum-card) {
+    background: var(--bg-muted, #f8fafc);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-md, 10px);
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  :global(.sum-card:hover) {
+    border-color: var(--primary, #2563eb);
+    transform: translateY(-2px);
+  }
+
+  :global(.sum-card .sum-title) {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted, #64748b);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+
+  :global(.sum-card .sum-val) {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary, #2563eb);
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Steps Container */
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  :global(.step-box) {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-md, 10px);
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary, #2563eb);
+  }
+
+  :global(.step-box h3) {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-main, #0f172a);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  :global(.step-box p) {
+    color: var(--text-muted, #64748b);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.step-latex-display) {
+    overflow-x: auto;
+    padding: 0.85rem 0.5rem;
+    margin: 0.75rem 0;
+    background: var(--bg-muted, #f8fafc);
+    border-radius: var(--radius-sm, 6px);
+  }
+
+  /* Theory Reference */
+  .theory-reference-card {
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-lg, 16px);
+    padding: 1.75rem;
+  }
+
+  .theory-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+  }
+
+  .theory-icon {
+    font-size: 1.4rem;
+  }
+
+  .theory-header h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-main, #0f172a);
+  }
+
+  .theory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .theory-item h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary, #2563eb);
+    margin-bottom: 0.35rem;
+  }
+
+  .theory-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #64748b);
+    line-height: 1.5;
+  }
+</style>
+
+<script>
+  import katex from 'katex';
+
+  function initMatrixCalculator() {
+    let currentMode: 'single' | 'sle' | 'binary' = 'single';
+    let currentSize = 3;
+
+    // Presets definitions
+    const PRESETS = {
+      'tatu-det': {
+        size: 3,
+        matrixA: [
+          [2, 1, -1],
+          [3, 0, 2],
+          [1, -2, 1]
+        ],
+        vectorB: [2, 5, 0]
+      },
+      'tatu-sle': {
+        size: 3,
+        matrixA: [
+          [2, 1, 1],
+          [1, -1, 2],
+          [3, 2, -1]
+        ],
+        vectorB: [2, -7, 8]
+      },
+      'tatu-rank': {
+        size: 3,
+        matrixA: [
+          [1, 2, 3],
+          [2, 4, 6],
+          [3, 1, 4]
+        ],
+        vectorB: [0, 0, 0]
+      },
+      'tatu-eigen': {
+        size: 2,
+        matrixA: [
+          [4, 1],
+          [2, 3]
+        ],
+        vectorB: [0, 0]
+      }
+    };
+
+    // DOM Elements
+    const gridA = document.getElementById('grid-matrix-a');
+    const gridB = document.getElementById('grid-matrix-b');
+    const cardB = document.getElementById('card-matrix-b');
+    const labelLetterB = document.getElementById('label-letter-b');
+    const labelDescB = document.getElementById('label-desc-b');
+    const labelSizeA = document.getElementById('label-size-a');
+    const labelSizeB = document.getElementById('label-size-b');
+
+    const toolbarSingle = document.getElementById('toolbar-single');
+    const toolbarSle = document.getElementById('toolbar-sle');
+    const toolbarBinary = document.getElementById('toolbar-binary');
+
+    const emptyState = document.getElementById('empty-state');
+    const solutionContent = document.getElementById('solution-content');
+    const summaryCards = document.getElementById('summary-cards');
+    const stepsContainer = document.getElementById('steps-container');
+
+    const errorBox = document.getElementById('matrix-error-box');
+    const errorText = document.getElementById('matrix-error-text');
+
+    function showError(msg: string) {
+      if (!errorBox || !errorText) return;
+      errorText.textContent = msg;
+      errorBox.style.display = 'flex';
+      solutionContent!.style.display = 'none';
+      emptyState!.style.display = 'block';
+    }
+
+    function clearError() {
+      if (errorBox) errorBox.style.display = 'none';
+    }
+
+    // Helper: render KaTeX safely
+    function renderLatex(element: HTMLElement, tex: string, displayMode = true) {
+      try {
+        katex.render(tex, element, { displayMode, throwOnError: false });
+      } catch (e) {
+        element.textContent = tex;
+      }
+    }
+
+    // Create Matrix Input Grid
+    function createGrid(container: HTMLElement, rows: number, cols: number, idPrefix: string, defaultValues?: number[][]) {
+      container.innerHTML = '';
+      container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'matrix-cell-input';
+          input.id = `${idPrefix}_${r}_${c}`;
+          input.autocomplete = 'off';
+
+          let val = 0;
+          if (defaultValues && defaultValues[r] && defaultValues[r][c] !== undefined) {
+            val = defaultValues[r][c];
+          } else if (r === c && cols === rows) {
+            val = 1;
+          }
+          input.value = val.toString();
+          container.appendChild(input);
+        }
+      }
+    }
+
+    // Read values from grid
+    function getMatrixValues(idPrefix: string, rows: number, cols: number): number[][] {
+      const mat: number[][] = [];
+      for (let r = 0; r < rows; r++) {
+        mat[r] = [];
+        for (let c = 0; c < cols; c++) {
+          const el = document.getElementById(`${idPrefix}_${r}_${c}`) as HTMLInputElement | null;
+          if (!el) {
+            mat[r][c] = 0;
+            continue;
+          }
+          const raw = el.value.trim();
+          if (raw.includes('/')) {
+            const parts = raw.split('/');
+            const num = parseFloat(parts[0]);
+            const den = parseFloat(parts[1]);
+            mat[r][c] = den !== 0 ? num / den : 0;
+          } else {
+            mat[r][c] = parseFloat(raw) || 0;
+          }
+        }
+      }
+      return mat;
+    }
+
+    // Number format for LaTeX
+    function formatNum(n: number): string {
+      if (Math.abs(n) < 1e-9) return '0';
+      if (Math.abs(n - Math.round(n)) < 1e-6) return Math.round(n).toString();
+      // Try simple fraction
+      for (let d = 2; d <= 24; d++) {
+        const num = Math.round(n * d);
+        if (Math.abs(n - num / d) < 1e-5) {
+          if (num < 0) return `-\\frac{${Math.abs(num)}}{${d}}`;
+          return `\\frac{${num}}{${d}}`;
+        }
+      }
+      return Number(n.toFixed(3)).toString();
+    }
+
+    // Format Matrix to LaTeX
+    function matrixToLatex(m: number[][]): string {
+      const rows = m.map(row => row.map(v => formatNum(v)).join(' & '));
+      return `\\begin{pmatrix} ${rows.join(' \\\\ ')} \\end{pmatrix}`;
+    }
+
+    // Math algorithms
+    function calcDeterminant(m: number[][]): number {
+      const n = m.length;
+      if (n === 1) return m[0][0];
+      if (n === 2) return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+      if (n === 3) {
+        return (
+          m[0][0] * m[1][1] * m[2][2] +
+          m[0][1] * m[1][2] * m[2][0] +
+          m[0][2] * m[1][0] * m[2][1] -
+          m[0][2] * m[1][1] * m[2][0] -
+          m[0][0] * m[1][2] * m[2][1] -
+          m[0][1] * m[1][0] * m[2][2]
+        );
+      }
+      // Laplace expansion for n >= 4
+      let det = 0;
+      for (let c = 0; c < n; c++) {
+        const minor = getSubmatrix(m, 0, c);
+        const sign = c % 2 === 0 ? 1 : -1;
+        det += sign * m[0][c] * calcDeterminant(minor);
+      }
+      return det;
+    }
+
+    function getSubmatrix(m: number[][], skipRow: number, skipCol: number): number[][] {
+      return m
+        .filter((_, r) => r !== skipRow)
+        .map(row => row.filter((_, c) => c !== skipCol));
+    }
+
+    function calcCofactors(m: number[][]): number[][] {
+      const n = m.length;
+      const cofactors: number[][] = [];
+      for (let r = 0; r < n; r++) {
+        cofactors[r] = [];
+        for (let c = 0; c < n; c++) {
+          const minor = getSubmatrix(m, r, c);
+          const sign = (r + c) % 2 === 0 ? 1 : -1;
+          cofactors[r][c] = sign * calcDeterminant(minor);
+        }
+      }
+      return cofactors;
+    }
+
+    function transpose(m: number[][]): number[][] {
+      const rows = m.length;
+      const cols = m[0].length;
+      const t: number[][] = [];
+      for (let c = 0; c < cols; c++) {
+        t[c] = [];
+        for (let r = 0; r < rows; r++) {
+          t[c][r] = m[r][c];
+        }
+      }
+      return t;
+    }
+
+    function calcInverse(m: number[][], det: number): number[][] {
+      const cof = calcCofactors(m);
+      const adj = transpose(cof);
+      const inv: number[][] = [];
+      for (let r = 0; r < m.length; r++) {
+        inv[r] = [];
+        for (let c = 0; c < m.length; c++) {
+          inv[r][c] = adj[r][c] / det;
+        }
+      }
+      return inv;
+    }
+
+    function calcRankWithSteps(m: number[][]): { rank: number; steps: string[]; echelon: number[][] } {
+      const rows = m.length;
+      const cols = m[0].length;
+      const mat = m.map(row => [...row]);
+      const steps: string[] = [];
+
+      let lead = 0;
+      for (let r = 0; r < rows; r++) {
+        if (lead >= cols) break;
+        let i = r;
+        while (Math.abs(mat[i][lead]) < 1e-9) {
+          i++;
+          if (i === rows) {
+            i = r;
+            lead++;
+            if (lead === cols) break;
+          }
+        }
+        if (lead >= cols) break;
+
+        if (i !== r) {
+          // Swap rows
+          const temp = mat[i];
+          mat[i] = mat[r];
+          mat[r] = temp;
+          steps.push(`R_${r + 1} \\longleftrightarrow R_${i + 1} \\text{ (satrlar o'rni almashtirildi)}`);
+        }
+
+        const pivot = mat[r][lead];
+        for (let j = r + 1; j < rows; j++) {
+          const factor = mat[j][lead] / pivot;
+          if (Math.abs(factor) > 1e-9) {
+            for (let c = lead; c < cols; c++) {
+              mat[j][c] -= factor * mat[r][c];
+            }
+            steps.push(`R_${j + 1} \\leftarrow R_${j + 1} - (${formatNum(factor)}) \\cdot R_${r + 1}`);
+          }
+        }
+        lead++;
+      }
+
+      // Count non-zero rows
+      let nonZeroCount = 0;
+      for (let r = 0; r < rows; r++) {
+        const isNonZero = mat[r].some(v => Math.abs(v) > 1e-6);
+        if (isNonZero) nonZeroCount++;
+      }
+
+      return { rank: nonZeroCount, steps, echelon: mat };
+    }
+
+    // Solve SLE by Cramer
+    function solveCramer(A: number[][], B: number[]): { hasUnique: boolean; detA: number; dets: number[]; x: number[]; stepsLatex: string[] } {
+      const n = A.length;
+      const detA = calcDeterminant(A);
+      const steps: string[] = [];
+
+      if (Math.abs(detA) < 1e-9) {
+        return { hasUnique: false, detA, dets: [], x: [], stepsLatex: ['\\Delta = 0, \\text{ demak Kramer usulini qo\'llab bo\'lmaydi.}'] };
+      }
+
+      steps.push(`\\Delta = \\det(A) = ${formatNum(detA)} \\neq 0 \\implies \\text{tizim yagona yechimga ega.}`);
+
+      const dets: number[] = [];
+      const x: number[] = [];
+
+      for (let i = 0; i < n; i++) {
+        const Ai = A.map((row, r) => row.map((val, c) => (c === i ? B[r] : val)));
+        const detAi = calcDeterminant(Ai);
+        dets.push(detAi);
+        const xi = detAi / detA;
+        x.push(xi);
+        steps.push(`\\Delta_${i + 1} = \\det(A_${i + 1}) = ${formatNum(detAi)} \\implies x_${i + 1} = \\frac{\\Delta_${i + 1}}{\\Delta} = \\frac{${formatNum(detAi)}}{${formatNum(detA)}} = ${formatNum(xi)}`);
+      }
+
+      return { hasUnique: true, detA, dets, x, stepsLatex: steps };
+    }
+
+    // Multiply Matrices A and B
+    function multiplyMatrices(A: number[][], B: number[][]): number[][] {
+      const rowsA = A.length;
+      const colsA = A[0].length;
+      const colsB = B[0].length;
+      const C: number[][] = [];
+
+      for (let r = 0; r < rowsA; r++) {
+        C[r] = [];
+        for (let c = 0; c < colsB; c++) {
+          let sum = 0;
+          for (let k = 0; k < colsA; k++) {
+            sum += A[r][k] * B[k][c];
+          }
+          C[r][c] = sum;
+        }
+      }
+      return C;
+    }
+
+    // Main Solver Dispatcher
+    function runComputation(action: string) {
+      clearError();
+      const n = currentSize;
+      const A = getMatrixValues('a', n, n);
+
+      emptyState!.style.display = 'none';
+      solutionContent!.style.display = 'block';
+      summaryCards!.innerHTML = '';
+      stepsContainer!.innerHTML = '';
+
+      if (currentMode === 'single') {
+        const det = calcDeterminant(A);
+        const tr = A.reduce((acc, row, idx) => acc + row[idx], 0);
+        const rankObj = calcRankWithSteps(A);
+
+        // Summary cards
+        summaryCards!.innerHTML = `
+          <div class="sum-card">
+            <div class="sum-title">Determinant |A|</div>
+            <div class="sum-val" id="sum-det"></div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">Matritsa Rangi</div>
+            <div class="sum-val" id="sum-rank">${rankObj.rank}</div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">Matritsa Izi tr(A)</div>
+            <div class="sum-val" id="sum-tr">${formatNum(tr)}</div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">Teskari Matritsa A⁻¹</div>
+            <div class="sum-val" id="sum-inv-status">${Math.abs(det) > 1e-9 ? 'Mavjud ✅' : 'Mavjud emas ❌'}</div>
+          </div>
+        `;
+        renderLatex(document.getElementById('sum-det')!, formatNum(det), false);
+
+        // Step 1: Determinant
+        if (action === 'all' || action === 'det') {
+          const step1 = document.createElement('div');
+          step1.className = 'step-box';
+          step1.innerHTML = `
+            <h3>1-qadam: Determinantni Hisoblash</h3>
+            <p>Berilgan $A$ matritsaning determinanti:</p>
+            <div class="step-latex-display" id="latex-det-step"></div>
+          `;
+          stepsContainer!.appendChild(step1);
+
+          let detLatex = `\\det A = ${matrixToLatex(A).replace('pmatrix', 'vmatrix')} = ${formatNum(det)}`;
+          if (n === 2) {
+            detLatex = `\\det A = \\begin{vmatrix} ${A[0][0]} & ${A[0][1]} \\\\ ${A[1][0]} & ${A[1][1]} \\end{vmatrix} = (${formatNum(A[0][0])}) \\cdot (${formatNum(A[1][1])}) - (${formatNum(A[0][1])}) \\cdot (${formatNum(A[1][0])}) = ${formatNum(det)}`;
+          } else if (n === 3) {
+            detLatex = `\\begin{aligned}
+\\det A &= (${formatNum(A[0][0])} \\cdot ${formatNum(A[1][1])} \\cdot ${formatNum(A[2][2])} + ${formatNum(A[0][1])} \\cdot ${formatNum(A[1][2])} \\cdot ${formatNum(A[2][0])} + ${formatNum(A[0][2])} \\cdot ${formatNum(A[1][0])} \\cdot ${formatNum(A[2][1])}) \\\\
+&- (${formatNum(A[0][2])} \\cdot ${formatNum(A[1][1])} \\cdot ${formatNum(A[2][0])} + ${formatNum(A[0][0])} \\cdot ${formatNum(A[1][2])} \\cdot ${formatNum(A[2][1])} + ${formatNum(A[0][1])} \\cdot ${formatNum(A[1][0])} \\cdot ${formatNum(A[2][2])}) \\\\
+&= ${formatNum(det)}
+\\end{aligned}`;
+          }
+          renderLatex(step1.querySelector('#latex-det-step')!, detLatex);
+        }
+
+        // Step 2: Inverse Matrix
+        if (action === 'all' || action === 'inv') {
+          const step2 = document.createElement('div');
+          step2.className = 'step-box';
+          if (Math.abs(det) < 1e-9) {
+            step2.innerHTML = `
+              <h3>2-qadam: Teskari Matritsa A⁻¹</h3>
+              <p style="color: #dc2626; font-weight: 700;">
+                ⚠️ Determinant $\\det A = 0$ bo'lganligi sababli, bu matritsa xos (singulyar) bo'lib, unga teskari matritsa mavjud emas!
+              </p>
+            `;
+          } else {
+            const cof = calcCofactors(A);
+            const adj = transpose(cof);
+            const inv = calcInverse(A, det);
+
+            step2.innerHTML = `
+              <h3>2-qadam: Teskari Matritsani Qurish</h3>
+              <p>Formula: $A^{-1} = \\frac{1}{\\det A} A^*$, bu yerda $A^* = C^T$ — biriktirilgan (adjugate) matritsa:</p>
+              <div class="step-latex-display" id="latex-adj-step"></div>
+              <p>Natijaviy teskari matritsa $A^{-1}$:</p>
+              <div class="step-latex-display" id="latex-inv-result"></div>
+            `;
+            stepsContainer!.appendChild(step2);
+
+            const adjLatex = `A^* = C^T = ${matrixToLatex(adj)}`;
+            const invLatex = `A^{-1} = \\frac{1}{${formatNum(det)}} ${matrixToLatex(adj)} = ${matrixToLatex(inv)}`;
+            renderLatex(step2.querySelector('#latex-adj-step')!, adjLatex);
+            renderLatex(step2.querySelector('#latex-inv-result')!, invLatex);
+          }
+          stepsContainer!.appendChild(step2);
+        }
+
+        // Step 3: Rank
+        if (action === 'all' || action === 'rank') {
+          const step3 = document.createElement('div');
+          step3.className = 'step-box';
+          step3.innerHTML = `
+            <h3>3-qadam: Matritsa Rangi (Gauss Usuli)</h3>
+            <p>Matritsani elementar satr almashtirishlari orqali pog'onasimon ko'rinishga keltiramiz:</p>
+            <div class="step-latex-display" id="latex-rank-steps"></div>
+            <p>Pog'onasimon ko'rinishdagi nol bo'lmagan satrlar soni: <strong>${rankObj.rank}</strong> ta. Demak, $\\operatorname{rank}(A) = ${rankObj.rank}$.</p>
+          `;
+          stepsContainer!.appendChild(step3);
+
+          const rankLatex = `\\begin{aligned} A \\sim ${matrixToLatex(rankObj.echelon)} \\end{aligned}`;
+          renderLatex(step3.querySelector('#latex-rank-steps')!, rankLatex);
+        }
+
+        // Step 4: Eigenvalues (for 2x2 and 3x3)
+        if (action === 'all' || action === 'eigen') {
+          if (n === 2) {
+            const trA = A[0][0] + A[1][1];
+            const detA = A[0][0] * A[1][1] - A[0][1] * A[1][0];
+            const D = trA * trA - 4 * detA;
+
+            const step4 = document.createElement('div');
+            step4.className = 'step-box';
+            step4.innerHTML = `
+              <h3>Xos Sonlar (Eigenvalues) va Xarakteristik Tenglama</h3>
+              <p>Xarakteristik tenglama: $\\det(A - \\lambda E) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det A = 0$</p>
+              <div class="step-latex-display" id="latex-char-eq"></div>
+            `;
+            stepsContainer!.appendChild(step4);
+
+            let eigenLatex = `\\lambda^2 - (${formatNum(trA)})\\lambda + (${formatNum(detA)}) = 0`;
+            if (D >= 0) {
+              const l1 = (trA + Math.sqrt(D)) / 2;
+              const l2 = (trA - Math.sqrt(D)) / 2;
+              eigenLatex += `\\implies \\lambda_1 = ${formatNum(l1)}, \\; \\lambda_2 = ${formatNum(l2)}`;
+            } else {
+              const re = trA / 2;
+              const im = Math.sqrt(-D) / 2;
+              eigenLatex += `\\implies \\lambda_{1,2} = ${formatNum(re)} \\pm ${formatNum(im)}i \\text{ (kompleks xos sonlar)}`;
+            }
+            renderLatex(step4.querySelector('#latex-char-eq')!, eigenLatex);
+          }
+        }
+      } else if (currentMode === 'sle') {
+        // System of Linear Equations
+        const Bmat = getMatrixValues('b', n, 1);
+        const B = Bmat.map(r => r[0]);
+
+        const cramerRes = solveCramer(A, B);
+
+        summaryCards!.innerHTML = `
+          <div class="sum-card">
+            <div class="sum-title">Asosiy Determinant Δ</div>
+            <div class="sum-val" id="sum-delta"></div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">Yechim Holati</div>
+            <div class="sum-val">${cramerRes.hasUnique ? 'Yagona Yechim ✅' : 'Maxsus Holat ⚠️'}</div>
+          </div>
+        `;
+        renderLatex(document.getElementById('sum-delta')!, formatNum(cramerRes.detA), false);
+
+        const stepBox = document.createElement('div');
+        stepBox.className = 'step-box';
+        stepBox.innerHTML = `
+          <h3>Kramer Qoidasi Bo'yicha Yechish</h3>
+          <p>Tenglamalar sistemasi matritsali ko'rinishda: $A X = B$</p>
+          <div class="step-latex-display" id="latex-sle-system"></div>
+          <p>Yordamchi determinantlar va yechimlar:</p>
+          <div class="step-latex-display" id="latex-sle-steps"></div>
+        `;
+        stepsContainer!.appendChild(stepBox);
+
+        const systemLatex = `${matrixToLatex(A)} \\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = ${matrixToLatex(Bmat)}`;
+        renderLatex(stepBox.querySelector('#latex-sle-system')!, systemLatex);
+
+        const stepsJoined = cramerRes.stepsLatex.join(' \\\\[6pt] ');
+        renderLatex(stepBox.querySelector('#latex-sle-steps')!, `\\begin{aligned} ${stepsJoined} \\end{aligned}`);
+      } else if (currentMode === 'binary') {
+        // A * B, A + B, A - B
+        const B = getMatrixValues('b', n, n);
+        const mul = multiplyMatrices(A, B);
+
+        summaryCards!.innerHTML = `
+          <div class="sum-card">
+            <div class="sum-title">Amal</div>
+            <div class="sum-val">A × B</div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">Natija O'lchami</div>
+            <div class="sum-val">${n} × ${n}</div>
+          </div>
+        `;
+
+        const stepBox = document.createElement('div');
+        stepBox.className = 'step-box';
+        stepBox.innerHTML = `
+          <h3>Matritsalarni Ko'paytirish (A × B)</h3>
+          <p>«Satrni ustunga ko'paytirish» qoidasi bo'yicha:</p>
+          <div class="step-latex-display" id="latex-bin-result"></div>
+        `;
+        stepsContainer!.appendChild(stepBox);
+
+        const binLatex = `A \\cdot B = ${matrixToLatex(A)} \\cdot ${matrixToLatex(B)} = ${matrixToLatex(mul)}`;
+        renderLatex(stepBox.querySelector('#latex-bin-result')!, binLatex);
+      }
+    }
+
+    // Set matrix size
+    function setSize(s: number, defaultValuesA?: number[][], defaultValuesB?: number[][]) {
+      currentSize = s;
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.getAttribute('data-size') || '3') === s);
+      });
+
+      labelSizeA!.textContent = `${s} × ${s}`;
+      createGrid(gridA!, s, s, 'a', defaultValuesA);
+
+      if (currentMode === 'sle') {
+        labelSizeB!.textContent = `${s} × 1`;
+        createGrid(gridB!, s, 1, 'b', defaultValuesB || [[2], [-7], [8]]);
+      } else if (currentMode === 'binary') {
+        labelSizeB!.textContent = `${s} × ${s}`;
+        createGrid(gridB!, s, s, 'b', defaultValuesB);
+      }
+    }
+
+    // Set Mode
+    function setMode(mode: 'single' | 'sle' | 'binary') {
+      currentMode = mode;
+      document.querySelectorAll('.mode-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-mode') === mode);
+      });
+
+      toolbarSingle!.style.display = mode === 'single' ? 'flex' : 'none';
+      toolbarSle!.style.display = mode === 'sle' ? 'flex' : 'none';
+      toolbarBinary!.style.display = mode === 'binary' ? 'flex' : 'none';
+
+      if (mode === 'single') {
+        cardB!.style.display = 'none';
+      } else if (mode === 'sle') {
+        cardB!.style.display = 'flex';
+        labelLetterB!.textContent = 'B';
+        labelDescB!.textContent = 'Ozod sonlar';
+        labelSizeB!.textContent = `${currentSize} × 1`;
+        createGrid(gridB!, currentSize, 1, 'b', [[2], [-7], [8]]);
+      } else if (mode === 'binary') {
+        cardB!.style.display = 'flex';
+        labelLetterB!.textContent = 'B';
+        labelDescB!.textContent = 'Matritsasi';
+        labelSizeB!.textContent = `${currentSize} × ${currentSize}`;
+        createGrid(gridB!, currentSize, currentSize, 'b');
+      }
+
+      // Reset results display
+      emptyState!.style.display = 'block';
+      solutionContent!.style.display = 'none';
+    }
+
+    // Event Listeners for Mode Tabs
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const m = tab.getAttribute('data-mode') as 'single' | 'sle' | 'binary';
+        if (m) setMode(m);
+      });
+    });
+
+    // Event Listeners for Size Buttons
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const s = parseInt(btn.getAttribute('data-size') || '3');
+        setSize(s);
+      });
+    });
+
+    // Presets
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pKey = btn.getAttribute('data-preset');
+        if (pKey === 'clear') {
+          setSize(currentSize);
+          emptyState!.style.display = 'block';
+          solutionContent!.style.display = 'none';
+          return;
+        }
+
+        const preset = PRESETS[pKey as keyof typeof PRESETS];
+        if (preset) {
+          if (pKey === 'tatu-sle') {
+            setMode('sle');
+          } else {
+            setMode('single');
+          }
+          const defaultB = preset.vectorB ? preset.vectorB.map(v => [v]) : undefined;
+          setSize(preset.size, preset.matrixA, defaultB);
+          runComputation('all');
+        }
+      });
+    });
+
+    // Calculation buttons
+    document.querySelectorAll('.calc-action-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action') || 'all';
+        runComputation(action);
+      });
+    });
+
+    // Initial setup: TATU Det preset loaded by default
+    const initPreset = PRESETS['tatu-det'];
+    setSize(3, initPreset.matrixA);
+  }
+
+  document.addEventListener('DOMContentLoaded', initMatrixCalculator);
+  document.addEventListener('astro:page-load', initMatrixCalculator);
+</script>

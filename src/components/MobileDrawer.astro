@@ -52,6 +52,12 @@ const currentPath = Astro.url.pathname;
         <li class={`module-nav-item ${currentPath === '/hosila' ? 'active' : ''}`}>
           <a href="/hosila">⚡ Hosila kalkulyatori</a>
         </li>
+        <li class={`module-nav-item ${currentPath === '/matritsa' ? 'active' : ''}`} style="border-left: 3px solid #8b5cf6;">
+          <a href="/matritsa" style="font-weight: 700; color: #8b5cf6;">
+            <span>🔢 Matritsa kalkulyatori</span>
+            <span style="font-size: 0.65rem; background: #8b5cf6; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">TATU</span>
+          </a>
+        </li>
         <li class={`module-nav-item ${currentPath === '/formulalar' ? 'active' : ''}`}>
           <a href="/formulalar">📐 Formulalar jadvali</a>
         </li>

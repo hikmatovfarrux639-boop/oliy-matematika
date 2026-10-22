@@ -1,0 +1,124 @@
+---
+title: "Transport masalasi va potensiallar usuli"
+module: "chiziqli-algebra"
+order: 11
+description: "Transport masalasi modeli, boshlang'ich tayanch rejani topish (Shimoliy-g'arbiy va Minimal xarajat usullari) hamda potensiallar usuli bilan optimallashtirish."
+---
+
+## Kirish: Logistika va tarqatish matematikasi
+
+Zamonaviy logistika kompaniyalari (Amazon, Ozon, Yandex Go, temir yo'l yuk tashuvlari) har kuni yuzlab omborlardan minglab do'konlarga mahsulot yetkazib berishadi. 
+
+**Transport masalasining asosiy maqsadi:** Barcha omborlardagi mahsulotlarni iste'molchilarga yetkazib berishda **jami transport xarajatlarini (yoqilg'i, vaqt, masofa) eng minimal darajaga tushirish**dir.
+
+---
+
+## 1. Transport masalasining matematik modeli
+
+Faraz qilaylik, mahsulot ishlab chiqaruvchi $m$ ta ombor (ta'minotchi) $A_1, A_2, \dots, A_m$ mavjud bo'lib, ulardagi mahsulot hajmlari mos ravishda $a_1, a_2, \dots, a_m$ ga teng.
+
+Ushbu mahsulotni kutayotgan $n$ ta iste'molchi $B_1, B_2, \dots, B_n$ bo'lib, ularning talablari $b_1, b_2, \dots, b_n$ ga teng.
+
+$i$-omboridan $j$-iste'molchiga bir birlik mahsulot tashish narxi $c_{ij}$ bo'lsin.
+$i$-omboridan $j$-iste'molchiga tashiladigan mahsulot miqdori $x_{ij} \ge 0$ deb belgilansin.
+
+### Maqsad funksiyasi (Jami xarajat):
+
+$$
+L(X) = \sum_{i=1}^m \sum_{j=1}^n c_{ij} x_{ij} \longrightarrow \min
+$$
+
+### Chegaralar:
+
+1. Har bir ombordagi bor yuk to'liq tarqatilishi kerak:
+   $$
+   \sum_{j=1}^n x_{ij} = a_i \quad (i = 1, 2, \dots, m)
+   $$
+
+2. Har bir iste'molchining talabi to'liq qondirilishi kerak:
+   $$
+   \sum_{i=1}^m x_{ij} = b_j \quad (j = 1, 2, \dots, n)
+   $$
+
+3. Tashiladigan yuk hajmi manfiy bo'lishi mumkin emas:
+   $$
+   x_{ij} \ge 0
+   $$
+
+---
+
+## 2. Yopiq va ochiq modellar (Balans sharti)
+
+- Agar barcha omborlardagi umumiy mahsulot hajmi iste'molchilarning umumiy talabiga teng bo'lsa:
+  $$
+  \sum_{i=1}^m a_i = \sum_{j=1}^n b_j
+  $$
+  bu masala **yopiq model** deyiladi. Yopiq model har doim optimal yechimga ega bo'ladi.
+
+- Agar taklif va talab teng bo'lmasa, soxta (fiktiv) ta'minotchi yoki iste'molchi kiritilib, tashish narxi $c_{ij} = 0$ qilib belgilanadi va model yopiq holatga keltiriladi.
+
+---
+
+## 3. Boshlang'ich tayanch rejani topish usullari
+
+Transport jadvalida har doim **$m + n - 1$ ta band katak** bo'lishi shart!
+
+### 1-usul: «Shimoliy-g'arbiy burchak» usuli
+Eng sodda usul:
+1. Jadvalning eng chap yuqori burchagidan ($(1, 1)$ katak) boshlanadi.
+2. Bu katakka mumkin bo'lgan maksimal yuk beriladi: $x_{11} = \min(a_1, b_1)$.
+3. Agar ombor bo'shasa, pastki qatorga; agar talab qondirilsa, o'ngdagi ustunga o'tiladi.
+4. Bu jarayon eng o'ng pastki burchakka yetguncha davom ettiriladi.
+
+*Kamchiligi:* Tashish narxlari ($c_{ij}$) inobatga olinmaydi, shuning uchun boshlang'ich reja xarajati ancha katta bo'ladi.
+
+### 2-usul: «Minimal xarajatlar» usuli (Eng qulay usul)
+1. Butun jadvaldagi eng arzon (eng kichik $c_{ij}$) katak topiladi.
+2. Unga maksimal yuk yuklanadi: $x_{ij} = \min(a_i, b_j)$.
+3. To'liq yopilgan satr yoki ustun hisobdan chiqariladi.
+4. Qolgan kataklar orasida yana eng arzon narxlisi tanlanadi va jarayon takrorlanadi.
+
+Bu usul boshlang'ich xarajatni sezilarli darajada kichik qiladi va optimal yechimga juda yaqin reja beradi!
+
+---
+
+## 4. Potensiallar usuli (Optimallikni tekshirish va yaxshilash)
+
+Tayanch reja tuzilgach, uni **eng yaxshi (minimal) reja ekanligini** tekshirish kerak. Buning uchun **potensiallar usuli** qo'llaniladi.
+
+Har bir $i$-satrga $u_i$ potensiali, har bir $j$-ustunga $v_j$ potensiali mos qo'yiladi.
+
+### 1-qadam: Potensiallarni hisoblash
+Barcha **band kataklar** uchun quyidagi tenglama tuziladi:
+
+$$
+u_i + v_j = c_{ij}
+$$
+
+Ixtiyoriy bitta potensial nol deb olinadi (masalan, $u_1 = 0$) va qolgan barcha $u_i$ hamda $v_j$ lar birin-ketin topiladi.
+
+### 2-qadam: Bo'sh kataklarni baholash
+Har bir **bo'sh katak** uchun baho hisoblanadi:
+
+$$
+\Delta_{ij} = u_i + v_j - c_{ij}
+$$
+
+> **Optimallik mezoni:**
+> - Agar barcha bo'sh kataklar uchun $\Delta_{ij} \le 0$ bo'lsa $\implies$ reja **optimaldir**, bundan arzonroq yechim mavjud emas!
+> - Agar biror bo'sh katakda $\Delta_{ij} > 0$ bo'lsa $\implies$ rejani yanada arzonlashtirish mumkin!
+
+### 3-qadam: Rejani qayta taqsimlash (Sikl bo'yicha siljitish)
+1. Eng katta musbat baholi ($\Delta_{ij} > 0$) bo'sh katak tanlanadi.
+2. Ushbu katakdan boshlab faqat band kataklar bo'ylab buriluvchi **yopiq to'g'ri burchakli kontur (sikl)** quriladi.
+3. Sikl cho'qqilariga navbatma-navbat $+ \theta$ va $- \theta$ ishoralari qo'yiladi.
+4. Manfiy cho'qqilardagi eng kichik yuk $\theta$ qilib olinadi va sikl bo'ylab siljitiladi.
+5. Yangi reja hosil bo'ladi va jarayon barcha $\Delta_{ij} \le 0$ bo'lguncha takrorlanadi.
+
+---
+
+## 5. Xulosa
+
+1. **Transport masalasi** — chiziqli dasturlashning eng ommabop va yuqori amaliy samaradorlikka ega xususiy turidir.
+2. Boshlang'ich reja uchun **minimal xarajatlar usuli** optimal natijaga eng tez olib boradi.
+3. **Potensiallar usuli** har bir qadamda jami xarajatni kamaytirib, global minimal yechimni 100% kafolatlaydi.
