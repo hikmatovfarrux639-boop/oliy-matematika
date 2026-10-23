@@ -269,25 +269,32 @@
       document.body.style.overflow = '';
     }
 
-    openBtn?.addEventListener('click', openModal);
-    closeBtn?.addEventListener('click', closeModal);
-    backdrop?.addEventListener('click', (e) => {
-      if (e.target === backdrop) closeModal();
-    });
+    if (openBtn && !(openBtn as any)._hasSearchInit) {
+      (openBtn as any)._hasSearchInit = true;
+      openBtn.addEventListener('click', openModal);
+      closeBtn?.addEventListener('click', closeModal);
+      backdrop?.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeModal();
+      });
+    }
 
-    // Keyboard shortcuts: Ctrl+K, Cmd+K, /
-    window.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        if (backdrop?.style.display === 'flex') {
+    // Keyboard shortcuts: Ctrl+K, Cmd+K (guard against duplicate global listeners)
+    if (!(window as any)._hasSearchKeydown) {
+      (window as any)._hasSearchKeydown = true;
+      window.addEventListener('keydown', (e) => {
+        const currentBackdrop = document.getElementById('search-modal-backdrop');
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          if (currentBackdrop?.style.display === 'flex') {
+            closeModal();
+          } else {
+            openModal();
+          }
+        } else if (e.key === 'Escape' && currentBackdrop?.style.display === 'flex') {
           closeModal();
-        } else {
-          openModal();
         }
-      } else if (e.key === 'Escape' && backdrop?.style.display === 'flex') {
-        closeModal();
-      }
-    });
+      });
+    }
 
     // Real-time search query
     let debounceTimer: any = null;

@@ -535,7 +535,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
+  import katex from 'katex';
+
   let dim = 3;
+
+  function renderMathInHtml(htmlStr: string): string {
+    // First replace display math $$...$$
+    let out = htmlStr.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => {
+      try {
+        return katex.renderToString(tex, { displayMode: true, throwOnError: false });
+      } catch {
+        return tex;
+      }
+    });
+    // Next replace inline math $...$
+    out = out.replace(/\$([^\$]+?)\$/g, (_, tex) => {
+      try {
+        return katex.renderToString(tex, { displayMode: false, throwOnError: false });
+      } catch {
+        return tex;
+      }
+    });
+    return out;
+  }
 
   function getVector(prefix) {
     const x = parseFloat(document.getElementById(prefix + 'x').value) || 0;
@@ -779,7 +801,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="res-card">
           <h3>📐 2. Skalyar ko'paytma va burchak (a⃗ · b⃗)</h3>
           <p>Formula: $\\vec{a} \\cdot \\vec{b} = x_1 x_2 + y_1 y_2 ${dim === 3 ? '+ z_1 z_2' : ''}$</p>
-          <div class="res-val">\\vec{a} \\cdot \\vec{b} = (${a.x})(${b.x}) + (${a.y})(${b.y}) ${dim === 3 ? '+ (' + a.z + ')(' + b.z + ')' : ''} = \\mathbf{${fmt(dotAB)}}</div>
+          <div class="res-val">$\\vec{a} \\cdot \\vec{b} = (${a.x})(${b.x}) + (${a.y})(${b.y}) ${dim === 3 ? '+ (' + a.z + ')(' + b.z + ')' : ''} = \\mathbf{${fmt(dotAB)}}$</div>
           
           <p style="margin-top: 0.75rem;"><b>Vektorlar orasidagi burchak kosinusi:</b></p>
           <p>$\\cos\\varphi = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\frac{${fmt(dotAB)}}{${fmt(lenA)} \\cdot ${fmt(lenB)}} = \\mathbf{${fmt(cosPhi)}}$</p>
@@ -796,16 +818,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // 3. Vektor ko'paytma & Parallelogramm yuzi
     if ((mode === 'full' || mode === 'cross') && dim === 3) {
       const sTri = crossLen / 2;
+      const orthoCheckA = crossX * a.x + crossY * a.y + crossZ * a.z;
+      const orthoCheckB = crossX * b.x + crossY * b.y + crossZ * b.z;
       html += `
         <div class="res-card">
           <h3>✖️ 3. Vektor ko'paytma (a⃗ × b⃗) va Yuza</h3>
           <p>Formula (Determinant):</p>
           <p>$\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ ${a.x} & ${a.y} & ${a.z} \\\\ ${b.x} & ${b.y} & ${b.z} \\end{vmatrix}$</p>
-          <div class="res-val">\\vec{a} \\times \\vec{b} = (${crossX})\\vec{i} + (${crossY})\\vec{j} + (${crossZ})\\vec{k} = \\mathbf{(${crossX}, ${crossY}, ${crossZ})}</div>
+          <div class="res-val">$\\vec{a} \\times \\vec{b} = (${crossX})\\vec{i} + (${crossY})\\vec{j} + (${crossZ})\\vec{k} = \\mathbf{(${crossX}, ${crossY}, ${crossZ})}$</div>
           
           <p style="margin-top: 0.75rem;"><b>a⃗ va b⃗ vektorlarga qurilgan parallelogramm yuzi:</b></p>
           <p>$S_{\\text{par}} = |\\vec{a} \\times \\vec{b}| = \\sqrt{(${crossX})^2 + (${crossY})^2 + (${crossZ})^2} = \\mathbf{${fmt(crossLen)}}$</p>
           <p><b>Uchburchak yuzi:</b> $S_{\\Delta} = \\frac{1}{2} S_{\\text{par}} = \\mathbf{${fmt(sTri)}}$</p>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            ✅ <b>O'z-o'zini tekshirish (Samoproverka):</b> $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = ${fmt(orthoCheckA)}$ va $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{b} = ${fmt(orthoCheckB)}$ (nol chiqsa, natija 100% to'g'ri!).
+          </p>
         </div>
       `;
     }
@@ -819,7 +846,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3>🧊 4. Aralash ko'paytma (a⃗, b⃗, c⃗) va Fazoviy Hajm</h3>
           <p>Formula (3x3 Determinant):</p>
           <p>$(\\vec{a}, \\vec{b}, \\vec{c}) = \\begin{vmatrix} ${a.x} & ${a.y} & ${a.z} \\\\ ${b.x} & ${b.y} & ${b.z} \\\\ ${c.x} & ${c.y} & ${c.z} \\end{vmatrix}$</p>
-          <div class="res-val">(\\vec{a}, \\vec{b}, \\vec{c}) = \\mathbf{${fmt(mixed)}}</div>
+          <div class="res-val">$(\\vec{a}, \\vec{b}, \\vec{c}) = \\mathbf{${fmt(mixed)}}$</div>
           
           <p style="margin-top: 0.75rem;"><b>Parallelepiped hajmi:</b> $V_{\\text{par}} = |(\\vec{a}, \\vec{b}, \\vec{c})| = \\mathbf{${fmt(vPar)}}$</p>
           <p><b>Uchburchakli piramida (tetraedr) hajmi:</b> $V_{\\text{pir}} = \\frac{1}{6} V_{\\text{par}} = \\frac{${fmt(vPar)}}{6} = \\mathbf{${fmt(vPyr)}}$</p>
@@ -846,23 +873,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     const box = document.getElementById('results-box');
     const content = document.getElementById('results-content');
+    if (!box || !content) return;
     box.style.display = 'block';
-    content.innerHTML = html;
-
-    // Render KaTeX if available
-    if (window.renderMathInElement) {
-      window.renderMathInElement(content, {
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false }
-        ]
-      });
-    }
+    content.innerHTML = renderMathInHtml(html);
 
     // Render 2D Vector Canvas if in 2D mode
     draw2DVectorCanvas(a, b);
-
-    box.scrollIntoView({ behavior: 'smooth' });
   }
 
   // Setup Presets
@@ -892,6 +908,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   function init() {
+    const box = document.getElementById('results-box');
+    if (!box || (box as any)._hasVecInit) return;
+    (box as any)._hasVecInit = true;
+
     // Dimension Tabs
     document.querySelectorAll('.dim-tab').forEach(tab => {
       tab.addEventListener('click', () => {
@@ -945,10 +965,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // Copy result
     document.getElementById('btn-copy-res')?.addEventListener('click', () => {
       const content = document.getElementById('results-content');
+      if (!content) return;
       navigator.clipboard.writeText(content.innerText).then(() => {
         alert("Natijalar xotiraga nusxalandi!");
       });
     });
+
+    // Initial calculation on load
+    runCalculations('full');
   }
 
   document.addEventListener('astro:page-load', init);

@@ -74,6 +74,7 @@ const graphId = `plot-${Math.random().toString(36).substring(2, 9)}`;
 
 <script>
   import functionPlot from 'function-plot';
+  import * as math from 'mathjs';
 
   function initGraphs() {
     function getPlotFn(mod: any) {
@@ -128,11 +129,17 @@ const graphId = `plot-${Math.random().toString(36).substring(2, 9)}`;
       // Derivative tangent line if specified
       if (tangentStr !== '' && tangentStr !== undefined) {
         const x0 = parseFloat(tangentStr);
-        data[0].derivative = {
-          fn: '', // function-plot computes derivative automatically or via math.js
-          x0: x0,
-          updateOnMouseMove: true
-        };
+        try {
+          const normMainFn = normalizeFormula(rawFn);
+          const derivedStr = math.derivative(normMainFn, 'x').toString();
+          data[0].derivative = {
+            fn: derivedStr,
+            x0: x0,
+            updateOnMouseMove: true
+          };
+        } catch (e) {
+          console.warn('Urinma hosilasini hisoblashda xatolik:', e);
+        }
       }
 
       if (rawFn2) {

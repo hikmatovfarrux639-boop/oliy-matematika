@@ -748,6 +748,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // DOM Elements
     const gridA = document.getElementById('grid-matrix-a');
+    if (!gridA || (gridA as any)._hasMatrixInit) return;
+    (gridA as any)._hasMatrixInit = true;
+
     const gridB = document.getElementById('grid-matrix-b');
     const cardB = document.getElementById('card-matrix-b');
     const labelLetterB = document.getElementById('label-letter-b');
@@ -786,6 +789,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       } catch (e) {
         element.textContent = tex;
       }
+    }
+
+    // Helper: render inline $...$ inside step descriptions
+    function renderInlineMath(container: HTMLElement) {
+      container.querySelectorAll('p, li').forEach(el => {
+        if (el.innerHTML.includes('$')) {
+          el.innerHTML = el.innerHTML.replace(/\$([^\$]+?)\$/g, (_, tex) => {
+            try {
+              return katex.renderToString(tex, { displayMode: false, throwOnError: false });
+            } catch {
+              return tex;
+            }
+          });
+        }
+      });
     }
 
     // Create Matrix Input Grid
@@ -1118,6 +1136,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const invLatex = `A^{-1} = \\frac{1}{${formatNum(det)}} ${matrixToLatex(adj)} = ${matrixToLatex(inv)}`;
             renderLatex(step2.querySelector('#latex-adj-step')!, adjLatex);
             renderLatex(step2.querySelector('#latex-inv-result')!, invLatex);
+
+            // Self-verification: A * A^-1 = E
+            const checkProd = multiplyMatrices(A, inv);
+            const checkDiv = document.createElement('div');
+            checkDiv.style.marginTop = '0.85rem';
+            checkDiv.style.padding = '0.75rem 1rem';
+            checkDiv.style.background = 'var(--accent-light)';
+            checkDiv.style.borderLeft = '4px solid var(--accent)';
+            checkDiv.style.borderRadius = '6px';
+            checkDiv.innerHTML = `
+              <p style="margin: 0 0 0.5rem 0; font-weight: 700; color: var(--accent);">✅ O'z-o'zini tekshirish (Samoproverka): $A \\cdot A^{-1} = E$</p>
+              <div class="step-latex-display" id="latex-inv-check"></div>
+            `;
+            step2.appendChild(checkDiv);
+            renderLatex(
+              checkDiv.querySelector('#latex-inv-check')!,
+              `A \\cdot A^{-1} = ${matrixToLatex(A)} \\cdot ${matrixToLatex(inv)} = ${matrixToLatex(checkProd)} = E`
+            );
           }
           stepsContainer!.appendChild(step2);
         }
@@ -1138,15 +1174,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           renderLatex(step3.querySelector('#latex-rank-steps')!, rankLatex);
         }
 
-        // Step 4: Eigenvalues (for 2x2 and 3x3)
+        // Step 4: Transpose
+        if (action === 'all' || action === 'trans') {
+          const transA = transpose(A);
+          const stepTrans = document.createElement('div');
+          stepTrans.className = 'step-box';
+          stepTrans.innerHTML = `
+            <h3>Matritsani Transponirlash ($A^T$)</h3>
+            <p>Matritsaning satrlarini mos ustunlarga almashtirish natijasida transponirlangan $A^T$ matritsa hosil bo'ladi ($a^T_{ij} = a_{ji}$):</p>
+            <div class="step-latex-display" id="latex-trans-step"></div>
+          `;
+          stepsContainer!.appendChild(stepTrans);
+          renderLatex(
+            stepTrans.querySelector('#latex-trans-step')!,
+            `A^T = ${matrixToLatex(A)}^T = ${matrixToLatex(transA)}`
+          );
+        }
+
+        // Step 5: Eigenvalues (for 2x2, 3x3, and 4x4)
         if (action === 'all' || action === 'eigen') {
+          const step4 = document.createElement('div');
+          step4.className = 'step-box';
           if (n === 2) {
             const trA = A[0][0] + A[1][1];
             const detA = A[0][0] * A[1][1] - A[0][1] * A[1][0];
             const D = trA * trA - 4 * detA;
 
-            const step4 = document.createElement('div');
-            step4.className = 'step-box';
             step4.innerHTML = `
               <h3>Xos Sonlar (Eigenvalues) va Xarakteristik Tenglama</h3>
               <p>Xarakteristik tenglama: $\\det(A - \\lambda E) = \\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det A = 0$</p>
@@ -1165,6 +1218,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               eigenLatex += `\\implies \\lambda_{1,2} = ${formatNum(re)} \\pm ${formatNum(im)}i \\text{ (kompleks xos sonlar)}`;
             }
             renderLatex(step4.querySelector('#latex-char-eq')!, eigenLatex);
+          } else if (n === 3) {
+            const trA = A[0][0] + A[1][1] + A[2][2];
+            const m11 = A[1][1] * A[2][2] - A[1][2] * A[2][1];
+            const m22 = A[0][0] * A[2][2] - A[0][2] * A[2][0];
+            const m33 = A[0][0] * A[1][1] - A[0][1] * A[1][0];
+            const sumMinors = m11 + m22 + m33;
+
+            step4.innerHTML = `
+              <h3>Xos Sonlar va 3-tartibli Xarakteristik Ko'phad</h3>
+              <p>Xarakteristik tenglama: $\\det(A - \\lambda E) = -\\lambda^3 + \\operatorname{tr}(A)\\lambda^2 - (M_{11}+M_{22}+M_{33})\\lambda + \\det A = 0$</p>
+              <div class="step-latex-display" id="latex-char-eq"></div>
+            `;
+            stepsContainer!.appendChild(step4);
+
+            const eigenLatex = `-\\lambda^3 + (${formatNum(trA)})\\lambda^2 - (${formatNum(sumMinors)})\\lambda + (${formatNum(det)}) = 0`;
+            renderLatex(step4.querySelector('#latex-char-eq')!, eigenLatex);
+          } else {
+            step4.innerHTML = `
+              <h3>Xarakteristik Tenglama ($4 \\times 4$)</h3>
+              <p>Xos sonlar $\\det(A - \\lambda E) = 0$ tenglamadan topiladi, bu yerda $\\operatorname{tr}(A) = ${formatNum(tr)}$ va $\\det A = ${formatNum(det)}$.</p>
+            `;
+            stepsContainer!.appendChild(step4);
           }
         }
       } else if (currentMode === 'sle') {
@@ -1186,31 +1261,84 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         `;
         renderLatex(document.getElementById('sum-delta')!, formatNum(cramerRes.detA), false);
 
-        const stepBox = document.createElement('div');
-        stepBox.className = 'step-box';
-        stepBox.innerHTML = `
-          <h3>Kramer Qoidasi Bo'yicha Yechish</h3>
-          <p>Tenglamalar sistemasi matritsali ko'rinishda: $A X = B$</p>
-          <div class="step-latex-display" id="latex-sle-system"></div>
-          <p>Yordamchi determinantlar va yechimlar:</p>
-          <div class="step-latex-display" id="latex-sle-steps"></div>
-        `;
-        stepsContainer!.appendChild(stepBox);
+        if (action === 'sle-both' || action === 'sle-cramer' || action === 'all') {
+          const stepBox = document.createElement('div');
+          stepBox.className = 'step-box';
+          stepBox.innerHTML = `
+            <h3>1-usul: Kramer Qoidasi Bo'yicha Yechish ($\\Delta, \\Delta_i$)</h3>
+            <p>Tenglamalar sistemasi matritsali ko'rinishda: $A X = B$</p>
+            <div class="step-latex-display" id="latex-sle-system"></div>
+            <p>Yordamchi determinantlar va noma'lumlar:</p>
+            <div class="step-latex-display" id="latex-sle-steps"></div>
+          `;
+          stepsContainer!.appendChild(stepBox);
 
-        const systemLatex = `${matrixToLatex(A)} \\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = ${matrixToLatex(Bmat)}`;
-        renderLatex(stepBox.querySelector('#latex-sle-system')!, systemLatex);
+          const systemLatex = `${matrixToLatex(A)} \\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = ${matrixToLatex(Bmat)}`;
+          renderLatex(stepBox.querySelector('#latex-sle-system')!, systemLatex);
 
-        const stepsJoined = cramerRes.stepsLatex.join(' \\\\[6pt] ');
-        renderLatex(stepBox.querySelector('#latex-sle-steps')!, `\\begin{aligned} ${stepsJoined} \\end{aligned}`);
+          const stepsJoined = cramerRes.stepsLatex.join(' \\\\[6pt] ');
+          renderLatex(stepBox.querySelector('#latex-sle-steps')!, `\\begin{aligned} ${stepsJoined} \\end{aligned}`);
+        }
+
+        if (action === 'sle-both' || action === 'sle-gauss' || action === 'all') {
+          const aug = A.map((row, idx) => [...row, B[idx]]);
+          const augRankObj = calcRankWithSteps(aug);
+
+          const gaussBox = document.createElement('div');
+          gaussBox.className = 'step-box';
+          gaussBox.innerHTML = `
+            <h3>2-usul: Gauss Usuli (Kengaytirilgan Matritsa)</h3>
+            <p>Kengaytirilgan $(A|B)$ matritsani elementar satr almashtirishlari yordamida pog'onasimon ko'rinishga keltiramiz:</p>
+            <div class="step-latex-display" id="latex-gauss-steps"></div>
+          `;
+          stepsContainer!.appendChild(gaussBox);
+
+          const augLatex = `\\left(A \\middle| B\\right) = ${matrixToLatex(aug)} \\sim ${matrixToLatex(augRankObj.echelon)}`;
+          renderLatex(gaussBox.querySelector('#latex-gauss-steps')!, augLatex);
+        }
+
+        if (cramerRes.hasUnique) {
+          const verifyBox = document.createElement('div');
+          verifyBox.className = 'step-box';
+          verifyBox.style.borderLeft = '4px solid var(--accent)';
+          const checkEq = A[0].map((coef, idx) => `(${formatNum(coef)}) \\cdot (${formatNum(cramerRes.x[idx])})`).join(' + ');
+          verifyBox.innerHTML = `
+            <h3>✅ O'z-o'zini tekshirish (Samoproverka)</h3>
+            <p>Topilgan $x_i$ qiymatlarni 1-tenglamaga qo'yib tekshiramiz:</p>
+            <div class="step-latex-display" id="latex-sle-verify"></div>
+          `;
+          stepsContainer!.appendChild(verifyBox);
+          renderLatex(verifyBox.querySelector('#latex-sle-verify')!, `${checkEq} = ${formatNum(B[0])} \\quad (\\text{To'g'ri!})`);
+        }
       } else if (currentMode === 'binary') {
         // A * B, A + B, A - B
         const B = getMatrixValues('b', n, n);
-        const mul = multiplyMatrices(A, B);
+        let resultMat: number[][];
+        let opSymbol = '\\cdot';
+        let opTitle = "Matritsalarni Ko'paytirish (A × B)";
+        let opDesc = "«Satrni ustunga ko'paytirish» qoidasi bo'yicha ($c_{ij} = \\sum a_{ik} b_{kj}$):";
+        let sumLabel = 'A × B';
+
+        if (action === 'bin-add') {
+          resultMat = A.map((row, r) => row.map((val, c) => val + B[r][c]));
+          opSymbol = '+';
+          opTitle = "Matritsalarni Qo'shish (A + B)";
+          opDesc = "Mos elementlarni qo'shish qoidasi bo'yicha ($c_{ij} = a_{ij} + b_{ij}$):";
+          sumLabel = 'A + B';
+        } else if (action === 'bin-sub') {
+          resultMat = A.map((row, r) => row.map((val, c) => val - B[r][c]));
+          opSymbol = '-';
+          opTitle = "Matritsalarni Ayirish (A - B)";
+          opDesc = "Mos elementlarni ayirish qoidasi bo'yicha ($c_{ij} = a_{ij} - b_{ij}$):";
+          sumLabel = 'A - B';
+        } else {
+          resultMat = multiplyMatrices(A, B);
+        }
 
         summaryCards!.innerHTML = `
           <div class="sum-card">
             <div class="sum-title">Amal</div>
-            <div class="sum-val">A × B</div>
+            <div class="sum-val">${sumLabel}</div>
           </div>
           <div class="sum-card">
             <div class="sum-title">Natija O'lchami</div>
@@ -1221,15 +1349,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const stepBox = document.createElement('div');
         stepBox.className = 'step-box';
         stepBox.innerHTML = `
-          <h3>Matritsalarni Ko'paytirish (A × B)</h3>
-          <p>«Satrni ustunga ko'paytirish» qoidasi bo'yicha:</p>
+          <h3>${opTitle}</h3>
+          <p>${opDesc}</p>
           <div class="step-latex-display" id="latex-bin-result"></div>
         `;
         stepsContainer!.appendChild(stepBox);
 
-        const binLatex = `A \\cdot B = ${matrixToLatex(A)} \\cdot ${matrixToLatex(B)} = ${matrixToLatex(mul)}`;
+        const binLatex = `A ${opSymbol} B = ${matrixToLatex(A)} ${opSymbol} ${matrixToLatex(B)} = ${matrixToLatex(resultMat)}`;
         renderLatex(stepBox.querySelector('#latex-bin-result')!, binLatex);
       }
+
+      renderInlineMath(stepsContainer!);
     }
 
     // Set matrix size
@@ -1335,6 +1465,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // Initial setup: TATU Det preset loaded by default
     const initPreset = PRESETS['tatu-det'];
     setSize(3, initPreset.matrixA);
+    runComputation('all');
   }
 
   document.addEventListener('DOMContentLoaded', initMatrixCalculator);

@@ -103,9 +103,14 @@ const F = {
         <button class="sheet-tab" data-target="sheet-statistika">10. Ehtimollik & Statistika</button>
       </div>
 
-      <button id="print-current-sheet-btn" class="btn btn-primary" style="background: #2563eb; border-color: #2563eb; font-weight: 700; padding: 0.65rem 1.4rem;">
-        <span>🖨️ Shu varaqni PDF / Chop etish</span>
-      </button>
+      <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+        <button id="print-current-sheet-btn" class="btn btn-primary" style="background: #2563eb; border-color: #2563eb; font-weight: 700; padding: 0.65rem 1.25rem;">
+          <span>🖨️ Shu varaqni PDF / Chop etish</span>
+        </button>
+        <button id="print-all-sheets-btn" class="btn btn-secondary" style="font-weight: 700; padding: 0.65rem 1.15rem;">
+          <span>📚 Barcha 10 varaqni chop etish</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -776,14 +781,21 @@ const F = {
       line-height: 1.35 !important;
     }
     .shpargalka-sheet {
-      display: block !important;
+      display: none !important;
       border: none !important;
       box-shadow: none !important;
       padding: 0 !important;
       margin: 0 !important;
+    }
+    .shpargalka-sheet.active-sheet {
+      display: block !important;
+      page-break-after: avoid;
+    }
+    :global(body.print-all-sheets) .shpargalka-sheet {
+      display: block !important;
       page-break-after: always;
     }
-    .shpargalka-sheet:last-child {
+    :global(body.print-all-sheets) .shpargalka-sheet:last-child {
       page-break-after: avoid;
     }
     .sheet-card {
@@ -820,6 +832,7 @@ const F = {
     const tabs = document.querySelectorAll('.sheet-tab');
     const sheets = document.querySelectorAll('.shpargalka-sheet');
     const printBtn = document.getElementById('print-current-sheet-btn');
+    const printAllBtn = document.getElementById('print-all-sheets-btn');
 
     if (!tabs.length || (tabs[0] as any)._hasTabInit) return;
     (tabs[0] as any)._hasTabInit = true;
@@ -843,7 +856,14 @@ const F = {
     });
 
     printBtn?.addEventListener('click', () => {
+      document.body.classList.remove('print-all-sheets');
       window.print();
+    });
+
+    printAllBtn?.addEventListener('click', () => {
+      document.body.classList.add('print-all-sheets');
+      window.print();
+      setTimeout(() => document.body.classList.remove('print-all-sheets'), 500);
     });
   }
 

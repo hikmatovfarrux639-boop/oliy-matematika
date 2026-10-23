@@ -138,6 +138,12 @@ const currentPath = Astro.url.pathname;
       const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('math_theme', newTheme);
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      if (sunIcon && moonIcon) {
+        sunIcon.style.display = newTheme === 'dark' ? 'block' : 'none';
+        moonIcon.style.display = newTheme === 'light' ? 'block' : 'none';
+      }
     });
 
     const links = drawer?.querySelectorAll('a');

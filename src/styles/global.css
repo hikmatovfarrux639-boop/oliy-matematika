@@ -4,10 +4,17 @@
 :root {
   color-scheme: light;
   --bg-primary: #f8fafc;
+  --bg-body: #f8fafc;
+  --bg-main: #f8fafc;
   --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --card-bg: #ffffff;
   --bg-surface-elevated: #ffffff;
   --bg-muted: #f1f5f9;
+  --bg-hover: #f1f5f9;
   --text-main: #0f172a;
+  --text-heading: #0f172a;
+  --text-color: #0f172a;
   --text-muted: #64748b;
   --text-subtle: #94a3b8;
   --border-color: #e2e8f0;
@@ -21,6 +28,8 @@
   --warning-light: #fffbeb;
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.1);
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -31,10 +40,17 @@
 [data-theme="dark"] {
   color-scheme: dark;
   --bg-primary: #090d16;
+  --bg-body: #090d16;
+  --bg-main: #090d16;
   --bg-surface: #111827;
+  --bg-card: #111827;
+  --card-bg: #111827;
   --bg-surface-elevated: #1e293b;
   --bg-muted: #1e293b;
+  --bg-hover: #1e293b;
   --text-main: #f8fafc;
+  --text-heading: #f8fafc;
+  --text-color: #f8fafc;
   --text-muted: #94a3b8;
   --text-subtle: #64748b;
   --border-color: #334155;
@@ -48,6 +64,8 @@
   --warning-light: #451a03;
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4);
   --card-shadow-hover: 0 10px 20px -3px rgb(0 0 0 / 0.6);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.35);
+  --shadow-md: 0 4px 14px -2px rgb(0 0 0 / 0.5);
 }
 
 *, *::before, *::after {
@@ -513,6 +531,78 @@ a {
   border-radius: var(--radius-md);
   overflow-x: auto;
   border: 1px solid var(--border-color);
+}
+
+/* Interactive Collapsible Solutions & Tables in Lessons (Mathprofi-style) */
+.prose-content details {
+  margin: 1.25rem 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.prose-content details[open] {
+  background: var(--bg-muted);
+}
+
+.prose-content summary {
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.prose-content summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose-content summary::before {
+  content: '▶';
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+  color: var(--accent);
+}
+
+.prose-content details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.prose-content details[open] summary {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.prose-content th,
+.prose-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.prose-content th {
+  background: var(--bg-muted);
+  font-weight: 700;
+  color: var(--text-main);
 }
 
 /* Function Plotter Styles (Light and Dark Mode) */
