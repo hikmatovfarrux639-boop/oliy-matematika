@@ -132,7 +132,32 @@ Bu xossalar amaliy hisoblashda eng qiyin misollarni bir necha soniyada yechish i
 
 ---
 
-## 5. Amaliy misollar va bosqichma-bosqich yechimlar
+## 5. Jahon adabiyotlari talqini: Determinantning chuqur geometrik sirlari (Gilbert Strang & Kurosh)
+
+Ko'p talabalar determinantni shunchaki krest-to-krest ko'paytirish formulasi deb o'ylaydi. Biroq klassik oliy algebra darsliklarida determinantning 3 ta fundamental ma'nosi ochib beriladi:
+
+### 1. Maydon va Hajmning masshtab koeffitsiyenti
+- 2D tekislikda koordinata o'qlari bo'yicha birlik kvadratning yuzi $S = 1$ ga teng.
+- Agar fazo $A$ matritsa bilan cho'zilsa yoki qiyshaytirilsa, bu kvadrat parallelogrammga aylanadi. **Ushbu yangi parallelogrammning yuzi aynan $|\det A|$ ga teng bo'ladi!**
+- 3D fazoda esa birlik kub ($V = 1$) parallelepipedga aylanadi va uning hajmi aynan $|\det A|$ bo'ladi.
+- Agar $\det A = 5$ chiqsa, bu matritsa fazodagi ixtiyoriy geometrik shakl yuzasini yoki hajmini **5 barobar kattalashtirganini** anglatadi!
+
+### 2. Nega determinant manfiy chiqishi mumkin?
+Maydon yoki hajm manfiy bo'lmaydi-ku? Nega $\det A = -6$ chiqadi?
+> **Javob:** Determinant **yo'naltirilgan (orientatsiyalangan)** o'lchovdir!
+> Agar siz qog'oz varag'ini stolga qo'ysangiz, uning yuzi musbat. Agar varaqni orqasiga ag'darsangiz, uning o'ng-chap yo'nalishi (soat mili yo'nalishi) teskarisiga aylanadi.
+> **Manfiy determinant — fazoning teskarisiga ag'darilganini (orientatsiya almashganini) bildiradi!**
+
+### 3. Nega $\det(AB) = \det(A) \cdot \det(B)$?
+Chunki $B$ matritsa fazoni $\det(B)$ marta cho'zadi, so'ngra uning ustiga qo'llanilgan $A$ matritsa uni yana $\det(A)$ marta cho'zadi. Jami cho'zilish koeffitsiyenti tabiiyki ularning ko'paytmasiga teng bo'ladi!
+
+### 4. $\det A = 0$ ning fojiasi (Singulyarlik):
+- Agar determinant $0$ bo'lsa, butun 2D tekislik bitta to'g'ri chiziqqa ezilib tushgan ($S = 0$), yoki 3D fazo bitta yassi tekislikka ezilgan ($V = 0$).
+- Fazo o'z o'lchamini yo'qotgani sababli, uni orqaga (dastlabki holatiga) qaytarib bo'lmaydi. **Aynan shu sababli $\det A = 0$ bo'lganda teskari matritsa $A^{-1}$ mutlaqo mavjud emas!**
+
+---
+
+## 6. Amaliy misollar va bosqichma-bosqich yechimlar
 
 ### 1-misol: 2-tartibli determinant va manfiy sonlar bilan ishlash
 Hisoblang:

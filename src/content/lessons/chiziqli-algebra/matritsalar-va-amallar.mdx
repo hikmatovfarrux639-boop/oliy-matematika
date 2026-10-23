@@ -131,7 +131,35 @@ $$
 
 ---
 
-## 6. Amaliy misollar va to'liq yechimlar
+## 6. Eng sara adabiyotlar talqini: Matritsa aslida nima? (Gilbert Strang va 3Blue1Brown)
+
+Maktab va ko'p darsliklarda matritsaga faqat *"sonlarning to'rtburchak jadvali"* deb qaraladi. Biroq **Gilbert Strang (MIT)** va **Grant Sanderson (3Blue1Brown)** bu tushunchani butunlay boshqacha, hayratlanarli darajada go'zal va mantiqiy ochib beradi:
+
+> **Matritsa — bu sonlar jadvali emas, balki butun fazoni harakatlantiruvchi (chiziqli transformatsiya qiluvchi) operatordir!**
+
+Aytaylik, $2 \times 2$ o'lchamli matritsa berilgan bo'lsin:
+$$
+A = \begin{pmatrix} 2 & 1 \\ 0 & 3 \end{pmatrix}
+$$
+
+Bu matritsaning 2 ta ustuni nimani bildiradi?
+1. **1-ustun $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$:** Bu boshlang'ich $X$ o'qi bo'yicha birlik vektor $\vec{i} = (1, 0)$ yangi fazoda qayerga borib tushganini ko'rsatadi ($X$ o'qi 2 marta cho'zildi).
+2. **2-ustun $\begin{pmatrix} 1 \\ 3 \end{pmatrix}$:** Bu boshlang'ich $Y$ o'qi bo'yicha birlik vektor $\vec{j} = (0, 1)$ yangi fazoda qayerga borib tushganini ko'rsatadi ($Y$ o'qi qiyalanib, $(1, 3)$ nuqtaga o'tdi).
+
+Demak, ixtiyoriy $\vec{v} = (x, y)$ vektorning $A \cdot \vec{v}$ matritsaga ko'paytirilishi — bu shunchaki formulalar emas, balki fazo egilganda va cho'zilganda ushbu vektorning **yangi fazoda qayerga ko'chib o'tishini** ko'rsatadi:
+
+$$
+A \cdot \vec{v} = x \begin{pmatrix} 2 \\ 0 \end{pmatrix} + y \begin{pmatrix} 1 \\ 3 \end{pmatrix}
+$$
+
+### Nega $A \cdot B \neq B \cdot A$ (Matritsalar ko'paytmasi kommutativ emas)?
+Buning ham geometrik izohi oddiy:
+Agar siz kitobni avval $90^\circ$ vertikal burib, keyin $90^\circ$ gorizontal bursangiz, u bitta holatga keladi. Agar avval gorizontal, keyin vertikal bursangiz — mutlaqo boshqa holatga keladi!
+Matritsalarni ko'paytirish — fazodagi ikki ketma-ket harakat (transformatsiya) bo'lgani sababli, ularning **ketma-ketlik tartibi natijani tubdan o'zgartiradi**.
+
+---
+
+## 7. Amaliy misollar va to'liq yechimlar
 
 ### 1-misol: Chiziqli amallar ($3A - 2B$)
 Berilgan:

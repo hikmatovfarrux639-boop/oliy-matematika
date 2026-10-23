@@ -25,7 +25,7 @@ export const MODULES: ModuleInfo[] = [
     title: '2. Chiziqli algebra',
     description: "Matritsalar, determinantlar, Laplas teoremasi, FYS, chiziqli fazolar, kvadratik formalar, simpleks va transport masalalari (TATU to'liq dasturi).",
     isActive: true,
-    estimatedLessons: 11,
+    estimatedLessons: 12,
     topics: [
       'Matritsalar va ular ustida amallar',
       'Determinantlar va xossalari',
@@ -37,7 +37,8 @@ export const MODULES: ModuleInfo[] = [
       'Chiziqli fazo, bazis va operatorlar',
       'Kvadratik formalar va Silvestr mezoni',
       'Chiziqli dasturlash va Simpleks usuli',
-      'Transport masalasi va Potensiallar usuli'
+      'Transport masalasi va Potensiallar usuli',
+      'Chiziqli algebraning geometrik mohiyati va eng sara adabiyotlar'
     ]
   },
   {

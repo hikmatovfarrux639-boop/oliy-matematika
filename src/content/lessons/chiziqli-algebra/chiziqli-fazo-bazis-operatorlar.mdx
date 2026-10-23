@@ -151,3 +151,47 @@ T^{-1} A T = D = \begin{pmatrix}
 $$
 
 Bu usul matrisani yuzinchi darajaga ko'tarishda ($A^{100} = T D^{100} T^{-1}$) va grafik/fizik modellarni tezkor simulyatsiya qilishda bebaho hisoblanadi!
+
+---
+
+## 7. Gilbert Strangning "Chiziqli algebraning 4 ta fundamental qismfazosi"
+
+MIT professori Gilbert Strang chiziqli algebraning barcha qonunlarini birlashtiruvchi quyidagi 4 ta fundamental fazoni kashf qilgan:
+
+Har qanday $m \times n$ o'lchamli $A$ matritsa uchun 4 ta qismfazo mavjud:
+
+| Qismfazo | Belgilanishi | Fazodagi joylashuvi | O'lchami (Dimension) |
+|---|---|---|---|
+| **1. Ustunlar fazosi (Column Space)** | $C(A)$ | $\mathbb{R}^m$ ichida | $r = \operatorname{rank}(A)$ |
+| **2. Nol-fazo (Yadro / Nullspace)** | $N(A)$ | $\mathbb{R}^n$ ichida | $n - r$ (Erkin noma'lumlar soni) |
+| **3. Satrlar fazosi (Row Space)** | $C(A^T)$ | $\mathbb{R}^n$ ichida | $r = \operatorname{rank}(A)$ |
+| **4. Chap nol-fazo (Left Nullspace)** | $N(A^T)$ | $\mathbb{R}^m$ ichida | $m - r$ |
+
+### Chiziqli algebraning asosiy teoremasi:
+1. **Satr rangi doimo ustun rangiga teng:** $\dim(C(A)) = \dim(C(A^T)) = r$.
+2. **Rank-Nullity teoremasi:**
+   $$
+   \operatorname{rank}(A) + \operatorname{nullity}(A) = n
+   $$
+   Matritsa rangi bilan uning yadrosi (bir jinsli sistema $AX = 0$ ning erkin noma'lumlari) o'lchami yig'indisi doimo ustunlar soni $n$ ga teng bo'ladi!
+3. **Ortogonallik:**
+   - Satrlar fazosi $C(A^T)$ va Nol-fazo $N(A)$ o'zaro **perpendikulyar (ortogonal)** bo'lib, butun $\mathbb{R}^n$ fazoni to'ldiradi.
+   - Ustunlar fazosi $C(A)$ va Chap nol-fazo $N(A^T)$ o'zaro **ortogonal** bo'lib, butun $\mathbb{R}^m$ fazoni to'ldiradi.
+
+---
+
+## 8. Xos sonlar va Google qanday ishlaydi? (PageRank siri)
+
+Bugungi kunda sun'iy intellekt va internet qidiruv tizimlari xos sonlar ustiga qurilgan:
+
+$$
+A \cdot \vec{v} = \lambda \vec{v}
+$$
+
+1. **Yo'nalishini o'zgartirmaydigan sehrli vektorlar:**
+   Fazo $A$ matritsa orqali cho'zilib burilganda, 99.9% vektorlar o'z yo'nalishini o'zgartiradi. Ammo faqat **xos vektorlar $\vec{v}$** aslo burilmaydi, faqat $\lambda$ marta cho'ziladi!
+2. **Google PageRank algoritmi (Sergey Brin va Larry Page):**
+   - Internetdagi milliardlab veb-sahifalar o'zaro havolalar bilan bog'langan.
+   - Sahifalarning bir-biriga o'tish ehtimolliklaridan bahaybat **stoxastik matritsa $P$** tuziladi.
+   - Ushbu matritsaning eng katta xos soni $\lambda = 1$ ga mos keluvchi **xos vektori $\vec{v}$** hisoblanadi.
+   - Ushbu xos vektorning koordinatalari qaysi sayt eng obro'li (top) ekanligini belgilab beradi! Siz Google qidiruviga so'rov yozganingizda, natijalar aynan xos vektorning koordinatalari bo'yicha tartiblanib chiqadi.
