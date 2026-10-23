@@ -1425,13 +1425,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           renderLatex(step3.querySelector('#latex-gauss-echelon')!, augLatex);
 
           const backSubSteps: string[] = [];
-          for (let i = n - 1; i >= 0; i--) {
-            backSubSteps.push(`x_${i + 1} = ${formatNum(cramerRes.x[i])}`);
+          if (isUnique) {
+            for (let i = n - 1; i >= 0; i--) {
+              backSubSteps.push(`x_${i + 1} = ${formatNum(cramerRes.x[i])}`);
+            }
+            renderLatex(
+              step3.querySelector('#latex-gauss-backsub')!,
+              `\\begin{aligned} ${backSubSteps.join(' \\\\[4pt] ')} \\end{aligned}`
+            );
+          } else {
+            renderLatex(
+              step3.querySelector('#latex-gauss-backsub')!,
+              `\\text{Pog'onasimon matritsada } r = ${rankA} < n = ${n}. \\text{ Demak, sistema cheksiz ko'p yechimli (parametrik yechim).}`
+            );
           }
-          renderLatex(
-            step3.querySelector('#latex-gauss-backsub')!,
-            `\\begin{aligned} ${backSubSteps.join(' \\\\[4pt] ')} \\end{aligned}`
-          );
         }
 
         // 4-USUL: GAUSS-JORDAN USULI (RREF: E | X)
@@ -1440,23 +1447,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           const step4 = document.createElement('div');
           step4.className = 'step-box';
           step4.innerHTML = `
-            <h3>🎯 4-usul: Gauss-Jordan Usuli (Qisqartirilgan Pog'onasimon Shakl $(E | X)$)</h3>
-            <p>Elementar almashtirishlar orqali chap tomondagi matritsani to'liq birlik $E$ matritsaga keltiramiz:</p>
+            <h3>🎯 4-usul: Gauss-Jordan Usuli (Qisqartirilgan Pog'onasimon Shakl)</h3>
+            <p>Elementar almashtirishlar orqali chap tomondagi matritsani qisqartirilgan ko'rinishga keltiramiz:</p>
             <div class="step-latex-display" id="latex-gj-rref"></div>
-            <p>Birlik matritsaning o'ng ustunida hosil bo'lgan sonlar bevosita yechimlarni ifodalaydi:</p>
+            <p>${isUnique ? "Birlik matritsaning o'ng ustunida hosil bo'lgan sonlar bevosita yechimlarni ifodalaydi:" : "Sistemaning cheksiz ko'p yechimlari tahlili:"}</p>
             <div class="step-latex-display" id="latex-gj-res"></div>
           `;
           stepsContainer!.appendChild(step4);
 
-          const rrefLatex = `\\left(A \\middle| B\\right) \\sim \\left(E \\middle| X\\right) = ${matrixToLatex(gjRes.rref)}`;
+          const rrefLatex = `\\left(A \\middle| B\\right) \\sim ${matrixToLatex(gjRes.rref)}`;
           renderLatex(step4.querySelector('#latex-gj-rref')!, rrefLatex);
 
-          const resLatex = `\\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = \\begin{pmatrix} ${gjRes.x.map(v => formatNum(v)).join(' \\\\ ')} \\end{pmatrix}`;
-          renderLatex(step4.querySelector('#latex-gj-res')!, resLatex);
+          if (isUnique) {
+            const resLatex = `\\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = \\begin{pmatrix} ${gjRes.x.map(v => formatNum(v)).join(' \\\\ ')} \\end{pmatrix}`;
+            renderLatex(step4.querySelector('#latex-gj-res')!, resLatex);
+          } else {
+            renderLatex(
+              step4.querySelector('#latex-gj-res')!,
+              `\\operatorname{rang}(A) = ${rankA} < ${n} \\implies \\text{Erkin parametrlar soni: } k = ${n - rankA} \\text{ ta.}`
+            );
+          }
         }
 
         // 5. O'Z-O'ZINI TEKSHIRISH (SAMOPROVERKA)
-        if (cramerRes.hasUnique) {
+        if (isUnique && cramerRes.hasUnique && cramerRes.x.length === n) {
           const verifyBox = document.createElement('div');
           verifyBox.className = 'step-box';
           verifyBox.style.borderLeft = '4px solid var(--accent)';

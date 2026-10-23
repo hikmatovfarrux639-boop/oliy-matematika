@@ -1483,6 +1483,23 @@ Qat'iy qoidalar:
         const aiDiag = diagnoseTopic(problemText + ' ' + rawText.slice(0, 350));
         renderDiagnosisCard(aiDiag);
 
+        // Render Grounding Sources if Google Search was used
+        const groundingChunks = candidate?.groundingMetadata?.groundingChunks || [];
+        if (groundingContainer && sourcesList) {
+          if (groundingChunks.length > 0) {
+            sourcesList.innerHTML = groundingChunks
+              .map((c: any) => {
+                const title = c.web?.title || c.web?.uri || 'Manba';
+                const uri = c.web?.uri || '#';
+                return `<li style="margin-bottom: 0.25rem;"><a href="${uri}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: underline;">${title}</a></li>`;
+              })
+              .join('');
+            groundingContainer.style.display = 'block';
+          } else {
+            groundingContainer.style.display = 'none';
+          }
+        }
+
         if (solutionBody) {
           solutionBody.innerHTML = renderMathMarkdown(rawText);
         }

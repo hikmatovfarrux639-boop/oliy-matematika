@@ -559,10 +559,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     return out;
   }
 
+  function parseCoord(valStr: string): number {
+    const s = (valStr || '').trim();
+    if (s.includes('/')) {
+      const parts = s.split('/');
+      const num = parseFloat(parts[0]);
+      const den = parseFloat(parts[1]);
+      return den !== 0 ? num / den : 0;
+    }
+    return parseFloat(s) || 0;
+  }
+
   function getVector(prefix) {
-    const x = parseFloat(document.getElementById(prefix + 'x').value) || 0;
-    const y = parseFloat(document.getElementById(prefix + 'y').value) || 0;
-    const z = dim === 3 ? (parseFloat(document.getElementById(prefix + 'z').value) || 0) : 0;
+    const x = parseCoord((document.getElementById(prefix + 'x') as HTMLInputElement)?.value);
+    const y = parseCoord((document.getElementById(prefix + 'y') as HTMLInputElement)?.value);
+    const z = dim === 3 ? parseCoord((document.getElementById(prefix + 'z') as HTMLInputElement)?.value) : 0;
     return { x, y, z };
   }
 
@@ -763,7 +774,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const dotAB = a.x * b.x + a.y * b.y + a.z * b.z;
 
     // Burchak
-    let cosPhi = (lenA > 0 && lenB > 0) ? dotAB / (lenA * lenB) : 0;
+    const hasZeroVec = lenA < 1e-6 || lenB < 1e-6;
+    let cosPhi = !hasZeroVec ? dotAB / (lenA * lenB) : 0;
     cosPhi = Math.max(-1, Math.min(1, cosPhi));
     const rad = Math.acos(cosPhi);
     const deg = (rad * 180) / Math.PI;
@@ -779,19 +791,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   a.y * (b.x * c.z - b.z * c.x) +
                   a.z * (b.x * c.y - b.y * c.x);
 
-    const isOrthogonal = Math.abs(dotAB) < 1e-6;
-    const isCollinear = crossLen < 1e-6;
+    const isOrthogonal = !hasZeroVec && Math.abs(dotAB) < 1e-6;
+    const isCollinear = !hasZeroVec && crossLen < 1e-6;
     const isCoplanar = Math.abs(mixed) < 1e-6;
 
     let html = '';
 
-    // 1. Modullar va vektorlar ko'rinishi
+    // 1. Modullar va vektorlar ko'rinishi + Yo'naltiruvchi kosinuslar
+    const ortAx = lenA > 0 ? a.x / lenA : 0;
+    const ortAy = lenA > 0 ? a.y / lenA : 0;
+    const ortAz = lenA > 0 && dim === 3 ? a.z / lenA : 0;
+
     html += `
       <div class="res-card">
         <h3>📍 1. Vektor koordinatalari va uzunliklari (modul)</h3>
         <p>Vektor <b>a⃗</b> = (${a.x}, ${a.y}${dim === 3 ? ', ' + a.z : ''}) &nbsp; $\\implies$ |a⃗| = $\\sqrt{${a.x}^2 + ${a.y}^2 ${dim === 3 ? '+ ' + a.z + '^2' : ''}} = \\mathbf{${fmt(lenA)}}$</p>
         <p>Vektor <b>b⃗</b> = (${b.x}, ${b.y}${dim === 3 ? ', ' + b.z : ''}) &nbsp; $\\implies$ |b⃗| = $\\sqrt{${b.x}^2 + ${b.y}^2 ${dim === 3 ? '+ ' + b.z + '^2' : ''}} = \\mathbf{${fmt(lenB)}}$</p>
         ${dim === 3 ? `<p>Vektor <b>c⃗</b> = (${c.x}, ${c.y}, ${c.z}) &nbsp; $\\implies$ |c⃗| = $\\sqrt{${c.x}^2 + ${c.y}^2 + ${c.z}^2} = \\mathbf{${fmt(lenC)}}$</p>` : ''}
+        ${lenA > 0 ? `
+          <div style="margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color); font-size: 0.88rem; color: var(--text-muted);">
+            <b>a⃗ vektorning birlik orti:</b> $\\vec{a}_0 = (${fmt(ortAx)}, \\; ${fmt(ortAy)}${dim === 3 ? ', \\; ' + fmt(ortAz) : ''})$<br>
+            <b>Yo'naltiruvchi kosinuslar:</b> $\\cos\\alpha = ${fmt(ortAx)}, \\; \\cos\\beta = ${fmt(ortAy)}${dim === 3 ? ', \\; \\cos\\gamma = ' + fmt(ortAz) : ''}
+            &nbsp; $\\left(\\cos^2\\alpha + \\cos^2\\beta ${dim === 3 ? '+ \\cos^2\\gamma' : ''} = 1\\right)$
+          </div>
+        ` : ''}
       </div>
     `;
 
@@ -803,14 +826,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p>Formula: $\\vec{a} \\cdot \\vec{b} = x_1 x_2 + y_1 y_2 ${dim === 3 ? '+ z_1 z_2' : ''}$</p>
           <div class="res-val">$\\vec{a} \\cdot \\vec{b} = (${a.x})(${b.x}) + (${a.y})(${b.y}) ${dim === 3 ? '+ (' + a.z + ')(' + b.z + ')' : ''} = \\mathbf{${fmt(dotAB)}}$</div>
           
-          <p style="margin-top: 0.75rem;"><b>Vektorlar orasidagi burchak kosinusi:</b></p>
-          <p>$\\cos\\varphi = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\frac{${fmt(dotAB)}}{${fmt(lenA)} \\cdot ${fmt(lenB)}} = \\mathbf{${fmt(cosPhi)}}$</p>
-          <p>Burchak: $\\mathbf{\\varphi \\approx ${deg.toFixed(1)}^\\circ} \\quad (${rad.toFixed(3)} \\text{ rad})$</p>
-          
-          <div style="margin-top: 0.65rem;">
-            ${isOrthogonal ? '<span class="res-badge-ok">✓ Vektorlar o\'zaro ORTOGONAL (perpendikulyar: 90°)!</span>' : '<span class="res-badge-no">✕ Vektorlar ortogonal emas.</span>'}
-            ${isCollinear ? '<span class="res-badge-ok" style="margin-left: 0.5rem;">✓ Vektorlar KOLLINEAR (parallel)!</span>' : ''}
-          </div>
+          <p style="margin-top: 0.75rem;"><b>Vektorlar orasidagi burchak:</b></p>
+          ${hasZeroVec ? `
+            <p style="color: var(--warning);">⚠️ Vektorlardan biri nol vektor (uzunligi = 0) bo'lgani sababli burchak aniqlanmagan.</p>
+          ` : `
+            <p>$\\cos\\varphi = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\frac{${fmt(dotAB)}}{${fmt(lenA)} \\cdot ${fmt(lenB)}} = \\mathbf{${fmt(cosPhi)}}$</p>
+            <p>Burchak: $\\mathbf{\\varphi \\approx ${deg.toFixed(1)}^\\circ} \\quad (${rad.toFixed(3)} \\text{ rad})$</p>
+            <div style="margin-top: 0.65rem;">
+              ${isOrthogonal ? '<span class="res-badge-ok">✓ Vektorlar o\'zaro ORTOGONAL (perpendikulyar: 90°)!</span>' : '<span class="res-badge-no">✕ Vektorlar ortogonal emas.</span>'}
+              ${isCollinear ? '<span class="res-badge-ok" style="margin-left: 0.5rem;">✓ Vektorlar KOLLINEAR (parallel)!</span>' : ''}
+            </div>
+          `}
         </div>
       `;
     }
