@@ -2,20 +2,20 @@
 title: "Qutb koordinatalarida ikki karrali integral"
 module: "karrali-integrallar"
 order: 2
-description: "Qutb koordinatalariga o'tish, o'tish Yakobiani (r ko'paytuvchi siri), doiraviy sohalarda integrallash va mashhur Puasson-Gauss integrali."
+description: "Qutb koordinatalariga o'tish, Yakobian (r ko'paytuvchi siri), siljigan doirada integrallash, umumlashgan qutb koordinatalari va Puasson integrali."
 ---
 
 ## Kirish: Doirada Dekart koordinatalari noqulay
 
-Agar integrallash sohasi to'g'ri to'rtburchak emas, balki **aylana, doira yoki doiraviy halqa** ($x^2 + y^2 \le R^2$) bo'lsa, Dekart koordinatalarida ishlash juda og'ir kechadi: chegaralarda noqulay $\pm\sqrt{R^2 - x^2}$ ildizlar paydo bo'ladi.
+Agar ikki karrali integralning integrallash sohasi to'g'ri to'rtburchak emas, balki **aylana, doira, halqa yoki sektor** ($x^2 + y^2 \le R^2$) bo'lsa, Dekart koordinatalarida ishlash juda noqulay kechadi: chegaralarda noxush $\pm\sqrt{R^2 - x^2}$ ildizlar paydo bo'ladi.
 
-Bunday aylanma simmetriyaga ega sohalarda integrallashni osonlashtirish uchun **qutb koordinatalari sistemasiga** o'tiladi.
+Bunday aylanma simmetriyaga ega sohalarda hisoblashni o'nlab marta osonlashtirish uchun **qutb koordinatalari sistemasiga** o'tiladi.
 
 ---
 
 ## 1. Qutb koordinatalari formulalari
 
-Tekislikdagi har bir nuqta ikkita kattalik bilan aniqlanadi:
+Tekislikdagi har bir nuqta ikkita kattalik bilan ifodalanadi:
 - $r$ — qutb radiusi (koordinata boshidan nuqtagacha bo'lgan masofa, $r \ge 0$);
 - $\varphi$ — qutb burchagi ($Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchak, $0 \le \varphi < 2\pi$).
 
@@ -47,7 +47,7 @@ J = \begin{vmatrix}
 \end{vmatrix} = r \cos^2 \varphi - (-r \sin^2 \varphi) = r(\cos^2 \varphi + \sin^2 \varphi) = r
 $$
 
-> **Oltin qoida (Talabalarning eng katta xatosi):**
+> **Oltin qoida (Talabalarning eng ko'p qiladigan xatosi):**
 > Qutb koordinatalariga o'tganda $dx dy$ o'rniga doimo **$r \, dr d\varphi$** yozilishi shart:
 >
 > $$
@@ -61,26 +61,26 @@ $$
 
 ---
 
-## 3. Doira bo'yicha integrallash chegaralari
+## 3. Umumlashgan qutb koordinatalari (Elliptik sohalar)
 
-Agar $D$ markazi koordinatalar boshida va radiusi $R$ bo'lgan to'liq doira bo'lsa ($x^2 + y^2 \le R^2$):
-- $\varphi$ burchak to'liq bir aylanadi: $0 \le \varphi \le 2\pi$;
-- $r$ radius markazdan aylanagacha o'zgaradi: $0 \le r \le R$.
-
-Takroriy integralga keltirish:
+Agar integrallash sohasi $\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$ ellips bo'lsa, quyidagi **umumlashgan qutb koordinatalari** kiritiladi:
 $$
-\iint_D f(x^2 + y^2) \, dx dy = \int_0^{2\pi} d\varphi \int_0^R f(r^2) \cdot r \, dr
+\begin{cases}
+x = a r \cos\varphi \\
+y = b r \sin\varphi
+\end{cases} \implies J = a b r, \quad dx dy = a b r \, dr d\varphi
 $$
+Bu formula orqali ellips bo'yicha integrallash oddiy birlik doiraga aylanadi!
 
 ---
 
 ## 4. Matematika durdonasi: Puasson-Gauss integrali
 
-Ehtimollar nazariyasida va kvant mexanikasida eng muhim integral:
+Ehtimollar nazariyasida normal taqsimotning asosiy integrali:
 $$
 I = \int_{-\infty}^{+\infty} e^{-x^2} \, dx
 $$
-Uning boshlang'ich funksiyasini elementar funksiyalarda ifodalab bo'lmaydi (Liuvill teoremasi). Ammo ikki karrali integral va qutb koordinatalari yordamida uning aniq qiymatini hisoblash mumkin!
+Uning boshlang'ich funksiyasini bir o'zgaruvchili analizda elementar funksiyalarda ifodalab bo'lmaydi. Ammo ikki karrali integral va qutb koordinatalari yordamida uning aniq qiymatini hisoblash mumkin!
 
 ### Isbot:
 Kvadratini olamiz:
@@ -89,56 +89,116 @@ I^2 = \left(\int_{-\infty}^{+\infty} e^{-x^2} dx\right) \left(\int_{-\infty}^{+\
 $$
 Qutb koordinatalariga o'tamiz ($x^2 + y^2 = r^2, \, dx dy = r dr d\varphi$):
 $$
-I^2 = \int_0^{2\pi} d\varphi \int_0^\infty e^{-r^2} \cdot r \, dr
+I^2 = \int_0^{2\pi} d\varphi \int_0^{+\infty} e^{-r^2} \cdot r \, dr = 2\pi \cdot \left[ -\frac{1}{2} e^{-r^2} \right]_0^{+\infty} = 2\pi \cdot \left(0 - \left(-\frac{1}{2}\right)\right) = \pi
 $$
-- Burchak bo'yicha: $\int_0^{2\pi} d\varphi = 2\pi$.
-- Radius bo'yicha ($r dr = \frac{1}{2} d(r^2)$):
-  $$\int_0^\infty e^{-r^2} r dr = \frac{1}{2} \left[ -e^{-r^2} \right]_0^\infty = \frac{1}{2} (0 - (-1)) = \frac{1}{2}$$
-Ko'paytiramiz:
+Ikkala tomondan kvadrat ildiz chiqaramiz:
 $$
-I^2 = 2\pi \cdot \frac{1}{2} = \pi \implies I = \sqrt{\pi}
+I = \int_{-\infty}^{+\infty} e^{-x^2} dx = \sqrt{\pi}
 $$
-
-**Natija:** $\int_{-\infty}^{+\infty} e^{-x^2} dx = \sqrt{\pi}$. Bu matematikaning eng go'zal natijalaridan biridir!
 
 ---
 
-## Amaliy namunaviy misol
+## 5. Amaliy masalalar va ko'p usulli yechimlar
 
-Hisoblang:
+### 1-masala: Yarim doira bo'yicha integralni 2 xil usulda hisoblash
+
+Integralni hisoblang:
 $$
-\iint_D \sqrt{x^2 + y^2} \, dx dy
+\iint_D \sqrt{4 - x^2 - y^2} \, dx dy
 $$
-bu yerda $D$ — markazi $(0, 0)$ va radiusi $R = 3$ bo'lgan doira.
+bu yerda $D$ — $x^2 + y^2 \le 4, \; y \ge 0$ (yuqori yarim doira).
 
-**Yechilishi:**
-1. Qutb koordinatalariga o'tamiz:
-   $\sqrt{x^2 + y^2} = \sqrt{r^2} = r$.
-   $dx dy = r \, dr d\varphi$.
-2. Chegaralar: $0 \le \varphi \le 2\pi$, $0 \le r \le 3$.
-3. Integralni tuzamiz:
-   $$I = \int_0^{2\pi} d\varphi \int_0^3 r \cdot (r \, dr) = \left( \int_0^{2\pi} d\varphi \right) \left( \int_0^3 r^2 \, dr \right)$$
-4. Hisoblaymiz:
-   $$\int_0^{2\pi} d\varphi = 2\pi$$
-   $$\int_0^3 r^2 \, dr = \left[ \frac{r^3}{3} \right]_0^3 = \frac{27}{3} = 9$$
-5. Ko'paytma:
-   $$I = 2\pi \cdot 9 = 18\pi$$
+#### 1-usul: Qutb koordinatalariga o'tish
+1. Soha chegaralari:
+   - Yuqori yarim tekislik bo'lgani uchun: $0 \le \varphi \le \pi$.
+   - Radius: $0 \le r \le 2$.
+2. Integral ostidagi funksiya: $\sqrt{4 - (x^2 + y^2)} = \sqrt{4 - r^2}$.
+3. Yakobian $r$ ni unutmasdan integrallaymiz:
+   $$
+   I = \int_0^\pi d\varphi \int_0^2 \sqrt{4 - r^2} \cdot r \, dr
+   $$
+4. Ichki integralni hisoblash: $d(4 - r^2) = -2r dr \implies r dr = -\frac{1}{2} d(4 - r^2)$:
+   $$
+   \int_0^2 (4 - r^2)^{1/2} r dr = -\frac{1}{2} \left[ \frac{(4 - r^2)^{3/2}}{3/2} \right]_0^2 = -\frac{1}{3} \left[ 0 - 4^{3/2} \right] = \frac{8}{3}
+   $$
+5. Tashqi integral:
+   $$
+   I = \left(\int_0^\pi d\varphi\right) \cdot \frac{8}{3} = \frac{8\pi}{3}
+   $$
 
-**Javob:** $18\pi$.
+#### 2-usul: Geometrik ma'no orqali bir zumda topish
+$z = \sqrt{4 - x^2 - y^2} \implies x^2 + y^2 + z^2 = 4$ ($z \ge 0$). Bu radiusi $R = 2$ bo'lgan yarim sfera tenglamasidir.
+Biz esa $y \ge 0$ qismini, ya'ni butun sharning **chorak qismini ($\frac{1}{4}$)** hajmini hisoblamoqdamiz:
+$$
+V = \frac{1}{4} \cdot \left(\frac{4}{3}\pi R^3\right) = \frac{1}{3} \pi (2^3) = \frac{8\pi}{3}
+$$
+Hisoblash mutlaqo to'g'ri ekanligi geometrik isbotlandi!
 
 ---
 
-## Mustaqil yechish uchun mashqlar
+### 2-masala: Siljigan doirada integrallash (Imtihon klassikasi)
 
-1. Qutb koordinatalariga o'tganda yuza elementi $dx dy$ nimaga almashadi?
-2. $D$ — $x^2 + y^2 \le 4$ doiraning 1-chorakdagi qismi bo'lsa, $\varphi$ burchak qaysi oraliqda o'zgaradi?
-3. $\iint_D (x^2 + y^2) \, dx dy$ integralni $x^2 + y^2 \le 1$ birlik doirada hisoblang.
+Soha: $x^2 + y^2 \le 2x$ (markazi $(1, 0)$ nuqtada va radiusi $R = 1$ bo'lgan doira).
+Ushbu soha bo'yicha $r$ va $\varphi$ chegaralarini aniqlang.
 
-<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $dx dy = r \, dr d\varphi$ ga (Yakobian $r$).</p>
-    <p><strong>2-masala:</strong> 1-chorak bo'lgani uchun $0 \le \varphi \le \frac{\pi}{2}$.</p>
-    <p><strong>3-masala:</strong> $\int_0^{2\pi} d\varphi \int_0^1 r^2 \cdot r dr = 2\pi \left[\frac{r^4}{4}\right]_0^1 = 2\pi \cdot \frac{1}{4} = \frac{\pi}{2}$.</p>
-  </div>
+#### Yechish:
+1. Tenglamaga $x = r\cos\varphi, y = r\sin\varphi$ ni qo'yamiz:
+   $$
+   r^2 \le 2r\cos\varphi \implies r \le 2\cos\varphi
+   $$
+2. $r \ge 0$ bo'lgani sababli:
+   $$
+   2\cos\varphi \ge 0 \implies \cos\varphi \ge 0 \implies -\frac{\pi}{2} \le \varphi \le \frac{\pi}{2}
+   $$
+3. Demak, integrallash chegaralari:
+   $$
+   -\frac{\pi}{2} \le \varphi \le \frac{\pi}{2}, \quad 0 \le r \le 2\cos\varphi
+   $$
+   Takroriy integral:
+   $$
+   \int_{-\pi/2}^{\pi/2} d\varphi \int_0^{2\cos\varphi} f(r\cos\varphi, r\sin\varphi) \cdot r \, dr
+   $$
+
+---
+
+## 6. Imtihondagi asosiy tuzoqlar
+
+> [!WARNING] Imtihondagi tuzoqlar
+> 1. **Yakobian $r$ ni yozishni unutish:** Talabalar ko'pincha $dx dy = dr d\varphi$ deb yozishadi va natijada barcha hisob-kitoblar noto'g'ri chiqadi. Har doim $r dr d\varphi$ deb tekshiring!
+> 2. **Siljigan aylanada burchakni $0 \le \varphi \le 2\pi$ deb olish:** Agar doira koordinata boshidan o'ngga siljigan bo'lsa ($x^2 + y^2 \le 2ax$), u faqat I va IV choraklarda yotadi, shuning uchun burchak $[-\pi/2; \pi/2]$ oralig'ida bo'ladi!
+> 3. **Elliptik sohada $ab$ ko'paytuvchisini unutish:** $\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$ da $dx dy = ab \cdot r dr d\varphi$ bo'ladi. $ab$ ni tashlab ketish javobni $ab$ barobar kichraytirib yuboradi.
+
+---
+
+## 7. Mustaqil yechish uchun amaliy mashqlar
+
+### 1-mashq
+$D: x^2 + y^2 \le 1$ birlik doira bo'yicha integralni hisoblang:
+$$
+\iint_D (x^2 + y^2) \, dx dy
+$$
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+Qutb koordinatalari: $x^2 + y^2 = r^2$, $dx dy = r dr d\varphi$.
+$0 \le \varphi \le 2\pi$, $0 \le r \le 1$.
+$$
+I = \int_0^{2\pi} d\varphi \int_0^1 r^2 \cdot r \, dr = 2\pi \int_0^1 r^3 dr = 2\pi \left[ \frac{r^4}{4} \right]_0^1 = 2\pi \cdot \frac{1}{4} = \frac{\pi}{2}
+$$
+Javob: $\frac{\pi}{2}$.
+</details>
+
+### 2-mashq
+$\frac{x^2}{9} + \frac{y^2}{4} \le 1$ ellipsning yuzasini ikki karrali integral orqali toping.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+Umumlashgan qutb koordinatalari: $a = 3, b = 2$.
+$dx dy = 3 \cdot 2 \cdot r dr d\varphi = 6r dr d\varphi$.
+$$
+S = \iint_D dx dy = \int_0^{2\pi} d\varphi \int_0^1 6r \, dr = 2\pi \cdot 6 \left[ \frac{r^2}{2} \right]_0^1 = 12\pi \cdot \frac{1}{2} = 6\pi
+$$
+*(Ma'lumki, ellips yuzi $\pi a b = \pi \cdot 3 \cdot 2 = 6\pi$!).*
 </details>

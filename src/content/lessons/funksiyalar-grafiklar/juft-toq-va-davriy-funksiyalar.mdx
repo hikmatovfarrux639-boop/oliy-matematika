@@ -2,21 +2,23 @@
 title: "Juft, toq va davriy funksiyalar: Geometrik simmetriya"
 module: "funksiyalar-grafiklar"
 order: 3
-description: "Funksiyalarning simmetriya xossalari, koordinata o'qlari va boshiga nisbatan simmetriklik hamda trigonometrik funksiyalar davriyligi."
+description: "Simmetriya xossalari, funksiyani juft va toq qismlarga ajratish, davriylik qoidalari, integrallashdagi tezkor sirlar va imtihon tuzoqlari."
 ---
 import Graph from '../../../components/Graph.astro';
 
 ## Kirish: Tabiatdagi simmetriya matematikada
 
-Tabiatda kapalak qanotlari yoki inson tanasi simmetriyaga ega bo'lganidek, matematik funksiyalar grafiklarida ham ajoyib simmetriyalar mavjud. 
+Tabiatda kapalak qanotlari, billur kristallari yoki inson qiyofasi simmetriyaga ega bo'lganidek, matematik funksiyalar va ularning grafiklarida ham ajoyib simmetriyalar mavjud. 
 
-Funksiyaning juft yoki toqligini bilish uning grafigini chizish ishini **ikki barobar qisqartiradi**: chunki siz musbat yarim o'qda ($x \ge 0$) grafikni chizib olsangiz, qolgan yarmini shunchaki ko'zgu kabi akslantirishingiz kifoya!
+Funksiyaning juft yoki toqligini aniqlash uning grafigini chizish va xossalarini tekshirish ishini **ikki barobar qisqartiradi**: chunki siz faqat musbat yarim o'qda ($x \ge 0$) grafikni o'rganib olsangiz, manfiy sohadagi qismini shunchaki ko'zgu kabi akslantirishingiz kifoya qiladi!
+
+Bundan tashqari, integral hisobida va Fure qatorlarida juft-toqlikdan foydalanish murakkab integrallarni bir soniyada nolga tenglashtirish imkonini beradi.
 
 ---
 
-## Juft funksiyalar: $f(-x) = f(x)$
+## 1. Juft funksiyalar: $f(-x) = f(x)$
 
-> **Ta'rif:** Agar funksiyaning aniqlanish sohasidagi ixtiyoriy $x$ uchun $-x$ ham shu sohaga tegishli bo'lib:
+> **Ta'rif:** Agar funksiyaning aniqlanish sohasidagi ixtiyoriy $x$ uchun $-x$ ham shu sohaga tegishli bo'lib (aniqlanish sohasi koordinatalar boshiga nisbatan simmetrik bo'lib):
 >
 > $$
 > f(-x) = f(x)
@@ -25,15 +27,15 @@ Funksiyaning juft yoki toqligini bilish uning grafigini chizish ishini **ikki ba
 > tenglik bajarilsa, u holda $f(x)$ **juft funksiya** deyiladi.
 
 ### Geometrik xossasi:
-Juft funksiyaning grafigi **$Oy$ (ordinata) o'qiga nisbatan simmetrik** bo'ladi.
+Juft funksiyaning grafigi **$Oy$ (ordinata) o'qiga nisbatan simmetrik** bo'ladi. Ya'ni grafikni $Oy$ o'qi bo'ylab buklasangiz, o'ng va chap qanotlari aynan ustma-ust tushadi.
 
-*Mashhur misollar:* $y = x^2, \quad y = x^4, \quad y = \cos x, \quad y = |x|$.
+*Mashhur juft funksiyalar:* $y = x^2, \quad y = x^{2n}, \quad y = \cos x, \quad y = |x|, \quad y = \text{ch } x = \frac{e^x + e^{-x}}{2}$.
 
 ---
 
-## Toq funksiyalar: $f(-x) = -f(x)$
+## 2. Toq funksiyalar: $f(-x) = -f(x)$
 
-> **Ta'rif:** Agar ixtiyoriy $x$ uchun:
+> **Ta'rif:** Agar ixtiyoriy $x \in D(f)$ uchun $-x \in D(f)$ bo'lib:
 >
 > $$
 > f(-x) = -f(x)
@@ -42,11 +44,12 @@ Juft funksiyaning grafigi **$Oy$ (ordinata) o'qiga nisbatan simmetrik** bo'ladi.
 > tenglik bajarilsa, $f(x)$ **toq funksiya** deyiladi.
 
 ### Geometrik xossasi:
-Toq funksiyaning grafigi **koordinatalar boshiga $(0; 0)$ nisbatan markaziy simmetrik** bo'ladi (ya'ni grafikni $180^\circ$ ga burilsa, o'z ustiga tushadi).
+Toq funksiyaning grafigi **koordinatalar boshiga $(0; 0)$ nisbatan markaziy simmetrik** bo'ladi (ya'ni grafikni tekislikda $180^\circ$ ga burganda o'z ustiga tushadi).
+> **Xulosa:** Agar $x = 0$ nuqta toq funksiyaning aniqlanish sohasiga kirsa, unda har doim **$f(0) = 0$** bo'ladi!
 
-*Mashhur misollar:* $y = x, \quad y = x^3, \quad y = \sin x, \quad y = \operatorname{tg} x, \quad y = \frac{1}{x}$.
+*Mashhur toq funksiyalar:* $y = x, \quad y = x^3, \quad y = \sin x, \quad y = \operatorname{tg} x, \quad y = \frac{1}{x}, \quad y = \text{sh } x = \frac{e^x - e^{-x}}{2}$.
 
-Quyidagi grafikda juft funksiya $y = x^2$ (ko'k) va toq funksiya $y = x^3$ (qizil) ning geometrik simmetriyasini taqqoslashingiz mumkin:
+Quyidagi interaktiv grafikda juft funksiya $y = x^2$ (ko'k) va toq funksiya $y = x^3$ (qizil) ning geometrik simmetriyasini ko'rishingiz mumkin:
 
 <Graph 
   fn="x^2" 
@@ -58,83 +61,139 @@ Quyidagi grafikda juft funksiya $y = x^2$ (ko'k) va toq funksiya $y = x^3$ (qizi
 
 ---
 
-## Davriy funksiyalar
+## 3. Fundamental teorema: Funksiyani juft va toq qismlarga ajratish
 
-> **Ta'rif:** Agar shunday noldan farqli $T \neq 0$ soni topilsaki, barcha $x$ lar uchun:
+> **Teorema:** Koordinatalar boshiga nisbatan simmetrik sohada aniqlangan **har qanday** $f(x)$ funksiyani yagona usulda juft va toq funksiyalarning yig'indisi ko'rinishida ifodalash mumkin:
 >
 > $$
-> f(x + T) = f(x)
+> f(x) = f_{\text{juft}}(x) + f_{\text{toq}}(x)
 > $$
 >
-> tenglik bajarilsa, $f(x)$ **davriy funksiya**, $T$ soni esa uning **davri** deyiladi. Bunday funksiyalarning eng kichik musbat davri **asosiy davr** deyiladi.
+> Bu yerda:
+> $$
+> f_{\text{juft}}(x) = \frac{f(x) + f(-x)}{2}, \quad f_{\text{toq}}(x) = \frac{f(x) - f(-x)}{2}
+> $$
 
-Trigonometrik funksiyalarning asosiy davrlari:
-- $\sin(kx)$ va $\cos(kx)$ uchun: $T = \frac{2\pi}{k}$
-- $\operatorname{tg}(kx)$ va $\operatorname{ctg}(kx)$ uchun: $T = \frac{\pi}{k}$
+*Yorqin misol:* Eksponenta funksiyasini qaraylik:
+$$
+e^x = \frac{e^x + e^{-x}}{2} + \frac{e^x - e^{-x}}{2} = \text{ch } x + \text{sh } x
+$$
+Bu yerda giperbolik kosinus $\text{ch } x$ — juft qism, giperbolik sinus $\text{sh } x$ esa toq qismdir!
 
 ---
 
-## Amaliy misollar va yechimlar
+## 4. Davriy funksiyalar va davrni topish qoidalari
 
-### 1-misol: Juftlikka tekshirish
-Funksiyani juft yoki toqlikka tekshiring:
+> **Ta'rif:** Agar shunday noldan farqli $T \neq 0$ soni mavjud bo'lib, ixtiyoriy $x \in D(f)$ uchun $f(x + T) = f(x)$ bajarilsa, $f(x)$ **davriy funksiya**, eng kichik musbat $T$ esa uning **asosiy davri** deyiladi.
 
-$$
-f(x) = 3x^4 - 5x^2 + 7
-$$
-
-**Yechilishi:**
-$x$ o'rniga $-x$ qo'yamiz:
-$$f(-x) = 3(-x)^4 - 5(-x)^2 + 7 = 3x^4 - 5x^2 + 7$$
-Ko'rib turibmizki, $f(-x) = f(x)$. 
-
-**Javob:** Funksiya **juft**.
+### Asosiy davrlar jadvali:
+- $\sin(kx)$ va $\cos(kx)$ uchun: $T = \frac{2\pi}{|k|}$
+- $\operatorname{tg}(kx)$ va $\operatorname{ctg}(kx)$ uchun: $T = \frac{\pi}{|k|}$
+- $|\sin(kx)|$ va $|\cos(kx)|$ uchun: $T = \frac{\pi}{|k|}$
+- $\sin^2(kx)$ va $\cos^2(kx)$ uchun: $T = \frac{\pi}{|k|}$ (darajani pasaytirish: $\sin^2 kx = \frac{1 - \cos 2kx}{2}$)
 
 ---
 
-### 2-misol: Toqlikka tekshirish
+## 5. Amaliy masalalar va ko'p usulli yechimlar
+
+### 1-masala: Murakkab ifodani juft/toqlikka tekshirish
+
 Funksiyani tekshiring:
-
 $$
-f(x) = \frac{\sin x}{x^2 + 4}
+f(x) = \ln\left(x + \sqrt{x^2 + 1}\right)
 $$
 
-**Yechilishi:**
-$$f(-x) = \frac{\sin(-x)}{(-x)^2 + 4}$$
-Sinus toq funksiya bo'lgani uchun $\sin(-x) = -\sin x$, maxraj esa $(-x)^2 = x^2$:
-$$f(-x) = \frac{-\sin x}{x^2 + 4} = -\frac{\sin x}{x^2 + 4} = -f(x)$$
-Demak, $f(-x) = -f(x)$.
+#### 1-usul: Klassik ta'rif bo'yicha $f(-x)$ ni hisoblash
+$x$ o'rniga $-x$ qo'yamiz:
+$$
+f(-x) = \ln\left(-x + \sqrt{(-x)^2 + 1}\right) = \ln\left(\sqrt{x^2 + 1} - x\right)
+$$
+Surat va maxrajni qo'shmasiga ko'paytiramiz:
+$$
+\sqrt{x^2 + 1} - x = \frac{(\sqrt{x^2 + 1} - x)(\sqrt{x^2 + 1} + x)}{\sqrt{x^2 + 1} + x} = \frac{(x^2 + 1) - x^2}{\sqrt{x^2 + 1} + x} = \frac{1}{\sqrt{x^2 + 1} + x} = \left(x + \sqrt{x^2 + 1}\right)^{-1}
+$$
+Logarifm ichidagi darajani oldinga chiqaramiz:
+$$
+f(-x) = \ln\left[\left(x + \sqrt{x^2 + 1}\right)^{-1}\right] = -\ln\left(x + \sqrt{x^2 + 1}\right) = -f(x)
+$$
+Demak, $f(-x) = -f(x)$ tenglik isbotlandi. Funksiya **toq**!
 
-**Javob:** Funksiya **toq**.
+#### 2-usul: Yig'indi $f(x) + f(-x)$ orqali tezkor tekshirish
+Agar funksiya toq bo'lsa, $f(x) + f(-x) = 0$ bo'lishi shart:
+$$
+f(x) + f(-x) = \ln\left(\sqrt{x^2 + 1} + x\right) + \ln\left(\sqrt{x^2 + 1} - x\right) = \ln\left[(\sqrt{x^2 + 1} + x)(\sqrt{x^2 + 1} - x)\right]
+$$
+$$
+= \ln\left(x^2 + 1 - x^2\right) = \ln(1) = 0
+$$
+Yig'indi aynan $0$ ga teng bo'ldi! Demak, $f(x)$ qat'iy ravishda **toq funksiya**dir. Bu usul imtihonda hisoblashni ikki barobar qisqartiradi.
 
 ---
 
-### 3-misol: Davrni topish
-Funksiyaning asosiy davrini toping:
+### 2-masala: Simmetrik oraliqda integrallash (Tezkor imtihon nayrangi)
 
+Integralni hisoblang:
 $$
-f(x) = \cos(4x)
+I = \int_{-2}^{2} \frac{x^7 - 3x^3 + \sin x}{x^4 + 1} dx
 $$
 
-**Yechilishi:**
-Kosinus uchun standart davr $2\pi$ ga teng. $x$ oldidagi koeffitsiyent $k = 4$.
-$$T = \frac{2\pi}{k} = \frac{2\pi}{4} = \frac{\pi}{2}$$
-
-**Javob:** Asosiy davr $T = \frac{\pi}{2}$.
+#### Yechish:
+1. Integrallash chegaralariga qaraymiz: $[-2; 2]$ — koordinata boshiga nisbatan mutlaqo simmetrik oraliq.
+2. Integral ostidagi funksiyani tekshiramiz:
+   - $x^7$ — toq
+   - $-3x^3$ — toq
+   - $\sin x$ — toq
+   - $x^4 + 1$ — juft
+   Toq funksiyaning juft funksiyaga nisbati **toq funksiya** bo'ladi.
+3. Teoremaga ko'ra, har qanday toq funksiyaning simmetrik $[-a; a]$ oraliqdagi integrali **nolga teng**:
+   $$
+   I = 0
+   $$
+Hech qanday murakkab boshlang'ich funksiyalarsiz 3 soniyada to'g'ri javob topildi!
 
 ---
 
-## Mustaqil yechish uchun mashqlar
+## 6. Imtihondagi asosiy tuzoqlar
 
-1. $f(x) = x^3 - 2x$ juftmi yoki toq?
-2. $f(x) = x^2 + 3x$ funksiya juft yoki toqligini aniqlang.
-3. $y = \sin(6x)$ funksiyaning asosiy davrini toping.
+> [!WARNING] Imtihondagi tuzoqlar
+> 1. **Aniqlanish sohasi simmetrik bo'lmaganda juft/toq deb xulosa chiqarish:**
+>    Masalan, $f(x) = x^2$ funksiya $[ -1; 5 ]$ oraliqda berilgan bo'lsa, u **juft emas**, balki umumiy ko'rinishdagi funksiyadir, chunki $x = 5$ ning simmetrik aksi $-5$ oraliqqa tegishli emas! Har doim avval soha simmetrikligini tekshiring.
+> 2. **Trigonometrik funksiya darajasi va modulida davrning 2 marta qisqarishi:**
+>    $\sin x$ ning davri $2\pi$, lekin $\sin^2 x$ yoki $|\sin x|$ ning davri **$\pi$** ga teng! Talabalar ko'pincha bu yerda $2\pi$ deb xato qilishadi.
+> 3. **Funksiyalar ko'paytmasi va yig'indisi qoidasi:**
+>    - Juft $\pm$ Juft = Juft
+>    - Toq $\pm$ Toq = Toq
+>    - Juft $\pm$ Toq = **Umumiy ko'rinishdagi** (na juft, na toq, masalan $x^2 + x$)
+>    - Juft $\times$ Toq = Toq
+>    - Toq $\times$ Toq = Juft (chunki $(-1) \times (-1) = +1$).
 
-<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $(-x)^3 - 2(-x) = -x^3 + 2x = -(x^3 - 2x) = -f(x) \implies$ <strong>toq</strong>.</p>
-    <p><strong>2-masala:</strong> $(-x)^2 + 3(-x) = x^2 - 3x \neq f(x)$ va $\neq -f(x) \implies$ <strong>umumiy ko'rinishdagi funksiya (na juft, na toq)</strong>.</p>
-    <p><strong>3-masala:</strong> $T = \frac{2\pi}{6} = \frac{\pi}{3}$.</p>
-  </div>
+---
+
+## 7. Mustaqil yechish uchun amaliy mashqlar
+
+### 1-mashq
+$f(x) = \frac{x^3 + \operatorname{tg} x}{2x^2 + 5}$ funksiyaning juft yoki toqligini aniqlang.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+Surat: $(-x)^3 + \operatorname{tg}(-x) = -x^3 - \operatorname{tg} x = -(x^3 + \operatorname{tg} x)$ (toq).
+Maxraj: $2(-x)^2 + 5 = 2x^2 + 5$ (juft).
+Toq / Juft = Toq.
+Demak, funksiya **toq**.
+</details>
+
+### 2-mashq
+$y = \sin(6x) + \cos(4x)$ funksiyasining eng kichik musbat davrini toping.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+1. $\sin(6x)$ ning davri: $T_1 = \frac{2\pi}{6} = \frac{\pi}{3}$.
+2. $\cos(4x)$ ning davri: $T_2 = \frac{2\pi}{4} = \frac{\pi}{2}$.
+3. Yig'indining davri $T_1$ va $T_2$ ning eng kichik umumiy karralisi (EKUK) bo'ladi:
+   $$
+   T = \text{EKUK}\left(\frac{\pi}{3}, \frac{\pi}{2}\right) = \pi
+   $$
+   Tekshirish: $f(x + \pi) = \sin(6x + 6\pi) + \cos(4x + 4\pi) = \sin 6x + \cos 4x = f(x)$.
 </details>

@@ -2,19 +2,19 @@
 title: "Ajoyib limitlar va ularning amaliy tatbiqlari"
 module: "limitlar"
 order: 4
-description: "1-ajoyib limit (sin x / x), 2-ajoyib limit (e soni), ularning geometrik mohiyati va trigonometrik hamda ko'rsatkichli masalalarga tatbiqi."
+description: "1-ajoyib limit (sin x / x), 2-ajoyib limit (e soni), ko'p usulli amaliy yechimlar, ekvivalentliklar va imtihondagi asosiy tuzoqlar."
 ---
 import Graph from '../../../components/Graph.astro';
 
 ## Kirish: Nega ular "Ajoyib" deb ataladi?
 
-Matematik analizda shunday muhim formulalar borki, ular nafaqat murakkab aniqmasliklarni oson yechishga xizmat qiladi, balki butun oliy matematikaning poydevori bo'lgan fundamental o'zgarmaslar (masalan, $e \approx 2.71828\dots$ soni)ning kashf etilishiga sabab bo'lgan.
+Matematik analizda shunday muhim formulalar borki, ular nafaqat murakkab trigonometrik va ko'rsatkichli aniqmasliklarni oson yechishga xizmat qiladi, balki butun oliy matematikaning poydevori bo'lgan fundamental o'zgarmaslar (masalan, $e \approx 2.71828\dots$ soni)ning kashf etilishiga sabab bo'lgan.
 
 Shu xususiyatlari tufayli ular tarixan **"Ajoyib limitlar"** (lotincha *limites insignes*) nomini olgan.
 
 ---
 
-## 1-Ajoyib limit: $\lim_{x \to 0} \frac{\sin x}{x} = 1$
+## 1. 1-Ajoyib limit: $\lim_{x \to 0} \frac{\sin x}{x} = 1$
 
 Trigonometriyada burchak radianda o'lchanganda, $x \to 0$ bo'lganida quyidagi mashhur munosabat o'rinlidir:
 
@@ -22,7 +22,7 @@ $$
 \lim_{x \to 0} \frac{\sin x}{x} = 1
 $$
 
-Bu yerda $\left[\frac{0}{0}\right]$ ko'rinishidagi aniqmaslik mavjud. Ushbu limit burchak juda kichik bo'lganda $\sin x \approx x$ deb qabul qilish mumkinligini (kichik tebranishlar fizikasi va optikada eng ko'p ishlatiladigan qoida) ko'rsatadi.
+Bu yerda $\left[\frac{0}{0}\right]$ ko'rinishidagi aniqmaslik mavjud. Ushbu limit burchak juda kichik bo'lganda $\sin x \approx x$ deb qabul qilish mumkinligini (kichik tebranishlar fizikasi, mayatnik tenglamalari va to'lqin optikasida eng ko'p ishlatiladigan qoida) ko'rsatadi.
 
 Quyidagi interaktiv grafikda $f(x) = \frac{\sin x}{x}$ funksiyasi $x = 0$ nuqtada teshik (aniqlanmagan) bo'lsa-da, uning chegaraviy qiymati aynan $1$ ga intilishi yaqqol ko'rinadi:
 
@@ -33,7 +33,7 @@ Quyidagi interaktiv grafikda $f(x) = \frac{\sin x}{x}$ funksiyasi $x = 0$ nuqtad
   yDomain={[-0.5, 1.5]}
 />
 
-### 1-Ajoyib limitdan kelib chiqadigan muhim natijalar:
+### 1-Ajoyib limitdan kelib chiqadigan 4 ta muhim natija:
 
 1. $\lim_{x \to 0} \frac{\operatorname{tg} x}{x} = 1$
 2. $\lim_{x \to 0} \frac{\arcsin x}{x} = 1$
@@ -45,9 +45,9 @@ Quyidagi interaktiv grafikda $f(x) = \frac{\sin x}{x}$ funksiyasi $x = 0$ nuqtad
 
 ---
 
-## 2-Ajoyib limit: $e$ soni va $[1^\infty]$ aniqmasligi
+## 2. 2-Ajoyib limit: $e$ soni va $[1^\infty]$ aniqmasligi
 
-Agar biz $1$ ga yaqin sonni cheksiz katta darajaga ko'tarsak nima sodir bo'ladi? Bu $[1^\infty]$ ko'rinishidagi aniqmaslik bo'lib, uning yechimi mashhur Neper soni — **$e$** soniga olib keladi:
+Agar biz $1$ ga intiluvchi asosni cheksiz katta darajaga ko'tarsak nima sodir bo'ladi? Bu $[1^\infty]$ ko'rinishidagi aniqmaslik bo'lib, uning yechimi mashhur Neper soni — **$e$** soniga olib keladi:
 
 $$
 \lim_{x \to \infty} \left( 1 + \frac{1}{x} \right)^x = e \approx 2.71828\dots
@@ -59,9 +59,9 @@ $$
 \lim_{\alpha \to 0} (1 + \alpha)^{\frac{1}{\alpha}} = e
 $$
 
-Bu formula bank ishidagi uzluksiz foiz hisoblashlar, biologiyada bakteriyalar ko'payishi va radiaktiv parchalanish jarayonlarining matematik modeli hisoblanadi.
+Bu formula bank ishidagi uzluksiz foiz hisoblashlar, biologiyada bakteriyalar ko'payishi va zanjirli yadroviy reaksiyalarning matematik modeli hisoblanadi.
 
-### 2-Ajoyib limitdan kelib chiqadigan natijalar:
+### 2-Ajoyib limitdan kelib chiqadigan muhim natijalar:
 
 1. **Logarifmik limit:**
    $$
@@ -71,116 +71,146 @@ Bu formula bank ishidagi uzluksiz foiz hisoblashlar, biologiyada bakteriyalar ko
    $$
    \lim_{x \to 0} \frac{e^x - 1}{x} = 1 \quad \text{va} \quad \lim_{x \to 0} \frac{a^x - 1}{x} = \ln a
    $$
+3. **Darajali limit:**
+   $$
+   \lim_{x \to 0} \frac{(1 + x)^m - 1}{x} = m
+   $$
 
 ---
 
-## Amaliy misollar va yechimlar
+## 3. Amaliy masalalar va ko'p usulli yechimlar
 
-### 1-misol: Har xil argumentli sinuslar nisbati
+### 1-masala: Trigonometrik limitni 3 xil usulda hisoblash
+
 Limitni hisoblang:
-
 $$
-\lim_{x \to 0} \frac{\sin(5x)}{\sin(3x)}
-$$
-
-**Yechilishi:**
-$\left[\frac{0}{0}\right]$ aniqmaslik. Ifodani 1-ajoyib limit ko'rinishiga keltirish uchun surat va maxrajni mos ravishda $5x$ va $3x$ ga sun'iy ravishda bo'lamiz va ko'paytiramiz:
-
-$$
-\lim_{x \to 0} \frac{\frac{\sin(5x)}{5x} \cdot 5x}{\frac{\sin(3x)}{3x} \cdot 3x}
+L = \lim_{x \to 0} \frac{\sin 5x}{\sin 3x}
 $$
 
-$x \to 0$ da $\frac{\sin(5x)}{5x} \to 1$ va $\frac{\sin(3x)}{3x} \to 1$. $x$ lar esa o'zaro qisqaradi:
-
+#### 1-usul: Sun'iy bo'lish va ko'paytirish (Klassik 1-ajoyib limit)
+Surat va maxrajni mos ravishda $5x$ va $3x$ ga sun'iy ravishda bo'lamiz va ko'paytiramiz:
 $$
-\lim_{x \to 0} \frac{1 \cdot 5x}{1 \cdot 3x} = \frac{5}{3}
+L = \lim_{x \to 0} \frac{\frac{\sin 5x}{5x} \cdot 5x}{\frac{\sin 3x}{3x} \cdot 3x}
+$$
+$x \to 0$ da $\frac{\sin 5x}{5x} \to 1$ va $\frac{\sin 3x}{3x} \to 1$:
+$$
+L = \frac{1 \cdot 5x}{1 \cdot 3x} = \frac{5}{3}
 $$
 
-**Javob:** $\frac{5}{3}$
+#### 2-usul: Ekvivalent cheksiz kichik miqdorlar usuli (Tezkor usul)
+$x \to 0$ da $\sin(kx) \sim kx$ ekvivalentlik qoidasiga ko'ra:
+$$
+\sin 5x \sim 5x, \quad \sin 3x \sim 3x
+$$
+Limitga to'g'ridan-to'g'ri qo'yamiz:
+$$
+L = \lim_{x \to 0} \frac{5x}{3x} = \frac{5}{3}
+$$
+Misol hech qanday qo'shimcha amallarsiz 5 soniyada yechiladi!
+
+#### 3-usul: Lopital qoidasi orqali tekshirish
+$x = 0$ da $\left[\frac{0}{0}\right]$ noaniqlik:
+$$
+L = \lim_{x \to 0} \frac{(\sin 5x)'}{(\sin 3x)'} = \lim_{x \to 0} \frac{5\cos 5x}{3\cos 3x} = \frac{5\cos 0}{3\cos 0} = \frac{5 \cdot 1}{3 \cdot 1} = \frac{5}{3}
+$$
 
 ---
 
-### 2-misol: Kosinusli ifodani hisoblash
+### 2-masala: $[1^\infty]$ ko'rinishidagi limitni 2 xil usulda hisoblash
+
 Limitni hisoblang:
-
 $$
-\lim_{x \to 0} \frac{1 - \cos(4x)}{x^2}
-$$
-
-**Yechilishi:**
-Trigonometriyaning yarim burchak formulasidan foydalanamiz: $1 - \cos(2\alpha) = 2\sin^2(\alpha)$. Bu yerda $2\alpha = 4x \implies \alpha = 2x$.
-
-$$
-1 - \cos(4x) = 2\sin^2(2x)
+M = \lim_{x \to \infty} \left( \frac{x + 4}{x - 2} \right)^{3x}
 $$
 
-Endi limitga qo'yamiz:
-
+#### 1-usul: 2-ajoyib limit ko'rinishiga keltirish
+Asosdagi butun qismni ajratamiz:
 $$
-\lim_{x \to 0} \frac{2\sin^2(2x)}{x^2} = 2 \cdot \lim_{x \to 0} \left( \frac{\sin(2x)}{x} \right)^2
+\frac{x + 4}{x - 2} = \frac{(x - 2) + 6}{x - 2} = 1 + \frac{6}{x - 2}
+$$
+Darajani $\frac{x - 2}{6}$ ga sun'iy keltiramiz:
+$$
+M = \lim_{x \to \infty} \left[ \left(1 + \frac{6}{x - 2}\right)^{\frac{x - 2}{6}} \right]^{\frac{6}{x - 2} \cdot 3x}
+$$
+Katta qavs ichidagi ifoda 2-ajoyib limitga ko'ra $e$ ga intiladi. Daraja limiti esa:
+$$
+\lim_{x \to \infty} \frac{18x}{x - 2} = 18
+$$
+Demak:
+$$
+M = e^{18}
 $$
 
-Qavs ichidagi ifodani 2 ga ko'paytirib, 2 ga bo'lamiz:
-
-$$
-2 \cdot \lim_{x \to 0} \left( \frac{\sin(2x)}{2x} \cdot 2 \right)^2 = 2 \cdot (1 \cdot 2)^2 = 2 \cdot 4 = 8
-$$
-
-**Javob:** $8$
+#### 2-usul: Universal qisqa formula $\lim u^v = e^{\lim v(u - 1)}$
+$u = \frac{x + 4}{x - 2}$, $v = 3x$.
+1. $u - 1$ ni hisoblaymiz:
+   $$
+   u - 1 = \frac{x + 4}{x - 2} - 1 = \frac{x + 4 - x + 2}{x - 2} = \frac{6}{x - 2}
+   $$
+2. Darajaga ko'paytirib limit olamiz:
+   $$
+   \lim_{x \to \infty} v(u - 1) = \lim_{x \to \infty} 3x \cdot \frac{6}{x - 2} = \lim_{x \to \infty} \frac{18x}{x - 2} = 18
+   $$
+3. Natija: $M = e^{18}$.
 
 ---
 
-### 3-misol: 2-ajoyib limit yordamida $[1^\infty]$ ni ochish
-Limitni hisoblang:
+## 4. Imtihondagi asosiy tuzoqlar
 
-$$
-\lim_{x \to \infty} \left( \frac{x + 3}{x - 1} \right)^{2x}
-$$
-
-**Yechilishi:**
-Avval asosni tekshiramiz: $\frac{x+3}{x-1} \to 1$. Daraja esa $2x \to \infty$. Bu $[1^\infty]$ aniqmaslikdir.
-
-Asosdan $1$ ni ajratib olamiz:
-$$
-\frac{x + 3}{x - 1} = \frac{x - 1 + 4}{x - 1} = 1 + \frac{4}{x - 1}
-$$
-
-Endi darajada 2-ajoyib limitning teskarisi bo'lgan $\frac{x - 1}{4}$ ifodani sun'iy ravishda hosil qilamiz:
-
-$$
-\lim_{x \to \infty} \left[ \left( 1 + \frac{4}{x - 1} \right)^{\frac{x - 1}{4}} \right]^{\frac{4}{x - 1} \cdot 2x}
-$$
-
-Ichki katta qavs 2-ajoyib limitga ko'ra $e$ ga intiladi:
-$$
-\left( 1 + \frac{4}{x - 1} \right)^{\frac{x - 1}{4}} \to e
-$$
-
-Endi faqat daraja ko'rsatkichining limitini hisoblaymiz:
-$$
-\lim_{x \to \infty} \frac{8x}{x - 1} = 8
-$$
-
-Demak, butun ifoda:
-$$
-e^8
-$$
-
-**Javob:** $e^8$
+> [!WARNING] Imtihondagi tuzoqlar
+> 1. **Argument nolga intilmayotganda 1-ajoyib limitni qo'llash:**
+>    Eng xavfli xato — $\lim_{x \to \infty} \frac{\sin x}{x}$ limitini ko'rib, 1 ga teng deb yozishdir! E'tibor bering, bu yerda $x \to \infty$, shuning uchun $\sin x$ chegaralangan miqdor ($[-1; 1]$ oralig'ida), $x$ esa cheksiz katta. Chegaralangan miqdorning cheksizlikka nisbati **$0$ ga teng**:
+>    $$
+>    \lim_{x \to \infty} \frac{\sin x}{x} = 0 \quad (\text{1 emas!})
+>    $$
+> 2. **Burchak gradusda berilganda:**
+>    Agar masalada $\lim_{x \to 0} \frac{\sin x^\circ}{x}$ so'ralsa, javob $1$ emas! Trigonometriyada formulalar radianda ishlaydi. $x^\circ = \frac{\pi x}{180}$ rad bo'lgani uchun:
+>    $$
+>    \lim_{x \to 0} \frac{\sin\left(\frac{\pi x}{180}\right)}{x} = \frac{\pi}{180}
+>    $$
+> 3. **Asos 1 ga intilmaganda 2-ajoyib limitni qo'llash:**
+>    Masalan, $\lim_{x \to \infty} \left(\frac{2x+1}{x+3}\right)^x$. Bu yerda asos $\frac{2x+1}{x+3} \to 2$ ga intiladi. Demak, bu $[1^\infty]$ emas, balki $[2^\infty] = +\infty$ bo'ladi! Hech qanday $e$ soni hosil bo'lmaydi.
 
 ---
 
-## Mustaqil yechish uchun mashqlar
+## 5. Mustaqil yechish uchun amaliy mashqlar
 
-1. $\lim_{x \to 0} \frac{\operatorname{tg}(4x)}{2x}$
-2. $\lim_{x \to 0} \frac{\sin(6x)}{\sin(2x)}$
-3. $\lim_{x \to \infty} \left( 1 + \frac{3}{x} \right)^{5x}$
+### 1-mashq
+Ushbu limitni ekvivalentlik yoki 1-ajoyib limit orqali hisoblang:
+$$
+\lim_{x \to 0} \frac{1 - \cos 4x}{x \sin 2x}
+$$
 
-<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $\frac{\operatorname{tg}(4x)}{4x} \cdot \frac{4}{2} = 1 \cdot 2 = 2$</p>
-    <p><strong>2-masala:</strong> $\frac{6x}{2x} = 3$</p>
-    <p><strong>3-masala:</strong> $[(1 + 3/x)^{x/3}]^{15} \to e^{15}$</p>
-  </div>
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+$x \to 0$ da:
+- $1 - \cos 4x \sim \frac{(4x)^2}{2} = \frac{16x^2}{2} = 8x^2$
+- $\sin 2x \sim 2x$
+
+Limitga qo'yamiz:
+$$
+\lim_{x \to 0} \frac{8x^2}{x \cdot 2x} = \lim_{x \to 0} \frac{8x^2}{2x^2} = 4
+$$
+Javob: $4$.
+</details>
+
+### 2-mashq
+Ushbu limitni hisoblang:
+$$
+\lim_{x \to 0} (1 + 3\operatorname{tg} x)^{\operatorname{ctg} x}
+$$
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+Bu $[1^\infty]$ aniqmasligi.
+Universal formula: $u = 1 + 3\operatorname{tg} x$, $v = \operatorname{ctg} x = \frac{1}{\operatorname{tg} x}$.
+$$
+v(u - 1) = \frac{1}{\operatorname{tg} x} \cdot 3\operatorname{tg} x = 3
+$$
+Demak:
+$$
+\lim_{x \to 0} (1 + 3\operatorname{tg} x)^{\operatorname{ctg} x} = e^3
+$$
 </details>

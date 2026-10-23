@@ -2,7 +2,7 @@
 title: "Elementar funksiyalar va ularning grafiklari"
 module: "funksiyalar-grafiklar"
 order: 1
-description: "Chiziqli, kvadratik, kubik, giperbolik va trigonometrik funksiyalarning xossalari hamda ularning interaktiv grafiklari."
+description: "Chiziqli, kvadratik, kasr-chiziqli, darajali va trigonometrik funksiyalarning xossalari, asimptotalar, teskari funksiya va interaktiv grafiklar."
 ---
 import Graph from '../../../components/Graph.astro';
 
@@ -14,32 +14,33 @@ $$
 y = f(x)
 $$
 
-Bunda $x$ — erkli o'zgaruvchi (argument), $y$ esa erksiz o'zgaruvchi (funksiya qiymati) deyiladi. Funksiyaning grafigi esa koordinata tekisligidagi barcha $(x, f(x))$ nuqtalar to'plamidir. Grafik funksiyaning o'sishi, kamayishi, nollari va chegaralarini bir qarashda ko'rish imkonini beradi.
+Bunda:
+- $x$ — erkli o'zgaruvchi (argument), uning qabul qilishi mumkin bo'lgan barcha qiymatlari to'plami **aniqlanish sohasi** $D(f)$ deyiladi;
+- $y$ — erksiz o'zgaruvchi (funksiya qiymati), hosil bo'ladigan barcha qiymatlar to'plami **qiymatlar sohasi** $E(f)$ deyiladi.
 
-Keling, oliy matematika kursida eng ko'p uchraydigan asosiy elementar funksiyalarni ko'rib chiqamiz.
+Geometrik nuqtai nazardan, funksiya grafigi koordinata tekisligidagi barcha $(x, f(x))$ nuqtalar geometrik o'rnidir. Grafik funksiyaning o'sishi, kamayishi, nollari, ekstremumlari va asimptotalarini bir qarashda ko'rsatib beradi.
 
 ---
 
 ## 1. Chiziqli funksiya
 
-Chiziqli funksiya quyidagi ko'rinishga ega:
+Chiziqli funksiya eng sodda algebraik bog'lanish bo'lib, quyidagi ko'rinishga ega:
 
 $$
 y = kx + b
 $$
 
-- $k$ — to'g'ri chiziqning burchak koeffitsiyenti (chiziqning $Ox$ o'qiga og'ish burchagi tangensi: $k = \tan \alpha$).
-- $b$ — to'g'ri chiziqning $Oy$ o'qi bilan kesishish nuqtasi.
-
-Agar $k > 0$ bo'lsa, funksiya butun sonlar o'qida **o'suvchi**; agar $k < 0$ bo'lsa, **kamayuvchi** bo'ladi.
+- $k$ — to'g'ri chiziqning **burchak koeffitsiyenti** bo'lib, uning $Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchagi tangensiga teng: $k = \tan \alpha$.
+  - Agar $k > 0$ bo'lsa, funksiya butun sonlar o'qida qat'iy **o'suvchi**;
+  - Agar $k < 0$ bo'lsa, funksiya butun sonlar o'qida qat'iy **kamayuvchi**;
+  - Agar $k = 0$ bo'lsa, $y = b$ — gorizontal o'zgarmas to'g'ri chiziq.
+- $b$ — to'g'ri chiziqning $Oy$ o'qi bilan kesishish nuqtasi ordinatasi $(0; b)$.
 
 <Graph 
   fn="2*x - 1" 
   fn2="-x + 3" 
   title="Chiziqli funksiyalar: y = 2x - 1 (ko'k) va y = -x + 3 (qizil)" 
 />
-
-E'tibor bering: ko'k chiziq ($k = 2 > 0$) yuqoriga ko'tarilmoqda, qizil chiziq ($k = -1 < 0$) esa pastga tushmoqda.
 
 ---
 
@@ -52,9 +53,16 @@ y = ax^2 + bx + c \quad (a \neq 0)
 $$
 
 Uning grafigi **parabola** deyiladi.
-- Agar $a > 0$ bo'lsa, parabolaning shoxlari yuqoriga qaragan bo'ladi.
-- Agar $a < 0$ bo'lsa, shoxlari pastga qaragan bo'ladi.
-- Parabola uchining koordinatalari: $x_0 = -\frac{b}{2a}, \quad y_0 = f(x_0)$.
+- Agar $a > 0$ bo'lsa, parabolaning shoxlari yuqoriga; agar $a < 0$ bo'lsa, pastga yo'nalgan bo'ladi.
+- Parabola uchining koordinatalari:
+  $$
+  x_0 = -\frac{b}{2a}, \qquad y_0 = f(x_0) = -\frac{D}{4a} = -\frac{b^2 - 4ac}{4a}
+  $$
+- Parabolaning simmetriya o'qi: $x = x_0$.
+- Diskriminant $D = b^2 - 4ac$:
+  - $D > 0$: $Ox$ o'qini ikkita har xil nuqtada kesib o'tadi ($x_1, x_2$);
+  - $D = 0$: $Ox$ o'qiga uchida urinadi ($x_0$);
+  - $D < 0$: $Ox$ o'qi bilan umuman kesishmaydi.
 
 <Graph 
   fn="x^2 - 4" 
@@ -62,34 +70,24 @@ Uning grafigi **parabola** deyiladi.
   title="Parabolalar: y = x² - 4 (ko'k) va y = -0.5x² + 2 (qizil)" 
 />
 
-Ko'rib turganingizdek, $y = x^2 - 4$ parabola $Ox$ o'qini $x = -2$ va $x = 2$ nuqtalarda kesib o'tadi (bu nuqtalar funksiyaning nollari deyiladi).
-
 ---
 
-## 3. Kubik funksiya va darajali egri chiziqlar
+## 3. Kasr-chiziqli funksiya va Giperbola
+
+Eng sodda teskari proporsionallik $y = \frac{k}{x}$ giperbola bo'lsa, umumiy **kasr-chiziqli funksiya**:
 
 $$
-y = x^3 - 3x
+y = \frac{ax + b}{cx + d} \quad (c \neq 0, \quad ad - bc \neq 0)
 $$
 
-Bu toq funksiya bo'lib, uning grafigi koordinata boshiga nisbatan simmetrikdir. U o'zida ham o'sish, ham kamayish oraliqlarini va mahalliy ekstremumlarni (maksimum va minimum nuqtalarni) mujassam qiladi.
-
-<Graph 
-  fn="x^3 - 3*x" 
-  title="Kubik funksiya: y = x³ - 3x" 
-/>
-
----
-
-## 4. Kasr-ratsional funksiya (Giperbola)
-
-Teskari proportsionallik funksiyasi:
-
+Butun qismini ajratish orqali uni kanonik ko'rinishga keltirish mumkin:
 $$
-y = \frac{k}{x} \quad (x \neq 0)
+y = \frac{a}{c} + \frac{b - \frac{ad}{c}}{cx + d} = y_0 + \frac{m}{x - x_0}
 $$
 
-Uning grafigi **giperbola** deb ataladi. $x = 0$ nuqtada funksiya aniqlanmagan va $Oy$ o'qi vertikal asimptota hisoblanadi.
+### Asimptotalar:
+1. **Vertikal asimptota:** Maxraj nolga teng bo'lgan chiziq: $cx + d = 0 \implies x = -\frac{d}{c}$.
+2. **Gorizontal asimptota:** $x \to \pm\infty$ dagi limit: $y = \lim_{x \to \infty} \frac{ax+b}{cx+d} = \frac{a}{c}$.
 
 <Graph 
   fn="1/x" 
@@ -98,17 +96,14 @@ Uning grafigi **giperbola** deb ataladi. $x = 0$ nuqtada funksiya aniqlanmagan v
   xDomain={[-5, 5]}
 />
 
-$x \to 0^+$ bo'lganda $y \to +\infty$ ga intiladi, $x \to 0^-$ bo'lganda esa $y \to -\infty$ ga intiladi.
-
 ---
 
-## 5. Trigonometrik funksiyalar: $\sin(x)$ va $\cos(x)$
+## 4. Trigonometrik funksiyalar: $\sin(x)$ va $\cos(x)$
 
-Trigonometrik funksiyalar davriy bo'lib, ularning davri $T = 2\pi \approx 6.28$ ga teng. Aniqlanish sohasi butun sonlar o'qi, qiymatlar sohasi esa $[-1; 1]$ kesmadan iborat:
-
-$$
--1 \le \sin(x) \le 1, \quad -1 \le \cos(x) \le 1
-$$
+Trigonometrik funksiyalar davriy bo'lib, ularning asosiy davri $T = 2\pi$ ga teng.
+- $D(\sin) = \mathbb{R}, \quad E(\sin) = [-1; 1]$;
+- $D(\cos) = \mathbb{R}, \quad E(\cos) = [-1; 1]$.
+- Fazaviy siljish: $\cos(x) = \sin\left(x + \frac{\pi}{2}\right)$ — kosinus sinusoidaning $\pi/2$ qadam chapga siljigan nusxasidir.
 
 <Graph 
   fn="sin(x)" 
@@ -118,36 +113,81 @@ $$
   yDomain={[-2, 2]}
 />
 
-$\cos(x)$ grafigi $\sin(x)$ grafigining $\frac{\pi}{2}$ qadam chapga siljigan nusxasidir!
+---
+
+## Bitta masalani 2 xil usulda yechish: Qiymatlar sohasi va Teskari funksiya
+
+> **Masala:** $y = \frac{2x + 3}{x - 1}$ funksiyaning qiymatlar sohasi $E(f)$ ni va unga teskari funksiya $f^{-1}(x)$ ni toping.
+
+### 1-usul: Algebraik ifodalash usuli (Parametrik yechish)
+Funksiyani $x$ ga nisbatan tenglama deb qaraymiz va $x$ ni $y$ orqali ifodalaymiz:
+$$
+y(x - 1) = 2x + 3 \implies yx - y = 2x + 3 \implies yx - 2x = y + 3
+$$
+$$
+x(y - 2) = y + 3 \implies x = \frac{y + 3}{y - 2}
+$$
+$x$ haqiqiy son bo'lishi uchun maxraj nol bo'lmasligi kerak: $y - 2 \neq 0 \implies y \neq 2$.
+Demak, qiymatlar sohasi:
+$$
+E(f) = (-\infty; 2) \cup (2; +\infty) = \mathbb{R} \setminus \{2\}
+$$
+Teskari funksiyani yozish uchun $x$ va $y$ o'rnini almashtiramiz:
+$$
+f^{-1}(x) = \frac{x + 3}{x - 2}
+$$
+
+### 2-usul: Butun qism ajratish va geometrik asimptota tahlili
+Suratda maxrajni sun'iy hosil qilamiz:
+$$
+y = \frac{2(x - 1) + 5}{x - 1} = 2 + \frac{5}{x - 1}
+$$
+- Har qanday $x \neq 1$ uchun kasr $\frac{5}{x - 1} \neq 0$.
+- Shuning uchun $y$ qiymati hech qachon aynan $2$ ga teng bo'la olmaydi ($y = 2$ gorizontal asimptota).
+- $x \to \pm\infty$ da $y \to 2$, $x \to 1^+$ da $y \to +\infty$, $x \to 1^-$ da $y \to -\infty$.
+Demak, barcha $y \neq 2$ qiymatlar qabul qilinadi: $E(f) = \mathbb{R} \setminus \{2\}$.
+Teskari funksiyani esa amallar zanjirini orqaga qaytarish orqali topamiz:
+$$y - 2 = \frac{5}{x - 1} \implies x - 1 = \frac{5}{y - 2} \implies x = 1 + \frac{5}{y - 2} = \frac{y + 3}{y - 2} \implies f^{-1}(x) = \frac{x + 3}{x - 2}$$
+
+Ikkala usul ham mutlaqo bir xil natija berdi!
 
 ---
 
-## Amaliy misollar va tahlil
-
-### 1-misol: Funksiyaning nollarini topish
-$f(x) = x^2 - 5x + 6$ funksiyaning koordinata o'qlari bilan kesishish nuqtalarini toping.
-
-**Yechilishi:**
-1. $Ox$ o'qi bilan kesishish nuqtalari uchun $y = 0$ deb olamiz:
-   $$x^2 - 5x + 6 = 0 \implies (x - 2)(x - 3) = 0 \implies x_1 = 2, \quad x_2 = 3$$
-   Kesishish nuqtalari: $(2; 0)$ va $(3; 0)$.
-2. $Oy$ o'qi bilan kesishish uchun $x = 0$ deb olamiz:
-   $$y = 0^2 - 5(0) + 6 = 6$$
-   Kesishish nuqtasi: $(0; 6)$.
+> [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
+> 1. **Qisqaruvchi kasrlardagi "teshik" nuqta (Yo'qotilgan nuqta):**
+>    $f(x) = \frac{x^2 - 9}{x - 3}$ funksiyani ko'rib chiqaylik. Suratni ko'paytuvchilarga ajratib $\frac{(x-3)(x+3)}{x-3} = x + 3$ to'g'ri chizig'ini hosil qilish mumkin. Ammo $x = 3$ nuqta funksiyaning aniqlanish sohasiga kirmaydi! Grafikda $(3; 6)$ nuqta bo'sh (ichibo'sh aylanacha) bo'lib qoladi.
+> 2. **Juft darajali ildizlar osti:** $\sqrt{f(x)}$ qatnashgan ifodalarda $f(x) \ge 0$ sharti qo'yiladi. Ammo toq darajali ildizlarda ($\sqrt[3]{x}$) hech qanday ishora cheklovi yo'q!
+> 3. **Davriy funksiyalarda burchak tezligi:** $y = \sin(k x)$ funksiyaning davri $T = \frac{2\pi}{|k|}$ bo'ladi. Masalan, $\sin(4x)$ ning davri $2\pi$ emas, balki $\frac{2\pi}{4} = \frac{\pi}{2}$ dir.
 
 ---
 
-## Mustaqil yechish uchun mashqlar
+## Mustaqil yechish uchun amaliy mashqlar
 
-1. $y = 3x - 6$ to'g'ri chiziqning koordinata o'qlari bilan kesishish nuqtalarini toping.
-2. $y = -x^2 + 4$ parabolaning uchi qaysi koordinatada joylashgan?
-3. $y = \frac{2}{x - 1}$ funksiyaning vertikal asimptotasini aniqlang.
+1. $y = -2x^2 + 8x - 5$ parabolaning uchi koordinatalarini toping va uning qiymatlar sohasini aniqlang.
+2. $y = \frac{3x - 1}{x + 2}$ funksiyaning vertikal va gorizontal asimptotalarini toping.
+3. $f(x) = \sqrt{2x - 6} + 1$ funksiyaning aniqlanish sohasi va teskari funksiyasi $f^{-1}(x)$ ni toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $Ox$ bilan: $3x - 6 = 0 \implies (2; 0)$; $Oy$ bilan: $(0; -6)$.</p>
-    <p><strong>2-masala:</strong> $x_0 = -\frac{0}{2(-1)} = 0 \implies y_0 = -(0)^2 + 4 = 4$. Parabola uchi: $(0; 4)$.</p>
-    <p><strong>3-masala:</strong> Maxraj nolga aylanadigan nuqta: $x - 1 = 0 \implies x = 1$ to'g'ri chizig'i vertikal asimptotadir.</p>
+  <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
+  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); line-height: 1.7;">
+    <p><strong>1-masala:</strong></p>
+    <p>$a = -2, b = 8, c = -5$.</p>
+    <p>$x_0 = -\frac{b}{2a} = -\frac{8}{2(-2)} = 2$.</p>
+    <p>$y_0 = f(2) = -2(2)^2 + 8(2) - 5 = -8 + 16 - 5 = 3$.</p>
+    <p>Parabola shoxlari pastga qaragan ($a = -2 < 0$), shuning uchun eng katta qiymat 3 ga teng: $E(f) = (-\infty; 3]$. Parabola uchi: $(2; 3)$.</p>
+
+    <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
+
+    <p><strong>2-masala:</strong></p>
+    <p>1) Vertikal asimptota maxraj nolga aylanganda: $x + 2 = 0 \implies \mathbf{x = -2}$.</p>
+    <p>2) Gorizontal asimptota cheksizlikdagi limitdan: $y = \lim_{x \to \infty} \frac{3x - 1}{x + 2} = \frac{3}{1} \implies \mathbf{y = 3}$.</p>
+
+    <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
+
+    <p><strong>3-masala:</strong></p>
+    <p>1) Aniqlanish sohasi: $2x - 6 \ge 0 \implies x \ge 3 \implies D(f) = [3; +\infty)$.</p>
+    <p>2) Ildiz qiymati $\ge 0$ bo'lgani uchun $y \ge 1 \implies E(f) = [1; +\infty)$.</p>
+    <p>3) Teskari funksiya: $y - 1 = \sqrt{2x - 6} \implies (y - 1)^2 = 2x - 6 \implies 2x = (y - 1)^2 + 6 \implies x = \frac{(y - 1)^2 + 6}{2}$.</p>
+    <p>O'zgaruvchilarni almashtirsak: $\mathbf{f^{-1}(x) = \frac{(x - 1)^2 + 6}{2} \quad (x \ge 1)}$.</p>
   </div>
 </details>
