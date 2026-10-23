@@ -23,9 +23,9 @@ export const MODULES: ModuleInfo[] = [
     id: 2,
     slug: 'chiziqli-algebra',
     title: '2. Chiziqli algebra',
-    description: "Matritsalar, determinantlar, Laplas teoremasi, FYS, chiziqli fazolar, kvadratik formalar, simpleks va transport masalalari (TATU to'liq dasturi).",
+    description: "Matritsalar, determinantlar, Laplas teoremasi, FYS, chiziqli fazolar, kvadratik formalar, simpleks, transport masalalari va xos vektorlar (TATU/O'zMU to'liq dasturi).",
     isActive: true,
-    estimatedLessons: 12,
+    estimatedLessons: 13,
     topics: [
       'Matritsalar va ular ustida amallar',
       'Determinantlar va xossalari',
@@ -38,7 +38,8 @@ export const MODULES: ModuleInfo[] = [
       'Kvadratik formalar va Silvestr mezoni',
       'Chiziqli dasturlash va Simpleks usuli',
       'Transport masalasi va Potensiallar usuli',
-      'Chiziqli algebraning geometrik mohiyati va eng sara adabiyotlar'
+      'Chiziqli algebraning geometrik mohiyati va eng sara adabiyotlar',
+      'Matritsaning xos sonlari va xos vektorlari: Diagonallashtirish'
     ]
   },
   {
@@ -95,34 +96,35 @@ export const MODULES: ModuleInfo[] = [
     id: 7,
     slug: 'hosila',
     title: '7. Hosila',
-    description: "Hosila ta'rifi, fizik va geometrik ma'nosi, differensiallash qoidalari, murakkab funksiya va Lopital qoidasi.",
+    description: "Hosila ta'rifi, fizik va geometrik ma'nosi, differensiallash qoidalari, murakkab funksiya, Lopital qoidasi, parametrik va oshkormas funksiya hosilalari hamda asimptotalar.",
     isActive: true,
-    estimatedLessons: 5,
-    topics: ['Hosila ta\'rifi va geometrik ma\'nosi', 'Differensiallash qoidalari va jadvali', 'Murakkab funksiya hosilasi', 'Yuqori tartibli hosilalar va differensial', 'Lopital qoidasi']
+    estimatedLessons: 6,
+    topics: ['Hosila ta\'rifi va geometrik ma\'nosi', 'Differensiallash qoidalari va jadvali', 'Murakkab funksiya hosilasi', 'Yuqori tartibli hosilalar va differensial', 'Lopital qoidasi', 'Parametrik, oshkormas funksiya hosilasi va asimptotalar']
   },
   {
     id: 8,
     slug: 'integrallar',
     title: '8. Integrallar',
-    description: "Boshlang'ich funksiya, aniqmas integral jadvali, o'zgaruvchini almashtirish, bo'laklab integrallash, Nyuton-Leybnits va taqribiy integrallash (Simpson/Trapetsiyalar).",
+    description: "Boshlang'ich funksiya, aniqmas integral jadvali, o'zgaruvchini almashtirish, bo'laklab integrallash, Nyuton-Leybnits, Simpson usuli, ratsional kasrlar va xosmas integrallar.",
     isActive: true,
-    estimatedLessons: 5,
+    estimatedLessons: 6,
     topics: [
       'Boshlang\'ich funksiya va aniqmas integral jadvali',
       'O\'zgaruvchini almashtirish usuli',
       'Bo\'laklab integrallash',
       'Aniq integral va Nyuton-Leybnits formulasi',
-      'Taqribiy integrallash: Trapetsiyalar va Simpson usullari'
+      'Taqribiy integrallash: Trapetsiyalar va Simpson usullari',
+      'Ratsional kasrlarni integrallash va xosmas integrallar'
     ]
   },
   {
     id: 9,
     slug: 'kop-ozgaruvchili-funksiyalar',
     title: '9. Ko\'p o\'zgaruvchili funksiyalar',
-    description: "Ikki o'zgaruvchili funksiyalar, xususiy hosilalar, Shvars teoremasi, to'liq differensial va lokal ekstremumlar.",
+    description: "Ikki o'zgaruvchili funksiyalar, xususiy hosilalar, Shvars teoremasi, to'liq differensial, lokal va shartli ekstremumlar, gradient hamda yo'nalish bo'yicha hosila.",
     isActive: true,
-    estimatedLessons: 4,
-    topics: ['Ikki o\'zgaruvchili funksiya va soha', 'Xususiy hosilalar va Shvars teoremasi', 'To\'liq differensial va taqribiy hisoblash', 'Ikki o\'zgaruvchili funksiya ekstremumi']
+    estimatedLessons: 5,
+    topics: ['Ikki o\'zgaruvchili funksiya va soha', 'Xususiy hosilalar va Shvars teoremasi', 'To\'liq differensial va taqribiy hisoblash', 'Ikki o\'zgaruvchili funksiya ekstremumi', 'Yo\'nalish bo\'yicha hosila, gradient va shartli ekstremum']
   },
   {
     id: 10,
@@ -159,19 +161,19 @@ export const MODULES: ModuleInfo[] = [
     id: 12,
     slug: 'differensial-tenglamalar',
     title: '12. Differensial tenglamalar',
-    description: "Oddiy differensial tenglamalar, Koshi masalasi, ajraladigan va bir jinsli tenglamalar, Bernulli usuli va 2-tartibli chiziqli tenglamalar.",
+    description: "Oddiy differensial tenglamalar, Koshi masalasi, ajraladigan va bir jinsli tenglamalar, Bernulli usuli, 2-tartibli chiziqli tenglamalar, rezonans va Lagranj variatsiyasi.",
     isActive: true,
-    estimatedLessons: 5,
-    topics: ['Differensial tenglamalar va Koshi masalasi', 'O\'zgaruvchilari ajraladigan tenglamalar', '1-tartibli chiziqli tenglamalar', '2-tartibli o\'zgarmas koeffitsiyentli tenglamalar', 'Bernulli tenglamasi (Amaliy yechish usullari)']
+    estimatedLessons: 6,
+    topics: ['Differensial tenglamalar va Koshi masalasi', 'O\'zgaruvchilari ajraladigan tenglamalar', '1-tartibli chiziqli tenglamalar', '2-tartibli o\'zgarmas koeffitsiyentli tenglamalar', 'Bernulli tenglamasi (Amaliy yechish usullari)', 'Bir jinsli bo\'lmagan tenglamalar va Lagranj variatsiya usuli']
   },
   {
     id: 13,
     slug: 'ehtimollar-nazariyasi',
     title: '13. Ehtimollar nazariyasi',
-    description: "Kombinatorika, klassik ehtimollik, shartli ehtimol, Bayes formulasi, Bernulli sxemasi, Puasson qonuni va normal taqsimot.",
+    description: "Kombinatorika, klassik ehtimollik, shartli ehtimol, Bayes formulasi, Bernulli sxemasi, Puasson qonuni, normal taqsimot, Muavr-Laplas va regressiya tahlili.",
     isActive: true,
-    estimatedLessons: 4,
-    topics: ['Kombinatorika va klassik ehtimollik', 'Ehtimollarni qo\'shish, ko\'paytirish va Bayes formulasi', 'Bernulli sxemasi va Puasson', 'Tasodifiy miqdorlar va normal taqsimot']
+    estimatedLessons: 5,
+    topics: ['Kombinatorika va klassik ehtimollik', 'Ehtimollarni qo\'shish, ko\'paytirish va Bayes formulasi', 'Bernulli sxemasi va Puasson', 'Tasodifiy miqdorlar va normal taqsimot', 'Muavr-Laplas teoremalari va chiziqli regressiya tahlili']
   },
   {
     id: 14,
