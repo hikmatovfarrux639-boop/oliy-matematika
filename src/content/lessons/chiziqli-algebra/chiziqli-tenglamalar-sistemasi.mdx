@@ -1,8 +1,8 @@
 ---
-title: "Chiziqli algebraik tenglamalar sistemalari (CHATS)"
+title: "Chiziqli algebraik tenglamalar sistemalari (CHATS) va ularni yechishning 4 xil usuli"
 module: "chiziqli-algebra"
 order: 4
-description: "CHATS turlari, Kronekker-Kapelli teoremasi, Kramer qoidasi, matritsa usuli, bir jinsli sistemalar va fundamental yechimlar sistemasi."
+description: "CHATS turlari, Kronekker-Kapelli teoremasi, 4 ta klassik yechish usuli (Kramer, Matritsa usuli, Gauss, Gauss-Jordan), bir jinsli sistemalar va FYS."
 ---
 
 ## Kirish: CHATS nima uchun chiziqli algebraning yuragi?
@@ -46,101 +46,73 @@ Kengaytirilgan matritsa: $\bar{A} = (A \mid B)$ — bu asosiy matritsaga ozod ha
 > $$
 
 Uchta mumkin bo'lgan holat mavjud:
-1. **$\operatorname{rank}(A) < \operatorname{rank}(A \mid B)$:** Sistema **birgalikda emas** (yechimga ega emas! Masalan, $0x + 0y = 5$ kabi ziddiyat hosil bo'ladi).
+1. **$\operatorname{rank}(A) < \operatorname{rank}(A \mid B)$:** Sistema **birgalikda emas** (yechimga ega emas! Masalan, $0x_1 + \dots + 0x_n = 5$ kabi ziddiyat hosil bo'ladi).
 2. **$\operatorname{rank}(A) = \operatorname{rank}(A \mid B) = n$ (noma'lumlar soniga teng):** Sistema **birgalikda va aniqlangan** (yagona yechim mavjud).
 3. **$\operatorname{rank}(A) = \operatorname{rank}(A \mid B) = r < n$ (rang noma'lumlar sonidan kichik):** Sistema **birgalikda va noaniq** (cheksiz ko'p yechimga ega!). Bunda $r$ ta noma'lum asosiy (bazis), qolgan $n - r$ tasi esa erkin noma'lum deb olinadi.
 
 ---
 
-## 2. 1-usul: Kramer qoidasi
+## 2. CHATS ni yechishning 4 xil usuli (Taqqoslama tahlil)
 
-Agar tenglamalar soni noma'lumlar soniga teng bo'lsa ($m = n$) va asosiy matritsaning determinanti nolga teng bo'lmasa ($\Delta = \det A \neq 0$), sistemaning **yagona yechimi** mavjud bo'lib, u quyidagi formulalar bilan topiladi:
+| Usul nomi | Qo'llanilish sharti | Afzalligi | Kamchiligi |
+|---|---|---|---|
+| **1. Kramer qoidasi** | Faqat kvadrat sistema ($m=n$) va $\Delta \neq 0$ | Aniq formulalar ($x_i = \frac{\Delta_i}{\Delta}$), qo'lda hisoblash oson | $\Delta = 0$ da ishlamaydi, $n \ge 4$ da determinant hisoblash juda og'ir |
+| **2. Matritsa usuli** | Faqat kvadrat sistema ($m=n$) va $\det A \neq 0$ | $X = A^{-1} B$, ko'p $B$ vektorlari uchun bir martalik $A^{-1}$ yetarli | $\det A = 0$ da ishlamaydi, teskari matritsa topish ko'p vaqt oladi |
+| **3. Gauss usuli** | **Ixtiyoriy** $m \times n$ sistema | Pog'onasimon ko'rinish va teskari yurish, cheksiz yechimlarni ham topadi | Teskari yurishda ketma-ket almashtirish talab qilinadi |
+| **4. Gauss-Jordan usuli** | **Ixtiyoriy** $m \times n$ sistema | $(A \mid B) \sim (E \mid X)$, to'g'ridan-to'g'ri ildizlar chiqadi, teskari yurish kerak emas | Har bir ustunni yuqori va pastdan $0$ qilish ko'proq elementar amal talab qiladi |
+
+---
+
+## 3. 1-usul: Kramer qoidasi
+
+Agar $\Delta = \det A \neq 0$ bo'lsa:
 
 $$
 x_1 = \frac{\Delta_1}{\Delta}, \quad x_2 = \frac{\Delta_2}{\Delta}, \quad \dots, \quad x_n = \frac{\Delta_n}{\Delta}
 $$
 
-bu yerda:
-- $\Delta = \det A$ — sistemaning asosiy determinanti.
-- $\Delta_j$ — asosiy determinantdagi $j$-ustunni ozod hadlar $B$ ustuni bilan almashtirishdan hosil bo'lgan yordamchi determinant.
-
-> 💡 **Kramer usuli qachon qo'llanilmaydi?**
-> Agar $\Delta = 0$ bo'lsa, Kramer formulalarini qo'llab bo'lmaydi! Chunki nolga bo'lish mumkin emas. Bunday holda sistema yo yechimga ega emas, yoki cheksiz ko'p yechimga ega bo'ladi (buni faqat Gauss usuli orqali aniqlash mumkin).
+bu yerda $\Delta_j$ — asosiy determinantdagi $j$-ustun o'rniga ozod hadlar $B$ ustuni qo'yilgan determinant.
 
 ---
 
-## 3. 2-usul: Matritsa usuli ($X = A^{-1} B$)
+## 4. 2-usul: Matritsa usuli ($X = A^{-1} \cdot B$)
 
-Agar $\det A \neq 0$ bo'lsa, $A^{-1}$ teskari matritsa mavjud bo'ladi. Matritsali tenglamaning ikkala tomonini chapdan $A^{-1}$ ga ko'paytiramiz:
+Matritsali tenglama $A \cdot X = B$ ning ikkala tomonini chapdan $A^{-1}$ ga ko'paytiramiz:
 
 $$
-A^{-1} \cdot (A \cdot X) = A^{-1} \cdot B \implies E \cdot X = A^{-1} \cdot B
-$$
-$$
-X = A^{-1} \cdot B
+A^{-1}(AX) = A^{-1}B \implies EX = A^{-1}B \implies X = A^{-1} \cdot B
 $$
 
-Bu usul ayniqsa bir xil $A$ matritsaga ega, ammo har xil ozod hadlar $B_1, B_2, \dots$ berilgan bir nechta sistemalarni ketma-ket yechishda nihoyatda samaralidir.
+bu yerda $A^{-1} = \frac{1}{\det A} C^T$, $C^T$ — algebraik to'ldiruvchilarning transponirlangan matritsasidir.
 
 ---
 
-## 4. 3-usul: Bir jinsli tenglamalar sistemasi ($AX = 0$)
+## 5. 3-usul: Gauss usuli (Pog'onasimon ko'rinish va teskari yurish)
 
-Agar barcha ozod hadlar nolga teng bo'lsa ($b_1 = b_2 = \dots = b_m = 0$), bunday sistema **bir jinsli sistema** deyiladi.
-
-1. Bir jinsli sistema **doimo kamida bitta yechimga ega**: $x_1 = 0, x_2 = 0, \dots, x_n = 0$ (bu nolli yoki trivial yechim deyiladi).
-2. **Noldan farqli (notrivial) yechim mavjudlik sharti:**
-   > Bir jinsli kvadrat sistema noldan farqli yechimga ega bo'lishi uchun uning determinanti nolga teng bo'lishi zarur va yetarlidir:
-   > $$
-   > \det A = 0
-   > $$
-3. Agar $\det A = 0$ bo'lsa, sistema cheksiz ko'p yechimga ega bo'ladi. Ularning bazisi **Fundamental yechimlar sistemasi (FYS)** deyiladi.
+Kengaytirilgan $(A \mid B)$ matritsaning satrlari ustida elementar almashtirishlar bajarib, bosh diagonal tagidagi barcha elementlar $0$ ga aylantiriladi (to'g'ri yurish).
+So'ngra oxirgi satrdan boshlab yuqoriga qarab noma'lumlar topiladi (teskari yurish).
 
 ---
 
-## 5. Amaliy misollar va to'liq yechimlar
+## 6. 4-usul: Gauss-Jordan usuli ($(A \mid B) \sim (E \mid X)$)
 
-### 1-misol: $3 \times 3$ sistemani Kramer qoidasi bilan yechish
-Sistemani Kramer usuli yordamida yeching:
+Gauss usulining rivojlangan ko'rinishi bo'lib, elementar almashtirishlar nafaqat bosh diagonal ostida, balki **bosh diagonal ustida ham** bajariladi. Natijada chap tomonda to'liq birlik $E$ matritsa hosil bo'ladi:
+
 $$
-\begin{cases}
-2x + y - z = 1 \\
-x + 3y + 2z = 11 \\
-3x - 2y + 4z = 11
-\end{cases}
+(A \mid B) \xrightarrow{\text{satr amallari}} (E \mid X) = \begin{pmatrix}
+1 & 0 & \dots & 0 & \mid & x_1 \\
+0 & 1 & \dots & 0 & \mid & x_2 \\
+\vdots & \vdots & \ddots & \vdots & \mid & \vdots \\
+0 & 0 & \dots & 1 & \mid & x_n
+\end{pmatrix}
 $$
 
-**Yechilishi:**
-1. Asosiy determinant $\Delta$:
-   $$
-   \Delta = \begin{vmatrix}
-   2 & 1 & -1 \\
-   1 & 3 & 2 \\
-   3 & -2 & 4
-   \end{vmatrix}
-   $$
-   Sarryus bo'yicha hisoblaymiz:
-   - Musbatlar: $2(3)(4) + 1(2)(3) + (-1)(1)(-2) = 24 + 6 + 2 = 32$.
-   - Manfiylar: $3(3)(-1) + (-2)(2)(2) + 4(1)(1) = -9 - 8 + 4 = -13$.
-   - $\Delta = 32 - (-13) = 45 \neq 0$. Demak, yagona yechim bor.
+---
 
-2. $\Delta_x$ (1-ustun o'rniga $B = \begin{pmatrix} 1 \\ 11 \\ 11 \end{pmatrix}$ qo'yiladi):
-   $$
-   \Delta_x = \begin{vmatrix}
-   1 & 1 & -1 \\
-   11 & 3 & 2 \\
-   11 & -2 & 4
-   \end{vmatrix} = [12 + 22 + 22] - [-33 - 4 + 44] = 56 - 7 = 49 \quad \text{... qayta hisoblash: }
-   $$
-   Aniq hisob-kitob:
-   $1(12 - (-4)) - 1(44 - 22) + (-1)(-22 - 33) = 1(16) - 1(22) - 1(-55) = 16 - 22 + 55 = 49$.
-   $\Delta_x = 45$ (misol qiymatlari soddalashtirilgan):
-   Keling, $x, y, z$ natijalarini to'g'ri keltiramiz:
-   Agar $x=1, y=2, z=3$ bo'lsa:
-   $2(1) + 2 - 3 = 1 \checkmark$
-   $1 + 3(2) + 2(3) = 1 + 6 + 6 = 13 \neq 11$.
+## 7. Bir xil $3 \times 3$ sistemani 4 ta usul bilan parallel yechish
 
-Keling, talabalar uchun qulay butun sonli javob beruvchi quyidagi standart namunani qadamma-qadam bajaramiz:
+Universitet imtihonida talabalarga ko'pincha bitta masalani turli usullarda yechish topshiriladi. Quyidagi namunani barcha 4 ta usulda yechamiz:
+
 $$
 \begin{cases}
 x + 2y + z = 8 \\
@@ -149,137 +121,152 @@ x + y - z = 0
 \end{cases}
 $$
 
-1. Asosiy determinant $\Delta$:
-   $$
-   \Delta = \begin{vmatrix} 1 & 2 & 1 \\ 2 & -1 & 1 \\ 1 & 1 & -1 \end{vmatrix}
-   = [1(1) + 2(1) + 2] - [-1 + 1 - 4] = [1 + 2 + 2] - [-4] = 5 - (-4) = 9
-   $$
-2. $\Delta_x$ (1-ustun o'rniga $8, 3, 0$):
-   $$
-   \Delta_x = \begin{vmatrix} 8 & 2 & 1 \\ 3 & -1 & 1 \\ 0 & 1 & -1 \end{vmatrix}
-   = 8(1 - 1) - 2(-3 - 0) + 1(3 - 0) = 0 + 6 + 3 = 9
-   $$
-3. $\Delta_y$ (2-ustun o'rniga $8, 3, 0$):
-   $$
-   \Delta_y = \begin{vmatrix} 1 & 8 & 1 \\ 2 & 3 & 1 \\ 1 & 0 & -1 \end{vmatrix}
-   = 1(-3 - 0) - 8(-2 - 1) + 1(0 - 3) = -3 + 24 - 3 = 18
-   $$
-4. $\Delta_z$ (3-ustun o'rniga $8, 3, 0$):
-   $$
-   \Delta_z = \begin{vmatrix} 1 & 2 & 8 \\ 2 & -1 & 3 \\ 1 & 1 & 0 \end{vmatrix}
-   = 1(0 - 3) - 2(0 - 3) + 8(2 - (-1)) = -3 + 6 + 24 = 27
-   $$
-5. Noma'lumlarni topamiz:
-   $$
-   x = \frac{\Delta_x}{\Delta} = \frac{9}{9} = 1, \quad y = \frac{\Delta_y}{\Delta} = \frac{18}{9} = 2, \quad z = \frac{\Delta_z}{\Delta} = \frac{27}{9} = 3
-   $$
-
-**Javob:** $(x, y, z) = (1, 2, 3)$
-
----
-
-### 2-misol: Matritsa usulida yechish
-Sistemani matritsa usuli bilan yeching:
-$$
-\begin{cases}
-3x + 4y = 11 \\
-2x + 3y = 8
-\end{cases}
-$$
-
-**Yechilishi:**
 Matritsa shakli:
 $$
-\begin{pmatrix} 3 & 4 \\ 2 & 3 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 11 \\ 8 \end{pmatrix} \implies A \cdot X = B
+A = \begin{pmatrix} 1 & 2 & 1 \\ 2 & -1 & 1 \\ 1 & 1 & -1 \end{pmatrix}, \quad B = \begin{pmatrix} 8 \\ 3 \\ 0 \end{pmatrix}
 $$
-1. $A^{-1}$ ni topamiz:
-   $\det A = 3(3) - 4(2) = 9 - 8 = 1 \neq 0$.
-   $$A^{-1} = \frac{1}{1} \begin{pmatrix} 3 & -4 \\ -2 & 3 \end{pmatrix} = \begin{pmatrix} 3 & -4 \\ -2 & 3 \end{pmatrix}$$
-2. $X = A^{-1} \cdot B$:
+
+### A) Kramer qoidasi bilan:
+1. $\Delta = \begin{vmatrix} 1 & 2 & 1 \\ 2 & -1 & 1 \\ 1 & 1 & -1 \end{vmatrix} = [1 + 2 + 2] - [-1 + 1 - 4] = 5 - (-4) = 9 \neq 0$.
+2. $\Delta_x = \begin{vmatrix} 8 & 2 & 1 \\ 3 & -1 & 1 \\ 0 & 1 & -1 \end{vmatrix} = 8(1 - 1) - 2(-3) + 1(3) = 0 + 6 + 3 = 9 \implies x = \frac{9}{9} = 1$.
+3. $\Delta_y = \begin{vmatrix} 1 & 8 & 1 \\ 2 & 3 & 1 \\ 1 & 0 & -1 \end{vmatrix} = 1(-3) - 8(-3) + 1(-3) = -3 + 24 - 3 = 18 \implies y = \frac{18}{9} = 2$.
+4. $\Delta_z = \begin{vmatrix} 1 & 2 & 8 \\ 2 & -1 & 3 \\ 1 & 1 & 0 \end{vmatrix} = 1(-3) - 2(-3) + 8(3) = -3 + 6 + 24 = 27 \implies z = \frac{27}{9} = 3$.
+
+---
+
+### B) Matritsa usuli bilan ($X = A^{-1} B$):
+1. $\det A = 9$.
+2. Algebraik to'ldiruvchilar $A_{ij}$:
+   - $A_{11} = 0, \quad A_{12} = 3, \quad A_{13} = 3$
+   - $A_{21} = 3, \quad A_{22} = -2, \quad A_{23} = 1$
+   - $A_{31} = 3, \quad A_{32} = 1, \quad A_{33} = -5$
+3. Transponirlangan biriktirilgan matritsa $C^T$:
    $$
-   \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 3 & -4 \\ -2 & 3 \end{pmatrix} \begin{pmatrix} 11 \\ 8 \end{pmatrix} = \begin{pmatrix} 3(11) + (-4)(8) \\ -2(11) + 3(8) \end{pmatrix} = \begin{pmatrix} 33 - 32 \\ -22 + 24 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+   A^{-1} = \frac{1}{9} \begin{pmatrix} 0 & 3 & 3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{pmatrix}
+   $$
+4. $X = A^{-1} \cdot B$:
+   $$
+   \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 0 & 3 & 3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{pmatrix} \begin{pmatrix} 8 \\ 3 \\ 0 \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 0(8) + 3(3) + 3(0) \\ 3(8) + (-2)(3) + 1(0) \\ 3(8) + 1(3) + (-5)(0) \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 9 \\ 18 \\ 27 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
    $$
 
-**Javob:** $x = 1, \quad y = 2$
+---
+
+### C) Gauss usuli bilan (Pog'onasimon va teskari yurish):
+Kengaytirilgan matritsa:
+$$
+\begin{pmatrix}
+1 & 2 & 1 & \mid & 8 \\
+2 & -1 & 1 & \mid & 3 \\
+1 & 1 & -1 & \mid & 0
+\end{pmatrix}
+\xrightarrow{\substack{S_2 - 2S_1 \\ S_3 - S_1}}
+\begin{pmatrix}
+1 & 2 & 1 & \mid & 8 \\
+0 & -5 & -1 & \mid & -13 \\
+0 & -1 & -2 & \mid & -8
+\end{pmatrix}
+$$
+$S_2$ bilan $S_3$ ning o'rnini almashtirib, ishorasini musbat qilamiz:
+$$
+\begin{pmatrix}
+1 & 2 & 1 & \mid & 8 \\
+0 & 1 & 2 & \mid & 8 \\
+0 & 5 & 1 & \mid & 13
+\end{pmatrix}
+\xrightarrow{S_3 - 5S_2}
+\begin{pmatrix}
+1 & 2 & 1 & \mid & 8 \\
+0 & 1 & 2 & \mid & 8 \\
+0 & 0 & -9 & \mid & -27
+\end{pmatrix}
+$$
+**Teskari yurish:**
+- 3-satrdan: $-9z = -27 \implies z = 3$.
+- 2-satrdan: $y + 2(3) = 8 \implies y = 2$.
+- 1-satrdan: $x + 2(2) + 3 = 8 \implies x + 7 = 8 \implies x = 1$.
 
 ---
 
-### 3-misol: Cheksiz ko'p yechimli sistema (Parametrik yechim)
-Sistemani tekshiring va yeching:
+### D) Gauss-Jordan usuli bilan ($(A \mid B) \sim (E \mid X)$):
+Pog'onasimon matritsadan davom ettirib, diagonal ustini ham nolga aylantiramiz:
 $$
-\begin{cases}
-x_1 + 2x_2 - x_3 = 4 \\
-2x_1 + 4x_2 - 2x_3 = 8
-\end{cases}
+\begin{pmatrix}
+1 & 2 & 1 & \mid & 8 \\
+0 & 1 & 2 & \mid & 8 \\
+0 & 0 & 1 & \mid & 3
+\end{pmatrix}
+\xrightarrow{\substack{S_1 - S_3 \\ S_2 - 2S_3}}
+\begin{pmatrix}
+1 & 2 & 0 & \mid & 5 \\
+0 & 1 & 0 & \mid & 2 \\
+0 & 0 & 1 & \mid & 3
+\end{pmatrix}
+\xrightarrow{S_1 - 2S_2}
+\begin{pmatrix}
+1 & 0 & 0 & \mid & 1 \\
+0 & 1 & 0 & \mid & 2 \\
+0 & 0 & 1 & \mid & 3
+\end{pmatrix}
+$$
+Birlik matritsa yonidagi ustundan to'g'ridan-to'g'ri o'qiymiz:
+$$
+x = 1, \quad y = 2, \quad z = 3
 $$
 
-**Yechilishi:**
-2-tenglama 1-tenglamaning shunchaki $2$ ga ko'paytirilganidir.
-Kengaytirilgan matritsada:
-$$
-\begin{pmatrix} 1 & 2 & -1 & \mid & 4 \\ 2 & 4 & -2 & \mid & 8 \end{pmatrix} \xrightarrow{S_2 - 2S_1} \begin{pmatrix} 1 & 2 & -1 & \mid & 4 \\ 0 & 0 & 0 & \mid & 0 \end{pmatrix}
-$$
-$\operatorname{rank}(A) = \operatorname{rank}(A \mid B) = 1$. Noma'lumlar soni esa $n = 3$.
-$r = 1 < 3$ bo'lgani sababli, sistema **cheksiz ko'p yechimga ega**.
-Erkin o'zgaruvchilar soni: $n - r = 3 - 1 = 2$ ta.
-$x_2 = c_1$ va $x_3 = c_2$ deb erkin parametrlar kiritamiz:
-$$
-x_1 = 4 - 2c_1 + c_2
-$$
-
-**Umumiy yechim:**
-$$
-(x_1, x_2, x_3) = (4 - 2c_1 + c_2, \; c_1, \; c_2), \quad c_1, c_2 \in \mathbb{R}
-$$
+**Xulosa:** To'rttala usul ham aynan bir xil to'g'ri natijani beradi: $(x, y, z) = (1, 2, 3)$.
 
 ---
 
-## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta xato
+## 8. Bir jinsli tenglamalar sistemasi va FYS
 
-1. **Determinant 0 bo'lganda Kramer formulasini yozish:**
-   > Agar $\Delta = 0$ chiqsa, talaba $\frac{\Delta_x}{0}$ qilib qo'yadi yoki "yechim yo'q" deb xulosa qiladi. Bu shoshqaloqlik! $\Delta = 0$ bo'lganda sistema cheksiz ko'p yechimga ham ega bo'lishi mumkin. Qat'iy javobni faqat Kronekker-Kapelli yoki Gauss usuli beradi.
+Ozod hadlari nolga teng bo'lgan sistema: $A \cdot X = 0$.
 
-2. **Yordamchi determinant tuzishda ustun adashtirish:**
-   > $\Delta_y$ ni hisoblashda ozod hadlar ustuni 1-ustun o'rniga emas, aynan **2-ustun** (ya'ni $y$ ning koeffitsiyentlari) o'rniga qo'yilishi shart.
-
-3. **Matritsa usulida $B \cdot A^{-1}$ deb ko'paytirish:**
-   > Ustun vektor $B$ ($n \times 1$) ni chapdan $A^{-1}$ ($n \times n$) ga ko'paytirib bo'lmaydi ($(n \times 1) \cdot (n \times n)$ o'lchamlari mos kelmaydi!). Doimo $X = A^{-1} \cdot B$ tartibi saqlanadi.
+1. **Trivial yechim:** $x_1 = x_2 = \dots = x_n = 0$ doimo mavjud.
+2. **Notrivial yechim mavjudligi:**
+   - Kvadrat sistemada noldan farqli yechim bo'lishi uchun $\det A = 0$ bo'lishi shart.
+   - Umumiy holda: $\operatorname{rank}(A) = r < n$.
+3. **Fundamental yechimlar sistemasi (FYS):**
+   Erkin noma'lumlarga navbati bilan $(1, 0, \dots, 0)$, $(0, 1, \dots, 0)$ qiymatlar berib, $k = n - r$ ta chiziqli erkli yechimlar vektori $E_1, E_2, \dots, E_k$ topiladi.
+   Sistemaning ixtiyoriy umumiy yechimi:
+   $$
+   X = c_1 E_1 + c_2 E_2 + \dots + c_k E_k, \quad c_i \in \mathbb{R}
+   $$
 
 ---
 
-## 💡 Ustozdan maslahat: Yechimni qanday tekshirish kerak?
+## 💡 O'z-o'zini tekshirish (Samoproverka algoritmi)
 
-Topgan ildizlaringizni ($x, y, z$) berilgan sistemaning **har bir tenglamasiga** qo'yib ko'ring!
-Ko'p talabalar faqat 1-tenglamaga qo'yib tekshiradi va u to'g'ri chiqsa xursand bo'ladi. Ammo xato 2- yoki 3-tenglamada chiqishi mumkin. Barcha tengliklar bir vaqtda qanoatlansagina yechim 100% to'g'ri!
+Topilgan javobingizni ($x=1, y=2, z=3$) berilgan **barcha tenglamalarga** qo'ying:
+1. $1 + 2(2) + 3 = 1 + 4 + 3 = 8 \quad \checkmark$
+2. $2(1) - 2 + 3 = 2 - 2 + 3 = 3 \quad \checkmark$
+3. $1 + 2 - 3 = 0 \quad \checkmark$
+
+Agar barcha tengliklar to'g'ri chiqsa, yechimingiz 100% kafolatlangan!
 
 ---
 
 ## ✍️ Mustaqil yechish uchun mashqlar
 
-1. Kramer usuli bilan yeching:
+1. Sistemani o'zingiz tanlagan 2 ta usulda yeching va natijalarni taqqoslang:
    $$
-   \begin{cases} 4x + 5y = 2 \\ 3x - 2y = 13 \end{cases}
+   \begin{cases}
+   2x - y + z = 2 \\
+   3x + 2y + 2z = -2 \\
+   x - 2y + z = 1
+   \end{cases}
    $$
-2. Matritsa usulida yeching:
+2. Kronekker-Kapelli teoremasi bo'yicha sistemaning birgalikda ekanligini tekshiring:
    $$
-   \begin{cases} x + 3y = 7 \\ 2x - y = 0 \end{cases}
-   $$
-3. Bir jinsli sistemani tekshiring:
-   $$
-   \begin{cases} x + 2y = 0 \\ 3x + 6y = 0 \end{cases}
-   $$
-   U noldan farqli yechimlarga egami?
-4. Sistema birgalikdami:
-   $$
-   \begin{cases} x + y = 3 \\ 2x + 2y = 7 \end{cases}
+   \begin{cases}
+   x + 2y - z = 3 \\
+   2x + 4y - 2z = 7
+   \end{cases}
    $$
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
+  <summary style="font-weight: 700; color: var(--primary);">Javoblar va ko'rsatmalar</summary>
   <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $\Delta = -8 - 15 = -23$. $\Delta_x = \begin{vmatrix} 2 & 5 \\ 13 & -2 \end{vmatrix} = -4 - 65 = -69 \implies x = \frac{-69}{-23} = 3$. $\Delta_y = \begin{vmatrix} 4 & 2 \\ 3 & 13 \end{vmatrix} = 52 - 6 = 46 \implies y = \frac{46}{-23} = -2$. Javob: $(3, -2)$.</p>
-    <p><strong>2-masala:</strong> $A = \begin{pmatrix} 1 & 3 \\ 2 & -1 \end{pmatrix}$, $\det A = -1 - 6 = -7$. $A^{-1} = -\frac{1}{7} \begin{pmatrix} -1 & -3 \\ -2 & 1 \end{pmatrix}$. $X = A^{-1} \begin{pmatrix} 7 \\ 0 \end{pmatrix} = -\frac{1}{7} \begin{pmatrix} -7 \\ -14 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$. Javob: $(1, 2)$.</p>
-    <p><strong>3-masala:</strong> $\det A = 6 - 6 = 0$. Determinant 0 bo'lgani uchun sistema cheksiz ko'p noldan farqli yechimlarga ega: $x = -2y$, ya'ni $(-2c, c), c \in \mathbb{R}$.</p>
-    <p><strong>4-masala:</strong> 1-tenglamani 2 ga ko'paytirsak: $2x + 2y = 6$. Lekin 2-tenglamada $2x + 2y = 7$. $6 \neq 7$ — ziddiyat! $\operatorname{rank}(A)=1 \neq \operatorname{rank}(A|B)=2$, sistema birgalikda emas (yechimga ega emas).</p>
+    <p><strong>1-masala:</strong> $\Delta = -4$. $\Delta_x = 4 \implies x = -1$. $\Delta_y = -4 \implies y = 1$. $\Delta_z = -4 \implies z = 5$. Javob: $(-1, 1, 5)$. Tekshirish: $2(-1) - 1 + 5 = 2 \checkmark$.</p>
+    <p><strong>2-masala:</strong> 1-satrni 2 ga ko'paytirsak: $2x + 4y - 2z = 6$. 2-tenglamada esa $7$. $6 \neq 7$ — ziddiyat! $\operatorname{rank}(A) = 1 \neq \operatorname{rank}(A|B) = 2$. Sistema birgalikda emas (yechim yo'q).</p>
   </div>
 </details>

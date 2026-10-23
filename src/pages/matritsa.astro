@@ -127,14 +127,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- Action Toolbar for SLE -->
     <div class="action-toolbar" id="toolbar-sle" style="display: none;">
-      <button class="calc-action-btn primary" data-action="sle-both">
-        <span>⚖️ Kramer & Gauss Usulida Yechish</span>
+      <button class="calc-action-btn primary" data-action="sle-all">
+        <span>⚡ Barcha 4 ta Usulda Yechish</span>
       </button>
       <button class="calc-action-btn" data-action="sle-cramer">
-        <span>📐 Faqat Kramer Qoidasi (Δ, Δᵢ)</span>
+        <span>📐 1. Kramer Qoidasi (Δ, Δᵢ)</span>
+      </button>
+      <button class="calc-action-btn" data-action="sle-matrix">
+        <span>🔢 2. Matritsa Usuli (X = A⁻¹ B)</span>
       </button>
       <button class="calc-action-btn" data-action="sle-gauss">
-        <span>🪜 Faqat Gauss-Jordan Usuli</span>
+        <span>🪜 3. Gauss Usuli (Pog'onasimon)</span>
+      </button>
+      <button class="calc-action-btn" data-action="sle-jordan">
+        <span>🎯 4. Gauss-Jordan Usuli (E | X)</span>
       </button>
     </div>
 
@@ -1026,6 +1032,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       return { hasUnique: true, detA, dets, x, stepsLatex: steps };
     }
 
+    // Solve SLE by Gauss-Jordan Elimination (RREF)
+    function solveGaussJordan(A: number[][], B: number[]): { stepsLatex: string[]; rref: number[][]; x: number[] } {
+      const n = A.length;
+      const mat = A.map((row, i) => [...row, B[i]]);
+      const steps: string[] = [];
+
+      for (let i = 0; i < n; i++) {
+        let maxRow = i;
+        for (let k = i + 1; k < n; k++) {
+          if (Math.abs(mat[k][i]) > Math.abs(mat[maxRow][i])) {
+            maxRow = k;
+          }
+        }
+        if (maxRow !== i) {
+          const tmp = mat[i];
+          mat[i] = mat[maxRow];
+          mat[maxRow] = tmp;
+          steps.push(`R_${i + 1} \\longleftrightarrow R_${maxRow + 1} \\text{ (satrlar almashdi)}`);
+        }
+
+        const pivot = mat[i][i];
+        if (Math.abs(pivot) > 1e-9) {
+          if (Math.abs(pivot - 1) > 1e-6) {
+            for (let j = i; j <= n; j++) {
+              mat[i][j] /= pivot;
+            }
+            steps.push(`R_${i + 1} \\leftarrow \\frac{1}{${formatNum(pivot)}} R_${i + 1}`);
+          }
+
+          for (let k = 0; k < n; k++) {
+            if (k !== i && Math.abs(mat[k][i]) > 1e-9) {
+              const factor = mat[k][i];
+              for (let j = i; j <= n; j++) {
+                mat[k][j] -= factor * mat[i][j];
+              }
+              steps.push(`R_${k + 1} \\leftarrow R_${k + 1} - (${formatNum(factor)}) R_${i + 1}`);
+            }
+          }
+        }
+      }
+
+      const x = mat.map(row => row[n]);
+      return { stepsLatex: steps, rref: mat, x };
+    }
+
     // Multiply Matrices A and B
     function multiplyMatrices(A: number[][], B: number[][]): number[][] {
       const rowsA = A.length;
@@ -1243,11 +1294,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           }
         }
       } else if (currentMode === 'sle') {
-        // System of Linear Equations
+        // System of Linear Equations - 4 Full Methods
         const Bmat = getMatrixValues('b', n, 1);
         const B = Bmat.map(r => r[0]);
 
-        const cramerRes = solveCramer(A, B);
+        const detA = calcDeterminant(A);
+        const aug = A.map((row, idx) => [...row, B[idx]]);
+        const rankA = calcRankWithSteps(A).rank;
+        const rankAug = calcRankWithSteps(aug).rank;
+
+        const isCompatible = rankA === rankAug;
+        const isUnique = isCompatible && rankA === n;
+        const isInfinite = isCompatible && rankA < n;
 
         summaryCards!.innerHTML = `
           <div class="sum-card">
@@ -1255,60 +1313,167 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="sum-val" id="sum-delta"></div>
           </div>
           <div class="sum-card">
-            <div class="sum-title">Yechim Holati</div>
-            <div class="sum-val">${cramerRes.hasUnique ? 'Yagona Yechim ✅' : 'Maxsus Holat ⚠️'}</div>
+            <div class="sum-title">Kroneker-Kapelli Tahlili</div>
+            <div class="sum-val">${isUnique ? 'Yagona Yechim ✅' : (isInfinite ? 'Cheksiz Yechim ♾️' : 'Yechim Yo\'q ❌')}</div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">rang(A) / rang(A|B)</div>
+            <div class="sum-val">${rankA} / ${rankAug}</div>
+          </div>
+          <div class="sum-card">
+            <div class="sum-title">Noma'lumlar (n)</div>
+            <div class="sum-val">${n} ta</div>
           </div>
         `;
-        renderLatex(document.getElementById('sum-delta')!, formatNum(cramerRes.detA), false);
+        renderLatex(document.getElementById('sum-delta')!, formatNum(detA), false);
 
-        if (action === 'sle-both' || action === 'sle-cramer' || action === 'all') {
-          const stepBox = document.createElement('div');
-          stepBox.className = 'step-box';
-          stepBox.innerHTML = `
-            <h3>1-usul: Kramer Qoidasi Bo'yicha Yechish ($\\Delta, \\Delta_i$)</h3>
+        // 0. Kronecker-Capelli Explanation Box
+        const kkBox = document.createElement('div');
+        kkBox.className = 'step-box';
+        kkBox.style.borderLeft = '4px solid #6366f1';
+        kkBox.innerHTML = `
+          <h3>⚖️ Kroneker-Kapelli Teoremasi Bo'yicha Tahlil</h3>
+          <p>Asosiy matritsa rangi: $\\operatorname{rang}(A) = ${rankA}$, kengaytirilgan matritsa rangi: $\\operatorname{rang}(A|B) = ${rankAug}$.</p>
+          <div class="step-latex-display" id="latex-kk-status"></div>
+        `;
+        stepsContainer!.appendChild(kkBox);
+
+        let kkLatex = '';
+        if (!isCompatible) {
+          kkLatex = `\\operatorname{rang}(A) = ${rankA} \\neq \\operatorname{rang}(A|B) = ${rankAug} \\implies \\text{Sistema birgalikda emas (yechimga ega emas!)}`;
+        } else if (isUnique) {
+          kkLatex = `\\operatorname{rang}(A) = \\operatorname{rang}(A|B) = n = ${n} \\implies \\text{Sistema birgalikda va yagona yechimga ega.}`;
+        } else {
+          kkLatex = `\\operatorname{rang}(A) = \\operatorname{rang}(A|B) = ${rankA} < n = ${n} \\implies \\text{Sistema cheksiz ko'p yechimga ega (${n - rankA} ta erkin noma'lum).}`;
+        }
+        renderLatex(kkBox.querySelector('#latex-kk-status')!, kkLatex);
+
+        if (!isCompatible) {
+          renderInlineMath(stepsContainer!);
+          return;
+        }
+
+        const cramerRes = solveCramer(A, B);
+
+        // 1-USUL: KRAMER QOIDASI
+        if (action === 'sle-all' || action === 'sle-cramer' || action === 'all') {
+          const step1 = document.createElement('div');
+          step1.className = 'step-box';
+          step1.innerHTML = `
+            <h3>📐 1-usul: Kramer Qoidasi ($\\Delta, \\Delta_i$)</h3>
             <p>Tenglamalar sistemasi matritsali ko'rinishda: $A X = B$</p>
             <div class="step-latex-display" id="latex-sle-system"></div>
-            <p>Yordamchi determinantlar va noma'lumlar:</p>
+            <p>Asosiy determinant $\\Delta = \\det A = ${formatNum(detA)}$. Yordamchi determinantlar va ildizlar:</p>
             <div class="step-latex-display" id="latex-sle-steps"></div>
           `;
-          stepsContainer!.appendChild(stepBox);
+          stepsContainer!.appendChild(step1);
 
           const systemLatex = `${matrixToLatex(A)} \\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = ${matrixToLatex(Bmat)}`;
-          renderLatex(stepBox.querySelector('#latex-sle-system')!, systemLatex);
+          renderLatex(step1.querySelector('#latex-sle-system')!, systemLatex);
 
           const stepsJoined = cramerRes.stepsLatex.join(' \\\\[6pt] ');
-          renderLatex(stepBox.querySelector('#latex-sle-steps')!, `\\begin{aligned} ${stepsJoined} \\end{aligned}`);
+          renderLatex(step1.querySelector('#latex-sle-steps')!, `\\begin{aligned} ${stepsJoined} \\end{aligned}`);
         }
 
-        if (action === 'sle-both' || action === 'sle-gauss' || action === 'all') {
-          const aug = A.map((row, idx) => [...row, B[idx]]);
-          const augRankObj = calcRankWithSteps(aug);
+        // 2-USUL: MATRITSA USULI (X = A^-1 * B)
+        if (action === 'sle-all' || action === 'sle-matrix' || action === 'all') {
+          const step2 = document.createElement('div');
+          step2.className = 'step-box';
+          if (Math.abs(detA) < 1e-9) {
+            step2.innerHTML = `
+              <h3>🔢 2-usul: Matritsa Usuli ($X = A^{-1} B$)</h3>
+              <p style="color: #dc2626;">$\\det A = 0$ bo'lgani sababli $A^{-1}$ teskari matritsa mavjud emas, demak bu usul qo'llanilmaydi.</p>
+            `;
+          } else {
+            const cof = calcCofactors(A);
+            const adj = transpose(cof);
+            const inv = calcInverse(A, detA);
+            const solX = multiplyMatrices(inv, Bmat);
 
-          const gaussBox = document.createElement('div');
-          gaussBox.className = 'step-box';
-          gaussBox.innerHTML = `
-            <h3>2-usul: Gauss Usuli (Kengaytirilgan Matritsa)</h3>
-            <p>Kengaytirilgan $(A|B)$ matritsani elementar satr almashtirishlari yordamida pog'onasimon ko'rinishga keltiramiz:</p>
-            <div class="step-latex-display" id="latex-gauss-steps"></div>
+            step2.innerHTML = `
+              <h3>🔢 2-usul: Matritsa Usuli ($X = A^{-1} \\cdot B$)</h3>
+              <p>Teskari matritsa formulasi: $A^{-1} = \\frac{1}{\\det A} A^*$, bu yerda $A^* = C^T$ biriktirilgan matritsa:</p>
+              <div class="step-latex-display" id="latex-mat-inv"></div>
+              <p>Noma'lumlar ustun-vektori $X = A^{-1} \\cdot B$ ko'paytmasi orqali topiladi:</p>
+              <div class="step-latex-display" id="latex-mat-mul"></div>
+            `;
+            stepsContainer!.appendChild(step2);
+
+            const invLatex = `A^{-1} = \\frac{1}{${formatNum(detA)}} ${matrixToLatex(adj)} = ${matrixToLatex(inv)}`;
+            const mulLatex = `X = ${matrixToLatex(inv)} \\cdot ${matrixToLatex(Bmat)} = ${matrixToLatex(solX)}`;
+            renderLatex(step2.querySelector('#latex-mat-inv')!, invLatex);
+            renderLatex(step2.querySelector('#latex-mat-mul')!, mulLatex);
+          }
+          stepsContainer!.appendChild(step2);
+        }
+
+        // 3-USUL: GAUSS USULI (POG'ONASIMON VA TESKARI YURISH)
+        if (action === 'sle-all' || action === 'sle-gauss' || action === 'all') {
+          const augRankObj = calcRankWithSteps(aug);
+          const step3 = document.createElement('div');
+          step3.className = 'step-box';
+          step3.innerHTML = `
+            <h3>🪜 3-usul: Gauss Usuli (Pog'onasimon Ko'rinish va Teskari Yurish)</h3>
+            <p>1-bosqich: Kengaytirilgan $(A|B)$ matritsani elementar satr almashtirishlari orqali pog'onasimon ko'rinishga keltiramiz:</p>
+            <div class="step-latex-display" id="latex-gauss-echelon"></div>
+            <p>2-bosqich: Teskari yurish (quyidan yuqoriga qarab noma'lumlarni ketma-ket topish):</p>
+            <div class="step-latex-display" id="latex-gauss-backsub"></div>
           `;
-          stepsContainer!.appendChild(gaussBox);
+          stepsContainer!.appendChild(step3);
 
           const augLatex = `\\left(A \\middle| B\\right) = ${matrixToLatex(aug)} \\sim ${matrixToLatex(augRankObj.echelon)}`;
-          renderLatex(gaussBox.querySelector('#latex-gauss-steps')!, augLatex);
+          renderLatex(step3.querySelector('#latex-gauss-echelon')!, augLatex);
+
+          const backSubSteps: string[] = [];
+          for (let i = n - 1; i >= 0; i--) {
+            backSubSteps.push(`x_${i + 1} = ${formatNum(cramerRes.x[i])}`);
+          }
+          renderLatex(
+            step3.querySelector('#latex-gauss-backsub')!,
+            `\\begin{aligned} ${backSubSteps.join(' \\\\[4pt] ')} \\end{aligned}`
+          );
         }
 
+        // 4-USUL: GAUSS-JORDAN USULI (RREF: E | X)
+        if (action === 'sle-all' || action === 'sle-jordan' || action === 'all') {
+          const gjRes = solveGaussJordan(A, B);
+          const step4 = document.createElement('div');
+          step4.className = 'step-box';
+          step4.innerHTML = `
+            <h3>🎯 4-usul: Gauss-Jordan Usuli (Qisqartirilgan Pog'onasimon Shakl $(E | X)$)</h3>
+            <p>Elementar almashtirishlar orqali chap tomondagi matritsani to'liq birlik $E$ matritsaga keltiramiz:</p>
+            <div class="step-latex-display" id="latex-gj-rref"></div>
+            <p>Birlik matritsaning o'ng ustunida hosil bo'lgan sonlar bevosita yechimlarni ifodalaydi:</p>
+            <div class="step-latex-display" id="latex-gj-res"></div>
+          `;
+          stepsContainer!.appendChild(step4);
+
+          const rrefLatex = `\\left(A \\middle| B\\right) \\sim \\left(E \\middle| X\\right) = ${matrixToLatex(gjRes.rref)}`;
+          renderLatex(step4.querySelector('#latex-gj-rref')!, rrefLatex);
+
+          const resLatex = `\\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = \\begin{pmatrix} ${gjRes.x.map(v => formatNum(v)).join(' \\\\ ')} \\end{pmatrix}`;
+          renderLatex(step4.querySelector('#latex-gj-res')!, resLatex);
+        }
+
+        // 5. O'Z-O'ZINI TEKSHIRISH (SAMOPROVERKA)
         if (cramerRes.hasUnique) {
           const verifyBox = document.createElement('div');
           verifyBox.className = 'step-box';
           verifyBox.style.borderLeft = '4px solid var(--accent)';
-          const checkEq = A[0].map((coef, idx) => `(${formatNum(coef)}) \\cdot (${formatNum(cramerRes.x[idx])})`).join(' + ');
+          verifyBox.style.background = 'var(--accent-light)';
+
+          const checks = A.map((row, rIdx) => {
+            const expr = row.map((coef, cIdx) => `(${formatNum(coef)}) \\cdot (${formatNum(cramerRes.x[cIdx])})`).join(' + ');
+            return `${rIdx + 1}\\text{-tenglama: } ${expr} = ${formatNum(B[rIdx])} \\quad \\checkmark`;
+          });
+
           verifyBox.innerHTML = `
-            <h3>✅ O'z-o'zini tekshirish (Samoproverka)</h3>
-            <p>Topilgan $x_i$ qiymatlarni 1-tenglamaga qo'yib tekshiramiz:</p>
-            <div class="step-latex-display" id="latex-sle-verify"></div>
+            <h3 style="color: var(--accent);">✅ O'z-o'zini Tekshirish (Samoproverka: Barcha ${n} ta tenglama bo'yicha)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-main);">Topilgan ildizlarni berilgan sistemaning har bir tenglamasiga qo'yib tekshiramiz:</p>
+            <div class="step-latex-display" id="latex-sle-verify-all"></div>
           `;
           stepsContainer!.appendChild(verifyBox);
-          renderLatex(verifyBox.querySelector('#latex-sle-verify')!, `${checkEq} = ${formatNum(B[0])} \\quad (\\text{To'g'ri!})`);
+          renderLatex(verifyBox.querySelector('#latex-sle-verify-all')!, `\\begin{aligned} ${checks.join(' \\\\[5pt] ')} \\end{aligned}`);
         }
       } else if (currentMode === 'binary') {
         // A * B, A + B, A - B
