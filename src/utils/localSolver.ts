@@ -722,6 +722,7 @@ function trySolveDerivative(raw: string, forceMode = false): LocalSolveResult | 
   let expr = raw
     .replace(/\\frac\{d\}\{dx\}/gi, '')
     .replace(/d\/dx/gi, '')
+    .replace(/derivative(\s*of)?\s*[:=-]?/gi, '')
     .replace(/hosila(sini\s*toping|ni\s*toping|si)?\s*[:=-]?/gi, '')
     .replace(/f'\(x\)\s*=/gi, '')
     .replace(/f\(x\)\s*=/gi, '')
@@ -785,7 +786,7 @@ $$\\mathbf{f'(x) = ${d1Tex}}$$`
  * 2. UNIVERSAL LIMIT SOLVER
  */
 function trySolveLimit(raw: string, forceMode = false): LocalSolveResult | null {
-  const isLim = forceMode || /\blim\b|\\lim|->|\\to/i.test(raw);
+  const isLim = forceMode || /\blim\b|\\lim|->|\\to|→/i.test(raw);
   if (!isLim) return null;
 
   const diagnosis = diagnoseTopic(`lim ${raw}`);
@@ -793,10 +794,13 @@ function trySolveLimit(raw: string, forceMode = false): LocalSolveResult | null 
   let targetStr = '0';
   let targetVal = 0;
   let isInf = false;
+  let expr = '';
 
-  const arrowMatch = raw.match(/x\s*(?:\\to|->|→)\s*([+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi))/i);
-  if (arrowMatch) {
-    targetStr = arrowMatch[1];
+  // Check paren format: lim(expr, x->a) or lim(expr, x=a)
+  const parenLimMatch = raw.match(/lim\s*\(\s*(.+?)\s*,\s*x\s*(?:\\to|->|→|=)\s*([+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi))\s*\)/i);
+  if (parenLimMatch) {
+    expr = parenLimMatch[1].trim();
+    targetStr = parenLimMatch[2];
     if (/inf|oo|\\infty/i.test(targetStr)) {
       isInf = true;
       targetVal = targetStr.startsWith('-') ? -1e6 : 1e6;
@@ -807,15 +811,30 @@ function trySolveLimit(raw: string, forceMode = false): LocalSolveResult | null 
     } else {
       targetVal = parseFloat(targetStr);
     }
-  }
+  } else {
+    const arrowMatch = raw.match(/x\s*(?:\\to|->|→)\s*([+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi))/i);
+    if (arrowMatch) {
+      targetStr = arrowMatch[1];
+      if (/inf|oo|\\infty/i.test(targetStr)) {
+        isInf = true;
+        targetVal = targetStr.startsWith('-') ? -1e6 : 1e6;
+        targetStr = targetStr.startsWith('-') ? '-\\infty' : '\\infty';
+      } else if (/pi/i.test(targetStr)) {
+        targetVal = Math.PI;
+        targetStr = '\\pi';
+      } else {
+        targetVal = parseFloat(targetStr);
+      }
+    }
 
-  let expr = raw
-    .replace(/\\lim_\{[^}]+\}/gi, '')
-    .replace(/lim\s*\([^)]*->[^)]*\)/gi, '')
-    .replace(/lim_?\s*x\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?)/gi, '')
-    .replace(/\blim\b/gi, '')
-    .replace(/x\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?)/gi, '')
-    .trim();
+    expr = raw
+      .replace(/\\lim_\{[^}]+\}/gi, '')
+      .replace(/lim_?\s*x\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)/gi, '')
+      .replace(/\blim\b/gi, '')
+      .replace(/(?:as|da|qachonki)?\s*x\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)/gi, '')
+      .replace(/\b(as|da|qachonki)\b/gi, '')
+      .trim();
+  }
 
   if (!expr) return null;
 
@@ -882,10 +901,14 @@ $$\\mathbf{${ansFmt}}$$`
     : (safeEvalAt(norm, 'x', targetVal + 1e-5) + safeEvalAt(norm, 'x', targetVal + 1e-6)) / 2;
 
   if (!isNaN(leftVal) && !isNaN(rightVal) && Math.abs(leftVal - rightVal) < 1e-2) {
-    const ansFmt = fmtNum((leftVal + rightVal) / 2);
+    const avgVal = (leftVal + rightVal) / 2;
+    let ansFmt = fmtNum(avgVal);
+    if (Math.abs(avgVal - Math.E) < 1e-2) ansFmt = 'e';
+    else if (Math.abs(avgVal - Math.E * Math.E) < 1e-2) ansFmt = 'e^2';
+    else if (Math.abs(avgVal - 1 / Math.E) < 1e-2) ansFmt = 'e^{-1}';
     return {
       solved: true,
-      type: 'Funksiya limitini hisoblash',
+      type: Math.abs(avgVal - Math.E) < 1e-2 ? "Ikkinchi ajoyib limit (e soni)" : 'Funksiya limitini hisoblash',
       shortAnswer: ansFmt,
       diagnosis,
       markdown: `## 1. Masala tahlili
@@ -949,6 +972,58 @@ $$y(x) = C e^{${expTerm}}$$
 Javob:
 $$\\mathbf{y(x) = C e^{${expTerm}}}, \\quad C \\in \\mathbb{R}$$`
     };
+  }
+
+  // 1st order linear constant coeff: a*y' + b*y = c (e.g. y' + 2y = 0 or y' - 3y = 0 or y' + 2y = 4)
+  const lin1stMatch = raw.replace(/\s+/g, '').match(/^([+-]?\d*(?:\.\d+)?\*?)y'([+-]\d*(?:\.\d+)?\*?)y=([+-]?\d+(?:\.\d+)?)$/i) ||
+                      raw.replace(/\s+/g, '').match(/^([+-]?\d*(?:\.\d+)?\*?)y'=([+-]?\d*(?:\.\d+)?\*?)y$/i);
+  if (lin1stMatch) {
+    let a = 1;
+    let b = 0;
+    let c = 0;
+    if (lin1stMatch[3] !== undefined) {
+      const aStr = lin1stMatch[1];
+      a = aStr === '' || aStr === '+' ? 1 : aStr === '-' ? -1 : parseFloat(aStr.replace('*', ''));
+      const bStr = lin1stMatch[2];
+      b = bStr === '' || bStr === '+' ? 1 : bStr === '-' ? -1 : parseFloat(bStr.replace('*', ''));
+      c = parseFloat(lin1stMatch[3]);
+    } else {
+      const aStr = lin1stMatch[1];
+      a = aStr === '' || aStr === '+' ? 1 : aStr === '-' ? -1 : parseFloat(aStr.replace('*', ''));
+      const bStr = lin1stMatch[2];
+      const rhsB = bStr === '' || bStr === '+' ? 1 : bStr === '-' ? -1 : parseFloat(bStr.replace('*', ''));
+      b = -rhsB;
+      c = 0;
+    }
+
+    if (a !== 0 && b !== 0) {
+      const r = -b / a;
+      const rFmt = fmtNum(r);
+      const rExp = rFmt === '1' ? 'x' : rFmt === '-1' ? '-x' : `${rFmt}x`;
+      const yp = c !== 0 ? fmtNum(c / b) : '';
+      const ans = yp ? `y(x) = ${yp} + C e^{${rExp}}` : `y(x) = C e^{${rExp}}`;
+
+      return {
+        solved: true,
+        type: "1-tartibli o'zgarmas koeffitsiyentli chiziqli differensial tenglama",
+        shortAnswer: ans,
+        diagnosis,
+        markdown: `## 1. Masala tahlili
+Berilgan tenglama:
+$$${raw.trim()}$$
+Standart ko'rinishi: $y' + \\left(${fmtNum(b / a)}\\right) y = ${fmtNum(c / a)}$.
+
+## 2. Yechish usuli
+Bir jinsli qismini integrallaymiz:
+$$\\frac{dy}{y} = -\\frac{b}{a} dx \\implies \\ln|y| = -\\frac{b}{a} x + C_1 \\implies y_0(x) = C e^{${rExp}}$$
+
+${c !== 0 ? `Xususiy yechim: $y_x = \\frac{c}{b} = ${yp}$.` : ''}
+
+## 4. Yakuniy umumiy yechim
+Javob:
+$$\\mathbf{${ans}}, \\quad C \\in \\mathbb{R}$$`
+      };
+    }
   }
 
   // 2nd order: a*y'' + b*y' + c*y = 0
@@ -1076,12 +1151,20 @@ $$\\mathbf{${ansFmt}}$$`
   }
 
   // Clean integrand string
-  let clean = raw
-    .replace(/\\int_\{?[^}]+\}\^\{?[^}]+\}/gi, '')
-    .replace(/\\int_?[0-9a-zA-Z\+\-]+\^?[0-9a-zA-Z\+\-]+/gi, '')
-    .replace(/\\int/gi, '')
-    .replace(/\bintegral\b/gi, '')
-    .replace(/\bint\b/gi, '')
+  let clean = raw;
+  const parenIntMatch = clean.match(/(?:\\int|\bint\b|\bintegral\b)\s*\(\s*(.+?)(?:\s*,\s*[a-zA-Z])?\s*\)/i);
+  if (parenIntMatch) {
+    clean = parenIntMatch[1];
+  } else {
+    clean = clean
+      .replace(/\\int_\{?[^}]+\}\^\{?[^}]+\}/gi, '')
+      .replace(/\\int_?[0-9a-zA-Z\+\-]+\^?[0-9a-zA-Z\+\-]+/gi, '')
+      .replace(/\\int/gi, '')
+      .replace(/\bintegral\b/gi, '')
+      .replace(/\bint\b/gi, '');
+  }
+
+  clean = clean
     .replace(/\\cdot/gi, '*')
     .replace(/\\,/gi, '')
     .replace(/\\;/gi, '')
@@ -1230,7 +1313,7 @@ $$\\mathbf{${antiTex}}$$`
  * 5. COMPLEX NUMBERS (Product, Powers, Arithmetic)
  */
 function trySolveComplex(raw: string): LocalSolveResult | null {
-  if (!/\bi\b/.test(raw) && !raw.toLowerCase().includes('muavr')) return null;
+  if (!/(?:\d*i\b|\bi\b)/i.test(raw) && !raw.toLowerCase().includes('muavr')) return null;
   const diagnosis = diagnoseTopic(raw);
 
   // De Moivre classic: (1 + i\sqrt{3})^12
@@ -1290,7 +1373,7 @@ $$\\mathbf{${ans}}$$`
 }
 
 /**
- * 6. LINEAR EQUATION SYSTEM (2x2)
+ * 6. LINEAR EQUATION SYSTEM (2x2 and 3x3)
  */
 function trySolveLinearSystem(raw: string): LocalSolveResult | null {
   const firstEq = raw.indexOf('=');
@@ -1303,6 +1386,91 @@ function trySolveLinearSystem(raw: string): LocalSolveResult | null {
   if (raw.includes('\n')) parts = raw.split('\n').map(s => s.trim()).filter(Boolean);
   else if (raw.includes(';')) parts = raw.split(';').map(s => s.trim()).filter(Boolean);
   else if (raw.includes(',')) parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+
+  if (parts.length === 3) {
+    function extractEq3(eqStr: string) {
+      const p = eqStr.split('=');
+      if (p.length !== 2) return null;
+      const left = p[0].trim();
+      const right = p[1].trim();
+      const expr = `(${normalizeMathString(left)}) - (${normalizeMathString(right)})`;
+      try {
+        const f000 = Number(math.evaluate(expr, { x: 0, y: 0, z: 0 }));
+        const f100 = Number(math.evaluate(expr, { x: 1, y: 0, z: 0 }));
+        const f010 = Number(math.evaluate(expr, { x: 0, y: 1, z: 0 }));
+        const f001 = Number(math.evaluate(expr, { x: 0, y: 0, z: 1 }));
+        if (isNaN(f000) || isNaN(f100) || isNaN(f010) || isNaN(f001)) return null;
+        return {
+          a: f100 - f000,
+          b: f010 - f000,
+          c: f001 - f000,
+          d: -f000,
+          left,
+          right
+        };
+      } catch {
+        return null;
+      }
+    }
+
+    const eq1 = extractEq3(parts[0]);
+    const eq2 = extractEq3(parts[1]);
+    const eq3 = extractEq3(parts[2]);
+    if (!eq1 || !eq2 || !eq3) return null;
+
+    const det3 = (
+      m11: number, m12: number, m13: number,
+      m21: number, m22: number, m23: number,
+      m31: number, m32: number, m33: number
+    ) => m11 * (m22 * m33 - m23 * m32) - m12 * (m21 * m33 - m23 * m31) + m13 * (m21 * m32 - m22 * m31);
+
+    const D = det3(eq1.a, eq1.b, eq1.c, eq2.a, eq2.b, eq2.c, eq3.a, eq3.b, eq3.c);
+    if (Math.abs(D) < 1e-8) return null;
+
+    const Dx = det3(eq1.d, eq1.b, eq1.c, eq2.d, eq2.b, eq2.c, eq3.d, eq3.b, eq3.c);
+    const Dy = det3(eq1.a, eq1.d, eq1.c, eq2.a, eq2.d, eq2.c, eq3.a, eq3.d, eq3.c);
+    const Dz = det3(eq1.a, eq1.b, eq1.d, eq2.a, eq2.b, eq2.d, eq3.a, eq3.b, eq3.d);
+
+    const xVal = Dx / D;
+    const yVal = Dy / D;
+    const zVal = Dz / D;
+
+    const xFmt = fmtNum(xVal);
+    const yFmt = fmtNum(yVal);
+    const zFmt = fmtNum(zVal);
+
+    return {
+      solved: true,
+      type: "3 noma'lumli chiziqli tenglamalar sistemasi (Kramer usuli)",
+      shortAnswer: `x = ${xFmt}, \\; y = ${yFmt}, \\; z = ${zFmt}`,
+      diagnosis,
+      markdown: `## 1. Masala tahlili
+Berilgan 3 noma'lumli tenglamalar sistemasi:
+$$\\begin{cases}
+${eq1.left} = ${eq1.right} \\\\
+${eq2.left} = ${eq2.right} \\\\
+${eq3.left} = ${eq3.right}
+\\end{cases}$$
+
+## 2. Kramer determinantlarini hisoblash
+Asosiy determinant $\\Delta$:
+$$\\Delta = \\begin{vmatrix}
+${fmtNum(eq1.a)} & ${fmtNum(eq1.b)} & ${fmtNum(eq1.c)} \\\\
+${fmtNum(eq2.a)} & ${fmtNum(eq2.b)} & ${fmtNum(eq2.c)} \\\\
+${fmtNum(eq3.a)} & ${fmtNum(eq3.b)} & ${fmtNum(eq3.c)}
+\\end{vmatrix} = ${fmtNum(D)}$$
+
+Yordamchi determinantlar:
+$$\\Delta_x = ${fmtNum(Dx)}, \\quad \\Delta_y = ${fmtNum(Dy)}, \\quad \\Delta_z = ${fmtNum(Dz)}$$
+
+## 3. Noma'lumlarni topish
+$$x = \\frac{\\Delta_x}{\\Delta} = ${xFmt}, \\quad y = \\frac{\\Delta_y}{\\Delta} = ${yFmt}, \\quad z = \\frac{\\Delta_z}{\\Delta} = ${zFmt}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{x = ${xFmt}, \\quad y = ${yFmt}, \\quad z = ${zFmt}}$$`
+    };
+  }
 
   if (parts.length !== 2) return null;
 

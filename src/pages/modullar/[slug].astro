@@ -31,7 +31,7 @@ const { moduleData, lessons } = Astro.props;
 
 <BaseLayout title={`${moduleData.title} — Oliy Matematika`} description={moduleData.description}>
   <!-- Breadcrumb -->
-  <nav style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+  <nav style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-wrap: wrap;">
     <a href="/" style="color: var(--primary);">Bosh sahifa</a>
     <span>/</span>
     <a href="/#modullar" style="color: var(--primary);">Modullar</a>
@@ -42,63 +42,47 @@ const { moduleData, lessons } = Astro.props;
   <!-- Module Header -->
   <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem;">
     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-      {moduleData.isActive ? (
-        <span class="badge badge-active">1-versiyada Faol</span>
-      ) : (
-        <span class="badge badge-soon">Tez orada</span>
-      )}
-      <span style="font-size: 0.85rem; color: var(--text-subtle);">Modul #{moduleData.id}</span>
+      <span class="badge badge-active">Faol Modul</span>
+      <span style="font-size: 0.85rem; color: var(--text-subtle);">Modul #{moduleData.id} • {lessons.length} ta dars</span>
     </div>
 
     <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.25;">
       {moduleData.title}
     </h1>
-    <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 720px; line-height: 1.6;">
+    <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 780px; line-height: 1.6;">
       {moduleData.description}
     </p>
 
-    {moduleData.isActive && (
-      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">Ushbu modul bo'yicha progress:</div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <div style="width: 180px; height: 8px; background: var(--bg-muted); border-radius: 9999px; overflow: hidden;">
-              <div id="module-progress-bar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.3s ease;"></div>
-            </div>
-            <span id="module-progress-text" style="font-size: 0.85rem; font-weight: 700; color: var(--accent);">0%</span>
+    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">Ushbu modul bo'yicha progress:</div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div style="width: 180px; height: 8px; background: var(--bg-muted); border-radius: 9999px; overflow: hidden;">
+            <div id="module-progress-bar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.3s ease;"></div>
           </div>
-        </div>
-
-        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-          <a href={`/testlar?modul=${moduleData.slug}`} class="btn btn-secondary" style="border-color: #3b82f6; color: #3b82f6; font-weight: 600;">
-            <span>📝 Test topshirish</span>
-          </a>
-          {lessons.length > 0 ? (
-            <a href={`/dars/${lessons[0].id.replace(/\.mdx?$/, '')}`} class="btn btn-primary">
-              <span>1-darsni boshlash</span>
-              <span>→</span>
-            </a>
-          ) : moduleData.slug === 'funksiyalar-grafiklar' ? (
-            <a href="/grafik" class="btn btn-primary">
-              <span>Grafik chizgichni ochish</span>
-              <span>→</span>
-            </a>
-          ) : moduleData.slug === 'hosila' ? (
-            <a href="/hosila" class="btn btn-primary">
-              <span>Hosila kalkulyatorini ochish</span>
-              <span>→</span>
-            </a>
-          ) : null}
+          <span id="module-progress-text" style="font-size: 0.85rem; font-weight: 700; color: var(--accent);">0%</span>
         </div>
       </div>
-    )}
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href={`/testlar?modul=${moduleData.slug}`} class="btn btn-secondary" style="border-color: #3b82f6; color: #3b82f6; font-weight: 600;">
+          <span>📝 Test topshirish</span>
+        </a>
+        {lessons.length > 0 && (
+          <a href={`/dars/${lessons[0].id.replace(/\.mdx?$/, '')}`} class="btn btn-primary">
+            <span>1-darsni boshlash</span>
+            <span>→</span>
+          </a>
+        )}
+      </div>
+    </div>
   </div>
 
   <!-- Available Lessons in this module -->
   {lessons.length > 0 && (
     <section style="margin-bottom: 2.5rem;">
-      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem;">
-        Mavjud Darslar ({lessons.length} ta)
+      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">
+        Modul Darslari ({lessons.length} ta)
       </h2>
       <div style="display: grid; gap: 1rem;">
         {lessons.map(lesson => (
@@ -106,68 +90,21 @@ const { moduleData, lessons } = Astro.props;
             href={`/dars/${lesson.id.replace(/\.mdx?$/, '')}`} 
             class="module-card lesson-item-card" 
             data-lesson-slug={lesson.id.replace(/\.mdx?$/, '')}
+            style="display: block; padding: 1.25rem 1.5rem; border-radius: var(--radius-md); background: var(--bg-surface); border: 1px solid var(--border-color); text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;"
           >
             <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem;">
               <div style="display: flex; align-items: center; gap: 0.6rem;">
                 <span style="font-weight: 700; color: var(--primary);">{lesson.data.order}-dars:</span>
-                <span style="font-weight: 700; font-size: 1.05rem;">{lesson.data.title}</span>
+                <span style="font-weight: 700; font-size: 1.05rem; color: var(--text-main);">{lesson.data.title}</span>
               </div>
-              <span class="lesson-status-pill badge" style="display: none; background: var(--accent-light); color: var(--accent);">✓ O'zlashtirildi</span>
+              <span class="lesson-status-pill badge" style="display: none; background: var(--accent-light); color: var(--accent);">✅ O'zlashtirildi</span>
             </div>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">{lesson.data.description}</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.5;">{lesson.data.description}</p>
             <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">Darsni o'qish →</div>
           </a>
         ))}
       </div>
     </section>
-  )}
-
-  <!-- Topics Section -->
-  <section style="margin-bottom: 2rem;">
-    <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem;">
-      {moduleData.isActive ? "To'liq Reja va Mavzular" : "Rejalashtirilgan Mavzular"}
-    </h2>
-
-    <div style="display: grid; gap: 0.85rem;">
-      {moduleData.topics.map((topic, idx) => (
-        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;">
-          <div style="display: flex; align-items: center; gap: 0.85rem;">
-            <div style="width: 28px; height: 28px; border-radius: var(--radius-sm); background: var(--bg-muted); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: var(--text-muted);">
-              {idx + 1}
-            </div>
-            <span style="font-weight: 600; color: var(--text-main);">{topic}</span>
-          </div>
-
-          <div>
-            {lessons[idx] ? (
-              <a href={`/dars/${lessons[idx].id.replace(/\.mdx?$/, '')}`} style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">
-                O'qish →
-              </a>
-            ) : moduleData.isActive ? (
-              <span style="font-size: 0.75rem; color: var(--text-subtle);">Tayyorlanmoqda</span>
-            ) : (
-              <span style="font-size: 0.75rem; color: var(--text-subtle);">Rejada</span>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- If Inactive: Placeholder Notice -->
-  {!moduleData.isActive && (
-    <div style="background: var(--bg-surface); border: 1px dashed var(--border-color); border-radius: var(--radius-lg); padding: 2rem; text-align: center;">
-      <div style="font-size: 2.25rem; margin-bottom: 0.75rem;">⏳</div>
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Ushbu modul 1-versiyada rejalashtirilgan</h3>
-      <p style="color: var(--text-muted); max-width: 540px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
-        Hozirda 1-versiyada <strong>5 (Limitlar)</strong>, <strong>6 (Funksiyalar va grafiklar)</strong> hamda <strong>7 (Hosila)</strong> modullari faol holatda.
-      </p>
-
-      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="/modullar/limitlar" class="btn btn-primary">5. Limitlar moduliga o'tish</a>
-        <a href="/grafik" class="btn btn-secondary">Interaktiv grafik chizgich</a>
-      </div>
-    </div>
   )}
 </BaseLayout>
 
@@ -192,7 +129,7 @@ const { moduleData, lessons } = Astro.props;
       }
     });
 
-    const total = Math.max(lessonCards.length, 5); // default 5 planned
+    const total = lessonCards.length || 1;
     const percentage = Math.min(100, Math.round((completedInThisModule / total) * 100));
 
     const bar = document.getElementById('module-progress-bar');
@@ -204,5 +141,6 @@ const { moduleData, lessons } = Astro.props;
   }
 
   updateProgressAndStatus();
+  document.addEventListener('astro:page-load', updateProgressAndStatus);
   document.addEventListener('astro:after-swap', updateProgressAndStatus);
 </script>

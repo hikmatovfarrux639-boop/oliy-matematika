@@ -59,7 +59,7 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
   description={lesson.data.description}
 >
   <!-- Toast Notification Container -->
-  <div id="lesson-toast" style="display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 100; background: var(--bg-surface); border: 1px solid var(--accent); color: var(--text-main); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; align-items: center; gap: 0.75rem; animation: slideUp 0.25s ease-out;">
+  <div id="lesson-toast" style="display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 100; background: var(--bg-surface); border: 1px solid var(--accent); color: var(--text-main); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.15); align-items: center; gap: 0.75rem; animation: slideUp 0.25s ease-out;">
     <span style="font-size: 1.25rem;">🎉</span>
     <span id="toast-text" style="font-size: 0.9rem; font-weight: 600;">Dars o'zlashtirildi deb belgilandi!</span>
   </div>
@@ -166,7 +166,7 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
                 style="flex: 1; font-size: 0.8rem; padding: 0.45rem 0.6rem; text-align: center; border-color: #10b981; color: #10b981;"
                 title="Sun'iy intellekt orqali masalani avtomatik yechish"
               >
-                🤖 AI Yechuvchi
+                ✨ AI Yechuvchi
               </a>
               <a 
                 href="/testlar" 
@@ -189,7 +189,7 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
           </a>
         ) : (
           <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-secondary">
-            <span>← Modul mundarijasi</span>
+            <span>📚 Modul mundarijasi</span>
           </a>
         )}
 
@@ -199,7 +199,7 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
           </a>
         ) : (
           <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-primary">
-            <span>Modul sahifasiga qaytish ✓</span>
+            <span>Modul sahifasiga qaytish 🎓</span>
           </a>
         )}
       </div>
@@ -318,7 +318,7 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
     const updateUI = (isDone: boolean) => {
       checkbox.checked = isDone;
       if (label) {
-        label.textContent = isDone ? "✓ Dars o'zlashtirildi (Tugallandi)" : "Darsni o'zlashtirdim deb belgilash";
+        label.textContent = isDone ? "✅ Dars o'zlashtirildi (Tugallandi)" : "Darsni o'zlashtirdim deb belgilash";
         label.style.color = isDone ? "var(--accent)" : "var(--text-main)";
       }
     };
@@ -354,5 +354,6 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
   }
 
   setupLessonCompletion();
+  document.addEventListener('astro:page-load', setupLessonCompletion);
   document.addEventListener('astro:after-swap', setupLessonCompletion);
 </script>

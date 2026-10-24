@@ -35,7 +35,7 @@ $$
 P(A) = \sum_{i=1}^n P(H_i) \cdot P(A | H_i)
 $$
 
-bu yerda $P(A | H_i)$ ?" $H_i$ gipoteza ro'y bergan paytdagi $A$ hodisasining shartli ehtimolidir.
+bu yerda $P(A | H_i)$ — $H_i$ gipoteza ro'y bergan paytdagi $A$ hodisasining shartli ehtimolidir.
 
 ```
                          Gipotezalar orqali A hodisa
@@ -59,8 +59,8 @@ bu yerda $P(A | H_i)$ ?" $H_i$ gipoteza ro'y bergan paytdagi $A$ hodisasining sh
 ## 3. Bayes formulasi (Aposterior ehtimollik)
 
 Tomas Bayes kashf etgan ushbu formula tajriba natijasi ma'lum bo'lgandan so'ng, dastlabki taxminlarni (gipotezalarni) **qayta baholash** imkonini beradi:
-- **Aprior ehtimollik:** $P(H_k)$ ?" tajriba o'tkazilishidan oldingi dastlabki ehtimollik.
-- **Aposterior ehtimollik:** $P(H_k | A)$ ?" $A$ hodisasi ro'y bergani ma'lum bo'lgach, aynan $H_k$ sabab bo'lganligining yangilangan ehtimoli:
+- **Aprior ehtimollik:** $P(H_k)$ — tajriba o'tkazilishidan oldingi dastlabki ehtimollik.
+- **Aposterior ehtimollik:** $P(H_k | A)$ — $A$ hodisasi ro'y bergani ma'lum bo'lgach, aynan $H_k$ sabab bo'lganligining yangilangan ehtimoli:
 
 $$
 P(H_k | A) = \frac{P(H_k) \cdot P(A | H_k)}{P(A)} = \frac{P(H_k) \cdot P(A | H_k)}{\sum_{i=1}^n P(H_i) \cdot P(A | H_i)}
@@ -112,7 +112,7 @@ Gipotezalar:
 - $H_2$: detal 2-sexdan, $P(H_2) = \frac{30}{100} = 0.3$;
 - $H_3$: detal 3-sexdan, $P(H_3) = \frac{50}{100} = 0.5$.
 Tekshirish: $0.2 + 0.3 + 0.5 = 1$.
-$A$ hodisasi ?" detal nosoz. Shartli ehtimollar:
+$A$ hodisasi — detal nosoz. Shartli ehtimollar:
 - $P(A | H_1) = \frac{2}{20} = 0.1$;
 - $P(A | H_2) = \frac{3}{30} = 0.1$;
 - $P(A | H_3) = \frac{10}{50} = 0.2$.
@@ -148,7 +148,7 @@ Ko'rib turganingizdek, mantiqiy chastotalar usuli formulalarsiz ham aynan bir xi
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Gipotezalar yig'indisi 1 ga teng emasligi:** Eng ko'p uchraydigan xato ?" gipotezalar to'liq guruhni tashkil qilmasligi ($\sum P(H_i) \ne 1$). Har doim masalani boshlashdan oldin gipotezalar ehtimollari yig'indisini tekshirib oling.
+> 1. **Gipotezalar yig'indisi 1 ga teng emasligi:** Eng ko'p uchraydigan xato — gipotezalar to'liq guruhni tashkil qilmasligi ($\sum P(H_i) \ne 1$). Har doim masalani boshlashdan oldin gipotezalar ehtimollari yig'indisini tekshirib oling.
 > 2. **Shartli ehtimollarni almashtirib qo'yish:** $P(A | H_k)$ bilan $P(H_k | A)$ mutlaqo boshqa-boshqa tushunchalar! $P(A | H_k)$ berilgan shartdagi natija ehtimoli bo'lsa, $P(H_k | A)$ natija ro'y bergandan keyingi sabab ehtimolidir.
 
 ---
