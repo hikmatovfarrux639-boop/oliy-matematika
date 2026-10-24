@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LIBRARY_DATABASE } from '../data/library';
+---
+
+<BaseLayout 
+  title="Klassik Matematik Kutubxona va Tavsiya Etilgan Darsliklar — Oliy Matematika"
+  description="O'zbekiston OTMlari (TATU, O'zMU, ToshDTU) va jahon universitetlarida tan olingan eng nufuzli oliy matematika darsliklari, masalalar to'plamlari va qo'llanmalar."
+>
+  <div class="lib-page-container">
+    <!-- Header -->
+    <header class="lib-hero">
+      <div class="hero-badge">
+        <span>📚 Oliy Ta'lim Oltin Fondi</span>
+        <span class="badge-sub">O'zbek va Jahon Darsliklari</span>
+      </div>
+      <h1 class="hero-title">Matematik Adabiyotlar va Darsliklar Kutubxonasi</h1>
+      <p class="hero-desc">
+        Oliy matematika fanini mustaqil, mustahkam va chuqur o'rganish uchun qaysi kitoblardan foydalanish kerak? O'zbekiston OTMlari professor-o'qituvchilari tomonidan tavsiya etilgan eng sara darsliklar va masalalar to'plamlari sharhi.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="lib-filter-bar">
+        <button class="lib-pill active" data-cat="all">Barcha kitoblar ({LIBRARY_DATABASE.length})</button>
+        <button class="lib-pill" data-cat="ozbekcha">🇺🇿 O'zbekcha darsliklar</button>
+        <button class="lib-pill" data-cat="analiz">Matematik Analiz</button>
+        <button class="lib-pill" data-cat="algebra">Chiziqli Algebra</button>
+        <button class="lib-pill" data-cat="diffur">Differensial Tenglamalar</button>
+        <button class="lib-pill" data-cat="masalalar">Masalalar to'plamlari</button>
+        <button class="lib-pill" data-cat="ehtimollik">Ehtimollar & Statistika</button>
+      </div>
+    </header>
+
+    <!-- Books Grid -->
+    <div class="books-grid" id="books-grid">
+      {LIBRARY_DATABASE.map(book => (
+        <article class="book-card" data-category={book.category}>
+          <div class="book-card-top">
+            <div class="book-meta-badges">
+              <span class={`level-badge level-${book.level.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}>
+                {book.level}
+              </span>
+              {book.year && <span class="year-badge">📅 {book.year}</span>}
+            </div>
+            <h2 class="book-title">{book.title}</h2>
+            <div class="book-authors">✍️ {book.authors}</div>
+          </div>
+
+          <p class="book-desc">{book.description}</p>
+
+          <div class="book-audience-box">
+            <strong>Kimlar uchun tavsiya etiladi:</strong>
+            <p>{book.targetAudience}</p>
+          </div>
+
+          <div class="book-topics-box">
+            <div class="topics-title">Asosiy qamrab olingan mavzular:</div>
+            <div class="topic-tags">
+              {book.keyTopics.map(t => (
+                <span class="topic-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Advice Card -->
+    <section class="study-advice-card">
+      <div class="advice-header">
+        <span style="font-size: 1.8rem;">💡</span>
+        <div>
+          <h3 style="margin: 0 0 0.25rem; font-size: 1.2rem; color: var(--text-main);">O'qituvchilardan maslahat: Qaysi kitobdan boshlash kerak?</h3>
+          <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Talabaning darajasi va yo'nalishiga qarab to'g'ri kitob tanlash sirlari</p>
+        </div>
+      </div>
+      <div class="advice-grid">
+        <div class="advice-item">
+          <strong>1. Agar noldan boshlayotgan bo'lsangiz:</strong>
+          <p>Dastlab <em>N.S. Piskunov</em> yoki <em>Yo.U. Soatov</em> ning darsliklarini o'qing. Ular murakkab tushunchalarni juda sodda tilda va ko'plab amaliy misollar bilan tushuntiradi.</p>
+        </div>
+        <div class="advice-item">
+          <strong>2. Imtihon va nazoratlarga tayyorlanishda:</strong>
+          <p>Misol yechish malakasini oshirish uchun <em>B.P. Demidovich</em> masalalar to'plamidan misollarni mustaqil ishlab chiqing va platformamizdagi <a href="/testlar" style="color: var(--primary); text-decoration: underline;">HEMIS testlari</a> bilan tekshiring.</p>
+        </div>
+        <div class="advice-item">
+          <strong>3. Chuqur ilmiy asos va isbotlar uchun:</strong>
+          <p>Matematikani fundamental o'rganmoqchi bo'lsangiz, <em>G.M. Fixtengolts</em> ning 3 jildli klassik asarini va O'zMU olimlarining <em>T. Jo'rayev</em> tahriri ostidagi darsliklarini varaqlang.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  function initLibFilter() {
+    const pills = document.querySelectorAll('.lib-pill') as NodeListOf<HTMLButtonElement>;
+    const books = document.querySelectorAll('.book-card') as NodeListOf<HTMLElement>;
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const cat = pill.getAttribute('data-cat') || 'all';
+        books.forEach(b => {
+          if (cat === 'all' || b.getAttribute('data-category') === cat) {
+            b.style.display = 'flex';
+          } else {
+            b.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initLibFilter);
+  if (document.readyState !== 'loading') initLibFilter();
+</script>
+
+<style>
+  .lib-page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .lib-hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #10b981;
+    margin-bottom: 1rem;
+  }
+
+  .badge-sub {
+    border-left: 1px solid rgba(16, 185, 129, 0.2);
+    padding-left: 0.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 780px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+  }
+
+  .lib-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .lib-pill {
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lib-pill:hover {
+    border-color: #10b981;
+    color: #10b981;
+  }
+
+  .lib-pill.active {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+  }
+
+  /* Grid */
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .book-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: #10b981;
+  }
+
+  .book-meta-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .level-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+  }
+
+  .year-badge {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .book-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 0.4rem;
+    line-height: 1.35;
+  }
+
+  .book-authors {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.85rem;
+  }
+
+  .book-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .book-audience-box {
+    background: var(--bg-surface);
+    border-left: 3px solid #10b981;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .book-audience-box strong {
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .book-audience-box p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .topics-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .topic-tag {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.45rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-muted);
+  }
+
+  /* Advice section */
+  .study-advice-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .advice-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .advice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .advice-item {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .advice-item strong {
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+</style>

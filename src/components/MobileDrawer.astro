@@ -73,6 +73,24 @@ const currentPath = Astro.url.pathname;
             <span style="font-size: 0.65rem; background: #f59e0b; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">A4</span>
           </a>
         </li>
+        <li class={`module-nav-item ${currentPath === '/lugat' ? 'active' : ''}`} style="border-left: 3px solid #ec4899;">
+          <a href="/lugat" style="font-weight: 700; color: #ec4899;">
+            <span>📖 Lug'at & Glossariy</span>
+            <span style="font-size: 0.65rem; background: #ec4899; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">A-Z</span>
+          </a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/kutubxona' ? 'active' : ''}`} style="border-left: 3px solid #10b981;">
+          <a href="/kutubxona" style="font-weight: 700; color: #10b981;">
+            <span>📚 Kitoblar Kutubxonasi</span>
+            <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">Fondi</span>
+          </a>
+        </li>
+        <li class={`module-nav-item ${currentPath === '/paradokslar' ? 'active' : ''}`} style="border-left: 3px solid #ea580c;">
+          <a href="/paradokslar" style="font-weight: 700; color: #ea580c;">
+            <span>🎭 Matematik Paradokslar</span>
+            <span style="font-size: 0.65rem; background: #ea580c; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">Mantiq</span>
+          </a>
+        </li>
         <li class="module-nav-item" style="border-left: 3px solid #0284c7;">
           <a href="https://t.me/oliy_matematika_1" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700;">
             <span>💬 Telegram Hamjamiyat</span>

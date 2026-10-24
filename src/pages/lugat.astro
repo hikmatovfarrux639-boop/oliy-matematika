@@ -1,0 +1,411 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { MATH_DICTIONARY } from '../data/dictionary';
+import katex from 'katex';
+
+function renderFormula(latex?: string): string {
+  if (!latex) return '';
+  try {
+    return katex.renderToString(latex, { displayMode: true, throwOnError: false });
+  } catch {
+    return latex;
+  }
+}
+---
+
+<BaseLayout 
+  title="Oliy Matematika Lug'ati va Ensiklopediyasi — O'zbekcha / Ruscha / Inglizcha"
+  description="Oliy matematika fanidagi 100+ dan ortiq fundamental atamalar, tushunchalar, formulalar va teoremalarning uch tilli izohli glossariysi."
+>
+  <div class="dict-page-container">
+    <!-- Header -->
+    <header class="dict-hero">
+      <div class="hero-badge">
+        <span>📖 Akademik Izohli Glossariy</span>
+        <span class="badge-sub">O'zbekcha • Ruscha • Inglizcha</span>
+      </div>
+      <h1 class="hero-title">Matematik Atamalar va Tushunchalar Lug'ati</h1>
+      <p class="hero-desc">
+        Oliy matematika fani bo'yicha har qanday qiyin atama, operator, teorema yoki tushunchaning qisqa va lo'nda ilmiy ta'rifini, formulasini hamda unga oid darslarni bir zumda toping.
+      </p>
+
+      <!-- Live Search & Filter Bar -->
+      <div class="search-filter-card">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="dict-search-input" 
+            placeholder="Atamani qidiring (masalan: determinant, gradient, fure, gipoteza...)"
+            class="dict-search-input"
+          />
+          <button id="dict-clear-btn" class="clear-search-btn" style="display: none;">✕</button>
+        </div>
+
+        <div class="filter-pills" id="category-pills">
+          <button class="cat-pill active" data-cat="all">Barchasi ({MATH_DICTIONARY.length})</button>
+          <button class="cat-pill" data-cat="algebra">Chiziqli Algebra</button>
+          <button class="cat-pill" data-cat="analiz">Matematik Analiz</button>
+          <button class="cat-pill" data-cat="geometriya">Analitik Geometriya</button>
+          <button class="cat-pill" data-cat="diffur">Diff Tenglamalar</button>
+          <button class="cat-pill" data-cat="ehtimollik">Ehtimollar & Statistika</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dictionary Cards Grid -->
+    <div class="terms-grid" id="terms-grid">
+      {MATH_DICTIONARY.map(term => (
+        <article class="term-card" data-category={term.category} data-search={`${term.uz} ${term.ru} ${term.en} ${term.definition}`.toLowerCase()}>
+          <div class="term-header">
+            <div class="term-titles">
+              <h2 class="term-uz">{term.uz}</h2>
+              <div class="term-translations">
+                <span class="tr-badge ru" title="Ruscha">🇷🇺 {term.ru}</span>
+                <span class="tr-badge en" title="Inglizcha">🇬🇧 {term.en}</span>
+              </div>
+            </div>
+            <span class={`cat-tag cat-${term.category}`}>
+              {term.category === 'algebra' && 'Algebra'}
+              {term.category === 'analiz' && 'Analiz'}
+              {term.category === 'geometriya' && 'Geometriya'}
+              {term.category === 'diffur' && 'Diffur'}
+              {term.category === 'ehtimollik' && 'Ehtimol/Stat'}
+              {term.category === 'boshqa' && 'Umumiy'}
+            </span>
+          </div>
+
+          <p class="term-def">{term.definition}</p>
+
+          {term.formula && (
+            <div class="term-formula-box" set:html={renderFormula(term.formula)} />
+          )}
+
+          {term.lessonUrl && (
+            <div class="term-footer">
+              <a href={term.lessonUrl} class="term-link">
+                Tegishli darsni o'qish ➔
+              </a>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="empty-state-card" style="display: none;">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+      <h3>Mos keluvchi atama topilmadi</h3>
+      <p>Iltimos, so'rovni boshqacharoq yozib ko'ring yoki barcha toifalarni tanlang.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function initDictSearch() {
+    const input = document.getElementById('dict-search-input') as HTMLInputElement | null;
+    const clearBtn = document.getElementById('dict-clear-btn');
+    const cards = document.querySelectorAll('.term-card') as NodeListOf<HTMLElement>;
+    const pills = document.querySelectorAll('.cat-pill') as NodeListOf<HTMLButtonElement>;
+    const emptyState = document.getElementById('empty-state');
+
+    let activeCategory = 'all';
+
+    function filterCards() {
+      const query = (input?.value || '').toLowerCase().trim();
+      if (clearBtn) {
+        clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+      }
+
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const text = card.getAttribute('data-search') || '';
+
+        const matchesCat = activeCategory === 'all' || cat === activeCategory;
+        const matchesQuery = query === '' || text.includes(query);
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    input?.addEventListener('input', filterCards);
+    clearBtn?.addEventListener('click', () => {
+      if (input) input.value = '';
+      filterCards();
+      input?.focus();
+    });
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.getAttribute('data-cat') || 'all';
+        filterCards();
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initDictSearch);
+  if (document.readyState !== 'loading') initDictSearch();
+</script>
+
+<style>
+  .dict-page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .dict-hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .badge-sub {
+    border-left: 1px solid rgba(37, 99, 235, 0.2);
+    padding-left: 0.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+  }
+
+  /* Search & Filter Card */
+  .search-filter-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    font-size: 1.1rem;
+    pointer-events: none;
+    color: var(--text-muted);
+  }
+
+  .dict-search-input {
+    width: 100%;
+    padding: 0.85rem 2.8rem 0.85rem 2.75rem;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .dict-search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+
+  .clear-search-btn {
+    position: absolute;
+    right: 0.85rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+  }
+
+  .filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .cat-pill {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cat-pill:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .cat-pill.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  /* Grid */
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .term-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .term-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+  }
+
+  .term-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .term-uz {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 0.35rem;
+    line-height: 1.3;
+  }
+
+  .term-translations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tr-badge {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+  }
+
+  .cat-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .cat-algebra { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+  .cat-analiz { background: rgba(37, 99, 235, 0.12); color: #2563eb; }
+  .cat-geometriya { background: rgba(6, 182, 212, 0.12); color: #06b6d4; }
+  .cat-diffur { background: rgba(234, 88, 12, 0.12); color: #ea580c; }
+  .cat-ehtimollik { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+
+  .term-def {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .term-formula-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+
+  .term-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+
+  .term-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.15s ease;
+  }
+
+  .term-link:hover {
+    gap: 0.55rem;
+    text-decoration: underline;
+  }
+
+  .empty-state-card {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+  }
+</style>

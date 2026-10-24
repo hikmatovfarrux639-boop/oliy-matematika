@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PARADOXES_DATABASE } from '../data/paradoxes';
+import katex from 'katex';
+
+function renderFormula(latex?: string): string {
+  if (!latex) return '';
+  try {
+    return katex.renderToString(latex, { displayMode: true, throwOnError: false });
+  } catch {
+    return latex;
+  }
+}
+---
+
+<BaseLayout 
+  title="Matematik Paradokslar va Mashhur Jumboqlar — Oliy Matematika"
+  description="Ehtimollar nazariyasi, cheksizlik va mantiqdagi mashhur matematik paradokslar: Monti Xoll, Hilbert mehmonxonasi, Tug'ilgan kunlar, Zeno aporiyasi va Gabriyel karnayi."
+>
+  <div class="paradox-page-container">
+    <!-- Header -->
+    <header class="paradox-hero">
+      <div class="hero-badge">
+        <span>🎭 Mantiq va Ehtimollar Sinovi</span>
+        <span class="badge-sub">Intuitiv fikrga qarshi matematika</span>
+      </div>
+      <h1 class="hero-title">Mashhur Matematik Paradokslar va Jumboqlar</h1>
+      <p class="hero-desc">
+        Matematika faqat formulalardan iborat emas — u inson intuitsiyasini larzaga soluvchi ajoyib jumboq va paradokslarga boy. Nega instinktlarimiz aldanadi va matematik mantiq qanday qilib haqiqatni yuzaga chiqaradi?
+      </p>
+    </header>
+
+    <!-- Paradoxes Stack -->
+    <div class="paradoxes-list">
+      {PARADOXES_DATABASE.map((item, idx) => (
+        <article class="paradox-card" id={item.id}>
+          <div class="paradox-header">
+            <div class="paradox-num">#{idx + 1}</div>
+            <div class="paradox-headings">
+              <span class="paradox-cat">{item.category.toUpperCase()}</span>
+              <h2 class="paradox-title">{item.title}</h2>
+              <p class="paradox-subtitle">{item.subtitle}</p>
+            </div>
+          </div>
+
+          <div class="paradox-body">
+            <!-- The Story / Problem -->
+            <div class="story-box">
+              <div class="section-label">
+                <span>❓ Jumboq mohiyati:</span>
+              </div>
+              <p class="story-text">{item.story}</p>
+            </div>
+
+            <!-- Mathematical Explanation -->
+            <div class="explanation-box">
+              <div class="section-label">
+                <span>💡 Matematik isbot va yechim:</span>
+              </div>
+              <p class="explanation-text">{item.explanation}</p>
+
+              {item.mathFormula && (
+                <div class="math-box" set:html={renderFormula(item.mathFormula)} />
+              )}
+            </div>
+
+            <!-- Takeaway -->
+            <div class="takeaway-box">
+              <strong>Asosiy xulosa:</strong> {item.takeaway}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .paradox-page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .paradox-hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(234, 88, 12, 0.08);
+    border: 1px solid rgba(234, 88, 12, 0.2);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ea580c;
+    margin-bottom: 1rem;
+  }
+
+  .badge-sub {
+    border-left: 1px solid rgba(234, 88, 12, 0.2);
+    padding-left: 0.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 740px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* List */
+  .paradoxes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .paradox-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .paradox-card:hover {
+    border-color: #ea580c;
+    box-shadow: var(--shadow-md);
+  }
+
+  .paradox-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .paradox-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ea580c;
+    background: rgba(234, 88, 12, 0.1);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .paradox-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    letter-spacing: 0.05em;
+  }
+
+  .paradox-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0.2rem 0 0.35rem;
+  }
+
+  .paradox-subtitle {
+    font-size: 0.95rem;
+    color: #ea580c;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .section-label {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+  }
+
+  .story-box {
+    background: var(--bg-surface);
+    border-left: 3px solid #3b82f6;
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .story-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin: 0;
+  }
+
+  .explanation-box {
+    background: var(--bg-surface);
+    border-left: 3px solid #10b981;
+    padding: 1rem 1.25rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .explanation-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin: 0 0 0.75rem;
+  }
+
+  .math-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .takeaway-box {
+    background: rgba(234, 88, 12, 0.06);
+    border: 1px dashed rgba(234, 88, 12, 0.35);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-main);
+  }
+
+  .takeaway-box strong {
+    color: #ea580c;
+  }
+</style>

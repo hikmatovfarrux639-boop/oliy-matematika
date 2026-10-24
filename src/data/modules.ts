@@ -56,7 +56,7 @@ export const MODULES: ModuleInfo[] = [
     title: '3. Vektorlar va analitik geometriya',
     description: "Fazoda vektorlar, skalyar, vektor va aralash ko'paytmalar, kesmani bo'lish, tetraedr balandligi, qutb koordinatalari va ikkinchi tartibli sirtlar.",
     isActive: true,
-    estimatedLessons: 8,
+    estimatedLessons: 9,
     topics: [
       'Vektorlar va chiziqli amallar',
       'Skalyar ko\'paytma va burchak',
@@ -65,7 +65,8 @@ export const MODULES: ModuleInfo[] = [
       'Fazodagi tekislik va to\'g\'ri chiziq',
       'Ikkinchi tartibli chiziqlar va fazodagi sirtlar',
       'Kesmani bo\'lish va tetraedr balandligi',
-      'Qutb koordinatalari va ajoyib egri chiziqlar'
+      'Qutb koordinatalari va ajoyib egri chiziqlar',
+      'Fazoda to\'g\'ri chiziq va tekislik: Proyeksiyalar va kesishish masalalari'
     ]
   },
   {
@@ -74,7 +75,7 @@ export const MODULES: ModuleInfo[] = [
     title: '4. Kompleks sonlar va TFKP',
     description: "Algebraik, trigonometrik va Eyler shakllari, Muavr formulasi, TFKP, Koshi-Riman shartlari, garmonik funksiyalar va Laplas almashtirishi.",
     isActive: true,
-    estimatedLessons: 8,
+    estimatedLessons: 9,
     topics: [
       'Kompleks son tushunchasi va algebraik shakl',
       'Kompleks sonlar ustida amallar',
@@ -83,7 +84,8 @@ export const MODULES: ModuleInfo[] = [
       'TFKP: Koshi-Riman shartlari va kompleks integrallar',
       'Operatsion hisob va Laplas almashtirishi',
       'Garmonik funksiyalar va analitik funksiyani tiklash',
-      'Differensial tenglamalarni Laplas bilan yechish'
+      'Differensial tenglamalarni Laplas bilan yechish',
+      'Loran qatori, maxsus nuqtalar va chegirmalar nazariyasi (Residues)'
     ]
   },
   {
@@ -176,7 +178,7 @@ export const MODULES: ModuleInfo[] = [
     title: '10. Karrali, egri chiziqli integrallar va vektor maydonlar',
     description: "Ikki va uch karrali integrallar, egri chiziqli integrallar, Grin formulasi, Gauss-Ostrogradskiy, Stoks teoremalari, potensial va solenoidal maydonlar.",
     isActive: true,
-    estimatedLessons: 7,
+    estimatedLessons: 8,
     topics: [
       'Ikki karrali integral va hisoblash',
       'Qutb koordinatalarida ikki karrali integral',
@@ -184,7 +186,8 @@ export const MODULES: ModuleInfo[] = [
       'Egri chiziqli integrallar va Grin formulasi',
       'Vektor maydon oqimi, Divergensiya va Gauss-Ostrogradskiy',
       'Vektor maydon sirkulyatsiyasi, Rotor va Stoks formulasi',
-      'Vektor maydon potensiali va solenoidal maydonlar'
+      'Vektor maydon potensiali va solenoidal maydonlar',
+      'Vektor maydon oqimi va Gauss-Ostrogradskiy formulasi (Sirt integrallari)'
     ]
   },
   {
@@ -248,13 +251,14 @@ export const MODULES: ModuleInfo[] = [
     title: '14. Matematik statistika',
     description: "Bosh to'plam va tanlanma, variatsion qator, gistogramma, statistik baholar, gipotezalar (Styudent, xi-kvadrat), chiziqli regressiya va Spirmen korrelyatsiyasi.",
     isActive: true,
-    estimatedLessons: 5,
+    estimatedLessons: 6,
     topics: [
       'Bosh to\'plam, tanlanma va tavsiflar',
       'Statistik baholash va ishonchlilik oraliqlari',
       'Statistik gipotezalarni tekshirish (Styudent, xi-kvadrat)',
       'Variatsion qatorlar, gistogramma va chastotalar poligoni',
-      'Chiziqli regressiya, eng kichik kvadratlar usuli va Spirmen korrelyatsiyasi'
+      'Chiziqli regressiya, eng kichik kvadratlar usuli va Spirmen korrelyatsiyasi',
+      'Pirson xi-kvadrat moslik mezoni va gipotezalarni amaliy tekshirish'
     ]
   }
 ];
