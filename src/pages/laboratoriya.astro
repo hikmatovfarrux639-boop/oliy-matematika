@@ -1,0 +1,1684 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="🔮 Interaktiv Matematik Laboratoriya — 3Blue1Brown va Vizual Simulyatsiyalar | Oliy Matematika" 
+  description="Matematikani ko'z bilan ko'ring va his qiling: 3Blue1Brown uslubidagi matritsa fazo transformatori, Riman integrali slayderi, Monte-Karlo pi hisoblagichi, Fure epitsikllari, Galton doskasi va Gradient tushishi."
+>
+  <div class="lab-container">
+    <!-- Lab Hero Banner -->
+    <header class="lab-hero">
+      <div class="lab-badge">
+        <span class="badge-icon">🔮</span>
+        <span>Vizual Laboratoriya & Simulyatsiyalar</span>
+        <span class="badge-pill">60 FPS Interaktiv</span>
+      </div>
+      <h1 class="lab-title">Interaktiv Matematika Laboratoriyasi</h1>
+      <p class="lab-subtitle">
+        Matematika — faqat qog'ozdagi quruq formulalar emas. Bu yerda siz fazoning buralishini, integral maydonlarining tug'ilishini, ehtimollik tartibini va sun'iy intellekt qanday o'rganishini o'z qo'lingiz bilan boshqarib ko'rasiz!
+      </p>
+
+      <!-- Navigation Tabs -->
+      <div class="lab-tabs" role="tablist">
+        <button class="lab-tab active" data-tab="matrix-warp">
+          <span class="tab-icon">🌌</span>
+          <div class="tab-text">
+            <strong>Fazo Transformatori</strong>
+            <small>3Blue1Brown uslubi</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="riemann-sum">
+          <span class="tab-icon">⚡</span>
+          <div class="tab-text">
+            <strong>Riman Integrali</strong>
+            <small>Maydon slayderi</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="monte-carlo">
+          <span class="tab-icon">🎯</span>
+          <div class="tab-text">
+            <strong>Monte-Karlo π</strong>
+            <small>Ehtimollik yog'dusi</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="fourier-epicycles">
+          <span class="tab-icon">🌊</span>
+          <div class="tab-text">
+            <strong>Fure Epitsikllari</strong>
+            <small>Aylanalar garmoniyasi</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="galton-board">
+          <span class="tab-icon">🔮</span>
+          <div class="tab-text">
+            <strong>Galton Doskasi</strong>
+            <small>Normal taqsimot</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="gradient-descent">
+          <span class="tab-icon">🏔️</span>
+          <div class="tab-text">
+            <strong>Gradient Tushishi</strong>
+            <small>AI qanday o'rganadi?</small>
+          </div>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= 1. MATRIX WARP SIMULATOR ================= -->
+    <section id="panel-matrix-warp" class="sim-panel active">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🌌 2D Fazo Transformatsiyasi va Determinant</h3>
+            <span class="live-tag">Jonli 2D Canvas</span>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="matrix-canvas" width="600" height="500"></canvas>
+          </div>
+          <div class="canvas-legend">
+            <span><strong style="color: #ef4444;">— î</strong> (1, 0) yangi o'rni</span>
+            <span><strong style="color: #10b981;">— ĵ</strong> (0, 1) yangi o'rni</span>
+            <span><strong style="color: #3b82f6;">■ Parallelogramm:</strong> Determinant</span>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>Matritsa elementlari: A = [[a, b], [c, d]]</h4>
+            <div class="matrix-inputs-grid">
+              <div class="input-field">
+                <label>a (î.x):</label>
+                <input type="number" id="mat-a" value="1" step="0.5" />
+              </div>
+              <div class="input-field">
+                <label>b (ĵ.x):</label>
+                <input type="number" id="mat-b" value="1" step="0.5" />
+              </div>
+              <div class="input-field">
+                <label>c (î.y):</label>
+                <input type="number" id="mat-c" value="0" step="0.5" />
+              </div>
+              <div class="input-field">
+                <label>d (ĵ.y):</label>
+                <input type="number" id="mat-d" value="1" step="0.5" />
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>Transformatsiya animatsiyasi (t):</span>
+              <strong id="time-val">100%</strong>
+            </label>
+            <input type="range" id="time-slider" min="0" max="1" step="0.01" value="1" style="width: 100%;" />
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+              <button id="btn-animate-matrix" class="btn btn-primary" style="flex: 1;">▶ Qayta animatsiya</button>
+              <button id="btn-reset-matrix" class="btn btn-secondary">Boshlang'ich</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <h4>Mashhur Tayyor Namunalar (Presets):</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill" data-preset="shear">Siljish (Shear)</button>
+              <button class="preset-pill" data-preset="rotate45">Burish 45°</button>
+              <button class="preset-pill" data-preset="rotate90">Burish 90°</button>
+              <button class="preset-pill" data-preset="scale2">2x Cho'zish</button>
+              <button class="preset-pill" data-preset="reflect">Akslantirish (X)</button>
+              <button class="preset-pill danger-pill" data-preset="squash">Yassilash (det = 0)</button>
+            </div>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Determinant det(A):</span>
+              <strong id="mat-det-display">1</strong>
+            </div>
+            <div class="metric-row">
+              <span>Geometrik ma'no:</span>
+              <span id="mat-status-display" style="color: #10b981; font-weight: 600;">Yuz saqlanadi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Nima sodir bo'lmoqda?</h4>
+        <p>
+          Siz kiritgan har qanday 2 × 2 matritsa fazodagi barcha nuqtalarni yangi joyga ko'chiradi. 
+          Bunda eng muhim qoida: <strong>to'g'ri chiziqlar to'g'riligicha qoladi va koordinatalar boshi (0, 0) o'z o'rnida qoladi</strong>.
+          Rangli parallelogramm yuzi esa aynan <strong>Determinant</strong>ga teng! Agar det(A) = 0 bo'lsa, butun 2 o'lchamli tekislik bir zumda 1 o'lchamli chiziqqa qulab tushadi.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 2. RIEMANN SUM SIMULATOR ================= -->
+    <section id="panel-riemann-sum" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>⚡ Riman Integrali: Maydon qanday tug'iladi?</h3>
+            <span class="live-tag">Egri chiziq osti yuzi</span>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="riemann-canvas" width="600" height="500"></canvas>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>Funksiyani tanlang:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-func="parabola">f(x) = x²</button>
+              <button class="preset-pill" data-func="sin">f(x) = sin(x) + 1.2</button>
+              <button class="preset-pill" data-func="gauss">f(x) = 3·e^(-x²)</button>
+              <button class="preset-pill" data-func="poly">f(x) = x³ - 2x + 2</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>Bo'laklar soni (n ta to'rtburchak):</span>
+              <strong id="riemann-n-display">10</strong>
+            </label>
+            <input type="range" id="riemann-n-slider" min="2" max="100" value="10" style="width: 100%;" />
+          </div>
+
+          <div class="panel-section">
+            <h4>Approksimatsiya usuli:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-mode="mid">O'rta nuqta (Midpoint)</button>
+              <button class="preset-pill" data-mode="left">Chap burchak (Left)</button>
+              <button class="preset-pill" data-mode="right">O'ng burchak (Right)</button>
+              <button class="preset-pill" data-mode="trap">Trapetsiyalar usuli</button>
+            </div>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Aniq Integral (Nazariy):</span>
+              <strong id="exact-integral-display">2.6667</strong>
+            </div>
+            <div class="metric-row">
+              <span>Riman Yig'indisi:</span>
+              <strong id="approx-integral-display">2.6500</strong>
+            </div>
+            <div class="metric-row">
+              <span>Absolyut xatolik (Δ):</span>
+              <span id="error-display" style="color: #f59e0b; font-weight: 700;">0.0167</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Riman g'oyasi:</h4>
+        <p>
+          Egri chiziqli shaklning yuzini to'g'ridan-to'g'ri hisoblash qiyin. Riman ushbu yuzani juda mayda to'rtburchaklarga bo'lib chiqishni taklif qilgan. 
+          To'rtburchaklar soni n → ∞ intilganda, ularning eni Δx → 0 bo'lib, yig'indi aniq integralga aylanadi:
+          <strong>∫ f(x)dx = lim ∑ f(x_i) · Δx</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 3. MONTE CARLO PI SIMULATOR ================= -->
+    <section id="panel-monte-carlo" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🎯 Monte-Karlo: Ehtimollik orqali π ni topish</h3>
+            <span class="live-tag">Tasodifiy o'qlar</span>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="monte-canvas" width="500" height="500"></canvas>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="btn-monte-start" class="btn btn-primary" style="flex: 1;">▶ Boshlash / To'xtatish</button>
+              <button id="btn-monte-drop1000" class="btn btn-secondary">+1000 Nuqta</button>
+              <button id="btn-monte-reset" class="btn btn-secondary">Tozalash</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>Simulyatsiya tezligi:</span>
+              <strong id="monte-speed-display">50 nuqta/kadr</strong>
+            </label>
+            <input type="range" id="monte-speed-slider" min="5" max="200" value="50" style="width: 100%;" />
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Jami tashlangan nuqtalar (N):</span>
+              <strong id="monte-total">0</strong>
+            </div>
+            <div class="metric-row">
+              <span>Doira ichiga tushganlar (M):</span>
+              <strong id="monte-inside" style="color: #10b981;">0</strong>
+            </div>
+            <div class="metric-row" style="font-size: 1.15rem; border-top: 1px solid var(--border-color); padding-top: 0.5rem; margin-top: 0.5rem;">
+              <span>Hisoblangan π ≈ 4 · (M / N):</span>
+              <strong id="monte-pi-display" style="color: var(--primary);">0.00000</strong>
+            </div>
+            <div class="metric-row">
+              <span>Haqiqiy π qiymati:</span>
+              <strong>3.14159</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Monte-Karlo mohiyati:</h4>
+        <p>
+          Doira yuzi S_doira = π R², uni o'rab turgan kvadrat yuzi S_kvadrat = 4R². 
+          Ular maydonlarining nisbati aniq π / 4 ga teng. 
+          Agar kvadratga tasodifiy nuqtalar yomg'irini yog'dirsangiz, doira ichiga tushgan nuqtalar ulushi ehtimollik bo'yicha aynan π / 4 ga intiladi!
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 4. FOURIER EPICYCLES ================= -->
+    <section id="panel-fourier-epicycles" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🌊 Fure Epitsikllari: Aylanuvchi aylanalar to'lqini</h3>
+            <span class="live-tag">Trigonometrik Garmoniya</span>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="fourier-canvas" width="600" height="400"></canvas>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>To'lqin shakli:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-wave="square">Kvadrat to'lqin</button>
+              <button class="preset-pill" data-wave="sawtooth">Arrasimon (Sawtooth)</button>
+              <button class="preset-pill" data-wave="triangle">Uchburchak to'lqin</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>Garmonik aylanalar soni ($N$):</span>
+              <strong id="fourier-n-display">5 ta aylana</strong>
+            </label>
+            <input type="range" id="fourier-n-slider" min="1" max="25" value="5" style="width: 100%;" />
+          </div>
+
+          <div class="panel-section">
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="btn-fourier-pause" class="btn btn-secondary" style="flex: 1;">Pauza / Davom</button>
+            </div>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Joriy qator yoyilmasi:</span>
+              <span id="fourier-formula-display" style="font-family: var(--font-mono); font-size: 0.8rem;">y = 4/π (sin(t) + sin(3t)/3 + ...)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Jan Batist Fure kashfiyoti:</h4>
+        <p>
+          Fure isbotlaganki, har qanday davriy to'lqinni (hatto to'g'ri burchakli yoki arra shaklida bo'lsa ham) oddiy aylanma harakatlar — ya'ni <strong>sinus va kosinuslarning cheksiz yig'indisi</strong> ko'rinishida yozish mumkin.
+          Har bir aylana ma'lum chastota va amplituda bilan aylanadi, ularning birgalikdagi harakati murakkab to'lqinni chizadi!
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 5. GALTON BOARD ================= -->
+    <section id="panel-galton-board" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🔮 Galton Doskasi: Tasodifdan tartib tug'ilishi</h3>
+            <span class="live-tag">Normal (Gauss) Taqsimot</span>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="galton-canvas" width="550" height="500"></canvas>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="btn-galton-start" class="btn btn-primary" style="flex: 1;">▶ Oqimni yoqish / o'chirish</button>
+              <button id="btn-galton-drop50" class="btn btn-secondary">+50 Sharcha</button>
+              <button id="btn-galton-reset" class="btn btn-secondary">Tozalash</button>
+            </div>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Tushgan sharchalar soni:</span>
+              <strong id="galton-count">0</strong>
+            </div>
+            <div class="metric-row">
+              <span>Markaziy quti ulushi:</span>
+              <strong id="galton-center-percent">0%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Frensis Galton mo'jizasi:</h4>
+        <p>
+          Har bir sharcha mixga urilganda 50% ehtimol bilan chapga, 50% bilan o'ngga sakraydi. 
+          Garchi har bir sharchaning harakati mutlaqo tasodifiy bo'lsa-da, ularning umumiy to'plami har doim 
+          <strong>qo'ng'iroqsimon Gauss egri chizig'i</strong>ni (Normal taqsimotni) hosil qiladi!
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 6. GRADIENT DESCENT ================= -->
+    <section id="panel-gradient-descent" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🏔️ Gradient Tushishi: AI qanday minimum qidiradi?</h3>
+            <span class="live-tag">Interaktiv Kontur Xaritasi</span>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="gradient-canvas" width="550" height="500"></canvas>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem;">
+            👆 <em>Xaritaning ixtiyoriy joyiga bosing — sharcha gradient bo'yicha pastga qarab sirpanadi!</em>
+          </p>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>Relyef / Xatolik sirti:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-surface="bowl">Kosadek botiq (x² + y²)</button>
+              <button class="preset-pill" data-surface="saddle">Egar sirt (x² - y²)</button>
+              <button class="preset-pill" data-surface="wells">Ikkita chuqurlik (Double Well)</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>O'rganish tezligi (Learning rate α):</span>
+              <strong id="grad-lr-display">0.1</strong>
+            </label>
+            <input type="range" id="grad-lr-slider" min="0.01" max="0.5" step="0.01" value="0.1" style="width: 100%;" />
+          </div>
+
+          <div class="panel-section">
+            <button id="btn-grad-reset" class="btn btn-secondary" style="width: 100%;">Tarixni tozalash</button>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Joriy nuqta (x, y):</span>
+              <strong id="grad-pos">(0.00, 0.00)</strong>
+            </div>
+            <div class="metric-row">
+              <span>Funksiya qiymati f(x, y):</span>
+              <strong id="grad-val">0.00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Sun'iy intellekt va Neyron to'rlar poydevori:</h4>
+        <p>
+          Zamonaviy AI (ChatGPT, Gemini, haydovchisiz mashinalar) o'rganish jarayonida xatolik funksiyasini minimallashtiradi. 
+          Gradient ∇f funksiyaning eng tez o'sish yo'nalishini ko'rsatadi. 
+          Shuning uchun unga qarama-qarshi tomonga qadam tashlash — <strong>Antigradient yo'nalishi</strong> eng pastki nuqtaga (minimal xatolikka) olib boradi!
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .lab-container {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .lab-hero {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lab-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(236, 72, 153, 0.1);
+    color: #ec4899;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge-pill {
+    background: #ec4899;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .lab-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
+
+  .lab-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 840px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Lab Tab Bar */
+  .lab-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.5rem;
+    background: var(--bg-muted);
+    padding: 0.4rem;
+    border-radius: var(--radius-md);
+  }
+
+  .lab-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease;
+  }
+
+  .lab-tab:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  :global([data-theme="dark"]) .lab-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .lab-tab.active {
+    background: var(--bg-surface);
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .tab-icon {
+    font-size: 1.4rem;
+  }
+
+  .tab-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .tab-text strong {
+    font-size: 0.85rem;
+  }
+
+  .tab-text small {
+    font-size: 0.7rem;
+    color: var(--text-subtle);
+  }
+
+  /* Panels */
+  .sim-panel {
+    display: none;
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  .sim-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .sim-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 960px) {
+    .sim-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Canvas card */
+  .canvas-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .canvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .canvas-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .live-tag {
+    font-size: 0.75rem;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .canvas-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-muted);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+
+  canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .canvas-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    font-size: 0.82rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+    color: var(--text-muted);
+  }
+
+  /* Controls card */
+  .controls-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .panel-section h4 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.6rem;
+  }
+
+  .control-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.35rem;
+  }
+
+  .matrix-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .input-field {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .input-field input {
+    width: 100%;
+    padding: 0.45rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text-main);
+    font-weight: 700;
+  }
+
+  .presets-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .preset-pill {
+    padding: 0.35rem 0.65rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .preset-pill:hover, .preset-pill.active {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .danger-pill:hover {
+    border-color: #dc2626 !important;
+    background: rgba(220, 38, 38, 0.1) !important;
+    color: #dc2626 !important;
+  }
+
+  .metrics-box {
+    background: var(--bg-muted);
+    border-radius: var(--radius-md);
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+  }
+
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+  }
+
+  .metric-row strong {
+    color: var(--text-main);
+  }
+
+  /* Theory card */
+  .theory-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .theory-card h4 {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+  }
+</style>
+
+<script>
+  function initLaboratory() {
+    // 1. Tab Navigation
+    const tabs = document.querySelectorAll('.lab-tab');
+    const panels = document.querySelectorAll('.sim-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        const targetId = 'panel-' + tab.getAttribute('data-tab');
+        document.getElementById(targetId)?.classList.add('active');
+
+        // Trigger resize / redraw
+        window.dispatchEvent(new Event('resize'));
+      });
+    });
+
+    // ==============================================================
+    // SIMULATION 1: 3BLUE1BROWN MATRIX WARP
+    // ==============================================================
+    const matCanvas = document.getElementById('matrix-canvas') as HTMLCanvasElement | null;
+    if (matCanvas) {
+      const ctx = matCanvas.getContext('2d')!;
+      let a = 1, b = 1, c = 0, d = 1;
+      let animProgress = 1;
+      let animId: number | null = null;
+
+      const inputA = document.getElementById('mat-a') as HTMLInputElement;
+      const inputB = document.getElementById('mat-b') as HTMLInputElement;
+      const inputC = document.getElementById('mat-c') as HTMLInputElement;
+      const inputD = document.getElementById('mat-d') as HTMLInputElement;
+      const sliderT = document.getElementById('time-slider') as HTMLInputElement;
+      const timeVal = document.getElementById('time-val');
+      const detDisplay = document.getElementById('mat-det-display');
+      const statusDisplay = document.getElementById('mat-status-display');
+
+      function updateMatrixVals() {
+        a = parseFloat(inputA.value) || 0;
+        b = parseFloat(inputB.value) || 0;
+        c = parseFloat(inputC.value) || 0;
+        d = parseFloat(inputD.value) || 0;
+
+        const det = a * d - b * c;
+        if (detDisplay) detDisplay.textContent = det.toFixed(2);
+        if (statusDisplay) {
+          if (Math.abs(det) < 1e-4) {
+            statusDisplay.textContent = 'Yassilanadi (1D chiziqqa qulaydi)';
+            statusDisplay.style.color = '#ef4444';
+          } else if (det < 0) {
+            statusDisplay.textContent = 'Fazo to\'ntariladi (Akslanish)';
+            statusDisplay.style.color = '#f59e0b';
+          } else {
+            statusDisplay.textContent = `Maydon ${det.toFixed(2)}x o'zgaradi`;
+            statusDisplay.style.color = '#10b981';
+          }
+        }
+        drawMatrixWarp();
+      }
+
+      function drawMatrixWarp() {
+        const width = matCanvas.width;
+        const height = matCanvas.height;
+        const cx = width / 2;
+        const cy = height / 2;
+        const scale = 50; // pixels per unit
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Interpolated matrix: M(t) = (1-t) * I + t * A
+        const t = animProgress;
+        const ma = 1 + (a - 1) * t;
+        const mb = 0 + b * t;
+        const mc = 0 + c * t;
+        const md = 1 + (d - 1) * t;
+
+        // Transform point helper
+        function tf(x: number, y: number) {
+          const tx = ma * x + mb * y;
+          const ty = mc * x + md * y;
+          return {
+            px: cx + tx * scale,
+            py: cy - ty * scale
+          };
+        }
+
+        // Draw original faint grid
+        ctx.strokeStyle = 'rgba(150, 150, 150, 0.15)';
+        ctx.lineWidth = 1;
+        for (let i = -8; i <= 8; i++) {
+          ctx.beginPath();
+          ctx.moveTo(cx + i * scale, 0);
+          ctx.lineTo(cx + i * scale, height);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(0, cy + i * scale);
+          ctx.lineTo(width, cy + i * scale);
+          ctx.stroke();
+        }
+
+        // Draw Transformed Grid Lines
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.45)';
+        ctx.lineWidth = 1.2;
+
+        const range = 8;
+        // Transformed vertical lines
+        for (let x = -range; x <= range; x++) {
+          const p1 = tf(x, -range);
+          const p2 = tf(x, range);
+          ctx.beginPath();
+          ctx.moveTo(p1.px, p1.py);
+          ctx.lineTo(p2.px, p2.py);
+          ctx.stroke();
+        }
+        // Transformed horizontal lines
+        for (let y = -range; y <= range; y++) {
+          const p1 = tf(-range, y);
+          const p2 = tf(range, y);
+          ctx.beginPath();
+          ctx.moveTo(p1.px, p1.py);
+          ctx.lineTo(p2.px, p2.py);
+          ctx.stroke();
+        }
+
+        // Shaded Unit Parallelogram (Determinant visualization)
+        const p00 = tf(0, 0);
+        const p10 = tf(1, 0);
+        const p11 = tf(1, 1);
+        const p01 = tf(0, 1);
+
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.28)';
+        ctx.beginPath();
+        ctx.moveTo(p00.px, p00.py);
+        ctx.lineTo(p10.px, p10.py);
+        ctx.lineTo(p11.px, p11.py);
+        ctx.lineTo(p01.px, p01.py);
+        ctx.closePath();
+        ctx.fill();
+
+        // Main coordinate axes
+        ctx.strokeStyle = 'rgba(100, 100, 100, 0.6)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, cy);
+        ctx.lineTo(width, cy);
+        ctx.moveTo(cx, 0);
+        ctx.lineTo(cx, height);
+        ctx.stroke();
+
+        // Draw Basis Vector î (Red)
+        drawArrow(ctx, p00.px, p00.py, p10.px, p10.py, '#ef4444', 3.5);
+        // Draw Basis Vector ĵ (Green)
+        drawArrow(ctx, p00.px, p00.py, p01.px, p01.py, '#10b981', 3.5);
+      }
+
+      function drawArrow(ctx: CanvasRenderingContext2D, fromx: number, fromy: number, tox: number, toy: number, color: string, width: number) {
+        const headlen = 10;
+        const dx = tox - fromx;
+        const dy = toy - fromy;
+        const angle = Math.atan2(dy, dx);
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = width;
+
+        ctx.beginPath();
+        ctx.moveTo(fromx, fromy);
+        ctx.lineTo(tox, toy);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(tox, toy);
+        ctx.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+        ctx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      [inputA, inputB, inputC, inputD].forEach(inp => {
+        inp?.addEventListener('input', updateMatrixVals);
+      });
+
+      sliderT?.addEventListener('input', () => {
+        animProgress = parseFloat(sliderT.value);
+        if (timeVal) timeVal.textContent = Math.round(animProgress * 100) + '%';
+        drawMatrixWarp();
+      });
+
+      document.getElementById('btn-animate-matrix')?.addEventListener('click', () => {
+        if (animId) cancelAnimationFrame(animId);
+        animProgress = 0;
+        const startTime = performance.now();
+        const duration = 1200; // ms
+
+        function step(now: number) {
+          const elapsed = now - startTime;
+          const rawP = Math.min(1, elapsed / duration);
+          // Ease out cubic
+          animProgress = 1 - Math.pow(1 - rawP, 3);
+          if (sliderT) sliderT.value = animProgress.toString();
+          if (timeVal) timeVal.textContent = Math.round(animProgress * 100) + '%';
+          drawMatrixWarp();
+          if (rawP < 1) animId = requestAnimationFrame(step);
+        }
+        animId = requestAnimationFrame(step);
+      });
+
+      document.getElementById('btn-reset-matrix')?.addEventListener('click', () => {
+        inputA.value = '1'; inputB.value = '0';
+        inputC.value = '0'; inputD.value = '1';
+        sliderT.value = '1';
+        animProgress = 1;
+        if (timeVal) timeVal.textContent = '100%';
+        updateMatrixVals();
+      });
+
+      // Presets
+      document.querySelectorAll('#panel-matrix-warp .preset-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-preset');
+          if (type === 'shear') { inputA.value = '1'; inputB.value = '1'; inputC.value = '0'; inputD.value = '1'; }
+          if (type === 'rotate45') {
+            const val = (Math.SQRT2 / 2).toFixed(2);
+            inputA.value = val; inputB.value = (-val).toString(); inputC.value = val; inputD.value = val;
+          }
+          if (type === 'rotate90') { inputA.value = '0'; inputB.value = '-1'; inputC.value = '1'; inputD.value = '0'; }
+          if (type === 'scale2') { inputA.value = '2'; inputB.value = '0'; inputC.value = '0'; inputD.value = '2'; }
+          if (type === 'reflect') { inputA.value = '1'; inputB.value = '0'; inputC.value = '0'; inputD.value = '-1'; }
+          if (type === 'squash') { inputA.value = '1'; inputB.value = '2'; inputC.value = '0.5'; inputD.value = '1'; } // det = 0
+
+          updateMatrixVals();
+          document.getElementById('btn-animate-matrix')?.click();
+        });
+      });
+
+      updateMatrixVals();
+    }
+
+    // ==============================================================
+    // SIMULATION 2: RIEMANN SUMS
+    // ==============================================================
+    const rCanvas = document.getElementById('riemann-canvas') as HTMLCanvasElement | null;
+    if (rCanvas) {
+      const ctx = rCanvas.getContext('2d')!;
+      let currentFunc = 'parabola';
+      let currentMode = 'mid';
+      let n = 10;
+      const a = 0;
+      const b = 2;
+
+      function fn(x: number): number {
+        if (currentFunc === 'parabola') return x * x;
+        if (currentFunc === 'sin') return Math.sin(x) + 1.2;
+        if (currentFunc === 'gauss') return 3 * Math.exp(-x * x);
+        if (currentFunc === 'poly') return x * x * x - 2 * x + 2.5;
+        return x * x;
+      }
+
+      function exactIntegral(): number {
+        if (currentFunc === 'parabola') return (b * b * b - a * a * a) / 3;
+        if (currentFunc === 'sin') return (-Math.cos(b) + 1.2 * b) - (-Math.cos(a) + 1.2 * a);
+        if (currentFunc === 'gauss') return 2.65868; // numerical on [0, 2]
+        if (currentFunc === 'poly') return (Math.pow(b, 4)/4 - b*b + 2.5*b) - (Math.pow(a, 4)/4 - a*a + 2.5*a);
+        return 8 / 3;
+      }
+
+      function drawRiemann() {
+        const w = rCanvas.width;
+        const h = rCanvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const padX = 50;
+        const padY = 50;
+        const plotW = w - padX * 2;
+        const plotH = h - padY * 2;
+        const maxY = 4.5;
+
+        function toPx(x: number, y: number) {
+          return {
+            x: padX + ((x - a) / (b - a)) * plotW,
+            y: h - padY - (y / maxY) * plotH
+          };
+        }
+
+        // Draw Axes
+        ctx.strokeStyle = 'rgba(150, 150, 150, 0.4)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(padX, h - padY);
+        ctx.lineTo(w - padX + 20, h - padY);
+        ctx.moveTo(padX, h - padY);
+        ctx.lineTo(padX, 20);
+        ctx.stroke();
+
+        // Calculate Riemann Sum
+        const dx = (b - a) / n;
+        let sum = 0;
+
+        // Draw Rectangles
+        ctx.fillStyle = 'rgba(37, 99, 235, 0.35)';
+        ctx.strokeStyle = 'rgba(37, 99, 235, 0.8)';
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < n; i++) {
+          const xLeft = a + i * dx;
+          const xRight = xLeft + dx;
+          let evalX = xLeft;
+          if (currentMode === 'mid') evalX = xLeft + dx / 2;
+          if (currentMode === 'right') evalX = xRight;
+
+          const yVal = fn(evalX);
+          sum += yVal * dx;
+
+          const pL = toPx(xLeft, yVal);
+          const pR = toPx(xRight, 0);
+
+          if (currentMode === 'trap') {
+            const yL = fn(xLeft);
+            const yR = fn(xRight);
+            const ptL = toPx(xLeft, yL);
+            const ptR = toPx(xRight, yR);
+            const ptBL = toPx(xLeft, 0);
+            const ptBR = toPx(xRight, 0);
+
+            ctx.beginPath();
+            ctx.moveTo(ptBL.x, ptBL.y);
+            ctx.lineTo(ptL.x, ptL.y);
+            ctx.lineTo(ptR.x, ptR.y);
+            ctx.lineTo(ptBR.x, ptBR.y);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+          } else {
+            ctx.fillRect(pL.x, pL.y, pR.x - pL.x, h - padY - pL.y);
+            ctx.strokeRect(pL.x, pL.y, pR.x - pL.x, h - padY - pL.y);
+          }
+        }
+
+        if (currentMode === 'trap') {
+          // Trapezoid sum = dx * (f(a)/2 + sum + f(b)/2)
+          sum = 0;
+          for (let i = 0; i < n; i++) {
+            sum += ((fn(a + i * dx) + fn(a + (i + 1) * dx)) / 2) * dx;
+          }
+        }
+
+        // Draw Smooth Function Curve
+        ctx.strokeStyle = '#ef4444';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        for (let px = 0; px <= plotW; px += 2) {
+          const xVal = a + (px / plotW) * (b - a);
+          const yVal = fn(xVal);
+          const pt = toPx(xVal, yVal);
+          if (px === 0) ctx.moveTo(pt.x, pt.y);
+          else ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.stroke();
+
+        // Update displays
+        const exact = exactIntegral();
+        const err = Math.abs(exact - sum);
+        const exDisplay = document.getElementById('exact-integral-display');
+        const apDisplay = document.getElementById('approx-integral-display');
+        const errDisplay = document.getElementById('error-display');
+
+        if (exDisplay) exDisplay.textContent = exact.toFixed(4);
+        if (apDisplay) apDisplay.textContent = sum.toFixed(4);
+        if (errDisplay) errDisplay.textContent = err.toFixed(4);
+      }
+
+      const nSlider = document.getElementById('riemann-n-slider') as HTMLInputElement;
+      const nDisplay = document.getElementById('riemann-n-display');
+      nSlider?.addEventListener('input', () => {
+        n = parseInt(nSlider.value);
+        if (nDisplay) nDisplay.textContent = n.toString();
+        drawRiemann();
+      });
+
+      document.querySelectorAll('#panel-riemann-sum [data-func]').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#panel-riemann-sum [data-func]').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          currentFunc = b.getAttribute('data-func') || 'parabola';
+          drawRiemann();
+        });
+      });
+
+      document.querySelectorAll('#panel-riemann-sum [data-mode]').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#panel-riemann-sum [data-mode]').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          currentMode = b.getAttribute('data-mode') || 'mid';
+          drawRiemann();
+        });
+      });
+
+      drawRiemann();
+    }
+
+    // ==============================================================
+    // SIMULATION 3: MONTE CARLO PI
+    // ==============================================================
+    const mCanvas = document.getElementById('monte-canvas') as HTMLCanvasElement | null;
+    if (mCanvas) {
+      const ctx = mCanvas.getContext('2d')!;
+      let total = 0;
+      let inside = 0;
+      let isRunning = false;
+      let animId: number | null = null;
+      let speed = 50;
+
+      function drawInitialMonte() {
+        const w = mCanvas.width;
+        ctx.clearRect(0, 0, w, w);
+        ctx.strokeStyle = '#3b82f6';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(0, 0, w, w);
+
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.arc(0, w, w, -Math.PI / 2, 0); // Quarter circle
+        ctx.stroke();
+      }
+
+      function addDarts(count: number) {
+        const w = mCanvas.width;
+        for (let i = 0; i < count; i++) {
+          const x = Math.random();
+          const y = Math.random();
+          const distSq = x * x + y * y;
+          const isInside = distSq <= 1;
+
+          total++;
+          if (isInside) inside++;
+
+          ctx.fillStyle = isInside ? '#10b981' : '#ef4444';
+          ctx.beginPath();
+          ctx.arc(x * w, (1 - y) * w, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        const estPi = total > 0 ? (4 * inside) / total : 0;
+        const totEl = document.getElementById('monte-total');
+        const inEl = document.getElementById('monte-inside');
+        const piEl = document.getElementById('monte-pi-display');
+
+        if (totEl) totEl.textContent = total.toLocaleString();
+        if (inEl) inEl.textContent = inside.toLocaleString();
+        if (piEl) piEl.textContent = estPi.toFixed(5);
+      }
+
+      function loop() {
+        if (!isRunning) return;
+        addDarts(speed);
+        animId = requestAnimationFrame(loop);
+      }
+
+      document.getElementById('btn-monte-start')?.addEventListener('click', () => {
+        isRunning = !isRunning;
+        if (isRunning) loop();
+        else if (animId) cancelAnimationFrame(animId);
+      });
+
+      document.getElementById('btn-monte-drop1000')?.addEventListener('click', () => {
+        addDarts(1000);
+      });
+
+      document.getElementById('btn-monte-reset')?.addEventListener('click', () => {
+        isRunning = false;
+        if (animId) cancelAnimationFrame(animId);
+        total = 0;
+        inside = 0;
+        drawInitialMonte();
+        addDarts(0);
+      });
+
+      const spSlider = document.getElementById('monte-speed-slider') as HTMLInputElement;
+      const spDisplay = document.getElementById('monte-speed-display');
+      spSlider?.addEventListener('input', () => {
+        speed = parseInt(spSlider.value);
+        if (spDisplay) spDisplay.textContent = speed + ' nuqta/kadr';
+      });
+
+      drawInitialMonte();
+    }
+
+    // ==============================================================
+    // SIMULATION 4: FOURIER EPICYCLES
+    // ==============================================================
+    const fCanvas = document.getElementById('fourier-canvas') as HTMLCanvasElement | null;
+    if (fCanvas) {
+      const ctx = fCanvas.getContext('2d')!;
+      let time = 0;
+      let wave: number[] = [];
+      let numHarmonics = 5;
+      let waveType = 'square';
+      let isPaused = false;
+      let fAnimId: number | null = null;
+
+      function renderFourier() {
+        if (isPaused) {
+          fAnimId = requestAnimationFrame(renderFourier);
+          return;
+        }
+
+        const w = fCanvas.width;
+        const h = fCanvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const originX = 140;
+        const originY = h / 2;
+        let x = originX;
+        let y = originY;
+
+        for (let i = 0; i < numHarmonics; i++) {
+          const prevx = x;
+          const prevy = y;
+          let n = i * 2 + 1; // square wave default
+          let radius = 60 * (4 / (n * Math.PI));
+
+          if (waveType === 'sawtooth') {
+            n = i + 1;
+            radius = 50 * (2 / (n * Math.PI)) * Math.pow(-1, n + 1);
+          } else if (waveType === 'triangle') {
+            n = i * 2 + 1;
+            radius = 70 * (8 / (n * n * Math.PI * Math.PI)) * Math.pow(-1, (n - 1) / 2);
+          }
+
+          x += radius * Math.cos(n * time);
+          y += radius * Math.sin(n * time);
+
+          // Epicycle circle
+          ctx.strokeStyle = 'rgba(150, 150, 150, 0.3)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(prevx, prevy, Math.abs(radius), 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Epicycle radius arm
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.7)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(prevx, prevy);
+          ctx.lineTo(x, y);
+          ctx.stroke();
+        }
+
+        wave.unshift(y);
+        if (wave.length > 350) wave.pop();
+
+        // Horizontal connecting pointer line
+        const waveStartX = 320;
+        ctx.strokeStyle = 'rgba(239, 68, 68, 0.6)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(waveStartX, wave[0]);
+        ctx.stroke();
+
+        // Draw Synthesized Waveform
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (let i = 0; i < wave.length; i++) {
+          const px = waveStartX + i;
+          const py = wave[i];
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+
+        time += 0.035;
+        fAnimId = requestAnimationFrame(renderFourier);
+      }
+
+      const fSlider = document.getElementById('fourier-n-slider') as HTMLInputElement;
+      const fDisplay = document.getElementById('fourier-n-display');
+      fSlider?.addEventListener('input', () => {
+        numHarmonics = parseInt(fSlider.value);
+        if (fDisplay) fDisplay.textContent = numHarmonics + ' ta aylana';
+      });
+
+      document.querySelectorAll('#panel-fourier-epicycles [data-wave]').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#panel-fourier-epicycles [data-wave]').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          waveType = b.getAttribute('data-wave') || 'square';
+          wave = [];
+        });
+      });
+
+      document.getElementById('btn-fourier-pause')?.addEventListener('click', () => {
+        isPaused = !isPaused;
+      });
+
+      fAnimId = requestAnimationFrame(renderFourier);
+    }
+
+    // ==============================================================
+    // SIMULATION 5: GALTON BOARD
+    // ==============================================================
+    const gCanvas = document.getElementById('galton-canvas') as HTMLCanvasElement | null;
+    if (gCanvas) {
+      const ctx = gCanvas.getContext('2d')!;
+      const rows = 9;
+      const bins = new Array(rows + 1).fill(0);
+      let totalBalls = 0;
+      let isGaltonStream = false;
+      let gAnimId: number | null = null;
+
+      interface Ball {
+        x: number;
+        y: number;
+        row: number;
+        col: number;
+        finished: boolean;
+      }
+      let balls: Ball[] = [];
+
+      function drawGalton() {
+        const w = gCanvas.width;
+        const h = gCanvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const startX = w / 2;
+        const startY = 40;
+        const spacingX = 36;
+        const spacingY = 32;
+
+        // Draw Pegs (Nails)
+        ctx.fillStyle = '#94a3b8';
+        for (let r = 0; r < rows; r++) {
+          const numPegs = r + 1;
+          const rowStartX = startX - (r * spacingX) / 2;
+          for (let p = 0; p < numPegs; p++) {
+            const px = rowStartX + p * spacingX;
+            const py = startY + r * spacingY;
+            ctx.beginPath();
+            ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Draw Bins Bar Chart
+        const binW = spacingX - 4;
+        const binStartY = startY + rows * spacingY + 20;
+        const maxBinHeight = 140;
+        const maxVal = Math.max(...bins, 10);
+
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
+        ctx.strokeStyle = '#3b82f6';
+        ctx.lineWidth = 1;
+
+        for (let b = 0; b <= rows; b++) {
+          const bx = startX - (rows * spacingX) / 2 + b * spacingX;
+          const barH = (bins[b] / maxVal) * maxBinHeight;
+          ctx.fillRect(bx - binW / 2, h - barH - 10, binW, barH);
+          ctx.strokeRect(bx - binW / 2, h - barH - 10, binW, barH);
+        }
+
+        // Update active falling balls
+        for (let i = balls.length - 1; i >= 0; i--) {
+          const ball = balls[i];
+          if (!ball.finished) {
+            ctx.fillStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            ball.y += 4;
+            const targetY = startY + ball.row * spacingY;
+            if (ball.y >= targetY && ball.row < rows) {
+              const goesRight = Math.random() < 0.5;
+              if (goesRight) ball.col += 1;
+              ball.row += 1;
+              const nextStartX = startX - (ball.row * spacingX) / 2;
+              ball.x = nextStartX + ball.col * spacingX;
+            } else if (ball.row >= rows) {
+              ball.finished = true;
+              bins[ball.col]++;
+              totalBalls++;
+              balls.splice(i, 1);
+            }
+          }
+        }
+
+        // Theoretical Bell Curve Overlay
+        if (totalBalls > 20) {
+          ctx.strokeStyle = '#10b981';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          for (let b = 0; b <= rows; b++) {
+            const bx = startX - (rows * spacingX) / 2 + b * spacingX;
+            // Binomial distribution pmf approximation
+            const p = 0.5;
+            const n = rows;
+            const k = b;
+            const coef = factorial(n) / (factorial(k) * factorial(n - k));
+            const prob = coef * Math.pow(p, k) * Math.pow(1 - p, n - k);
+            const curveH = (prob * totalBalls / maxVal) * maxBinHeight;
+            const cy = h - curveH - 10;
+            if (b === 0) ctx.moveTo(bx, cy);
+            else ctx.lineTo(bx, cy);
+          }
+          ctx.stroke();
+        }
+
+        // Update Counter
+        const cEl = document.getElementById('galton-count');
+        const cpEl = document.getElementById('galton-center-percent');
+        if (cEl) cEl.textContent = totalBalls.toString();
+        if (cpEl && totalBalls > 0) {
+          const midBin = Math.floor(rows / 2);
+          const percent = ((bins[midBin] / totalBalls) * 100).toFixed(1);
+          cpEl.textContent = percent + '%';
+        }
+
+        if (isGaltonStream && Math.random() < 0.3) {
+          balls.push({ x: startX, y: 15, row: 0, col: 0, finished: false });
+        }
+
+        gAnimId = requestAnimationFrame(drawGalton);
+      }
+
+      function factorial(n: number): number {
+        if (n <= 1) return 1;
+        let r = 1;
+        for (let i = 2; i <= n; i++) r *= i;
+        return r;
+      }
+
+      document.getElementById('btn-galton-start')?.addEventListener('click', () => {
+        isGaltonStream = !isGaltonStream;
+      });
+
+      document.getElementById('btn-galton-drop50')?.addEventListener('click', () => {
+        const startX = gCanvas.width / 2;
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => {
+            balls.push({ x: startX, y: 15, row: 0, col: 0, finished: false });
+          }, i * 35);
+        }
+      });
+
+      document.getElementById('btn-galton-reset')?.addEventListener('click', () => {
+        bins.fill(0);
+        balls = [];
+        totalBalls = 0;
+      });
+
+      gAnimId = requestAnimationFrame(drawGalton);
+    }
+
+    // ==============================================================
+    // SIMULATION 6: GRADIENT DESCENT
+    // ==============================================================
+    const gdCanvas = document.getElementById('gradient-canvas') as HTMLCanvasElement | null;
+    if (gdCanvas) {
+      const ctx = gdCanvas.getContext('2d')!;
+      let curSurface = 'bowl';
+      let lr = 0.1;
+      let path: { x: number; y: number }[] = [];
+      let isOptimizing = false;
+
+      function surfaceF(x: number, y: number): number {
+        if (curSurface === 'bowl') return x * x + y * y;
+        if (curSurface === 'saddle') return x * x - y * y;
+        if (curSurface === 'wells') return Math.pow(x * x + y - 11, 2) + Math.pow(x + y * y - 7, 2); // Himmelblau function
+        return x * x + y * y;
+      }
+
+      function gradF(x: number, y: number): { dx: number; dy: number } {
+        const eps = 1e-5;
+        const dx = (surfaceF(x + eps, y) - surfaceF(x - eps, y)) / (2 * eps);
+        const dy = (surfaceF(x, y + eps) - surfaceF(x, y - eps)) / (2 * eps);
+        return { dx, dy };
+      }
+
+      function drawGradientLandscape() {
+        const w = gdCanvas.width;
+        const h = gdCanvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const range = curSurface === 'wells' ? 5 : 3;
+
+        // Draw Contour Heatmap
+        const step = 8;
+        for (let px = 0; px < w; px += step) {
+          for (let py = 0; py < h; py += step) {
+            const x = ((px - w / 2) / (w / 2)) * range;
+            const y = -((py - h / 2) / (h / 2)) * range;
+            const val = surfaceF(x, y);
+
+            // Normalized heat color
+            const norm = Math.min(1, Math.max(0, val / (curSurface === 'wells' ? 120 : 12)));
+            const r = Math.round(30 + norm * 200);
+            const g = Math.round(50 + (1 - norm) * 150);
+            const b = Math.round(180 * (1 - norm));
+
+            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+            ctx.fillRect(px, py, step, step);
+          }
+        }
+
+        // Draw Axes
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(w / 2, 0); ctx.lineTo(w / 2, h);
+        ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2);
+        ctx.stroke();
+
+        // Draw Optimization Path
+        if (path.length > 0) {
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          for (let i = 0; i < path.length; i++) {
+            const pt = path[i];
+            const px = w / 2 + (pt.x / range) * (w / 2);
+            const py = h / 2 - (pt.y / range) * (h / 2);
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.stroke();
+
+          // Current Ball Position
+          const last = path[path.length - 1];
+          const lx = w / 2 + (last.x / range) * (w / 2);
+          const ly = h / 2 - (last.y / range) * (h / 2);
+
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath();
+          ctx.arc(lx, ly, 6, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Update Displays
+          const posEl = document.getElementById('grad-pos');
+          const valEl = document.getElementById('grad-val');
+          if (posEl) posEl.textContent = `(${last.x.toFixed(2)}, ${last.y.toFixed(2)})`;
+          if (valEl) valEl.textContent = surfaceF(last.x, last.y).toFixed(3);
+        }
+      }
+
+      function stepDescent() {
+        if (!isOptimizing || path.length === 0) return;
+        const current = path[path.length - 1];
+        const g = gradF(current.x, current.y);
+        const gradMag = Math.hypot(g.dx, g.dy);
+
+        if (gradMag < 1e-3 || path.length > 300) {
+          isOptimizing = false;
+          return;
+        }
+
+        const nextX = current.x - lr * g.dx;
+        const nextY = current.y - lr * g.dy;
+        path.push({ x: nextX, y: nextY });
+
+        drawGradientLandscape();
+        setTimeout(stepDescent, 35);
+      }
+
+      gdCanvas.addEventListener('click', (e) => {
+        const rect = gdCanvas.getBoundingClientRect();
+        const px = e.clientX - rect.left;
+        const py = e.clientY - rect.top;
+        const range = curSurface === 'wells' ? 5 : 3;
+
+        const x = ((px - gdCanvas.width / 2) / (gdCanvas.width / 2)) * range;
+        const y = -((py - gdCanvas.height / 2) / (gdCanvas.height / 2)) * range;
+
+        path = [{ x, y }];
+        isOptimizing = true;
+        stepDescent();
+      });
+
+      document.querySelectorAll('#panel-gradient-descent [data-surface]').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#panel-gradient-descent [data-surface]').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          curSurface = b.getAttribute('data-surface') || 'bowl';
+          path = [];
+          isOptimizing = false;
+          drawGradientLandscape();
+        });
+      });
+
+      const lrSlider = document.getElementById('grad-lr-slider') as HTMLInputElement;
+      const lrDisplay = document.getElementById('grad-lr-display');
+      lrSlider?.addEventListener('input', () => {
+        lr = parseFloat(lrSlider.value);
+        if (lrDisplay) lrDisplay.textContent = lr.toString();
+      });
+
+      document.getElementById('btn-grad-reset')?.addEventListener('click', () => {
+        path = [];
+        isOptimizing = false;
+        drawGradientLandscape();
+      });
+
+      drawGradientLandscape();
+    }
+  }
+
+  initLaboratory();
+  document.addEventListener('astro:page-load', initLaboratory);
+  document.addEventListener('astro:after-swap', initLaboratory);
+</script>

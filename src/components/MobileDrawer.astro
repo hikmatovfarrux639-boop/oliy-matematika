@@ -46,6 +46,12 @@ const currentPath = Astro.url.pathname;
             <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">Yangi</span>
           </a>
         </li>
+        <li class={`module-nav-item ${currentPath === '/laboratoriya' ? 'active' : ''}`} style="border-left: 3px solid #ec4899;">
+          <a href="/laboratoriya" style="color: #ec4899; font-weight: 700;">
+            <span>🔮 Vizual Laboratoriya</span>
+            <span style="font-size: 0.65rem; background: #ec4899; color: white; padding: 0.1rem 0.35rem; border-radius: 4px; margin-left: auto;">WOW</span>
+          </a>
+        </li>
         <li class={`module-nav-item ${currentPath === '/grafik' ? 'active' : ''}`}>
           <a href="/grafik">📈 Grafik chizgich</a>
         </li>
