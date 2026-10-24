@@ -73,21 +73,27 @@ $$
 ## 3. Fazodagi asosiy burchaklar va o'zaro joylashuvlar
 
 1. **Ikki tekislik orasidagi burchak ($\vec{n}_1$ va $\vec{n}_2$):**
-   $$
+   
+$$
    \cos\varphi = \frac{|A_1 A_2 + B_1 B_2 + C_1 C_2|}{\sqrt{A_1^2+B_1^2+C_1^2}\sqrt{A_2^2+B_2^2+C_2^2}}
-   $$
+   
+$$
    - Perpendikulyarlik sharti: $A_1 A_2 + B_1 B_2 + C_1 C_2 = 0$.
    - Parallellik sharti: $\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}$.
 
 2. **Ikki to'g'ri chiziq orasidagi burchak ($\vec{s}_1$ va $\vec{s}_2$):**
-   $$
+   
+$$
    \cos\varphi = \frac{|m_1 m_2 + n_1 n_2 + p_1 p_2|}{\|\vec{s}_1\| \cdot \|\vec{s}_2\|}
-   $$
+   
+$$
 
 3. **To'g'ri chiziq ($\vec{s}$) va Tekislik ($\vec{n}$) orasidagi burchak:**
-   $$
+   
+$$
    \sin\theta = \frac{|A m + B n + C p|}{\sqrt{A^2+B^2+C^2}\sqrt{m^2+n^2+p^2}}
-   $$
+   
+$$
    *(Diqqat: Normal tekislikka perpendikulyar bo'lgani sababli burchak **sinus** orqali topiladi!)*
 
 ---
@@ -101,9 +107,11 @@ To'g'ri chiziq ustidagi nuqta: $M_1(2, 1, -3)$, yo'naltiruvchi vektor: $\vec{s} 
 1. $\vec{M_1 M_0}$ vektorni topamiz:
    $$\vec{M_1 M_0} = (1 - 2; \, 2 - 1; \, -1 - (-3)) = (-1, 1, 2)$$
 2. Vektor ko'paytmani hisoblaymiz:
-   $$
+   
+$$
    \vec{M_1 M_0} \times \vec{s} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -1 & 1 & 2 \\ 1 & 2 & -2 \end{vmatrix}
-   $$
+   
+$$
    $$= \vec{i}(-2 - 4) - \vec{j}(2 - 2) + \vec{k}(-2 - 1) = -6\vec{i} - 0\vec{j} - 3\vec{k} = (-6, 0, -3)$$
 3. Modullarni hisoblaymiz:
    $$|\vec{M_1 M_0} \times \vec{s}| = \sqrt{(-6)^2 + 0^2 + (-3)^2} = \sqrt{36 + 9} = \sqrt{45} = 3\sqrt{5}$$

@@ -42,9 +42,11 @@ Uzluksiz $(X, Y)$ tasodifiy vektor uchun **birgalikdagi ehtimollik zichligi** $f
 - $f(x, y) \ge 0$;
 - **Normalash sharti:** $\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f(x, y) dx dy = 1$;
 - **Chetki zichliklar:**
-  $$
+  
+$$
   f_X(x) = \int_{-\infty}^{+\infty} f(x, y) dy, \qquad f_Y(y) = \int_{-\infty}^{+\infty} f(x, y) dx
-  $$
+  
+$$
 - Agar barcha $(x, y)$ larda $f(x, y) = f_X(x) \cdot f_Y(y)$ bo'lsa, $X$ va $Y$ **mustaqil** deyiladi.
 
 ---

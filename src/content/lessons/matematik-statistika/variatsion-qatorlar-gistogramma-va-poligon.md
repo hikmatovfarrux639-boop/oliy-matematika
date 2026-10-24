@@ -41,15 +41,19 @@ $$
 Agar o'lchanayotgan belgi uzluksiz bo'lsa (masalan, vazn, bo'y, harorat, vaqt), qiymatlar takrorlanmasligi mumkin. Bunday holda ma'lumotlar **oraliqlarga (intervallarga)** ajratiladi.
 
 1. **Optimal intervallar soni ($k$) Sterdjes formulasi bilan aniqlanadi:**
-   $$
+   
+$$
    k \approx 1 + 3.322 \lg n \quad \text{yoki} \quad k \approx 1 + \log_2 n
-   $$
+   
+$$
    *(Masalan, $n = 100$ ta kuzatish uchun: $k \approx 1 + 3.322 \lg 100 = 1 + 3.322(2) \approx 7.6 \implies 7$ yoki $8$ ta interval olinadi).*
 
 2. **Interval qadami (kengligi) $h$:**
-   $$
+   
+$$
    h = \frac{x_{\max} - x_{\min}}{k}
-   $$
+   
+$$
 
 ---
 
@@ -74,9 +78,11 @@ Gorizontal o'qda har bir $[x_i; x_{i+1}]$ interval asos qilib olinadi, vertikal 
 
 > [!NOTE] Muhim xossa
 > Nisbiy chastotalar gistogrammasining barcha to'g'ri to'rtburchaklari yuzalari yig'indisi **roppa-rosa $1$ ga tengdir**:
-> $$
+> 
+$$
 > S = \sum_{i=1}^k h \cdot \frac{w_i}{h} = \sum_{i=1}^k w_i = 1
-> $$
+> 
+$$
 > Tanlanma hajmi $n \to \infty$ va $h \to 0$ bo'lganda, gistogrammaning yuqori qirrasi ehtimollar nazariyasidagi **nazariy zichlik egri chizig'i $f(x)$ ga intiladi**!
 
 ---

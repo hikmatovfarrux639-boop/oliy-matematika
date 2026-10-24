@@ -27,9 +27,11 @@ $$
 > **Differensiallanuvchanlik ta'rifi:**
 > Agar funksiyaning to'liq orttirmasini quyidagi ko'rinishda ifodalash mumkin bo'lsa:
 >
-> $$
+> 
+$$
 > \Delta z = A \cdot \Delta x + B \cdot \Delta y + \alpha(\Delta x, \Delta y) \cdot \Delta x + \beta(\Delta x, \Delta y) \cdot \Delta y
-> $$
+> 
+$$
 >
 > bu yerda $\Delta x \to 0, \Delta y \to 0$ da $\alpha, \beta \to 0$, u holda $f(x, y)$ funksiya berilgan nuqtada **differensiallanuvchi** deyiladi.
 >
@@ -89,13 +91,17 @@ $$
 
 Laboratoriya va muhandislik amaliyotida $x, y$ kattaliklar o'lchanganda ularning chetki xatoliklari $\Delta x, \Delta y$ ma'lum bo'ladi:
 - **Absolyut xatolik bahosi:**
-  $$
+  
+$$
   \Delta z \approx \left\lvert \frac{\partial z}{\partial x} \right\rvert \Delta x + \left\lvert \frac{\partial z}{\partial y} \right\rvert \Delta y
-  $$
+  
+$$
 - **Nisbiy xatolik bahosi ($\delta$):**
-  $$
+  
+$$
   \delta z = \frac{\Delta z}{|z|} = \left\lvert \frac{\partial \ln z}{\partial x} \right\rvert \Delta x + \left\lvert \frac{\partial \ln z}{\partial y} \right\rvert \Delta y
-  $$
+  
+$$
 
 ---
 

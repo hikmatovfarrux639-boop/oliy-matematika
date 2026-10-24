@@ -80,9 +80,11 @@ $$
 > [!IMPORTANT]
 > **Fisherning $F$-statistikasi:**
 > Agar $H_0$ gipoteza o'rinli bo'lsa (ya'ni omil o'rtachalarga ta'sir qilmasa), $MSB$ ham, $MSW$ ham yagona $\sigma^2$ bosh dispersiyaning siljimagan bahosi bo'ladi va ularning nisbati $1$ ga yaqin bo'lishi kerak. Agar omil ta'siri kuchli bo'lsa, $MSB \gg MSW$ bo'ladi.
-> $$
+> 
+$$
 > F_{\text{kuz}} = \frac{MSB}{MSW} = \frac{SSB / (k - 1)}{SSW / (N - k)}
-> $$
+> 
+$$
 > $H_0$ o'rinli bo'lganda $F_{\text{kuz}}$ statistika erkinlik darajalari $\nu_1 = k - 1$ va $\nu_2 = N - k$ bo'lgan **Fisher-Snedekor $F(\nu_1, \nu_2)$ taqsimotiga** bo'ysunadi.
 
 ### Qaror qabul qilish qoidasi (O'ng tomonlama kritik soha):

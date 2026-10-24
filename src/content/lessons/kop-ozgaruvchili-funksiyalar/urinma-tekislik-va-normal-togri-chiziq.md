@@ -74,9 +74,11 @@ $$
 > [!IMPORTANT]
 > **To'liq differensialning geometrik ma'nosi:**
 > Urinma tekislik tenglamasining o'ng qismi funksiyaning $M_0(x_0, y_0)$ nuqtadagi to'liq differensiali $dz$ ga teng ($dx = x - x_0$, $dy = y - y_0$ bo'lganda):
-> $$
+> 
+$$
 > z_{\text{urinma}} - z_0 = dz(x_0, y_0)
-> $$
+> 
+$$
 > Ya'ni funksiyaning to'liq differensiali $dz$ sirtga o'tkazilgan urinma tekislik aplikatasining ($z$ koordinatasining) orttirmasini ifodalaydi.
 
 ### 3.2. Normal to'g'ri chiziq tenglamasi ($z = f(x, y)$ uchun)

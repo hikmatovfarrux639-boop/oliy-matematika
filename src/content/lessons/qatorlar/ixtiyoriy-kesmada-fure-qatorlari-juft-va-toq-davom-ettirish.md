@@ -23,19 +23,27 @@ $$
 
 > [!IMPORTANT]
 > **Ixtiyoriy $[-l, l]$ kesmadagi Fure qatori va Eyler-Fure formulalari:**
-> $$
+> 
+$$
 > f(x) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\frac{n\pi x}{l} + b_n \sin\frac{n\pi x}{l} \right)
-> $$
+> 
+$$
 > Bunda Fure koeffitsiyentlari quyidagi formulalar orqali hisoblanadi:
-> $$
+> 
+$$
 > a_0 = \frac{1}{l} \int_{-l}^{l} f(x) \, dx
-> $$
-> $$
+> 
+$$
+> 
+$$
 > a_n = \frac{1}{l} \int_{-l}^{l} f(x) \cos\frac{n\pi x}{l} \, dx, \quad (n = 1, 2, 3, \dots)
-> $$
-> $$
+> 
+$$
+> 
+$$
 > b_n = \frac{1}{l} \int_{-l}^{l} f(x) \sin\frac{n\pi x}{l} \, dx, \quad (n = 1, 2, 3, \dots)
-> $$
+> 
+$$
 
 ---
 

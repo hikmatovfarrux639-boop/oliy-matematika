@@ -36,17 +36,23 @@ $$
 ## 2. Asosiy trigonometrik ayniyatlar
 
 1. **Pifagor ayniyati:**
-   $$
+   
+$$
    \sin^2 \alpha + \cos^2 \alpha = 1
-   $$
+   
+$$
 2. **Tangens va kotangens ta'rifi va ko'paytmasi:**
-   $$
+   
+$$
    \tan \alpha = \frac{\sin \alpha}{\cos \alpha}, \qquad \cot \alpha = \frac{\cos \alpha}{\sin \alpha}, \qquad \tan \alpha \cdot \cot \alpha = 1
-   $$
+   
+$$
 3. **Kvadratlar bog'liqligi (Integrallashda juda muhim):**
-   $$
+   
+$$
    1 + \tan^2 \alpha = \frac{1}{\cos^2 \alpha}, \qquad 1 + \cot^2 \alpha = \frac{1}{\sin^2 \alpha}
-   $$
+   
+$$
 
 ---
 

@@ -24,13 +24,17 @@ $$
 
 ### Asosiy tatbiqlari:
 1. **Fazoviy jism hajmi:**
-   $$
+   
+$$
    V = \iiint_V dx dy dz
-   $$
+   
+$$
 2. **Jism massasi:** Agar $\rho(x, y, z)$ zichlik funksiyasi bo'lsa:
-   $$
+   
+$$
    M = \iiint_V \rho(x, y, z) \, dx dy dz
-   $$
+   
+$$
 
 ---
 
@@ -107,18 +111,24 @@ $$
    - $0 \le r \le 2$
    - $r^2 \le z \le 4$
 4. Integrallaymiz (Yakobian $r$ bilan):
-   $$
+   
+$$
    V = \int_0^{2\pi} d\varphi \int_0^2 r \, dr \int_{r^2}^4 dz
-   $$
+   
+$$
 5. Ichki integral: $\int_{r^2}^4 dz = 4 - r^2$.
 6. O'rta integral:
-   $$
+   
+$$
    \int_0^2 (4 - r^2) r \, dr = \int_0^2 (4r - r^3) dr = \left[ 2r^2 - \frac{r^4}{4} \right]_0^2 = 2(4) - \frac{16}{4} = 8 - 4 = 4
-   $$
+   
+$$
 7. Tashqi integral:
-   $$
+   
+$$
    V = \left(\int_0^{2\pi} d\varphi\right) \cdot 4 = 2\pi \cdot 4 = 8\pi
-   $$
+   
+$$
 
 #### 2-usul: Bir o'zgaruvchili analiz (Aylanma jism hajmi) orqali tekshirish
 Parabola $z = r^2 \implies r = \sqrt{z}$ ni $Oz$ o'qi atrofida $z = 0$ dan $z = 4$ gacha aylantiramiz:

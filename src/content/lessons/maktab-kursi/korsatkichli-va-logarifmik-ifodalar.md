@@ -30,9 +30,11 @@ $$
 
 > **Ta'rif:** $b$ sonining $a$ asosga ko'ra **logarifmi** deb, $b$ sonini hosil qilish uchun $a$ asosni ko'tarish lozim bo'lgan daraja ko'rsatkichiga aytiladi:
 >
-> $$
+> 
+$$
 > \log_a b = c \iff a^c = b
-> $$
+> 
+$$
 
 ### Qat'iy cheklovlar (Aniqlanish sohasi):
 1. Asos musbat bo'lishi shart: $a > 0$;

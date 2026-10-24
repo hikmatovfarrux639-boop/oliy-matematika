@@ -136,21 +136,25 @@ $$x_1 = 4 - 2C_1 - 3C_2$$
 ## Mustaqil yechish uchun mashqlar
 
 1. Ushbu sistemani Gauss usuli bilan yeching:
-   $$
+   
+$$
    \begin{cases}
    x + y + 2z = 9 \\
    2x + 4y - 3z = 1 \\
    3x + 6y - 5z = 0
    \end{cases}
-   $$
+   
+$$
 
 2. Sistema birgalikdami yoki yo'q:
-   $$
+   
+$$
    \begin{cases}
    x - y + z = 2 \\
    2x - 2y + 2z = 7
    \end{cases}
-   $$
+   
+$$
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
   <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>

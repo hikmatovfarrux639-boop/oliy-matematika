@@ -58,15 +58,19 @@ $$
 
 Ko'rsatkichli shaklda amallar nihoyatda qulaylashadi:
 - **Ko'paytirish:**
-  $$
+  
+$$
   z_1 \cdot z_2 = (r_1 e^{i\varphi_1}) \cdot (r_2 e^{i\varphi_2}) = (r_1 r_2) e^{i(\varphi_1 + \varphi_2)}
-  $$
+  
+$$
   > **Qoida:** Kompleks sonlar ko'paytirilganda ularning **modullari ko'paytiriladi**, **argumentlari esa qo'shiladi**! (Geometriyada: vektor buriladi va cho'ziladi).
 
 - **Bo'lish:**
-  $$
+  
+$$
   \frac{z_1}{z_2} = \left(\frac{r_1}{r_2}\right) e^{i(\varphi_1 - \varphi_2)}
-  $$
+  
+$$
   > **Qoida:** Bo'linganda **modullar bo'linadi**, **argumentlar ayriladi**!
 
 ---
@@ -86,18 +90,24 @@ $$
    - Modul: $r = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{1 + 3} = \sqrt{4} = 2$.
    - Argument: $\varphi = \operatorname{arctg}\left(\frac{\sqrt{3}}{1}\right) = \frac{\pi}{3}$.
 2. Ko'rsatkichli shakl:
-   $$
+   
+$$
    z = 2 e^{i\frac{\pi}{3}}
-   $$
+   
+$$
 3. 12-darajaga ko'taramiz:
-   $$
+   
+$$
    z^{12} = \left(2 e^{i\frac{\pi}{3}}\right)^{12} = 2^{12} \cdot e^{i \cdot \frac{12\pi}{3}} = 4096 \cdot e^{i \cdot 4\pi}
-   $$
+   
+$$
 4. $e^{i \cdot 4\pi} = \cos(4\pi) + i\sin(4\pi) = 1 + 0 = 1$.
    Demak:
-   $$
+   
+$$
    A = 4096 \cdot 1 = 4096
-   $$
+   
+$$
 
 #### 2-usul: Muavr trigonometrik formulasi
 $$
@@ -161,9 +171,11 @@ $z = -\sqrt{3} + i$ kompleks sonini ko'rsatkichli shaklga keltiring.
 2. Modul: $r = \sqrt{(-\sqrt{3})^2 + 1^2} = \sqrt{3 + 1} = 2$.
 3. Argument: $\varphi = \pi - \operatorname{arctg}\left(\frac{1}{\sqrt{3}}\right) = \pi - \frac{\pi}{6} = \frac{5\pi}{6}$.
 4. Ko'rsatkichli shakl:
-   $$
+   
+$$
    z = 2 e^{i\frac{5\pi}{6}}
-   $$
+   
+$$
 </details>
 
 ### 2-mashq

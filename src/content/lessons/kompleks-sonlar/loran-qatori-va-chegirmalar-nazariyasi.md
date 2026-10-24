@@ -25,13 +25,17 @@ $$
 Loran qatori ikkita mustaqil qismdan tashkil topadi:
 
 1. **To'g'ri (muntazam) qism:** Musbat darajalar — odatdagi Teylor qatori:
-   $$
+   
+$$
    \sum_{n=0}^{+\infty} c_n (z - z_0)^n = c_0 + c_1(z - z_0) + c_2(z - z_0)^2 + \dots
-   $$
+   
+$$
 2. **Bosh qism:** Manfiy darajalar (maxsuslikni keltirib chiqaruvchi qism):
-   $$
+   
+$$
    \sum_{n=1}^{+\infty} \frac{c_{-n}}{(z - z_0)^n} = \frac{c_{-1}}{z - z_0} + \frac{c_{-2}}{(z - z_0)^2} + \dots
-   $$
+   
+$$
 
 ---
 
@@ -57,18 +61,24 @@ $$
 ### Chegirmalarni hisoblashning amaliy qoidalari:
 
 1. **1-tartibli (oddiy) qutb uchun:**
-   $$
+   
+$$
    \operatorname{Res}[f(z), z_0] = \lim_{z \to z_0} (z - z_0) f(z)
-   $$
+   
+$$
    Yoki agar $f(z) = \frac{\varphi(z)}{\psi(z)}$ bo'lib, $\varphi(z_0) \neq 0$ va $\psi(z_0) = 0, \psi'(z_0) \neq 0$ bo'lsa:
-   $$
+   
+$$
    \operatorname{Res}[f(z), z_0] = \frac{\varphi(z_0)}{\psi'(z_0)}
-   $$
+   
+$$
 
 2. **$m$-tartibli karrali qutb uchun:**
-   $$
+   
+$$
    \operatorname{Res}[f(z), z_0] = \frac{1}{(m - 1)!} \lim_{z \to z_0} \frac{d^{m-1}}{dz^{m-1}} \left[ (z - z_0)^m f(z) \right]
-   $$
+   
+$$
 
 ---
 
@@ -91,17 +101,23 @@ Bu teorema murakkab kompleks integrallarni faqatgina qutblardagi chegirmalarni t
 1. Maxsus nuqtalarni topamiz: maxraj $z(z - 1) = 0 \implies z_1 = 0, z_2 = 1$.
 2. Ikkala nuqta ham $|z| = 2$ aylananing ichida yotadi: $|0| = 0 < 2$ va $|1| = 1 < 2$. Ikkalasi ham 1-tartibli oddiy qutbdir.
 3. $z_1 = 0$ nuqtadagi chegirma:
-   $$
+   
+$$
    \operatorname{Res}[f(z), 0] = \lim_{z \to 0} z \cdot \frac{e^z}{z(z - 1)} = \lim_{z \to 0} \frac{e^z}{z - 1} = \frac{e^0}{0 - 1} = -1
-   $$
+   
+$$
 4. $z_2 = 1$ nuqtadagi chegirma:
-   $$
+   
+$$
    \operatorname{Res}[f(z), 1] = \lim_{z \to 1} (z - 1) \cdot \frac{e^z}{z(z - 1)} = \lim_{z \to 1} \frac{e^z}{z} = \frac{e^1}{1} = e
-   $$
+   
+$$
 5. Teorema bo'yicha integrallaymiz:
-   $$
+   
+$$
    \oint_{|z| = 2} \frac{e^z}{z(z - 1)} \, dz = 2\pi i \cdot (\operatorname{Res}[f, 0] + \operatorname{Res}[f, 1]) = 2\pi i (e - 1)
-   $$
+   
+$$
 
 ### 2-usul: Elementar kasrlarga ajratish va Koshi integral formulasi
 $\frac{1}{z(z - 1)} = \frac{1}{z - 1} - \frac{1}{z}$ ekanligidan:

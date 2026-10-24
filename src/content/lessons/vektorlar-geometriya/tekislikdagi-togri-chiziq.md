@@ -19,9 +19,11 @@ Ax + By + C = 0
 $$
 bu yerda $A$ va $B$ bir vaqtda nolga teng bo'lmagan koeffitsiyentlar.
 - Ushbu to'g'ri chiziqqa **perpendikulyar bo'lgan normal vektor**:
-  $$
+  
+$$
   \vec{n} = (A, B)
-  $$
+  
+$$
 
 ### 2. Burchak koeffitsiyentli tenglama
 $$
@@ -98,20 +100,28 @@ $M_0(2, -1)$ nuqtadan o'tuvchi va $3x - 4y + 5 = 0$ to'g'ri chiziqqa perpendikul
 
 #### 1-usul: Burchak koeffitsiyenti orqali
 1. Berilgan chiziqdan $y$ ni ajratamiz:
-   $$
+   
+$$
    4y = 3x + 5 \implies y = \frac{3}{4}x + \frac{5}{4} \implies k_1 = \frac{3}{4}
-   $$
+   
+$$
 2. Perpendikulyarlik shartidan:
-   $$
+   
+$$
    k_2 = -\frac{1}{k_1} = -\frac{1}{3/4} = -\frac{4}{3}
-   $$
+   
+$$
 3. $M_0(2, -1)$ nuqtadan o'tuvchi to'g'ri chiziq tenglamasi:
-   $$
+   
+$$
    y - y_0 = k_2(x - x_0) \implies y - (-1) = -\frac{4}{3}(x - 2)
-   $$
-   $$
+   
+$$
+   
+$$
    3(y + 1) = -4(x - 2) \implies 3y + 3 = -4x + 8 \implies 4x + 3y - 5 = 0
-   $$
+   
+$$
 
 #### 2-usul: Normal va yo'naltiruvchi vektorlar usuli (Tezkor vektorli usul)
 Berilgan to'g'ri chiziqning normal vektori: $\vec{n} = (3, -4)$.

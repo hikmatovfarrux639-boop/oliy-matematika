@@ -66,15 +66,19 @@ Masalan: $i^{102} = i^{4 \cdot 25 + 2} = i^2 = -1$.
 
 > **Ta'rif:** Agar ikkita kompleks son faqat mavhum qismining ishorasi bilan farq qilsa, ular **o'zaro qo'shma kompleks sonlar** deyiladi. $z = a + bi$ sonining qo'shmasi $\bar{z}$ kabi belgilanadi:
 >
-> $$
+> 
+$$
 > \bar{z} = a - bi
-> $$
+> 
+$$
 
 ### Qo'shma sonning xossalari:
 1. Sonni o'zining qo'shmasiga ko'paytirganda doimo **musbat haqiqiy son** hosil bo'ladi:
-   $$
+   
+$$
    z \cdot \bar{z} = (a + bi)(a - bi) = a^2 - b^2 i^2 = a^2 + b^2
-   $$
+   
+$$
 2. $\overline{z_1 \pm z_2} = \bar{z}_1 \pm \bar{z}_2$
 3. $\overline{z_1 \cdot z_2} = \bar{z}_1 \cdot \bar{z}_2$
 4. $\overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar{z}_1}{\bar{z}_2}$

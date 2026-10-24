@@ -64,17 +64,23 @@ $$
 $$
 Ushbu qatorni yaqinlashish oralig'ida hadma-had differensiallash yoki integrallash mumkin:
 1. **Differensiallash orqali:**
-   $$
+   
+$$
    \left( \sum_{n=0}^\infty x^n \right)' = \sum_{n=1}^\infty n x^{n-1} = \left(\frac{1}{1-x}\right)' = \frac{1}{(1-x)^2}
-   $$
+   
+$$
    Har ikki tomonni $x$ ga ko'paytirsak:
-   $$
+   
+$$
    \sum_{n=1}^\infty n x^n = \frac{x}{(1-x)^2}
-   $$
+   
+$$
 2. **Integrallash orqali:**
-   $$
+   
+$$
    \int_0^x \sum_{n=0}^\infty (-t)^n dt = \sum_{n=1}^\infty \frac{(-1)^{n-1} x^n}{n} = \ln(1+x)
-   $$
+   
+$$
 
 ---
 

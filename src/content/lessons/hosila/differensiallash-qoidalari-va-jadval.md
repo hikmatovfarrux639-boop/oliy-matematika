@@ -51,13 +51,17 @@ $$
 
 ### Maxsus tezkor xususiy hollar (Vaqtni tejovchi layfhaklar):
 1. Suratda son turganda:
-   $$
+   
+$$
    \left( \frac{C}{v} \right)' = -\frac{C \cdot v'}{v^2}
-   $$
+   
+$$
 2. **Chiziqli-kasr funksiya hosilasi (2-tartibli determinant orqali):**
-   $$
+   
+$$
    \left( \frac{ax + b}{cx + d} \right)' = \frac{\begin{vmatrix} a & b \\ c & d \end{vmatrix}}{(cx + d)^2} = \frac{ad - bc}{(cx + d)^2}
-   $$
+   
+$$
    *(Bu formulani bilsangiz, kasr hosilasini 3 soniyada topasiz!)*
 
 ---
@@ -91,17 +95,23 @@ Agar asos ham, daraja ham o'zgaruvchi $x$ ga bog'liq bo'lsa (masalan, $y = x^x$ 
 
 ### Usul algoritmi:
 1. Tenglikning ikkala tomonini natural logarifmlang:
-   $$
+   
+$$
    \ln y = \ln[u(x)^{v(x)}] = v(x) \cdot \ln[u(x)]
-   $$
+   
+$$
 2. Ikkala tomondan $x$ bo'yicha hosila oling (chap tomonda murakkab funksiya sifatida $\frac{y'}{y}$ hosil bo'ladi):
-   $$
+   
+$$
    \frac{y'}{y} = (v(x) \cdot \ln[u(x)])'
-   $$
+   
+$$
 3. $y'$ ni topish uchun ikkala tomonni dastlabki $y$ ga ko'paytiring:
-   $$
+   
+$$
    y' = y \cdot [v' \ln u + v \frac{u'}{u}]
-   $$
+   
+$$
 
 ---
 
@@ -205,21 +215,29 @@ $y = x^x$ funksiyaning hosilasini toping ($x > 0$).
 
 **Yechilishi:**
 1. Ikkala tomonni natural logarifmlaymiz:
-   $$
+   
+$$
    \ln y = \ln(x^x) = x \ln x
-   $$
+   
+$$
 2. Ikkala tomondan hosila olamiz:
-   $$
+   
+$$
    (\ln y)' = (x \ln x)' \implies \frac{y'}{y} = (x)'\ln x + x(\ln x)' = 1 \cdot \ln x + x \cdot \frac{1}{x} = \ln x + 1
-   $$
+   
+$$
 3. $y'$ ni topish uchun ikkala tomonni $y$ ga ko'paytiramiz:
-   $$
+   
+$$
    y' = y \cdot (\ln x + 1)
-   $$
+   
+$$
 4. $y = x^x$ ni qo'yamiz:
-   $$
+   
+$$
    y' = x^x (\ln x + 1)
-   $$
+   
+$$
 
 **Javob:** $x^x (\ln x + 1)$
 

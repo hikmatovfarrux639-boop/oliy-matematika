@@ -60,14 +60,18 @@ Bu usul boshlang'ich rejani darhol optimal yechimga juda yaqin qilib beradi!
 Har bir satrga $u_i$ potensiali, har bir ustunga $v_j$ potensiali mos qo'yiladi.
 
 1. **Band kataklar uchun:**
-   $$
+   
+$$
    u_i + v_j = c_{ij}
-   $$
+   
+$$
    Odatda $u_1 = 0$ deb olinadi va qolgan barcha $u_i, v_j$ lar topiladi.
 2. **Bo'sh kataklar uchun baholar:**
-   $$
+   
+$$
    \Delta_{ij} = u_i + v_j - c_{ij}
-   $$
+   
+$$
 3. **Optimallik mezoni:**
    - Agar barcha bo'sh kataklar uchun **$\Delta_{ij} \le 0$** bo'lsa, reja **OPTIMALDIR** (xarajat minimal)!
    - Agar biror bo'sh katakda **$\Delta_{ij} > 0$** bo'lsa, reja optimal emas. Eng katta musbat bahoga ega katakdan yopiq to'g'ri burchakli **sikl (kontur)** tuzilib, yuklar qayta taqsimlanadi.

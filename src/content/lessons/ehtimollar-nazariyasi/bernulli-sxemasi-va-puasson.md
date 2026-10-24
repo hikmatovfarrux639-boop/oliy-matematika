@@ -25,9 +25,11 @@ Faraz qilaylik, $n$ ta mustaqil sinov o'tkazilmoqda. Har bir sinovda:
 > **Bernulli formulasi:**
 > $n$ ta mustaqil sinovda $A$ hodisaning **aynan $k$ marta** ro'y berishi ehtimoli:
 >
-> $$
+> 
+$$
 > P_n(k) = C_n^k \cdot p^k \cdot q^{n - k} = \frac{n!}{k!(n - k)!} p^k q^{n - k}
-> $$
+> 
+$$
 
 ### Formulaning kelib chiqishi (Mantiqiy isboti):
 Hodisaning $k$ marta ro'y berishi va $(n - k)$ marta ro'y bermasligining aniq bir ketma-ketligi (masalan, dastlabki $k$ tasida ro'y berib, qolganlarida ro'y bermasligi) ehtimollarni ko'paytirish qoidasiga ko'ra:

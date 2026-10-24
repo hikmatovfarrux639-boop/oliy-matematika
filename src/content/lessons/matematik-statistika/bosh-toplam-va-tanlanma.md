@@ -54,15 +54,19 @@ Nazariy ehtimollikdagi $F(x) = P(X < x)$ funksiyaning amaliy analogi:
 
 > **Ta'rif:** $x$ sonidan kichik bo'lgan kuzatuvlar soni ($n_x$) ning umumiy tanlanma hajmi $n$ ga nisbati **empirik taqsimot funksiyasi** deyiladi:
 >
-> $$
+> 
+$$
 > F^*(x) = \frac{n_x}{n}
-> $$
+> 
+$$
 
 > **Glivenko-Kantelli teoremasi (Statistikaning bosh teoremasi):**
 > Tanlanma hajmi cheksiz oshganda ($n \to \infty$), empirik funksiya $F^*(x)$ nazariy funksiya $F(x)$ ga tekis yaqinlashadi:
-> $$
+> 
+$$
 > \lim_{n \to \infty} P\left( \sup_x |F^*(x) - F(x)| = 0 \right) = 1
-> $$
+> 
+$$
 
 ---
 

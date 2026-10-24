@@ -18,9 +18,11 @@ XVIII asrda fransuz matematigi Giyom Lopital (shveytsariyalik buyuk matematik Io
 > **Koshi-Lopital teoremasi:** Faraz qilaylik, $f(x)$ va $g(x)$ funksiyalar $x = a$ nuqtaning biror atrofida differensiallanuvchi va $g'(x) \neq 0$ bo'lsin.
 > Agar $\lim_{x \to a} f(x) = 0$ va $\lim_{x \to a} g(x) = 0$ (ya'ni $\left[\frac{0}{0}\right]$) yoki $\lim_{x \to a} f(x) = \infty$ va $\lim_{x \to a} g(x) = \infty$ (ya'ni $\left[\frac{\infty}{\infty}\right]$) bo'lsa hamda ularning hosilalari nisbatining $\lim_{x \to a} \frac{f'(x)}{g'(x)}$ limiti mavjud (chekli yoki cheksiz) bo'lsa, u holda funksiyalar nisbatining limiti ham mavjud bo'lib, quyidagi tenglik o'rinli bo'ladi:
 >
-> $$
+> 
+$$
 > \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}
-> $$
+> 
+$$
 
 > [!CAUTION]
 > **Eng ko'p uchraydigan xato:** Bu yerda bo'linmaning hosilasi $\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$ formulasi qo'llanilmaydi! Surat alohida differensiallanadi ($f'(x)$), maxraj esa alohida differensiallanadi ($g'(x)$)!
@@ -59,14 +61,18 @@ $$
 #### 1-usul: Lopital qoidasi bo'yicha ketma-ket differensiallash
 $x = 0$ da $\frac{e^0 - 0 - 1}{0^2} = \left[\frac{0}{0}\right]$.
 1. Surat va maxrajdan alohida birinchi tartibli hosila olamiz:
-   $$
+   
+$$
    L = \lim_{x \to 0} \frac{(e^x - x - 1)'}{(x^2)'} = \lim_{x \to 0} \frac{e^x - 1}{2x}
-   $$
+   
+$$
 2. Tekshiramiz: $x = 0$ da $\frac{e^0 - 1}{2(0)} = \left[\frac{0}{0}\right]$. Yana noaniqlik!
 3. Ikkinchi marta Lopital qoidasini qo'llaymiz:
-   $$
+   
+$$
    L = \lim_{x \to 0} \frac{(e^x - 1)'}{(2x)'} = \lim_{x \to 0} \frac{e^x}{2} = \frac{e^0}{2} = \frac{1}{2}
-   $$
+   
+$$
 
 #### 2-usul: Teylor (Makloren) qatori orqali bir zumda yechish
 $e^x$ funksiyasining $x = 0$ atrofidagi yoyilmasi: $e^x = 1 + x + \frac{x^2}{2!} + o(x^2)$.
@@ -91,13 +97,17 @@ $$
 #### Yechish:
 $x \to 0^+$ da $x^2 \to 0$ va $\ln x \to -\infty$, ya'ni $[0 \cdot \infty]$ noaniqlik.
 1. Kasr ko'rinishiga o'tkazamiz:
-   $$
+   
+$$
    \lim_{x \to 0^+} \frac{\ln x}{\frac{1}{x^2}} = \left[\frac{-\infty}{+\infty}\right]
-   $$
+   
+$$
 2. Lopital qoidasini qo'llaymiz:
-   $$
+   
+$$
    \lim_{x \to 0^+} \frac{(\ln x)'}{\left(x^{-2}\right)'} = \lim_{x \to 0^+} \frac{\frac{1}{x}}{-2x^{-3}} = \lim_{x \to 0^+} \frac{\frac{1}{x}}{-\frac{2}{x^3}} = \lim_{x \to 0^+} \left(-\frac{x^3}{2x}\right) = \lim_{x \to 0^+} \left(-\frac{x^2}{2}\right) = 0
-   $$
+   
+$$
 **Javob:** $0$.
 
 ---
@@ -109,9 +119,11 @@ $x \to 0^+$ da $x^2 \to 0$ va $\ln x \to -\infty$, ya'ni $[0 \cdot \infty]$ noan
 >    Ushbu limitni qaraylik: $\lim_{x \to \infty} \frac{x + \sin x}{x}$.
 >    Agar bunga ko'r-ko'rona Lopital qo'llansa: $\lim_{x \to \infty} \frac{1 + \cos x}{1}$ hosil bo'ladi. Biroq $x \to \infty$ da $\cos x$ ning limiti **mavjud emas**!
 >    Lopital qoidasi hosilalar limiti mavjud bo'lgandagina ishlaydi. To'g'ri usul — hadma-had bo'lish:
->    $$
+>    
+$$
 >    \lim_{x \to \infty} \left(1 + \frac{\sin x}{x}\right) = 1 + 0 = 1
->    $$
+>    
+$$
 > 2. **Noaniqlik yo'q joyda Lopital qo'llash:**
 >    Masalan: $\lim_{x \to 0} \frac{x + 2}{x + 3}$. Bu yerda $\frac{0+2}{0+3} = \frac{2}{3}$. Agar bilmasdan Lopital qo'llansa: $\frac{(x+2)'}{(x+3)'} = \frac{1}{1} = 1$ chiqadi va bu qo'pol xatodir!
 > 3. **Kasr darajasini burchakli murakkablashtirish:**

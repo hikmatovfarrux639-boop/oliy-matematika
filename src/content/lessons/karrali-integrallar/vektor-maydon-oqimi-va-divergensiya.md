@@ -23,13 +23,17 @@ Ushbu darsda biz:
 
 * **Skalyar maydon:** Fazoning har bir $M(x, y, z)$ nuqtasiga bitta son mos keladi: $u = u(x, y, z)$ (masalan, xonadagi harorat taqsimoti, atmosfera bosimi).
   * Skalyar maydonning o'zgarish yo'nalishi va tezligi **Gradiyent** bilan ifodalanadi:
-    $$
+    
+$$
     \operatorname{grad} u = \frac{\partial u}{\partial x}\vec{i} + \frac{\partial u}{\partial y}\vec{j} + \frac{\partial u}{\partial z}\vec{k}
-    $$
+    
+$$
 * **Vektor maydon:** Fazoning har bir nuqtasiga bitta vektor mos keladi:
-  $$
+  
+$$
   \vec{a}(x, y, z) = P(x, y, z)\vec{i} + Q(x, y, z)\vec{j} + R(x, y, z)\vec{k}
-  $$
+  
+$$
   (masalan, elektr maydon kuchlanganligi $\vec{E}$, magnit maydon induksiyasi $\vec{B}$, shamol tezligi).
 
 ---
@@ -96,13 +100,17 @@ $$
    * $\frac{\partial Q}{\partial y} = \frac{\partial}{\partial y}(y^3 + z) = 3y^2$
    * $\frac{\partial R}{\partial z} = \frac{\partial}{\partial z}(z^3 + x) = 3z^2$
 2. Divergensiya formulasi:
-   $$
+   
+$$
    \operatorname{div} \vec{a} = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2)
-   $$
+   
+$$
 3. $M(1, -1, 2)$ nuqtadagi qiymati:
-   $$
+   
+$$
    \operatorname{div} \vec{a}(M) = 3(1^2 + (-1)^2 + 2^2) = 3(1 + 1 + 4) = 3 \cdot 6 = 18
-   $$
+   
+$$
 **Javob:** $\mathbf{\operatorname{div} \vec{a}(M) = 18}$ (Nuqtada musbat manba mavjud).
 
 ---
@@ -114,17 +122,23 @@ $$
 1. Sirt yopiq (shar sirti), demak Gauss–Ostrogradskiy formulasini qo'llaymiz:
    $\Pi = \iiint_V \operatorname{div} \vec{a} \, dV$.
 2. Maydon divergensiyasini hisoblaymiz:
-   $$
+   
+$$
    \operatorname{div} \vec{a} = \frac{\partial(2x)}{\partial x} + \frac{\partial(-y)}{\partial y} + \frac{\partial(3z)}{\partial z} = 2 - 1 + 3 = 4
-   $$
+   
+$$
 3. Divergensiya o'zgarmas son ($4$) bo'lib chiqdi! Uni integral belgisi oldiga chiqaramiz:
-   $$
+   
+$$
    \Pi = \iiint_V 4 \, dV = 4 \iiint_V dV = 4 \cdot V_{\text{shar}}
-   $$
+   
+$$
 4. Radiusi $R$ bo'lgan sharning hajmi $V = \frac{4}{3}\pi R^3$ ekani ma'lum:
-   $$
+   
+$$
    \Pi = 4 \cdot \left(\frac{4}{3}\pi R^3\right) = \frac{16}{3}\pi R^3
-   $$
+   
+$$
 **Javob:** $\mathbf{\Pi = \frac{16}{3}\pi R^3}$
 
 ---
@@ -147,17 +161,23 @@ $$
 **Yechish bosqichlari:**
 1. Kubning yopiq sirti berilgan, Gauss-Ostrogradskiy formulasidan foydalanamiz.
 2. Divergensiyani hisoblaymiz:
-   $$
+   
+$$
    \operatorname{div} \vec{a} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 1 + 1 + 1 = 3
-   $$
+   
+$$
 3. Kub bo'yicha integral:
-   $$
+   
+$$
    \Pi = \iiint_V 3 \, dx dy dz = 3 \cdot V_{\text{kub}}
-   $$
+   
+$$
 4. Tomoni 1 ga teng kubning hajmi: $V = 1 \cdot 1 \cdot 1 = 1$.
-   $$
+   
+$$
    \Pi = 3 \cdot 1 = 3
-   $$
+   
+$$
 
 **Javob:** $\mathbf{\Pi = 3}$
 </details>

@@ -31,17 +31,23 @@ $$
 
 ### Xususiy hollar:
 1. **Kesma o'rtasi ($\lambda = 1$):**
-   $$
+   
+$$
    x = \frac{x_1 + x_2}{2}, \qquad y = \frac{y_1 + y_2}{2}, \qquad z = \frac{z_1 + z_2}{2}
-   $$
+   
+$$
 2. **Uchburchak og'irlik markazi (medianalar kesishish nuqtasi):**
-   $$
+   
+$$
    x_C = \frac{x_1 + x_2 + x_3}{3}, \quad y_C = \frac{y_1 + y_2 + y_3}{3}, \quad z_C = \frac{z_1 + z_2 + z_3}{3}
-   $$
+   
+$$
 3. **Tetraedr og'irlik markazi (sentroid):**
-   $$
+   
+$$
    x_T = \frac{x_1 + x_2 + x_3 + x_4}{4}, \quad y_T = \frac{y_1 + y_2 + y_3 + y_4}{4}, \quad z_T = \frac{z_1 + z_2 + z_3 + z_4}{4}
-   $$
+   
+$$
 
 ---
 

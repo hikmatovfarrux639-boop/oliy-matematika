@@ -90,21 +90,25 @@ Agar fazoning biror sohasida $\operatorname{rot} \vec{a} = \vec{0}$ bo'lsa, quyi
 
 **Yechish:**
 1. Determinant tuzamiz:
-   $$
+   
+$$
    \operatorname{rot} \vec{a} = \begin{vmatrix}
    \vec{i} & \vec{j} & \vec{k} \\
    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
    y^2 & -x^2 & z^2
    \end{vmatrix}
-   $$
+   
+$$
 2. Koordinatalarni hisoblaymiz:
    * $\vec{i}$ oldidagi: $\frac{\partial(z^2)}{\partial y} - \frac{\partial(-x^2)}{\partial z} = 0 - 0 = 0$
    * $\vec{j}$ oldidagi: $\frac{\partial(y^2)}{\partial z} - \frac{\partial(z^2)}{\partial x} = 0 - 0 = 0$
    * $\vec{k}$ oldidagi: $\frac{\partial(-x^2)}{\partial x} - \frac{\partial(y^2)}{\partial y} = -2x - 2y = -2(x + y)$
 3. Demak:
-   $$
+   
+$$
    \operatorname{rot} \vec{a} = -2(x + y)\vec{k}
-   $$
+   
+$$
 **Javob:** $\mathbf{\operatorname{rot} \vec{a} = -2(x + y)\vec{k}}$
 
 ---
@@ -117,27 +121,35 @@ Agar fazoning biror sohasida $\operatorname{rot} \vec{a} = \vec{0}$ bo'lsa, quyi
 2. $\Omega$ sirt sifatida $z = 0$ tekisligidagi $x^2 + y^2 \le 1$ doirani olamiz.
    Uning normali yuqoriga qaragan: $\vec{n} = (0, 0, 1) = \vec{k}$.
 3. Rotorni topamiz:
-   $$
+   
+$$
    \operatorname{rot} \vec{a} = \begin{vmatrix}
    \vec{i} & \vec{j} & \vec{k} \\
    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
    y & z & x
    \end{vmatrix}
-   $$
+   
+$$
    * $\vec{i}$ bo'yicha: $\frac{\partial x}{\partial y} - \frac{\partial z}{\partial z} = 0 - 1 = -1$
    * $\vec{j}$ bo'yicha: $\frac{\partial y}{\partial z} - \frac{\partial x}{\partial x} = 0 - 1 = -1$
    * $\vec{k}$ bo'yicha: $\frac{\partial z}{\partial x} - \frac{\partial y}{\partial y} = 0 - 1 = -1$
-   $$
+   
+$$
    \operatorname{rot} \vec{a} = -\vec{i} - \vec{j} - \vec{k}
-   $$
+   
+$$
 4. Skalyar ko'paytma:
-   $$
+   
+$$
    \operatorname{rot} \vec{a} \cdot \vec{n} = (-\vec{i} - \vec{j} - \vec{k}) \cdot \vec{k} = -1
-   $$
+   
+$$
 5. Integral:
-   $$
+   
+$$
    C = \iint_{\Omega} (-1) \, d\sigma = -1 \cdot S_{\text{doira}} = -1 \cdot (\pi \cdot 1^2) = -\pi
-   $$
+   
+$$
 **Javob:** $\mathbf{C = -\pi}$
 
 ---
@@ -161,22 +173,26 @@ Agar fazoning biror sohasida $\operatorname{rot} \vec{a} = \vec{0}$ bo'lsa, quyi
 
 **Yechish bosqichlari:**
 1. Rotorni hisoblaymiz:
-   $$
+   
+$$
    \operatorname{rot} \vec{a} = \begin{vmatrix}
    \vec{i} & \vec{j} & \vec{k} \\
    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
    2x-y & 2y-x & 3z^2
    \end{vmatrix}
-   $$
+   
+$$
 2. Xususiy hosilalarni tekshiramiz:
    * $\vec{i}$: $\frac{\partial(3z^2)}{\partial y} - \frac{\partial(2y-x)}{\partial z} = 0 - 0 = 0$
    * $\vec{j}$: $\frac{\partial(2x-y)}{\partial z} - \frac{\partial(3z^2)}{\partial x} = 0 - 0 = 0$
    * $\vec{k}$: $\frac{\partial(2y-x)}{\partial x} - \frac{\partial(2x-y)}{\partial y} = (-1) - (-1) = 0$
 3. Demak, $\operatorname{rot} \vec{a} = \vec{0}$. Maydon potensialdir.
 4. Potensial maydonda har qanday yopiq kontur bo'yicha sirkulyatsiya nolga teng:
-   $$
+   
+$$
    C = \oint_L \vec{a} \cdot d\vec{r} = 0
-   $$
+   
+$$
 
 **Javob:** $\mathbf{\operatorname{rot} \vec{a} = \vec{0}}$, sirkulyatsiya $\mathbf{C = 0}$.
 </details>

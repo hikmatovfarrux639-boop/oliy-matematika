@@ -22,25 +22,35 @@ Ushbu mavzuda biz nafaqat nazariy ta'riflar bilan tanishamiz, balki ularning ama
 
 ### Asosiy amallar:
 1. **Birlashma ($A \cup B$):** $A$ ga **yoki** $B$ ga tegishli bo'lgan barcha elementlar to'plami:
-   $$
+   
+$$
    A \cup B = \{x \mid x \in A \text{ yoki } x \in B\}
-   $$
+   
+$$
 2. **Kesishma ($A \cap B$):** Ham $A$ ga, **ham** $B$ ga bir vaqtda tegishli bo'lgan umumiy elementlar to'plami:
-   $$
+   
+$$
    A \cap B = \{x \mid x \in A \text{ va } x \in B\}
-   $$
+   
+$$
 3. **Ayirma ($A \setminus B$):** $A$ ga tegishli, lekin $B$ ga kirmaydigan elementlar:
-   $$
+   
+$$
    A \setminus B = \{x \mid x \in A \text{ va } x \notin B\}
-   $$
+   
+$$
 4. **To'ldiruvchi to'plam ($\bar{A}$ yoki $A'$):** Universal $U$ to'plamning $A$ ga kirmaydigan barcha elementlari:
-   $$
+   
+$$
    \bar{A} = U \setminus A
-   $$
+   
+$$
 5. **Simmetrik ayirma ($A \triangle B$):** Faqat bitta to'plamga tegishli elementlar (kesishmasiz birlashma):
-   $$
+   
+$$
    A \triangle B = (A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)
-   $$
+   
+$$
 
 ### De Morgan qonunlari (Dualizm prinsipi):
 $$
@@ -55,13 +65,17 @@ Chekli to'plamdagi elementlar soni uning **quvvati** deb ataladi va $|A|$ yoki $
 
 > **Kiritish va chiqarish prinsipi (Inclusion-Exclusion):**
 > Ikkita to'plam uchun:
-> $$
+> 
+$$
 > |A \cup B| = |A| + |B| - |A \cap B|
-> $$
+> 
+$$
 > Uchta to'plam uchun:
-> $$
+> 
+$$
 > |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|
-> $$
+> 
+$$
 
 ---
 
@@ -74,9 +88,11 @@ Chekli to'plamdagi elementlar soni uning **quvvati** deb ataladi va $|A|$ yoki $
 2. **Konyunksiya ($A \land B$ yoki $A \cdot B$):** "Va" (mantiqiy ko'paytirish). Faqat ikkalasi ham chin bo'lgandagina chin bo'ladi.
 3. **Dizyunksiya ($A \lor B$ yoki $A + B$):** "Yoki" (mantiqiy qo'shish). Kamida bittasi chin bo'lsa chin bo'ladi.
 4. **Implikatsiya ($A \to B$):** "Agar $A$ bo'lsa, u holda $B$". Faqat chindan yolg'on kelib chiqqanda ($1 \to 0$) yolg'on bo'ladi:
-   $$
+   
+$$
    A \to B \equiv \neg A \lor B
-   $$
+   
+$$
 5. **Ekvivalensiya ($A \leftrightarrow B$):** "Faqat va faqat shunda". Ikkala mulohaza bir xil qiymat qabul qilganda chin bo'ladi.
 
 ### Rostlik jadvali (Truth Table):

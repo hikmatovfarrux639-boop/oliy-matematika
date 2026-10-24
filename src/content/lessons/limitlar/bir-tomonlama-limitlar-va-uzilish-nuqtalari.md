@@ -20,20 +20,26 @@ Ko'p funksiyalarda (masalan, bo'lakli funksiyalar, modul qatnashgan ifodalar, si
 Faraz qilaylik, $f(x)$ funksiya $x_0$ nuqtaning atrofida aniqlangan bo'lsin.
 
 1. **Chap limit ($x \to x_0^-$ yoki $x \to x_0 - 0$):**
-   $$
+   
+$$
    f(x_0 - 0) = \lim_{x \to x_0 - 0} f(x) = \lim_{\varepsilon \to 0, \, \varepsilon > 0} f(x_0 - \varepsilon)
-   $$
+   
+$$
 2. **O'ng limit ($x \to x_0^+$ yoki $x \to x_0 + 0$):**
-   $$
+   
+$$
    f(x_0 + 0) = \lim_{x \to x_0 + 0} f(x) = \lim_{\varepsilon \to 0, \, \varepsilon > 0} f(x_0 + \varepsilon)
-   $$
+   
+$$
 
 > **Umumiy (ikki tomonlama) limit mavjudligi teoremasi:**
 > $x \to x_0$ da umumiy $\lim_{x \to x_0} f(x) = L$ limit mavjud bo'lishi uchun chap va o'ng limitlar **ikkalasi ham mavjud bo'lishi va o'zaro teng bo'lishi** zarur va yetarlidir:
 >
-> $$
+> 
+$$
 > \lim_{x \to x_0} f(x) = L \iff f(x_0 - 0) = f(x_0 + 0) = L
-> $$
+> 
+$$
 
 Agar chap va o'ng limitlar teng bo'lmasa, $x_0$ nuqtada umumiy limit mavjud emas!
 
@@ -45,9 +51,11 @@ Agar chap va o'ng limitlar teng bo'lmasa, $x_0$ nuqtada umumiy limit mavjud emas
 > 1. Funksiya $x_0$ nuqtada aniqlangan (ya'ni $f(x_0)$ mavjud);
 > 2. Chekli chap va o'ng limitlar mavjud va teng: $f(x_0 - 0) = f(x_0 + 0) = L$;
 > 3. Bu limit qiymati funksiyaning nuqtadagi qiymatiga teng:
->    $$
+>    
+$$
 >    \lim_{x \to x_0} f(x) = f(x_0)
->    $$
+>    
+$$
 
 ---
 
@@ -85,9 +93,11 @@ $$
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
 > **Masala:** Bo'lakli funksiyaning $x = 1$ nuqtadagi uzluksizligini tekshiring va uzilish turini aniqlang:
-> $$
+> 
+$$
 > f(x) = \begin{cases} x^2 + 1, & x < 1 \\ 3, & x = 1 \\ 3 - x, & x > 1 \end{cases}
-> $$
+> 
+$$
 
 ### 1-usul: Bir tomonlama limitlarni hisoblash usuli
 1. Chap limit ($x \to 1^-$ da $x < 1$ qoida ishlaydi):

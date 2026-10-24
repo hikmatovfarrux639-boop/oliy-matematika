@@ -41,12 +41,16 @@ Haqiqiy analizda funksiya hosilaga ega bo'lishi oddiy hol. Lekin kompleks analiz
 > [!IMPORTANT]
 > **Koshi–Riman (D'Alamber–Eyler) teoremasi:**
 > $w = f(z) = u(x, y) + iv(x, y)$ funksiya biror sohada kompleks hosilaga ega bo'lishi (ya'ni **analitik** bo'lishi) uchun uning $u$ va $v$ qismlari uzluksiz xususiy hosilalarga ega bo'lishi va quyidagi **Koshi–Riman shartlari** bajarilishi zarur va yetarli:
-> $$
+> 
+$$
 > \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}
-> $$
-> $$
+> 
+$$
+> 
+$$
 > \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
-> $$
+> 
+$$
 
 Agar bu shartlar bajarilsa, kompleks hosila quyidagicha hisoblanadi:
 $$
@@ -113,9 +117,11 @@ $$
    * $\frac{\partial u}{\partial y} = -2y$, $\frac{\partial v}{\partial x} = 2y \implies \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}$ ✅
 3. Koshi-Riman shartlari butun tekislikda bajarilmoqda. Demak, $f(z) = z^2$ — analitik funksiya!
 4. Hosilasi:
-   $$
+   
+$$
    f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} = 2x + i(2y) = 2(x + iy) = 2z
-   $$
+   
+$$
 **Javob:** Funksiya analitik, $\mathbf{f'(z) = 2z}$.
 
 ---
@@ -128,12 +134,16 @@ $$
 2. Ushbu $z_0 = 1$ nuqta $|z| = 2$ aylananing ichida yotadimi? Ha, chunki $|1| = 1 < 2$.
 3. $f(z) = e^z$ funksiya esa kontur ichida hamma joyda analitik.
 4. Koshining integral formulasiga ko'ra:
-   $$
+   
+$$
    \oint_L \frac{f(z)}{z - z_0} \, dz = 2\pi i \cdot f(z_0)
-   $$
-   $$
+   
+$$
+   
+$$
    \oint_{|z|=2} \frac{e^z}{z - 1} \, dz = 2\pi i \cdot e^1 = 2\pi e i
-   $$
+   
+$$
 **Javob:** $\mathbf{2\pi e i}$
 
 ---
@@ -160,9 +170,11 @@ $$
    * $\frac{\partial u}{\partial x} = 1$
    * $\frac{\partial v}{\partial y} = -1$
 3. Koshi-Riman 1-shartini tekshiramiz:
-   $$
+   
+$$
    \frac{\partial u}{\partial x} \neq \frac{\partial v}{\partial y} \quad (1 \neq -1)
-   $$
+   
+$$
 4. Shart bajarilmadi! Demak, $f(z) = \bar{z}$ funksiyasi kompleks tekislikning **hech bir nuqtasida analitik emas** (kompleks hosilaga ega emas).
 
 **Javob:** **Analitik emas** (Koshi-Riman sharti bajarilmaydi).

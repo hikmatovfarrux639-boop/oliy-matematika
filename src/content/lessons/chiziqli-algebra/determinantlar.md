@@ -102,9 +102,11 @@ Demak, agar $i + j$ juft bo'lsa $A_{ij} = +M_{ij}$, agar toq bo'lsa $A_{ij} = -M
 
 ### Laplas teoremasi (Satr yoki ustun bo'yicha yoyish)
 > **Teorema:** Determinant ixtiyoriy satr (yoki ustun) elementlarining ularning mos algebraik to'ldiruvchilariga ko'paytmalari yig'indisiga teng:
-> $$
+> 
+$$
 > \det A = a_{i1}A_{i1} + a_{i2}A_{i2} + \dots + a_{in}A_{in} \quad (i\text{-satr bo'yicha})
-> $$
+> 
+$$
 
 💡 **Foydali sir:** Yoyish uchun tarkibida **eng ko'p nol bor** bo'lgan satr yoki ustunni tanlang! Chunki nolga ko'paytirilgan har qanday to'ldiruvchi nol bo'lib ketadi va hisob-kitob bir necha barobar qisqaradi.
 
@@ -119,14 +121,18 @@ Bu xossalar amaliy hisoblashda eng qiyin misollarni bir necha soniyada yechish i
 3. **Teng yoki proporsional satrlar:** Agar ikki satr (yoki ustun) bir xil bo'lsa yoki biri ikkinchisiga proporsional bo'lsa, $\det A = 0$.
 4. **Satrlar o'rnini almashtirish:** Ikki satrning (ustunning) o'rni almashtirilsa, determinantning ishorasi **qarama-qarshisiga o'zgaradi** ($\Delta_{yangi} = -\Delta_{eski}$).
 5. **Umumiy ko'paytuvchi:** Biror satrdagi (ustundagi) umumiy ko'paytuvchini determinant belgisidan tashqariga chiqarish mumkin:
-   $$
+   
+$$
    \begin{vmatrix} k \cdot a & k \cdot b \\ c & d \end{vmatrix} = k \begin{vmatrix} a & b \\ c & d \end{vmatrix}
-   $$
+   
+$$
    > ⚠️ **Muhim farq:** Agar butun $n \times n$ matritsa $k$ ga ko'paytirilsa: $\det(k A) = k^n \det(A)$.
 6. **Uchburchak matritsa determinanti:** Agar bosh diagonaldan pastdagi (yoki yuqoridagi) barcha elementlar nol bo'lsa, determinant shunchaki bosh diagonal elementlari ko'paytmasiga teng:
-   $$
+   
+$$
    \det A = a_{11} \cdot a_{22} \cdot \dots \cdot a_{nn}
-   $$
+   
+$$
 7. **Matritsalar ko'paytmasi determinanti:** Ikki kvadrat matritsa ko'paytmasining determinanti ularning determinantlari ko'paytmasiga teng: $\det(A \cdot B) = \det A \cdot \det B$. Shuningdek, $\det(A^{-1}) = \frac{1}{\det A}$.
 8. **Eng qudratli xossa (Chiziqli kombinatsiya):** Determinantning biror satriga boshqa satrning ixtiyoriy songa ko'paytirilganini qo'shganda, **determinantning qiymati mutlaqo o'zgarmaydi!** Aynan shu xossa orqali biz satrlarda osonlikcha nollarni keltirib chiqaramiz.
 
@@ -355,19 +361,25 @@ $$
 ## ✍️ Mustaqil yechish uchun mashqlar
 
 1. Determinantni hisoblang:
-   $$
+   
+$$
    \begin{vmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{vmatrix}
-   $$
+   
+$$
 
 2. $3 \times 3$ determinantni hisoblang:
-   $$
+   
+$$
    \begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 2 & 4 & 6 \end{vmatrix}
-   $$
+   
+$$
 
 3. Elementar almashtirishlar orqali hisoblang:
-   $$
+   
+$$
    \begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 3 \\ 1 & 4 & 9 \end{vmatrix}
-   $$
+   
+$$
 
 4. Agar $A$ matritsa $4 \times 4$ o'lchamli va $\det A = 3$ bo'lsa, $\det(2A)$ va $\det(A^{-1})$ ni toping.
 

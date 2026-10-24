@@ -80,17 +80,21 @@ $$
    $z(x, 0) = x^2 - 6x$. Hosilasi: $z'(x) = 2x - 6 = 0 \implies x = 3 \in (0, 5)$.
    Demak, $M_2(3, 0)$ nuqta nomzod:
 
-   $$
+   
+$$
    z(3, 0) = 3^2 - 6(3) = -9
-   $$
+   
+$$
 
 2. **$OB$ kesma ($x = 0, \, 0 \le y \le 5$):**
    $z(0, y) = y^2 - 9y$. Hosilasi: $z'(y) = 2y - 9 = 0 \implies y = 4.5 \in (0, 5)$.
    Demak, $M_3(0, 4.5)$ nuqta nomzod:
 
-   $$
+   
+$$
    z(0, 4.5) = (4.5)^2 - 9(4.5) = 20.25 - 40.5 = -20.25
-   $$
+   
+$$
 
 3. **$AB$ kesma ($y = 5 - x, \, 0 \le x \le 5$):**
    $z(x, 5 - x) = x^2 + x(5 - x) + (5 - x)^2 - 6x - 9(5 - x) = x^2 - 2x - 20$.

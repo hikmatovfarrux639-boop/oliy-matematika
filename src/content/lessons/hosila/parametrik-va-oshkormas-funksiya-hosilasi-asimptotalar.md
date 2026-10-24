@@ -135,24 +135,34 @@ $y'_x$ va $y''_{xx}$ hosilalarni toping ($0 < t < 2\pi$).
 
 #### Yechish:
 1. Parametr $t$ bo'yicha hosilalarni topamiz:
-   $$
+   
+$$
    x'_t = a(1 - \cos t) = 2a \sin^2\frac{t}{2}
-   $$
-   $$
+   
+$$
+   
+$$
    y'_t = a\sin t = 2a \sin\frac{t}{2} \cos\frac{t}{2}
-   $$
+   
+$$
 2. Birinchi tartibli hosila $y'_x$:
-   $$
+   
+$$
    y'_x = \frac{y'_t}{x'_t} = \frac{2a \sin\frac{t}{2} \cos\frac{t}{2}}{2a \sin^2\frac{t}{2}} = \frac{\cos\frac{t}{2}}{\sin\frac{t}{2}} = \text{ctg}\frac{t}{2}
-   $$
+   
+$$
 3. Ikkinchi tartibli hosila $y''_{xx}$:
-   $$
+   
+$$
    (y'_x)'_t = \left(\text{ctg}\frac{t}{2}\right)'_t = -\frac{1}{\sin^2\frac{t}{2}} \cdot \frac{1}{2} = -\frac{1}{2\sin^2\frac{t}{2}}
-   $$
+   
+$$
    Endi $x'_t$ ga bo'lamiz:
-   $$
+   
+$$
    y''_{xx} = \frac{(y'_x)'_t}{x'_t} = \frac{-\frac{1}{2\sin^2\frac{t}{2}}}{2a \sin^2\frac{t}{2}} = -\frac{1}{4a \sin^4\frac{t}{2}}
-   $$
+   
+$$
 
 ---
 
@@ -170,13 +180,17 @@ $g(x) = \frac{x^3 + 2}{x^2 - 4}$ funksiyasini tahlil qilamiz:
    - $\lim_{x \to -2^+} \frac{x^3 + 2}{x^2 - 4} = \frac{-6}{-0} = +\infty \implies x = -2$ vertikal asimptota.
 2. **Qiya asimptota ($y = kx + b$):**
    - $k$ koeffitsiyent:
-     $$
+     
+$$
      k = \lim_{x \to \infty} \frac{g(x)}{x} = \lim_{x \to \infty} \frac{x^3 + 2}{x(x^2 - 4)} = \lim_{x \to \infty} \frac{x^3 + 2}{x^3 - 4x} = 1
-     $$
+     
+$$
    - $b$ koeffitsiyent:
-     $$
+     
+$$
      b = \lim_{x \to \infty} [g(x) - 1 \cdot x] = \lim_{x \to \infty} \left[\frac{x^3 + 2}{x^2 - 4} - x\right] = \lim_{x \to \infty} \frac{x^3 + 2 - x^3 + 4x}{x^2 - 4} = \lim_{x \to \infty} \frac{4x + 2}{x^2 - 4} = 0
-     $$
+     
+$$
    Demak, $k = 1, b = 0$, qiya asimptota: $y = x$.
 
 #### 2-usul: Ko'phadni burchakli bo'lish usuli
@@ -225,8 +239,10 @@ $f(x) = \frac{2x^2 + 3x - 1}{x + 2}$ funksiyasining barcha asimptotalarini aniql
 
 1. Vertikal asimptota: maxraj nolga aylanganda $x = -2$. Surat $-2$ da $2(4) - 6 - 1 = 1 \neq 0$, demak $x = -2$ vertikal asimptotadir.
 2. Suratni maxrajga bo'lamiz:
-   $$
+   
+$$
    2x^2 + 3x - 1 = (2x - 1)(x + 2) + 1 \implies f(x) = 2x - 1 + \frac{1}{x + 2}
-   $$
+   
+$$
    Demak, qiya asimptota: $y = 2x - 1$.
 </details>

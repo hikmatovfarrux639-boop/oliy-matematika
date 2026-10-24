@@ -64,9 +64,11 @@ $$
 
 Bu yerda hisob-kitob qilmasdan ham javobni bir soniyada topish mumkin:
 1. **Surat va maxraj darajalari teng bo'lsa ($n = m$):** Limit katta darajalar oldidagi koeffitsiyentlar nisbatiga teng:
-   $$
+   
+$$
    \text{Limit} = \frac{a_n}{b_m}
-   $$
+   
+$$
 2. **Surat darajasi maxrajnikidan kichik bo'lsa ($n < m$):** Maxraj tezroq o'sadi, shuning uchun $\text{Limit} = 0$.
 3. **Surat darajasi katta bo'lsa ($n > m$):** Surat tezroq o'sadi, shuning uchun $\text{Limit} = \infty$.
 
@@ -105,9 +107,11 @@ $x = 2$ qo'ysak: $\frac{4 - 10 + 6}{4 - 4} = \left[\frac{0}{0}\right]$.
 1. Surat: Viyet bo'yicha $x^2 - 5x + 6 = (x - 2)(x - 3)$.
 2. Maxraj: Kvadratlar ayirmasi $x^2 - 4 = (x - 2)(x + 2)$.
 3. Qisqartiramiz:
-   $$
+   
+$$
    \lim_{x \to 2} \frac{(x - 2)(x - 3)}{(x - 2)(x + 2)} = \lim_{x \to 2} \frac{x - 3}{x + 2} = \frac{2 - 3}{2 + 2} = -\frac{1}{4}
-   $$
+   
+$$
 
 **Javob:** $-\frac{1}{4}$
 

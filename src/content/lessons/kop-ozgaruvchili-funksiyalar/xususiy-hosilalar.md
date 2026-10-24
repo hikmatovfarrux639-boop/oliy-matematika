@@ -21,9 +21,11 @@ Bugungi kunda sun'iy intellekt va neyron tarmoqlarni o'qitishdagi eng asosiy alg
 
 > **Ta'rif:** Agar $y$ o'zgarmas deb qaralganda ($y = \text{const}$), $z = f(x, y)$ funksiyadan $x$ bo'yicha olingan odatiy hosilaga funksiyaning **$x$ bo'yicha xususiy hosilasi** deyiladi va quyidagicha belgilanadi:
 >
-> $$
+> 
+$$
 > z'_x = \frac{\partial z}{\partial x} = f'_x(x, y) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x, y) - f(x, y)}{\Delta x}
-> $$
+> 
+$$
 
 Xuddi shunday, $x$ o'zgarmas deb qaralganda ($x = \text{const}$), $y$ bo'yicha hosila **$y$ bo'yicha xususiy hosila** deyiladi:
 
@@ -63,9 +65,11 @@ Xususiy hosilalarni hisoblashda bir o'zgaruvchili funksiyalarning barcha hosilal
 
 > **Shvars teoremasi:** Agar $z = f(x, y)$ funksiyaning aralash hosilalari biror sohada uzluksiz bo'lsa, u holda **differensiallash tartibi mutlaqo muhim emas**, ya'ni aralash hosilalar bir-biriga doimo teng bo'ladi:
 >
-> $$
+> 
+$$
 > z''_{xy} = z''_{yx}
-> $$
+> 
+$$
 
 *(Avval $x$, keyin $y$ bo'yicha hosila olasizmi yoki aksinchami — natija bir xil chiqadi!).*
 

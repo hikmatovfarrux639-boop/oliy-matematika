@@ -72,9 +72,11 @@ bu yerda:
    - $H_0$: Barcha ochkolar teng ehtimolli ($p_i = \frac{1}{6}$), zarcha to'g'ri.
    - $H_1$: Ochkolar ehtimolligi teng emas, zarcha soxtalashtirilgan.
 2. Nazariy chastotalarni hisoblaymiz:
-   $$
+   
+$$
    n'_i = n \cdot p_i = 120 \cdot \frac{1}{6} = 20 \quad (\text{har bir ochko uchun } 20 \text{ marta})
-   $$
+   
+$$
 3. Pirson statistikasini hisoblash jadvali:
 
 | $i$ | $n_i$ | $n'_i$ | $n_i - n'_i$ | $(n_i - n'_i)^2$ | $\frac{(n_i - n'_i)^2}{n'_i}$ |
@@ -88,17 +90,23 @@ bu yerda:
 | **$\sum$** | **120** | **120** | **0** | — | **$\chi^2_{\text{kuz}} = \mathbf{7.70}$** |
 
 4. Erkinlik darajasi: $k = 6$, parametr baholanmagan ($r = 0$), demak:
-   $$
+   
+$$
    \nu = 6 - 0 - 1 = 5
-   $$
+   
+$$
 5. Jadvaldan kritik nuqtani topamiz ($\alpha = 0.05, \nu = 5$):
-   $$
+   
+$$
    \chi^2_{\text{krit}}(0.05; 5) = 11.07
-   $$
+   
+$$
 6. Xulosa:
-   $$
+   
+$$
    \chi^2_{\text{kuz}} = 7.70 < \chi^2_{\text{krit}} = 11.07
-   $$
+   
+$$
    Demak, **$H_0$ gipoteza qabul qilinadi**. Kuzatilgan og'ishlar tasodifiy bo'lib, zarcha soxtalashtirilgan deb hisoblashga asos yo'q!
 
 ### 2-usul: Tezkor qisqartirilgan hisoblash formulasi

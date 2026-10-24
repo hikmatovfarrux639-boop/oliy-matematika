@@ -17,9 +17,11 @@ Chunki tabiatdagi o'zgarishlar miqdorning o'zi bilan uning o'zgarish tezligi (ho
 
 > **Ta'rif:** Erkli o'zgaruvchi $x$, noma'lum funksiya $y = y(x)$ va uning turli tartibli hosilalari ($y', y'', \dots, y^{(n)}$) orasidagi funksional bog'lanishga **oddiy differensial tenglama (ODT)** deyiladi:
 >
-> $$
+> 
+$$
 > F(x, y, y', y'', \dots, y^{(n)}) = 0
-> $$
+> 
+$$
 
 Agar noma'lum funksiya bir nechta erkli o'zgaruvchilarga bog'liq bo'lsa ($z = z(x, y)$) va uning xususiy hosilalari qatnashsa, bunday tenglama **xususiy hosilali differensial tenglama** deyiladi.
 
@@ -57,9 +59,11 @@ Cheksiz ko'p integral egri chiziqlar oilasidan aynan bitta talab qilingan chiziq
 > **Koshi masalasi:**
 > 1-tartibli normal ko'rinishdagi differensial tenglama $y' = f(x, y)$ va boshlang'ich shart:
 >
-> $$
+> 
+$$
 > y(x_0) = y_0
-> $$
+> 
+$$
 >
 > berilgan bo'lsin. Ushbu boshlang'ich shartni qanoatlantiruvchi yechimni topish masalasi **Koshi masalasi** deyiladi.
 
@@ -139,13 +143,17 @@ $y' = 3x^2 - 4x + 1$ tenglamaning $y(1) = 5$ boshlang'ich shartni qanoatlantiruv
 <summary>👉 Yechimni tekshirish</summary>
 
 1. Integrallaymiz:
-   $$
+   
+$$
    y = \int (3x^2 - 4x + 1)dx = x^3 - 2x^2 + x + C
-   $$
+   
+$$
 2. $y(1) = 5$ shartni qo'yamiz:
-   $$
+   
+$$
    5 = 1^3 - 2(1)^2 + 1 + C \implies 5 = 1 - 2 + 1 + C \implies 5 = 0 + C \implies C = 5
-   $$
+   
+$$
 3. Xususiy yechim: $y = x^3 - 2x^2 + x + 5$.
 </details>
 

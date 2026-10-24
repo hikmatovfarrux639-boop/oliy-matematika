@@ -117,17 +117,23 @@ $$
 \frac{p^2 - 4p + 7}{(p-1)(p-2)(p-3)} = \frac{A}{p-1} + \frac{B}{p-2} + \frac{C}{p-3}
 $$
 - $A$ ni topish uchun $(p-1)$ ni yopib, $p=1$ qo'yamiz:
-  $$
+  
+$$
   A = \frac{1^2 - 4(1) + 7}{(1-2)(1-3)} = \frac{4}{(-1)(-2)} = \frac{4}{2} = 2
-  $$
+  
+$$
 - $B$ ni topish uchun $(p-2)$ ni yopib, $p=2$ qo'yamiz:
-  $$
+  
+$$
   B = \frac{2^2 - 4(2) + 7}{(2-1)(2-3)} = \frac{4 - 8 + 7}{(1)(-1)} = \frac{3}{-1} = -3
-  $$
+  
+$$
 - $C$ ni topish uchun $(p-3)$ ni yopib, $p=3$ qo'yamiz:
-  $$
+  
+$$
   C = \frac{3^2 - 4(3) + 7}{(3-1)(3-2)} = \frac{9 - 12 + 7}{(2)(1)} = \frac{4}{2} = 2
-  $$
+  
+$$
 Demak:
 $$
 Y(p) = \frac{2}{p-1} - \frac{3}{p-2} + \frac{2}{p-3}
@@ -149,14 +155,18 @@ $$
    Umumiy yechim: $y(t) = C_1 e^t + C_2 e^{2t} + 2e^{3t}$.
 3. Hosilasi: $y'(t) = C_1 e^t + 2C_2 e^{2t} + 6e^{3t}$.
 4. Boshlang'ich shartlarni qo'yamiz:
-   $$
+   
+$$
    \begin{cases} y(0) = C_1 + C_2 + 2 = 1 \implies C_1 + C_2 = -1 \\ y'(0) = C_1 + 2C_2 + 6 = 2 \implies C_1 + 2C_2 = -4 \end{cases}
-   $$
+   
+$$
    Ayirsak: $C_2 = -3 \implies C_1 = -1 - (-3) = 2$.
    Natijada:
-   $$
+   
+$$
    y(t) = 2e^t - 3e^{2t} + 2e^{3t}
-   $$
+   
+$$
 Ikkala usul ham aynan bir xil natija berdi! Ko'rib turganingizdek, Laplas usulida hech qanday sistema tuzmasdan, $C_1, C_2$ larni alohida topmasdan yechim biryo'la chiqadi.
 
 ---

@@ -17,9 +17,11 @@ Matritsalar olamida odatiy bo'lish amali $\frac{A}{B}$ mavjud emas! Lekin uning 
 
 > **Ta'rif:** Agar kvadrat $A$ matritsa uchun quyidagi tenglik bajarilsa:
 >
-> $$
+> 
+$$
 > A \cdot A^{-1} = A^{-1} \cdot A = E
-> $$
+> 
+$$
 >
 > u holda $A^{-1}$ matritsa $A$ matritsaga **teskari matritsa** deyiladi.
 
@@ -87,29 +89,39 @@ Katta o'lchamli ($3 \times 3, 4 \times 4$) matritsalar uchun 9 ta yoki 16 ta alg
 
 1. Matritsaning o'ng tomoniga birlik matritsani qo'shib yozing: $(A \mid E)$.
 2. Satrlar ustida elementar almashtirishlar bajarib, chap tomondagi $A$ matritsani birlik $E$ matritsaga aylantiring:
-   $$
+   
+$$
    (A \mid E) \xrightarrow{\text{elementar satr amallari}} (E \mid A^{-1})
-   $$
+   
+$$
 3. O'ng tomonda hosil bo'lgan yangi matritsa aynan $A^{-1}$ bo'ladi!
 
 ### Bosqichma-bosqich amaliy misol:
 $A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ matritsasining teskarisini Gauss-Jordan usuli bilan topamiz:
 1. Birlik matritsani ulaymiz:
-   $$
+   
+$$
    \begin{pmatrix} 1 & 2 & \mid & 1 & 0 \\ 3 & 4 & \mid & 0 & 1 \end{pmatrix}
-   $$
+   
+$$
 2. $S_2 \to S_2 - 3S_1$ amali (chap pastdagi $3$ ni nol qilish):
-   $$
+   
+$$
    \begin{pmatrix} 1 & 2 & \mid & 1 & 0 \\ 0 & -2 & \mid & -3 & 1 \end{pmatrix}
-   $$
+   
+$$
 3. 2-satrni $-2$ ga bo'lamiz:
-   $$
+   
+$$
    \begin{pmatrix} 1 & 2 & \mid & 1 & 0 \\ 0 & 1 & \mid & \frac{3}{2} & -\frac{1}{2} \end{pmatrix}
-   $$
+   
+$$
 4. $S_1 \to S_1 - 2S_2$ amali (chap yuqoridagi $2$ ni nol qilish):
-   $$
+   
+$$
    \begin{pmatrix} 1 & 0 & \mid & -2 & 1 \\ 0 & 1 & \mid & 1.5 & -0.5 \end{pmatrix}
-   $$
+   
+$$
 Chapda birlik matritsa hosil bo'ldi! Demak, o'ng tomondagi matritsa $A^{-1}$ dir:
 $$
 A^{-1} = \begin{pmatrix} -2 & 1 \\ 1.5 & -0.5 \end{pmatrix} = -\frac{1}{2} \begin{pmatrix} 4 & -2 \\ -3 & 1 \end{pmatrix} \quad \checkmark
@@ -198,14 +210,18 @@ $A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 5 & 6 & 0 \end{pmatrix}$ matritsa
    - $A_{33} = + \begin{vmatrix} 1 & 2 \\ 0 & 1 \end{vmatrix} = 1 - 0 = 1$
 
 3. Algebraik to'ldiruvchilar matritsasini tuzamiz va transponirlaymiz ($C^T$):
-   $$
+   
+$$
    C^T = \begin{pmatrix} A_{11} & A_{21} & A_{31} \\ A_{12} & A_{22} & A_{32} \\ A_{13} & A_{23} & A_{33} \end{pmatrix} = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmatrix}
-   $$
+   
+$$
 
 4. $\det A = 1$ bo'lgani uchun:
-   $$
+   
+$$
    A^{-1} = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmatrix}
-   $$
+   
+$$
 
 ---
 
@@ -221,9 +237,11 @@ Tenglama $A \cdot X = B$ ko'rinishida. Demak, $X = A^{-1} \cdot B$.
    $\det A = 4 - 6 = -2 \neq 0$.
    $$A^{-1} = \frac{1}{-2} \begin{pmatrix} 4 & -2 \\ -3 & 1 \end{pmatrix} = \begin{pmatrix} -2 & 1 \\ 1.5 & -0.5 \end{pmatrix}$$
 2. $X = A^{-1} \cdot B$ ni hisoblaymiz:
-   $$
+   
+$$
    X = \begin{pmatrix} -2 & 1 \\ 1.5 & -0.5 \end{pmatrix} \begin{pmatrix} 3 & 5 \\ 5 & 9 \end{pmatrix} = \begin{pmatrix} -6+5 & -10+9 \\ 4.5-2.5 & 7.5-4.5 \end{pmatrix} = \begin{pmatrix} -1 & -1 \\ 2 & 3 \end{pmatrix}
-   $$
+   
+$$
 
 **Javob:** $X = \begin{pmatrix} -1 & -1 \\ 2 & 3 \end{pmatrix}$
 
@@ -241,26 +259,30 @@ $$
 
 **Yechilishi:**
 1. 2-satrga e'tibor bering: u 1-satrning $2$ ga ko'paytirilgani ($S_2 = 2 S_1$). Demak, $S_2 \to S_2 - 2 S_1$ qilsak, butunlay nolli satr hosil bo'ladi:
-   $$
+   
+$$
    \begin{pmatrix}
    1 & -2 & 1 & 3 \\
    0 & 0 & 0 & 0 \\
    -1 & 3 & 0 & -2
    \end{pmatrix}
-   $$
+   
+$$
 2. 3-satrga 1-satrni qo'shamiz ($S_3 \to S_3 + S_1$):
    - $-1 + 1 = 0$
    - $3 + (-2) = 1$
    - $0 + 1 = 1$
    - $-2 + 3 = 1$
 3. Nolli satrni eng pastga tushiramiz:
-   $$
+   
+$$
    \begin{pmatrix}
    1 & -2 & 1 & 3 \\
    0 & 1 & 1 & 1 \\
    0 & 0 & 0 & 0
    \end{pmatrix}
-   $$
+   
+$$
 Pog'onasimon matritsada noldan farqli satrlar soni $2$ ta. Demak:
 $$
 \operatorname{rank}(A) = 2
@@ -283,26 +305,36 @@ $$
 **Yechilishi:**
 1. **1-tartibli minor:** $M_1 = |a_{11}| = |1| = 1 \neq 0$. Demak, $\operatorname{rank}(A) \ge 1$.
 2. **2-tartibli minor:** $M_1$ ni o'rab oluvchi 2-tartibli minorni tekshiramiz:
-   $$
+   
+$$
    M_2 = \begin{vmatrix} 1 & 2 \\ 2 & 5 \end{vmatrix} = 1 \cdot 5 - 2 \cdot 2 = 5 - 4 = 1 \neq 0
-   $$
+   
+$$
    $M_2 \neq 0$ bo'lgani uchun, $\operatorname{rank}(A) \ge 2$. Bu minor **bazis minor** deb qabul qilinadi.
 3. **3-tartibli o'rab oluvchi minor:** $M_2$ ni o'rab oluvchi yagona 3-tartibli minor — bu matritsaning o'z determinanti:
-   $$
+   
+$$
    M_3 = \det A = \begin{vmatrix} 1 & 2 & 3 \\ 2 & 5 & 4 \\ 3 & 7 & 7 \end{vmatrix}
-   $$
+   
+$$
    Sarryus bo'yicha:
-   $$
+   
+$$
    M_3 = (1 \cdot 5 \cdot 7 + 2 \cdot 4 \cdot 3 + 3 \cdot 2 \cdot 7) - (3 \cdot 5 \cdot 3 + 1 \cdot 4 \cdot 7 + 2 \cdot 2 \cdot 7)
-   $$
-   $$
+   
+$$
+   
+$$
    M_3 = (35 + 24 + 42) - (45 + 28 + 28) = 101 - 101 = 0
-   $$
+   
+$$
 4. $M_2$ bazis minorni o'rab oluvchi barcha (bu yerda yagona) 3-tartibli minor nolga teng chiqdi.
    Teoremaga ko'ra, matritsa rangi bazis minorning tartibiga teng:
-   $$
+   
+$$
    \operatorname{rank}(A) = 2
-   $$
+   
+$$
 
 **Javob:** $\operatorname{rank}(A) = 2$, bazis minor: $M_2 = \begin{vmatrix} 1 & 2 \\ 2 & 5 \end{vmatrix}$.
 

@@ -25,9 +25,11 @@ Ushbu tenglama yordamida nafaqat mexanik tebranishlar, balki radiotexnikadagi te
 
 > **Standart ko'rinish:**
 >
-> $$
+> 
+$$
 > y'' + p y' + q y = 0
-> $$
+> 
+$$
 >
 > bu yerda $p$ va $q$ — haqiqiy o'zgarmas sonlar.
 

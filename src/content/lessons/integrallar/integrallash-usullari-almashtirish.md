@@ -128,13 +128,17 @@ Ildiz ichidagi $x^3 + 8$ ning hosilasi $3x^2$ dir. Bizda esa $x^2 \, dx$ ko'payt
 1. $x^2 \, dx = \frac{1}{3} d(x^3 + 8)$ ekanligini ko'ramiz.
 2. $t = x^3 + 8 \implies dt = 3x^2 \, dx \implies x^2 \, dx = \frac{dt}{3}$.
 3. Integralga qo'yamiz:
-   $$
+   
+$$
    \int \sqrt{t} \cdot \frac{dt}{3} = \frac{1}{3} \int t^{1/2} \, dt = \frac{1}{3} \cdot \frac{t^{3/2}}{3/2} + C = \frac{2}{9} t^{3/2} + C
-   $$
+   
+$$
 4. Orqaga qaytamiz:
-   $$
+   
+$$
    = \frac{2}{9} (x^3 + 8)^{3/2} + C = \frac{2}{9}\sqrt{(x^3 + 8)^3} + C
-   $$
+   
+$$
 
 **Javob:** $\frac{2}{9}\sqrt{(x^3 + 8)^3} + C$
 
@@ -211,17 +215,23 @@ $$
 2. Ikkala tomonni kvadratga ko'taramiz: $x = t^2$.
 3. Differensial olamiz: $dx = 2t \, dt$.
 4. Integralga qo'yamiz:
-   $$
+   
+$$
    \int \frac{2t \, dt}{1 + t} = 2 \int \frac{t}{t + 1} \, dt
-   $$
+   
+$$
 5. Suratga $1$ qo'shib va ayirib olamiz ($t = (t+1) - 1$):
-   $$
+   
+$$
    2 \int \frac{(t + 1) - 1}{t + 1} \, dt = 2 \int \left( 1 - \frac{1}{t + 1} \right) \, dt = 2 [t - \ln|t + 1|] + C
-   $$
+   
+$$
 6. Dastlabki $t = \sqrt{x}$ ga qaytamiz:
-   $$
+   
+$$
    = 2\sqrt{x} - 2\ln(1 + \sqrt{x}) + C
-   $$
+   
+$$
 
 **Javob:** $2\sqrt{x} - 2\ln(1 + \sqrt{x}) + C$
 

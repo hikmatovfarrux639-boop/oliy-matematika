@@ -50,9 +50,11 @@ $$
 > [!IMPORTANT]
 > **Gradiyent va sath sirtining ortogonallik xossasi:**
 > Har bir $M_0(x_0, y_0, z_0)$ nuqtada funksiyaning gradiyent vektori:
-> $$
+> 
+$$
 > \operatorname{grad} u(M_0) = \nabla u(M_0) = \frac{\partial u}{\partial x}\vec{i} + \frac{\partial u}{\partial y}\vec{j} + \frac{\partial u}{\partial z}\vec{k}
-> $$
+> 
+$$
 > shu nuqtadan o'tuvchi $f(x, y, z) = C$ sath sirtiga (yoki ikki o'zgaruvchili holda sath chizig'iga) **perpendikulyar (normal)** yo'nalgan bo'ladi va funksiya eng tez o'sadigan yo'nalishni ko'rsatadi.
 
 ---
@@ -105,9 +107,11 @@ $$
 
 > [!TIP]
 > Agar $x_0 = 0, \, y_0 = 0$ bo'lsa, Teylor formulasi **Makloren formulasi**ga aylanadi:
-> $$
+> 
+$$
 > f(x, y) = f(0, 0) + \frac{df(0, 0)}{1!} + \frac{d^2 f(0, 0)}{2!} + \dots + \frac{d^n f(0, 0)}{n!} + R_n(x, y)
-> $$
+> 
+$$
 
 ---
 

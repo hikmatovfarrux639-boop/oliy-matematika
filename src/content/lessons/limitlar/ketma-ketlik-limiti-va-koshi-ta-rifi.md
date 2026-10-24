@@ -23,15 +23,19 @@ Ushbu darsda biz sonli ketma-ketliklar limiti va qat'iy ta'riflar bilan ishlash 
 > **Ketma-ketlik limitining qat'iy ta'rifi (Koshi):**
 > Agar ixtiyoriy kichik musbat $\varepsilon > 0$ son uchun shunday bir natural $N(\varepsilon)$ nomer topilsaki, barcha $n > N$ nomerlar uchun:
 >
-> $$
+> 
+$$
 > |x_n - a| < \varepsilon
-> $$
+> 
+$$
 >
 > tengsizlik bajarilsa, $a$ soni $\{x_n\}$ ketma-ketlikning **limiti** deyiladi va quyidagicha yoziladi:
 >
-> $$
+> 
+$$
 > \lim_{n \to \infty} x_n = a
-> $$
+> 
+$$
 
 ### Geometrik ma'nosi:
 $a$ sonining ixtiyoriy $(a - \varepsilon; a + \varepsilon)$ kichik $\varepsilon$-atrofini qanchalik tor qilib tanlamaylik, ma'lum bir $N$-nomerli haddan keyin **ketma-ketlikning barcha cheksiz ko'p hadlari shu atrof ichiga tushadi**, atrof tashqarisida esa faqat chekli dona ($N$ ta) had qoladi!
@@ -42,9 +46,11 @@ $a$ sonining ixtiyoriy $(a - \varepsilon; a + \varepsilon)$ kichik $\varepsilon$
 
 ### 1. Koshi ta'rifi ($\varepsilon - \delta$ tilida):
 > $\lim_{x \to x_0} f(x) = A$ deyiladi, agar har qanday $\varepsilon > 0$ uchun shunday $\delta(\varepsilon) > 0$ son mavjud bo'lsaki, $0 < |x - x_0| < \delta$ shartni qanoatlantiruvchi barcha $x$ larda:
-> $$
+> 
+$$
 > |f(x) - A| < \varepsilon
-> $$
+> 
+$$
 > tengsizlik bajarilsa.
 
 ### 2. Geyne ta'rifi (Ketma-ketliklar orqali ta'rif):

@@ -74,9 +74,11 @@ $$
 
 > [!IMPORTANT]
 > **$Y$ ning $X$ ga nisbatan empirik korrelyatsion nisbati** deb guruhlararo o'rtacha kvadratik chetlanishning umumiy o'rtacha kvadratik chetlanishga nisbatiga aytiladi:
-> $$
+> 
+$$
 > \eta_{yx} = \frac{\delta_{yx}}{\sigma_y} = \sqrt{\frac{\sum n_i (\bar{y}_{x_i} - \bar{y})^2}{\sum n_i (y_i - \bar{y})^2}}
-> $$
+> 
+$$
 
 ### 3.2. Korrelyatsion nisbatning asosiy xossalari:
 1. $0 \le \eta_{yx} \le 1$.

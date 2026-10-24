@@ -21,9 +21,11 @@ har bir manfiy had oldingi musbat hadning qiymatini kompensatsiya qiladi (kamayt
 
 > **Ta'rif:** Ketma-ket kelgan ixtiyoriy ikkita hadining ishorasi qarama-qarshi bo'lgan qator **ishorasi almashinuvchi qator** deyiladi:
 >
-> $$
+> 
+$$
 > \sum_{n=1}^\infty (-1)^{n-1} a_n = a_1 - a_2 + a_3 - a_4 + \dots \quad (a_n > 0)
-> $$
+> 
+$$
 
 ---
 
@@ -31,13 +33,17 @@ har bir manfiy had oldingi musbat hadning qiymatini kompensatsiya qiladi (kamayt
 
 > **Leybnits teoremasi:** Agar ishorasi almashinuvchi qator uchun quyidagi ikkita shart bir vaqtda bajarilsa:
 > 1. Hadlarning modullari monoton kamayuvchi bo'lsa:
->    $$
+>    
+$$
 >    a_1 \ge a_2 \ge a_3 \ge \dots \ge a_n \ge a_{n+1} \ge \dots
->    $$
+>    
+$$
 > 2. Umumiy hadning moduli cheksizlikda nolga intilsa:
->    $$
+>    
+$$
 >    \lim_{n \to \infty} a_n = 0
->    $$
+>    
+$$
 >
 > u holda qator **YAQINLASHADI**, uning yig'indisi $S$ musbat bo'lib, birinchi hadidan oshmaydi: $0 < S \le a_1$.
 
@@ -90,9 +96,11 @@ $$
 
 #### Yechish:
 1. **1-qadam: Modullar qatorini tekshirish:**
-   $$
+   
+$$
    \sum_{n=1}^\infty \left| \frac{(-1)^{n-1}}{\sqrt{n}} \right| = \sum_{n=1}^\infty \frac{1}{n^{1/2}}
-   $$
+   
+$$
    Bu Dirixle umumlashgan garmonik qatoridir. $p = \frac{1}{2} \le 1$ bo'lganligi sababli qator **uzoqlashadi**.
    Demak, dastlabki qator mutlaq yaqinlashmaydi!
 

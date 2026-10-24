@@ -118,17 +118,21 @@ $$
 1. Funksiya toq: $f(-x) = -f(x)$.
    Demak, $a_0 = 0$ va barcha $a_n = 0$! Faqat $b_n$ larni hisoblaymiz.
 2. $b_n$ formulasini qo'llaymiz:
-   $$
+   
+$$
    b_n = \frac{2}{\pi} \int_0^{\pi} 1 \cdot \sin(nx) \, dx = \frac{2}{\pi} \left[ -\frac{\cos(nx)}{n} \right]_0^{\pi} = \frac{2}{n\pi} (1 - \cos(n\pi))
-   $$
+   
+$$
 3. $\cos(n\pi) = (-1)^n$ ekanini bilamiz:
    * Agar $n$ juft bo'lsa ($n = 2, 4, 6, \dots$): $1 - 1 = 0 \implies b_n = 0$.
    * Agar $n$ toq bo'lsa ($n = 1, 3, 5, \dots$): $1 - (-1) = 2 \implies b_n = \frac{4}{n\pi}$.
 4. Shunday qilib: $b_1 = \frac{4}{\pi}, b_3 = \frac{4}{3\pi}, b_5 = \frac{4}{5\pi}, \dots$
 5. Fure qatorini tuzamiz:
-   $$
+   
+$$
    f(x) = \frac{4}{\pi} \left( \sin x + \frac{\sin 3x}{3} + \frac{\sin 5x}{5} + \dots \right) = \frac{4}{\pi} \sum_{k=1}^{\infty} \frac{\sin(2k-1)x}{2k-1}
-   $$
+   
+$$
 *(E'tibor bering: agar $x = \frac{\pi}{2}$ qo'ysak, mashhur Leybnits qatori hosil bo'ladi: $1 = \frac{4}{\pi}(1 - 1/3 + 1/5 - \dots) \implies \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \dots$)*
 
 **Javob:** $\mathbf{f(x) = \frac{4}{\pi} \sum_{k=1}^{\infty} \frac{\sin(2k-1)x}{2k-1}}$
@@ -141,25 +145,35 @@ $$
 **Yechish:**
 1. $f(x) = x^2$ — juft funksiya. Demak, $b_n = 0$.
 2. $a_0$ ni topamiz:
-   $$
+   
+$$
    a_0 = \frac{2}{\pi} \int_0^{\pi} x^2 \, dx = \frac{2}{\pi} \left[ \frac{x^3}{3} \right]_0^{\pi} = \frac{2}{\pi} \cdot \frac{\pi^3}{3} = \frac{2\pi^2}{3} \implies \frac{a_0}{2} = \frac{\pi^2}{3}
-   $$
+   
+$$
 3. $a_n$ ni bo'laklab integrallash bilan hisoblaymiz:
-   $$
+   
+$$
    a_n = \frac{2}{\pi} \int_0^{\pi} x^2 \cos(nx) \, dx
-   $$
+   
+$$
    $u = x^2, dv = \cos(nx)dx \implies du = 2xdx, v = \frac{\sin(nx)}{n}$.
-   $$
+   
+$$
    a_n = \frac{2}{\pi} \left( \left[ \frac{x^2 \sin(nx)}{n} \right]_0^{\pi} - \int_0^{\pi} \frac{2x \sin(nx)}{n} \, dx \right) = -\frac{4}{n\pi} \int_0^{\pi} x \sin(nx) \, dx
-   $$
+   
+$$
    Yana bir marta bo'laklab integrallaymiz:
-   $$
+   
+$$
    a_n = -\frac{4}{n\pi} \left( \left[ -\frac{x\cos(nx)}{n} \right]_0^{\pi} + \int_0^{\pi} \frac{\cos(nx)}{n} \, dx \right) = -\frac{4}{n\pi} \left( -\frac{\pi (-1)^n}{n} \right) = \frac{4(-1)^n}{n^2}
-   $$
+   
+$$
 4. Qatorni yozamiz:
-   $$
+   
+$$
    x^2 = \frac{\pi^2}{3} + 4 \sum_{n=1}^{\infty} \frac{(-1)^n}{n^2} \cos(nx) = \frac{\pi^2}{3} - 4\cos x + \cos 2x - \frac{4}{9}\cos 3x + \dots
-   $$
+   
+$$
 **Javob:** $\mathbf{x^2 = \frac{\pi^2}{3} + 4 \sum_{n=1}^{\infty} \frac{(-1)^n}{n^2} \cos(nx)}$
 
 ---
@@ -183,17 +197,23 @@ $$
 **Yechish bosqichlari:**
 1. $f(x) = x$ — toq funksiya $\implies a_0 = 0, a_n = 0$.
 2. $b_n$ ni hisoblaymiz:
-   $$
+   
+$$
    b_n = \frac{2}{\pi} \int_0^{\pi} x \sin(nx) \, dx
-   $$
+   
+$$
    Bo'laklab integrallaymiz ($u = x, dv = \sin(nx)dx \implies du = dx, v = -\frac{\cos nx}{n}$):
-   $$
+   
+$$
    b_n = \frac{2}{\pi} \left( \left[ -\frac{x\cos nx}{n} \right]_0^{\pi} + \int_0^{\pi} \frac{\cos nx}{n} \, dx \right) = \frac{2}{\pi} \left( -\frac{\pi (-1)^n}{n} + 0 \right) = -\frac{2(-1)^n}{n} = \frac{2(-1)^{n+1}}{n}
-   $$
+   
+$$
 3. Fure qatori:
-   $$
+   
+$$
    x = 2 \left( \sin x - \frac{\sin 2x}{2} + \frac{\sin 3x}{3} - \frac{\sin 4x}{4} + \dots \right) = 2 \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \sin(nx)
-   $$
+   
+$$
 
 **Javob:** $\mathbf{x = 2 \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \sin(nx)}$
 </details>

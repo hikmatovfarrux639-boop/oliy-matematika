@@ -41,9 +41,11 @@ Kengaytirilgan matritsa: $\bar{A} = (A \mid B)$ — bu asosiy matritsaga ozod ha
 
 > **Kronekker-Kapelli teoremasi:** Chiziqli tenglamalar sistemasi yechimga ega bo'lishi (birgalikda bo'lishi) uchun asosiy matritsa rangi kengaytirilgan matritsa rangiga teng bo'lishi **zarur va yetarlidir**:
 >
-> $$
+> 
+$$
 > \operatorname{rank}(A) = \operatorname{rank}(A \mid B)
-> $$
+> 
+$$
 
 Uchta mumkin bo'lgan holat mavjud:
 1. **$\operatorname{rank}(A) < \operatorname{rank}(A \mid B)$:** Sistema **birgalikda emas** (yechimga ega emas! Masalan, $0x_1 + \dots + 0x_n = 5$ kabi ziddiyat hosil bo'ladi).
@@ -141,13 +143,17 @@ $$
    - $A_{21} = 3, \quad A_{22} = -2, \quad A_{23} = 1$
    - $A_{31} = 3, \quad A_{32} = 1, \quad A_{33} = -5$
 3. Transponirlangan biriktirilgan matritsa $C^T$:
-   $$
+   
+$$
    A^{-1} = \frac{1}{9} \begin{pmatrix} 0 & 3 & 3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{pmatrix}
-   $$
+   
+$$
 4. $X = A^{-1} \cdot B$:
-   $$
+   
+$$
    \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 0 & 3 & 3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{pmatrix} \begin{pmatrix} 8 \\ 3 \\ 0 \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 0(8) + 3(3) + 3(0) \\ 3(8) + (-2)(3) + 1(0) \\ 3(8) + 1(3) + (-5)(0) \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 9 \\ 18 \\ 27 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
-   $$
+   
+$$
 
 ---
 
@@ -228,9 +234,11 @@ Ozod hadlari nolga teng bo'lgan sistema: $A \cdot X = 0$.
 3. **Fundamental yechimlar sistemasi (FYS):**
    Erkin noma'lumlarga navbati bilan $(1, 0, \dots, 0)$, $(0, 1, \dots, 0)$ qiymatlar berib, $k = n - r$ ta chiziqli erkli yechimlar vektori $E_1, E_2, \dots, E_k$ topiladi.
    Sistemaning ixtiyoriy umumiy yechimi:
-   $$
+   
+$$
    X = c_1 E_1 + c_2 E_2 + \dots + c_k E_k, \quad c_i \in \mathbb{R}
-   $$
+   
+$$
 
 ---
 
@@ -248,20 +256,24 @@ Agar barcha tengliklar to'g'ri chiqsa, yechimingiz 100% kafolatlangan!
 ## ✍️ Mustaqil yechish uchun mashqlar
 
 1. Sistemani o'zingiz tanlagan 2 ta usulda yeching va natijalarni taqqoslang:
-   $$
+   
+$$
    \begin{cases}
    2x - y + z = 2 \\
    3x + 2y + 2z = -2 \\
    x - 2y + z = 1
    \end{cases}
-   $$
+   
+$$
 2. Kronekker-Kapelli teoremasi bo'yicha sistemaning birgalikda ekanligini tekshiring:
-   $$
+   
+$$
    \begin{cases}
    x + 2y - z = 3 \\
    2x + 4y - 2z = 7
    \end{cases}
-   $$
+   
+$$
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
   <summary style="font-weight: 700; color: var(--primary);">Javoblar va ko'rsatmalar</summary>

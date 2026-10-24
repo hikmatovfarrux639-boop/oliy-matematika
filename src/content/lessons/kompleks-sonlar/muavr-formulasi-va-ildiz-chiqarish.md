@@ -18,15 +18,19 @@ Fransuz-ingliz matematigi Avraam de Muavr (Abraham de Moivre) kompleks sonning t
 > **Muavr formulasi:**
 > Agar $z = r(\cos\varphi + i\sin\varphi)$ kompleks son berilgan bo'lsa, uning $n$-darajasi ($n \in \mathbb{Z}$) quyidagicha hisoblanadi:
 >
-> $$
+> 
+$$
 > z^n = r^n [\cos(n\varphi) + i\sin(n\varphi)]
-> $$
+> 
+$$
 >
 > Eylerning ko'rsatkichli shaklida bu qoida tabiiy daraja xossasidan bevosita kelib chiqadi:
 >
-> $$
+> 
+$$
 > z^n = (r e^{i\varphi})^n = r^n e^{i n\varphi}
-> $$
+> 
+$$
 
 ### Oltin qoida:
 Kompleks sonni $n$-darajaga ko'tarish uchun:
@@ -43,9 +47,11 @@ Ammo kompleks sonlar maydonida **Algebraning asosiy teoremasiga** ko'ra, har qan
 > **Ildiz chiqarish formulasi:**
 > Agar $z = r(\cos\varphi + i\sin\varphi)$ bo'lsa:
 >
-> $$
+> 
+$$
 > w_k = \sqrt[n]{z} = \sqrt[n]{r} \left( \cos\frac{\varphi + 2\pi k}{n} + i\sin\frac{\varphi + 2\pi k}{n} \right)
-> $$
+> 
+$$
 >
 > bu yerda $k = 0, 1, 2, \dots, n - 1$.
 

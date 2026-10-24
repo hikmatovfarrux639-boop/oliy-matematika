@@ -18,18 +18,22 @@ Bu kabi masalalarni matematik modellashtirish va yechish bilan operatsiyalarni t
 Umumiy holda ChDM quyidagi komponentlardan iborat:
 
 1. **Maqsad funksiyasi:**
-   $$
+   
+$$
    F(X) = c_1 x_1 + c_2 x_2 + \dots + c_n x_n \longrightarrow \max \; (\text{yoki } \min)
-   $$
+   
+$$
 
 2. **Chegaraviy shartlar:**
-   $$
+   
+$$
    \begin{cases}
    a_{11} x_1 + a_{12} x_2 + \dots + a_{1n} x_n \le b_1 \\
    \dots\dots\dots\dots\dots\dots\dots\dots\dots\dots \\
    a_{m1} x_1 + a_{m2} x_2 + \dots + a_{mn} x_n \le b_m
    \end{cases}
-   $$
+   
+$$
 
 3. **Nomanfiylik sharti:** $x_j \ge 0 \; (j = 1, \dots, n)$.
 
@@ -56,16 +60,20 @@ Noma'lumlar soni 3 yoki undan ko'p bo'lganda grafik chizib bo'lmaydi. Bunday hol
 
 1. Boshlang'ich tayanch reja (odatda qo'shimcha o'zgaruvchilar bazis qilib olinadi).
 2. **Baholar satri ($\Delta_j$):**
-   $$
+   
+$$
    \Delta_j = \sum_{i=1}^m C_{bi} a_{ij} - c_j
-   $$
+   
+$$
 3. **Optimallik mezoni (maksimum uchun):**
    - Agar barcha $\Delta_j \ge 0$ bo'lsa, topilgan reja **optimaldir**!
    - Agar biror $\Delta_j < 0$ bo'lsa, eng kichik (absolyut qiymati eng katta manfiy) bahoga mos ustun **kirituvchi ustun** (bosh ustun $k$) deb tanlanadi.
 4. **Chiquvchi qatorni tanlash ($\theta$ nisbat):**
-   $$
+   
+$$
    \theta = \min_{a_{ik} > 0} \left( \frac{b_i}{a_{ik}} \right)
-   $$
+   
+$$
    Eng kichik musbat nisbatga mos qator bazisdan chiqariladi.
 5. Kesishgan element — **hal qiluvchi element** bo'lib, uning yordamida Gauss-Jordan amallari bilan keyingi jadvalga o'tiladi.
 
@@ -93,20 +101,28 @@ Chegara to'g'ri chiziqlarining kesishish nuqtalarini (cho'qqilarini) topamiz:
 2. $A(4, 0)$ ($2x_1 = 8 \implies x_1 = 4, x_2 = 0$) $\implies F(4, 0) = 3(4) + 2(0) = 12$.
 3. $B(0, 3.5)$ ($2x_2 = 7 \implies x_2 = 3.5, x_1 = 0$) $\implies F(0, 3.5) = 3(0) + 2(3.5) = 7$.
 4. $C(x_1, x_2)$ — ikkala to'g'ri chiziq kesishmasi:
-   $$
+   
+$$
    \begin{cases} 2x_1 + x_2 = 8 \\ x_1 + 2x_2 = 7 \end{cases} \implies 2x_1 + x_2 = 8 \implies x_2 = 8 - 2x_1
-   $$
-   $$
+   
+$$
+   
+$$
    x_1 + 2(8 - 2x_1) = 7 \implies x_1 + 16 - 4x_1 = 7 \implies -3x_1 = -9 \implies x_1 = 3
-   $$
-   $$
+   
+$$
+   
+$$
    x_2 = 8 - 2(3) = 2
-   $$
+   
+$$
    Nuqta: $C(3, 2)$.
    Funksiya qiymati:
-   $$
+   
+$$
    F(3, 2) = 3(3) + 2(2) = 9 + 4 = 13
-   $$
+   
+$$
 
 Barcha cho'qqilar orasida eng kattasi: $F_{\max} = 13$ nuqta $C(3, 2)$ da erishiladi!
 

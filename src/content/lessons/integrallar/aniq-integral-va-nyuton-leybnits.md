@@ -24,15 +24,19 @@ Ushbu funksiya grafigi, $Ox$ o'qi hamda $x = a$ va $x = b$ to'g'ri chiziqlari bi
 1. $[a; b]$ kesmani $n$ ta mayda oraliqchalarga bo'lamiz: $a = x_0 < x_1 < \dots < x_n = b$.
 2. Har bir oraliqchaning eni $\Delta x_i = x_i - x_{i-1}$, bo'yi esa funksiyaning ixtiyoriy $\xi_i \in [x_{i-1}, x_i]$ nuqtadagi qiymati $f(\xi_i)$ ga teng bo'lgan ustunchalar (to'g'ri to'rtburchaklar) quramiz.
 3. Bu to'g'ri to'rtburchaklar yuzalari yig'indisi **Riman integral yig'indisi** deyiladi:
-   $$
+   
+$$
    S_n = \sum_{i=1}^n f(\xi_i) \cdot \Delta x_i
-   $$
+   
+$$
 4. Agar bo'linishlar soni cheksiz ortsa ($n \to \infty$) va har bir oraliq eni nolga intilsa ($\max \Delta x_i \to 0$), ushbu ustunchalar yig'indisi egri chiziqli trapetsiyaning aniq yuzasiga intiladi!
 
 > **Aniq integral ta'rifi:**
-> $$
+> 
+$$
 > \int_a^b f(x) \, dx = \lim_{\max \Delta x_i \to 0} \sum_{i=1}^n f(\xi_i) \Delta x_i
-> $$
+> 
+$$
 > bu yerda $a$ — quyi integrallash chegarasi, $b$ — yuqori integrallash chegarasi.
 
 ---
@@ -44,9 +48,11 @@ Riman yig'indisining limitini har safar hisoblash juda og'ir. XVII asrda Isaak N
 > **Nyuton-Leybnits formulasi:**
 > Agar $F(x)$ funksiya $f(x)$ ning $[a; b]$ kesmadagi boshlang'ich funksiyasi bo'lsa ($F'(x) = f(x)$), u holda:
 >
-> $$
+> 
+$$
 > \int_a^b f(x) \, dx = \left. F(x) \right|_a^b = F(b) - F(a)
-> $$
+> 
+$$
 
 **Hisoblash tartibi:**
 1. $f(x)$ ning aniqmas integrali $F(x)$ topiladi (bunda $+ C$ yozilmaydi, chunki ayirishda $C - C = 0$ qisqarib ketadi).
@@ -60,27 +66,37 @@ Riman yig'indisining limitini har safar hisoblash juda og'ir. XVII asrda Isaak N
 
 1. **Bir xil chegaralar:** $\int_a^a f(x) \, dx = 0$.
 2. **Chegaralar o'rni almashsa:** Ishora qarama-qarshisiga o'zgaradi:
-   $$
+   
+$$
    \int_b^a f(x) \, dx = -\int_a^b f(x) \, dx
-   $$
+   
+$$
 3. **Oraliqni bo'lish xossasi:** Ixtiyoriy $c$ nuqta uchun:
-   $$
+   
+$$
    \int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx
-   $$
+   
+$$
 4. **O'zgarmas son va chiziqlilik:**
-   $$
+   
+$$
    \int_a^b [k \cdot f(x) \pm m \cdot g(x)] \, dx = k \int_a^b f(x) \, dx \pm m \int_a^b g(x) \, dx
-   $$
+   
+$$
 5. **Simmetrik oraliqda ($[-a; a]$) integrallash (Imtihon siri!):**
    - Agar $f(x)$ **toq funksiya** bo'lsa ($f(-x) = -f(x)$):
-     $$
+     
+$$
      \int_{-a}^a f(x) \, dx = 0
-     $$
+     
+$$
      *(Masalan: $\int_{-5}^5 x^7 \sin(x^3) \, dx = 0$ — hisoblab o'tirish shart emas!)*
    - Agar $f(x)$ **juft funksiya** bo'lsa ($f(-x) = f(x)$):
-     $$
+     
+$$
      \int_{-a}^a f(x) \, dx = 2 \int_0^a f(x) \, dx
-     $$
+     
+$$
 
 ---
 
@@ -156,9 +172,11 @@ $$
    - Quyi chegara ($x = 0$): $t_{\text{quyi}} = 0^2 + 1 = 1$
    - Yuqori chegara ($x = 2$): $t_{\text{yuqori}} = 2^2 + 1 = 5$
 3. Yangi integralni tuzamiz va hisoblaymiz:
-   $$
+   
+$$
    \int_1^5 \frac{dt}{t} = \left. \ln|t| \right|_1^5 = \ln 5 - \ln 1 = \ln 5 - 0 = \ln 5
-   $$
+   
+$$
 
 **Javob:** $\ln 5$
 
@@ -199,13 +217,17 @@ $y = 4 - x^2$ parabolasi va $y = x + 2$ to'g'ri chizig'i bilan chegaralangan soh
    - Parabola: $y = 4 - 0 = 4$ (yuqorida)
    - Chiziq: $y = 0 + 2 = 2$ (pastda)
 3. Yuza formulasiga qo'yamiz ($S = \int_a^b [y_{\text{yuqori}} - y_{\text{quyi}}] \, dx$):
-   $$
+   
+$$
    S = \int_{-2}^1 [(4 - x^2) - (x + 2)] \, dx = \int_{-2}^1 (2 - x - x^2) \, dx
-   $$
+   
+$$
 4. Integrallaymiz:
-   $$
+   
+$$
    \left. \left( 2x - \frac{x^2}{2} - \frac{x^3}{3} \right) \right|_{-2}^1
-   $$
+   
+$$
    - $x = 1$ da: $2(1) - \frac{1}{2} - \frac{1}{3} = 2 - \frac{5}{6} = \frac{7}{6}$
    - $x = -2$ da: $2(-2) - \frac{4}{2} - \frac{-8}{3} = -4 - 2 + \frac{8}{3} = -6 + \frac{8}{3} = -\frac{10}{3} = -\frac{20}{6}$
    - Ayirma: $\frac{7}{6} - \left(-\frac{20}{6}\right) = \frac{27}{6} = \frac{9}{2} = 4.5$

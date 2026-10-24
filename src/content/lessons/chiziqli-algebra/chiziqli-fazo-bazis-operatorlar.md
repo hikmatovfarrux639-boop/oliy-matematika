@@ -46,9 +46,11 @@ $$
 > **Ta'rif:** $V$ chiziqli fazoda olingan tartiblangan $e = (e_1, e_2, \dots, e_n)$ vektorlar sistemasi quyidagi ikkita shartni qanoatlantirsa, u fazoning **bazisi** deyiladi:
 > 1. $e_1, e_2, \dots, e_n$ vektorlar o'zaro **chiziqli bog'liq emas**;
 > 2. Fazodagi ixtiyoriy $x$ vektorni shu bazis vektorlarining chiziqli kombinatsiyasi sifatida **yagona usulda** ifodalash mumkin:
->    $$
+>    
+$$
 >    x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n
->    $$
+>    
+$$
 
 Bu yerda $(x_1, x_2, \dots, x_n)$ sonlari $x$ vektorning $e$ bazisdagi **koordinatalari** deyiladi.
 Bazisdagi vektorlar soni $n$ ga fazoning **o'lchami** deyiladi va $\dim V = n$ deb yoziladi.
@@ -74,14 +76,16 @@ $$
 
 > **Muhim qoida:** Yangi bazis vektorlarining koordinatalarini **ustun qilib** yozish orqali **o'tish matritsasi $T$** hosil qilinadi:
 >
-> $$
+> 
+$$
 > T = \begin{pmatrix}
 > t_{11} & t_{12} & \dots & t_{1n} \\
 > t_{21} & t_{22} & \dots & t_{2n} \\
 > \vdots & \vdots & \ddots & \vdots \\
 > t_{n1} & t_{n2} & \dots & t_{nn}
 > \end{pmatrix}
-> $$
+> 
+$$
 
 ### Koordinatalarning o'zgarishi formulasi
 
@@ -111,9 +115,11 @@ Ushbu koeffitsiyentlardan tuzilgan $A = (a_{ij})$ matritsa $\mathcal{A}$ operato
 
 > **Teorema:** Agar eski bazisdan yangi bazisga o'tish matritsasi $T$ bo'lsa, operatorning yangi bazisdagi $A'$ matritsasi quyidagi formula bo'yicha hisoblanadi:
 >
-> $$
+> 
+$$
 > A' = T^{-1} \cdot A \cdot T
-> $$
+> 
+$$
 
 Bunday matritsalar **o'xshash matritsalar** deb ataladi. O'xshash matritsalarning determinanti va izi (trace) bir xil bo'ladi: $\det(A') = \det(A)$ va $\operatorname{tr}(A') = \operatorname{tr}(A)$.
 
@@ -170,9 +176,11 @@ Har qanday $m \times n$ o'lchamli $A$ matritsa uchun 4 ta qismfazo mavjud:
 ### Chiziqli algebraning asosiy teoremasi:
 1. **Satr rangi doimo ustun rangiga teng:** $\dim(C(A)) = \dim(C(A^T)) = r$.
 2. **Rank-Nullity teoremasi:**
-   $$
+   
+$$
    \operatorname{rank}(A) + \operatorname{nullity}(A) = n
-   $$
+   
+$$
    Matritsa rangi bilan uning yadrosi (bir jinsli sistema $AX = 0$ ning erkin noma'lumlari) o'lchami yig'indisi doimo ustunlar soni $n$ ga teng bo'ladi!
 3. **Ortogonallik:**
    - Satrlar fazosi $C(A^T)$ va Nol-fazo $N(A)$ o'zaro **perpendikulyar (ortogonal)** bo'lib, butun $\mathbb{R}^n$ fazoni to'ldiradi.

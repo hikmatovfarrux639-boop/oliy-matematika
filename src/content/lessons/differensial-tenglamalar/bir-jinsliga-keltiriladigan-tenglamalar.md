@@ -70,14 +70,18 @@ $$
 
 ### $U(x, y)$ funksiyani tiklash algoritmi:
 1. $\frac{\partial U}{\partial x} = P(x, y)$ ekanligidan $x$ bo'yicha integrallaymiz:
-   $$
+   
+$$
    U(x, y) = \int P(x, y) dx + \varphi(y)
-   $$
+   
+$$
    bu yerda $\varphi(y)$ — $x$ ga bog'liq bo'lmagan integrallash "o'zgarmasi".
 2. Hosil bo'lgan ifodadan $y$ bo'yicha xususiy hosila olib, $Q(x, y)$ ga tenglashtiramiz:
-   $$
+   
+$$
    \frac{\partial U}{\partial y} = \frac{\partial}{\partial y}\left(\int P(x, y) dx\right) + \varphi'(y) = Q(x, y)
-   $$
+   
+$$
    Bu yerdan $\varphi'(y)$ topiladi va oddiy integrallash orqali $\varphi(y)$ aniqlanadi.
 
 ---
@@ -86,13 +90,17 @@ $$
 
 Agar $\frac{\partial P}{\partial y} \ne \frac{\partial Q}{\partial x}$ bo'lsa, tenglama to'liq differensialli emas. Biroq ba'zan shunday $\mu(x, y)$ funksiyasini topish mumkinki, tenglamani unga ko'paytirganda u to'liq differensialliga aylanadi:
 1. Agar $\frac{\frac{\partial P}{\partial y} - \frac{\partial Q}{\partial x}}{Q} = \psi(x)$ (faqat $x$ ga bog'liq) bo'lsa:
-   $$
+   
+$$
    \mu(x) = e^{\int \psi(x) dx}
-   $$
+   
+$$
 2. Agar $\frac{\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}}{P} = \theta(y)$ (faqat $y$ ga bog'liq) bo'lsa:
-   $$
+   
+$$
    \mu(y) = e^{\int \theta(y) dy}
-   $$
+   
+$$
 
 ---
 

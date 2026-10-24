@@ -20,9 +20,11 @@ Bunday tenglamalar **1-tartibli chiziqli differensial tenglamalar** deb ataladi 
 
 > **Ta'rif:** Quyidagi ko'rinishdagi tenglama **birinchi tartibli chiziqli differensial tenglama** deyiladi:
 >
-> $$
+> 
+$$
 > y' + P(x) \cdot y = Q(x)
-> $$
+> 
+$$
 >
 > bu yerda $P(x)$ va $Q(x)$ — $x$ ga bog'liq uzluksiz funksiyalar (yoki o'zgarmas sonlar).
 > - Agar $Q(x) = 0$ bo'lsa: $y' + P(x)y = 0$ — **bir jinsli chiziqli tenglama** (o'zgaruvchilari oson ajraladi);

@@ -156,12 +156,16 @@ $y = 3 - 2\cos(5x)$ funksiyaning qiymatlar sohasini toping.
 
 Kosinus har doim $-1 \le \cos(5x) \le 1$ oralig'ida bo'ladi.
 1. $(-2)$ ga ko'paytiramiz (ishoralar teskarisiga o'zgaradi):
-   $$
+   
+$$
    -2 \le -2\cos(5x) \le 2
-   $$
+   
+$$
 2. $3$ ni qo'shamiz:
-   $$
+   
+$$
    3 - 2 \le 3 - 2\cos(5x) \le 3 + 2 \implies 1 \le y \le 5
-   $$
+   
+$$
 Demak, $E(f) = [1; 5]$.
 </details>

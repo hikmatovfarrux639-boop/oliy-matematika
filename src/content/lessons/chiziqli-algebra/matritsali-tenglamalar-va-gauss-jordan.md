@@ -53,9 +53,11 @@ Teskari matritsani algebraik to'ldiruvchilar orqali hisoblash ($3 \times 3$ yoki
 > **Qoida ($A X = B$ uchun):**
 > Kengaytirilgan $(A \mid B)$ matritsa tuziladi. Satrlar ustida elementar almashtirishlar bajarilib, chap tomondagi $A$ matritsa birlik $E$ matritsaga keltiriladi:
 >
-> $$
+> 
+$$
 > (A \mid B) \xrightarrow{\text{satr amallari}} (E \mid X)
-> $$
+> 
+$$
 >
 > Chap tomonda $E$ hosil bo'lgan paytda, o'ng tomonda avtomatik ravishda qidirilayotgan **$X$ matritsa** hosil bo'ladi!
 
@@ -66,9 +68,11 @@ Xuddi shunday, teskari matritsani topish uchun $(A \mid E) \to (E \mid A^{-1})$ 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
 > **Masala:** Matritsali tenglamani yeching:
-> $$
+> 
+$$
 > \begin{pmatrix} 2 & 1 \\ 5 & 3 \end{pmatrix} \cdot X = \begin{pmatrix} 4 & -1 \\ 11 & 2 \end{pmatrix}
-> $$
+> 
+$$
 
 ### 1-usul: Teskari matritsa formulasidan foydalanish
 Tenglama ko'rinishi: $A \cdot X = B \implies X = A^{-1} \cdot B$.
@@ -99,37 +103,45 @@ $$
    - $3 - 2.5(1) = 0.5$
    - $11 - 2.5(4) = 11 - 10 = 1$
    - $2 - 2.5(-1) = 2 + 2.5 = 4.5$
-   $$
+   
+$$
    \left(\begin{array}{cc|cc}
    2 & 1 & 4 & -1 \\
    0 & 0.5 & 1 & 4.5
    \end{array}\right)
-   $$
+   
+$$
 2. 2-satrni 2 ga ko'paytiramiz:
-   $$
+   
+$$
    \left(\begin{array}{cc|cc}
    2 & 1 & 4 & -1 \\
    0 & 1 & 2 & 9
    \end{array}\right)
-   $$
+   
+$$
 3. 1-satrdan 2-satrni ayiramiz ($1\text{-satr} \to 1\text{-satr} - 2\text{-satr}$):
    - $2 - 0 = 2$
    - $1 - 1 = 0$
    - $4 - 2 = 2$
    - $-1 - 9 = -10$
-   $$
+   
+$$
    \left(\begin{array}{cc|cc}
    2 & 0 & 2 & -10 \\
    0 & 1 & 2 & 9
    \end{array}\right)
-   $$
+   
+$$
 4. 1-satrni 2 ga bo'lamiz:
-   $$
+   
+$$
    \left(\begin{array}{cc|cc}
    1 & 0 & \mathbf{1} & \mathbf{-5} \\
    0 & 1 & \mathbf{2} & \mathbf{9}
    \end{array}\right)
-   $$
+   
+$$
 Chap tomonda $E$ hosil bo'ldi, o'ng tomonda esa qidirilayotgan $X = \begin{pmatrix} 1 & -5 \\ 2 & 9 \end{pmatrix}$!
 
 Ikkala usul ham mutlaqo bir xil natija berdi!

@@ -107,17 +107,21 @@ Yaqinlashish intervali: $|x - 3| < 2 \implies -2 < x - 3 < 2 \implies x \in (1, 
 2. **Chekka nuqtalarni tekshiramiz:**
    - **$x = 1$ bo'lganda:**
 
-     $$
+     
+$$
      \sum_{n=1}^{\infty} \frac{(1 - 3)^n}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{(-2)^n}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{(-1)^n}{n}
-     $$
+     
+$$
 
      Bu o'zgaruvchan ishorali qator Leybnits alomatiga ko'ra ($b_n = \frac{1}{n}$ monoton kamayadi va $\lim_{n\to\infty} \frac{1}{n} = 0$) **shartli yaqinlashadi**. Demak, $x = 1$ nuqta sohaga kiradi.
 
    - **$x = 5$ bo'lganda:**
 
-     $$
+     
+$$
      \sum_{n=1}^{\infty} \frac{(5 - 3)^n}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{2^n}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{1}{n}
-     $$
+     
+$$
 
      Bu garmonik qator bo'lib, u **uzoqlashadi**. Demak, $x = 5$ nuqta sohaga kirmaydi.
 
@@ -143,9 +147,11 @@ Yaqinlashish intervali: $|x + 2| < \frac{1}{e} \implies x \in \left(-2 - \frac{1
 2. **Chekka nuqtalarda ($|x + 2| = \frac{1}{e}$):**
    Qatorning umumiy hadi moduli:
 
-   $$
+   
+$$
    |u_n| = \left(1 + \frac{1}{n}\right)^{n^2} \cdot \frac{1}{e^n} = \left( \frac{\left(1 + \frac{1}{n}\right)^n}{e} \right)^n
-   $$
+   
+$$
 
    Logarifmlash yordamida $\lim_{n \to \infty} |u_n| = e^{-1/2} = \frac{1}{\sqrt{e}} \neq 0$ ekanini ko'rish mumkin. Yaqinlashishning zaruriy sharti bajarilmagani uchun ikkala chekka nuqtada ham qator **uzoqlashadi**.
 
@@ -172,9 +178,11 @@ $$
 2. **Chekka nuqtalar $x = \pm 3$ da:**
    $x^2 = 9$ bo'lgani uchun ikkala chekka nuqtada ham bir xil sonli qator hosil bo'ladi:
 
-   $$
+   
+$$
    \sum_{n=1}^{\infty} \frac{9^n}{n^2 \cdot 9^n} = \sum_{n=1}^{\infty} \frac{1}{n^2}
-   $$
+   
+$$
 
    Bu umumlashgan garmonik qator ($p = 2 > 1$) **yaqinlashadi**.
 

@@ -56,9 +56,11 @@ $$
 1. **Toq funksiya:** $\Phi(-x) = -\Phi(x)$. Demak, $\Phi(x_2) - \Phi(-|x_1|) = \Phi(x_2) + \Phi(|x_1|)$.
 2. $x \ge 5$ bo'lganda $\Phi(x) \approx 0.5$ deb qabul qilinadi.
 3. **O'rtachadan chetlanish ehtimoli:**
-   $$
+   
+$$
    P(|k - np| \le \varepsilon) \approx 2\Phi\left(\frac{\varepsilon}{\sqrt{npq}}\right)
-   $$
+   
+$$
 
 ---
 
@@ -114,26 +116,36 @@ Zavodda tayyorlanayotgan mahsulotning standartga to'g'ri kelish ehtimoli $p = 0.
    $npq = 64 > 10$ sharti to'liq bajarilmoqda, demak Integral Muavr-Laplas teoremasi juda yuqori aniqlik beradi.
 
 2. Integrallash chegaralari $x_1$ va $x_2$ ni topamiz ($k_1 = 310, k_2 = 330$):
-   $$
+   
+$$
    x_1 = \frac{k_1 - np}{\sqrt{npq}} = \frac{310 - 320}{8} = \frac{-10}{8} = -1.25
-   $$
-   $$
+   
+$$
+   
+$$
    x_2 = \frac{k_2 - np}{\sqrt{npq}} = \frac{330 - 320}{8} = \frac{10}{8} = 1.25
-   $$
+   
+$$
 
 3. Formulani qo'llaymiz:
-   $$
+   
+$$
    P_{400}(310 \le k \le 330) \approx \Phi(1.25) - \Phi(-1.25)
-   $$
+   
+$$
    Laplas funksiyasining toqligidan:
-   $$
+   
+$$
    \Phi(1.25) - (-\Phi(1.25)) = 2\Phi(1.25)
-   $$
+   
+$$
 
 4. Laplas jadvalidan $\Phi(1.25) \approx 0.3944$ qiymatini olamiz:
-   $$
+   
+$$
    P \approx 2 \cdot 0.3944 = 0.7888
-   $$
+   
+$$
    Demak, mahsulotlar soni 310 dan 330 gacha bo'lishi ehtimoli taxminan **$78.9\%$** ni tashkil etadi.
 
 ---

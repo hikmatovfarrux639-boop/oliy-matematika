@@ -17,9 +17,11 @@ Ularning asosiy g'oyasi juda sodda: algebraik shakl almashtirishlar yordamida $y
 
 > **Ta'rif:** Quyidagi ko'rinishlarning biriga keltirish mumkin bo'lgan tenglama **o'zgaruvchilari ajraladigan differensial tenglama** deyiladi:
 >
-> $$
+> 
+$$
 > y' = f(x) \cdot g(y) \qquad \text{yoki} \qquad M_1(x)N_1(y) \, dx + M_2(x)N_2(y) \, dy = 0
-> $$
+> 
+$$
 
 ---
 

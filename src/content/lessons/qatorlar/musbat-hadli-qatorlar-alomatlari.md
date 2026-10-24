@@ -113,9 +113,11 @@ $$
 1. Umumiy had: $a_n = \frac{2^n}{n!}$.
 2. Keyingi had ($n$ o'rniga $n+1$ qo'yamiz): $a_{n+1} = \frac{2^{n+1}}{(n+1)!}$.
 3. Nisbatning limitini hisoblaymiz:
-   $$
+   
+$$
    D = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \left( \frac{2^{n+1}}{(n+1)!} \cdot \frac{n!}{2^n} \right)
-   $$
+   
+$$
 4. Qisqartiramiz:
    $$\frac{2^{n+1}}{2^n} = 2, \quad \frac{n!}{(n+1)!} = \frac{1}{n+1}$$
    $$D = \lim_{n \to \infty} \frac{2}{n+1} = 0$$
@@ -153,9 +155,11 @@ $$
    $$\frac{n}{n^3} = \frac{1}{n^2}$$
 2. Etalon qilib $b_n = \frac{1}{n^2}$ ($p = 2 > 1$, yaqinlashuvchi Dirixle qatori) ni olamiz.
 3. Nisbat limitini hisoblaymiz:
-   $$
+   
+$$
    k = \lim_{n \to \infty} \frac{a_n}{b_n} = \lim_{n \to \infty} \left( \frac{n + 5}{2n^3 - n + 1} \cdot n^2 \right) = \lim_{n \to \infty} \frac{n^3 + 5n^2}{2n^3 - n + 1} = \frac{1}{2}
-   $$
+   
+$$
 4. $k = \frac{1}{2}$ (chekli va noldan farqli musbat son). Demak, berilgan qator etalon $b_n$ kabi **yaqinlashadi**!
 
 **Javob:** Qator yaqinlashuvchi.

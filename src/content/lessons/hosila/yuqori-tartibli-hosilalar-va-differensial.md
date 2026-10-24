@@ -17,9 +17,11 @@ Matematik analizda bu jarayon **yuqori tartibli hosilalar** deb ataladi va mexan
 
 > **Ta'rif:** Funksiyaning birinchi tartibli hosilasidan olingan hosila uning **ikkinchi tartibli hosilasi** deyiladi va $f''(x)$, $y''$ yoki $\frac{d^2 y}{dx^2}$ deb belgilanadi:
 >
-> $$
+> 
+$$
 > f''(x) = (f'(x))'
-> $$
+> 
+$$
 
 ### A) Fizik ma'nosi: Tezlanish
 Agar moddiy nuqtaning harakat qonuni $s = s(t)$ bo'lsa:
@@ -74,9 +76,11 @@ Bu formula ayniqsa ko'phad va eksponenta ko'paytirilganda (masalan, $(x^2 e^x)^{
 
 > **Ta'rif:** $y = f(x)$ funksiya orttirmasi $\Delta y$ ning $\Delta x$ ga nisbatan chiziqli asosiy qismi **funksiya differensiali** deyiladi:
 >
-> $$
+> 
+$$
 > dy = f'(x) \cdot dx
-> $$
+> 
+$$
 > bu yerda $dx = \Delta x$ — argument orttirmasi.
 
 ### Differensial yordamida taqribiy hisoblash:
@@ -168,12 +172,16 @@ $$
 3. Orttirma: $\Delta x = 0.08$.
 4. Hosilani hisoblaymiz: $f'(x) = \frac{1}{2\sqrt{x}} \implies f'(16) = \frac{1}{2\sqrt{16}} = \frac{1}{8} = 0.125$.
 5. Taqribiy formulaga qo'yamiz:
-   $$
+   
+$$
    f(16 + 0.08) \approx f(16) + f'(16) \cdot \Delta x
-   $$
-   $$
+   
+$$
+   
+$$
    \sqrt{16.08} \approx 4 + 0.125 \cdot 0.08 = 4 + 0.010 = 4.01
-   $$
+   
+$$
 
 *(Kalkulyator bilan tekshirish: $\sqrt{16.08} \approx 4.009988\dots$ Aniqlik 0.00001 gacha to'g'ri!)*
 

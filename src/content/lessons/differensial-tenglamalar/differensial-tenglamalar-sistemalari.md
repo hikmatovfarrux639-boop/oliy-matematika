@@ -38,13 +38,17 @@ Ushbu sistemani yechishning ikkita asosiy klassik usuli mavjud.
 
 Bu usul maktabdagi oddiy chiziqli tenglamalar sistemasidan bitta o'zgaruvchini yo'qotish usuliga juda o'xshaydi:
 1. 1-tenglamadan $y$ ni ifodalaymiz:
-   $$
+   
+$$
    y = \frac{1}{a_{12}} \left( x' - a_{11} x \right)
-   $$
+   
+$$
 2. Ushbu ifodadan $t$ bo'yicha yana bir bor hosila olamiz:
-   $$
+   
+$$
    y' = \frac{1}{a_{12}} \left( x'' - a_{11} x' \right)
-   $$
+   
+$$
 3. $y$ va $y'$ larni sistemadagi 2-tenglamaga qo'yamiz.
 Natijada faqat bitta noma'lum $x(t)$ ga bog'liq **2-tartibli o'zgarmas koeffitsiyentli chiziqli differensial tenglama** hosil bo'ladi! Uni yechib $x(t)$ topilgach, 1-qadamdagi formula orqali $y(t)$ osongina hisoblanadi.
 

@@ -21,9 +21,11 @@ Faraz qilaylik, $\int \frac{P(x)}{Q(x)} dx$ integrali berilgan bo'lsin:
 
 ### 1-qadam: Kasrning to'g'ri yoki noto'g'riligini tekshirish
 - Agar $\deg P(x) \ge \deg Q(x)$ bo'lsa, kasr **noto'g'ri** deyiladi. Uni albatta burchakli bo'lish orqali butun qismini ajratish shart:
-  $$
+  
+$$
   \frac{P(x)}{Q(x)} = M(x) + \frac{R(x)}{Q(x)}, \quad (\deg R < \deg Q)
-  $$
+  
+$$
 - Agar $\deg P(x) < \deg Q(x)$ bo'lsa, kasr **to'g'ri** deyiladi.
 
 ### 2-qadam: Maxrajni chiziqli va kvadratik ko'paytuvchilarga ajratish
@@ -54,17 +56,23 @@ Qavslarni ochib, $x^2$, $x^1$, $x^0$ oldidagi koeffitsiyentlarni tenglashtiramiz
 ### 2-usul: Xususiy qiymatlar (Xevisayd — "Qo'l bilan yopish" cover-up) usuli
 Maxraj ildizlarini birma-bir qo'yib chiqamiz:
 1. $x = 1$ qo'yamiz (chunki $B$ va $C$ qatnashgan hadlar nolga aylanadi):
-   $$
+   
+$$
    2(1)^2 + 5(1) - 1 = A(1 + 2)(1 - 3) \implies 6 = -6A \implies A = -1
-   $$
+   
+$$
 2. $x = -2$ qo'yamiz ($A$ va $C$ qatnashgan hadlar nolga aylanadi):
-   $$
+   
+$$
    2(-2)^2 + 5(-2) - 1 = B(-2 - 1)(-2 - 3) \implies -3 = 15B \implies B = -\frac{1}{5}
-   $$
+   
+$$
 3. $x = 3$ qo'yamiz ($A$ va $B$ hadlar yo'qoladi):
-   $$
+   
+$$
    2(9) + 15 - 1 = C(3 - 1)(3 + 2) \implies 32 = 10C \implies C = \frac{16}{5}
-   $$
+   
+$$
 Barcha koeffitsiyentlar 30 soniyada hech qanday sistemalarsiz topildi!
 
 ---
@@ -78,9 +86,11 @@ $$
 Agar bu limit mavjud va chekli son bo'lsa, xosmas integral **yaqinlashuvchi**, cheksiz yoki mavjud bo'lmasa **uzoqlashuvchi** deyiladi.
 
 > **Yaqinlashish etaloni (Dirixle integrali):**
-> $$
+> 
+$$
 > \int_1^{+\infty} \frac{dx}{x^p} = \begin{cases} \text{Yaqinlashuvchi}, & \text{agar } p > 1 \\ \text{Uzoqlashuvchi}, & \text{agar } p \le 1 \end{cases}
-> $$
+> 
+$$
 
 ### 2-tur xosmas integrallar (uzilish nuqtasiga ega oraliq):
 Agar $f(x)$ funksiya $x = b$ nuqtada cheksizlikka intilsa ($\lim_{x \to b-0} f(x) = \infty$):
@@ -89,9 +99,11 @@ $$
 $$
 
 > **2-tur etaloni:**
-> $$
+> 
+$$
 > \int_a^b \frac{dx}{(b - x)^\alpha} = \begin{cases} \text{Yaqinlashuvchi}, & \text{agar } \alpha < 1 \\ \text{Uzoqlashuvchi}, & \text{agar } \alpha \ge 1 \end{cases}
-> $$
+> 
+$$
 
 ---
 
@@ -105,27 +117,37 @@ $$
 
 #### Yechish:
 1. Suratning darajasi 4, maxrajniki 3. Kasr noto'g'ri! Butun qismini ajratamiz:
-   $$
+   
+$$
    (x^4 + 1) : (x^3 - x) = x + \text{qoldiq } (x^2 + 1)
-   $$
-   $$
+   
+$$
+   
+$$
    \frac{x^4 + 1}{x^3 - x} = x + \frac{x^2 + 1}{x(x - 1)(x + 1)}
-   $$
+   
+$$
 2. Kasr qismini sodda kasrlarga ajratamiz:
-   $$
+   
+$$
    \frac{x^2 + 1}{x(x - 1)(x + 1)} = \frac{A}{x} + \frac{B}{x - 1} + \frac{C}{x + 1}
-   $$
+   
+$$
    Heaviside cover-up usulini qo'llaymiz:
    - $x = 0$ da: $A = \frac{0^2 + 1}{(0 - 1)(0 + 1)} = \frac{1}{-1} = -1$
    - $x = 1$ da: $B = \frac{1^2 + 1}{1(1 + 1)} = \frac{2}{2} = 1$
    - $x = -1$ da: $C = \frac{(-1)^2 + 1}{(-1)(-1 - 1)} = \frac{2}{2} = 1$
 3. Integrallaymiz:
-   $$
+   
+$$
    I = \int x dx - \int \frac{dx}{x} + \int \frac{dx}{x - 1} + \int \frac{dx}{x + 1}
-   $$
-   $$
+   
+$$
+   
+$$
    I = \frac{x^2}{2} - \ln|x| + \ln|x - 1| + \ln|x + 1| + C = \frac{x^2}{2} + \ln\left|\frac{x^2 - 1}{x}\right| + C
-   $$
+   
+$$
 
 ---
 

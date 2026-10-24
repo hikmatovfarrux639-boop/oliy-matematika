@@ -27,13 +27,17 @@ $$
 
 > [!IMPORTANT]
 > **Umumlashgan ikkinchi ajoyib limit:** Agar $\alpha(x)$ ixtiyoriy cheksiz kichik funksiya ($\lim_{x \to x_0} \alpha(x) = 0$ va $\alpha(x) \neq 0$) bo'lsa, u holda $x \to x_0$ (yoki $x \to \infty$) da:
-> $$
+> 
+$$
 > \lim_{x \to x_0} \big(1 + \alpha(x)\big)^{\frac{1}{\alpha(x)}} = e
-> $$
+> 
+$$
 > Xususan, ixtiyoriy o'zgarmas $k \in \mathbb{R}$ soni uchun quyidagi muhim xususiy hollar bajariladi:
-> $$
+> 
+$$
 > \lim_{x \to \infty} \left(1 + \frac{k}{x}\right)^x = e^k, \qquad \lim_{x \to 0} (1 + kx)^{\frac{1}{x}} = e^k
-> $$
+> 
+$$
 
 ### Tuzilish qonuniyati (Shablon)
 Ikkinchi ajoyib limit ishlashi uchun ifoda qat'iy ravishda quyidagi strukturaga ega bo'lishi shart:
@@ -50,9 +54,11 @@ Faraz qilaylik, bizga $\lim_{x \to x_0} \big(u(x)\big)^{v(x)}$ limit berilgan bo
 Bu usulda qavs ichidagi $u(x)$ ifoda sun'iy ravishda $1 + \alpha(x)$ ko'rinishiga keltiriladi:
 1. Qavs ichiga $1$ ni qo'shamiz va ayiramiz: $u(x) = 1 + (u(x) - 1) = 1 + \alpha(x)$, bu yerda $\alpha(x) = u(x) - 1 \to 0$.
 2. Daraja ko'rsatkichini $\frac{1}{\alpha(x)}$ ga ko'paytiramiz va bo'lamiz:
-   $$
+   
+$$
    \big(u(x)\big)^{v(x)} = \left[ \big(1 + \alpha(x)\big)^{\frac{1}{\alpha(x)}} \right]^{\alpha(x) \cdot v(x)}
-   $$
+   
+$$
 3. Ichki qavs $e$ ga intilgani sababli, natija darajaning limitiga teng bo'ladi.
 
 ### 2-usul: Tezkor "Oltin qoida" (Eksponensial formula)
@@ -61,9 +67,11 @@ Klassik usuldagi oxirgi qadamni umumlashtirsak, har safar darajani ko'paytirib-b
 > [!TIP]
 > **$[1^\infty]$ aniqmaslikni yechishning Oltin Qoidasi:**
 > Agar $\lim_{x \to x_0} u(x) = 1$ va $\lim_{x \to x_0} v(x) = \infty$ bo'lsa, u holda:
-> $$
+> 
+$$
 > \lim_{x \to x_0} \big(u(x)\big)^{v(x)} = \exp\left( \lim_{x \to x_0} \big(u(x) - 1\big) \cdot v(x) \right) = e^{\lim_{x \to x_0} (u(x) - 1) v(x)}
-> $$
+> 
+$$
 > Bu qoida har qanday $[1^\infty]$ aniqmaslikni bir qadamda oddiy $[0 \cdot \infty]$ yoki $\left[\frac{\infty}{\infty}\right]$, $\left[\frac{0}{0}\right]$ ko'rinishidagi ko'paytma limitiga aylantiradi!
 
 > [!WARNING]

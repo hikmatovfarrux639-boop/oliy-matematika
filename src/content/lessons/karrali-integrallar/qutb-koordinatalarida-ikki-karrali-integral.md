@@ -50,14 +50,18 @@ $$
 > **Oltin qoida (Talabalarning eng ko'p qiladigan xatosi):**
 > Qutb koordinatalariga o'tganda $dx dy$ o'rniga doimo **$r \, dr d\varphi$** yozilishi shart:
 >
-> $$
+> 
+$$
 > dx dy = r \, dr d\varphi
-> $$
+> 
+$$
 >
 > Integral formulasi:
-> $$
+> 
+$$
 > \iint_D f(x, y) \, dx dy = \iint_{D^*} f(r\cos\varphi, \, r\sin\varphi) \cdot r \, dr d\varphi
-> $$
+> 
+$$
 
 ---
 
@@ -114,17 +118,23 @@ bu yerda $D$ — $x^2 + y^2 \le 4, \; y \ge 0$ (yuqori yarim doira).
    - Radius: $0 \le r \le 2$.
 2. Integral ostidagi funksiya: $\sqrt{4 - (x^2 + y^2)} = \sqrt{4 - r^2}$.
 3. Yakobian $r$ ni unutmasdan integrallaymiz:
-   $$
+   
+$$
    I = \int_0^\pi d\varphi \int_0^2 \sqrt{4 - r^2} \cdot r \, dr
-   $$
+   
+$$
 4. Ichki integralni hisoblash: $d(4 - r^2) = -2r dr \implies r dr = -\frac{1}{2} d(4 - r^2)$:
-   $$
+   
+$$
    \int_0^2 (4 - r^2)^{1/2} r dr = -\frac{1}{2} \left[ \frac{(4 - r^2)^{3/2}}{3/2} \right]_0^2 = -\frac{1}{3} \left[ 0 - 4^{3/2} \right] = \frac{8}{3}
-   $$
+   
+$$
 5. Tashqi integral:
-   $$
+   
+$$
    I = \left(\int_0^\pi d\varphi\right) \cdot \frac{8}{3} = \frac{8\pi}{3}
-   $$
+   
+$$
 
 #### 2-usul: Geometrik ma'no orqali bir zumda topish
 $z = \sqrt{4 - x^2 - y^2} \implies x^2 + y^2 + z^2 = 4$ ($z \ge 0$). Bu radiusi $R = 2$ bo'lgan yarim sfera tenglamasidir.
@@ -143,21 +153,29 @@ Ushbu soha bo'yicha $r$ va $\varphi$ chegaralarini aniqlang.
 
 #### Yechish:
 1. Tenglamaga $x = r\cos\varphi, y = r\sin\varphi$ ni qo'yamiz:
-   $$
+   
+$$
    r^2 \le 2r\cos\varphi \implies r \le 2\cos\varphi
-   $$
+   
+$$
 2. $r \ge 0$ bo'lgani sababli:
-   $$
+   
+$$
    2\cos\varphi \ge 0 \implies \cos\varphi \ge 0 \implies -\frac{\pi}{2} \le \varphi \le \frac{\pi}{2}
-   $$
+   
+$$
 3. Demak, integrallash chegaralari:
-   $$
+   
+$$
    -\frac{\pi}{2} \le \varphi \le \frac{\pi}{2}, \quad 0 \le r \le 2\cos\varphi
-   $$
+   
+$$
    Takroriy integral:
-   $$
+   
+$$
    \int_{-\pi/2}^{\pi/2} d\varphi \int_0^{2\cos\varphi} f(r\cos\varphi, r\sin\varphi) \cdot r \, dr
-   $$
+   
+$$
 
 ---
 

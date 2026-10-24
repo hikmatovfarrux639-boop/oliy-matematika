@@ -63,22 +63,30 @@ Bu teorema 6 ta yoki undan ko'p yoqli murakkab sirt integrallarini bitta oddiy 3
 
 ### 1-usul: Gauss-Ostrogradskiy formulasi orqali (Zamonaviy va tez)
 1. Divergensiyani hisoblaymiz:
-   $$
+   
+$$
    \operatorname{div} \vec{F} = \frac{\partial(2x)}{\partial x} + \frac{\partial(-y)}{\partial y} + \frac{\partial(z)}{\partial z} = 2 - 1 + 1 = 2
-   $$
+   
+$$
    Divergensiya o'zgarmas son $2$ ga teng bo'lib chiqdi!
 2. Gauss-Ostrogradskiy teoremasini qo'llaymiz:
-   $$
+   
+$$
    \Pi = \iiint_V \operatorname{div}\vec{F} \, dV = \iiint_V 2 \, dV = 2 \cdot V_{\text{piramida}}
-   $$
+   
+$$
 3. Tetraedrning hajmini topamiz: asoslari $1 \times 1$ to'g'ri burchakli uchburchak, balandligi $h = 1$:
-   $$
+   
+$$
    V = \frac{1}{6} \cdot 1 \cdot 1 \cdot 1 = \frac{1}{6}
-   $$
+   
+$$
 4. To'liq oqim:
-   $$
+   
+$$
    \Pi = 2 \cdot \frac{1}{6} = \frac{1}{3}
-   $$
+   
+$$
    Yechim 4 qatorda tayyor!
 
 ### 2-usul: 4 ta yoq bo'yicha sirt integrallarini to'g'ridan-to'g'ri hisoblash
@@ -89,21 +97,29 @@ Tetraedr 4 ta tekis yoqdan iborat: $S = S_1 + S_2 + S_3 + S_4$.
 4. **$S_4$ (qiya tekislik $x+y+z=1$):**
    Tekislik tenglamasi $z = 1 - x - y$. Normal vektor $\vec{N} = (1, 1, 1)$, birlik normal $\vec{n} = \frac{1}{\sqrt{3}}(1, 1, 1)$.
    Maydonning skalyar ko'paytmasi:
-   $$
+   
+$$
    \vec{F} \cdot \vec{N} = 2x - y + z = 2x - y + (1 - x - y) = 1 + x - 2y
-   $$
+   
+$$
    Oqim integral:
-   $$
+   
+$$
    \Pi_4 = \iint_{D_{xy}} (1 + x - 2y) \, dx\,dy
-   $$
+   
+$$
    bu yerda $D_{xy}: 0 \le x \le 1, \; 0 \le y \le 1 - x$.
    Integrallaymiz:
-   $$
+   
+$$
    \int_0^1 dx \int_0^{1-x} (1 + x - 2y) dy = \int_0^1 \left[ (1+x)(1-x) - (1-x)^2 \right] dx
-   $$
-   $$
+   
+$$
+   
+$$
    = \int_0^1 [ (1 - x^2) - (1 - 2x + x^2) ] dx = \int_0^1 (2x - 2x^2) dx = \left[ x^2 - \frac{2x^3}{3} \right]_0^1 = 1 - \frac{2}{3} = \frac{1}{3}
-   $$
+   
+$$
    To'liq oqim: $\Pi = 0 + 0 + 0 + \frac{1}{3} = \frac{1}{3}$.
 
 *Xulosa:* To'g'ridan-to'g'ri usul 4 ta sirt integrali va murakkab proyeksiyalashni talab qildi. Gauss-Ostrogradskiy teoremasi esa buni $2 \cdot V = \frac{1}{3}$ shaklida bir zumda yechdi!

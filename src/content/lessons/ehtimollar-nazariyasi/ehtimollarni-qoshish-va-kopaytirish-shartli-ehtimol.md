@@ -42,20 +42,26 @@ bu yerda $P(A \cdot B)$ — ikkala hodisaning bir vaqtda birgalikda ro'y berish 
 
 > **Ta'rif:** $A$ hodisa ro'y berganligi ma'lum bo'lganda $B$ hodisaning ro'y berish ehtimoli **shartli ehtimol** deyiladi va $P(B|A)$ deb belgilanadi:
 >
-> $$
+> 
+$$
 > P(B|A) = \frac{P(A \cdot B)}{P(A)} \quad (P(A) > 0)
-> $$
+> 
+$$
 
 ### Ko'paytirish teoremalari ($A$ va $B$ bir vaqtda ro'y berishi):
 1. **Bog'liq hodisalar uchun:**
-   $$
+   
+$$
    P(A \cdot B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)
-   $$
+   
+$$
 2. **Bog'liq bo'lmagan (mustaqil) hodisalar uchun:**
    Agar birining ro'y berishi ikkinchisining ehtimoliga mutlaqo ta'sir qilmasa ($P(B|A) = P(B)$):
-   $$
+   
+$$
    P(A \cdot B) = P(A) \cdot P(B)
-   $$
+   
+$$
 
 ---
 
@@ -91,9 +97,11 @@ Ushbu hodisa aynan $k$-gipoteza ($H_k$) sababli ro'y bergan bo'lishi ehtimolini 
 
 > **Bayes formulasi:**
 >
-> $$
+> 
+$$
 > P(H_k|A) = \frac{P(H_k) \cdot P(A|H_k)}{P(A)} = \frac{P(H_k) \cdot P(A|H_k)}{\sum_{i=1}^n P(H_i) \cdot P(A|H_i)}
-> $$
+> 
+$$
 >
 > - $P(H_k)$ — **aprior ehtimollik** (tajribadan oldingi dastlabki baho);
 > - $P(H_k|A)$ — **aposterior ehtimollik** (hodisa yuz bergandan keyin olingan yangi aniq baho).

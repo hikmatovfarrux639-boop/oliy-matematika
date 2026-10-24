@@ -20,15 +20,19 @@ Buning uchun integrallash amalini ikki yo'nalish ($x$ va $y$) bo'ylab ketma-ket 
 $Oxy$ tekisligidagi chegaralangan yopiq $D$ soha va unda aniqlangan $z = f(x, y)$ uzluksiz funksiya berilgan bo'lsin.
 1. $D$ sohani $n$ ta mayda $\Delta D_i$ bo'lakchalarga bo'lamiz (ularning yuzalari $\Delta S_i$).
 2. Har bir bo'lakchadan ixtiyoriy $M_i(\xi_i, \eta_i)$ nuqta tanlab, balandligi $f(\xi_i, \eta_i)$ bo'lgan ustunchalar hajmlari yig'indisini tuzamiz:
-   $$
+   
+$$
    V_n = \sum_{i=1}^n f(\xi_i, \eta_i) \cdot \Delta S_i
-   $$
+   
+$$
 3. Bo'lakchalarning eng katta diametri nolga intilganda ushbu yig'indining chekli limiti **ikki karrali integral** deyiladi:
 
 > **Ta'rif:**
-> $$
+> 
+$$
 > \iint_D f(x, y) \, dx dy = \lim_{\max \text{diam} \to 0} \sum_{i=1}^n f(\xi_i, \eta_i) \Delta S_i
-> $$
+> 
+$$
 
 ### Asosiy geometrik va fizik tatbiqlari:
 1. **Fazoviy jism hajmi:** Agar $f(x, y) \ge 0$ bo'lsa:
@@ -95,13 +99,17 @@ $$
 \int_0^2 dx \int_1^3 (x^2 + 2y) \, dy
 $$
 1. Ichki integralni hisoblaymiz ($y$ bo'yicha integrallaymiz, $x = \text{const}$):
-   $$
+   
+$$
    \int_1^3 (x^2 + 2y) \, dy = \left. (x^2 y + y^2) \right|_1^3 = (3x^2 + 9) - (x^2 + 1) = 2x^2 + 8
-   $$
+   
+$$
 2. Tashqi integralga qo'yamiz va $x$ bo'yicha hisoblaymiz:
-   $$
+   
+$$
    \int_0^2 (2x^2 + 8) \, dx = \left. \left( \frac{2x^3}{3} + 8x \right) \right|_0^2 = \left( \frac{16}{3} + 16 \right) - 0 = \frac{64}{3}
-   $$
+   
+$$
 
 **Javob:** $\frac{64}{3}$
 
@@ -119,17 +127,23 @@ bu yerda $D$ — $x = 0, y = 0$ va $x + y = 2$ to'g'ri chiziqlari bilan chegaral
    - $x$ o'zgarishi: $0$ dan $2$ gacha ($0 \le x \le 2$).
    - $y$ o'zgarishi: pastdan $y = 0$, yuqoridan to'g'ri chiziq $y = 2 - x$.
 2. Takroriy integralni tuzamiz:
-   $$
+   
+$$
    \int_0^2 dx \int_0^{2 - x} xy \, dy = \int_0^2 x \, dx \left. \left( \frac{y^2}{2} \right) \right|_0^{2 - x}
-   $$
+   
+$$
 3. Chegarani qo'yamiz:
-   $$
+   
+$$
    = \int_0^2 x \cdot \frac{(2 - x)^2}{2} \, dx = \frac{1}{2} \int_0^2 x(4 - 4x + x^2) \, dx = \frac{1}{2} \int_0^2 (4x - 4x^2 + x^3) \, dx
-   $$
+   
+$$
 4. Integrallaymiz:
-   $$
+   
+$$
    = \frac{1}{2} \left. \left( 2x^2 - \frac{4x^3}{3} + \frac{x^4}{4} \right) \right|_0^2 = \frac{1}{2} \left( 8 - \frac{32}{3} + 4 \right) = \frac{1}{2} \left( 12 - \frac{32}{3} \right) = \frac{1}{2} \cdot \frac{4}{3} = \frac{2}{3}
-   $$
+   
+$$
 
 **Javob:** $\frac{2}{3}$
 
@@ -149,17 +163,23 @@ Ichki integral $\int e^{y^2} dy$ ni hisoblab bo'lmaydi! Shuning uchun integralla
    - $y$ o'zgarishi: $0 \le y \le 1$;
    - Har bir gorizontal kesmada $x$ chapdan $x = 0$ dan o'ngga to'g'ri chiziq $x = y$ gacha o'zgaradi ($0 \le x \le y$).
 3. Yangi tartibdagi integral:
-   $$
+   
+$$
    I = \int_0^1 dy \int_0^y e^{y^2} \, dx
-   $$
+   
+$$
 4. Ichki integralni hisoblaymiz ($x$ bo'yicha):
-   $$
+   
+$$
    \int_0^y e^{y^2} \, dx = e^{y^2} \left. x \right|_0^y = y e^{y^2}
-   $$
+   
+$$
 5. Tashqi integralga qo'yamiz ($y \, dy = \frac{1}{2} d(y^2)$):
-   $$
+   
+$$
    I = \int_0^1 y e^{y^2} \, dy = \left. \frac{1}{2} e^{y^2} \right|_0^1 = \frac{1}{2}(e^1 - e^0) = \frac{e - 1}{2}
-   $$
+   
+$$
 
 **Javob:** $\frac{e - 1}{2}$
 

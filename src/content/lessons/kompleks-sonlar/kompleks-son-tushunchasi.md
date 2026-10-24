@@ -19,9 +19,11 @@ Ushbu inqilobiy kashfiyot matematikada yangi va eng qudratli sonlar to'plami —
 
 > **Ta'rif:** Kvadrati $-1$ ga teng bo'lgan maxsus matematik miqdor **mavhum birlik** (inglizcha *imaginary unit*) deyiladi va $i$ harfi bilan belgilanadi:
 >
-> $$
+> 
+$$
 > i^2 = -1 \quad \text{yoki} \quad i = \sqrt{-1}
-> $$
+> 
+$$
 
 ### $i$ ning darajalari davriyligi:
 Mavhum birlik $i$ ning butun darajalari har 4 qadamda aynan takrorlanadi:
@@ -41,9 +43,11 @@ Mavhum birlik $i$ ning butun darajalari har 4 qadamda aynan takrorlanadi:
 
 > **Ta'rif:** Ushbu ko'rinishdagi ifoda **kompleks son** deb ataladi:
 >
-> $$
+> 
+$$
 > z = a + bi
-> $$
+> 
+$$
 >
 > bu yerda:
 > - $a \in \mathbb{R}$ — kompleks sonning **haqiqiy qismi** ($a = \operatorname{Re}(z)$);
@@ -85,9 +89,11 @@ Har bir $z = a + bi$ soniga tekislikdagi $(a; b)$ nuqta yoki boshlang'ich nuqtad
 
 > **Modul ta'rifi:** Koordinatalar boshidan $z$ nuqtagacha bo'lgan masofa kompleks sonning **moduli** deyiladi:
 >
-> $$
+> 
+$$
 > |z| = r = \sqrt{a^2 + b^2}
-> $$
+> 
+$$
 > Shuningdek: $|z|^2 = z \cdot \bar{z}$.
 
 ### Geometrik sohalar (Imtihon savollari):

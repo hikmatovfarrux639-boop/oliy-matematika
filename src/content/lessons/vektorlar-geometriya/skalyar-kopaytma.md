@@ -25,9 +25,11 @@ Matematikada bu tushuncha umumlashtirilib, **vektorlarning skalyar ko'paytmasi**
 
 > **Geometrik ta'rif:** Ikki $\vec{a}$ va $\vec{b}$ vektorning **skalyar ko'paytmasi** deb, ularning uzunliklari bilan ular orasidagi burchak kosinusining ko'paytmasiga teng bo'lgan **songa (skalyarga)** aytiladi:
 >
-> $$
+> 
+$$
 > \vec{a} \cdot \vec{b} = |\vec{a}| \cdot |\vec{b}| \cdot \cos\varphi
-> $$
+> 
+$$
 > bu yerda $\varphi = \widehat{(\vec{a}, \vec{b})}, \quad 0 \le \varphi \le \pi$.
 
 ### Asosiy xossalari:
@@ -35,13 +37,17 @@ Matematikada bu tushuncha umumlashtirilib, **vektorlarning skalyar ko'paytmasi**
 2. **Taqsimot qonuni:** $\vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$.
 3. **Skalyarni chiqarish:** $(\lambda \vec{a}) \cdot \vec{b} = \lambda (\vec{a} \cdot \vec{b})$.
 4. **Skalyar kvadrat va uzunlik:** Vektorning o'zini o'ziga skalyar ko'paytmasi uning uzunligi kvadratiga teng:
-   $$
+   
+$$
    \vec{a} \cdot \vec{a} = |\vec{a}|^2 \implies |\vec{a}| = \sqrt{\vec{a} \cdot \vec{a}}
-   $$
+   
+$$
 5. **Koshi-Bunyakovskiy tengsizligi:**
-   $$
+   
+$$
    |\vec{a} \cdot \vec{b}| \le |\vec{a}| \cdot |\vec{b}|
-   $$
+   
+$$
 
 ---
 
@@ -66,9 +72,11 @@ Bu ajoyib formula orqali oradagi burchakni bilmagan holda ham skalyar ko'paytman
 
 > **Asosiy teorema:** Noldan farqli ikki vektorning o'zaro perpendikulyar ($\vec{a} \perp \vec{b}$) bo'lishi uchun ularning skalyar ko'paytmasi **nolga teng bo'lishi** zarur va yetarlidir:
 >
-> $$
+> 
+$$
 > \vec{a} \perp \vec{b} \iff \vec{a} \cdot \vec{b} = 0 \iff a_x b_x + a_y b_y + a_z b_z = 0
-> $$
+> 
+$$
 
 ---
 
@@ -90,13 +98,17 @@ Burchakning turini bilish qoidasi:
 ## 5. Vektorning proyeksiyalari
 
 1. **Skalyar proyeksiya ($\vec{a}$ vektorning $\vec{b}$ o'qidagi sonli soyasi):**
-   $$
+   
+$$
    \operatorname{pr}_{\vec{b}} \vec{a} = |\vec{a}| \cos\varphi = \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|}
-   $$
+   
+$$
 2. **Vektor proyeksiya (soyaning vektor ko'rinishi):**
-   $$
+   
+$$
    \vec{a}_{\vec{b}} = \left( \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|^2} \right) \vec{b}
-   $$
+   
+$$
 
 ---
 

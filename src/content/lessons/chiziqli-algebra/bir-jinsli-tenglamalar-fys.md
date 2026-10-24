@@ -41,9 +41,11 @@ Biroq bizni qiziqtirgan asosiy savol: **Sistema qachon noldan farqli (trivial bo
 
 > **Teorema:** Bir jinsli sistema $A X = \mathbf{0}$ noldan farqli yechimlarga ega bo'lishi uchun uning asosiy matritsasining rangi noma'lumlar soni $n$ dan kichik bo'lishi zarur va yetarli:
 >
-> $$
+> 
+$$
 > \operatorname{rank}(A) = r < n
-> $$
+> 
+$$
 
 Xususan, agar tenglamalar soni noma'lumlar soniga teng bo'lsa ($n \times n$ kvadrat sistema):
 - Agar $\det(A) \neq 0$ bo'lsa $\implies$ sistema **faqat yagona trivial (nol) yechimga** ega bo'ladi ($X = \mathbf{0}$).
@@ -60,9 +62,11 @@ U holda:
 
 > **Ta'rif:** Bir jinsli sistemaning har qanday yechimini chiziqli kombinatsiya sifatida ifodalash imkonini beruvchi $k = n - r$ ta chiziqli erkli (bog'liq bo'lmagan) yechimlar to'plamiga **Fundamental Yechimlar Sistemasi (FYS)** deyiladi:
 >
-> $$
+> 
+$$
 > FYS = \{ X_1, X_2, \dots, X_{n-r} \}
-> $$
+> 
+$$
 
 ### Umumiy yechim formulasi
 
@@ -115,14 +119,18 @@ A = \begin{pmatrix}
 $$
 
 1. 2-satrdan 1-satrning 3 barobarini ayiramiz ($R_2 \leftarrow R_2 - 3R_1$):
-   $$
+   
+$$
    R_2 = (3 - 3, \; 5 - 6, \; 6 - 12, \; -4 - (-9)) = (0, -1, -6, 5)
-   $$
+   
+$$
 
 2. 3-satrdan 1-satrning 4 barobarini ayiramiz ($R_3 \leftarrow R_3 - 4R_1$):
-   $$
+   
+$$
    R_3 = (4 - 4, \; 5 - 8, \; -2 - 16, \; 3 - (-12)) = (0, -3, -18, 15)
-   $$
+   
+$$
 
 Matritsa ko'rinishi:
 $$
@@ -182,18 +190,22 @@ $$
    - $x_2 = -6(1) + 5(0) = -6$
    - $x_3 = 1$
    - $x_4 = 0$
-   $$
+   
+$$
    X_1 = \begin{pmatrix} 8 \\ -6 \\ 1 \\ 0 \end{pmatrix}
-   $$
+   
+$$
 
 2. **2-vektor ($X_2$) uchun:** $x_3 = 0$ va $x_4 = 1$ deb olamiz:
    - $x_1 = 8(0) - 7(1) = -7$
    - $x_2 = -6(0) + 5(1) = 5$
    - $x_3 = 0$
    - $x_4 = 1$
-   $$
+   
+$$
    X_2 = \begin{pmatrix} -7 \\ 5 \\ 0 \\ 1 \end{pmatrix}
-   $$
+   
+$$
 
 ### 5-qadam: Umumiy yechimni yozish
 
@@ -220,8 +232,10 @@ $$
 
 > **Ajoyib Teorema:** Bir jinslimas sistema $A X = B$ ning **umumiy yechimi** — uning biror **xususiy yechimi** ($X_{xus}$) va mos bir jinsli sistema $A X = \mathbf{0}$ ning **umumiy yechimi** ($X_{bir\,jinsli}$) yig'indisiga teng:
 >
-> $$
+> 
+$$
 > X = X_{xus} + c_1 X_1 + c_2 X_2 + \dots + c_k X_k
-> $$
+> 
+$$
 
 Bu qoida differensial tenglamalar nazariyasidagi (chiziqli bir jinslimas differensial tenglama umumiy yechimi = bir jinsli umumiy + bir jinslimas xususiy) qoidaga 100% o'xshash bo'lib, oliy matematikaning go'zal va yagona uyg'unligini namoyish etadi!

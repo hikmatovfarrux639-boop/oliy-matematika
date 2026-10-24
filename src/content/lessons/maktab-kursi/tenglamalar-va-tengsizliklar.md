@@ -24,13 +24,17 @@ $$
 D = b^2 - 4ac
 $$
 - Agar $D > 0$ bo'lsa, ikkita haqiqiy turli ildiz bor:
-  $$
+  
+$$
   x_{1,2} = \frac{-b \pm \sqrt{D}}{2a}
-  $$
+  
+$$
 - Agar $D = 0$ bo'lsa, bitta karrali (ikkita teng) haqiqiy ildiz bor:
-  $$
+  
+$$
   x_1 = x_2 = -\frac{b}{2a}
-  $$
+  
+$$
 - Agar $D < 0$ bo'lsa, haqiqiy ildiz yo'q (lekin ikkita qo'shma kompleks ildiz mavjud).
 
 ### Viyet teoremasi

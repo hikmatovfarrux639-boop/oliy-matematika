@@ -19,20 +19,26 @@ Mexanikada aylanma harakat hosil qiluvchi kuch momenti ($\vec{M} = \vec{r} \time
 >
 > 1. $\vec{c}$ vektor $\vec{a}$ ga ham, $\vec{b}$ ga ham perpendikulyar: $\vec{c} \perp \vec{a}$ va $\vec{c} \perp \vec{b}$;
 > 2. Uning uzunligi:
->    $$
+>    
+$$
 >    \lvert \vec{c} \rvert = \lvert \vec{a} \times \vec{b} \rvert = \lvert \vec{a} \rvert \cdot \lvert \vec{b} \rvert \cdot \sin \varphi
->    $$
+>    
+$$
 > 3. $\vec{a}, \vec{b}, \vec{c}$ uchlik **o'ng uchlikni** tashkil qiladi (o'ng qo'l qoidasi: barmog'ingizni $\vec{a}$ dan $\vec{b}$ ga burganda, bosh barmoq $\vec{c}$ tomonga qaraydi).
 
 ### Asosiy xossalari:
 - **Antikommutativlik (o'rin almashganda ishora teskarisiga o'zgaradi!):**
-  $$
+  
+$$
   \vec{a} \times \vec{b} = - (\vec{b} \times \vec{a})
-  $$
+  
+$$
 - **O'z-o'ziga ko'paytma:**
-  $$
+  
+$$
   \vec{a} \times \vec{a} = \vec{0}
-  $$
+  
+$$
 - **Kollinearlik sharti:** Ikki vektor parallel bo'lsa ($\varphi = 0$ yoki $\pi$), $\sin \varphi = 0$, demak $\vec{a} \times \vec{b} = \vec{0}$.
 
 ---
@@ -56,13 +62,17 @@ bu yerda $\vec{i} = (1, 0, 0), \, \vec{j} = (0, 1, 0), \, \vec{k} = (0, 0, 1)$ â
 ## 3. Geometrik tatbiqlari: Yuza hisoblash
 
 1. $\vec{a}$ va $\vec{b}$ vektorlarga qurilgan **parallelogramm yuzi**:
-   $$
+   
+$$
    S_{parall} = \lvert \vec{a} \times \vec{b} \rvert
-   $$
+   
+$$
 2. $\vec{a}$ va $\vec{b}$ vektorlarga qurilgan **uchburchak yuzi**:
-   $$
+   
+$$
    S_{\triangle} = \frac{1}{2} \lvert \vec{a} \times \vec{b} \rvert
-   $$
+   
+$$
 
 ---
 
@@ -85,13 +95,17 @@ $$
 
 ### Geometrik ma'nosi:
 1. $\vec{a}, \vec{b}, \vec{c}$ vektorlarga qurilgan **parallelepiped hajmi**:
-   $$
+   
+$$
    V_{parall} = \lvert (\vec{a}, \vec{b}, \vec{c}) \rvert
-   $$
+   
+$$
 2. Piramida (tetraedr) hajmi:
-   $$
+   
+$$
    V_{piramida} = \frac{1}{6} \lvert (\vec{a}, \vec{b}, \vec{c}) \rvert
-   $$
+   
+$$
 
 ### Vektorlarning komplanarlik sharti:
 Uchta vektor bitta tekislikda yotishi (yoki parallel tekisliklarda yotishi) uchun ularning aralash ko'paytmasi **nolga teng** bo'lishi zarur va yetarlidir:
@@ -111,13 +125,15 @@ Uchlari $A(1, 2, 0)$, $B(3, 0, -1)$ va $C(2, 3, 1)$ nuqtalarda bo'lgan uchburcha
    $$\vec{AB} = (3 - 1, \, 0 - 2, \, -1 - 0) = (2, -2, -1)$$
    $$\vec{AC} = (2 - 1, \, 3 - 2, \, 1 - 0) = (1, 1, 1)$$
 2. Vektor ko'paytmani hisoblaymiz:
-   $$
+   
+$$
    \vec{AB} \times \vec{AC} = \begin{vmatrix}
    \vec{i} & \vec{j} & \vec{k} \\
    2 & -2 & -1 \\
    1 & 1 & 1
    \end{vmatrix}
-   $$
+   
+$$
    - $\vec{i}$-komponent: $(-2)(1) - (-1)(1) = -2 + 1 = -1$
    - $\vec{j}$-komponent: $- [2(1) - (-1)(1)] = -(2 + 1) = -3$
    - $\vec{k}$-komponent: $2(1) - (-2)(1) = 2 + 2 = 4$

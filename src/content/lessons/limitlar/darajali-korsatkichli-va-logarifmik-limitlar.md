@@ -140,9 +140,11 @@ $$
 > [!TIP]
 > **Universal eksponensial almashtirish:**
 > Har qanday $[0^0]$ yoki $[\infty^0]$ aniqmaslikda:
-> $$
+> 
+$$
 > \lim_{x \to x_0} \big(u(x)\big)^{v(x)} = \exp\left( \lim_{x \to x_0} v(x) \cdot \ln u(x) \right)
-> $$
+> 
+$$
 > Natijada daraja ko'rsatkichidagi $v(x) \cdot \ln u(x)$ ko'paytma **$[0 \cdot \infty]$** ko'rinishidagi aniqmaslikka aylanadi!
 
 ### O'sish tezliklari iyerarxiyasi (Muhim asimptotik qonuniyat)
@@ -150,13 +152,17 @@ $[0 \cdot \infty]$ ko'rinishidagi ko'paytmalarda logarifmik, darajali va ko'rsat
 
 Har qanday $\alpha > 0$ va $a > 1$ uchun:
 1. $x \to +\infty$ da logarifm har qanday musbat darajadan sekin o'sadi, ko'rsatkichli funksiya esa tez o'sadi:
-   $$
+   
+$$
    \lim_{x \to +\infty} \frac{\ln x}{x^\alpha} = 0, \qquad \lim_{x \to +\infty} \frac{x^\alpha}{a^x} = 0
-   $$
+   
+$$
 2. $x \to +0$ da ($t = \frac{1}{x} \to +\infty$ almashtirishga ko'ra) musbat daraja logarifmdan kuchliroq nolga intiladi:
-   $$
+   
+$$
    \lim_{x \to +0} x^\alpha \ln x = 0
-   $$
+   
+$$
 
 ---
 

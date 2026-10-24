@@ -19,9 +19,11 @@ Tanlanma ma'lumotlari asosida noma'lum parametr $\theta$ ni baholash uchun hisob
 
 Sifatli baho quyidagi 3 ta xossaga ega bo'lishi shart:
 1. **Siljimaganlik (Unbiasedness):** Bahoning matematik kutilmasi haqiqiy parametrga teng bo'lishi kerak:
-   $$
+   
+$$
    M(\theta^*) = \theta
-   $$
+   
+$$
    (Tizimli ravishda oshirib yoki kamaytirib yuboradigan xatolik bo'lmasligi shart).
 2. **Samaradorlik (Efficiency):** Bahoning dispersiyasi mumkin bo'lgan eng kichik qiymatga ega bo'lishi kerak.
 3. **Asoslilik (Consistency):** Tanlanma hajmi oshgan sari ($n \to \infty$) baho haqiqiy parametrga ehtimollik bo'yicha intilishi kerak.
@@ -53,9 +55,11 @@ s^2 = \frac{n}{n - 1} D_v = \frac{1}{n - 1} \sum_{i=1}^k (x_i - \bar{x}_v)^2 n_i
 $$
 
 - **Tuzatilgan standart og'ish:**
-  $$
+  
+$$
   s = \sqrt{s^2}
-  $$
+  
+$$
 
 ---
 
@@ -88,9 +92,11 @@ Tanlanma o'rtacha $\bar{x}_v$, tanlanma dispersiya $D_v$ va tuzatilgan dispersiy
 
 #### 1-usul: Ta'rif bo'yicha (O'rtachadan chetlanishlar kvadrati)
 1. Tanlanma o'rtacha:
-   $$
+   
+$$
    \bar{x}_v = \frac{10 + 12 + 10 + 14 + 14}{5} = \frac{60}{5} = 12
-   $$
+   
+$$
 2. Har bir elementning chetlanishlari:
    - $(10 - 12)^2 = (-2)^2 = 4$
    - $(12 - 12)^2 = 0$
@@ -99,28 +105,38 @@ Tanlanma o'rtacha $\bar{x}_v$, tanlanma dispersiya $D_v$ va tuzatilgan dispersiy
    - $(14 - 12)^2 = 4$
 3. Kvadratlar yig'indisi: $4 + 0 + 4 + 4 + 4 = 16$.
 4. Tanlanma dispersiya:
-   $$
+   
+$$
    D_v = \frac{16}{5} = 3.2
-   $$
+   
+$$
 5. Tuzatilgan dispersiya ($n - 1 = 4$ ga bo'lamiz):
-   $$
+   
+$$
    s^2 = \frac{16}{5 - 1} = \frac{16}{4} = 4.0
-   $$
+   
+$$
    Tuzatilgan standart og'ish: $s = \sqrt{4} = 2$.
 
 #### 2-usul: Kvadratlar o'rtachasi formulasi ($D_v = \overline{x^2} - (\bar{x})^2$)
 1. Kvadratlar yig'indisi:
-   $$
+   
+$$
    \sum x_i^2 = 10^2 + 12^2 + 10^2 + 14^2 + 14^2 = 100 + 144 + 100 + 196 + 196 = 736
-   $$
+   
+$$
 2. Kvadratlar o'rtachasi:
-   $$
+   
+$$
    \overline{x^2} = \frac{736}{5} = 147.2
-   $$
+   
+$$
 3. Formulaga qo'yamiz:
-   $$
+   
+$$
    D_v = \overline{x^2} - (\bar{x})^2 = 147.2 - 12^2 = 147.2 - 144 = 3.2
-   $$
+   
+$$
 4. $s^2 = \frac{5}{4} \cdot 3.2 = 4.0$.
 Bu usul kasrli sonlar bilan ishlaganda ayirishlarni kamaytirib, vaqtni ancha tejaydi!
 
@@ -134,13 +150,17 @@ Haqiqiy o'rtacha diametr uchun $\gamma = 0.95$ ishonchlilik oralig'ini toping ($
 
 #### Yechish:
 1. Xatolik chegarasi $\varepsilon$:
-   $$
+   
+$$
    \varepsilon = t \cdot \frac{s}{\sqrt{n}} = 1.96 \cdot \frac{2}{\sqrt{100}} = 1.96 \cdot \frac{2}{10} = 1.96 \cdot 0.2 = 0.392 \text{ mm}
-   $$
+   
+$$
 2. Ishonchlilik oralig'i:
-   $$
+   
+$$
    (\bar{x} - \varepsilon; \; \bar{x} + \varepsilon) = (50 - 0.392; \; 50 + 0.392) = (49.608; \; 50.392) \text{ mm}
-   $$
+   
+$$
 **Xulosa:** $95\%$ ishonch bilan ayta olamizki, zavod ishlab chiqarayotgan barcha detallarning haqiqiy o'rtacha diametri $49.608 \text{ mm}$ va $50.392 \text{ mm}$ oralig'ida yotadi.
 
 ---
@@ -172,9 +192,11 @@ Tanlanma o'rtacha $\bar{x}_v$ va tuzatilgan dispersiya $s^2$ ni hisoblang.
    Yig'indi: $9 + 1 + 1 + 9 = 20$.
 3. $n = 4 \implies n - 1 = 3$.
    Tuzatilgan dispersiya:
-   $$
+   
+$$
    s^2 = \frac{20}{3} \approx 6.67
-   $$
+   
+$$
 </details>
 
 ### 2-mashq

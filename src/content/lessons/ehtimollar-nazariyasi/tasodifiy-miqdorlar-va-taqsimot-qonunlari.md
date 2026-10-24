@@ -42,9 +42,11 @@ Har bir qiymatga uning ro'y berish ehtimoli $p_i = P(X = x_i)$ mos qo'yiladi:
 | $P$ | $p_1$ | $p_2$ | $p_3$ | $\dots$ | $p_n$ |
 
 > **Normallashtirish sharti (Oltin qoida):**
-> $$
+> 
+$$
 > \sum_{i=1}^n p_i = p_1 + p_2 + \dots + p_n = 1
-> $$
+> 
+$$
 
 ### 2. Integral taqsimot funksiyasi $F(x)$:
 Ham diskret, ham uzluksiz miqdorlar uchun umumiy bo'lgan funksiya:

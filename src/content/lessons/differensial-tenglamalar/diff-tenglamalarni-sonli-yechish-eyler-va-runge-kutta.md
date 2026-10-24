@@ -62,13 +62,17 @@ $$
 
 Oddiy Eyler usulida urinma yo'nalishi faqat oraliqning boshida ($x_i$) olinishi sababli tezda xatolik yig'iladi. Buni tuzatish uchun oraliqning o'rtasidagi yoki oxiridagi o'rtacha burchak koeffitsiyenti olinadi:
 1. **Oldindan bashorat (prediktor):**
-   $$
+   
+$$
    \tilde{y}_{i+1} = y_i + h \cdot f(x_i, y_i)
-   $$
+   
+$$
 2. **Tuzatish (korrektor):**
-   $$
+   
+$$
    y_{i+1} = y_i + \frac{h}{2} \left[ f(x_i, y_i) + f(x_{i+1}, \tilde{y}_{i+1}) \right]
-   $$
+   
+$$
 
 ---
 
@@ -110,19 +114,27 @@ Aniq yechim bilan taqqoslang ($y_{\text{aniq}} = 2e^x - x - 1$).
 #### 1-usul: Oddiy Eyler usuli bilan hisoblash
 Bu yerda $f(x, y) = x + y$, $x_0 = 0$, $y_0 = 1$, $h = 0.1$.
 1. **1-qadam ($x_0 = 0 \to x_1 = 0.1$):**
-   $$
+   
+$$
    f(x_0, y_0) = 0 + 1 = 1
-   $$
-   $$
+   
+$$
+   
+$$
    y_1 = y_0 + h \cdot f(x_0, y_0) = 1 + 0.1 \cdot 1 = 1.1
-   $$
+   
+$$
 2. **2-qadam ($x_1 = 0.1 \to x_2 = 0.2$):**
-   $$
+   
+$$
    f(x_1, y_1) = 0.1 + 1.1 = 1.2
-   $$
-   $$
+   
+$$
+   
+$$
    y_2 = y_1 + h \cdot f(x_1, y_1) = 1.1 + 0.1 \cdot 1.2 = 1.1 + 0.12 = 1.22
-   $$
+   
+$$
 
 #### 2-usul: Runge-Kutta (RK4) usuli bilan hisoblash
 1-qadam ($x_0 = 0, y_0 = 1, h = 0.1$):
@@ -199,9 +211,11 @@ Yuqoridagi masalani modifikatsiyalangan Eyler usuli bilan hisoblang va aniqlikni
 2. Korrektor:
    $f(x_0, y_0) = 2$;
    $f(x_1, \tilde{y}_1) = 2.2 - 0.1 = 2.1$.
-   $$
+   
+$$
    y_1 = y_0 + \frac{h}{2} [2 + 2.1] = 2 + 0.05 \cdot 4.1 = 2 + 0.205 = 2.205
-   $$
+   
+$$
 *(Aniq qiymat: $2.20517$. Xatolik atigi $0.00017$! Modifikatsiyalangan usul oddiy Eylerga qaraganda 30 marta aniqroq chiqdi).*
 
 **Javob:** $y(0.1) \approx 2.205$.

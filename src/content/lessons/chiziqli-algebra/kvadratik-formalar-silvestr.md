@@ -17,9 +17,11 @@ Masalan, maktab kursidagi $ax^2 + bxy + cy^2$ ifoda ikki o'zgaruvchili kvadratik
 
 > **Ta'rif:** $x_1, x_2, \dots, x_n$ o'zgaruvchilarning ikkinchi darajali bir jinsli ko'phadiga **kvadratik forma** deyiladi:
 >
-> $$
+> 
+$$
 > Q(x_1, \dots, x_n) = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
-> $$
+> 
+$$
 
 Bu yerda har doim $a_{ij} = a_{ji}$ deb olish mumkin (chunki $x_i x_j = x_j x_i$), shuning uchun kvadratik formaning matritsasi $A$ **simmetrik matritsa** ($A = A^T$) bo'ladi:
 
@@ -46,9 +48,11 @@ bu yerda $X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$ va $X^T = (x_1
 
 > **Ta'rif:** Agar kvadratik formada turli indeksli o'zgaruvchilarning ko'paytmalari ($x_i x_j$, $i \neq j$) qatnashmay, faqat kvadratlar yig'indisidan iborat bo'lsa:
 >
-> $$
+> 
+$$
 > Q = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \dots + \lambda_n y_n^2
-> $$
+> 
+$$
 >
 > bunday ko'rinish kvadratik formaning **kanonik ko'rinishi** deyiladi.
 
@@ -59,25 +63,35 @@ Har qanday kvadratik formani xos almashtirishlar yordamida kanonik ko'rinishga k
 **Misol:** $Q(x_1, x_2, x_3) = x_1^2 + 4x_1 x_2 + 2x_1 x_3 + 5x_2^2 + 8x_2 x_3 + 9x_3^2$
 
 1. $x_1$ qatnashgan barcha hadlarni to'playmiz:
-   $$
+   
+$$
    x_1^2 + 2x_1(2x_2 + x_3)
-   $$
+   
+$$
 2. To'la kvadratga to'ldiramiz:
-   $$
+   
+$$
    [x_1 + (2x_2 + x_3)]^2 - (2x_2 + x_3)^2 = (x_1 + 2x_2 + x_3)^2 - (4x_2^2 + 4x_2 x_3 + x_3^2)
-   $$
+   
+$$
 3. Asosiy ifodaga qaytarib, o'xshash hadlarni ixchamlaymiz:
-   $$
+   
+$$
    Q = (x_1 + 2x_2 + x_3)^2 + x_2^2 + 4x_2 x_3 + 8x_3^2
-   $$
+   
+$$
 4. Endi $x_2$ bo'yicha to'la kvadrat ajratamiz:
-   $$
+   
+$$
    x_2^2 + 4x_2 x_3 = (x_2 + 2x_3)^2 - 4x_3^2
-   $$
+   
+$$
 5. Natijada:
-   $$
+   
+$$
    Q = (x_1 + 2x_2 + x_3)^2 + (x_2 + 2x_3)^2 + 4x_3^2
-   $$
+   
+$$
 
 Yangi o'zgaruvchilarni kiritamiz:
 $$
@@ -121,14 +135,18 @@ $$
 > **Silvestr Mezoni (Kriteriyasi):**
 > 
 > 1. **Musbat aniqlanganlik sharti:** Kvadratik forma musbat aniqlangan bo'lishi uchun uning barcha burchak bosh minorlari **qatiy musbat** bo'lishi zarur va yetarli:
->    $$
+>    
+$$
 >    \Delta_1 > 0, \quad \Delta_2 > 0, \quad \Delta_3 > 0, \quad \dots, \quad \Delta_n > 0
->    $$
+>    
+$$
 >
 > 2. **Manfiy aniqlanganlik sharti:** Kvadratik forma manfiy aniqlangan bo'lishi uchun burchak bosh minorlarining ishoralari **minusdan boshlanib almashinib kelishi** zarur va yetarli:
->    $$
+>    
+$$
 >    \Delta_1 < 0, \quad \Delta_2 > 0, \quad \Delta_3 < 0, \quad \Delta_4 > 0, \quad \dots, \quad (-1)^k \Delta_k > 0
->    $$
+>    
+$$
 
 ---
 
@@ -163,13 +181,15 @@ $$
 1. $\Delta_1 = 2 > 0$
 2. $\Delta_2 = \begin{vmatrix} 2 & 1 \\ 1 & 5 \end{vmatrix} = 2 \cdot 5 - 1 \cdot 1 = 10 - 1 = 9 > 0$
 3. $\Delta_3 = \det(A)$:
-   $$
+   
+$$
    \begin{aligned}
    \Delta_3 &= 2(5\cdot 2 - (-2)\cdot(-2)) - 1(1\cdot 2 - (-2)\cdot(-1)) + (-1)(1\cdot(-2) - 5\cdot(-1)) \\
    &= 2(10 - 4) - 1(2 - 2) - 1(-2 + 5) \\
    &= 2(6) - 0 - 3 = 12 - 3 = 9 > 0
    \end{aligned}
-   $$
+   
+$$
 
 **3-qadam: Xulosa:**
 $$

@@ -53,9 +53,11 @@ Minor son qiymatga ega, biroq determinantni yoyishda har bir elementning o'ziga 
 
 > **Ta'rif:** $a_{ij}$ elementning minori $M_{ij}$ ning $(-1)^{i+j}$ ko'paytuvchiga ko'paytmasiga shu elementning **algebraik to'ldiruvchisi** deyiladi va $A_{ij}$ bilan belgilanadi:
 >
-> $$
+> 
+$$
 > A_{ij} = (-1)^{i+j} M_{ij}
-> $$
+> 
+$$
 
 Bu yerda $(-1)^{i+j}$ ko'paytuvchi shaxmat doskasidagi kabi ishoralar taqsimotini hosil qiladi:
 
@@ -80,22 +82,28 @@ $$
 Matematik ko'rinishda:
 
 1. **$i$-satr bo'yicha yoyish:**
-   $$
+   
+$$
    \det A = a_{i1} A_{i1} + a_{i2} A_{i2} + \dots + a_{in} A_{in} = \sum_{j=1}^n a_{ij} A_{ij}
-   $$
+   
+$$
 
 2. **$j$-ustun bo'yicha yoyish:**
-   $$
+   
+$$
    \det A = a_{1j} A_{1j} + a_{2j} A_{2j} + \dots + a_{nj} A_{nj} = \sum_{i=1}^n a_{ij} A_{ij}
-   $$
+   
+$$
 
 ### Muhim xossa: Noto'g'ri yoyish teoremasi
 
 > **Xossa:** Bir satr (yoki ustun) elementlarining **boshqa parallel satr** (yoki ustun) elementlarining algebraik to'ldiruvchilariga ko'paytmalarining yig'indisi har doim **nolga teng**:
 >
-> $$
+> 
+$$
 > a_{i1} A_{k1} + a_{i2} A_{k2} + \dots + a_{in} A_{kn} = 0 \quad (i \neq k)
-> $$
+> 
+$$
 
 Bu xossa teskari matritsaning to'g'riligini isbotlashda fundamental ahamiyatga ega ($A \cdot A^* = \det(A) \cdot E$).
 
@@ -118,19 +126,25 @@ $$
 **Yechish:** 1-satr elementlari: $a_{11} = 2, a_{12} = -1, a_{13} = 3$. Ularning algebraik to'ldiruvchilarini topamiz:
 
 1. $a_{11} = 2$ uchun ($1+1=2$ juft):
-   $$
+   
+$$
    A_{11} = (-1)^{1+1} \begin{vmatrix} 0 & 5 \\ 1 & 1 \end{vmatrix} = +(0\cdot 1 - 5\cdot 1) = -5
-   $$
+   
+$$
 
 2. $a_{12} = -1$ uchun ($1+2=3$ toq):
-   $$
+   
+$$
    A_{12} = (-1)^{1+2} \begin{vmatrix} 4 & 5 \\ -2 & 1 \end{vmatrix} = -(4\cdot 1 - 5\cdot(-2)) = -(4 + 10) = -14
-   $$
+   
+$$
 
 3. $a_{13} = 3$ uchun ($1+3=4$ juft):
-   $$
+   
+$$
    A_{13} = (-1)^{1+3} \begin{vmatrix} 4 & 0 \\ -2 & 1 \end{vmatrix} = +(4\cdot 1 - 0\cdot(-2)) = 4
-   $$
+   
+$$
 
 Laplas formulasiga ko'ra:
 

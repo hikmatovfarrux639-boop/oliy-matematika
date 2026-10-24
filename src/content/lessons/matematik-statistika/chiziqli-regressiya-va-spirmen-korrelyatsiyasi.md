@@ -86,13 +86,17 @@ Agar parametrlar sonlar bilan emas, balki **o'rinlar (darajalar)** orqali bahola
 
 1. Har ikkala parametr o'sish (yoki kamayish) tartibida **ranjirlanadi** ($1$-o'rin, $2$-o'rin, ... $n$-o'rin): $R_{xi}$ va $R_{yi}$;
 2. Har bir obyekt uchun ranjlar ayirmasi hisoblanadi:
-   $$
+   
+$$
    d_i = R_{xi} - R_{yi}
-   $$
+   
+$$
 3. Spirmen koeffitsiyenti hisoblanadi:
-   $$
+   
+$$
    \rho = 1 - \frac{6 \sum_{i=1}^n d_i^2}{n(n^2 - 1)}
-   $$
+   
+$$
 - $-1 \le \rho \le 1$.
 - Agar ikkala ekspertning baholari aynan mos tushsa ($d_i = 0$), $\rho = 1$ bo'ladi.
 - Agar baholar teskari bo'lsa, $\rho = -1$.

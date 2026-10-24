@@ -23,9 +23,11 @@ Bugungi kunda qatorlar kompyuterlarda $\sin x, \cos x, e^x, \ln x$ qiymatlarini 
 
 > **Ta'rif:** Cheksiz sonli ketma-ketlik $a_1, a_2, a_3, \dots, a_n, \dots$ hadlarining formal yig'indisi **sonli qator** deyiladi va quyidagicha yoziladi:
 >
-> $$
+> 
+$$
 > \sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \dots + a_n + \dots
-> $$
+> 
+$$
 >
 > bu yerda $a_n$ — qatorning **umumiy hadi** (formula bilan beriladi).
 
@@ -42,9 +44,11 @@ Cheksiz ifodaning qiymatini hisoblash uchun uning dastlabki $n$ ta hadi yig'indi
 > **Yaqinlashish ta'rifi:**
 > Agar $n \to \infty$ da qismiy yig'indilar ketma-ketligi chekli $S$ limitga ega bo'lsa:
 >
-> $$
+> 
+$$
 > \lim_{n \to \infty} S_n = S
-> $$
+> 
+$$
 >
 > u holda qator **yaqinlashuvchi** deyiladi va $S$ soni ushbu qatorning **yig'indisi** deb ataladi.
 >
@@ -61,9 +65,11 @@ $$
 
 Qismiy yig'indi: $S_n = \frac{b_1(1 - q^n)}{1 - q}$.
 - **Agar $|q| < 1$ bo'lsa:** $n \to \infty$ da $q^n \to 0$ bo'lib, qator **yaqinlashadi** va uning yig'indisi:
-  $$
+  
+$$
   S = \frac{b_1}{1 - q}
-  $$
+  
+$$
 - **Agar $|q| \ge 1$ bo'lsa:** qator **uzoqlashadi**!
 
 ---
@@ -72,9 +78,11 @@ Qismiy yig'indi: $S_n = \frac{b_1(1 - q^n)}{1 - q}$.
 
 > **Teorema (Zaruriy shart):** Agar $\sum_{n=1}^\infty a_n$ qator yaqinlashuvchi bo'lsa, uning umumiy hadi albatta nolga intilishi shart:
 >
-> $$
+> 
+$$
 > \lim_{n \to \infty} a_n = 0
-> $$
+> 
+$$
 
 ### Uzoqlashishning eng tezkor alomati (Natija):
 Agar umumiy hadning limiti **nolga teng bo'lmasa** ($\lim_{n \to \infty} a_n \neq 0$) yoki limit umuman mavjud bo'lmasa, qator **100% so'zsiz uzoqlashadi**!

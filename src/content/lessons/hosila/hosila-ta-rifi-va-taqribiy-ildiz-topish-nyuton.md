@@ -20,16 +20,20 @@ Bundan tashqari, hosilaning eng muhim zamonaviy amaliy tatbiqlaridan biri — bu
 Faraz qilaylik, $y = f(x)$ funksiya $x_0$ nuqtaning atrofida aniqlangan bo'lsin.
 1. Argument orttirmasi: $\Delta x$;
 2. Funksiyaning to'liq orttirmasi:
-   $$
+   
+$$
    \Delta y = \Delta f = f(x_0 + \Delta x) - f(x_0)
-   $$
+   
+$$
 
 > **Hosila ta'rifi:**
 > Agar argument orttirmasi $\Delta x$ nolga intilganda funksiya orttirmasi $\Delta y$ ning $\Delta x$ ga nisbatining chekli limiti mavjud bo'lsa, bu limit $f(x)$ funksiyaning $x_0$ nuqtadagi **hosilasi** deb ataladi:
 >
-> $$
+> 
+$$
 > f'(x_0) = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
-> $$
+> 
+$$
 
 ### Geometrik ma'nosi:
 $\frac{\Delta y}{\Delta x}$ nisbat kesuvchi to'g'ri chiziqning og'ish burchagi tangensidir. $\Delta x \to 0$ da kesuvchi urinmaga aylanadi:
@@ -46,15 +50,19 @@ Har qanday $f(x) = 0$ murakkab tenglamani (masalan, $x^3 - x - 1 = 0$ yoki $x - 
 Isaak Nyuton funksiyaning grafigiga urinma o'tkazib, urinmaning $Ox$ o'qi bilan kesishish nuqtasi haqiqiy ildizga qarab juda tez yaqinlashishini kashf qildi:
 
 > **Nyuton-Rafson iteratsion formulasi:**
-> $$
+> 
+$$
 > x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \quad (n = 0, 1, 2, \dots)
-> $$
+> 
+$$
 >
 > **Yaqinlashish sharti (Fure qoidasi):**
 > Boshlang'ich $x_0$ nuqta qilib $[a; b]$ kesmaning shunday uchi tanlanadiki, unda funksiya va uning ikkinchi hosilasi bir xil ishoraga ega bo'lishi kerak:
-> $$
+> 
+$$
 > f(x_0) \cdot f''(x_0) > 0
-> $$
+> 
+$$
 
 ---
 

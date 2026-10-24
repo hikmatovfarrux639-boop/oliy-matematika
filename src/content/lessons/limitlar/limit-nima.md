@@ -63,19 +63,25 @@ Bu nima degani? Bu degani: siz funksiya qiymatini $L$ dan qanchalik yaqin (masal
 Funksiya biror nuqtaga chap tomondan (kichikroq sonlar orqali) yoki o'ng tomondan (kattaroq sonlar orqali) yaqinlashishi mumkin.
 
 1. **Chap tomonlama limit:**
-   $$
+   
+$$
    \lim_{x \to a^-} f(x) = L_1
-   $$
+   
+$$
 2. **O'ng tomonlama limit:**
-   $$
+   
+$$
    \lim_{x \to a^+} f(x) = L_2
-   $$
+   
+$$
 
 > **Muhim qoida:** Funksiyaning $x \to a$ nuqtada umumiy limiti mavjud bo'lishi uchun uning chap va o'ng limitlari mavjud bo'lishi va **bir-biriga teng bo'lishi shart**:
 >
-> $$
+> 
+$$
 > \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L \iff \lim_{x \to a} f(x) = L
-> $$
+> 
+$$
 
 Agar chap va o'ng limitlar teng bo'lmasa, funksiyaning u nuqtadagi limiti **mavjud emas** deyiladi.
 

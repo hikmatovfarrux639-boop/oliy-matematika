@@ -26,9 +26,11 @@ Koordinatalar sistemasini burish va parallel ko'chirish orqali ushbu tenglama 3 
 ### 1. Ellips (va aylana)
 
 > **Kanonik tenglama:**
-> $$
+> 
+$$
 > \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a \ge b > 0)
-> $$
+> 
+$$
 
 - $a$ — katta yarim o'q, $b$ — kichik yarim o'q.
 - Fokuslar orasidagi masofa: $c = \sqrt{a^2 - b^2}$, fokuslar $F_1(-c, 0)$ va $F_2(c, 0)$.
@@ -38,9 +40,11 @@ Koordinatalar sistemasini burish va parallel ko'chirish orqali ushbu tenglama 3 
 ### 2. Giperbola
 
 > **Kanonik tenglama:**
-> $$
+> 
+$$
 > \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1
-> $$
+> 
+$$
 
 - $c = \sqrt{a^2 + b^2}$, fokuslar $F_1(-c, 0)$ va $F_2(c, 0)$.
 - **Ekssentrisitet:** $e = \frac{c}{a} > 1$.
@@ -49,9 +53,11 @@ Koordinatalar sistemasini burish va parallel ko'chirish orqali ushbu tenglama 3 
 ### 3. Parabola
 
 > **Kanonik tenglama:**
-> $$
+> 
+$$
 > y^2 = 2px \quad (p > 0)
-> $$
+> 
+$$
 
 - Fokus nuqtasi: $F\left(\frac{p}{2}, 0\right)$.
 - Direktrisa tenglamasi: $x = -\frac{p}{2}$.
@@ -142,19 +148,25 @@ $$
 Har bir o'zgaruvchi bo'yicha to'la kvadrat ajratamiz:
 
 1. $x$ bo'yicha:
-   $$
+   
+$$
    x^2 - 4x = (x - 2)^2 - 4
-   $$
+   
+$$
 
 2. $y$ bo'yicha:
-   $$
+   
+$$
    2(y^2 + 2y) = 2[(y + 1)^2 - 1] = 2(y + 1)^2 - 2
-   $$
+   
+$$
 
 3. $z$ bo'yicha:
-   $$
+   
+$$
    4(z^2 - 4z) = 4[(z - 2)^2 - 4] = 4(z - 2)^2 - 16
-   $$
+   
+$$
 
 Tenglamaga qo'yamiz:
 $$

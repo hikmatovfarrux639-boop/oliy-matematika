@@ -91,13 +91,17 @@ $$
 ### Vaqt kodlarini markazlashtirish usuli (Tezkor hisoblash usuli)
 Hisoblashlarni keskin soddalashtirish uchun $t$ vaqt o'zgaruvchisi o'rniga yig'indisi $\sum t_i^* = 0$ bo'lgan yangi **markazlashtirilgan vaqt kodi** $t^*$ kiritiladi:
 1. Agar kuzatuvlar soni $n$ **toq** bo'lsa ($n = 2k + 1$): o'rtadagi davrga $t^* = 0$ beriladi va qadam $1$ ga teng:
-   $$
+   
+$$
    t^* \in \{\dots, -2, -1, 0, 1, 2, \dots\}
-   $$
+   
+$$
 2. Agar kuzatuvlar soni $n$ **juft** bo'lsa ($n = 2k$): o'rtadagi ikki davrga $-1$ va $+1$ berilib, qadam $2$ ga teng olinadi:
-   $$
+   
+$$
    t^* \in \{\dots, -5, -3, -1, 1, 3, 5, \dots\}
-   $$
+   
+$$
 
 $\sum t^* = 0$ bo'lgani sababli EKKU normal tenglamalari diagonal ko'rinishga keladi va chiziqli trend parametrlari juda oson topiladi:
 
@@ -108,9 +112,11 @@ $$
 > [!IMPORTANT]
 > **Nuqtaviy prognozlash:**
 > Trend tenglamasi $T(t^*) = a + b t^*$ topilgach, kelajakdagi $n + L$ davrga mos keluvchi $t_{n+L}^*$ kod tenglamaga qo'yiladi (ekstrapolyatsiya):
-> $$
+> 
+$$
 > \hat{y}_{n+L} = T(t_{n+L}^*) + S_{n+L} \quad (\text{additiv modelda})
-> $$
+> 
+$$
 
 ---
 

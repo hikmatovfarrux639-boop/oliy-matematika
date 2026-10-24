@@ -19,9 +19,11 @@ Geometrik nuqtai nazardan qaraganda: chiziqli operator fazodagi aksariyat vektor
 
 > **Ta'rif:** Faraz qilaylik, $A$ — $n \times n$ o'lchamli kvadrat matritsa bo'lsin. Agar shunday noldan farqli $\vec{v} \neq \vec{0}$ ustun-vektor va $\lambda$ haqiqiy (yoki kompleks) son mavjud bo'lib,
 >
-> $$
+> 
+$$
 > A \vec{v} = \lambda \vec{v}
-> $$
+> 
+$$
 >
 > tenglik bajarilsa, $\lambda$ soni $A$ matritsaning **xos soni (xos qiymati)**, $\vec{v}$ vektori esa unga mos keluvchi **xos vektori** deb ataladi.
 
@@ -41,13 +43,17 @@ Bu tenglama matritsaning **xarakteristik tenglamasi**, uning chap tomonidagi $P(
 
 ### Asosiy xossalar:
 1. **Iz (Tritsiya) xossasi:** Barcha xos sonlar yig'indisi matritsaning bosh diagonal elementlari yig'indisiga (iziga) teng:
-   $$
+   
+$$
    \sum_{i=1}^n \lambda_i = \text{tr}(A) = a_{11} + a_{22} + \dots + a_{nn}
-   $$
+   
+$$
 2. **Determinant xossasi:** Barcha xos sonlar ko'paytmasi matritsa determinantiga teng:
-   $$
+   
+$$
    \prod_{i=1}^n \lambda_i = \lambda_1 \lambda_2 \dots \lambda_n = \det(A)
-   $$
+   
+$$
 3. Agar $\lambda = 0$ xos son bo'lsa, u holda $\det(A) = 0$, ya'ni matritsa xosmas (maxsus) bo'ladi.
 4. **Gamilton-Keli teoremasi:** Har qanday kvadrat matritsa o'zining xarakteristik ko'phadining ildizi hisoblanadi: $P(A) = 0$.
 
@@ -83,28 +89,38 @@ Matritsaning xos sonlari, xos vektorlari va $A^5$ ni toping.
 
 #### 1-usul: Klassik xarakteristik determinant usuli
 1. Xarakteristik tenglamani tuzamiz:
-   $$
+   
+$$
    \det(A - \lambda E) = \begin{vmatrix} 4 - \lambda & 1 \\ 2 & 3 - \lambda \end{vmatrix} = 0
-   $$
+   
+$$
 2. Determinantni ochamiz:
-   $$
+   
+$$
    (4 - \lambda)(3 - \lambda) - 2 \cdot 1 = 12 - 7\lambda + \lambda^2 - 2 = \lambda^2 - 7\lambda + 10 = 0
-   $$
+   
+$$
 3. Viyet teoremasi bo'yicha ildizlarni topamiz:
-   $$
+   
+$$
    \lambda_1 = 5, \quad \lambda_2 = 2
-   $$
+   
+$$
 4. Har bir xos son uchun mos xos vektorlarni topamiz:
    - $\lambda_1 = 5$ uchun:
-     $$
+     
+$$
      (A - 5E)\vec{v}_1 = \begin{pmatrix} 4-5 & 1 \\ 2 & 3-5 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} -1 & 1 \\ 2 & -2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
-     $$
+     
+$$
      Tenglama: $-x_1 + x_2 = 0 \implies x_1 = x_2$.
      Erkin parametr $x_2 = 1$ deb olsak: $\vec{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
    - $\lambda_2 = 2$ uchun:
-     $$
+     
+$$
      (A - 2E)\vec{v}_2 = \begin{pmatrix} 4-2 & 1 \\ 2 & 3-2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 2 & 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
-     $$
+     
+$$
      Tenglama: $2x_1 + x_2 = 0 \implies x_2 = -2x_1$.
      $x_1 = 1$ desak: $\vec{v}_2 = \begin{pmatrix} 1 \\ -2 \end{pmatrix}$.
 
@@ -155,27 +171,35 @@ $$
 
 #### Yechish:
 1. Xarakteristik determinantni hisoblaymiz:
-   $$
+   
+$$
    \det(A - \lambda E) = \begin{vmatrix} 2-\lambda & -1 & 1 \\ -1 & 2-\lambda & -1 \\ 1 & -1 & 2-\lambda \end{vmatrix} = 0
-   $$
+   
+$$
 2. Birinchi qatorga ikkinchi va uchinchi qatorlarni qo'shamiz:
-   $$
+   
+$$
    \begin{vmatrix} 2-\lambda & -\lambda & \lambda \\ -1 & 2-\lambda & -1 \\ 1 & -1 & 2-\lambda \end{vmatrix} \implies \dots \implies -(\lambda - 1)^2(\lambda - 4) = 0
-   $$
+   
+$$
    Demak, xos sonlar: $\lambda_1 = 4$ (oddiy ildiz) va $\lambda_{2,3} = 1$ (2-karrali ildiz).
 3. **Tekshirish:**
    - $\sum \lambda = 4 + 1 + 1 = 6$. Tritsiya: $\text{tr}(A) = 2 + 2 + 2 = 6$ (To'g'ri!).
    - $\prod \lambda = 4 \cdot 1 \cdot 1 = 4$. Determinant: $\det(A) = 4$ (To'g'ri!).
 4. Xos vektorlarni aniqlash:
    - $\lambda = 4$ uchun:
-     $$
+     
+$$
      (A - 4E)\vec{v} = \begin{pmatrix} -2 & -1 & 1 \\ -1 & -2 & -1 \\ 1 & -1 & -2 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
-     $$
+     
+$$
      Sistemani yechsak: $x = 1, y = -1, z = 1$. Demak, $\vec{v}_1 = (1, -1, 1)^T$.
    - $\lambda = 1$ uchun:
-     $$
+     
+$$
      (A - E)\vec{v} = \begin{pmatrix} 1 & -1 & 1 \\ -1 & 1 & -1 \\ 1 & -1 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
-     $$
+     
+$$
      Uchala qator ham bitta tenglamaga keladi: $x - y + z = 0 \implies y = x + z$.
      Bu 2 ta erkli parametrga ega tekislik tenglamasidir:
      - $x = 1, z = 0 \implies y = 1 \implies \vec{v}_2 = (1, 1, 0)^T$
@@ -209,13 +233,17 @@ $$
 2. Xarakteristik tenglama: $\lambda^2 - 6\lambda + 5 = 0 \implies (\lambda - 5)(\lambda - 1) = 0$.
    Xos sonlar: $\lambda_1 = 5, \lambda_2 = 1$.
 3. $\lambda_1 = 5$ uchun:
-   $$
+   
+$$
    \begin{pmatrix} -2 & 4 \\ 1 & -2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x_1 = 2x_2 \implies \vec{v}_1 = \begin{pmatrix} 2 \\ 1 \end{pmatrix}
-   $$
+   
+$$
 4. $\lambda_2 = 1$ uchun:
-   $$
+   
+$$
    \begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies x_1 = -2x_2 \implies \vec{v}_2 = \begin{pmatrix} -2 \\ 1 \end{pmatrix}
-   $$
+   
+$$
 </details>
 
 ### 2-mashq

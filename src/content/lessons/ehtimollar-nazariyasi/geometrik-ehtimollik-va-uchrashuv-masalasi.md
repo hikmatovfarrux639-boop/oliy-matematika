@@ -43,17 +43,23 @@ Bu masalani dunyodagi barcha universitetlarda talabalarga tushuntirishadi:
 ### Geometrik yechish tahlili:
 1. Birinchi do'stning kelish vaqtini $x$, ikkinchisining kelish vaqtini $y$ deb belgilaymiz.
    Ikkalasi ham $0$ dan $60$ gacha ixtiyoriy daqiqada kelishi mumkin:
-   $$
+   
+$$
    0 \le x \le 60, \qquad 0 \le y \le 60
-   $$
+   
+$$
    Barcha mumkin bo'lgan natijalar fazosi — tomoni $60$ ga teng bo'lgan kvadrat:
-   $$
+   
+$$
    S_{\Omega} = 60 \times 60 = 3600
-   $$
+   
+$$
 2. Uchrashuv sodir bo'lish sharti: ularning kelish vaqtlari farqi kutish vaqti $\tau = 15$ dan oshmasligi kerak:
-   $$
+   
+$$
    |x - y| \le 15 \iff -15 \le y - x \le 15 \iff x - 15 \le y \le x + 15
-   $$
+   
+$$
 
 ```
    y (min) ^
@@ -72,17 +78,23 @@ Bu masalani dunyodagi barcha universitetlarda talabalarga tushuntirishadi:
    - Pastki uchburchak katetlari: $60 - 15 = 45$.
    - Yuqori uchburchak katetlari: $60 - 15 = 45$.
    Ikkala bo'sh uchburchak yuzi birgalikda bitta $45 \times 45$ kvadratni beradi:
-   $$
+   
+$$
    S_{\text{bo'sh}} = (60 - 15)^2 = 45^2 = 2025
-   $$
+   
+$$
 4. Uchrashuv sohasi yuzi:
-   $$
+   
+$$
    S_A = S_{\Omega} - S_{\text{bo'sh}} = 3600 - 2025 = 1575
-   $$
+   
+$$
 5. Ehtimollik:
-   $$
+   
+$$
    P(A) = \frac{S_A}{S_{\Omega}} = \frac{1575}{3600} = \frac{7}{16} = 0.4375 \quad (43.75\%)
-   $$
+   
+$$
 
 ---
 

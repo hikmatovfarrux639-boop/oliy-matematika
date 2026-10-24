@@ -25,15 +25,19 @@ Murakkab funksiyani differensiallash uchun butun dunyoda **Zanjir qoidasi** qo'l
 
 > **Zanjir qoidasi:** Agar $y = f(u)$ va $u = g(x)$ differensiallanuvchi funksiyalar bo'lsa, u holda murakkab funksiyaning $x$ bo'yicha hosilasi tashqi funksiyaning $u$ bo'yicha hosilasini ichki funksiyaning $x$ bo'yicha hosilasiga ko'paytirilganiga teng:
 >
-> $$
+> 
+$$
 > y'_x = y'_u \cdot u'_x
-> $$
+> 
+$$
 >
 > yoki qisqa ifodada:
 >
-> $$
+> 
+$$
 > [f(g(x))]' = f'(g(x)) \cdot g'(x)
-> $$
+> 
+$$
 
 ### Oltin qadam-baqadam algoritm:
 1. **Tashqi funksiyani aniqlang** va uning ichidagi ifodaga umuman tegmang (uni yaxlit $u$ deb tasavvur qiling).

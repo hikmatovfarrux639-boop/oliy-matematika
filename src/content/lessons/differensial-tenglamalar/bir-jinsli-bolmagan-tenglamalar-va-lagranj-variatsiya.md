@@ -23,9 +23,11 @@ Bunday tenglamalar **bir jinsli bo'lmagan chiziqli differensial tenglamalar** de
 
 > **Asosiy teorema:** Bir jinsli bo'lmagan chiziqli tenglamaning umumiy yechimi $y(x)$ — unga mos bir jinsli tenglamaning umumiy yechimi $y_0(x)$ hamda bir jinsli bo'lmagan tenglamaning biror xususiy yechimi $y^*(x)$ ning yig'indisiga teng:
 >
-> $$
+> 
+$$
 > y(x) = y_0(x) + y^*(x)
-> $$
+> 
+$$
 
 Bir jinsli tenglamaning umumiy yechimi $y_0(x) = C_1 y_1(x) + C_2 y_2(x)$ xarakteristik tenglama $k^2 + pk + q = 0$ yordamida oson topiladi. Asosiy vazifa — xususiy yechim $y^*(x)$ ni aniqlashdir.
 
@@ -107,39 +109,51 @@ $$
 #### Yechish:
 1. Mos bir jinsli tenglamani yechamiz: $y'' - 4y' + 3y = 0$.
    Xarakteristik tenglama:
-   $$
+   
+$$
    k^2 - 4k + 3 = 0 \implies (k - 1)(k - 3) = 0 \implies k_1 = 1, \; k_2 = 3
-   $$
+   
+$$
    Bir jinsli tenglama umumiy yechimi:
-   $$
+   
+$$
    y_0(x) = C_1 e^x + C_2 e^{3x}
-   $$
+   
+$$
 
 2. O'ng tomonni tahlil qilamiz: $f(x) = 2e^{3x}$.
    Bu yerda $\alpha = 3$. E'tibor bering: $\alpha = 3$ soni xarakteristik ildizlar orasida 1 marta uchraydi ($k_2 = 3$), demak **rezonans mavjud va $r = 1$**.
 
 3. Xususiy yechim shakli:
-   $$
+   
+$$
    y^*(x) = x^1 \cdot A e^{3x} = A x e^{3x}
-   $$
+   
+$$
    Hosilalarni olamiz:
    - $(y^*)' = A e^{3x} + 3A x e^{3x} = A(1 + 3x)e^{3x}$
    - $(y^*)'' = 3A e^{3x} + 3A e^{3x} + 9A x e^{3x} = A(6 + 9x)e^{3x}$
 
 4. Boshlang'ich tenglamaga qo'yamiz:
-   $$
+   
+$$
    A(6 + 9x)e^{3x} - 4A(1 + 3x)e^{3x} + 3(A x e^{3x}) = 2e^{3x}
-   $$
+   
+$$
    $e^{3x}$ ga qisqartiramiz:
-   $$
+   
+$$
    A(6 + 9x - 4 - 12x + 3x) = 2 \implies A(2 + 0x) = 2 \implies 2A = 2 \implies A = 1
-   $$
+   
+$$
    Demak, xususiy yechim: $y^* = x e^{3x}$.
 
 5. To'liq umumiy yechim:
-   $$
+   
+$$
    y(x) = y_0 + y^* = C_1 e^x + C_2 e^{3x} + x e^{3x}
-   $$
+   
+$$
 
 ---
 
@@ -152,38 +166,54 @@ $$
 #### Yechish:
 1. Bir jinsli tenglama: $y'' + y = 0 \implies k^2 + 1 = 0 \implies k = \pm i$.
    Fundamental yechimlar: $y_1 = \cos x, \; y_2 = \sin x$.
-   $$
+   
+$$
    y_0 = C_1 \cos x + C_2 \sin x
-   $$
+   
+$$
 
 2. Vronskianni hisoblaymiz:
-   $$
+   
+$$
    W(x) = \begin{vmatrix} \cos x & \sin x \\ -\sin x & \cos x \end{vmatrix} = \cos^2 x + \sin^2 x = 1
-   $$
+   
+$$
 
 3. Lagranj sistemasini tuzamiz ($f(x) = \frac{1}{\cos x}$):
-   $$
+   
+$$
    C_1'(x) = -\frac{\sin x \cdot \frac{1}{\cos x}}{1} = -\frac{\sin x}{\cos x} = -\text{tg } x
-   $$
-   $$
+   
+$$
+   
+$$
    C_2'(x) = \frac{\cos x \cdot \frac{1}{\cos x}}{1} = 1
-   $$
+   
+$$
 
 4. Integrallaymiz:
-   $$
+   
+$$
    C_1(x) = -\int \text{tg } x dx = \ln|\cos x| + C_1
-   $$
-   $$
+   
+$$
+   
+$$
    C_2(x) = \int 1 dx = x + C_2
-   $$
+   
+$$
 
 5. Umumiy yechimni yozamiz:
-   $$
+   
+$$
    y(x) = \big(\ln|\cos x| + C_1\big)\cos x + (x + C_2)\sin x
-   $$
-   $$
+   
+$$
+   
+$$
    y(x) = C_1\cos x + C_2\sin x + \cos x \cdot \ln|\cos x| + x\sin x
-   $$
+   
+$$
 
 ---
 
@@ -211,9 +241,11 @@ $$
    $y_0 = (C_1 + C_2 x)e^x$.
 2. $\alpha = 1$ ikki karrali ildiz bo'lgani uchun $r = 2$ (**kuchli rezonans**).
 3. $P_1(x) = 6x$ 1-darajali ko'phad bo'lgani uchun:
-   $$
+   
+$$
    y^* = x^2 (Ax + B)e^x = (Ax^3 + Bx^2)e^x
-   $$
+   
+$$
 4. Hosilalarni tenglamaga qo'yib tenglashtirsak: $A = 1, B = 0$.
    Demak, $y^* = x^3 e^x$.
    Umumiy yechim: $y = (C_1 + C_2 x + x^3)e^x$.

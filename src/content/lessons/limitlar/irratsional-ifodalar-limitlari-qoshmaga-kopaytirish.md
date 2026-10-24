@@ -20,13 +20,17 @@ $$
 $$
 Shunga asoslanib:
 - $\sqrt{a} - \sqrt{b}$ ifodaning qo'shmasi $\sqrt{a} + \sqrt{b}$ bo'lib, ularning ko'paytmasi $a - b$ ga teng:
-  $$
+  
+$$
   (\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b}) = a - b
-  $$
+  
+$$
 - $\sqrt{a} - b$ ifodaning qo'shmasi $\sqrt{a} + b$ bo'lib, ularning ko'paytmasi $a - b^2$ ga teng:
-  $$
+  
+$$
   (\sqrt{a} - b)(\sqrt{a} + b) = a - b^2
-  $$
+  
+$$
 
 ### Kubik ildizlar uchun qo'shma ifoda (To'liqsiz kvadrat)
 Agar limitda uchinchi darajali ildiz ($\sqrt[3]{\phantom{x}}$) qatnashsa, oddiy $(A+B)$ ga ko'paytirish ildizni yo'qotmaydi! Kublar ayirmasi va yig'indisi formulalaridan foydalanish zarur:
@@ -42,9 +46,11 @@ $$
 > **Kubik ildizlar qo'shmasi:**
 > - $\sqrt[3]{a} - \sqrt[3]{b}$ ifodaning qo'shmasi — bu to'liqsiz kvadrat $\left(\sqrt[3]{a^2} + \sqrt[3]{ab} + \sqrt[3]{b^2}\right)$ bo'lib, ularning ko'paytmasi $a - b$ ga teng.
 > - Agar $x \to x_0$ da $\sqrt[3]{a(x)} \to M$ va $\sqrt[3]{b(x)} \to M$ bo'lsa (ya'ni ayirma nolga intilsa), u holda to'liqsiz kvadratning har bir hadi $M^2$ ga intiladi va butun qo'shma qavs **$3M^2$** soniga intiladi:
->   $$
+>   
+$$
 >   \lim_{x \to x_0} \left(\sqrt[3]{a^2} + \sqrt[3]{ab} + \sqrt[3]{b^2}\right) = M^2 + M^2 + M^2 = 3M^2
->   $$
+>   
+$$
 >   Bu xossa hisob-kitoblarni keskin soddalashtiradi!
 
 ---
@@ -129,9 +135,11 @@ $x \to +\infty$ (yoki $x \to -\infty$) da ikkita ildiz ayirmasi $\sqrt{P(x)} - \
 > [!WARNING]
 > **$x \to -\infty$ holatda modulga ehtiyot bo'ling!**
 > Haqiqiy sonlar to'plamida har qanday $x$ uchun:
-> $$
+> 
+$$
 > \sqrt{x^2} = |x| = \begin{cases} x, & \text{agar } x > 0 \text{ bo'lsa } (x \to +\infty), \\ -x, & \text{agar } x < 0 \text{ bo'lsa } (x \to -\infty). \end{cases}
-> $$
+> 
+$$
 > Agar $x \to -\infty$ bo'lsa, ildiz ostidan $x^2$ ni chiqarganda uning oldiga **minus** ishorasini qo'yish shart!
 
 ### 4-misol. $[\infty - \infty]$ aniqmaslikni hisoblash

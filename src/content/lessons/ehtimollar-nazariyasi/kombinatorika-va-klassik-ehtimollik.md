@@ -57,9 +57,11 @@ Xossasi: $C_n^k = C_n^{n - k}, \quad C_n^0 = C_n^n = 1, \quad C_n^1 = n$.
 > **Klassik ta'rif:**
 > Agar sinovning barcha mumkin bo'lgan oqibatlari soni $n$ ta teng imkoniyatli va o'zaro birgalikda bo'lmagan elementar hodisalardan iborat bo'lib, ulardan $m$ tasi $A$ hodisaning ro'y berishiga qulaylik tug'dirsa:
 >
-> $$
+> 
+$$
 > P(A) = \frac{m}{n} = \frac{\text{qulay natijalar soni}}{\text{barcha teng imkoniyatli natijalar soni}}
-> $$
+> 
+$$
 
 Har qanday ehtimollik uchun:
 $$
@@ -73,9 +75,11 @@ $$
 Imtihonlarda eng ko'p uchraydigan klassik masala:
 > Qutida jami $N$ ta buyum bor, ulardan $M$ tasi yaroqli (yoki oq shar). Qutidan tavakkaliga $n$ ta buyum olindi. Olinganlar ichida aynan $k$ tasi yaroqli (oq shar) bo'lishi ehtimolligi:
 >
-> $$
+> 
+$$
 > P(A) = \frac{C_M^k \cdot C_{N - M}^{n - k}}{C_N^n}
-> $$
+> 
+$$
 
 ---
 

@@ -24,9 +24,11 @@ Hosilaga qarab dastlabki funksiyaning o'zini qayta tiklash masalasi **integral h
 
 > **Ta'rif:** Agar berilgan oraliqdagi barcha $x$ lar uchun:
 >
-> $$
+> 
+$$
 > F'(x) = f(x)
-> $$
+> 
+$$
 >
 > tenglik bajarilsa, $F(x)$ funksiya $f(x)$ ning **boshlang'ich funksiyasi** deyiladi.
 
@@ -49,9 +51,11 @@ $y = F(x) + C$ — bu $Oy$ o'qi bo'ylab yuqoriga yoki pastga siljitilgan paralle
 
 > **Ta'rif:** $f(x)$ funksiyaning barcha boshlang'ich funksiyalari to'plamiga uning **aniqmas integrali** deyiladi va quyidagicha yoziladi:
 >
-> $$
+> 
+$$
 > \int f(x) \, dx = F(x) + C
-> $$
+> 
+$$
 >
 > bu yerda:
 > - $\int$ — integral belgisi (lotincha *Summa* so'zining cho'zilgan $S$ harfi);
@@ -65,21 +69,29 @@ $y = F(x) + C$ — bu $Oy$ o'qi bo'ylab yuqoriga yoki pastga siljitilgan paralle
 ## 3. Aniqmas integralning asosiy xossalari
 
 1. **Hosila va integral bir-birini bekor qiladi:**
-   $$
+   
+$$
    \left( \int f(x) \, dx \right)' = f(x) \quad \text{va} \quad d\left(\int f(x) \, dx \right) = f(x) \, dx
-   $$
+   
+$$
 2. **Differensialning integrali:**
-   $$
+   
+$$
    \int d(F(x)) = F(x) + C
-   $$
+   
+$$
 3. **O'zgarmas ko'paytuvchini chiqarish:**
-   $$
+   
+$$
    \int k \cdot f(x) \, dx = k \int f(x) \, dx \quad (k \neq 0)
-   $$
+   
+$$
 4. **Chiziqlilik (Yig'indi va ayirma qoidasi):**
-   $$
+   
+$$
    \int [f(x) \pm g(x)] \, dx = \int f(x) \, dx \pm \int g(x) \, dx
-   $$
+   
+$$
 
 > ⚠️ **Qat'iy ogohlantirish:** Ko'paytma va bo'linma uchun bunday sodda qoida mavjud emas!
 > $$\int f(x) g(x) \, dx \neq \int f(x) \, dx \cdot \int g(x) \, dx$$
@@ -126,17 +138,23 @@ Universitet kursida talabalar bilishi shart bo'lgan to'liq jadval:
 Jadval formulasini to'g'ridan-to'g'ri qo'llashdan oldin ifodani algebraning oddiy usullari bilan yoyib olish kerak:
 
 1. **Suratdagi har bir hadni maxrajga alohida bo'lish:**
-   $$
+   
+$$
    \int \frac{x^4 - 2x^2 + 5}{x^2} \, dx = \int \left( x^2 - 2 + \frac{5}{x^2} \right) \, dx
-   $$
+   
+$$
 2. **Qavslarni ochish va ko'paytirish formulalarini qo'llash:**
-   $$
+   
+$$
    \int (2x - 3)^2 \, dx = \int (4x^2 - 12x + 9) \, dx
-   $$
+   
+$$
 3. **Trigonometrik darajani pasaytirish formulalari:**
-   $$
+   
+$$
    \sin^2 x = \frac{1 - \cos 2x}{2}, \quad \cos^2 x = \frac{1 + \cos 2x}{2}
-   $$
+   
+$$
 
 ---
 
@@ -242,13 +260,17 @@ $$
 
 **Yechilishi:**
 1. $I_1$ uchun jadvaldagi $\frac{1}{x^2 + a^2}$ formulasini qo'llaymiz ($a^2 = 9 \implies a = 3$):
-   $$
+   
+$$
    \int \frac{dx}{x^2 + 3^2} = \frac{1}{3} \operatorname{arctg}\frac{x}{3} + C
-   $$
+   
+$$
 2. $I_2$ uchun jadvaldagi "uzun logarifm" formulasini qo'llaymiz ($a^2 = 5$):
-   $$
+   
+$$
    \int \frac{dx}{\sqrt{x^2 + 5}} = \ln\left\lvert x + \sqrt{x^2 + 5}\right\rvert + C
-   $$
+   
+$$
 
 ---
 

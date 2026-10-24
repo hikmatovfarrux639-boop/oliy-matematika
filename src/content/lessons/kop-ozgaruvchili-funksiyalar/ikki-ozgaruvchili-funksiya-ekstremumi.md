@@ -18,12 +18,14 @@ Bir o'zgaruvchili funksiyalarda tepalik yoki vodiy bitta o'q bo'ylab qidirilsa, 
 > **Ferma teoremasi:**
 > Agar $z = f(x, y)$ funksiya differensiallanuvchi bo'lib, $M_0(x_0, y_0)$ nuqtada lokal ekstremumga (minimum yoki maksimumga) erishsa, bu nuqtada uning birinchi tartibli barcha xususiy hosilalari **nolga teng** bo'ladi:
 >
-> $$
+> 
+$$
 > \begin{cases}
 > \frac{\partial z}{\partial x} = 0 \\
 > \frac{\partial z}{\partial y} = 0
 > \end{cases}
-> $$
+> 
+$$
 
 Xususiy hosilalarni nolga tenglashtirib topilgan $(x_0, y_0)$ nuqtalar **statsionar (kritik) nuqtalar** deyiladi.
 Geometrik ma'nosi: Statsionar nuqtada sirtga o'tkazilgan urinma tekislik gorizontal bo'ladi ($z = z_0$).

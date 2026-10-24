@@ -18,9 +18,11 @@ Odatda argumentni yana $x$, funksiyani esa $y$ bilan belgilash qabul qilingan bo
 > [!IMPORTANT]
 > **Teskari funksiyaning asosiy xossalari:**
 > 1. **Sohalar almashinuvi:** To'g'ri funksiyaning aniqlanish sohasi teskari funksiyaning qiymatlar sohasi bo'ladi va aksincha:
->    $$
+>    
+$$
 >    D(f^{-1}) = E(f), \qquad E(f^{-1}) = D(f)
->    $$
+>    
+$$
 > 2. **Mavjudlikning yetarli sharti:** Agar $y = f(x)$ funksiya $X$ oraliqda **qat'iy monoton** (qat'iy o'suvchi yoki qat'iy kamayuvchi) bo'lsa, shu oraliqda unga teskari $y = f^{-1}(x)$ funksiya mavjud va u ham xuddi shu ma'noda qat'iy monoton bo'ladi.
 > 3. **Grafiklar simmetriyasi:** O'zaro teskari bo'lgan $y = f(x)$ va $y = f^{-1}(x)$ funksiyalarning grafiklari koordinata tekisligida I va III choraklar bissektrisasi bo'lgan **$y = x$ to'g'ri chizig'iga nisbatan simmetrik** joylashadi.
 
@@ -42,17 +44,23 @@ $y = \frac{2x - 3}{x + 1}$ funksiyaga teskari funksiyani va uning aniqlanish soh
 **Yechish:**
 1. Berilgan funksiyaning aniqlanish sohasi: $x + 1 \neq 0 \implies D(f) = (-\infty; -1) \cup (-1; +\infty)$.
 2. Tenglamani $x$ ga nisbatan yechamiz. Ikkala tomonni $(x+1)$ ga ko'paytiramiz:
-   $$
+   
+$$
    y(x + 1) = 2x - 3 \implies xy + y = 2x - 3
-   $$
+   
+$$
    $x$ qatnashgan hadlarni chap tomonga, qolganlarini o'ng tomonga o'tkazamiz:
-   $$
+   
+$$
    xy - 2x = -y - 3 \implies x(y - 2) = -(y + 3) \implies x = -\frac{y + 3}{y - 2} = \frac{y + 3}{2 - y}
-   $$
+   
+$$
 3. O'zgaruvchilarni almashtiramiz ($x \leftrightarrow y$):
-   $$
+   
+$$
    f^{-1}(x) = \frac{x + 3}{2 - x}, \qquad D(f^{-1}) = (-\infty; 2) \cup (2; +\infty)
-   $$
+   
+$$
 
 ---
 
@@ -63,17 +71,23 @@ $x \in [1; +\infty)$ oraliqda berilgan $y = x^2 - 2x + 5$ funksiyaning teskarisi
 1. To'liq kvadrat ajratamiz: $y = (x - 1)^2 + 4$.
    $x \ge 1$ bo'lgani uchun $(x - 1) \ge 0$ va funksiya qat'iy o'suvchi. Uning qiymatlar sohasi: $E(f) = [4; +\infty)$.
 2. $x$ ni $y$ orqali ifodalaymiz:
-   $$
+   
+$$
    (x - 1)^2 = y - 4 \implies |x - 1| = \sqrt{y - 4}
-   $$
+   
+$$
    Shartga ko'ra $x \ge 1$ bo'lgani uchun $|x - 1| = x - 1$ (musbat shox olinadi):
-   $$
+   
+$$
    x - 1 = \sqrt{y - 4} \implies x = 1 + \sqrt{y - 4}
-   $$
+   
+$$
 3. Harflarni almashtiramiz:
-   $$
+   
+$$
    f^{-1}(x) = 1 + \sqrt{x - 4}, \qquad D(f^{-1}) = [4; +\infty), \quad E(f^{-1}) = [1; +\infty)
-   $$
+   
+$$
 
 ---
 
@@ -89,34 +103,46 @@ Bu yerda $u = g(x)$ **ichki funksiya (oraliq argument)**, $y = f(u)$ esa **tashq
 
 > [!TIP]
 > **Kompozitsiya kommutativ emas!** Umumiy holda tashqi va ichki funksiyalar o'rnini almashtirsak, mutlaqo boshqa funksiya hosil bo'ladi:
-> $$
+> 
+$$
 > (f \circ g)(x) \neq (g \circ f)(x)
-> $$
+> 
+$$
 > Faqat o'zaro teskari funksiyalar kompozitsiyasigina ayniy $x$ funksiyani beradi:
-> $$
+> 
+$$
 > f\big(f^{-1}(x)\big) = x \quad (\forall x \in D(f^{-1})) \qquad \text{va} \qquad f^{-1}\big(f(x)\big) = x \quad (\forall x \in D(f))
-> $$
+> 
+$$
 
 ### 3-misol. Kompozitsiyalarni tuzish va aniqlanish sohasini topish
 $f(x) = \sqrt{x - 2}$ va $g(x) = \ln x$ funksiyalar berilgan. $(f \circ g)(x)$ hamda $(g \circ f)(x)$ murakkab funksiyalarni va ularning aniqlanish sohalarini toping.
 
 **Yechish:**
 1. **$(f \circ g)(x) = f\big(g(x)\big)$ ni topamiz:** $f$ ning argumenti $x$ o'rniga $g(x) = \ln x$ ni qo'yamiz:
-   $$
+   
+$$
    (f \circ g)(x) = \sqrt{\ln x - 2}
-   $$
+   
+$$
    Aniqlanish sohasi uchun ichki funksiya aniqlangan ($x > 0$) va ildiz osti nomanfiy bo'lishi shart:
-   $$
+   
+$$
    \begin{cases} x > 0 \\ \ln x - 2 \ge 0 \end{cases} \implies \ln x \ge 2 \implies x \ge e^2 \implies D(f \circ g) = [e^2; +\infty)
-   $$
+   
+$$
 2. **$(g \circ f)(x) = g\big(f(x)\big)$ ni topamiz:** $g$ ning argumenti o'rniga $f(x) = \sqrt{x - 2}$ ni qo'yamiz:
-   $$
+   
+$$
    (g \circ f)(x) = \ln\left(\sqrt{x - 2}\right) = \frac{1}{2}\ln(x - 2)
-   $$
+   
+$$
    Aniqlanish sohasi: logarifm argumenti qat'iy musbat bo'lishi kerak ($\sqrt{x - 2} > 0 \implies x - 2 > 0$):
-   $$
+   
+$$
    D(g \circ f) = (2; +\infty)
-   $$
+   
+$$
 
 ---
 
@@ -126,23 +152,29 @@ Oddiy trigonometrik funksiyalar ($\sin t, \cos t$) birlik aylana $x^2 + y^2 = 1$
 
 ### Asosiy ta'riflar:
 1. **Giperbolik sinus** ($\sinh x$ yoki $\operatorname{sh} x$):
-   $$
+   
+$$
    \operatorname{sh} x = \frac{e^x - e^{-x}}{2}
-   $$
+   
+$$
    - $D(\operatorname{sh}) = \mathbb{R}$, $E(\operatorname{sh}) = \mathbb{R}$.
    - **Toq funksiya:** $\operatorname{sh}(-x) = -\operatorname{sh} x$, $\operatorname{sh}(0) = 0$. Бутун $\mathbb{R}$ da qat'iy o'suvchi.
 
 2. **Giperbolik kosinus** ($\cosh x$ yoki $\operatorname{ch} x$):
-   $$
+   
+$$
    \operatorname{ch} x = \frac{e^x + e^{-x}}{2}
-   $$
+   
+$$
    - $D(\operatorname{ch}) = \mathbb{R}$, $E(\operatorname{ch}) = [1; +\infty)$ (chunki O'rta arifmetik va geometrik tengsizlikka ko'ra $\frac{e^x + e^{-x}}{2} \ge \sqrt{e^x \cdot e^{-x}} = 1$).
    - **Juft funksiya:** $\operatorname{ch}(-x) = \operatorname{ch} x$, $\operatorname{ch}(0) = 1$. Grafik shakli osilib turgan zanjirni eslatadi va **zanjir chizig'i (katenariya)** deb ataladi.
 
 3. **Giperbolik tangens va kotangens** ($\operatorname{th} x$ va $\operatorname{cth} x$):
-   $$
+   
+$$
    \operatorname{th} x = \frac{\operatorname{sh} x}{\operatorname{ch} x} = \frac{e^x - e^{-x}}{e^x + e^{-x}}, \qquad \operatorname{cth} x = \frac{\operatorname{ch} x}{\operatorname{sh} x} = \frac{e^x + e^{-x}}{e^x - e^{-x}} \quad (x \neq 0)
-   $$
+   
+$$
    - $\operatorname{th} x$ toq funksiya bo'lib, qiymatlari $(-1; 1)$ oraliqda yotadi ($\lim_{x \to \pm\infty} \operatorname{th} x = \pm 1$).
 
 ---
@@ -151,21 +183,29 @@ Oddiy trigonometrik funksiyalar ($\sin t, \cos t$) birlik aylana $x^2 + y^2 = 1$
 
 Beвоsita ta'rifdan kelib chiqadigan eng muhim ayniyatlar:
 - **Eyler tipidagi yig'indi va ayirma:**
-  $$
+  
+$$
   \operatorname{ch} x + \operatorname{sh} x = e^x, \qquad \operatorname{ch} x - \operatorname{sh} x = e^{-x}
-  $$
+  
+$$
 - **Asosiy giperbolik ayniyat** (ikkala tenglikni o'zaro ko'paytirishdan hosil bo'ladi):
-  $$
+  
+$$
   \operatorname{ch}^2 x - \operatorname{sh}^2 x = 1
-  $$
+  
+$$
 - **Ikkilangan argument formulalari:**
-  $$
+  
+$$
   \operatorname{sh} 2x = 2\operatorname{sh} x \operatorname{ch} x, \qquad \operatorname{ch} 2x = \operatorname{ch}^2 x + \operatorname{sh}^2 x = 2\operatorname{ch}^2 x - 1 = 1 + 2\operatorname{sh}^2 x
-  $$
+  
+$$
 - **Asosiy ayniyatni $\operatorname{ch}^2 x$ ga bo'lish natijasi:**
-  $$
+  
+$$
   1 - \operatorname{th}^2 x = \frac{1}{\operatorname{ch}^2 x}
-  $$
+  
+$$
 
 ---
 

@@ -17,9 +17,11 @@ U holda $\sin(x)$, $\ln(x)$ yoki $\operatorname{arctg}(x)$ qanday hisoblanadi? B
 
 > **Ta'rif:** Quyidagi ko'rinishdagi funksional qator **darajali qator** deyiladi:
 >
-> $$
+> 
+$$
 > \sum_{n=0}^\infty c_n (x - x_0)^n = c_0 + c_1(x - x_0) + c_2(x - x_0)^2 + \dots + c_n(x - x_0)^n + \dots
-> $$
+> 
+$$
 >
 > Agar markaz $x_0 = 0$ bo'lsa: $\sum c_n x^n = c_0 + c_1 x + c_2 x^2 + \dots$ ko'rinishini oladi.
 
@@ -79,23 +81,31 @@ $$
 1. Qator markazi $x_0 = 2$.
    Koeffitsiyent: $c_n = \frac{1}{n \cdot 3^n}$.
 2. Yaqinlashish radiusini Dalamber formulasi bilan topamiz:
-   $$
+   
+$$
    R = \lim_{n \to \infty} \left| \frac{c_n}{c_{n+1}} \right| = \lim_{n \to \infty} \frac{\frac{1}{n \cdot 3^n}}{\frac{1}{(n+1) \cdot 3^{n+1}}} = \lim_{n \to \infty} \frac{(n+1) \cdot 3^{n+1}}{n \cdot 3^n} = \lim_{n \to \infty} \left( \frac{n+1}{n} \cdot 3 \right) = 3
-   $$
+   
+$$
 3. Yaqinlashish oralig'i:
-   $$
+   
+$$
    |x - 2| < 3 \implies -3 < x - 2 < 3 \implies -1 < x < 5
-   $$
+   
+$$
 4. **Chegara nuqtalarini alohida tekshirish (Eng muhim qadam):**
    - **$x = 5$ nuqtada:**
-     $$
+     
+$$
      \sum_{n=1}^\infty \frac{(5 - 2)^n}{n \cdot 3^n} = \sum_{n=1}^\infty \frac{3^n}{n \cdot 3^n} = \sum_{n=1}^\infty \frac{1}{n}
-     $$
+     
+$$
      Bu uzoqlashuvchi garmonik qatordir. Demak, $x = 5$ nuqtada qator **uzoqlashadi** (dumaloq qavs: $x < 5$).
    - **$x = -1$ nuqtada:**
-     $$
+     
+$$
      \sum_{n=1}^\infty \frac{(-1 - 2)^n}{n \cdot 3^n} = \sum_{n=1}^\infty \frac{(-3)^n}{n \cdot 3^n} = \sum_{n=1}^\infty \frac{(-1)^n}{n}
-     $$
+     
+$$
      Bu ishorasi almashinuvchi garmonik qator. Leybnits alomatiga ko'ra u **yaqinlashadi** (to'rtburchak qavs: $x \ge -1$).
 
 **Javob:** Yaqinlashish sohasi: $x \in [-1; 5)$.
@@ -156,9 +166,11 @@ $$
 <summary>👉 Yechimni tekshirish</summary>
 
 1. $c_n = \frac{1}{n^2}$.
-   $$
+   
+$$
    R = \lim_{n \to \infty} \frac{\frac{1}{n^2}}{\frac{1}{(n+1)^2}} = \lim_{n \to \infty} \frac{(n+1)^2}{n^2} = 1
-   $$
+   
+$$
 2. Oraliq: $(-1; 1)$.
 3. Chegaralar:
    - $x = 1 \implies \sum \frac{1}{n^2}$ — yaqinlashadi ($p = 2 > 1$).

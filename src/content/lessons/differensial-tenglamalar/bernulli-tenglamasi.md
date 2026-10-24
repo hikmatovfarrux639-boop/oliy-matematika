@@ -17,9 +17,11 @@ Bernulli tenglamasi aerodinamikada qarshilik kuchiga ega jism harakati, elektr z
 
 > **Ta'rif:** Quyidagi ko'rinishdagi 1-tartibli differensial tenglama **Bernulli tenglamasi** deyiladi:
 >
-> $$
+> 
+$$
 > y' + P(x)y = Q(x) \cdot y^n
-> $$
+> 
+$$
 >
 > Bu yerda $P(x)$ va $Q(x)$ — $x$ ga bog'liq uzluksiz funksiyalar, $n$ esa ixtiyoriy o'zgarmas haqiqiy son.
 
@@ -34,17 +36,23 @@ Bernulli tenglamasi aerodinamikada qarshilik kuchiga ega jism harakati, elektr z
 
 ### 1-usul: Chiziqlashtiruvchi almashtirish ($z = y^{1-n}$)
 1. Tenglamaning ikkala tomonini $y^n$ ga bo'lamiz ($y \neq 0$):
-   $$
+   
+$$
    y^{-n} y' + P(x) y^{1-n} = Q(x)
-   $$
+   
+$$
 2. Yangi noma'lum funksiya kiritamiz:
-   $$
+   
+$$
    z = y^{1-n} \implies z' = (1 - n) y^{-n} y' \implies y^{-n} y' = \frac{z'}{1 - n}
-   $$
+   
+$$
 3. Tenglamaga qo'yamiz:
-   $$
+   
+$$
    \frac{z'}{1 - n} + P(x) z = Q(x) \implies z' + (1 - n)P(x) z = (1 - n)Q(x)
-   $$
+   
+$$
 Bu $z(x)$ ga nisbatan **oddiy 1-tartibli chiziqli differensial tenglamadir**! Uni yechib $z$ topiladi va $y = z^{\frac{1}{1-n}}$ orqali $y$ ga qaytiladi.
 
 ---
@@ -52,13 +60,17 @@ Bu $z(x)$ ga nisbatan **oddiy 1-tartibli chiziqli differensial tenglamadir**! Un
 ### 2-usul: Iogann Bernulli usuli ($y = u \cdot v$)
 Bu usul yangi $z$ formulasini yodda saqlashni talab qilmaydi:
 1. Yechimni ikki noma'lum funksiyaning ko'paytmasi shaklida izlaymiz:
-   $$
+   
+$$
    y = u(x) \cdot v(x) \implies y' = u'v + uv'
-   $$
+   
+$$
 2. Tenglamaga qo'yamiz:
-   $$
+   
+$$
    u'v + uv' + P(x)uv = Q(x) u^n v^n \implies u'v + u\big(v' + P(x)v\big) = Q(x) u^n v^n
-   $$
+   
+$$
 3. $v' + P(x)v = 0$ shartdan xususiy $v(x)$ funksiya topiladi.
 4. Natijada $u$ funksiya uchun o'zgaruvchilari ajraladigan tenglama hosil bo'ladi.
 
@@ -78,26 +90,36 @@ $n = 2 > 0$ bo'lganligi sababli, **$y = 0$** tenglamaning xususiy yechimidir.
 
 #### 1-usul: $z = y^{1-n} = y^{1-2} = y^{-1} = \frac{1}{y}$ almashtirish
 1. Tenglamani $y^2$ ga bo'lamiz:
-   $$
+   
+$$
    \frac{y'}{y^2} + \frac{1}{x} \cdot \frac{1}{y} = x
-   $$
+   
+$$
 2. $z = \frac{1}{y} \implies z' = -\frac{y'}{y^2} \implies \frac{y'}{y^2} = -z'$.
 3. Tenglamaga qo'yamiz:
-   $$
+   
+$$
    -z' + \frac{z}{x} = x \implies z' - \frac{1}{x} z = -x
-   $$
+   
+$$
 4. Chiziqli tenglamaning integrallovchi ko'paytuvchisi:
-   $$
+   
+$$
    \mu(x) = e^{-\int \frac{1}{x} dx} = e^{-\ln|x|} = \frac{1}{x}
-   $$
+   
+$$
 5. Tenglamani $\frac{1}{x}$ ga ko'paytiramiz:
-   $$
+   
+$$
    \left(\frac{z}{x}\right)' = -1 \implies \frac{z}{x} = -x + C \implies z = C x - x^2
-   $$
+   
+$$
 6. $y$ ga qaytamiz:
-   $$
+   
+$$
    \frac{1}{y} = C x - x^2 \implies y = \frac{1}{C x - x^2}
-   $$
+   
+$$
    Shuningdek, $y = 0$ ham yechimdir.
 
 #### 2-usul: $y = uv$ Bernulli ko'paytma usuli
@@ -105,9 +127,11 @@ $n = 2 > 0$ bo'lganligi sababli, **$y = 0$** tenglamaning xususiy yechimidir.
 2. $u'v + u\left(v' + \frac{v}{x}\right) = x u^2 v^2$.
 3. $v' + \frac{v}{x} = 0 \implies \frac{dv}{v} = -\frac{dx}{x} \implies v = \frac{1}{x}$.
 4. Tenglamaga qo'yamiz:
-   $$
+   
+$$
    u' \cdot \frac{1}{x} = x u^2 \cdot \frac{1}{x^2} \implies \frac{u'}{x} = \frac{u^2}{x} \implies u' = u^2
-   $$
+   
+$$
 5. $\frac{du}{u^2} = dx \implies -\frac{1}{u} = x - C_1 \implies u = \frac{1}{C_1 - x}$.
 6. $y = uv = \frac{1}{x(C_1 - x)} = \frac{1}{C_1 x - x^2}$.
 Ikkala usul ham aynan bir xil natijaga olib keldi!

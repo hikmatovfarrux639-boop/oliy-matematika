@@ -89,31 +89,43 @@ $$
    * $y'(t) \fallingdotseq pY(p) - y(0) = pY(p) - 1$
    * $4 \fallingdotseq \frac{4}{p}$
 2. Operator tenglamasini tuzamiz:
-   $$
+   
+$$
    (pY(p) - 1) + 2Y(p) = \frac{4}{p}
-   $$
+   
+$$
 3. $Y(p)$ ni topamiz:
-   $$
+   
+$$
    Y(p)(p + 2) = 1 + \frac{4}{p} = \frac{p + 4}{p}
-   $$
-   $$
+   
+$$
+   
+$$
    Y(p) = \frac{p + 4}{p(p + 2)}
-   $$
+   
+$$
 4. Oddiy kasrlarga yoyamiz:
-   $$
+   
+$$
    \frac{p + 4}{p(p + 2)} = \frac{A}{p} + \frac{B}{p + 2}
-   $$
+   
+$$
    * $p = 0 \implies A = \frac{4}{2} = 2$
    * $p = -2 \implies B = \frac{-2 + 4}{-2} = -1$
-   $$
+   
+$$
    Y(p) = \frac{2}{p} - \frac{1}{p + 2}
-   $$
+   
+$$
 5. Jadvaldan originalga o'tamiz:
    * $\frac{2}{p} \risingdotseq 2 \cdot 1 = 2$
    * $\frac{1}{p + 2} \risingdotseq e^{-2t}$
-   $$
+   
+$$
    y(t) = 2 - e^{-2t}
-   $$
+   
+$$
 **Javob:** $\mathbf{y(t) = 2 - e^{-2t}}$
 
 ---
@@ -127,23 +139,31 @@ $$
    * $9y \fallingdotseq 9 Y(p)$
    * $0 \fallingdotseq 0$
 2. Operator tenglamasi:
-   $$
+   
+$$
    p^2 Y(p) - 2p - 6 + 9Y(p) = 0
-   $$
-   $$
+   
+$$
+   
+$$
    (p^2 + 9) Y(p) = 2p + 6
-   $$
+   
+$$
 3. $Y(p)$ ni topamiz:
-   $$
+   
+$$
    Y(p) = \frac{2p + 6}{p^2 + 9} = 2 \cdot \frac{p}{p^2 + 3^2} + 2 \cdot \frac{3}{p^2 + 3^2}
-   $$
+   
+$$
 4. Jadvaldan darhol ko'rinadi:
    * $\frac{p}{p^2 + 3^2} \risingdotseq \cos(3t)$
    * $\frac{3}{p^2 + 3^2} \risingdotseq \sin(3t)$
 5. Demak:
-   $$
+   
+$$
    y(t) = 2\cos(3t) + 2\sin(3t)
-   $$
+   
+$$
 **Javob:** $\mathbf{y(t) = 2\cos(3t) + 2\sin(3t)}$
 
 ---
@@ -170,9 +190,11 @@ $$
    $(p - 3)Y(p) = 5 \implies Y(p) = \frac{5}{p - 3}$.
 3. Jadvalga ko'ra $\frac{1}{p - 3} \risingdotseq e^{3t}$.
 4. Original:
-   $$
+   
+$$
    y(t) = 5e^{3t}
-   $$
+   
+$$
 
 **Javob:** $\mathbf{y(t) = 5e^{3t}}$
 </details>

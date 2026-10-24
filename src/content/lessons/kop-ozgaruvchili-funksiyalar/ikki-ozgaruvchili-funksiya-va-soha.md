@@ -20,9 +20,11 @@ Bunday bog'liqliklarni o'rganish oliy matematikaning eng muhim bo'limlaridan bir
 
 > **Ta'rif:** Agar $D \subset \mathbb{R}^2$ tekislikdagi har bir $(x, y)$ tartiblangan juftlikka ma'lum bir qoida bo'yicha yagona haqiqiy $z \in \mathbb{R}$ soni mos qo'yilgan bo'lsa, $D$ to'plamda aniqlangan **ikki o'zgaruvchili funksiya** berilgan deyiladi:
 >
-> $$
+> 
+$$
 > z = f(x, y)
-> $$
+> 
+$$
 >
 > bu yerda:
 > - $x, y$ — erkli o'zgaruvchilar (argumentlar);
@@ -63,9 +65,11 @@ Murakkab 3D sirtlarni tekis qog'ozda (2D) tasavvur qilish uchun **sath chiziqlar
 
 > **Ta'rif:** Sirtning $z = C$ gorizontal tekisliklari bilan kesilishidan hosil bo'ladigan $Oxy$ tekisligidagi egri chiziqlar to'plami **sath chiziqlari** deyiladi:
 >
-> $$
+> 
+$$
 > f(x, y) = C \quad (C = \text{const})
-> $$
+> 
+$$
 
 - **Topografiya:** Bir xil balandlikka ega nuqtalarni tutashtiruvchi gorizontallar (izogipslar);
 - **Meteorologiya:** Bir xil bosimli chiziqlar (izobaralar) va bir xil haroratli chiziqlar (izotermalar);

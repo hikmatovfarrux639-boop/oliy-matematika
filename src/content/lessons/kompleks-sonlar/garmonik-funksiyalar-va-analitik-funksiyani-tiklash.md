@@ -46,13 +46,17 @@ Faraz qilaylik, bizga analitik $f(z) = u(x, y) + i v(x, y)$ funksiyaning haqiqiy
 
 ### 1-usul: Koshi-Riman tengliklari orqali ketma-ket tiklash (Klassik usul)
 1. Koshi-Rimanning 1-shartidan: $\frac{\partial v}{\partial y} = \frac{\partial u}{\partial x}$. O'ng tomon ma'lum bo'lgani uchun uni $y$ bo'yicha integrallaymiz:
-   $$
+   
+$$
    v(x, y) = \int \frac{\partial u}{\partial x} dy + \varphi(x)
-   $$
+   
+$$
 2. Hosil bo'lgan ifodadan $x$ bo'yicha hosila olib, 2-shartga qo'yamiz:
-   $$
+   
+$$
    \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}
-   $$
+   
+$$
    Bu tenglamadan noma'lum $\varphi'(x)$ topiladi va oddiy integrallash bilan $\varphi(x)$ aniqlanadi.
 3. Topilgan $u(x, y)$ va $v(x, y)$ larni birlashtirib, $x = \frac{z+\bar{z}}{2}, y = \frac{z-\bar{z}}{2i}$ orqali $f(z)$ yoziladi.
 

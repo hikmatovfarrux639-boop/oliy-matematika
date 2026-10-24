@@ -11,9 +11,11 @@ Matematik analizda **cheksiz kichik miqdor** — bu shunchaki juda kichik son (m
 
 > **Ta'rif:** Agar $x \to a$ da (yoki $x \to \infty$ da) $\alpha(x)$ funksiyaning limiti nolga teng bo'lsa:
 >
-> $$
+> 
+$$
 > \lim_{x \to a} \alpha(x) = 0
-> $$
+> 
+$$
 >
 > u holda $\alpha(x)$ funksiya $x \to a$ da **cheksiz kichik miqdor (ChKM)** deyiladi.
 
@@ -34,9 +36,11 @@ Faraz qilaylik, $x \to a$ da $\alpha(x)$ va $\beta(x)$ lar cheksiz kichik bo'lsi
    Agar $\lim_{x \to a} \frac{\alpha}{\beta} = 0$ bo'lsa, $\alpha(x)$ miqdor $\beta(x)$ ga nisbatan yuqori tartibli cheksiz kichik deyiladi va $\alpha = o(\beta)$ kabi belgilanadi (ya'ni $\alpha$ nolga ancha tezroq intiladi).
 3. **Ekvivalent cheksiz kichiklar ($\alpha \sim \beta$):**
    Agar ularning nisbati aynan **$1$** ga teng bo'lsa:
-   $$
+   
+$$
    \lim_{x \to a} \frac{\alpha(x)}{\beta(x)} = 1 \iff \alpha(x) \sim \beta(x)
-   $$
+   
+$$
 
 ---
 

@@ -19,35 +19,49 @@ Har bir talaba yoddan va avtomat darajasida bilishi shart bo'lgan 7 ta asosiy fo
 
 ### Kvadratlar formulalari
 1. **Yig'indining kvadrati:**
-   $$
+   
+$$
    (a + b)^2 = a^2 + 2ab + b^2
-   $$
+   
+$$
 2. **Ayirmaning kvadrati:**
-   $$
+   
+$$
    (a - b)^2 = a^2 - 2ab + b^2
-   $$
+   
+$$
 3. **Kvadratlar ayirmasi:**
-   $$
+   
+$$
    a^2 - b^2 = (a - b)(a + b)
-   $$
+   
+$$
 
 ### Kublar formulalari
 4. **Yig'indining kubi:**
-   $$
+   
+$$
    (a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 = a^3 + b^3 + 3ab(a + b)
-   $$
+   
+$$
 5. **Ayirmaning kubi:**
-   $$
+   
+$$
    (a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3 = a^3 - b^3 - 3ab(a - b)
-   $$
+   
+$$
 6. **Kublar yig'indisi:**
-   $$
+   
+$$
    a^3 + b^3 = (a + b)(a^2 - ab + b^2)
-   $$
+   
+$$
 7. **Kublar ayirmasi:**
-   $$
+   
+$$
    a^3 - b^3 = (a - b)(a^2 + ab + b^2)
-   $$
+   
+$$
 
 > **Muhim eslatma:** $a^2 + ab + b^2$ va $a^2 - ab + b^2$ ifodalar to'liqsiz kvadratlar deyiladi. Ular haqiqiy sonlar maydonida ko'paytuvchilarga ajralmaydi ($D = -3b^2 < 0$).
 
@@ -110,19 +124,25 @@ $$
 Oliy matematikada limitlar va integrallarni hisoblashda qo'shma ifodaga ko'paytirish (ratsionallashtirish) favqulodda kuchli quroldir:
 
 1. **Bir hadli ildiz:**
-   $$
+   
+$$
    \frac{A}{\sqrt{B}} = \frac{A\sqrt{B}}{B}
-   $$
+   
+$$
 2. **Kvadrat ildizlar ayirmasi yoki yig'indisi:**
    $\sqrt{a} - \sqrt{b}$ ning qo'shmasi $\sqrt{a} + \sqrt{b}$ bo'ladi:
-   $$
+   
+$$
    \frac{A}{\sqrt{a} - \sqrt{b}} = \frac{A(\sqrt{a} + \sqrt{b})}{(\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b})} = \frac{A(\sqrt{a} + \sqrt{b})}{a - b}
-   $$
+   
+$$
 3. **Kub ildizlar ayirmasi:**
    $\sqrt[3]{a} - \sqrt[3]{b}$ ning to'ldiruvchi qo'shmasi to'liqsiz kvadrat $a^{\frac{2}{3}} + \sqrt[3]{ab} + b^{\frac{2}{3}}$ dir:
-   $$
+   
+$$
    \frac{A}{\sqrt[3]{a} - \sqrt[3]{b}} = \frac{A(\sqrt[3]{a^2} + \sqrt[3]{ab} + \sqrt[3]{b^2})}{a - b}
-   $$
+   
+$$
 
 ---
 
@@ -141,9 +161,11 @@ $$
    $x_1 + x_2 = -1, \, x_1 \cdot x_2 = -6 \implies x_1 = 2, \, x_2 = -3$.
    Demak: $x^2 + x - 6 = (x - 2)(x + 3)$.
 3. Kasrga qo'yib, umumiy $(x - 2)$ hadni qisqartiramiz ($x \neq 2$ shartida):
-   $$
+   
+$$
    \frac{(x - 2)(x^2 + 2x + 4)}{(x - 2)(x + 3)} = \frac{x^2 + 2x + 4}{x + 3}
-   $$
+   
+$$
 
 ---
 

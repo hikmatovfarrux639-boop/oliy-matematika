@@ -25,17 +25,23 @@ Bunday holatlarda kompyuterlar va muhandislar **Taqribiy (sonli) integrallash us
 
 $[a, b]$ kesmani teng $n$ ta bo'lakka bo'lamiz:
 * Qadam uzunligi:
-  $$
+  
+$$
   h = \frac{b - a}{n}
-  $$
+  
+$$
 * Bo'linish nuqtalari:
-  $$
+  
+$$
   x_0 = a, \quad x_1 = a + h, \quad x_2 = a + 2h, \quad \dots, \quad x_n = b
-  $$
+  
+$$
 * Funksiyaning ushbu nuqtalardagi qiymatlari:
-  $$
+  
+$$
   y_0 = f(x_0), \quad y_1 = f(x_1), \quad y_2 = f(x_2), \quad \dots, \quad y_n = f(x_n)
-  $$
+  
+$$
 
 ---
 
@@ -43,9 +49,11 @@ $[a, b]$ kesmani teng $n$ ta bo'lakka bo'lamiz:
 
 Egri chiziqli trapetsiyani to'g'ri to'rtburchaklar yig'indisi bilan almashtiramiz:
 * **O'rta to'g'ri to'rtburchaklar formulasi:**
-  $$
+  
+$$
   \int_a^b f(x) \, dx \approx h \cdot \sum_{i=1}^n f\left(x_i - \frac{h}{2}\right)
-  $$
+  
+$$
 
 ---
 
@@ -71,9 +79,11 @@ Ingliz matematigi Tomas Simpson funksiyani to'g'ri chiziq bilan emas, balki **2-
 
 > [!IMPORTANT]
 > **Simpson qoidasi:** Bo'linish nuqtalari soni $n$ albatta **JUFT son** bo'lishi shart ($n = 2m$).
-> $$
+> 
+$$
 > \int_a^b f(x) \, dx \approx \frac{h}{3} \cdot \left[ (y_0 + y_n) + 4(y_1 + y_3 + \dots + y_{n-1}) + 2(y_2 + y_4 + \dots + y_{n-2}) \right]
-> $$
+> 
+$$
 
 **Simpson formulasi qisqacha "1 - 4 - 2 qoidasi" deyiladi:**
 * Chetki qiymatlar $y_0, y_n$ — koeffitsiyenti $1$;
@@ -101,25 +111,33 @@ Ingliz matematigi Tomas Simpson funksiyani to'g'ri chiziq bilan emas, balki **2-
    * $x_4 = 1.00 \implies y_4 = \frac{1}{1 + 1.00} = 0.5000$
 
 3. **Trapetsiyalar usuli:**
-   $$
+   
+$$
    I_{\text{trap}} \approx 0.25 \cdot \left( \frac{1.0000 + 0.5000}{2} + 0.8000 + 0.6667 + 0.5714 \right)
-   $$
-   $$
+   
+$$
+   
+$$
    I_{\text{trap}} \approx 0.25 \cdot (0.7500 + 2.0381) = 0.25 \cdot 2.7881 \approx 0.6970
-   $$
+   
+$$
 
 4. **Simpson usuli:**
    * Chetki: $y_0 + y_4 = 1.0000 + 0.5000 = 1.5000$
    * Toqlar (x4): $4(y_1 + y_3) = 4(0.8000 + 0.5714) = 4 \cdot 1.3714 = 5.4856$
    * Juftlar (x2): $2(y_2) = 2(0.6667) = 1.3334$
-   $$
+   
+$$
    I_{\text{Simp}} \approx \frac{0.25}{3} \cdot [1.5000 + 5.4856 + 1.3334] = \frac{0.25}{3} \cdot 8.3190 \approx 0.69325
-   $$
+   
+$$
 
 5. **Aniq qiymat bilan solishtirish:**
-   $$
+   
+$$
    \int_0^1 \frac{dx}{1 + x} = [\ln(1 + x)]_0^1 = \ln 2 \approx 0.693147
-   $$
+   
+$$
    * Trapetsiyalar xatoligi: $|0.6970 - 0.6931| \approx 0.0039$
    * Simpson xatoligi: $|0.69325 - 0.69315| \approx \mathbf{0.00010}$ (40 barobar aniqroq!).
 
@@ -150,13 +168,17 @@ Ingliz matematigi Tomas Simpson funksiyani to'g'ri chiziq bilan emas, balki **2-
    * $y_1 = 1^3 = 1$
    * $y_2 = 2^3 = 8$
 3. Simpson formulasi ($n = 2$ uchun):
-   $$
+   
+$$
    I \approx \frac{h}{3} (y_0 + 4y_1 + y_2) = \frac{1}{3} (0 + 4 \cdot 1 + 8) = \frac{12}{3} = 4
-   $$
+   
+$$
 4. Aniq qiymati:
-   $$
+   
+$$
    \int_0^2 x^3 \, dx = \left[ \frac{x^4}{4} \right]_0^2 = \frac{16}{4} = 4
-   $$
+   
+$$
 *(Simpson usuli 3-darajagacha bo'lgan barcha ko'phadlar uchun mutlaqo 100% ANIQ natija beradi!)*
 
 **Javob:** $\mathbf{4}$ (Natija mutlaq aniq).

@@ -27,9 +27,11 @@ $$
 
 > [!NOTE]
 > Agar $z = f(x, y)$ funksiyada $y = \varphi(x)$ bo'lsa (ya'ni $x$ erkli o'zgaruvchi, $y$ esa $x$ ning funksiyasi bo'lsa), u holda $z$ ning $x$ bo'yicha to'liq hosilasi $\frac{dz}{dx}$ xususiy hosila $\frac{\partial z}{\partial x}$ dan farq qiladi:
-> $$
+> 
+$$
 > \frac{dz}{dx} = \frac{\partial z}{\partial x} + \frac{\partial z}{\partial y}\frac{dy}{dx}
-> $$
+> 
+$$
 
 ### 1.2. Oraliq argumentlar bir nechta erkli o'zgaruvchiga bog'liq bo'lgan hol
 
@@ -126,9 +128,11 @@ $$
 > [!IMPORTANT]
 > **Yakobianning asosiy xossalari va tatbiqlari:**
 > 1. **Teskari almashtirish:** Agar $J \neq 0$ bo'lsa, berilgan almashtirish nuqta atrofida o'zaro bir qiymatli (lokal teskarilanuvchi) bo'ladi va teskari almashtirish yakobiani:
->    $$
+>    
+$$
 >    \frac{D(x_1, \dots, x_n)}{D(y_1, \dots, y_n)} = \left(\frac{D(y_1, \dots, y_n)}{D(x_1, \dots, x_n)}\right)^{-1}
->    $$
+>    
+$$
 > 2. **Ko'p karrali integrallarda o'zgaruvchini almashtirish:** Tekislikda $(x, y) \to (u, v)$ almashtirish bajarilganda yuza elementi $dx\,dy = |J|\,du\,dv$ ko'rinishda o'zgaradi.
 > 3. **Funksional bog'liqlik mezoni:** Agar sohada $J \equiv 0$ bo'lsa, $y_1, y_2, \dots, y_n$ funksiyalar o'zaro funksional bog'liq bo'ladi.
 

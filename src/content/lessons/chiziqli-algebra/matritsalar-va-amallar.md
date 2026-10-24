@@ -20,14 +20,16 @@ Masalan:
 
 > **Ta'rif:** $m$ ta satr va $n$ ta ustundan iborat bo'lgan to'g'ri to'rtburchakli sonlar jadvaliga **$m \times n$ o'lchamli matritsa** deyiladi va qavs ichida yoziladi:
 >
-> $$
+> 
+$$
 > A = \begin{pmatrix}
 > a_{11} & a_{12} & \dots & a_{1n} \\
 > a_{21} & a_{22} & \dots & a_{2n} \\
 > \vdots & \vdots & \ddots & \vdots \\
 > a_{m1} & a_{m2} & \dots & a_{mn}
 > \end{pmatrix}
-> $$
+> 
+$$
 >
 > bu yerda:
 > - $a_{ij}$ — matritsaning $i$-satr va $j$-ustunida joylashgan elementi.
@@ -44,13 +46,17 @@ Masalan:
    - **Bosh diagonal:** Chap yuqori burchakdan o'ng pastga yo'nalgan elementlar: $a_{11}, a_{22}, \dots, a_{nn}$.
    - **Yordamchi diagonal:** O'ng yuqoridan chap pastga yo'nalgan elementlar: $a_{1n}, a_{2,n-1}, \dots, a_{n1}$.
 4. **Diagonal matritsa:** Bosh diagonaldan tashqaridagi barcha elementlari nolga teng bo'lgan kvadrat matritsa:
-   $$
+   
+$$
    D = \begin{pmatrix} d_1 & 0 & 0 \\ 0 & d_2 & 0 \\ 0 & 0 & d_3 \end{pmatrix}
-   $$
+   
+$$
 5. **Birlik matritsa ($E$ yoki $I$):** Bosh diagonalidagi hamma sonlar $1$, qolganlari $0$ bo'lgan kvadrat matritsa:
-   $$
+   
+$$
    E = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
-   $$
+   
+$$
    U arifmetikadagi $1$ soni vazifasini bajaradi: $A \cdot E = E \cdot A = A$.
 6. **Nol matritsa ($O$):** Barcha elementlari $0$ bo'lgan matritsa.
 7. **Uchburchak matritsalar:**
@@ -111,9 +117,11 @@ Matritsalarni ko'paytirish — bu oddiy katakma-katak ko'paytirish emas!
 
 ### Asosiy shart (Moslik qoidasi):
 > $A$ va $B$ matritsalarni faqat **$A$ ning ustunlari soni $B$ ning satrlari soniga teng bo'lgandagina** ko'paytirish mumkin:
-> $$
+> 
+$$
 > (m \times k) \cdot (k \times n) = (m \times n)
-> $$
+> 
+$$
 > Ichki o'lchamlar ($k$) teng bo'lishi shart, natijaviy matritsa o'lchami esa tashqi o'lchamlar ($m \times n$) bo'ladi!
 
 ### "Satrni ustunga ko'paytirish" algoritmi:

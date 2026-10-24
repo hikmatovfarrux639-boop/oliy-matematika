@@ -30,17 +30,23 @@ Ushbu integralning geometrik ma'nosi — $L$ chiziq ustida joylashgan va balandl
 
 ### Hisoblash usuli:
 1. Agar $L$ egri chiziq parametrik ko'rinishda $x = x(t), y = y(t)$ ($t_1 \le t \le t_2$) berilgan bo'lsa:
-   $$
+   
+$$
    dl = \sqrt{(x'_t)^2 + (y'_t)^2} \, dt
-   $$
-   $$
+   
+$$
+   
+$$
    \int_L f(x, y) \, dl = \int_{t_1}^{t_2} f(x(t), y(t)) \sqrt{(x'_t)^2 + (y'_t)^2} \, dt
-   $$
+   
+$$
 
 2. Agar $L$ egri chiziq $y = y(x)$ ($a \le x \le b$) ko'rinishda berilgan bo'lsa:
-   $$
+   
+$$
    \int_L f(x, y) \, dl = \int_a^b f(x, y(x)) \sqrt{1 + (y'_x)^2} \, dx
-   $$
+   
+$$
 
 > [!NOTE]
 > 1-tur egri chiziqli integralda integrallash yo'nalishi (boshidan oxirigami yoki teskarisimi) ahamiyatga ega emas:
@@ -94,13 +100,17 @@ Qachon $\int_{AB} P\,dx + Q\,dy$ integral $A$ nuqtadan $B$ nuqtaga olib boruvchi
 
 > [!IMPORTANT]
 > Egri chiziqli integral yo'lga bog'liq bo'lmasligi uchun sohaning har bir nuqtasida quyidagi shart bajarilishi zarur va yetarli:
-> $$
+> 
+$$
 > \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}
-> $$
+> 
+$$
 > Bu holda $P\,dx + Q\,dy = du$ biror $u(x, y)$ funksiyaning **to'liq differensiali** bo'ladi va integral oddiy Nyuton-Leybnitsdek hisoblanadi:
-> $$
+> 
+$$
 > \int_{(x_1, y_1)}^{(x_2, y_2)} P\,dx + Q\,dy = u(x_2, y_2) - u(x_1, y_1)
-> $$
+> 
+$$
 
 ---
 
@@ -114,9 +124,11 @@ Qachon $\int_{AB} P\,dx + Q\,dy$ integral $A$ nuqtadan $B$ nuqtaga olib boruvchi
 2. Hosila: $y' = 2$.
 3. Yoy differensiali: $dl = \sqrt{1 + (y')^2} \, dx = \sqrt{1 + 2^2} \, dx = \sqrt{5} \, dx$.
 4. Integralga qo'yamiz:
-   $$
+   
+$$
    I = \int_0^1 (x + 2x) \sqrt{5} \, dx = 3\sqrt{5} \int_0^1 x \, dx = 3\sqrt{5} \left[ \frac{x^2}{2} \right]_0^1 = \frac{3\sqrt{5}}{2}
-   $$
+   
+$$
 **Javob:** $\mathbf{\frac{3\sqrt{5}}{2}}$
 
 ---
@@ -129,14 +141,18 @@ Qachon $\int_{AB} P\,dx + Q\,dy$ integral $A$ nuqtadan $B$ nuqtaga olib boruvchi
    $P(x, y) = 2xy - x^2 \implies \frac{\partial P}{\partial y} = 2x$
    $Q(x, y) = (x + y)^2 \implies \frac{\partial Q}{\partial x} = 2(x + y) = 2x + 2y$
 2. Grin ayirmasi:
-   $$
+   
+$$
    \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = (2x + 2y) - 2x = 2y
-   $$
+   
+$$
 3. Uchburchak sohasi $D$: $0 \le x \le 1$, $0 \le y \le x$.
 4. Ikki karrali integralga o'tamiz:
-   $$
+   
+$$
    \iint_D 2y \, dx dy = \int_0^1 dx \int_0^x 2y \, dy = \int_0^1 \left[ y^2 \right]_0^x dx = \int_0^1 x^2 \, dx = \left[ \frac{x^3}{3} \right]_0^1 = \frac{1}{3}
-   $$
+   
+$$
 **Javob:** $\mathbf{\frac{1}{3}}$
 
 ---
@@ -161,13 +177,17 @@ Qachon $\int_{AB} P\,dx + Q\,dy$ integral $A$ nuqtadan $B$ nuqtaga olib boruvchi
 1. Differensiallarni topamiz:
    $dx = -R\sin t \, dt$, $dy = R\cos t \, dt$.
 2. Integral ostiga qo'yamiz:
-   $$
+   
+$$
    x \, dy - y \, dx = (R\cos t)(R\cos t \, dt) - (R\sin t)(-R\sin t \, dt) = R^2(\cos^2 t + \sin^2 t) \, dt = R^2 \, dt
-   $$
+   
+$$
 3. Integrallaymiz:
-   $$
+   
+$$
    I = \int_0^{2\pi} R^2 \, dt = R^2 [t]_0^{2\pi} = 2\pi R^2
-   $$
+   
+$$
 *(Eslatma: Grin formulasiga ko'ra $S = \frac{1}{2} \oint_L x\,dy - y\,dx \implies S = \frac{1}{2} (2\pi R^2) = \pi R^2$, ya'ni aylananing yuzi kelib chiqadi!)*
 
 **Javob:** $\mathbf{2\pi R^2}$
