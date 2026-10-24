@@ -184,21 +184,21 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
       <!-- Navigation: Prev / Next Lesson -->
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
         {prevLesson ? (
-          <a href={`/dars/${prevLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-secondary">
+          <a href={`/dars/${prevLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-secondary" data-astro-prefetch="hover">
             <span>← Oldingi dars</span>
           </a>
         ) : (
-          <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-secondary">
+          <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-secondary" data-astro-prefetch="hover">
             <span>📚 Modul mundarijasi</span>
           </a>
         )}
 
         {nextLesson ? (
-          <a href={`/dars/${nextLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-primary">
+          <a href={`/dars/${nextLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-primary" data-astro-prefetch="viewport">
             <span>Keyingi dars →</span>
           </a>
         ) : (
-          <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-primary">
+          <a href={`/modullar/${moduleInfo?.slug}`} class="btn btn-primary" data-astro-prefetch="hover">
             <span>Modul sahifasiga qaytish 🎓</span>
           </a>
         )}

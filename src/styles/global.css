@@ -74,6 +74,10 @@
   padding: 0;
 }
 
+html, body, button, a, input, select {
+  touch-action: manipulation;
+}
+
 select, option {
   background-color: var(--bg-surface);
   color: var(--text-main);
@@ -86,6 +90,9 @@ html {
   line-height: 1.6;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -531,6 +538,20 @@ a {
   border-radius: var(--radius-md);
   overflow-x: auto;
   border: 1px solid var(--border-color);
+}
+
+/* Performance Virtualization: Skip rendering for offscreen cards and heavy formula containers */
+.formula-card,
+.cheatsheet-card,
+.sheet-card,
+.term-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 160px;
+}
+
+.prose-content table {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 200px;
 }
 
 /* Interactive Collapsible Solutions & Tables in Lessons (Mathprofi-style) */

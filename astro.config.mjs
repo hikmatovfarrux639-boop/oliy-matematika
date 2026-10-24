@@ -5,6 +5,10 @@ import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
   site: 'https://oliy-matematika.vercel.app',
+  compressHTML: true,
+  build: {
+    inlineStylesheets: 'auto',
+  },
   server: {
     host: true,
     port: 4321

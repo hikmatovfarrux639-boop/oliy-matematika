@@ -272,6 +272,7 @@
     if (openBtn && !(openBtn as any)._hasSearchInit) {
       (openBtn as any)._hasSearchInit = true;
       openBtn.addEventListener('click', openModal);
+      openBtn.addEventListener('mouseenter', () => { getPagefind(); }, { once: true });
       closeBtn?.addEventListener('click', closeModal);
       backdrop?.addEventListener('click', (e) => {
         if (e.target === backdrop) closeModal();
