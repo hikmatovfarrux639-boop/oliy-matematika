@@ -181,6 +181,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/chiziqli-algebra/gorner-sxemasi-va-kophad-ildizlari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/chiziqli-algebra/kvadratik-formalar-silvestr</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -188,6 +194,12 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/chiziqli-algebra/matritsalar-va-amallar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/chiziqli-algebra/matritsali-tenglamalar-va-gauss-jordan</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -229,13 +241,31 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/differensial-tenglamalar/bir-jinsliga-keltiriladigan-tenglamalar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/differensial-tenglamalar/birinchi-tartibli-chiziqli-tenglamalar</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/differensial-tenglamalar/diff-tenglamalarni-sonli-yechish-eyler-va-runge-kutta</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/differensial-tenglamalar/differensial-tenglama-tushunchasi</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/differensial-tenglamalar/differensial-tenglamalar-sistemalari</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -265,6 +295,18 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/ehtimollar-nazariyasi/geometrik-ehtimollik-va-uchrashuv-masalasi</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/ehtimollar-nazariyasi/ikki-olchovli-tasodifiy-miqdorlar-va-kovariatsiya</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -277,7 +319,25 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/ehtimollar-nazariyasi/taqsimot-turlari-tekis-korsatkichli-geometrik</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/ehtimollar-nazariyasi/toliq-ehtimollik-va-bayes-formulalari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/funksiyalar-grafiklar/amaliy-ekstremum-va-optimizatsiya-masalalari</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -301,6 +361,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/funksiyalar-grafiklar/funksiyani-toliq-tekshirish-sxemasi</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/funksiyalar-grafiklar/juft-toq-va-davriy-funksiyalar</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -314,6 +380,12 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/hosila/hosila-nima</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/hosila/hosila-ta-rifi-va-taqribiy-ildiz-topish-nyuton</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -367,6 +439,18 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/integrallar/irratsional-integrallar-va-eyler-almashtirishlari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/integrallar/qutb-va-parametrik-shaklda-yuza-va-hajm</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/integrallar/ratsional-kasrlar-va-xosmas-integrallar</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -374,6 +458,12 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/integrallar/taqribiy-integrallash-simpson-va-trapetsiyalar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/integrallar/xosmas-integrallar-va-yaqinlashish-alomatlari</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -410,6 +500,24 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/vektor-maydon-oqimi-va-divergensiya</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/karrali-integrallar/vektor-maydon-potensiali-va-solenoidal-maydonlar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/kompleks-sonlar/differensial-tenglamalarni-laplas-bilan-yechish</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/kompleks-sonlar/garmonik-funksiyalar-va-analitik-funksiyani-tiklash</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -493,7 +601,19 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/limitlar/bir-tomonlama-limitlar-va-uzilish-nuqtalari</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/limitlar/cheksiz-kichik-va-katta-funksiyalar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/limitlar/ketma-ketlik-limiti-va-koshi-ta-rifi</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -529,6 +649,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/maktab-kursi/toplamlar-va-matematik-mantiq</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/maktab-kursi/trigonometriya-asoslari</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -541,6 +667,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/matematik-statistika/chiziqli-regressiya-va-spirmen-korrelyatsiyasi</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/matematik-statistika/statistik-baholash-va-tavsiflar</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -548,6 +680,12 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/matematik-statistika/statistik-gipotezalarni-tekshirish</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/matematik-statistika/variatsion-qatorlar-gistogramma-va-poligon</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -577,6 +715,18 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://oliy-matematika.vercel.app/dars/qatorlar/qator-yigindisini-topish-va-teleskopik-qatorlar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/qatorlar/qatorlar-yordamida-taqribiy-hisoblash-va-integrallar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://oliy-matematika.vercel.app/dars/qatorlar/sonli-qatorlar-va-yaqinlashish</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -590,6 +740,18 @@
   </url>
   <url>
     <loc>https://oliy-matematika.vercel.app/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/vektorlar-geometriya/kesmani-bolish-va-uchburchakli-piramida</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://oliy-matematika.vercel.app/dars/vektorlar-geometriya/qutb-koordinatalari-va-egri-chiziqlar</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>

@@ -1,0 +1,194 @@
+---
+title: "Garmonik funksiyalar va analitik funksiyani tiklash"
+module: "kompleks-sonlar"
+order: 7
+description: "Laplas tenglamasi, garmonik funksiyalar, Koshi-Riman shartlari orqali berilgan haqiqiy yoki mavhum qism bo'yicha analitik funksiyani 2 xil usulda tiklash."
+---
+
+## Kirish: Matematika va fizika uyg'unligi
+
+Haqiqiy analizda ikkita o'zgaruvchili funksiyalar $u(x, y)$ va $v(x, y)$ bir-biridan butunlay mustaqil bo'lishi mumkin. Ammo kompleks o'zgaruvchilar olamida ($f(z) = u + iv$) ular bir vujudning ikki bo'lagi kabi chambarchas bog'langan!
+
+Agar $f(z)$ funksiya biror sohada analitik (ya'ni kompleks ma'noda differensiallanuvchi) bo'lsa:
+1. Uning haqiqiy qismi $u(x, y)$ va mavhum qismi $v(x, y)$ **Laplas tenglamasi**ni qanoatlantirishi shart;
+2. Faqat bitta qismi (masalan, $u(x, y)$) ma'lum bo'lsa, ikkinchi qismi $v(x, y)$ va butun boshli $f(z)$ funksiya **yagona aniqlikda to'liq tiklanadi**!
+
+Bu xususiyat gidrodinamika (oqim potensiali va oqim funksiyasi), aerodinamika va elektrostatikada maydonlarni hisoblashning bosh kalitidir.
+
+---
+
+## 1. Garmonik funksiya nima?
+
+Uzluksiz 2-tartibli xususiy hosilalarga ega bo'lgan va **Laplas differensial tenglamasi**ni qanoatlantiruvchi $\Phi(x, y)$ funksiya **garmonik funksiya** deyiladi:
+$$
+\Delta \Phi = \frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} = 0
+$$
+bu yerda $\Delta = \nabla^2$ ?" Laplas operatori.
+
+### Koshi-Riman va garmoniklik aloqasi:
+Biz bilamizki, analitiklikning zaruriy va yetarli sharti Koshi-Riman tengliklaridir:
+$$
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+$$
+1-tenglikdan $x$ bo'yicha, 2-tenglikdan $y$ bo'yicha hosila olib qo'shsak:
+$$
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = \frac{\partial^2 v}{\partial x \partial y} - \frac{\partial^2 v}{\partial y \partial x} = 0
+$$
+Xuddi shunday $v(x, y)$ uchun ham $\Delta v = 0$ kelib chiqadi.
+> [!IMPORTANT] Teorema
+> Har qanday analitik funksiyaning haqiqiy va mavhum qismlari albatta garmonik funksiyalar bo'ladi. Ular **o'zaro qo'shma garmonik funksiyalar** deyiladi.
+
+---
+
+## 2. Analitik funksiyani tiklashning 2 ta qudratli usuli
+
+Faraz qilaylik, bizga analitik $f(z) = u(x, y) + i v(x, y)$ funksiyaning haqiqiy qismi $u(x, y)$ va $f(0) = z_0$ boshlang'ich qiymati berilgan bo'lsin.
+
+### 1-usul: Koshi-Riman tengliklari orqali ketma-ket tiklash (Klassik usul)
+1. Koshi-Rimanning 1-shartidan: $\frac{\partial v}{\partial y} = \frac{\partial u}{\partial x}$. O'ng tomon ma'lum bo'lgani uchun uni $y$ bo'yicha integrallaymiz:
+   $$
+   v(x, y) = \int \frac{\partial u}{\partial x} dy + \varphi(x)
+   $$
+2. Hosil bo'lgan ifodadan $x$ bo'yicha hosila olib, 2-shartga qo'yamiz:
+   $$
+   \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}
+   $$
+   Bu tenglamadan noma'lum $\varphi'(x)$ topiladi va oddiy integrallash bilan $\varphi(x)$ aniqlanadi.
+3. Topilgan $u(x, y)$ va $v(x, y)$ larni birlashtirib, $x = \frac{z+\bar{z}}{2}, y = \frac{z-\bar{z}}{2i}$ orqali $f(z)$ yoziladi.
+
+---
+
+### 2-usul: Koshi almashtirish usuli ($y = 0, x = z$) (Haqiqiy super-usul!)
+Bu usul imtihonda vaqtni 5 barobar tejaydi!
+Biz bilamizki, $f(z)$ faqat $z = x + iy$ ga bog'liq. U holda $y = 0$ deb olsak, $z = x$ bo'ladi!
+Chunki funksiya analitik bo'lgani sababli, hosila yo'nalishga bog'liq emas:
+$$
+f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial u}{\partial x} - i \frac{\partial u}{\partial y}
+$$
+Ushbu tenglikka shunchaki $x = z$ va $y = 0$ qo'yib integrallasak kifoya:
+$$
+f(z) = \int \left[ \frac{\partial u}{\partial x}(z, 0) - i \frac{\partial u}{\partial y}(z, 0) \right] dz + C
+$$
+
+---
+
+## 3. Masalalarni 2 xil usulda tahlil qilish
+
+### Masala:
+Haqiqiy qismi $u(x, y) = x^3 - 3xy^2 + 2x$ bo'lgan analitik $f(z)$ funksiyani toping ($f(0) = 0$).
+
+#### 1-qadam: Garmoniklikni tekshirish
+$$
+\frac{\partial u}{\partial x} = 3x^2 - 3y^2 + 2, \quad \frac{\partial^2 u}{\partial x^2} = 6x
+$$
+$$
+\frac{\partial u}{\partial y} = -6xy, \quad \frac{\partial^2 u}{\partial y^2} = -6x
+$$
+$$
+\Delta u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 6x - 6x = 0
+$$
+Funksiya garmonik! Demak, bunday analitik funksiya haqiqatan mavjud.
+
+---
+
+#### 1-usul: Koshi-Riman shartlari orqali
+1. $\frac{\partial v}{\partial y} = \frac{\partial u}{\partial x} = 3x^2 - 3y^2 + 2$.
+$y$ bo'yicha integrallaymiz:
+$$
+v(x, y) = 3x^2 y - y^3 + 2y + \varphi(x)
+$$
+2. $x$ bo'yicha hosila olamiz:
+$$
+\frac{\partial v}{\partial x} = 6xy + \varphi'(x)
+$$
+Koshi-Riman 2-sharti bo'yicha $\frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}$:
+$$
+6xy + \varphi'(x) = -(-6xy) = 6xy \implies \varphi'(x) = 0 \implies \varphi(x) = C_0
+$$
+Demak:
+$$
+v(x, y) = 3x^2 y - y^3 + 2y + C_0
+$$
+3. $f(z)$ ni tuzamiz:
+$$
+f(z) = u + i v = (x^3 - 3xy^2 + 2x) + i(3x^2 y - y^3 + 2y + C_0)
+$$
+Guruhlaymiz:
+$$
+f(z) = (x^3 + 3i x^2 y - 3xy^2 - i y^3) + 2(x + iy) + i C_0 = (x + iy)^3 + 2(x + iy) + i C_0 = z^3 + 2z + i C_0
+$$
+$f(0) = 0 \implies i C_0 = 0 \implies C_0 = 0$.
+
+**Javob:** $f(z) = z^3 + 2z$.
+
+---
+
+#### 2-usul: Koshi almashtirish usuli ($x = z, y = 0$)
+Hosilalarni eslaymiz:
+$$
+\frac{\partial u}{\partial x} = 3x^2 - 3y^2 + 2, \qquad \frac{\partial u}{\partial y} = -6xy
+$$
+Bularga to'g'ridan-to'g'ri $x = z$ va $y = 0$ qo'yamiz:
+$$
+\frac{\partial u}{\partial x}(z, 0) = 3z^2 - 0 + 2 = 3z^2 + 2
+$$
+$$
+\frac{\partial u}{\partial y}(z, 0) = -6z(0) = 0
+$$
+Endi hosilani yozamiz:
+$$
+f'(z) = \frac{\partial u}{\partial x}(z, 0) - i \frac{\partial u}{\partial y}(z, 0) = (3z^2 + 2) - i(0) = 3z^2 + 2
+$$
+Oddiy $z$ bo'yicha integrallaymiz:
+$$
+f(z) = \int (3z^2 + 2) dz = z^3 + 2z + C
+$$
+$f(0) = 0 \implies C = 0$.
+**Javob:** $f(z) = z^3 + 2z$.
+Hech qanday murakkab algebraik guruhlashlarsiz 3 qatorda yechim topildi!
+
+---
+
+> [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
+> 1. **Garmoniklikni tekshirmasdan yechish:** Agar berilgan funksiya Laplas tenglamasini qanoatlantirmasa ($\Delta u \ne 0$), bunday analitik funksiya **umuman mavjud emas**! Imtihonda garmoniklikni tekshirish alohida ball beradi.
+> 2. **Koshi-Rimanda minus ishorasini yo'qotish:** $\frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}$ dagi minus ishora eng ko'p unutiladigan joydir.
+> 3. **Mavhum qism $v(x, y)$ berilganda:** Agar $u$ emas, balki $v(x, y)$ berilgan bo'lsa: $f'(z) = \frac{\partial v}{\partial y}(z, 0) + i \frac{\partial v}{\partial x}(z, 0)$ bo'ladi.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+### 1-mashq
+Ushbu funksiyaning garmonikligini tekshiring:
+$$
+u(x, y) = e^x \cos y
+$$
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+**Yechish:**
+$\frac{\partial u}{\partial x} = e^x \cos y \implies \frac{\partial^2 u}{\partial x^2} = e^x \cos y$.
+$\frac{\partial u}{\partial y} = -e^x \sin y \implies \frac{\partial^2 u}{\partial y^2} = -e^x \cos y$.
+$$
+\Delta u = e^x \cos y - e^x \cos y = 0
+$$
+Funksiya garmonikdir.
+</details>
+
+### 2-mashq
+$u(x, y) = e^x \cos y$ bo'yicha $f(0) = 1$ shartni qanoatlantiruvchi analitik $f(z)$ funksiyani 2-usul yordamida toping.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+**Yechish:**
+$\frac{\partial u}{\partial x}(z, 0) = e^z \cos 0 = e^z$.
+$\frac{\partial u}{\partial y}(z, 0) = -e^z \sin 0 = 0$.
+$$
+f'(z) = e^z - i(0) = e^z \implies f(z) = \int e^z dz = e^z + C
+$$
+$f(0) = e^0 + C = 1 + C = 1 \implies C = 0$.
+
+**Javob:** $f(z) = e^z$.
+</details>

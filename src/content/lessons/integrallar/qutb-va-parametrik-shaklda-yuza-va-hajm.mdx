@@ -1,0 +1,193 @@
+---
+title: "Qutb va parametrik shaklda yuza, yoy uzunligi va aylanish jismlari"
+module: "integrallar"
+order: 9
+description: "Qutb koordinatalarida egri chiziqli sektor yuzi, parametrik egri chiziqlar chegaralagan yuza, yoy uzunligi, aylanish sirti va jism hajmini hisoblash formulalari."
+---
+
+## Kirish: Dekart koordinatalari chegarasidan tashqarida
+
+Odatda maktab va 1-kurs boshida biz funksiyani $y = f(x)$ shaklida o'rganamiz. Ammo tabiat va muhandislikdagi ko'plab chiziqlar ?" masalan, avtomobil g'ildiragi nuqtasining harakati (**sikloida**), sayyoralar orbitasi, spiralsimon antennalar yoki tomchi shaklidagi **kardioida**lar ?" Dekart koordinatalarida juda noqulay va murakkab ko'rinishga ega bo'ladi.
+
+Bunday murakkab shakllarni **parametrik ko'rinishda** ($x = x(t), y = y(t)$) yoki **qutb koordinatalarida** ($r = r(\varphi)$) ifodalash hisoblashlarni 10 barobar osonlashtiradi.
+
+Ushbu darsda biz yuza, yoy uzunligi va aylanma jism hajmini ushbu zamonaviy koordinata tizimlarida hisoblashni o'rganamiz.
+
+---
+
+## 1. Qutb koordinatalarida soha yuzi va yoy uzunligi
+
+Qutb koordinatalarida nuqta qutb radiusi $r$ va qutb burchagi $\varphi$ orqali beriladi: $r = r(\varphi)$, bu yerda $\alpha \le \varphi \le \beta$.
+
+```
+                       Qutb sektori yuzi
+                                  /
+                                 /  r = r(phi)
+                                /       
+                               / \       
+                              /   \      
+                   alpha     /     ) dS = (1/2)*r^2 * d(phi)
+                            /       \
+                           /_________\ beta
+                          O  (Qutb boshi)
+```
+
+### Soha yuzi formulasi:
+Egri chiziq $r = r(\varphi)$ va ikkita qutb nuri $\varphi = \alpha, \varphi = \beta$ bilan chegaralangan **qutb sektori yuzi**:
+$$
+S = \frac{1}{2} \int_{\alpha}^{\beta} r^2(\varphi) \, d\varphi
+$$
+
+### Yoy uzunligi formulasi:
+$$
+L = \int_{\alpha}^{\beta} \sqrt{r^2(\varphi) + \left(r'(\varphi)\right)^2} \, d\varphi
+$$
+
+---
+
+## 2. Parametrik shaklda berilgan egri chiziqlar
+
+Egri chiziq parametrik tenglamalar bilan berilgan bo'lsin:
+$$
+\begin{cases} x = x(t) \\ y = y(t) \end{cases} \quad (t_1 \le t \le t_2)
+$$
+
+### 1. Yuza formulasi:
+Egri chiziq, $Ox$ o'qi va $x(t_1)=a, x(t_2)=b$ to'g'ri chiziqlar bilan chegaralangan figura yuzi:
+$$
+S = \int_{t_1}^{t_2} y(t) \cdot x'(t) \, dt \quad \left(\text{yoki yopiq kontur uchun } S = \frac{1}{2}\oint (x y' - y x') dt\right)
+$$
+
+### 2. Yoy uzunligi formulasi:
+Pifagor teoremasining cheksiz kichik differensial shaklidan ($dL = \sqrt{dx^2 + dy^2}$):
+$$
+L = \int_{t_1}^{t_2} \sqrt{\left(x'(t)\right)^2 + \left(y'(t)\right)^2} \, dt
+$$
+
+### 3. $Ox$ o'qi atrofida aylanishdan hosil bo'lgan jism hajmi va sirti:
+$$
+V_x = \pi \int_{t_1}^{t_2} y^2(t) \cdot |x'(t)| \, dt
+$$
+$$
+S_{x} = 2\pi \int_{t_1}^{t_2} |y(t)| \sqrt{\left(x'(t)\right)^2 + \left(y'(t)\right)^2} \, dt
+$$
+
+---
+
+## 3. Masalalarni 2 xil usulda tahlil qilish
+
+### 1-masala: Ellips yuzini 2 xil usulda hisoblash
+Yarim o'qlari $a$ va $b$ bo'lgan $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ ellips yuzini toping.
+
+#### 1-usul: Dekart koordinatalari orqali (Murakkab usul)
+Simmetriya tufayli 1-chorakdagi yuzani 4 ga ko'paytiramiz:
+$y = b\sqrt{1 - \frac{x^2}{a^2}} = \frac{b}{a}\sqrt{a^2 - x^2}$.
+$$
+S = 4 \int_0^a \frac{b}{a}\sqrt{a^2 - x^2} \, dx
+$$
+Ushbu integral trigonometrik almashtirish $x = a\sin t$ yoki bo'laklab integrallashni talab qiladi:
+$$
+\int_0^a \sqrt{a^2-x^2} dx = \left[ \frac{x}{2}\sqrt{a^2-x^2} + \frac{a^2}{2}\arcsin\frac{x}{a} \right]_0^a = 0 + \frac{a^2}{2}\frac{\pi}{2} = \frac{\pi a^2}{4}
+$$
+Natijada:
+$$
+S = 4 \cdot \frac{b}{a} \cdot \frac{\pi a^2}{4} = \pi a b
+$$
+
+#### 2-usul: Parametrik koordinatalar orqali (Elegant va tezkor usul)
+Ellipsning parametrik tenglamasi: $x = a\cos t, y = b\sin t$, bu yerda $t \in [0; 2\pi]$.
+Hosilalar: $x'(t) = -a\sin t$.
+1-chorakda $x$ o'zgarishi $a$ dan $0$ gacha bo'lganda parametr $t$ esa $0$ dan $\frac{\pi}{2}$ gacha o'zgaradi:
+$$
+S = 4 \int_{\pi/2}^0 y(t) x'(t) dt = 4 \int_{\pi/2}^0 (b\sin t)(-a\sin t) dt = 4ab \int_0^{\pi/2} \sin^2 t \, dt
+$$
+Darajani pasaytiramiz: $\sin^2 t = \frac{1 - \cos 2t}{2}$:
+$$
+S = 4ab \int_0^{\pi/2} \frac{1 - \cos 2t}{2} dt = 2ab \left[ t - \frac{\sin 2t}{2} \right]_0^{\pi/2} = 2ab \left(\frac{\pi}{2} - 0\right) = \pi a b
+$$
+Ko'rib turganingizdek, parametrik shakl orqali hech qanday murakkab ildizlarsiz 2 qatorda javob chiqdi!
+
+---
+
+### 2-masala: Kardioida bilan chegaralangan soha yuzi
+Qutb koordinatalarida $r = a(1 + \cos\varphi)$ kardioidasi berilgan bo'lsin ($a > 0$).
+
+**Yechish:**
+Kardioida qutb o'qiga nisbatan simmetrik bo'lib, $\varphi$ burchak $-\pi$ dan $\pi$ gacha (yoki simmetriya bo'yicha $0$ dan $\pi$ gacha 2 barobar) o'zgaradi.
+$$
+S = 2 \cdot \frac{1}{2} \int_0^\pi r^2(\varphi) d\varphi = \int_0^\pi a^2(1 + \cos\varphi)^2 d\varphi
+$$
+Qavsni ochamiz:
+$$
+S = a^2 \int_0^\pi (1 + 2\cos\varphi + \cos^2\varphi) d\varphi
+$$
+$\cos^2\varphi = \frac{1 + \cos 2\varphi}{2}$ ekanligidan:
+$$
+S = a^2 \int_0^\pi \left(1 + 2\cos\varphi + \frac{1}{2} + \frac{1}{2}\cos 2\varphi\right) d\varphi = a^2 \int_0^\pi \left(\frac{3}{2} + 2\cos\varphi + \frac{1}{2}\cos 2\varphi\right) d\varphi
+$$
+Boshlang'ich funksiyani olamiz:
+$$
+S = a^2 \left[ \frac{3}{2}\varphi + 2\sin\varphi + \frac{1}{4}\sin 2\varphi \right]_0^\pi = a^2 \left( \frac{3}{2}\pi + 0 + 0 - 0 \right) = \frac{3}{2}\pi a^2
+$$
+
+**Javob:** $S = \frac{3}{2}\pi a^2$.
+
+---
+
+> [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
+> 1. **Parametrik yuzada integrallash yo'nalishi:** Agar $t$ o'sganda $x(t)$ kamayib borsa, $x'(t) < 0$ bo'ladi va integral manfiy chiqib qolishi mumkin. Shuning uchun yuzani hisoblashda har doim $x(t)$ chapdan o'ngga o'sayotganiga yoki modul olinganiga ishonch hosil qiling.
+> 2. **Qutb burchagi oraliqlari:** Bernulli lemniskatasi ($r^2 = a^2\cos 2\varphi$) yoki atirgullarda ($r = a\sin 3\varphi$) radius musbat bo'lishi kerak ($r \ge 0$). Talabalar burchakni ko'r-ko'rona $0$ dan $2\pi$ gacha olib xato qilishadi; har doim $r(\varphi) \ge 0$ shartidan burchak chegaralarini aniqlab olish shart.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+### 1-mashq
+Astroidaning to'liq yoy uzunligini hisoblang:
+$$
+\begin{cases} x = a \cos^3 t \\ y = a \sin^3 t \end{cases} \quad (0 \le t \le 2\pi)
+$$
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+**Yechish:**
+Simmetriyaga binoan 1-chorakdagi ($0 \le t \le \pi/2$) uzunlikni topib, 4 ga ko'paytiramiz:
+Hosilalar:
+$$
+x'(t) = -3a\cos^2 t \sin t, \quad y'(t) = 3a\sin^2 t \cos t
+$$
+Kvadratlar yig'indisi:
+$$
+(x')^2 + (y')^2 = 9a^2 \cos^4 t \sin^2 t + 9a^2 \sin^4 t \cos^2 t = 9a^2 \cos^2 t \sin^2 t (\cos^2 t + \sin^2 t) = 9a^2 \sin^2 t \cos^2 t
+$$
+Ildizdan chiqaramiz ($0 \le t \le \pi/2$ da $\sin t \cos t > 0$):
+$$
+\sqrt{(x')^2 + (y')^2} = 3a \sin t \cos t = \frac{3a}{2}\sin 2t
+$$
+Integralni hisoblaymiz:
+$$
+L = 4 \int_0^{\pi/2} \frac{3a}{2}\sin 2t \, dt = 6a \left[ -\frac{\cos 2t}{2} \right]_0^{\pi/2} = 6a \left( -\frac{-1}{2} - \left(-\frac{1}{2}\right) \right) = 6a (1) = 6a
+$$
+
+**Javob:** $L = 6a$.
+</details>
+
+### 2-mashq
+Arximed spiralining $r = a\varphi$ bitta to'liq buralishidagi ($0 \le \varphi \le 2\pi$) qutb sektori yuzini hisoblang.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+**Yechish:**
+Qutb sektori yuzi formulasi:
+$$
+S = \frac{1}{2} \int_0^{2\pi} r^2(\varphi) d\varphi = \frac{1}{2} \int_0^{2\pi} (a\varphi)^2 d\varphi = \frac{a^2}{2} \left[ \frac{\varphi^3}{3} \right]_0^{2\pi}
+$$
+Chegaralarni qo'yamiz:
+$$
+S = \frac{a^2}{6} (2\pi)^3 = \frac{a^2}{6} \cdot 8\pi^3 = \frac{4}{3}\pi^3 a^2
+$$
+
+**Javob:** $S = \frac{4}{3}\pi^3 a^2$.
+</details>

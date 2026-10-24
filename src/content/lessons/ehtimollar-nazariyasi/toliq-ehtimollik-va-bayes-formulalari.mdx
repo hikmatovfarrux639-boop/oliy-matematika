@@ -1,0 +1,189 @@
+---
+title: "To'liq ehtimollik va Bayes formulalari"
+module: "ehtimollar-nazariyasi"
+order: 7
+description: "Gipotezalar to'liq guruhi, to'liq ehtimollik formulasi, Bayes teoremasi, aprior va aposterior ehtimolliklar hamda tibbiy test paradoksi."
+---
+
+## Kirish: Sabablar va oqibatlar o'rtasidagi hisob-kitob
+
+Faraz qilaylik, zavodga uchta korxonadan bir xil detallar keltiriladi: 1-korxonadan 50%, 2-korxonadan 30%, 3-korxonadan 20%. Har bir korxonaning yaroqsiz (brak) detal chiqarish foizi turlicha.
+Agar ombordan tavakkaliga olingan detal yaroqsiz bo'lib chiqsa:
+1. Umuman olganda tasodifiy detalning brak bo'lish ehtimoli qanday?
+2. Ushbu brak detal aynan 1-korxonada ishlab chiqarilgan bo'lishi ehtimoli-chi?
+
+Birinchi savolga **To'liq ehtimollik formulasi**, ikkinchi savolga esa sun'iy intellekt, spam-filtrlar va tibbiy diagnostikaning asosi bo'lgan **Bayes formulasi** javob beradi!
+
+---
+
+## 1. Gipotezalar to'liq guruhi
+
+$H_1, H_2, \dots, H_n$ hodisalar to'plami quyidagi ikki shartni qanoatlantirsa, **gipotezalar to'liq guruhi** deyiladi:
+1. Ular juft-jufti bilan birgalikda ro'y bermaydi ($H_i \cap H_j = \emptyset, i \ne j$);
+2. Ularning birlashmasi butun natijalar fazosini tashkil qiladi:
+$$
+\sum_{i=1}^n P(H_i) = P(H_1) + P(H_2) + \dots + P(H_n) = 1
+$$
+
+---
+
+## 2. To'liq ehtimollik formulasi
+
+Agar $A$ hodisasi faqat $H_1, H_2, \dots, H_n$ gipotezalardan birortasi bilan birgalikda ro'y berishi mumkin bo'lsa, uning ro'y berishining **to'liq ehtimoli**:
+
+$$
+P(A) = \sum_{i=1}^n P(H_i) \cdot P(A | H_i)
+$$
+
+bu yerda $P(A | H_i)$ ?" $H_i$ gipoteza ro'y bergan paytdagi $A$ hodisasining shartli ehtimolidir.
+
+```
+                         Gipotezalar orqali A hodisa
+                                  Omega
+           +------------------------+------------------------+
+           |           H_1          |          H_2           |
+           |                        |                        |
+           |             +----------+----------+             |
+           |             |                     |             |
+           |             |     A hodisasi      |             |
+           |             |                     |             |
+           |             +----------+----------+             |
+           |                        |                        |
+           |           H_3          |          H_4           |
+           +------------------------+------------------------+
+              P(A) = P(H_1)P(A|H_1) + ... + P(H_4)P(A|H_4)
+```
+
+---
+
+## 3. Bayes formulasi (Aposterior ehtimollik)
+
+Tomas Bayes kashf etgan ushbu formula tajriba natijasi ma'lum bo'lgandan so'ng, dastlabki taxminlarni (gipotezalarni) **qayta baholash** imkonini beradi:
+- **Aprior ehtimollik:** $P(H_k)$ ?" tajriba o'tkazilishidan oldingi dastlabki ehtimollik.
+- **Aposterior ehtimollik:** $P(H_k | A)$ ?" $A$ hodisasi ro'y bergani ma'lum bo'lgach, aynan $H_k$ sabab bo'lganligining yangilangan ehtimoli:
+
+$$
+P(H_k | A) = \frac{P(H_k) \cdot P(A | H_k)}{P(A)} = \frac{P(H_k) \cdot P(A | H_k)}{\sum_{i=1}^n P(H_i) \cdot P(A | H_i)}
+$$
+
+---
+
+## 4. Hayotiy paradoks: Tibbiy test testi
+
+> **Masala:** Kam uchraydigan kasallik bilan aholining $1\%$ qismi og'rigan ($0.01$). Kasallikni aniqlovchi laboratoriya testi $95\%$ aniqlikka ega (ya'ni kasal odamda $95\%$ holatda musbat chiqadi, sog'lom odamda esa $5\%$ holatda soxta musbat chiqadi). 
+> Tasodifiy tanlangan fuqaroning testi **musbat** chiqdi. Uning haqiqatan kasal bo'lish ehtimoli qanday?
+
+### Yechish:
+Ko'pchilik odamlar ikkilanmasdan "95%" deb javob berishadi. Keling, Bayes formulasi bilan hisoblaymiz:
+- $H_1$: Odam kasal, $P(H_1) = 0.01$.
+- $H_2$: Odam sog'lom, $P(H_2) = 1 - 0.01 = 0.99$.
+- $A$: Test musbat chiqdi.
+Shartli ehtimollar:
+- $P(A | H_1) = 0.95$ (kasal bo'lsa test musbat chiqishi);
+- $P(A | H_2) = 0.05$ (sog'lom bo'lsa ham adashib musbat chiqishi).
+
+1. To'liq ehtimollik bo'yicha tasodifiy testning musbat chiqishi:
+$$
+P(A) = P(H_1)P(A|H_1) + P(H_2)P(A|H_2) = 0.01 \times 0.95 + 0.99 \times 0.05 = 0.0095 + 0.0495 = 0.059
+$$
+2. Bayes formulasi bo'yicha odamning haqiqatan kasal ekanligi:
+$$
+P(H_1 | A) = \frac{P(H_1) P(A | H_1)}{P(A)} = \frac{0.0095}{0.059} \approx 0.161 \quad (\mathbf{16.1\%}!)
+$$
+
+> [!NOTE] Nega bunday bo'ldi?
+> Chunki sog'lom odamlar soni ($99\%$) juda ko'p bo'lgani sababli, ularning $5\%$ soxta xatolari soni haqiqiy kasallarning sonidan ancha ko'p bo'lib chiqadi! Aynan shu sababli shifokorlar birinchi musbat testdan keyin darhol qayta tahlil tayinlaydilar.
+
+---
+
+## 5. Masalalarni 2 xil usulda tahlil qilish
+
+### Masala:
+Omborga 3 ta sexdan mahsulot keltiriladi:
+- 1-sexdan: 20 ta detal (shundan 2 tasi nosoz);
+- 2-sexdan: 30 ta detal (shundan 3 tasi nosoz);
+- 3-sexdan: 50 ta detal (shundan 10 tasi nosoz).
+Tavakkaliga olingan detal nosoz bo'lib chiqdi. Bu detal 3-sex mahsuloti ekanligi ehtimolini toping.
+
+#### 1-usul: Bayes formulasi orqali
+Jami detallar: $20 + 30 + 50 = 100$ ta.
+Gipotezalar:
+- $H_1$: detal 1-sexdan, $P(H_1) = \frac{20}{100} = 0.2$;
+- $H_2$: detal 2-sexdan, $P(H_2) = \frac{30}{100} = 0.3$;
+- $H_3$: detal 3-sexdan, $P(H_3) = \frac{50}{100} = 0.5$.
+Tekshirish: $0.2 + 0.3 + 0.5 = 1$.
+$A$ hodisasi ?" detal nosoz. Shartli ehtimollar:
+- $P(A | H_1) = \frac{2}{20} = 0.1$;
+- $P(A | H_2) = \frac{3}{30} = 0.1$;
+- $P(A | H_3) = \frac{10}{50} = 0.2$.
+
+1. To'liq ehtimollik:
+$$
+P(A) = 0.2(0.1) + 0.3(0.1) + 0.5(0.2) = 0.02 + 0.03 + 0.10 = 0.15
+$$
+2. Bayes formulasi:
+$$
+P(H_3 | A) = \frac{P(H_3) P(A | H_3)}{P(A)} = \frac{0.10}{0.15} = \frac{2}{3} \approx 0.667 \quad (66.7\%)
+$$
+
+---
+
+#### 2-usul: Mutlaq chastotalar usuli (Tezkor mantiqiy usul)
+Barcha nosoz detallarni sanaymiz:
+- 1-sexdagi nosozlar: 2 ta;
+- 2-sexdagi nosozlar: 3 ta;
+- 3-sexdagi nosozlar: 10 ta.
+Jami nosoz detallar soni:
+$$
+N_{\text{nosoz}} = 2 + 3 + 10 = 15 \text{ ta}
+$$
+Bizga detalning nosoz ekanligi ma'lum bo'lgani sababli, butun tanlanma aynan shu 15 ta nosoz detal bilan cheklanadi!
+Ular orasidan 3-sexga tegishlilari soni: $10$ ta.
+Demak:
+$$
+P = \frac{10}{15} = \frac{2}{3} \approx 66.7\%
+$$
+Ko'rib turganingizdek, mantiqiy chastotalar usuli formulalarsiz ham aynan bir xil javobni beradi!
+
+---
+
+> [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
+> 1. **Gipotezalar yig'indisi 1 ga teng emasligi:** Eng ko'p uchraydigan xato ?" gipotezalar to'liq guruhni tashkil qilmasligi ($\sum P(H_i) \ne 1$). Har doim masalani boshlashdan oldin gipotezalar ehtimollari yig'indisini tekshirib oling.
+> 2. **Shartli ehtimollarni almashtirib qo'yish:** $P(A | H_k)$ bilan $P(H_k | A)$ mutlaqo boshqa-boshqa tushunchalar! $P(A | H_k)$ berilgan shartdagi natija ehtimoli bo'lsa, $P(H_k | A)$ natija ro'y bergandan keyingi sabab ehtimolidir.
+
+---
+
+## Mustaqil yechish uchun mashqlar
+
+### 1-mashq
+Ikkita bir xil quti bor. 1-qutida 3 ta oq va 7 ta qora shar, 2-qutida 6 ta oq va 4 ta qora shar bor. Tavakkaliga bitta quti tanlanib, undan bitta shar olindi. Olingan sharning oq bo'lish ehtimolini toping.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+**Yechish:**
+$H_1$: 1-quti tanlandi, $P(H_1) = 0.5$.
+$H_2$: 2-quti tanlandi, $P(H_2) = 0.5$.
+$P(A|H_1) = \frac{3}{10} = 0.3$.
+$P(A|H_2) = \frac{6}{10} = 0.6$.
+To'liq ehtimollik:
+$$
+P(A) = 0.5 \times 0.3 + 0.5 \times 0.6 = 0.15 + 0.30 = 0.45
+$$
+
+**Javob:** $P(A) = 0.45$ ($45\%$).
+</details>
+
+### 2-mashq
+Yuqoridagi masalada olingan shar oq bo'lib chiqsa, u 2-qutidan olinganligi ehtimolini Bayes formulasi bilan hisoblang.
+
+<details>
+<summary>👉 Yechimni tekshirish</summary>
+
+**Yechish:**
+$$
+P(H_2 | A) = \frac{P(H_2) P(A | H_2)}{P(A)} = \frac{0.5 \times 0.6}{0.45} = \frac{0.30}{0.45} = \frac{2}{3} \approx 0.667
+$$
+
+**Javob:** $P(H_2 | A) = \frac{2}{3} \approx 66.7\%$.
+</details>

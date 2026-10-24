@@ -1475,5 +1475,239 @@ export const FORMULAS: FormulaItem[] = [
     latex: "\\operatorname{ch}^2 x - \\operatorname{sh}^2 x = 1, \\quad \\operatorname{sh} x = \\frac{e^x - e^{-x}}{2}, \\quad \\operatorname{ch} x = \\frac{e^x + e^{-x}}{2}",
     note: "Oddiy aylanaviy trigonometriyadagi (+) o'rniga giperbolik ayniyatda (-) ishora bo'ladi",
     keywords: "giperbolik ayniyat sh ch th pifagor eyler korsatkichli eksponensial"
+  },
+  {
+    id: "alg-17",
+    category: "algebra",
+    categoryLabel: "Chiziqli algebra",
+    title: "Gorner sxemasi iteratsion algoritmi",
+    latex: "b_0 = a_0, \\quad b_k = a_k + c \\cdot b_{k-1} \\quad (k = 1, 2, \\dots, n)",
+    note: "Ko'phadni chiziqli ikkihadga (x - c) ga bo'lish va ko'phad qiymatini P(c) hisoblash jadvali",
+    keywords: "gorner sxemasi kophad ildizlari bezu teoremasi ratsional ildizlar bolish"
+  },
+  {
+    id: "alg-18",
+    category: "algebra",
+    categoryLabel: "Chiziqli algebra",
+    title: "De Morgan qonunlari va to'plamlar quvvati",
+    latex: "\\overline{A \\cup B} = \\overline{A} \\cap \\overline{B}, \\quad \\overline{A \\cap B} = \\overline{A} \\cup \\overline{B}, \\quad |A \\cup B| = |A| + |B| - |A \\cap B|",
+    note: "Matematik mantiq va to'plamlar nazariyasining dual qonuniyatlari",
+    keywords: "de morgan toplamlar mantiq birlashma kesishma venn diagrammasi"
+  },
+  {
+    id: "geom-17",
+    category: "vektorlar",
+    categoryLabel: "Vektorlar va geometriya",
+    title: "Kesmani berilgan nisbatda bo'lish formulasi",
+    latex: "x = \\frac{x_1 + \\lambda x_2}{1 + \\lambda}, \\quad y = \\frac{y_1 + \\lambda y_2}{1 + \\lambda}, \\quad z = \\frac{z_1 + \\lambda z_2}{1 + \\lambda} \\quad (\\lambda = \\frac{AM}{MB} \\ne -1)",
+    note: "Kesmani bo'luvchi nuqta koordinatalari (o'rtasi uchun lambda = 1)",
+    keywords: "kesmani bolish nisbat lambda sentroid ogirlik markazi koordinatalar"
+  },
+  {
+    id: "geom-18",
+    category: "vektorlar",
+    categoryLabel: "Vektorlar va geometriya",
+    title: "Uchburchakli piramida (tetraedr) balandligi",
+    latex: "h = \\frac{3V}{S_{\\text{asos}}} = \\frac{|(\\vec{a}, \\vec{b}, \\vec{c})|}{|\\vec{a} \\times \\vec{b}|}",
+    note: "Aralash ko'paytma moduli (hajm) va vektor ko'paytma moduli (asos yuzi) nisbati",
+    keywords: "tetraedr balandligi piramida aralash kopaytma vektor kopaytma hajm asos"
+  },
+  {
+    id: "lim-13",
+    category: "limitlar",
+    categoryLabel: "Limitlar",
+    title: "Funksiya limitining Koshi bo'yicha qat'iy ta'rifi",
+    latex: "\\forall \\varepsilon > 0 \\; \\exists \\delta > 0 : 0 < |x - x_0| < \\delta \\implies |f(x) - L| < \\varepsilon",
+    note: "Matematik analizning eng qat'iy epsilon-delta poydevor ta'rifi",
+    keywords: "koshi tarifi epsilon delta limit qatiy tarif atrof uzluksizlik"
+  },
+  {
+    id: "diff-calc-14",
+    category: "hosilalar",
+    categoryLabel: "Hosilalar",
+    title: "Nyuton-Rafson urinmalar iteratsiyasi",
+    latex: "x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)} \\quad (n = 0, 1, 2, \\dots)",
+    note: "Tenglamalarning taqribiy ildizlarini kvadratik tezlikda topish usuli",
+    keywords: "nyuton rafson urinmalar usuli ildiz topish taqribiy hisoblash hosila"
+  },
+  {
+    id: "int-17",
+    category: "integrallar",
+    categoryLabel: "Integrallar",
+    title: "Qutb koordinatalarida soha yuzi",
+    latex: "S = \\frac{1}{2} \\int_{\\alpha}^{\\beta} r^2(\\varphi) \\, d\\varphi",
+    note: "Egri chiziq r = r(phi) va ikkita qutb nuri chegaralagan sektor yuzi",
+    keywords: "qutb koordinatalari yuza sektor r phi kardioida lemniskata spiral"
+  },
+  {
+    id: "int-18",
+    category: "integrallar",
+    categoryLabel: "Integrallar",
+    title: "Parametrik egri chiziq yoy uzunligi",
+    latex: "L = \\int_{t_1}^{t_2} \\sqrt{(x'(t))^2 + (y'(t))^2} \\, dt",
+    note: "Parametrik ko'rinishdagi har qanday silliq egri chiziqning aniq uzunligi",
+    keywords: "yoy uzunligi parametrik sikloida astroida integral differensial"
+  },
+  {
+    id: "int-19",
+    category: "integrallar",
+    categoryLabel: "Integrallar",
+    title: "1- va 2-tur etalon xosmas integrallar",
+    latex: "\\int_1^{+\\infty} \\frac{dx}{x^p} < \\infty \\iff p > 1, \\qquad \\int_0^1 \\frac{dx}{x^p} < \\infty \\iff p < 1",
+    note: "Barcha xosmas integrallarni taqqoslash alomati uchun asosiy mezonlar",
+    keywords: "xosmas integral etalon yaqinlashish uzoqlashish taqqoslash p daraja"
+  },
+  {
+    id: "int-20",
+    category: "integrallar",
+    categoryLabel: "Integrallar",
+    title: "1-Eyler almashtirishi (a > 0 bo'lganda)",
+    latex: "\\sqrt{ax^2 + bx + c} = \\pm\\sqrt{a}\\,x + t \\implies x = \\frac{t^2 - c}{b \\mp 2\\sqrt{a}t}",
+    note: "Kvadrat ildizli irratsional integrallarni ratsional kasrga keltirish",
+    keywords: "eyler almashtirishi irratsional kvadrat ildiz ratsionallashtirish"
+  },
+  {
+    id: "diff-13",
+    category: "diff",
+    categoryLabel: "Differensial tenglamalar",
+    title: "4-tartibli klassik Runge-Kutta algoritmi (RK4)",
+    latex: "y_{i+1} = y_i + \\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4), \\quad k_1 = f(x_i, y_i), \\; k_2 = f\\left(x_i + \\frac{h}{2}, y_i + \\frac{h}{2}k_1\\right)",
+    note: "Global xatoligi O(h^4) bo'lgan, sanoat standarti hisoblangan Koshi masalasini sonli yechish usuli",
+    keywords: "runge kutta rk4 sonli usullar eyler koshi masalasi qadam aniqlik"
+  },
+  {
+    id: "diff-14",
+    category: "diff",
+    categoryLabel: "Differensial tenglamalar",
+    title: "To'liq differensialli tenglama sharti",
+    latex: "\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\iff P(x, y)\\,dx + Q(x, y)\\,dy = dU = 0 \\implies U(x, y) = C",
+    note: "Integrallash maydon potensialini tiklashga teng kuchli bo'lgan tenglama",
+    keywords: "toliq differensial potensial xususiy hosila euler ko'paytuvchi"
+  },
+  {
+    id: "diff-15",
+    category: "diff",
+    categoryLabel: "Differensial tenglamalar",
+    title: "Chiziqli differensial tenglamalar sistemasi matritsaviy shakli",
+    latex: "\\frac{d\\vec{X}}{dt} = A \\vec{X} \\implies \\det(A - \\lambda E) = 0, \\quad \\vec{X}(t) = \\sum_{k=1}^n C_k e^{\\lambda_k t} \\vec{v}_k",
+    note: "O'zgarmas koeffitsiyentli sistemani xos sonlar va xos vektorlar orqali yechish",
+    keywords: "differensial tenglamalar sistemasi matritsa xos son xos vektor eyler dts"
+  },
+  {
+    id: "ser-15",
+    category: "qatorlar",
+    categoryLabel: "Qatorlar",
+    title: "Teleskopik (qisqaruvchi) qator yig'indisi",
+    latex: "\\sum_{n=1}^{\\infty} (b_n - b_{n+1}) = b_1 - \\lim_{n\\to\\infty} b_{n+1}",
+    note: "Oraliq hadlari qarama-qarshi ishoralar bilan nolga aylanuvchi qator yig'indisi",
+    keywords: "teleskopik qator yigindi xususiy yigindi sn qisqarish sodda kasrlar"
+  },
+  {
+    id: "ser-16",
+    category: "qatorlar",
+    categoryLabel: "Qatorlar",
+    title: "Leybnits qoldiq hadi xatolik bahosi",
+    latex: "|R_N| = |S - S_N| \\le |a_{N+1}|",
+    note: "Ishorasi almashinuvchi qatorda xatolik birinchi tashlangan had modulidan oshmaydi",
+    keywords: "leybnits qoldiq xatolik bahosi taqribiy hisoblash epsilon yaqinlashish"
+  },
+  {
+    id: "mv-16",
+    category: "kop-ozgaruvchili",
+    categoryLabel: "Ko'p o'zgaruvchili va karrali",
+    title: "Potensial maydon zaruriy va yetarli sharti",
+    latex: "\\operatorname{rot} \\vec{F} = \\nabla \\times \\vec{F} = \\vec{0} \\iff \\vec{F} = \\operatorname{grad} U \\implies \\int_{AB} \\vec{F} \\cdot d\\vec{r} = U(B) - U(A)",
+    note: "Uyurmasiz konservativ maydonda ish yo'l shakliga bog'liq bo'lmaydi",
+    keywords: "potensial maydon rotor gradient ish yolga bogliq emas konservativ"
+  },
+  {
+    id: "mv-17",
+    category: "kop-ozgaruvchili",
+    categoryLabel: "Ko'p o'zgaruvchili va karrali",
+    title: "Solenoidal (manbasiz) maydon sharti",
+    latex: "\\operatorname{div} \\vec{F} = \\nabla \\cdot \\vec{F} = 0 \\iff \\oiint_S \\vec{F} \\cdot d\\vec{S} = 0 \\implies \\vec{F} = \\operatorname{rot} \\vec{A}",
+    note: "Magnit maydon kabi manbalarga ega bo'lmagan maydonda yopiq sirt oqimi doim 0 ga teng",
+    keywords: "solenoid solenoidal divergensiya vektor potensial oqim manba"
+  },
+  {
+    id: "cplx-14",
+    category: "kompleks",
+    categoryLabel: "Kompleks sonlar",
+    title: "Laplas tenglamasi va garmonik funksiyalar",
+    latex: "\\Delta u = \\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0, \\qquad f'(z) = \\frac{\\partial u}{\\partial x}(z, 0) - i\\frac{\\partial u}{\\partial y}(z, 0)",
+    note: "Analitik funksiyaning haqiqiy qismi bo'yicha butun f(z) funksiyani tiklash formulasi",
+    keywords: "laplas tenglamasi garmonik funksiya analitik funksiyani tiklash tfkp"
+  },
+  {
+    id: "cplx-15",
+    category: "kompleks",
+    categoryLabel: "Kompleks sonlar",
+    title: "Hosilalarning Laplas tasviri",
+    latex: "y'(t) \\fallingdotseq p Y(p) - y(0), \\qquad y''(t) \\fallingdotseq p^2 Y(p) - p y(0) - y'(0)",
+    note: "Koshi masalasini oddiy chiziqli algebraik tenglamaga aylantirib beruvchi qoida",
+    keywords: "laplas almashtirishi tasvir original hosilaning tasviri operatsion hisob"
+  },
+  {
+    id: "prob-17",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "To'liq ehtimollik va Bayes formulalari",
+    latex: "P(A) = \\sum_{i=1}^n P(H_i) P(A|H_i), \\qquad P(H_k|A) = \\frac{P(H_k) P(A|H_k)}{\\sum_{i=1}^n P(H_i) P(A|H_i)}",
+    note: "Gipotezalar to'liq guruhi va tajriba natijasida aprior ehtimollikni aposterior yangilash",
+    keywords: "toliq ehtimollik bayes formulasi gipotezalar aprior aposterior shartli"
+  },
+  {
+    id: "prob-18",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Uchrashuv masalasi geometrik ehtimolligi",
+    latex: "P = 1 - \\left(1 - \\frac{\\tau}{T}\\right)^2 = \\frac{T^2 - (T-\\tau)^2}{T^2}",
+    note: "T vaqt oralig'ida tau kutish bilan ikki kishining tasodifiy uchrashish ehtimoli",
+    keywords: "uchrashuv masalasi geometrik ehtimollik kvadrat soha kutish vaqti"
+  },
+  {
+    id: "prob-19",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Ko'rsatkichli (eksponensial) taqsimot",
+    latex: "f(x) = \\lambda e^{-\\lambda x} \\; (x \\ge 0), \\qquad M(X) = \\frac{1}{\\lambda}, \\quad D(X) = \\frac{1}{\\lambda^2}, \\quad \\sigma(X) = \\frac{1}{\\lambda}",
+    note: "Xizmat ko'rsatish va uskunaning buzilmasdan ishlash vaqti modeli (xotirasizlik xossasi)",
+    keywords: "korsatkichli eksponensial taqsimot lambda xotirasizlik matematik kutilma"
+  },
+  {
+    id: "prob-20",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Tekis taqsimot sonli xarakteristikalari",
+    latex: "f(x) = \\frac{1}{b-a}, \\quad F(x) = \\frac{x-a}{b-a}, \\quad M(X) = \\frac{a+b}{2}, \\quad D(X) = \\frac{(b-a)^2}{12}",
+    note: "[a; b] oraliqdagi teng imkoniyatli tasodifiy miqdor dispersiyasi va kutilmasi",
+    keywords: "tekis taqsimot oraliq dispersiya 12 kutilma zichlik funksiyasi"
+  },
+  {
+    id: "prob-21",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Kovariatsiya va Pirson korrelyatsiya koeffitsiyenti",
+    latex: "\\operatorname{cov}(X, Y) = M(XY) - M(X)M(Y), \\qquad r_{xy} = \\frac{\\operatorname{cov}(X, Y)}{\\sigma_X \\sigma_Y} \\in [-1; 1]",
+    note: "Ikki tasodifiy miqdor o'rtasidagi chiziqli bog'liqlik kuchi va yo'nalishi ko'rsatkichi",
+    keywords: "kovariatsiya pirson korrelyatsiya bogliqlik kovariatsiya koeffitsiyenti"
+  },
+  {
+    id: "prob-22",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Juft chiziqli regressiya tenglamasi (EKU)",
+    latex: "\\hat{y} = ax + b, \\quad a = \\frac{n\\sum xy - \\sum x \\sum y}{n\\sum x^2 - (\\sum x)^2} = r_{xy}\\frac{\\sigma_y}{\\sigma_x}, \\quad b = \\bar{y} - a\\bar{x}",
+    note: "Eng kichik kvadratlar usuli orqali optimal to'g'ri chiziq koeffitsiyentlarini hisoblash",
+    keywords: "chiziqli regressiya eku eng kichik kvadratlar prognoz bashorat to'g'ri chiziq"
+  },
+  {
+    id: "prob-23",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Spirmenning ranqli korrelyatsiya koeffitsiyenti",
+    latex: "\\rho = 1 - \\frac{6 \\sum_{i=1}^n d_i^2}{n(n^2 - 1)} \\quad (d_i = R_{xi} - R_{yi})",
+    note: "Ekspert baholari va sifat belgilarining o'zaro kelishuv darajasini o'lchash",
+    keywords: "spirmen ranqli korrelyatsiya ranj baholar ekspert kelishuv di kvadrat"
   }
 ];
