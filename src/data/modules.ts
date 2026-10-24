@@ -16,7 +16,7 @@ export const MODULES: ModuleInfo[] = [
     title: '1. Maktab kursini takrorlash',
     description: "Elementar algebra, intervallar usuli, progressiyalar, modul va irratsional tenglamalar, trigonometriya, logarifm, Nyuton binomi hamda to'plamlar mantiqi.",
     isActive: true,
-    estimatedLessons: 10,
+    estimatedLessons: 11,
     topics: [
       'Algebraik ayniyatlar va qisqa ko\'paytirish',
       'Tenglamalar va intervallar usuli',
@@ -27,7 +27,8 @@ export const MODULES: ModuleInfo[] = [
       'Modul (absolyut qiymat) qatnashgan tenglama va tengsizliklar',
       'Irratsional tenglamalar va tengsizliklarni yechish usullari',
       'Trigonometrik tenglamalar va tengsizliklar: Barcha yechish usullari',
-      'Nyuton binomi, Paskal uchburchagi va binomial koeffitsiyentlar'
+      'Nyuton binomi, Paskal uchburchagi va binomial koeffitsiyentlar',
+      'Ko\'p qavatli kasrlar, 22 ta daraja-logarifm xossasi va 0°-360° to\'liq trigonometrik jadvallar'
     ]
   },
   {
@@ -36,7 +37,7 @@ export const MODULES: ModuleInfo[] = [
     title: '2. Chiziqli algebra',
     description: "Matritsalar, determinantlar, Laplas teoremasi, FYS, chiziqli fazolar, kvadratik formalar, simpleks, transport masalalari, Gorner sxemasi va xos vektorlar.",
     isActive: true,
-    estimatedLessons: 15,
+    estimatedLessons: 17,
     topics: [
       'Matritsalar va ular ustida amallar',
       'Determinantlar va xossalari',
@@ -52,7 +53,9 @@ export const MODULES: ModuleInfo[] = [
       'Chiziqli algebraning geometrik mohiyati va adabiyotlar',
       'Matritsaning xos sonlari va xos vektorlari',
       'Gorner sxemasi va ko\'phad ildizlari',
-      'Matritsali tenglamalar va Gauss-Jordan usuli'
+      'Matritsali tenglamalar va Gauss-Jordan usuli',
+      'Chiziqli tenglamalar sistemasini turli bazislarda yechish: Tayanch yechimlar',
+      'Kvadratik formani ortogonal almashtirish bilan kanonik ko\'rinishga keltirish'
     ]
   },
   {
@@ -61,7 +64,7 @@ export const MODULES: ModuleInfo[] = [
     title: '3. Vektorlar va analitik geometriya',
     description: "Fazoda vektorlar, skalyar, vektor va aralash ko'paytmalar, kesmani bo'lish, tetraedr balandligi, qutb koordinatalari va ikkinchi tartibli sirtlar.",
     isActive: true,
-    estimatedLessons: 9,
+    estimatedLessons: 12,
     topics: [
       'Vektorlar va chiziqli amallar',
       'Skalyar ko\'paytma va burchak',
@@ -71,7 +74,10 @@ export const MODULES: ModuleInfo[] = [
       'Ikkinchi tartibli chiziqlar va fazodagi sirtlar',
       'Kesmani bo\'lish va tetraedr balandligi',
       'Qutb koordinatalari va ajoyib egri chiziqlar',
-      'Fazoda to\'g\'ri chiziq va tekislik: Proyeksiyalar va kesishish masalalari'
+      'Fazoda to\'g\'ri chiziq va tekislik: Proyeksiyalar va kesishish masalalari',
+      'Tekislikda uchburchakning 12 ta elementini topish va chiziqli tengsizliklar',
+      'Ikkinchi tartibli chiziqni kanonik shaklga keltirish: O\'qlarni burish va invariantlar',
+      'Yangi bazisga o\'tish va koordinata o\'qlarini almashtirish'
     ]
   },
   {
@@ -80,7 +86,7 @@ export const MODULES: ModuleInfo[] = [
     title: '4. Kompleks sonlar va TFKP',
     description: "Algebraik, trigonometrik va Eyler shakllari, Muavr formulasi, TFKP, Koshi-Riman shartlari, garmonik funksiyalar va Laplas almashtirishi.",
     isActive: true,
-    estimatedLessons: 9,
+    estimatedLessons: 10,
     topics: [
       'Kompleks son tushunchasi va algebraik shakl',
       'Kompleks sonlar ustida amallar',
@@ -90,7 +96,8 @@ export const MODULES: ModuleInfo[] = [
       'Operatsion hisob va Laplas almashtirishi',
       'Garmonik funksiyalar va analitik funksiyani tiklash',
       'Differensial tenglamalarni Laplas bilan yechish',
-      'Loran qatori, maxsus nuqtalar va chegirmalar nazariyasi (Residues)'
+      'Loran qatori, maxsus nuqtalar va chegirmalar nazariyasi (Residues)',
+      'Kompleks tekislikda chiziqlar, sohalar, konform akslantirishlar va to\'liq Laplas jadvali'
     ]
   },
   {
@@ -273,7 +280,7 @@ export const MODULES: ModuleInfo[] = [
     title: '14. Matematik statistika',
     description: "Tanlanma, variatsion qator, gistogramma, ishonchlilik oraliqlari, gipotezalar (Styudent, xi-kvadrat, ANOVA Fisher), chiziqli va nochiziqli regressiya hamda vaqt qatorlari.",
     isActive: true,
-    estimatedLessons: 9,
+    estimatedLessons: 10,
     topics: [
       'Bosh to\'plam, tanlanma va tavsiflar',
       'Statistik baholash va ishonchlilik oraliqlari',
@@ -283,7 +290,8 @@ export const MODULES: ModuleInfo[] = [
       'Pirson xi-kvadrat moslik mezoni va gipotezalarni amaliy tekshirish',
       'Dispersiyalar tahlili (ANOVA) va Fisherning F-mezoni',
       'Nochiziqli regressiya (parabolik, ko\'rsatkichli) va korrelyatsion nisbat',
-      'Vaqt qatorlari (Time Series), sirpanuvchi o\'rtachalar va trendni prognozlash'
+      'Vaqt qatorlari (Time Series), sirpanuvchi o\'rtachalar va trendni prognozlash',
+      'Asimmetriya, ekstsess, Fexner korrelyatsiyasi, ko\'p omilli regressiya va dinamika qatorlari'
     ]
   }
 ];

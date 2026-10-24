@@ -1709,5 +1709,176 @@ export const FORMULAS: FormulaItem[] = [
     latex: "\\rho = 1 - \\frac{6 \\sum_{i=1}^n d_i^2}{n(n^2 - 1)} \\quad (d_i = R_{xi} - R_{yi})",
     note: "Ekspert baholari va sifat belgilarining o'zaro kelishuv darajasini o'lchash",
     keywords: "spirmen ranqli korrelyatsiya ranj baholar ekspert kelishuv di kvadrat"
+  },
+  {
+    id: "geom-19",
+    category: "vektorlar",
+    categoryLabel: "Vektorlar va Geometriya",
+    title: "Koordinata o'qlarini ko'chirish va burchakka burish",
+    latex: "\\begin{cases} x = x'\\cos\\alpha - y'\\sin\\alpha + x_0 \\\\ y = x'\\sin\\alpha + y'\\cos\\alpha + y_0 \\end{cases}",
+    note: "Yangi Dekart koordinatalar sistemasiga o'tishning umumiy formulasi",
+    keywords: "yangi bazis koordinatalarni almashtirish burish ko'chirish burchak"
+  },
+  {
+    id: "geom-20",
+    category: "vektorlar",
+    categoryLabel: "Vektorlar va Geometriya",
+    title: "Tekislikda uchburchak yuzi determinanti",
+    latex: "S_{\\triangle ABC} = \\frac{1}{2}\\left|\\begin{vmatrix} x_B - x_A & y_B - y_A \\\\ x_C - x_A & y_C - y_A \\end{vmatrix}\\right|",
+    note: "Uchlari koordinatalari orqali uchburchak yuzini topish formulasi",
+    keywords: "uchburchak yuzi determinant geometriya tomonlar balandlik"
+  },
+  {
+    id: "geom-21",
+    category: "vektorlar",
+    categoryLabel: "Vektorlar va Geometriya",
+    title: "Ikkinchi tartibli chiziqlar ortogonal invariantlari",
+    latex: "I_1 = A + C, \\quad I_2 = AC - B^2, \\quad I_3 = \\begin{vmatrix} A & B & D \\\\ B & C & E \\\\ D & E & F \\end{vmatrix}",
+    note: "2-tartibli chiziq tenglamasini kanonik shaklga keltirishda o'zgarmas miqdorlar",
+    keywords: "ikkinchi tartibli chiziq invariant ellips giperbola parabola kanonik"
+  },
+  {
+    id: "alg-19",
+    category: "algebra",
+    categoryLabel: "Algebra & Matritsa",
+    title: "ChTS tayanch va bazis yechimlari soni",
+    latex: "N \\le C_n^r = \\frac{n!}{r!(n - r)!}",
+    note: "n ta noma'lumli r-rangli sistemada barcha bazis yechimlar kombinatsiyasi",
+    keywords: "bazis yechim tayanch yechim chats kombinatsiya simpleks"
+  },
+  {
+    id: "alg-20",
+    category: "algebra",
+    categoryLabel: "Algebra & Matritsa",
+    title: "Kvadratik formaning ortogonal kanonik ko'rinishi",
+    latex: "Q(y_1, y_2, \\dots, y_n) = \\lambda_1 y_1^2 + \\lambda_2 y_2^2 + \\dots + \\lambda_n y_n^2",
+    note: "Xos sonlar va ortogonal matritsa Q yordamida kvadratik formani diagonallashtirish",
+    keywords: "kvadratik forma ortogonal almashtirish xos sonlar kanonik shakl"
+  },
+  {
+    id: "lim-14",
+    category: "limitlar",
+    categoryLabel: "Limitlar",
+    title: "Beshinchi ajoyib limit (Binomial ekvivalentlik)",
+    latex: "\\lim_{\\alpha \\to 0} \\frac{(1+\\alpha)^\\mu - 1}{\\alpha} = \\mu \\implies (1+\\alpha)^\\mu - 1 \\sim \\mu\\alpha",
+    note: "Ixtiyoriy darajali ildiz va darajali cheksiz kichik ifodalarni qisqartirish",
+    keywords: "ajoyib limit binomial darajali ildiz ekvivalentlik cheksiz kichik"
+  },
+  {
+    id: "kop-18",
+    category: "kop-ozgaruvchili",
+    categoryLabel: "Ko'p o'zgaruvchili & Maydon",
+    title: "Eylerning bir jinsli funksiyalar ayniyati",
+    latex: "x \\frac{\\partial z}{\\partial x} + y \\frac{\\partial z}{\\partial y} = n \\cdot z(x, y)",
+    note: "n-darajali bir jinsli funksiyalar uchun xususiy hosilalar qoidasi",
+    keywords: "eyler bir jinsli funksiya xususiy hosilali differensial tenglama"
+  },
+  {
+    id: "kop-19",
+    category: "kop-ozgaruvchili",
+    categoryLabel: "Ko'p o'zgaruvchili & Maydon",
+    title: "Tekis shakl og'irlik markazi koordinatalari",
+    latex: "x_C = \\frac{M_y}{m} = \\frac{\\iint_D x\\mu dxdy}{\\iint_D \\mu dxdy}, \\qquad y_C = \\frac{M_x}{m} = \\frac{\\iint_D y\\mu dxdy}{\\iint_D \\mu dxdy}",
+    note: "Ikki karrali integral yordamida tekis plastinkaning og'irlik markazini hisoblash",
+    keywords: "ogirlik markazi statik moment massa inersiya karrali integral"
+  },
+  {
+    id: "diff-16",
+    category: "diff",
+    categoryLabel: "Differensial tenglamalar",
+    title: "Bir jinsli bo'lmagan DT xususiy yechim rezonans formulasi",
+    latex: "y_{\\text{xus}} = x^s Q_n(x) e^{\\alpha x} \\quad (s - \\text{rezonans karraliligi})",
+    note: "O'ng tomon f(x) ga qarab xususiy yechimni tanlashning universal qoidasi",
+    keywords: "rezonans xususiy yechim bir jinsli bolmagan dt tanlash jadvali"
+  },
+  {
+    id: "diff-17",
+    category: "diff",
+    categoryLabel: "Differensial tenglamalar",
+    title: "Avtonom 2-tartibli tenglamada tartibni pasaytirish",
+    latex: "y'' = p \\frac{dp}{dy} \\quad (y' = p(y))",
+    note: "x erkli o'zgaruvchi oshkor qatnashmagan tenglamalarda tartibni 1 ga tushirish",
+    keywords: "tartibni pasaytirish avtonom tenglama zanjir qoidasi"
+  },
+  {
+    id: "int-21",
+    category: "integrallar",
+    categoryLabel: "Integrallar",
+    title: "Ostrogradskiy integrallash formulasi",
+    latex: "\\int \\frac{P(x)}{Q(x)}dx = \\frac{P_1(x)}{Q_1(x)} + \\int \\frac{P_2(x)}{Q_2(x)}dx \\quad (Q_1 = \\operatorname{EKUB}(Q, Q'))",
+    note: "Maxraji karrali ildizlarga ega ratsional kasrlarni integrallash usuli",
+    keywords: "ostrogradskiy ratsional kasr karrali ildiz algebraik qism"
+  },
+  {
+    id: "int-22",
+    category: "integrallar",
+    categoryLabel: "Integrallar",
+    title: "Chebishev binomial differensiallari integrallanish shartlari",
+    latex: "p \\in \\mathbb{Z}, \\qquad \\frac{m+1}{n} \\in \\mathbb{Z}, \\qquad \\frac{m+1}{n} + p \\in \\mathbb{Z}",
+    note: "\\int x^m (a + bx^n)^p dx integrali faqat shu 3 holda elementar funksiyalarda yechiladi",
+    keywords: "chebishev binomial differensial integrallanish sharti"
+  },
+  {
+    id: "komp-16",
+    category: "kompleks",
+    categoryLabel: "Kompleks & Laplas",
+    title: "Konform akslantirishda masshtab va burilish burchagi",
+    latex: "k = |f'(z_0)|, \\qquad \\alpha = \\arg f'(z_0)",
+    note: "w = f(z) akslantirishda cheksiz kichik chiziqli cho'zilish va burilish burchagi",
+    keywords: "konform akslantirish chozilish burilish burchagi masshtab tfkp"
+  },
+  {
+    id: "komp-17",
+    category: "kompleks",
+    categoryLabel: "Kompleks & Laplas",
+    title: "Ikkinchi tartibli hosilaning Laplas tasviri",
+    latex: "\\mathcal{L}\\{f''(t)\\} = p^2 F(p) - p f(0) - f'(0)",
+    note: "Differensial tenglamalarni Laplas almashtirishi yordamida yechish formulasi",
+    keywords: "laplas tasviri hosila tasviri operatsion hisob koshi masalasi"
+  },
+  {
+    id: "prob-24",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Empirik asimmetriya va ekstsess koeffitsiyentlari",
+    latex: "A_s = \\frac{\\mu_3}{\\sigma^3}, \\qquad E_k = \\frac{\\mu_4}{\\sigma^4} - 3",
+    note: "Variatsion qatorning normal taqsimotdan qiyshiqlik va cho'qqidorlik og'ishi",
+    keywords: "asimmetriya ekstsess empirik taqsimot momentlar choqqidorlik"
+  },
+  {
+    id: "prob-25",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Fexnerning ishoralar korrelyatsiyasi koeffitsiyenti",
+    latex: "K_\\Phi = \\frac{C - H}{C + H} = \\frac{C - H}{n} \\in [-1; 1]",
+    note: "C — o'rtachadan chetlanish ishoralari mos kelishi, H — mos kelmasligi",
+    keywords: "fexner ishoralar korrelyatsiyasi sifat boglanish statistik baho"
+  },
+  {
+    id: "prob-26",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Ko'p omilli chiziqli regressiya koeffitsiyentlari",
+    latex: "\\beta_1 = \\frac{r_{yx_1} - r_{yx_2}r_{x_1 x_2}}{1 - r_{x_1 x_2}^2}, \\qquad \\hat{y} = b_0 + b_1 x_1 + b_2 x_2",
+    note: "Ikki va undan ortiq omilli chiziqli regressiya modelining standart koeffitsiyentlari",
+    keywords: "kop omilli regressiya beta koeffitsiyent elastiklik xususiy korrelyatsiya"
+  },
+  {
+    id: "prob-27",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Takrormas tanlanmada bosh o'rtacha chegaraviy xatoligi",
+    latex: "\\Delta = t \\sqrt{\\frac{\\sigma^2}{n}\\left(1 - \\frac{n}{N}\\right)}",
+    note: "Qaytarilmaydigan tanlanmada (1 - n/N) tuzatmasi hisobga olingan xatolik",
+    keywords: "takrormas tanlanma qaytarilmaydigan chegaraviy xatolik ishonchlilik oraligi"
+  },
+  {
+    id: "prob-28",
+    category: "ehtimollik",
+    categoryLabel: "Ehtimollar va statistika",
+    title: "Dinamika qatorlarida 1% qo'shimcha o'sish mutlaq qiymati",
+    latex: "A_i = \\frac{\\Delta_i^z}{T_{\\text{qo'sh}, i}^z} = 0.01 \\cdot y_{i-1}",
+    note: "Vaqt qatori zanjirli mutlaq o'sishining 1 foizli qadamdagi qiymati",
+    keywords: "dinamika qatorlari qoshimcha osish mutlaq qiymat vaqt qatori"
   }
 ];
