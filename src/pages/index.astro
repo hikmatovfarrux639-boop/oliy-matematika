@@ -140,7 +140,7 @@ const totalCount = MODULES.length;
             ) : (
               <span>Rejalashtirilgan</span>
             )}
-            <span>{m.topics.length} ta asosiy mavzu</span>
+            <span>{allLessons.filter(l => l.data.module === m.slug).length || m.topics.length} ta to'liq dars</span>
           </div>
         </a>
       ))}

@@ -292,6 +292,28 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
 
 <script>
   function setupLessonCompletion() {
+    // Transform GitHub-style markdown alerts [!NOTE], [!IMPORTANT], [!TIP], [!WARNING], [!CAUTION] inside blockquotes
+    document.querySelectorAll('.prose-content blockquote').forEach(bq => {
+      const firstP = bq.querySelector('p');
+      if (!firstP) return;
+      const html = firstP.innerHTML;
+      const match = html.match(/^\s*\[!(NOTE|IMPORTANT|TIP|WARNING|CAUTION)\]\s*(?:<br\s*\/?>|\n)?/i);
+      if (match) {
+        const type = match[1].toUpperCase();
+        const meta: Record<string, { label: string; color: string; bg: string }> = {
+          NOTE: { label: '📘 Eslatma', color: '#2563eb', bg: 'rgba(37, 99, 235, 0.07)' },
+          IMPORTANT: { label: '⚡ Muhim qoida', color: '#7c3aed', bg: 'rgba(124, 58, 237, 0.07)' },
+          TIP: { label: '💡 Maslahat', color: '#059669', bg: 'rgba(5, 150, 105, 0.07)' },
+          WARNING: { label: '⚠️ Diqqat', color: '#d97706', bg: 'rgba(217, 119, 6, 0.08)' },
+          CAUTION: { label: '🚨 Xavfli xato', color: '#dc2626', bg: 'rgba(220, 38, 38, 0.08)' }
+        };
+        const cfg = meta[type] || meta.NOTE;
+        (bq as HTMLElement).style.borderLeftColor = cfg.color;
+        (bq as HTMLElement).style.background = cfg.bg;
+        firstP.innerHTML = `<strong style="display:block; color:${cfg.color}; margin-bottom:0.3rem; font-size:0.92rem;">${cfg.label}</strong>` + html.slice(match[0].length);
+      }
+    });
+
     const printLessonBtn = document.getElementById('print-lesson-btn');
     if (printLessonBtn && !(printLessonBtn as any)._hasPrintInit) {
       (printLessonBtn as any)._hasPrintInit = true;

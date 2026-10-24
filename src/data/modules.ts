@@ -14,15 +14,20 @@ export const MODULES: ModuleInfo[] = [
     id: 1,
     slug: 'maktab-kursi',
     title: '1. Maktab kursini takrorlash',
-    description: "Elementar algebra, qisqa ko'paytirish, intervallar usuli, trigonometriya, ko'rsatkichli va logarifmik ifodalar hamda to'plamlar mantiqi.",
+    description: "Elementar algebra, intervallar usuli, progressiyalar, modul va irratsional tenglamalar, trigonometriya, logarifm, Nyuton binomi hamda to'plamlar mantiqi.",
     isActive: true,
-    estimatedLessons: 5,
+    estimatedLessons: 10,
     topics: [
       'Algebraik ayniyatlar va qisqa ko\'paytirish',
       'Tenglamalar va intervallar usuli',
       'Trigonometriya asoslari',
       'Ko\'rsatkichli va logarifmik ifodalar',
-      'To\'plamlar nazariyasi va matematik mantiq'
+      'To\'plamlar nazariyasi va matematik mantiq',
+      'Arifmetik va geometrik progressiyalar, cheksiz kamayuvchi progressiya',
+      'Modul (absolyut qiymat) qatnashgan tenglama va tengsizliklar',
+      'Irratsional tenglamalar va tengsizliklarni yechish usullari',
+      'Trigonometrik tenglamalar va tengsizliklar: Barcha yechish usullari',
+      'Nyuton binomi, Paskal uchburchagi va binomial koeffitsiyentlar'
     ]
   },
   {
@@ -92,9 +97,9 @@ export const MODULES: ModuleInfo[] = [
     id: 5,
     slug: 'limitlar',
     title: '5. Limitlar va uzluksizlik',
-    description: "Ketma-ketlik va funksiya limiti, Koshi va Geyne ta'riflari, bir tomonlama limitlar, uzilish nuqtalari, 0/0 va cheksiz/cheksiz aniqmasliklar.",
+    description: "Ketma-ketlik va funksiya limiti, Koshi va Geyne ta'riflari, bir tomonlama limitlar, uzilish nuqtalari, 0/0, ∞/∞, 1^∞, 0·∞ va irratsional limitlar.",
     isActive: true,
-    estimatedLessons: 7,
+    estimatedLessons: 10,
     topics: [
       'Limit ta\'rifi va mohiyati',
       'Limit hisoblash usullari',
@@ -102,32 +107,39 @@ export const MODULES: ModuleInfo[] = [
       'Ajoyib limitlar',
       'Cheksiz kichik funksiyalar',
       'Bir tomonlama limitlar va uzilish nuqtalari',
-      'Ketma-ketlik limiti va Koshi ta\'rifi'
+      'Ketma-ketlik limiti va Koshi ta\'rifi',
+      '1^∞ ko\'rinishidagi aniqmasliklar va ikkinchi ajoyib limit amaliyoti',
+      'Irratsional ifodalar limitlari: Qo\'shmasiga ko\'paytirish va almashtirish',
+      'Darajali-ko\'rsatkichli va logarifmik funksiyalar limitlari ([0·∞], [0^0], [∞^0])'
     ]
   },
   {
     id: 6,
     slug: 'funksiyalar-grafiklar',
     title: '6. Funksiyalar va grafiklar',
-    description: "Funksiya tushunchasi, aniqlanish va qiymatlar sohasi, juft-toqlik, davriylik, to'liq 7 bosqichli tekshirish sxemasi va amaliy optimallashtirish.",
+    description: "Aniqlanish sohasi, juft-toqlik, davriylik, teskari va giperbolik funksiyalar, geometrik almashtirishlar, asimptotalar, qavariqlik-botiqlik va 7 bosqichli tekshirish.",
     isActive: true,
-    estimatedLessons: 6,
+    estimatedLessons: 10,
     topics: [
       'Elementar funksiyalar',
       'Aniqlanish va qiymatlar sohasi',
       'Juft, toq va davriy funksiyalar',
       'Funksiyani tekshirish va grafik yasash',
       'Funksiyani to\'liq 7 bosqichda tekshirish sxemasi',
-      'Amaliy ekstremum va optimallashtirish masalalari'
+      'Amaliy ekstremum va optimallashtirish masalalari',
+      'Teskari funksiya, superpozitsiya va giperbolik funksiyalar (sh x, ch x, th x)',
+      'Funksiya grafigini elementar geometrik almashtirishlar yordamida yasash',
+      'Egri chiziq asimptotalari: Vertikal, gorizontal va og\'ma asimptotalar',
+      'Funksiya grafigining qavariqligi, botiqligi va egilish (bukilish) nuqtalari'
     ]
   },
   {
     id: 7,
     slug: 'hosila',
     title: '7. Hosila va differensial',
-    description: "Hosila ta'rifi, geometrik va fizik ma'nosi, differensiallash qoidalari, murakkab va oshkormas funksiyalar, Lopital qoidasi hamda Nyuton-Rafson usuli.",
+    description: "Hosila ta'rifi, differensiallash qoidalari, murakkab, parametrik, oshkormas va logarifmik hosilalar, urinma va normal, Roll-Lagranj-Koshi teoremalari va Lopital.",
     isActive: true,
-    estimatedLessons: 7,
+    estimatedLessons: 10,
     topics: [
       'Hosila ta\'rifi va geometrik ma\'nosi',
       'Differensiallash qoidalari va jadvali',
@@ -135,7 +147,10 @@ export const MODULES: ModuleInfo[] = [
       'Yuqori tartibli hosilalar va differensial',
       'Lopital qoidasi',
       'Parametrik va oshkormas funksiya hosilalari',
-      'Hosila ta\'rifi orqali chiqarish va Nyuton-Rafson iteratsiyasi'
+      'Hosila ta\'rifi orqali chiqarish va Nyuton-Rafson iteratsiyasi',
+      'Logarifmik differensiallash usuli va darajali-ko\'rsatkichli funksiyalar',
+      'Urinma va normal tenglamalari, egri chiziqlar burchagi va taqribiy hisoblash',
+      'Roll, Lagranj va Koshi teoremalari hamda Teylor formulasi'
     ]
   },
   {
@@ -161,15 +176,19 @@ export const MODULES: ModuleInfo[] = [
     id: 9,
     slug: 'kop-ozgaruvchili-funksiyalar',
     title: '9. Ko\'p o\'zgaruvchili funksiyalar',
-    description: "Ikki o'zgaruvchili funksiyalar, xususiy hosilalar, Shvars teoremasi, to'liq differensial, lokal va shartli ekstremumlar, gradient hamda yo'nalish bo'yicha hosila.",
+    description: "Xususiy hosilalar, Shvars teoremasi, to'liq differensial, Yakobian, urinma tekislik va normal, lokal, shartli va yopiq sohada global ekstremumlar hamda gradient.",
     isActive: true,
-    estimatedLessons: 5,
+    estimatedLessons: 9,
     topics: [
       'Ikki o\'zgaruvchili funksiya va soha',
       'Xususiy hosilalar va Shvars teoremasi',
       'To\'liq differensial va taqribiy hisoblash',
       'Ikki o\'zgaruvchili funksiya ekstremumi',
-      'Yo\'nalish bo\'yicha hosila, gradient va shartli ekstremum'
+      'Yo\'nalish bo\'yicha hosila, gradient va shartli ekstremum',
+      'Murakkab va oshkormas ko\'p o\'zgaruvchili funksiyalarni differensiallash (Yakobian)',
+      'Sirtga o\'tkazilgan urinma tekislik va normal to\'g\'ri chiziq tenglamalari',
+      'Yopiq sohada ikki o\'zgaruvchili funksiyaning eng katta va eng kichik qiymati',
+      'Uch o\'zgaruvchili funksiyalar, sath sirtlari va ikki o\'zgaruvchili Teylor formulasi'
     ]
   },
   {
@@ -194,9 +213,9 @@ export const MODULES: ModuleInfo[] = [
     id: 11,
     slug: 'qatorlar',
     title: '11. Qatorlar va Fure tahlili',
-    description: "Sonli qatorlar, Dalamber va Koshi alomatlari, Leybnits qoidasi, darajali qatorlar, Teylor, Makloren, Fure qatorlari, teleskopik qatorlar va noelementar integrallar.",
+    description: "Sonli qatorlar, Dalamber va Koshi alomatlari, Leybnits qoidasi, yaqinlashish radiusi va sohasi, Teylor, Makloren, [-l, l] kesmada Fure qatorlari va taqribiy hisoblash.",
     isActive: true,
-    estimatedLessons: 7,
+    estimatedLessons: 10,
     topics: [
       'Sonli qatorlar va yaqinlashish',
       'Musbat hadli qatorlar alomatlari',
@@ -204,7 +223,10 @@ export const MODULES: ModuleInfo[] = [
       'Darajali qatorlar, Teylor va Makloren',
       'Fure qatorlari va trigonometrik yoyilmalar',
       'Qator yig\'indisini hisoblash va teleskopik qatorlar',
-      'Qatorlar yordamida taqribiy hisoblash va noelementar integrallar'
+      'Qatorlar yordamida taqribiy hisoblash va noelementar integrallar',
+      'Darajali qatorning yaqinlashish radiusi, intervali va sohasini topish',
+      'Funksiyalarni Teylor va Makloren qatorlariga yoyishning amaliy usullari',
+      'Ixtiyoriy [-l, l] kesmada Fure qatorlari hamda juft va toq davom ettirish'
     ]
   },
   {
@@ -249,16 +271,19 @@ export const MODULES: ModuleInfo[] = [
     id: 14,
     slug: 'matematik-statistika',
     title: '14. Matematik statistika',
-    description: "Bosh to'plam va tanlanma, variatsion qator, gistogramma, statistik baholar, gipotezalar (Styudent, xi-kvadrat), chiziqli regressiya va Spirmen korrelyatsiyasi.",
+    description: "Tanlanma, variatsion qator, gistogramma, ishonchlilik oraliqlari, gipotezalar (Styudent, xi-kvadrat, ANOVA Fisher), chiziqli va nochiziqli regressiya hamda vaqt qatorlari.",
     isActive: true,
-    estimatedLessons: 6,
+    estimatedLessons: 9,
     topics: [
       'Bosh to\'plam, tanlanma va tavsiflar',
       'Statistik baholash va ishonchlilik oraliqlari',
       'Statistik gipotezalarni tekshirish (Styudent, xi-kvadrat)',
       'Variatsion qatorlar, gistogramma va chastotalar poligoni',
       'Chiziqli regressiya, eng kichik kvadratlar usuli va Spirmen korrelyatsiyasi',
-      'Pirson xi-kvadrat moslik mezoni va gipotezalarni amaliy tekshirish'
+      'Pirson xi-kvadrat moslik mezoni va gipotezalarni amaliy tekshirish',
+      'Dispersiyalar tahlili (ANOVA) va Fisherning F-mezoni',
+      'Nochiziqli regressiya (parabolik, ko\'rsatkichli) va korrelyatsion nisbat',
+      'Vaqt qatorlari (Time Series), sirpanuvchi o\'rtachalar va trendni prognozlash'
     ]
   }
 ];
