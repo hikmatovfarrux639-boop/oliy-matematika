@@ -1276,6 +1276,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const m33 = A[0][0] * A[1][1] - A[0][1] * A[1][0];
             const sumMinors = m11 + m22 + m33;
 
+            // Solve cubic: lambda^3 - trA * lambda^2 + sumMinors * lambda - det = 0
+            const c2 = -trA;
+            const c1 = sumMinors;
+            const c0 = -det;
+            let rootsLatex = '';
+            // Try integer/half-integer rational roots first
+            let r1: number | null = null;
+            for (let k = -40; k <= 40; k++) {
+              const cand = k / 2;
+              const val = cand * cand * cand + c2 * cand * cand + c1 * cand + c0;
+              if (Math.abs(val) < 1e-6) {
+                r1 = cand;
+                break;
+              }
+            }
+            if (r1 === null) {
+              // Newton-Raphson fallback for one real root
+              let x = trA / 3;
+              for (let iter = 0; iter < 50; iter++) {
+                const fx = x * x * x + c2 * x * x + c1 * x + c0;
+                const dfx = 3 * x * x + 2 * c2 * x + c1;
+                if (Math.abs(dfx) < 1e-9) break;
+                x = x - fx / dfx;
+              }
+              r1 = x;
+            }
+            if (r1 !== null) {
+              // Factor out (lambda - r1): lambda^2 + qb * lambda + qc = 0
+              const qb = c2 + r1;
+              const qc = c1 + qb * r1;
+              const disc = qb * qb - 4 * qc;
+              if (disc >= -1e-7) {
+                const dClamped = Math.max(0, disc);
+                const r2 = (-qb + Math.sqrt(dClamped)) / 2;
+                const r3 = (-qb - Math.sqrt(dClamped)) / 2;
+                rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_2 = ${formatNum(r2)}, \\; \\lambda_3 = ${formatNum(r3)}`;
+              } else {
+                const re = -qb / 2;
+                const im = Math.sqrt(-disc) / 2;
+                rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)} \\pm ${formatNum(im)}i`;
+              }
+            }
+
             step4.innerHTML = `
               <h3>Xos Sonlar va 3-tartibli Xarakteristik Ko'phad</h3>
               <p>Xarakteristik tenglama: $\\det(A - \\lambda E) = -\\lambda^3 + \\operatorname{tr}(A)\\lambda^2 - (M_{11}+M_{22}+M_{33})\\lambda + \\det A = 0$</p>
@@ -1283,7 +1326,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             `;
             stepsContainer!.appendChild(step4);
 
-            const eigenLatex = `-\\lambda^3 + (${formatNum(trA)})\\lambda^2 - (${formatNum(sumMinors)})\\lambda + (${formatNum(det)}) = 0`;
+            const eigenLatex = `-\\lambda^3 + (${formatNum(trA)})\\lambda^2 - (${formatNum(sumMinors)})\\lambda + (${formatNum(det)}) = 0${rootsLatex}`;
             renderLatex(step4.querySelector('#latex-char-eq')!, eigenLatex);
           } else {
             step4.innerHTML = `
@@ -1553,7 +1596,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       if (currentMode === 'sle') {
         labelSizeB!.textContent = `${s} × 1`;
-        createGrid(gridB!, s, 1, 'b', defaultValuesB || [[2], [-7], [8]]);
+        createGrid(gridB!, s, 1, 'b', defaultValuesB || [[2], [-7], [8], [5]]);
       } else if (currentMode === 'binary') {
         labelSizeB!.textContent = `${s} × ${s}`;
         createGrid(gridB!, s, s, 'b', defaultValuesB);
@@ -1578,7 +1621,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         labelLetterB!.textContent = 'B';
         labelDescB!.textContent = 'Ozod sonlar';
         labelSizeB!.textContent = `${currentSize} × 1`;
-        createGrid(gridB!, currentSize, 1, 'b', [[2], [-7], [8]]);
+        createGrid(gridB!, currentSize, 1, 'b', [[2], [-7], [8], [5]]);
       } else if (mode === 'binary') {
         cardB!.style.display = 'flex';
         labelLetterB!.textContent = 'B';
@@ -1613,7 +1656,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       btn.addEventListener('click', () => {
         const pKey = btn.getAttribute('data-preset');
         if (pKey === 'clear') {
-          setSize(currentSize);
+          const zeroA = Array.from({ length: currentSize }, () => Array(currentSize).fill(0));
+          const zeroB = Array.from({ length: currentSize }, () => Array(currentMode === 'sle' ? 1 : currentSize).fill(0));
+          setSize(currentSize, zeroA, zeroB);
           emptyState!.style.display = 'block';
           solutionContent!.style.display = 'none';
           return;

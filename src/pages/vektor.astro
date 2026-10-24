@@ -842,25 +842,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     // 3. Vektor ko'paytma & Parallelogramm yuzi
-    if ((mode === 'full' || mode === 'cross') && dim === 3) {
+    if (mode === 'full' || mode === 'cross') {
       const sTri = crossLen / 2;
       const orthoCheckA = crossX * a.x + crossY * a.y + crossZ * a.z;
       const orthoCheckB = crossX * b.x + crossY * b.y + crossZ * b.z;
-      html += `
-        <div class="res-card">
-          <h3>✖️ 3. Vektor ko'paytma (a⃗ × b⃗) va Yuza</h3>
-          <p>Formula (Determinant):</p>
-          <p>$\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ ${a.x} & ${a.y} & ${a.z} \\\\ ${b.x} & ${b.y} & ${b.z} \\end{vmatrix}$</p>
-          <div class="res-val">$\\vec{a} \\times \\vec{b} = (${crossX})\\vec{i} + (${crossY})\\vec{j} + (${crossZ})\\vec{k} = \\mathbf{(${crossX}, ${crossY}, ${crossZ})}$</div>
-          
-          <p style="margin-top: 0.75rem;"><b>a⃗ va b⃗ vektorlarga qurilgan parallelogramm yuzi:</b></p>
-          <p>$S_{\\text{par}} = |\\vec{a} \\times \\vec{b}| = \\sqrt{(${crossX})^2 + (${crossY})^2 + (${crossZ})^2} = \\mathbf{${fmt(crossLen)}}$</p>
-          <p><b>Uchburchak yuzi:</b> $S_{\\Delta} = \\frac{1}{2} S_{\\text{par}} = \\mathbf{${fmt(sTri)}}$</p>
-          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
-            ✅ <b>O'z-o'zini tekshirish (Samoproverka):</b> $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = ${fmt(orthoCheckA)}$ va $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{b} = ${fmt(orthoCheckB)}$ (nol chiqsa, natija 100% to'g'ri!).
-          </p>
-        </div>
-      `;
+      if (dim === 3) {
+        html += `
+          <div class="res-card">
+            <h3>✖️ 3. Vektor ko'paytma (a⃗ × b⃗) va Yuza</h3>
+            <p>Formula (Determinant):</p>
+            <p>$\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ ${a.x} & ${a.y} & ${a.z} \\\\ ${b.x} & ${b.y} & ${b.z} \\end{vmatrix}$</p>
+            <div class="res-val">$\\vec{a} \\times \\vec{b} = (${crossX})\\vec{i} + (${crossY})\\vec{j} + (${crossZ})\\vec{k} = \\mathbf{(${crossX}, ${crossY}, ${crossZ})}$</div>
+            
+            <p style="margin-top: 0.75rem;"><b>a⃗ va b⃗ vektorlarga qurilgan parallelogramm yuzi:</b></p>
+            <p>$S_{\\text{par}} = |\\vec{a} \\times \\vec{b}| = \\sqrt{(${crossX})^2 + (${crossY})^2 + (${crossZ})^2} = \\mathbf{${fmt(crossLen)}}$</p>
+            <p><b>Uchburchak yuzi:</b> $S_{\\Delta} = \\frac{1}{2} S_{\\text{par}} = \\mathbf{${fmt(sTri)}}$</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+              ✅ <b>O'z-o'zini tekshirish (Samoproverka):</b> $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{a} = ${fmt(orthoCheckA)}$ va $(\\vec{a} \\times \\vec{b}) \\cdot \\vec{b} = ${fmt(orthoCheckB)}$ (nol chiqsa, natija 100% to'g'ri!).
+            </p>
+          </div>
+        `;
+      } else {
+        html += `
+          <div class="res-card">
+            <h3>✖️ 3. 2D Vektor ko'paytma (Psevdoskalyar) va Yuza</h3>
+            <p>Tekislikda ($z_1 = z_2 = 0$) vektor ko'paytma $Oz$ o'qiga yo'nalgan bo'lib, uning algebraik qiymati 2-tartibli determinantga teng:</p>
+            <div class="res-val">$\\vec{a} \\times \\vec{b} = \\begin{vmatrix} ${a.x} & ${a.y} \\\\ ${b.x} & ${b.y} \\end{vmatrix} \\vec{k} = (${a.x} \\cdot (${b.y}) - ${a.y} \\cdot (${b.x}))\\vec{k} = \\mathbf{${fmt(crossZ)}\\vec{k}}$</div>
+            <p style="margin-top: 0.75rem;"><b>Parallelogramm yuzi:</b> $S_{\\text{par}} = |x_1 y_2 - y_1 x_2| = \\mathbf{${fmt(crossLen)}}$</p>
+            <p><b>Uchburchak yuzi:</b> $S_{\\Delta} = \\frac{1}{2} S_{\\text{par}} = \\mathbf{${fmt(sTri)}}$</p>
+          </div>
+        `;
+      }
     }
 
     // 4. Aralash ko'paytma & Piramida hajmi
@@ -979,6 +991,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         document.getElementById(target + 'x').value = '0';
         document.getElementById(target + 'y').value = '0';
         document.getElementById(target + 'z').value = '0';
+        runCalculations('full');
       });
     });
 

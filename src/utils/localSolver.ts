@@ -829,9 +829,10 @@ function trySolveLimit(raw: string, forceMode = false): LocalSolveResult | null 
 
     expr = raw
       .replace(/\\lim_\{[^}]+\}/gi, '')
-      .replace(/lim_?\s*x\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)/gi, '')
+      .replace(/\(\s*(?:as|da|qachonki)?\s*[xnt]\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)\s*\)/gi, '')
+      .replace(/lim_?\s*[xnt]\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)/gi, '')
       .replace(/\blim\b/gi, '')
-      .replace(/(?:as|da|qachonki)?\s*x\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)/gi, '')
+      .replace(/(?:as|da|qachonki)?\s*[xnt]\s*(?:\\to|->|→)\s*[+-]?(?:\\infty|inf|oo|\d+(?:\.\d+)?|pi|\\pi)/gi, '')
       .replace(/\b(as|da|qachonki)\b/gi, '')
       .trim();
   }
@@ -928,10 +929,42 @@ $$\\mathbf{${ansFmt}}$$`
 }
 
 /**
- * 3. DIFFERENTIAL EQUATION SOLVER (2nd order constant-coeff + 1st order separable)
+ * 3. DIFFERENTIAL EQUATION SOLVER (Direct y'=f(x), 1st order separable, 1st order linear, 2nd order constant-coeff)
  */
 function trySolveDiffEq(raw: string): LocalSolveResult | null {
   const diagnosis = diagnoseTopic(raw);
+
+  // Direct integration ODE: y' = f(x) (where rhs does not contain y)
+  const directOdeMatch = raw.match(/^(?:y'|dy\/dx|\\frac\{dy\}\{dx\})\s*=\s*(.+)$/i);
+  if (directOdeMatch) {
+    const rhs = directOdeMatch[1].trim();
+    if (rhs && !/\by\b/i.test(rhs) && !raw.includes("y''")) {
+      const intRes = trySolveIntegral(rhs, true);
+      if (intRes && intRes.solved && intRes.shortAnswer) {
+        const ans = `y(x) = ${intRes.shortAnswer}`;
+        return {
+          solved: true,
+          type: "1-tartibli bevosita integrallanuvchi differensial tenglama (y' = f(x))",
+          shortAnswer: ans,
+          diagnosis,
+          markdown: `## 1. Masala tahlili
+Berilgan differensial tenglama:
+$$y' = ${toCleanTex(normalizeMathString(rhs))}$$
+Bu $y' = f(x)$ ko'rinishidagi eng sodda 1-tartibli differensial tenglama bo'lib, bevosita integrallash orqali yechiladi.
+
+## 2. Integrallash
+$$dy = \\left(${toCleanTex(normalizeMathString(rhs))}\\right) dx \\implies y(x) = \\int \\left(${toCleanTex(normalizeMathString(rhs))}\\right) dx$$
+
+## 3. Umumiy yechim
+$$${ans}, \\quad C \\in \\mathbb{R}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${ans}}$$`
+        };
+      }
+    }
+  }
 
   // 1st order separable: y' = 2xy or y' = k*x*y
   const firstOrderMatch = raw.replace(/\s+/g, '').match(/^y'=(?:([+-]?\d*(?:\.\d+)?)\*?)x\*?y$/i);
@@ -1103,8 +1136,8 @@ function trySolveIntegral(raw: string, forceMode = false): LocalSolveResult | nu
 
   const diagnosis = diagnoseTopic(`integral ${raw}`);
 
-  // CASE A: DEFINITE INTEGRAL \int_0^1 x^2 dx or \int_{0}^{1} ... or int 0 to 1 ...
-  const defMatch = raw.match(/(?:\\int_\{?([+-]?\d+(?:\.\d+)?)\}?\^\{?([+-]?\d+(?:\.\d+)?)\}?|\bint\s+([+-]?\d+)\s+to\s+([+-]?\d+))\s*(.+?)(?:\s*d[a-zA-Z]|$)/i);
+  // CASE A: DEFINITE INTEGRAL \int_0^1 x^2 dx or int_0^2 ... or \int_{0}^{1} ... or int 0 to 1 ...
+  const defMatch = raw.match(/(?:\\?int_\{?([+-]?\d+(?:\.\d+)?)\}?\^\{?([+-]?\d+(?:\.\d+)?)\}?|\bint\s+([+-]?\d+)\s+to\s+([+-]?\d+))\s*(.+?)(?:\s*d[a-zA-Z]|$)/i);
   if (defMatch) {
     const a = parseFloat(defMatch[1] ?? defMatch[3]);
     const b = parseFloat(defMatch[2] ?? defMatch[4]);
@@ -1152,13 +1185,13 @@ $$\\mathbf{${ansFmt}}$$`
 
   // Clean integrand string
   let clean = raw;
-  const parenIntMatch = clean.match(/(?:\\int|\bint\b|\bintegral\b)\s*\(\s*(.+?)(?:\s*,\s*[a-zA-Z])?\s*\)/i);
-  if (parenIntMatch) {
+  const parenIntMatch = clean.match(/(?:\\int|\bint\b|\bintegral\b)\s*\(\s*(.+?)(?:\s*,\s*[a-zA-Z])?\s*\)$/i);
+  if (parenIntMatch && !/\bd[a-zA-Z]\s*$/i.test(raw)) {
     clean = parenIntMatch[1];
   } else {
     clean = clean
-      .replace(/\\int_\{?[^}]+\}\^\{?[^}]+\}/gi, '')
-      .replace(/\\int_?[0-9a-zA-Z\+\-]+\^?[0-9a-zA-Z\+\-]+/gi, '')
+      .replace(/\\?int_\{?[^}]+\}\^\{?[^}]+\}/gi, '')
+      .replace(/\\?int_?[0-9a-zA-Z\+\-]+\^?[0-9a-zA-Z\+\-]+/gi, '')
       .replace(/\\int/gi, '')
       .replace(/\bintegral\b/gi, '')
       .replace(/\bint\b/gi, '');
@@ -1174,6 +1207,21 @@ $$\\mathbf{${ansFmt}}$$`
     .replace(/\\ln\b/gi, 'ln')
     .replace(/\s*d[a-zA-Z]\s*$/gi, '')
     .trim();
+
+  // Strip outer redundant parentheses if balanced
+  if (clean.startsWith('(') && clean.endsWith(')')) {
+    let depth = 0;
+    let balancedOuter = true;
+    for (let i = 0; i < clean.length - 1; i++) {
+      if (clean[i] === '(') depth++;
+      else if (clean[i] === ')') depth--;
+      if (depth === 0) {
+        balancedOuter = false;
+        break;
+      }
+    }
+    if (balancedOuter) clean = clean.slice(1, -1).trim();
+  }
 
   if (!clean) return null;
 
@@ -1231,27 +1279,109 @@ $$\\mathbf{${ans}}$$`
     }
   }
 
-  // CASE C: Pure Table Trigonometric / Exponential integrals (sin(kx), cos(kx), e^(kx))
-  const trigMatch = clean.match(/^(?:\\?)(cos|sin)\(?\s*(\d*)\s*\*?\s*x\s*\)?$/i);
-  if (trigMatch) {
-    const fn = trigMatch[1].toLowerCase();
-    const k = parseInt(trigMatch[2] || '1', 10);
-    const kStr = k === 1 ? '' : String(k);
-    const ans = fn === 'cos'
-      ? (k === 1 ? '\\sin(x) + C' : `\\frac{\\sin(${kStr}x)}{${k}} + C`)
-      : (k === 1 ? '-\\cos(x) + C' : `-\\frac{\\cos(${kStr}x)}{${k}} + C`);
+  // Helper to integrate a single elementary term (without + C)
+  function integrateSingleTerm(termRaw: string): { tex: string; ruleName: string } | null {
+    const t = termRaw.replace(/\s+/g, '').replace(/^\+/, '');
+    if (!t) return null;
 
+    // 1) Trig: a*cos(kx) or a*sin(kx)
+    const trigM = t.match(/^([+-]?\d*(?:\.\d+)?)?\*?(?:\\?)(cos|sin)\(?\s*(\d*)\s*\*?\s*x\s*\)?$/i);
+    if (trigM) {
+      const aStr = trigM[1] || '';
+      const a = aStr === '' || aStr === '+' ? 1 : aStr === '-' ? -1 : parseFloat(aStr);
+      const fn = trigM[2].toLowerCase();
+      const k = parseInt(trigM[3] || '1', 10);
+      const kStr = k === 1 ? '' : String(k);
+      const coef = fn === 'cos' ? a / k : -a / k;
+      const outFn = fn === 'cos' ? `\\sin(${kStr}x)` : `\\cos(${kStr}x)`;
+      const cFmt = fmtNum(coef);
+      const tex = cFmt === '1' ? outFn : cFmt === '-1' ? `-${outFn}` : `${cFmt}${outFn}`;
+      return { tex, ruleName: "Jadval integrali (Trigonometrik)" };
+    }
+
+    // 2) Exponential: e^(kx), exp(kx), a*e^(kx)
+    const expM = t.match(/^([+-]?\d*(?:\.\d+)?)?\*?(?:e\^\(?([+-]?\d*)\*?x\)?|exp\(([+-]?\d*)\*?x\))$/i);
+    if (expM) {
+      const aStr = expM[1] || '';
+      const a = aStr === '' || aStr === '+' ? 1 : aStr === '-' ? -1 : parseFloat(aStr);
+      const kRaw = expM[2] ?? expM[3] ?? '1';
+      const k = kRaw === '' || kRaw === '+' ? 1 : kRaw === '-' ? -1 : parseFloat(kRaw);
+      const kStr = k === 1 ? '' : k === -1 ? '-' : String(k);
+      const coef = a / k;
+      const cFmt = fmtNum(coef);
+      const expTex = `e^{${kStr}x}`;
+      const tex = cFmt === '1' ? expTex : cFmt === '-1' ? `-${expTex}` : `${cFmt}${expTex}`;
+      return { tex, ruleName: "Jadval integrali (Ko'rsatkichli funksiya)" };
+    }
+
+    // 3) Reciprocal: k/x or 1/x
+    const recM = t.match(/^([+-]?\d+(?:\.\d+)?)\/x$/i);
+    if (recM) {
+      const a = parseFloat(recM[1]);
+      const cFmt = fmtNum(a);
+      const tex = cFmt === '1' ? '\\ln|x|' : cFmt === '-1' ? '-\\ln|x|' : `${cFmt}\\ln|x|`;
+      return { tex, ruleName: "Jadval integrali (Logarifmik: ∫ dx/x = ln|x| + C)" };
+    }
+
+    // 4) Arctangent: c / (x^2 + a2) or c / (a2 + x^2)
+    const atanM = t.match(/^([+-]?\d+(?:\.\d+)?)\/\(?(?:x\^2\+(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\+x\^2)\)?$/i);
+    if (atanM) {
+      const c = parseFloat(atanM[1]);
+      const a2 = parseFloat(atanM[2] ?? atanM[3]);
+      if (a2 > 0) {
+        const a = Math.sqrt(a2);
+        const aFmt = fmtNum(a);
+        const coefFmt = fmtNum(c / a);
+        const argTex = a === 1 ? 'x' : `\\frac{x}{${aFmt}}`;
+        const tex = coefFmt === '1'
+          ? `\\arctan\\left(${argTex}\\right)`
+          : coefFmt === '-1'
+          ? `-\\arctan\\left(${argTex}\\right)`
+          : `${coefFmt}\\arctan\\left(${argTex}\\right)`;
+        return { tex, ruleName: "Jadval integrali (Arktangens: ∫ dx/(x² + a²))" };
+      }
+    }
+
+    // 5) Arcsine: c / sqrt(a2 - x^2)
+    const asinM = t.match(/^([+-]?\d+(?:\.\d+)?)\/(?:\\?sqrt)\(?(\d+(?:\.\d+)?)-x\^2\)?$/i);
+    if (asinM) {
+      const c = parseFloat(asinM[1]);
+      const a2 = parseFloat(asinM[2]);
+      if (a2 > 0) {
+        const a = Math.sqrt(a2);
+        const aFmt = fmtNum(a);
+        const cFmt = fmtNum(c);
+        const argTex = a === 1 ? 'x' : `\\frac{x}{${aFmt}}`;
+        const tex = cFmt === '1' ? `\\arcsin\\left(${argTex}\\right)` : `${cFmt}\\arcsin\\left(${argTex}\\right)`;
+        return { tex, ruleName: "Jadval integrali (Arksinus: ∫ dx/√(a² - x²))" };
+      }
+    }
+
+    // 6) Natural log: ln(x) or log(x)
+    if (/^(?:ln|log)\(x\)$/i.test(t)) {
+      return { tex: 'x\\ln(x) - x', ruleName: "Bo'laklab integrallash (∫ ln(x) dx = x ln(x) - x + C)" };
+    }
+
+    return null;
+  }
+
+  // CASE C: Single Table Integral (Trig, Exp, 1/x, 1/(x^2+a^2), ln(x))
+  const singleTable = integrateSingleTerm(clean);
+  if (singleTable) {
+    const ans = `${singleTable.tex} + C`;
+    const normExpr = normalizeMathString(clean);
     return {
       solved: true,
-      type: "Jadval integrali (Trigonometrik)",
+      type: singleTable.ruleName,
       shortAnswer: ans,
       diagnosis,
       markdown: `## 1. Masala tahlili
-Berilgan integral:
-$$\\int \\${fn}(${kStr}x)\\,dx$$
+Berilgan aniqmas integral:
+$$\\int \\left(${toCleanTex(normExpr)}\\right) dx$$
 
-## 2. Asosiy jadval integrali
-$$\\int \\cos(kx)\\,dx = \\frac{\\sin(kx)}{k} + C, \\quad \\int \\sin(kx)\\,dx = -\\frac{\\cos(kx)}{k} + C$$
+## 2. Integrallash qoidasi
+**${singleTable.ruleName}** asosida boshlang'ich funksiyani topamiz:
+$$\\int \\left(${toCleanTex(normExpr)}\\right) dx = ${ans}$$
 
 ## 3. Yakuniy javob
 Javob:
@@ -1259,37 +1389,104 @@ $$\\mathbf{${ans}}$$`
     };
   }
 
+  // CASE C2: Sum/difference of elementary table terms (e.g. sin(x) + cos(x))
+  if (!clean.includes('(') || /^[a-zA-Z0-9()+*\-\s^\\]+$/.test(clean)) {
+    // Split top-level + and - outside parentheses
+    const topTerms: string[] = [];
+    let cur = '';
+    let depth = 0;
+    for (let i = 0; i < clean.length; i++) {
+      const ch = clean[i];
+      if (ch === '(') depth++;
+      else if (ch === ')') depth--;
+      if (depth === 0 && (ch === '+' || ch === '-') && i > 0 && clean[i - 1] !== '^') {
+        topTerms.push(cur.trim());
+        cur = ch;
+      } else {
+        cur += ch;
+      }
+    }
+    if (cur.trim()) topTerms.push(cur.trim());
+
+    if (topTerms.length >= 2) {
+      const integratedParts: string[] = [];
+      let allSolved = true;
+      for (let i = 0; i < topTerms.length; i++) {
+        const resT = integrateSingleTerm(topTerms[i]);
+        if (!resT) {
+          allSolved = false;
+          break;
+        }
+        const texPart = resT.tex;
+        if (i === 0) {
+          integratedParts.push(texPart);
+        } else {
+          integratedParts.push(texPart.startsWith('-') ? `- ${texPart.slice(1)}` : `+ ${texPart}`);
+        }
+      }
+      if (allSolved) {
+        const ans = `${integratedParts.join(' ')} + C`;
+        const normExpr = normalizeMathString(clean);
+        return {
+          solved: true,
+          type: "Yig'indini hadma-had integrallash",
+          shortAnswer: ans,
+          diagnosis,
+          markdown: `## 1. Masala tahlili
+$$\\int \\left(${toCleanTex(normExpr)}\\right) dx$$
+
+## 2. Chiziqlilik xossasi bo'yicha hadma-had integrallash
+$$\\int [u(x) \\pm v(x)]\\,dx = \\int u(x)\\,dx \\pm \\int v(x)\\,dx$$
+
+## 3. Yakuniy javob
+Javob:
+$$\\mathbf{${ans}}$$`
+        };
+      }
+    }
+  }
+
   // CASE D: Polynomial Integrals: sum c_k x^k
   const norm = normalizeMathString(clean);
-  const y0 = safeEvalAt(norm, 'x', 0);
-  const y1 = safeEvalAt(norm, 'x', 1);
-  const yn1 = safeEvalAt(norm, 'x', -1);
-  const y2 = safeEvalAt(norm, 'x', 2);
-  const yn2 = safeEvalAt(norm, 'x', -2);
+  // Make sure it does not contain functions that shouldn't be polynomial-fitted (like sin, cos, exp, log)
+  if (!/sin|cos|tan|tg|ctg|cot|exp|log|ln|sqrt|asin|acos|atan/i.test(norm)) {
+    const y0 = safeEvalAt(norm, 'x', 0);
+    const y1 = safeEvalAt(norm, 'x', 1);
+    const yn1 = safeEvalAt(norm, 'x', -1);
+    const y2 = safeEvalAt(norm, 'x', 2);
+    const yn2 = safeEvalAt(norm, 'x', -2);
 
-  if ([y0, y1, yn1, y2, yn2].every(v => !isNaN(v) && isFinite(v))) {
-    const c0 = y0;
-    const c2 = (y1 + yn1 - 2 * c0) / 2;
-    const d1 = (y1 - yn1) / 2;
-    const d2 = (y2 - yn2) / 4;
-    const c3 = (d2 - d1) / 3;
-    const c1 = d1 - c3;
+    if ([y0, y1, yn1, y2, yn2].every(v => !isNaN(v) && isFinite(v))) {
+      const c0 = y0;
+      const c2 = (y1 + yn1 - 2 * c0) / 2;
+      const d1 = (y1 - yn1) / 2;
+      const d2 = (y2 - yn2) / 4;
+      const c3 = (d2 - d1) / 3;
+      const c1 = d1 - c3;
 
-    if (Math.abs(c0 + c1 * 2 + c2 * 4 + c3 * 8 - y2) < 1e-4) {
-      const terms: string[] = [];
-      if (Math.abs(c3) > 1e-6) terms.push(`${fmtNum(c3 / 4)}x^4`);
-      if (Math.abs(c2) > 1e-6) terms.push(`${c2 / 3 >= 0 && terms.length ? '+ ' : ''}${fmtNum(c2 / 3)}x^3`);
-      if (Math.abs(c1) > 1e-6) terms.push(`${c1 / 2 >= 0 && terms.length ? '+ ' : ''}${fmtNum(c1 / 2)}x^2`);
-      if (Math.abs(c0) > 1e-6) terms.push(`${c0 >= 0 && terms.length ? '+ ' : ''}${fmtNum(c0)}x`);
-      const antiTex = (terms.join(' ') || '0') + ' + C';
-      const exprTex = toCleanTex(norm);
+      if (Math.abs(c0 + c1 * 2 + c2 * 4 + c3 * 8 - y2) < 1e-4) {
+        function fmtPolyTerm(coef: number, power: number, isFirst: boolean): string {
+          const absC = Math.abs(coef);
+          const sign = coef < 0 ? (isFirst ? '-' : '- ') : (isFirst ? '' : '+ ');
+          const cStr = Math.abs(absC - 1) < 1e-7 ? '' : fmtNum(absC);
+          const xPart = power === 1 ? 'x' : `x^${power}`;
+          return `${sign}${cStr}${xPart}`;
+        }
 
-      return {
-        solved: true,
-        type: "Boshlang'ich funksiya va darajali integral",
-        shortAnswer: antiTex,
-        diagnosis,
-        markdown: `## 1. Masala tahlili
+        const terms: string[] = [];
+        if (Math.abs(c3) > 1e-6) terms.push(fmtPolyTerm(c3 / 4, 4, terms.length === 0));
+        if (Math.abs(c2) > 1e-6) terms.push(fmtPolyTerm(c2 / 3, 3, terms.length === 0));
+        if (Math.abs(c1) > 1e-6) terms.push(fmtPolyTerm(c1 / 2, 2, terms.length === 0));
+        if (Math.abs(c0) > 1e-6) terms.push(fmtPolyTerm(c0, 1, terms.length === 0));
+        const antiTex = (terms.join(' ') || '0') + ' + C';
+        const exprTex = toCleanTex(norm);
+
+        return {
+          solved: true,
+          type: "Boshlang'ich funksiya va darajali integral",
+          shortAnswer: antiTex,
+          diagnosis,
+          markdown: `## 1. Masala tahlili
 $$\\int \\left(${exprTex}\\right) dx$$
 
 ## 2. Darajali integral qoidasi
@@ -1302,7 +1499,8 @@ $$\\int \\left(${exprTex}\\right) dx = ${antiTex}$$
 ## 4. Yakuniy javob
 Javob:
 $$\\mathbf{${antiTex}}$$`
-      };
+        };
+      }
     }
   }
 
@@ -1334,6 +1532,37 @@ $$z^{12} = 2^{12} \\left(\\cos(4\\pi) + i\\sin(4\\pi)\\right) = 4096(1 + 0) = 40
 Javob:
 $$\\mathbf{4096}$$`
     };
+  }
+
+  // Modulus |a + bi|
+  const modMatch = raw.trim().match(/^\|([^|]+)\|$/);
+  if (modMatch) {
+    try {
+      const inner = modMatch[1].replace(/([0-9])i\b/g, '$1*i');
+      const cVal = math.evaluate(inner);
+      if (cVal && typeof cVal === 'object' && 're' in cVal && 'im' in cVal) {
+        const re = Number(cVal.re);
+        const im = Number(cVal.im);
+        const r = Math.sqrt(re * re + im * im);
+        const rFmt = fmtNum(r);
+        return {
+          solved: true,
+          type: 'Kompleks son moduli (|z|)',
+          shortAnswer: `|z| = ${rFmt}`,
+          diagnosis,
+          markdown: `## 1. Masala tahlili
+Berilgan kompleks son: $z = ${modMatch[1].trim()}$
+Haqiqiy qismi $\\operatorname{Re}(z) = ${fmtNum(re)}$, mavhum qismi $\\operatorname{Im}(z) = ${fmtNum(im)}$.
+
+## 2. Kompleks son moduli formulasi
+$$|z| = \\sqrt{a^2 + b^2} = \\sqrt{(${fmtNum(re)})^2 + (${fmtNum(im)})^2} = \\sqrt{${fmtNum(re * re + im * im)}} = ${rFmt}$$
+
+## 3. Yakuniy javob
+Javob:
+$$\\mathbf{|z| = ${rFmt}}$$`
+        };
+      }
+    } catch {}
   }
 
   // Complex arithmetic: e.g. (2+3i)*(1-i) or (a+bi)/(c+di)
@@ -1803,12 +2032,93 @@ $$\\mathbf{${ans}}$$`
   const y1 = safeEvalAt(exprStr, variable, 1);
   const yn1 = safeEvalAt(exprStr, variable, -1);
   const y2 = safeEvalAt(exprStr, variable, 2);
+  const yn2 = safeEvalAt(exprStr, variable, -2);
 
-  if (isNaN(y0) || isNaN(y1) || isNaN(yn1) || isNaN(y2)) return null;
+  if (isNaN(y0) || isNaN(y1) || isNaN(yn1) || isNaN(y2) || isNaN(yn2)) return null;
 
-  const c = y0;
-  const a = (y1 + yn1 - 2 * c) / 2;
-  const b = (y1 - yn1) / 2;
+  const c0 = y0;
+  const c2 = (y1 + yn1 - 2 * c0) / 2;
+  const d1 = (y1 - yn1) / 2;
+  const d2 = (y2 - yn2) / 4;
+  const c3 = (d2 - d1) / 3;
+  const c1 = d1 - c3;
+
+  // Verify polynomial up to degree 3
+  if (Math.abs(c0 + c1 * 2 + c2 * 4 + c3 * 8 - y2) > 1e-4) return null;
+
+  // Cubic equation: c3 * x^3 + c2 * x^2 + c1 * x + c0 = 0
+  if (Math.abs(c3) > 1e-6) {
+    // Normalize by c3: x^3 + p*x^2 + q*x + r = 0
+    const p = c2 / c3;
+    const q = c1 / c3;
+    const r = c0 / c3;
+
+    let x1: number | null = null;
+    for (let k = -60; k <= 60; k++) {
+      const cand = k / 2;
+      if (Math.abs(cand * cand * cand + p * cand * cand + q * cand + r) < 1e-6) {
+        x1 = cand;
+        break;
+      }
+    }
+    if (x1 === null) {
+      let x = -p / 3;
+      for (let iter = 0; iter < 50; iter++) {
+        const fx = x * x * x + p * x * x + q * x + r;
+        const dfx = 3 * x * x + 2 * p * x + q;
+        if (Math.abs(dfx) < 1e-9) break;
+        x = x - fx / dfx;
+      }
+      x1 = x;
+    }
+
+    // Gorner division by (x - x1): x^2 + qb*x + qc = 0
+    const qb = p + x1;
+    const qc = q + qb * x1;
+    const disc = qb * qb - 4 * qc;
+    let shortAns = '';
+
+    if (disc >= -1e-7) {
+      const dClamp = Math.max(0, disc);
+      const r2 = (-qb - Math.sqrt(dClamp)) / 2;
+      const r3 = (-qb + Math.sqrt(dClamp)) / 2;
+      const roots = [x1, r2, r3].sort((u, v) => u - v);
+      const uniqueRoots: number[] = [];
+      for (const rt of roots) {
+        if (!uniqueRoots.some(u => Math.abs(u - rt) < 1e-5)) uniqueRoots.push(rt);
+      }
+      shortAns = uniqueRoots.map((rt, idx) => `x_${idx + 1} = ${fmtNum(rt)}`).join(', \\; ');
+    } else {
+      const re = fmtNum(-qb / 2);
+      const im = fmtNum(Math.sqrt(-disc) / 2);
+      shortAns = `x_1 = ${fmtNum(x1)}, \\; x_{2,3} = ${re} \\pm ${im}i`;
+    }
+
+    return {
+      solved: true,
+      type: "3-darajali (kubik) tenglama (Gorner sxemasi va ko'paytuvchilarga ajratish)",
+      shortAnswer: shortAns,
+      diagnosis,
+      markdown: `## 1. Masala tahlili
+Berilgan kubik tenglama:
+$$${leftStr} = ${rightStr}$$
+
+## 2. Gorner sxemasi bo'yicha birinchi ildizni topish
+Ozod had bo'luvchilarini tekshirib, $x_1 = ${fmtNum(x1)}$ ildizni topamiz va ko'phadni $(x - (${fmtNum(x1)}))$ ga bo'lamiz:
+$$\\left(x - (${fmtNum(x1)})\\right)\\left(x^2 ${qb >= 0 ? '+ ' + fmtNum(qb) : fmtNum(qb)}x ${qc >= 0 ? '+ ' + fmtNum(qc) : fmtNum(qc)}\\right) = 0$$
+
+## 3. Kvadrat uchhadni yechish
+Diskriminant: $D = (${fmtNum(qb)})^2 - 4(${fmtNum(qc)}) = ${fmtNum(disc)}$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${shortAns}}$$`
+    };
+  }
+
+  const c = c0;
+  const a = c2;
+  const b = c1;
 
   // Linear equation
   if (Math.abs(a) < 1e-8) {
@@ -1922,6 +2232,57 @@ $$\\mathbf{\\det A = ${detFmt}}$$`
     }
   } catch {}
   return null;
+}
+
+/**
+ * 8.5. VECTOR ALGEBRA (Dot product, Cross product, Moduli, Angle)
+ */
+function trySolveVectors(raw: string): LocalSolveResult | null {
+  // Match patterns like: a = (1, 2, 3), b = (4, -5, 6) or [1, 2, 3] x [4, 5, 6]
+  const vecMatches = [...raw.matchAll(/[\(\[]\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)(?:\s*,\s*([+-]?\d+(?:\.\d+)?))?\s*[\)\]]/g)];
+  if (vecMatches.length < 2) return null;
+  // Do not intercept matrix [[...]]
+  if (raw.includes('[[')) return null;
+
+  const v1 = [parseFloat(vecMatches[0][1]), parseFloat(vecMatches[0][2]), vecMatches[0][3] !== undefined ? parseFloat(vecMatches[0][3]) : 0];
+  const v2 = [parseFloat(vecMatches[1][1]), parseFloat(vecMatches[1][2]), vecMatches[1][3] !== undefined ? parseFloat(vecMatches[1][3]) : 0];
+  const is3D = vecMatches[0][3] !== undefined && vecMatches[1][3] !== undefined;
+
+  const dot = v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
+  const len1 = Math.sqrt(v1[0] ** 2 + v1[1] ** 2 + v1[2] ** 2);
+  const len2 = Math.sqrt(v2[0] ** 2 + v2[1] ** 2 + v2[2] ** 2);
+  const cx = v1[1] * v2[2] - v1[2] * v2[1];
+  const cy = v1[2] * v2[0] - v1[0] * v2[2];
+  const cz = v1[0] * v2[1] - v1[1] * v2[0];
+  const crossLen = Math.sqrt(cx * cx + cy * cy + cz * cz);
+  const cosPhi = len1 > 0 && len2 > 0 ? dot / (len1 * len2) : 0;
+
+  const diagnosis = diagnoseTopic(`vektor skalyar ${raw}`);
+  const isCrossOnly = /\)\s*[x×]\s*\(|\]\s*[x×]\s*\[/i.test(raw);
+  const shortAns = isCrossOnly
+    ? `\\vec{a} \\times \\vec{b} = (${fmtNum(cx)}, ${fmtNum(cy)}, ${fmtNum(cz)})`
+    : `\\vec{a}\\cdot\\vec{b} = ${fmtNum(dot)}, \\; \\vec{a}\\times\\vec{b} = (${fmtNum(cx)}, ${fmtNum(cy)}, ${fmtNum(cz)})`;
+
+  return {
+    solved: true,
+    type: is3D ? "3D Vektorlar tahlili (Skalyar va Vektor ko'paytma)" : "2D Vektorlar tahlili",
+    shortAnswer: shortAns,
+    diagnosis,
+    markdown: `## 1. Berilgan vektorlar va ularning uzunliklari
+- $\\vec{a} = (${v1[0]}, ${v1[1]}${is3D ? ', ' + v1[2] : ''}) \\implies |\\vec{a}| = \\sqrt{${v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]}} \\approx ${fmtNum(len1)}$
+- $\\vec{b} = (${v2[0]}, ${v2[1]}${is3D ? ', ' + v2[2] : ''}) \\implies |\\vec{b}| = \\sqrt{${v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]}} \\approx ${fmtNum(len2)}$
+
+## 2. Skalyar ko'paytma va burchak
+$$\\vec{a} \\cdot \\vec{b} = (${v1[0]})(${v2[0]}) + (${v1[1]})(${v2[1]})${is3D ? ` + (${v1[2]})(${v2[2]})` : ''} = ${fmtNum(dot)}$$
+$$\\cos\\varphi = \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}||\\vec{b}|} \\approx ${fmtNum(cosPhi)}$$
+
+## 3. Vektor ko'paytma va Parallelogramm yuzi
+$$\\vec{a} \\times \\vec{b} = (${fmtNum(cx)}, \\; ${fmtNum(cy)}, \\; ${fmtNum(cz)}), \\quad S_{\\text{par}} = |\\vec{a}\\times\\vec{b}| \\approx ${fmtNum(crossLen)}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${shortAns}}$$`
+  };
 }
 
 /**
@@ -2043,9 +2404,11 @@ export function solveLocally(input: string, mode: string = 'auto'): LocalSolveRe
   } else if (mode === 'integral') {
     const res = trySolveIntegral(trimmed, true);
     if (res) return res;
+    return { solved: false, diagnosis: baseDiagnosis };
   } else if (mode === 'limit') {
     const res = trySolveLimit(trimmed, true);
     if (res) return res;
+    return { solved: false, diagnosis: baseDiagnosis };
   }
 
   const solvedRes =
@@ -2054,6 +2417,7 @@ export function solveLocally(input: string, mode: string = 'auto'): LocalSolveRe
     trySolveLimit(trimmed) ||
     trySolveIntegral(trimmed) ||
     trySolveComplex(trimmed) ||
+    trySolveVectors(trimmed) ||
     trySolveEquation(trimmed) ||
     trySolveSeries(trimmed) ||
     trySolveDerivative(trimmed) ||

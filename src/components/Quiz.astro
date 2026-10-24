@@ -249,7 +249,7 @@ const {
       let filtered: QuizQuestion[] = [];
 
       if (selectedModuleSlug) {
-        filtered = QUIZ_DATABASE.filter(q => q.moduleId === selectedModuleSlug);
+        filtered = shuffleArray(QUIZ_DATABASE.filter(q => q.moduleId === selectedModuleSlug));
       } else {
         const preset = EXAM_PRESETS.find(p => p.id === currentPresetId) || EXAM_PRESETS[0];
         filtered = QUIZ_DATABASE.filter(preset.filter);

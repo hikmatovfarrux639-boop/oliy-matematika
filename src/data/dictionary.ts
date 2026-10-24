@@ -68,7 +68,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'analiz',
     definition: 'Skalyar maydonning fazoda eng tez o\'sish yo\'nalishini va o\'sish tezligini ko\'rsatuvchi xususiy hosilalardan tuzilgan vektor.',
     formula: '\\nabla f = \\operatorname{grad} f = \\left( \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y}, \\frac{\\partial f}{\\partial z} \\right)',
-    lessonUrl: '/dars/kop-ozgaruvchili-funksiyalar/yonalish-boyicha-hosila-gradient'
+    lessonUrl: '/dars/kop-ozgaruvchili-funksiyalar/yonalish-boyicha-hosila-gradient-va-shartli-ekstremum'
   },
   {
     id: 'divergensiya',
@@ -88,7 +88,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'analiz',
     definition: 'Vektor maydonning berilgan nuqta atrofida aylanish (uyurma) zichligini va aylanish o\'qi yo\'nalishini ifodalovchi vektor.',
     formula: '\\operatorname{rot} \\vec{F} = \\nabla \\times \\vec{F} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ P & Q & R \\end{vmatrix}',
-    lessonUrl: '/dars/karrali-integrallar/vektor-maydon-sirkulyatsiyasi-rotor-va-stoks'
+    lessonUrl: '/dars/karrali-integrallar/sirkulyatsiya-va-stoks-formulasi'
   },
   {
     id: 'laplasian',
@@ -188,7 +188,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'analiz',
     definition: 'Davriy funksiyani garmonik tebranishlar (sinus va kosinuslar) ning cheksiz trigonometrik yig\'indisi shaklida ifodalash.',
     formula: 'f(x) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty [a_n\\cos(nx) + b_n\\sin(nx)]',
-    lessonUrl: '/dars/qatorlar/fure-qatori'
+    lessonUrl: '/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma'
   },
   {
     id: 'bayes-formulasi',
@@ -208,7 +208,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'ehtimollik',
     definition: 'Tasodifiy miqdor qabul qilishi mumkin bo\'lgan barcha qiymatlarining ularning mos ehtimolliklariga tortilgan o\'rtacha qiymati (og\'irlik markazi).',
     formula: 'M(X) = \\mathbb{E}[X] = \\sum x_i p_i \\quad \\text{yoki} \\quad \\int_{-\\infty}^{+\\infty} x f(x) dx',
-    lessonUrl: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot'
+    lessonUrl: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari'
   },
   {
     id: 'dispersiya',
@@ -218,7 +218,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'ehtimollik',
     definition: 'Tasodifiy miqdor qiymatlarining uning o\'rtacha qiymati (matematik kutilmasi) atrofida qanchalik tarqoqligini ifodalovchi ko\'rsatkich.',
     formula: 'D(X) = \\sigma^2 = M[(X - M(X))^2] = M(X^2) - [M(X)]^2',
-    lessonUrl: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot'
+    lessonUrl: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari'
   },
   {
     id: 'normal-taqsimot',
@@ -228,11 +228,11 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'ehtimollik',
     definition: 'Tabiatda va texnikada eng ko\'p uchraydigan qo\'ng\'iroqsimon simmetrik uzluksiz taqsimot. Markaziy limit teorema asosida vujudga keladi.',
     formula: 'f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x - \\mu)^2}{2\\sigma^2}}',
-    lessonUrl: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot'
+    lessonUrl: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari'
   },
   {
     id: 'xi-kvadrat',
-    uz: 'Pirson xi-kvadrat (\\chi^2) mezoni',
+    uz: 'Pirson χ² (xi-kvadrat) mezoni',
     ru: 'Критерий согласия Пирсона (Хи-квадрат)',
     en: 'Chi-Square Goodness-of-Fit Test',
     category: 'ehtimollik',

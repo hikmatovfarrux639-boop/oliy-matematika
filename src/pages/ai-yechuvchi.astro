@@ -1416,9 +1416,10 @@ Qat'iy qoidalar:
         parts.push({ text: queryText });
 
         const candidateModels = [
+          { name: 'gemini-2.5-flash', useThinkingLow: false },
+          { name: 'gemini-2.0-flash', useThinkingLow: false },
           { name: 'gemini-3.8-flash', useThinkingLow: true },
-          { name: 'gemini-3.5-flash-lite', useThinkingLow: false },
-          { name: 'gemini-2.0-flash', useThinkingLow: false }
+          { name: 'gemini-3.5-flash-lite', useThinkingLow: false }
         ];
 
         let res: Response | null = null;
