@@ -1,6 +1,9 @@
 ---
 import SearchModal from './SearchModal.astro';
 const currentPath = Astro.url.pathname;
+
+const isCalcActive = ['/matritsa', '/vektor', '/hosila', '/grafik'].some(p => currentPath.startsWith(p));
+const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradokslar'].some(p => currentPath.startsWith(p));
 ---
 
 <header class="app-header">
@@ -20,32 +23,124 @@ const currentPath = Astro.url.pathname;
       </a>
     </div>
 
+    <!-- Grouped Responsive Navigation (No overflow, fits all screens) -->
     <nav class="nav-links desktop-only">
       <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Bosh sahifa</a>
-      <a href="/#modullar" class="nav-link">Barcha modullar</a>
+      <a href="/#modullar" class="nav-link">Modullar</a>
+      
       <a href="/testlar" class={`nav-link ${currentPath.startsWith('/testlar') ? 'active' : ''}`} style="font-weight: 700; color: #10b981;">
-        📝 Testlar (HEMIS)
+        <span>📝 Testlar</span>
       </a>
+      
       <a href="/ai-yechuvchi" class={`nav-link ${currentPath.startsWith('/ai-yechuvchi') ? 'active' : ''}`} style="color: var(--primary); font-weight: 700;">
-        🤖 AI Yechuvchi
+        <span>🤖 AI Yechuvchi</span>
       </a>
-      <a href="/grafik" class={`nav-link ${currentPath.startsWith('/grafik') ? 'active' : ''}`}>Grafik</a>
-      <a href="/hosila" class={`nav-link ${currentPath.startsWith('/hosila') ? 'active' : ''}`}>Hosila</a>
-      <a href="/matritsa" class={`nav-link ${currentPath.startsWith('/matritsa') ? 'active' : ''}`} style="font-weight: 700; color: #8b5cf6;">🔢 Matritsa</a>
-      <a href="/vektor" class={`nav-link ${currentPath.startsWith('/vektor') ? 'active' : ''}`} style="font-weight: 700; color: #06b6d4;">📐 Vektor</a>
-      <a href="/formulalar" class={`nav-link ${currentPath.startsWith('/formulalar') ? 'active' : ''}`}>Formulalar</a>
-      <a href="/shpargalkalar" class={`nav-link ${currentPath.startsWith('/shpargalkalar') ? 'active' : ''}`} style="font-weight: 700; color: #f59e0b;">
-        📄 Shpargalkalar
+
+      <!-- 1. Dropdown: Kalkulyatorlar & Interaktiv uskunalar -->
+      <div class="nav-dropdown" data-dropdown="calc">
+        <button type="button" class={`nav-link dropdown-trigger ${isCalcActive ? 'active' : ''}`} aria-haspopup="true" aria-expanded="false">
+          <span>🔢 Kalkulyatorlar</span>
+          <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/matritsa" class={`dropdown-item ${currentPath.startsWith('/matritsa') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">🔢</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Matritsa kalkulyatori</span>
+                <span class="mini-badge" style="background: #8b5cf6; color: white;">TATU</span>
+              </div>
+              <div class="dropdown-item-desc">Determinant, teskari matritsa, rang, ChTS</div>
+            </div>
+          </a>
+          <a href="/vektor" class={`dropdown-item ${currentPath.startsWith('/vektor') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;">📐</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Vektor kalkulyatori</span>
+                <span class="mini-badge" style="background: #06b6d4; color: white;">3D</span>
+              </div>
+              <div class="dropdown-item-desc">Skalyar, vektor va aralash ko'paytma</div>
+            </div>
+          </a>
+          <a href="/hosila" class={`dropdown-item ${currentPath.startsWith('/hosila') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(37, 99, 235, 0.15); color: var(--primary);">⚡</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Hosila kalkulyatori</span>
+              </div>
+              <div class="dropdown-item-desc">Qadamma-qadam differensiallash</div>
+            </div>
+          </a>
+          <a href="/grafik" class={`dropdown-item ${currentPath.startsWith('/grafik') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📈</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Grafik chizgich</span>
+              </div>
+              <div class="dropdown-item-desc">2D funksiyalar va koordinatalar</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Formulalar jadvali -->
+      <a href="/formulalar" class={`nav-link ${currentPath.startsWith('/formulalar') ? 'active' : ''}`}>
+        <span>📐 Formulalar</span>
       </a>
-      <a href="/lugat" class={`nav-link ${currentPath.startsWith('/lugat') ? 'active' : ''}`} style="font-weight: 700; color: #ec4899;">
-        📖 Lug'at
-      </a>
-      <a href="/kutubxona" class={`nav-link ${currentPath.startsWith('/kutubxona') ? 'active' : ''}`}>
-        📚 Kutubxona
-      </a>
-      <a href="/paradokslar" class={`nav-link ${currentPath.startsWith('/paradokslar') ? 'active' : ''}`} style="font-weight: 600; color: #ea580c;">
-        🎭 Paradokslar
-      </a>
+
+      <!-- 3. Dropdown: Resurslar, Lug'at, Kutubxona va Paradokslar -->
+      <div class="nav-dropdown" data-dropdown="resources">
+        <button type="button" class={`nav-link dropdown-trigger ${isResourcesActive ? 'active' : ''}`} aria-haspopup="true" aria-expanded="false">
+          <span>📚 Resurslar</span>
+          <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/shpargalkalar" class={`dropdown-item ${currentPath.startsWith('/shpargalkalar') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">📄</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Shpargalkalar</span>
+                <span class="mini-badge" style="background: #f59e0b; color: white;">PDF</span>
+              </div>
+              <div class="dropdown-item-desc">A4 formatdagi imtihon konspektlari</div>
+            </div>
+          </a>
+          <a href="/lugat" class={`dropdown-item ${currentPath.startsWith('/lugat') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">📖</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Lug'at & Glossariy</span>
+                <span class="mini-badge" style="background: #ec4899; color: white;">A-Z</span>
+              </div>
+              <div class="dropdown-item-desc">Matematik atamalar izohli lug'ati</div>
+            </div>
+          </a>
+          <a href="/kutubxona" class={`dropdown-item ${currentPath.startsWith('/kutubxona') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📚</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Kitoblar Kutubxonasi</span>
+              </div>
+              <div class="dropdown-item-desc">Oliy matematika darsliklari va to'plamlar</div>
+            </div>
+          </a>
+          <a href="/paradokslar" class={`dropdown-item ${currentPath.startsWith('/paradokslar') ? 'active' : ''}`}>
+            <div class="dropdown-item-icon" style="background: rgba(234, 88, 12, 0.15); color: #ea580c;">🎭</div>
+            <div class="dropdown-item-content">
+              <div class="dropdown-item-title">
+                <span>Matematik Paradokslar</span>
+                <span class="mini-badge" style="background: #ea580c; color: white;">Mantiq</span>
+              </div>
+              <div class="dropdown-item-desc">Mashhur mantiqiy paradokslar va yechimlar</div>
+            </div>
+          </a>
+        </div>
+      </div>
     </nav>
 
     <div class="header-actions">
@@ -88,8 +183,168 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
+<style>
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 960px) {
+    .nav-links.desktop-only {
+      display: none !important;
+    }
+  }
+
+  .nav-link {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.65rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--primary);
+    background-color: var(--primary-light);
+  }
+
+  /* Nav Dropdown */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-trigger {
+    outline: none;
+  }
+
+  .chevron-icon {
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+  }
+
+  .nav-dropdown:hover .chevron-icon,
+  .nav-dropdown.is-open .chevron-icon {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    min-width: 300px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    padding: 0.45rem;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    pointer-events: none;
+  }
+
+  :global([data-theme="dark"]) .dropdown-menu {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown.is-open .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text-main);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .dropdown-item:hover {
+    background: var(--bg-muted);
+    transform: translateX(2px);
+  }
+
+  .dropdown-item.active {
+    background: var(--primary-light);
+  }
+
+  .dropdown-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .dropdown-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .dropdown-item-title {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .dropdown-item.active .dropdown-item-title {
+    color: var(--primary);
+  }
+
+  .dropdown-item-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mini-badge {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 700;
+    line-height: 1;
+  }
+</style>
+
 <script>
-  function setupThemeToggle() {
+  function setupHeader() {
+    // Theme toggle
     const toggleBtn = document.getElementById('theme-toggle-btn');
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
@@ -119,9 +374,33 @@ const currentPath = Astro.url.pathname;
         updateIcons(newTheme);
       });
     }
+
+    // Dropdown toggle on click/touch
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(dd => {
+      const btn = dd.querySelector('.dropdown-trigger');
+      if (btn && !(btn as any)._hasDropInit) {
+        (btn as any)._hasDropInit = true;
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = dd.classList.contains('is-open');
+          dropdowns.forEach(d => d.classList.remove('is-open'));
+          if (!isOpen) {
+            dd.classList.add('is-open');
+          }
+        });
+      }
+    });
+
+    if (!(document as any)._hasGlobalDropClose) {
+      (document as any)._hasGlobalDropClose = true;
+      document.addEventListener('click', () => {
+        dropdowns.forEach(d => d.classList.remove('is-open'));
+      });
+    }
   }
 
-  setupThemeToggle();
-  document.addEventListener('astro:page-load', setupThemeToggle);
-  document.addEventListener('astro:after-swap', setupThemeToggle);
+  setupHeader();
+  document.addEventListener('astro:page-load', setupHeader);
+  document.addEventListener('astro:after-swap', setupHeader);
 </script>
