@@ -41,9 +41,27 @@ export function normalizeMathString(raw: string): string {
     .replace(/\by\s*teng\b/gi, 'y = ')
     .replace(/\bxteng\b/gi, 'x = ')
     .replace(/\bx\s*teng\b/gi, 'x = ')
-    .replace(/\bteng\b|\bbarobar\b/gi, ' = ')
+    .replace(/teng(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
+    .replace(/barobar(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
+    .replace(/ravno(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
+    .replace(/\bplyus\b|\bqo'shuv\b|\bqo'shilgan\b|\bplus\b/gi, ' + ')
+    .replace(/\bminus\b|\bayiruv\b|\bayirilgan\b/gi, ' - ')
+    .replace(/\bko'paytirilgan\b|\bko'paytiruv\b|\bzarb\b/gi, ' * ')
+    .replace(/\bbo'lingan\b|\bbo'luv\b|\btaqsim\b/gi, ' / ')
+    .replace(/\bkvadrat\b|\bkvadrati\b/gi, '^2')
+    .replace(/\bkub\b|\bkubi\b/gi, '^3')
     .replace(/\^\s*([+\-])/g, '^2 $1')
-    .replace(/\^\s*$/g, '^2');
+    .replace(/\^\s*$/g, '^2')
+    .replace(/\s*=\s*/g, ' = ');
+
+  // Uzbek number words
+  const numWords: Record<string, string> = {
+    'nol': '0', 'bir': '1', 'ikki': '2', 'uch': '3', 'to\'rt': '4', 'tort': '4',
+    'besh': '5', 'olti': '6', 'yetti': '7', 'sakkiz': '8', 'to\'qqiz': '9', 'toqqiz': '9', 'o\'n': '10', 'on': '10'
+  };
+  for (const [w, n] of Object.entries(numWords)) {
+    s = s.replace(new RegExp('\\b' + w + '\\b', 'gi'), n);
+  }
 
   s = s
     .replace(/×/g, '*')
@@ -2478,7 +2496,8 @@ $$\\mathbf{${vFmt}}$$`
  * MAIN ENTRY POINT
  */
 export function solveLocally(input: string, mode: string = 'auto'): LocalSolveResult {
-  const trimmed = (input || '').trim();
+  const rawInput = (input || '').trim();
+  const trimmed = normalizeMathString(rawInput);
   const baseDiagnosis = diagnoseTopic(trimmed);
 
   if (!trimmed) {
