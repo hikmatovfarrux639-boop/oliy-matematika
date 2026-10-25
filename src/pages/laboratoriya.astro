@@ -3,26 +3,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout 
-  title="🔮 Interaktiv Matematik Laboratoriya — 3Blue1Brown va Vizual Simulyatsiyalar | Oliy Matematika" 
-  description="Matematikani ko'z bilan ko'ring va his qiling: 3Blue1Brown uslubidagi matritsa fazo transformatori, Riman integrali slayderi, Monte-Karlo pi hisoblagichi, Fure epitsikllari, Galton doskasi va Gradient tushishi."
+  title="🔮 Kvant & 3D Matematik Laboratoriya — 4D Tesserakt, Xaos & Fraktallar | Oliy Matematika" 
+  description="Matematikaning eng hayratlanarli cho'qqilari: 4D Giperkub (Tesserakt) aylanishi, Lorenz kapalak xaos attraktori, GPU cheksiz fraktal zumi, koinot gravitatsiya sandboxi va 3Blue1Brown fazo simulyatsiyalari."
 >
   <div class="lab-container">
     <!-- Lab Hero Banner -->
     <header class="lab-hero">
       <div class="lab-badge">
-        <span class="badge-icon">🔮</span>
-        <span>Vizual Laboratoriya & Simulyatsiyalar</span>
-        <span class="badge-pill">60 FPS Interaktiv</span>
+        <span class="badge-icon">⚡</span>
+        <span>WebGL 3D & Kvant Laboratoriya</span>
+        <span class="badge-pill">60 FPS WebGL & GPU</span>
       </div>
-      <h1 class="lab-title">Interaktiv Matematika Laboratoriyasi</h1>
+      <h1 class="lab-title">Interaktiv 3D & Kvant Matematika Laboratoriyasi</h1>
       <p class="lab-subtitle">
-        Matematika — faqat qog'ozdagi quruq formulalar emas. Bu yerda siz fazoning buralishini, integral maydonlarining tug'ilishini, ehtimollik tartibini va sun'iy intellekt qanday o'rganishini o'z qo'lingiz bilan boshqarib ko'rasiz!
+        Matematika faqat qog'ozdagi formulalar emas — bu koinotning eng go'zal arxitekturasi! 
+        Bu yerda siz <strong>4-o'lchamli fazoni</strong> ko'rasiz, <strong>xaos nazariyasining kapalak effekti</strong>ni boshqarasiz, 
+        <strong>cheksiz fraktallar olamiga</strong> sho'ng'iysiz va <strong>koinot gravitatsiyasini</strong> o'z qo'lingiz bilan yaratasiz.
       </p>
 
-      <!-- Navigation Tabs -->
+      <!-- Navigation Tabs (Grouped into Flagship 3D/Cosmos and Analytical Labs) -->
+      <div class="lab-tabs-header">
+        <span class="tabs-category-label">🌟 Flagman 3D & Koinot Simulyatsiyalari:</span>
+      </div>
       <div class="lab-tabs" role="tablist">
-        <button class="lab-tab active" data-tab="matrix-warp">
+        <button class="lab-tab active" data-tab="tesseract">
           <span class="tab-icon">🌌</span>
+          <div class="tab-text">
+            <strong>4D Tesserakt</strong>
+            <small>4-O'lchamli Giperkub</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="lorenz">
+          <span class="tab-icon">🦋</span>
+          <div class="tab-text">
+            <strong>Lorenz 3D Xaos</strong>
+            <small>Kapalak effekti</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="fractal">
+          <span class="tab-icon">🌀</span>
+          <div class="tab-text">
+            <strong>GPU Fraktal Zumi</strong>
+            <small>Mandelbrot & Yuliya</small>
+          </div>
+        </button>
+        <button class="lab-tab" data-tab="gravity">
+          <span class="tab-icon">🪐</span>
+          <div class="tab-text">
+            <strong>Koinot Gravitatsiyasi</strong>
+            <small>N-Jism Sandboxi</small>
+          </div>
+        </button>
+      </div>
+
+      <div class="lab-tabs-header" style="margin-top: 0.75rem;">
+        <span class="tabs-category-label">📐 Klassik Tahlil & Algebra Laboratoriyasi:</span>
+      </div>
+      <div class="lab-tabs" role="tablist">
+        <button class="lab-tab" data-tab="matrix-warp">
+          <span class="tab-icon">📐</span>
           <div class="tab-text">
             <strong>Fazo Transformatori</strong>
             <small>3Blue1Brown uslubi</small>
@@ -46,7 +85,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="tab-icon">🌊</span>
           <div class="tab-text">
             <strong>Fure Epitsikllari</strong>
-            <small>Aylanalar garmoniyasi</small>
+            <small>Aylanalar to'lqini</small>
           </div>
         </button>
         <button class="lab-tab" data-tab="galton-board">
@@ -66,13 +105,357 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </header>
 
-    <!-- ================= 1. MATRIX WARP SIMULATOR ================= -->
-    <section id="panel-matrix-warp" class="sim-panel active">
+    <!-- ================= 1. 4D TESSERACT HYPERCUBE ================= -->
+    <section id="panel-tesseract" class="sim-panel active">
       <div class="sim-grid">
         <div class="canvas-card">
           <div class="canvas-header">
-            <h3>🌌 2D Fazo Transformatsiyasi va Determinant</h3>
-            <span class="live-tag">Jonli 2D Canvas</span>
+            <h3>🌌 4-O'lchamli Fazo: Tesserakt (4D Giperkub)</h3>
+            <span class="live-tag live-3d">WebGL 3D Proyeksiya</span>
+          </div>
+          <div class="canvas-wrapper canvas-3d-wrapper">
+            <canvas id="tesseract-canvas" width="600" height="520"></canvas>
+            <div class="canvas-overlay-hint">
+              <span>🖱️ Sichqoncha bilan 3D fazoda 360° aylantiring</span>
+            </div>
+          </div>
+          <div class="canvas-legend">
+            <span><strong style="color: #38bdf8;">● 16 ta 4D cho'qqi</strong> (±1, ±1, ±1, ±1)</span>
+            <span><strong style="color: #ec4899;">— 32 ta 4D qirra</strong></span>
+            <span><strong style="color: #a855f7;">■ 8 ta kubik katak (3D fazodagi soya)</strong></span>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>4-O'lchamli Aylanish Samolyotlari:</h4>
+            <div class="slider-group">
+              <label class="control-label">
+                <span>XW tekisligida aylanish:</span>
+                <strong id="tess-xw-val">0.015</strong>
+              </label>
+              <input type="range" id="tess-xw-slider" min="-0.05" max="0.05" step="0.002" value="0.015" />
+            </div>
+            <div class="slider-group">
+              <label class="control-label">
+                <span>YW tekisligida aylanish:</span>
+                <strong id="tess-yw-val">0.010</strong>
+              </label>
+              <input type="range" id="tess-yw-slider" min="-0.05" max="0.05" step="0.002" value="0.010" />
+            </div>
+            <div class="slider-group">
+              <label class="control-label">
+                <span>ZW tekisligida aylanish:</span>
+                <strong id="tess-zw-val">0.005</strong>
+              </label>
+              <input type="range" id="tess-zw-slider" min="-0.05" max="0.05" step="0.002" value="0.005" />
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>4D Kamera Masofasi (w₀ chuqurlik):</span>
+              <strong id="tess-dist-val">2.2</strong>
+            </label>
+            <input type="range" id="tess-dist-slider" min="1.4" max="4.0" step="0.1" value="2.2" />
+          </div>
+
+          <div class="panel-section">
+            <h4>Tayyor 4D Effektlar:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-tess-preset="inside-out">Ichma-ich O'sish (XW)</button>
+              <button class="preset-pill" data-tess-preset="double-rot">Qo'shaloq 4D Aylanish</button>
+              <button class="preset-pill" data-tess-preset="full-chaos">To'liq 4D Xoreografiya</button>
+              <button class="preset-pill" data-tess-preset="static-cube">Tinch holat</button>
+            </div>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Fazoviy o'lcham:</span>
+              <strong>4 o'lcham (X, Y, Z, W)</strong>
+            </div>
+            <div class="metric-row">
+              <span>Cho'qqilar / Qirralar / Yoqlar:</span>
+              <strong>16 / 32 / 24</strong>
+            </div>
+            <div class="metric-row">
+              <span>Hajm (Giperhajm):</span>
+              <strong>V₄ = a⁴ = 16 birlik⁴</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Nima uchun kub o'zining ichidan o'zi o'sib chiqmoqda?</h4>
+        <p>
+          Inson ko'zi to'rtinchi fazoviy o'qni ($W$) to'g'ridan-to'g'ri ko'ra olmaydi. 
+          Xuddi 3D kubning qog'ozdagi soyasi (2D parallelogramm) harakatlanganda qisqarib-kengaygandek tuyulgani kabi, 
+          4D Tesserakt to'rtinchi o'lchamda aylanganda, uning bizning 3D olamimizga tushayotgan <strong>uch o'lchamli soyasi</strong> 
+          ichki kubdan tashqi kubga aylanib, o'zining ichidan o'zi teskari o'sib chiqayotgandek ko'rinadi!
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 2. LORENZ 3D CHAOS ATTRACTOR ================= -->
+    <section id="panel-lorenz" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🦋 Lorenz 3D Attraktori: Xaos va «Kapalak Effekti»</h3>
+            <span class="live-tag live-3d">30 000+ Neon Zarracha</span>
+          </div>
+          <div class="canvas-wrapper canvas-3d-wrapper">
+            <canvas id="lorenz-canvas" width="600" height="520"></canvas>
+            <div class="canvas-overlay-hint">
+              <span>🖱️ Sichqoncha bilan 360° orbital kamerani aylantiring</span>
+            </div>
+          </div>
+          <div class="canvas-legend">
+            <span><strong style="color: #06b6d4;">— 1-Qanot:</strong> Chap aylanma oqim</span>
+            <span><strong style="color: #ec4899;">— 2-Qanot:</strong> O'ng aylanma oqim</span>
+            <span><strong style="color: #f59e0b;">● Markaz:</strong> Beqaror egar nuqta</span>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>Xaos Differensial Tenglama Parametrlari:</h4>
+            <div class="slider-group">
+              <label class="control-label">
+                <span>Reyli soni ρ (Konvektsiya kuchi):</span>
+                <strong id="lorenz-rho-val">28</strong>
+              </label>
+              <input type="range" id="lorenz-rho-slider" min="10" max="60" step="0.5" value="28" />
+            </div>
+            <div class="slider-group">
+              <label class="control-label">
+                <span>Prandtl soni σ (Yopishqoqlik):</span>
+                <strong id="lorenz-sigma-val">10</strong>
+              </label>
+              <input type="range" id="lorenz-sigma-slider" min="2" max="25" step="0.5" value="10" />
+            </div>
+            <div class="slider-group">
+              <label class="control-label">
+                <span>Geometriya parametri β:</span>
+                <strong id="lorenz-beta-val">2.67</strong>
+              </label>
+              <input type="range" id="lorenz-beta-slider" min="0.5" max="5.0" step="0.1" value="2.67" />
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <h4>Attraktor Namunalarini Tanlang:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-lorenz-preset="classic">Klassik Kapalak (ρ = 28)</button>
+              <button class="preset-pill" data-lorenz-preset="turbulent">Yuqori Turbulentlik (ρ = 48)</button>
+              <button class="preset-pill" data-lorenz-preset="limit-cycle">Barqaror Tsikl (ρ = 14)</button>
+              <button class="preset-pill" data-lorenz-preset="reset-particles">Zarrachalarni portlatish</button>
+            </div>
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Zarrachalar soni:</span>
+              <strong>30 000 ta faol kvant</strong>
+            </div>
+            <div class="metric-row">
+              <span>Fraktal o'lchami:</span>
+              <strong>D ≈ 2.06 (Fraktal fazo)</strong>
+            </div>
+            <div class="metric-row">
+              <span>Holat:</span>
+              <span id="lorenz-status" style="color: #ec4899; font-weight: 700;">Deterministik Xaos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Edvard Lorenz va Kapalak effekti:</h4>
+        <p>
+          Lorenz ob-havo modelini o'rganayotganda kashf qilgan: bir-biridan 0.000001 farq qiladigan ikkita boshlang'ich nuqta 
+          bir necha qadamdan so'ng mutlaqo boshqa-boshqa qanotlarga uchib ketadi! 
+          Bu <strong>«Braziliyadagi kapalak qanot qoqishi Texasda to'fon keltirib chiqarishi mumkin»</strong> degan mashhur xaos tamoyilining matematik ifodasidir:
+          dx/dt = σ(y - x), dy/dt = x(ρ - z) - y, dz/dt = xy - βz.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 3. GPU FRACTAL DEEP ZOOM ================= -->
+    <section id="panel-fractal" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🌀 Mandelbrot & Yuliya: GPU Cheksiz Fraktal Zumi</h3>
+            <span class="live-tag live-3d">WebGL 2.0 Pixel Shader</span>
+          </div>
+          <div class="canvas-wrapper" style="position: relative;">
+            <canvas id="fractal-canvas" width="600" height="520"></canvas>
+            <div class="fractal-hud">
+              <span>Zum darajasi: <strong id="fractal-zoom-display">1.0×</strong></span>
+              <span>Koordinata: <strong id="fractal-coords-display">(-0.7, 0.0)</strong></span>
+            </div>
+            <div class="canvas-overlay-hint">
+              <span>🖱️ Sichqoncha g'ildiragi orqali cheksiz ichkariga kiring va suring</span>
+            </div>
+          </div>
+          <div class="canvas-legend">
+            <span><strong style="color: #f59e0b;">Z_(n+1) = Z_n² + C</strong></span>
+            <span>Cheksizlik chegarasidagi fraktal qirg'oqlar</span>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="btn-fractal-autozoom" class="btn btn-primary" style="flex: 1;">🚀 Avto-Zum (Kino rejimi)</button>
+              <button id="btn-fractal-reset" class="btn btn-secondary">Boshlang'ich</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <h4>Fraktal Rejimi:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-fractal-mode="mandelbrot">Mandelbrot To'plami</button>
+              <button class="preset-pill" data-fractal-mode="julia1">Yuliya: Ajdaho (c = -0.7 + 0.27i)</button>
+              <button class="preset-pill" data-fractal-mode="julia2">Yuliya: Dendrit (c = -0.4 + 0.6i)</button>
+              <button class="preset-pill" data-fractal-mode="julia3">Yuliya: Galaktika (c = -0.8 + 0.15i)</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <h4>Rang Palitrasi (GPU Shader):</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-palette="cyberpunk">🟣 Kiberpank Neon</button>
+              <button class="preset-pill" data-palette="fire">🔥 Olovli Quyosh</button>
+              <button class="preset-pill" data-palette="ocean">🌊 Moviy Okean</button>
+              <button class="preset-pill" data-palette="rainbow">🌈 Kamalak Spektr</button>
+              <button class="preset-pill" data-palette="emerald">⚡ Zangori Kvant</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>Iteratsiyalar soni (Tafsilot chuqurligi):</span>
+              <strong id="fractal-iter-val">120</strong>
+            </label>
+            <input type="range" id="fractal-iter-slider" min="30" max="350" step="10" value="120" />
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>GPU piksellar hisobi:</span>
+              <strong>Real vaqtda 300 000+ nur/kadr</strong>
+            </div>
+            <div class="metric-row">
+              <span>Matematik chegara:</span>
+              <strong>|Z| &le; 2 (Yaqinlashish sohasi)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 Benua Mandelbrotning cheksiz geometriyasi:</h4>
+        <p>
+          Mandelbrot to'plami — insoniyat tarixida yaratilgan eng murakkab matematik shakl. 
+          Siz qanchalik chuqur yaqinlashsangiz ham (hatto bir milliard martagacha zum qilsangiz ham), 
+          har safar butunlay yangi spiralsimon qasrlar, to'rlar va asosiy shaklning kichik nusxalari (o'xshashlik) cheksiz tug'ilaveradi!
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 4. COSMIC GRAVITY & N-BODY SANDBOX ================= -->
+    <section id="panel-gravity" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>🪐 Koinot Gravitatsiyasi: N-Jism va Sayyoralar Sandboxi</h3>
+            <span class="live-tag">Nyuton & Eynshteyn Fizikasi</span>
+          </div>
+          <div class="canvas-wrapper" style="position: relative;">
+            <canvas id="gravity-canvas" width="600" height="520"></canvas>
+            <div class="canvas-overlay-hint">
+              <span>👆 Bo'sh fazoga sichqoncha bilan bosib, tortib otib yuboring (slingshot)!</span>
+            </div>
+          </div>
+          <div class="canvas-legend">
+            <span><strong style="color: #fbbf24;">● Quyosh</strong> (Og'ir yulduz)</span>
+            <span><strong style="color: #38bdf8;">● Sayyoralar</strong> (Orbita izlari)</span>
+            <span><strong style="color: #ef4444;">💥 To'qnashuv:</strong> Birlashish va zarba to'lqini</span>
+          </div>
+        </div>
+
+        <div class="controls-card">
+          <div class="panel-section">
+            <h4>Yangi Jism Turini Tanlang:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-spawn-type="planet">🪐 Sayyora (M = 100)</button>
+              <button class="preset-pill" data-spawn-type="sun">🌟 Quyosh (M = 8000)</button>
+              <button class="preset-pill danger-pill" data-spawn-type="blackhole">🕳️ Qora Tuynuk (M = 30000)</button>
+              <button class="preset-pill" data-spawn-type="moon">🌑 Yo'ldosh (M = 15)</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <h4>Mashhur Tayyor Koinot Tizimlari:</h4>
+            <div class="presets-wrap">
+              <button class="preset-pill active" data-grav-preset="solar">☀️ Barqaror Quyosh Tizimi</button>
+              <button class="preset-pill" data-grav-preset="figure8">♾️ Mashhur Figure-8 (3-jism)</button>
+              <button class="preset-pill" data-grav-preset="binary">⚔️ Ikkitalik Yulduz (Binary)</button>
+              <button class="preset-pill" data-grav-preset="chaos">🌌 Xaotik To'qnashuv (+30 jism)</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="btn-grav-pause" class="btn btn-secondary" style="flex: 1;">⏸️ Pauza</button>
+              <button id="btn-grav-clear" class="btn btn-secondary">Tozalash</button>
+              <button id="btn-grav-trails" class="btn btn-secondary">Orbita Izlari: On</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <label class="control-label">
+              <span>Gravitatsiya doimiysi (G kuchi):</span>
+              <strong id="grav-g-val">1.0</strong>
+            </label>
+            <input type="range" id="grav-g-slider" min="0.2" max="3.0" step="0.1" value="1.0" />
+          </div>
+
+          <div class="metrics-box">
+            <div class="metric-row">
+              <span>Jami jismlar soni:</span>
+              <strong id="grav-body-count">5</strong>
+            </div>
+            <div class="metric-row">
+              <span>Tizim energiyasi (E):</span>
+              <strong id="grav-energy" style="color: #10b981;">Saqlanmoqda</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-card">
+        <h4>💡 N-Jism Masalasi va Gravitatsiya siri:</h4>
+        <p>
+          Ikkita jism harakati (Quyosh va Yer) Kepler qonunlari bo'yicha aniq analitik yechimga ega. 
+          Biroq uchinchi jism (Oy yoki boshqa sayyora) qo'shilishi bilanoq tizim <strong>«N-jism muammosi»</strong>ga aylanadi — 
+          unga umumiy yopiq formula yo'q! Orbitadagi har bir jism barcha boshqa jismlarni 
+          F = G · (m₁ · m₂) / r² qonuni bilan tortadi va faqat sonli differensial integrallash orqali hisoblanadi.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 5. MATRIX WARP SIMULATOR ================= -->
+    <section id="panel-matrix-warp" class="sim-panel">
+      <div class="sim-grid">
+        <div class="canvas-card">
+          <div class="canvas-header">
+            <h3>📐 2D Fazo Transformatsiyasi va Determinant</h3>
+            <span class="live-tag">3Blue1Brown Uslubi</span>
           </div>
           <div class="canvas-wrapper">
             <canvas id="matrix-canvas" width="600" height="500"></canvas>
@@ -154,7 +537,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- ================= 2. RIEMANN SUM SIMULATOR ================= -->
+    <!-- ================= 6. RIEMANN SUM SIMULATOR ================= -->
     <section id="panel-riemann-sum" class="sim-panel">
       <div class="sim-grid">
         <div class="canvas-card">
@@ -223,7 +606,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- ================= 3. MONTE CARLO PI SIMULATOR ================= -->
+    <!-- ================= 7. MONTE CARLO PI SIMULATOR ================= -->
     <section id="panel-monte-carlo" class="sim-panel">
       <div class="sim-grid">
         <div class="canvas-card">
@@ -284,7 +667,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- ================= 4. FOURIER EPICYCLES ================= -->
+    <!-- ================= 8. FOURIER EPICYCLES ================= -->
     <section id="panel-fourier-epicycles" class="sim-panel">
       <div class="sim-grid">
         <div class="canvas-card">
@@ -309,7 +692,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="panel-section">
             <label class="control-label">
-              <span>Garmonik aylanalar soni ($N$):</span>
+              <span>Garmonik aylanalar soni (N):</span>
               <strong id="fourier-n-display">5 ta aylana</strong>
             </label>
             <input type="range" id="fourier-n-slider" min="1" max="25" value="5" style="width: 100%;" />
@@ -339,7 +722,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- ================= 5. GALTON BOARD ================= -->
+    <!-- ================= 9. GALTON BOARD ================= -->
     <section id="panel-galton-board" class="sim-panel">
       <div class="sim-grid">
         <div class="canvas-card">
@@ -384,7 +767,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- ================= 6. GRADIENT DESCENT ================= -->
+    <!-- ================= 10. GRADIENT DESCENT ================= -->
     <section id="panel-gradient-descent" class="sim-panel">
       <div class="sim-grid">
         <div class="canvas-card">
@@ -449,8 +832,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
   .lab-container {
-    max-width: 1240px;
+    max-width: 1260px;
     margin: 0 auto;
+    padding-bottom: 3rem;
   }
 
   .lab-hero {
@@ -466,9 +850,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(236, 72, 153, 0.1);
-    color: #ec4899;
-    padding: 0.3rem 0.75rem;
+    background: rgba(168, 85, 247, 0.12);
+    color: #a855f7;
+    padding: 0.35rem 0.85rem;
     border-radius: 9999px;
     font-size: 0.85rem;
     font-weight: 700;
@@ -476,11 +860,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .badge-pill {
-    background: #ec4899;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
     color: white;
-    font-size: 0.7rem;
-    padding: 0.15rem 0.45rem;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.5rem;
     border-radius: 4px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
   }
 
   .lab-title {
@@ -493,19 +879,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .lab-subtitle {
     color: var(--text-muted);
-    font-size: 1.05rem;
-    max-width: 840px;
+    font-size: 1.02rem;
+    max-width: 880px;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+  }
+
+  .lab-tabs-header {
+    margin-bottom: 0.4rem;
+  }
+
+  .tabs-category-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-subtle);
   }
 
   /* Lab Tab Bar */
   .lab-tabs {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 0.5rem;
     background: var(--bg-muted);
-    padding: 0.4rem;
+    padding: 0.45rem;
     border-radius: var(--radius-md);
   }
 
@@ -520,22 +918,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--text-muted);
     cursor: pointer;
     text-align: left;
-    transition: all 0.15s ease;
+    transition: all 0.18s ease;
   }
 
   .lab-tab:hover {
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
   }
 
   :global([data-theme="dark"]) .lab-tab:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .lab-tab.active {
     background: var(--bg-surface);
     color: var(--primary);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    font-weight: 700;
   }
 
   .tab-icon {
@@ -574,7 +973,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .sim-grid {
     display: grid;
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 380px;
     gap: 1.5rem;
     align-items: start;
     margin-bottom: 1.5rem;
@@ -586,7 +985,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
-  /* Canvas card */
   .canvas-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -603,48 +1001,96 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .canvas-header h3 {
+    margin: 0;
     font-size: 1.15rem;
     font-weight: 700;
     color: var(--text-main);
   }
 
   .live-tag {
-    font-size: 0.75rem;
-    background: rgba(16, 185, 129, 0.15);
+    background: rgba(16, 185, 129, 0.12);
     color: #10b981;
+    font-size: 0.72rem;
     font-weight: 700;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .live-3d {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
   }
 
   .canvas-wrapper {
-    width: 100%;
+    background: #090d16;
+    border-radius: var(--radius-md);
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--bg-muted);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
   }
 
-  canvas {
-    max-width: 100%;
-    height: auto;
+  .canvas-wrapper canvas {
     display: block;
+    width: 100%;
+    height: auto;
+    cursor: grab;
+  }
+
+  .canvas-wrapper canvas:active {
+    cursor: grabbing;
+  }
+
+  .canvas-overlay-hint {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .canvas-overlay-hint span {
+    background: rgba(0, 0, 0, 0.65);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    backdrop-filter: blur(4px);
+  }
+
+  .fractal-hud {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #38bdf8;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    pointer-events: none;
+    border: 1px solid rgba(56, 189, 248, 0.3);
   }
 
   .canvas-legend {
     display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-    font-size: 0.82rem;
-    margin-top: 0.75rem;
+    gap: 1rem;
     flex-wrap: wrap;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
     color: var(--text-muted);
   }
 
-  /* Controls card */
   .controls-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -657,19 +1103,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .panel-section h4 {
-    font-size: 0.92rem;
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-main);
-    margin-bottom: 0.6rem;
+  }
+
+  .slider-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .slider-group:last-child {
+    margin-bottom: 0;
   }
 
   .control-label {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .control-label strong {
+    color: var(--primary);
+  }
+
+  .presets-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .preset-pill {
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .preset-pill:hover {
     color: var(--text-main);
-    margin-bottom: 0.35rem;
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.05);
+  }
+
+  .preset-pill.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: 600;
+  }
+
+  .danger-pill:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
   }
 
   .matrix-inputs-grid {
@@ -682,48 +1175,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    background: var(--bg-muted);
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+  }
+
+  .input-field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-subtle);
   }
 
   .input-field input {
     width: 100%;
-    padding: 0.45rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    background: var(--bg-surface);
-    color: var(--text-main);
+    border: none;
+    background: transparent;
     font-weight: 700;
-  }
-
-  .presets-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .preset-pill {
-    padding: 0.35rem 0.65rem;
-    border: 1px solid var(--border-color);
-    background: var(--bg-muted);
+    font-size: 0.9rem;
     color: var(--text-main);
-    border-radius: var(--radius-sm);
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .preset-pill:hover, .preset-pill.active {
-    border-color: var(--primary);
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 600;
-  }
-
-  .danger-pill:hover {
-    border-color: #dc2626 !important;
-    background: rgba(220, 38, 38, 0.1) !important;
-    color: #dc2626 !important;
+    outline: none;
   }
 
   .metrics-box {
@@ -733,7 +1204,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
-    font-size: 0.88rem;
+    font-size: 0.82rem;
   }
 
   .metric-row {
@@ -745,53 +1216,947 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .metric-row strong {
     color: var(--text-main);
+    font-family: var(--font-mono);
   }
 
-  /* Theory card */
   .theory-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-left: 4px solid var(--primary);
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-muted);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
   }
 
   .theory-card h4 {
-    font-size: 1rem;
+    margin: 0 0 0.5rem;
     color: var(--text-main);
-    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+
+  .theory-card p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary);
   }
 </style>
 
 <script>
-  function initLaboratory() {
-    // 1. Tab Navigation
+  import * as THREE from 'three';
+
+  function initFullLaboratory() {
+    let currentActiveTab = 'tesseract';
+
+    // 1. TAB CONTROLLER
     const tabs = document.querySelectorAll('.lab-tab');
     const panels = document.querySelectorAll('.sim-panel');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+        if (!target) return;
+        currentActiveTab = target;
+
         tabs.forEach(t => t.classList.remove('active'));
         panels.forEach(p => p.classList.remove('active'));
 
         tab.classList.add('active');
-        const targetId = 'panel-' + tab.getAttribute('data-tab');
-        document.getElementById(targetId)?.classList.add('active');
-
-        // Trigger resize / redraw
-        window.dispatchEvent(new Event('resize'));
+        const activePanel = document.getElementById('panel-' + target);
+        if (activePanel) activePanel.classList.add('active');
       });
     });
 
-    // ==============================================================
-    // SIMULATION 1: 3BLUE1BROWN MATRIX WARP
-    // ==============================================================
-    const matCanvas = document.getElementById('matrix-canvas') as HTMLCanvasElement | null;
-    if (matCanvas) {
-      const ctx = matCanvas.getContext('2d')!;
+    // ==========================================
+    // SIMULATION 1: 4D TESSERACT HYPERCUBE (Three.js)
+    // ==========================================
+    (function setupTesseract() {
+      const canvas = document.getElementById('tesseract-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(canvas.clientWidth || 600, canvas.clientHeight || 520, false);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, (canvas.clientWidth || 600) / (canvas.clientHeight || 520), 0.1, 100);
+      camera.position.set(0, 0, 5.5);
+
+      // Light
+      const ambLight = new THREE.AmbientLight(0xffffff, 0.8);
+      scene.add(ambLight);
+
+      // 16 4D Vertices: (±1, ±1, ±1, ±1)
+      const baseVertices4D: number[][] = [];
+      for (let i = 0; i < 16; i++) {
+        baseVertices4D.push([
+          (i & 1) ? 1 : -1,
+          (i & 2) ? 1 : -1,
+          (i & 4) ? 1 : -1,
+          (i & 8) ? 1 : -1
+        ]);
+      }
+
+      // 32 Edges (differ by 1 bit in 4D)
+      const edges4D: [number, number][] = [];
+      for (let i = 0; i < 16; i++) {
+        for (let j = i + 1; j < 16; j++) {
+          const diff = i ^ j;
+          if (diff === 1 || diff === 2 || diff === 4 || diff === 8) {
+            edges4D.push([i, j]);
+          }
+        }
+      }
+
+      // Mesh for 16 glowing vertices
+      const sphereGeo = new THREE.SphereGeometry(0.065, 12, 12);
+      const vertexSpheres: THREE.Mesh[] = [];
+      const vertMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+      for (let i = 0; i < 16; i++) {
+        const mesh = new THREE.Mesh(sphereGeo, vertMat);
+        scene.add(mesh);
+        vertexSpheres.push(mesh);
+      }
+
+      // 32 Line segments for edges
+      const edgePositions = new Float32Array(32 * 2 * 3);
+      const edgeColors = new Float32Array(32 * 2 * 3);
+      for (let e = 0; e < 32; e++) {
+        edgeColors[e * 6 + 0] = 0.92; edgeColors[e * 6 + 1] = 0.28; edgeColors[e * 6 + 2] = 0.60;
+        edgeColors[e * 6 + 3] = 0.22; edgeColors[e * 6 + 4] = 0.74; edgeColors[e * 6 + 5] = 0.97;
+      }
+      const edgeGeo = new THREE.BufferGeometry();
+      edgeGeo.setAttribute('position', new THREE.BufferAttribute(edgePositions, 3));
+      edgeGeo.setAttribute('color', new THREE.BufferAttribute(edgeColors, 3));
+      const lineMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.85 });
+      const edgeLines = new THREE.LineSegments(edgeGeo, lineMat);
+      scene.add(edgeLines);
+
+      // Rotation angles in 4D
+      let angleXW = 0, angleYW = 0, angleZW = 0;
+      let rotSpeedXW = 0.015, rotSpeedYW = 0.010, rotSpeedZW = 0.005;
+      let eyeDistanceW = 2.2;
+
+      // Mouse drag rotation for 3D Camera
+      let isDragging = false;
+      let prevMouse = { x: 0, y: 0 };
+      let rotX = 0.2, rotY = 0.3;
+
+      canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - prevMouse.x;
+        const dy = e.clientY - prevMouse.y;
+        rotY += dx * 0.008;
+        rotX += dy * 0.008;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+
+      // UI Sliders
+      const xwSlider = document.getElementById('tess-xw-slider') as HTMLInputElement;
+      const ywSlider = document.getElementById('tess-yw-slider') as HTMLInputElement;
+      const zwSlider = document.getElementById('tess-zw-slider') as HTMLInputElement;
+      const distSlider = document.getElementById('tess-dist-slider') as HTMLInputElement;
+      const xwVal = document.getElementById('tess-xw-val');
+      const ywVal = document.getElementById('tess-yw-val');
+      const zwVal = document.getElementById('tess-zw-val');
+      const distVal = document.getElementById('tess-dist-val');
+
+      if (xwSlider) xwSlider.addEventListener('input', () => { rotSpeedXW = parseFloat(xwSlider.value); if (xwVal) xwVal.textContent = xwSlider.value; });
+      if (ywSlider) ywSlider.addEventListener('input', () => { rotSpeedYW = parseFloat(ywSlider.value); if (ywVal) ywVal.textContent = ywSlider.value; });
+      if (zwSlider) zwSlider.addEventListener('input', () => { rotSpeedZW = parseFloat(zwSlider.value); if (zwVal) zwVal.textContent = zwSlider.value; });
+      if (distSlider) distSlider.addEventListener('input', () => { eyeDistanceW = parseFloat(distSlider.value); if (distVal) distVal.textContent = distSlider.value; });
+
+      // Presets
+      document.querySelectorAll('[data-tess-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-tess-preset]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const p = btn.getAttribute('data-tess-preset');
+          if (p === 'inside-out') { rotSpeedXW = 0.02; rotSpeedYW = 0; rotSpeedZW = 0; }
+          else if (p === 'double-rot') { rotSpeedXW = 0.015; rotSpeedYW = 0.015; rotSpeedZW = 0; }
+          else if (p === 'full-chaos') { rotSpeedXW = 0.02; rotSpeedYW = 0.015; rotSpeedZW = 0.01; }
+          else if (p === 'static-cube') { rotSpeedXW = 0; rotSpeedYW = 0; rotSpeedZW = 0; angleXW = 0; angleYW = 0; angleZW = 0; }
+          if (xwSlider) xwSlider.value = rotSpeedXW.toString();
+          if (ywSlider) ywSlider.value = rotSpeedYW.toString();
+          if (zwSlider) zwSlider.value = rotSpeedZW.toString();
+        });
+      });
+
+      // 4D Rotation matrix helper
+      function rotate4D(p: number[], aXW: number, aYW: number, aZW: number): number[] {
+        let [x, y, z, w] = p;
+        // XW plane
+        const cosXW = Math.cos(aXW), sinXW = Math.sin(aXW);
+        const x1 = x * cosXW - w * sinXW;
+        const w1 = x * sinXW + w * cosXW;
+        // YW plane
+        const cosYW = Math.cos(aYW), sinYW = Math.sin(aYW);
+        const y2 = y * cosYW - w1 * sinYW;
+        const w2 = y * sinYW + w1 * cosYW;
+        // ZW plane
+        const cosZW = Math.cos(aZW), sinZW = Math.sin(aZW);
+        const z3 = z * cosZW - w2 * sinZW;
+        const w3 = z * sinZW + w2 * cosZW;
+        return [x1, y2, z3, w3];
+      }
+
+      function project4Dto3D(p: number[]): THREE.Vector3 {
+        const [x, y, z, w] = p;
+        const scale = eyeDistanceW / (eyeDistanceW - w);
+        return new THREE.Vector3(x * scale, y * scale, z * scale);
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (currentActiveTab !== 'tesseract') return;
+
+        angleXW += rotSpeedXW;
+        angleYW += rotSpeedYW;
+        angleZW += rotSpeedZW;
+
+        const projected3D: THREE.Vector3[] = [];
+        for (let i = 0; i < 16; i++) {
+          const rot = rotate4D(baseVertices4D[i], angleXW, angleYW, angleZW);
+          const p3 = project4Dto3D(rot);
+          projected3D.push(p3);
+          vertexSpheres[i].position.copy(p3);
+        }
+
+        const posAttr = edgeGeo.attributes.position as THREE.BufferAttribute;
+        const arr = posAttr.array as Float32Array;
+        for (let e = 0; e < 32; e++) {
+          const [i, j] = edges4D[e];
+          const vA = projected3D[i];
+          const vB = projected3D[j];
+          arr[e * 6 + 0] = vA.x; arr[e * 6 + 1] = vA.y; arr[e * 6 + 2] = vA.z;
+          arr[e * 6 + 3] = vB.x; arr[e * 6 + 4] = vB.y; arr[e * 6 + 5] = vB.z;
+        }
+        posAttr.needsUpdate = true;
+
+        scene.rotation.x = rotX;
+        scene.rotation.y = rotY;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+    })();
+
+    // ==========================================
+    // SIMULATION 2: LORENZ 3D CHAOS (Three.js)
+    // ==========================================
+    (function setupLorenz() {
+      const canvas = document.getElementById('lorenz-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(canvas.clientWidth || 600, canvas.clientHeight || 520, false);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, (canvas.clientWidth || 600) / (canvas.clientHeight || 520), 0.1, 200);
+      camera.position.set(0, 0, 75);
+
+      const particleCount = 28000;
+      const positions = new Float32Array(particleCount * 3);
+      const colors = new Float32Array(particleCount * 3);
+
+      let sigma = 10, rho = 28, beta = 8 / 3;
+
+      // Seed particles slightly clustered near (0.1, 0, 0)
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3 + 0] = (Math.random() - 0.5) * 20;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+        positions[i * 3 + 2] = 10 + Math.random() * 30;
+
+        colors[i * 3 + 0] = 0.05 + 0.9 * Math.random();
+        colors[i * 3 + 1] = 0.5 + 0.5 * Math.random();
+        colors[i * 3 + 2] = 0.95;
+      }
+
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const mat = new THREE.PointsMaterial({
+        size: 0.35,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending
+      });
+      const particleSystem = new THREE.Points(geo, mat);
+      scene.add(particleSystem);
+
+      let rotX = 0, rotY = 0;
+      let isDragging = false;
+      let prevMouse = { x: 0, y: 0 };
+
+      canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - prevMouse.x;
+        const dy = e.clientY - prevMouse.y;
+        rotY += dx * 0.008;
+        rotX += dy * 0.008;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+
+      // UI Sliders
+      const rhoSlider = document.getElementById('lorenz-rho-slider') as HTMLInputElement;
+      const sigmaSlider = document.getElementById('lorenz-sigma-slider') as HTMLInputElement;
+      const betaSlider = document.getElementById('lorenz-beta-slider') as HTMLInputElement;
+      const rhoVal = document.getElementById('lorenz-rho-val');
+      const sigmaVal = document.getElementById('lorenz-sigma-val');
+      const betaVal = document.getElementById('lorenz-beta-val');
+
+      if (rhoSlider) rhoSlider.addEventListener('input', () => { rho = parseFloat(rhoSlider.value); if (rhoVal) rhoVal.textContent = rhoSlider.value; });
+      if (sigmaSlider) sigmaSlider.addEventListener('input', () => { sigma = parseFloat(sigmaSlider.value); if (sigmaVal) sigmaVal.textContent = sigmaSlider.value; });
+      if (betaSlider) betaSlider.addEventListener('input', () => { beta = parseFloat(betaSlider.value); if (betaVal) betaVal.textContent = betaSlider.value; });
+
+      // Presets
+      document.querySelectorAll('[data-lorenz-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-lorenz-preset]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const p = btn.getAttribute('data-lorenz-preset');
+          if (p === 'classic') { rho = 28; sigma = 10; beta = 8/3; }
+          else if (p === 'turbulent') { rho = 48; sigma = 12; beta = 8/3; }
+          else if (p === 'limit-cycle') { rho = 14; sigma = 10; beta = 8/3; }
+          else if (p === 'reset-particles') {
+            for (let i = 0; i < particleCount; i++) {
+              positions[i * 3 + 0] = (Math.random() - 0.5) * 40;
+              positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+              positions[i * 3 + 2] = 20 + Math.random() * 20;
+            }
+          }
+          if (rhoSlider) rhoSlider.value = rho.toString();
+          if (sigmaSlider) sigmaSlider.value = sigma.toString();
+          if (betaSlider) betaSlider.value = beta.toFixed(2);
+        });
+      });
+
+      const dt = 0.007;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (currentActiveTab !== 'lorenz') return;
+
+        const pos = geo.attributes.position.array as Float32Array;
+        const col = geo.attributes.color.array as Float32Array;
+
+        for (let i = 0; i < particleCount; i++) {
+          const idx = i * 3;
+          let x = pos[idx + 0];
+          let y = pos[idx + 1];
+          let z = pos[idx + 2];
+
+          // Lorenz Differential Equations
+          const dx = sigma * (y - x);
+          const dy = x * (rho - z) - y;
+          const dz = x * y - beta * z;
+
+          x += dx * dt;
+          y += dy * dt;
+          z += dz * dt;
+
+          pos[idx + 0] = x;
+          pos[idx + 1] = y;
+          pos[idx + 2] = z;
+
+          // Dynamic Neon color mapping based on speed and z-coordinate
+          const speed = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          col[idx + 0] = Math.min(1, speed * 0.02 + 0.1);
+          col[idx + 1] = Math.min(1, 0.2 + (z / 50) * 0.7);
+          col[idx + 2] = Math.min(1, 0.9 - (speed * 0.01));
+        }
+
+        geo.attributes.position.needsUpdate = true;
+        geo.attributes.color.needsUpdate = true;
+
+        particleSystem.rotation.y += 0.003;
+        particleSystem.rotation.x = rotX;
+        particleSystem.rotation.y += rotY * 0.02;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+    })();
+
+    // ==========================================
+    // SIMULATION 3: GPU FRACTAL DEEP ZOOM (WebGL Shader)
+    // ==========================================
+    (function setupFractal() {
+      const canvas = document.getElementById('fractal-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+
+      const gl = canvas.getContext('webgl');
+      if (!gl) return;
+
+      // Vertex shader
+      const vsSource = `
+        attribute vec2 a_pos;
+        void main() {
+          gl_Position = vec4(a_pos, 0.0, 1.0);
+        }
+      `;
+
+      // Fragment shader
+      const fsSource = `
+        precision highp float;
+        uniform vec2 u_res;
+        uniform vec2 u_center;
+        uniform float u_zoom;
+        uniform int u_max_iter;
+        uniform int u_mode; // 0 = mandelbrot, 1 = julia
+        uniform vec2 u_julia_c;
+        uniform int u_palette;
+
+        vec3 getPalette(float t, int p) {
+          if (p == 0) {
+            // Cyberpunk
+            return vec3(0.5 + 0.5*cos(6.28318*(t + 0.0)),
+                        0.5 + 0.5*cos(6.28318*(t + 0.33)),
+                        0.5 + 0.5*cos(6.28318*(t + 0.67)));
+          } else if (p == 1) {
+            // Solar Fire
+            return vec3(clamp(t * 2.0, 0.0, 1.0),
+                        clamp(t * t * 1.5, 0.0, 1.0),
+                        clamp(pow(t, 4.0), 0.0, 1.0));
+          } else if (p == 2) {
+            // Deep Ocean
+            return vec3(0.1 + 0.2*sin(t*5.0),
+                        0.4 + 0.5*cos(t*4.0),
+                        0.8 + 0.2*sin(t*3.0));
+          } else if (p == 3) {
+            // Rainbow
+            return vec3(0.5 + 0.5*sin(t*6.28),
+                        0.5 + 0.5*sin(t*6.28 + 2.09),
+                        0.5 + 0.5*sin(t*6.28 + 4.18));
+          } else {
+            // Emerald Quantum
+            return vec3(0.1, 0.8*t + 0.2, 0.5*t + 0.1);
+          }
+        }
+
+        void main() {
+          vec2 uv = (gl_FragCoord.xy - u_res * 0.5) / min(u_res.x, u_res.y);
+          vec2 c = u_center + uv * (3.0 / u_zoom);
+          vec2 z = (u_mode == 0) ? c : c;
+          vec2 constC = (u_mode == 0) ? c : u_julia_c;
+
+          float n = 0.0;
+          float maxI = float(u_max_iter);
+          for (int i = 0; i < 350; i++) {
+            if (float(i) >= maxI) break;
+            if (dot(z, z) > 4.0) { n = float(i); break; }
+            z = vec2(z.x*z.x - z.y*z.y, 2.0*z.x*z.y) + constC;
+          }
+
+          if (n == 0.0 && dot(z, z) <= 4.0) {
+            gl_FragColor = vec4(0.04, 0.06, 0.12, 1.0);
+          } else {
+            // Smooth coloring formula
+            float smoothN = n - log2(max(1.0, log2(dot(z, z)))) + 4.0;
+            float t = smoothN / maxI;
+            vec3 col = getPalette(t * 3.5, u_palette);
+            gl_FragColor = vec4(col, 1.0);
+          }
+        }
+      `;
+
+      function createShader(gl: WebGLRenderingContext, type: number, source: string) {
+        const s = gl.createShader(type)!;
+        gl.shaderSource(s, source);
+        gl.compileShader(s);
+        return s;
+      }
+
+      const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
+      const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+      const prog = gl.createProgram()!;
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
+
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, -1, 1, -1, -1, 1,
+        -1, 1, 1, -1, 1, 1
+      ]), gl.STATIC_DRAW);
+
+      const aPos = gl.getAttribLocation(prog, 'a_pos');
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+      const uRes = gl.getUniformLocation(prog, 'u_res');
+      const uCenter = gl.getUniformLocation(prog, 'u_center');
+      const uZoom = gl.getUniformLocation(prog, 'u_zoom');
+      const uMaxIter = gl.getUniformLocation(prog, 'u_max_iter');
+      const uMode = gl.getUniformLocation(prog, 'u_mode');
+      const uJuliaC = gl.getUniformLocation(prog, 'u_julia_c');
+      const uPalette = gl.getUniformLocation(prog, 'u_palette');
+
+      let centerX = -0.7, centerY = 0.0;
+      let zoom = 1.0;
+      let maxIter = 120;
+      let mode = 0; // 0=Mandelbrot, 1=Julia
+      let juliaC = [-0.7, 0.27015];
+      let paletteIdx = 0;
+      let isAutoZooming = false;
+
+      const zoomDisp = document.getElementById('fractal-zoom-display');
+      const coordDisp = document.getElementById('fractal-coords-display');
+      const iterSlider = document.getElementById('fractal-iter-slider') as HTMLInputElement;
+      const iterVal = document.getElementById('fractal-iter-val');
+
+      if (iterSlider) {
+        iterSlider.addEventListener('input', () => {
+          maxIter = parseInt(iterSlider.value);
+          if (iterVal) iterVal.textContent = maxIter.toString();
+        });
+      }
+
+      // Drag to pan
+      let isDragging = false;
+      let lastX = 0, lastY = 0;
+      canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastX = e.clientX;
+        lastY = e.clientY;
+      });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        const scale = 3.0 / (zoom * Math.min(canvas.width, canvas.height));
+        centerX -= dx * scale;
+        centerY += dy * scale;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        updateHUD();
+      });
+
+      // Mouse wheel zoom
+      canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.15 : 0.87;
+        zoom *= factor;
+        if (zoom < 0.5) zoom = 0.5;
+        updateHUD();
+      });
+
+      function updateHUD() {
+        if (zoomDisp) zoomDisp.textContent = zoom >= 1000 ? zoom.toExponential(1) + '×' : zoom.toFixed(1) + '×';
+        if (coordDisp) coordDisp.textContent = `(${centerX.toFixed(4)}, ${centerY.toFixed(4)})`;
+      }
+
+      // Modes
+      document.querySelectorAll('[data-fractal-mode]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-fractal-mode]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const m = btn.getAttribute('data-fractal-mode');
+          if (m === 'mandelbrot') { mode = 0; centerX = -0.7; centerY = 0; zoom = 1.0; }
+          else if (m === 'julia1') { mode = 1; juliaC = [-0.7, 0.27015]; centerX = 0; centerY = 0; zoom = 1.0; }
+          else if (m === 'julia2') { mode = 1; juliaC = [-0.4, 0.6]; centerX = 0; centerY = 0; zoom = 1.0; }
+          else if (m === 'julia3') { mode = 1; juliaC = [-0.8, 0.156]; centerX = 0; centerY = 0; zoom = 1.0; }
+          updateHUD();
+        });
+      });
+
+      // Palettes
+      const paletteMap: Record<string, number> = { cyberpunk: 0, fire: 1, ocean: 2, rainbow: 3, emerald: 4 };
+      document.querySelectorAll('[data-palette]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-palette]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const p = btn.getAttribute('data-palette') || 'cyberpunk';
+          paletteIdx = paletteMap[p] ?? 0;
+        });
+      });
+
+      const btnAuto = document.getElementById('btn-fractal-autozoom');
+      if (btnAuto) {
+        btnAuto.addEventListener('click', () => {
+          isAutoZooming = !isAutoZooming;
+          btnAuto.textContent = isAutoZooming ? '⏸️ To\'xtatish' : '🚀 Avto-Zum (Kino rejimi)';
+          if (isAutoZooming) {
+            centerX = -0.743643887037158704752191506114774;
+            centerY = 0.131825904205311970493132056385139;
+          }
+        });
+      }
+
+      const btnReset = document.getElementById('btn-fractal-reset');
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          isAutoZooming = false;
+          if (btnAuto) btnAuto.textContent = '🚀 Avto-Zum (Kino rejimi)';
+          centerX = -0.7; centerY = 0.0; zoom = 1.0; maxIter = 120;
+          if (iterSlider) iterSlider.value = '120';
+          updateHUD();
+        });
+      }
+
+      function render() {
+        requestAnimationFrame(render);
+        if (currentActiveTab !== 'fractal') return;
+
+        if (isAutoZooming) {
+          zoom *= 1.018;
+          updateHUD();
+        }
+
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform2f(uCenter, centerX, centerY);
+        gl.uniform1f(uZoom, zoom);
+        gl.uniform1i(uMaxIter, maxIter);
+        gl.uniform1i(uMode, mode);
+        gl.uniform2f(uJuliaC, juliaC[0], juliaC[1]);
+        gl.uniform1i(uPalette, paletteIdx);
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      }
+      render();
+    })();
+
+    // ==========================================
+    // SIMULATION 4: COSMIC GRAVITY & N-BODY SANDBOX
+    // ==========================================
+    (function setupGravity() {
+      const canvas = document.getElementById('gravity-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      interface Body {
+        x: number;
+        y: number;
+        vx: number;
+        vy: number;
+        mass: number;
+        radius: number;
+        color: string;
+        trail: { x: number; y: number }[];
+      }
+
+      let bodies: Body[] = [];
+      let G = 1.0;
+      let isPaused = false;
+      let showTrails = true;
+      let spawnType = 'planet';
+
+      const bodyCountDisp = document.getElementById('grav-body-count');
+      const gSlider = document.getElementById('grav-g-slider') as HTMLInputElement;
+      const gVal = document.getElementById('grav-g-val');
+
+      if (gSlider) {
+        gSlider.addEventListener('input', () => {
+          G = parseFloat(gSlider.value);
+          if (gVal) gVal.textContent = gSlider.value;
+        });
+      }
+
+      function loadPreset(preset: string) {
+        bodies = [];
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+
+        if (preset === 'solar') {
+          // Central Star
+          bodies.push({ x: cx, y: cy, vx: 0, vy: 0, mass: 9000, radius: 18, color: '#fbbf24', trail: [] });
+          // Planets
+          const planetData = [
+            { dist: 70, v: 11.2, m: 20, r: 4, col: '#94a3b8' },
+            { dist: 120, v: 8.6, m: 50, r: 6, col: '#f97316' },
+            { dist: 180, v: 7.0, m: 70, r: 7, col: '#38bdf8' },
+            { dist: 240, v: 6.1, m: 45, r: 5.5, col: '#ec4899' }
+          ];
+          planetData.forEach(p => {
+            bodies.push({
+              x: cx,
+              y: cy - p.dist,
+              vx: p.v,
+              vy: 0,
+              mass: p.m,
+              radius: p.r,
+              color: p.col,
+              trail: []
+            });
+          });
+        } else if (preset === 'figure8') {
+          // Famous Figure-8 Three-Body Solution
+          const x1 = 150, y1 = 0;
+          const vx = 4.2, vy = 9.8;
+          const m = 3500;
+          bodies.push({ x: cx - x1, y: cy, vx: 0, vy: -vy * 0.5, mass: m, radius: 10, color: '#38bdf8', trail: [] });
+          bodies.push({ x: cx + x1, y: cy, vx: 0, vy: -vy * 0.5, mass: m, radius: 10, color: '#ec4899', trail: [] });
+          bodies.push({ x: cx, y: cy, vx: 0, vy: vy, mass: m, radius: 10, color: '#fbbf24', trail: [] });
+        } else if (preset === 'binary') {
+          bodies.push({ x: cx - 80, y: cy, vx: 0, vy: 5.5, mass: 6000, radius: 14, color: '#f59e0b', trail: [] });
+          bodies.push({ x: cx + 80, y: cy, vx: 0, vy: -5.5, mass: 6000, radius: 14, color: '#ec4899', trail: [] });
+          bodies.push({ x: cx, y: cy - 190, vx: 7.2, vy: 0, mass: 30, radius: 5, color: '#38bdf8', trail: [] });
+        } else if (preset === 'chaos') {
+          bodies.push({ x: cx, y: cy, vx: 0, vy: 0, mass: 12000, radius: 20, color: '#fbbf24', trail: [] });
+          for (let i = 0; i < 30; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = 50 + Math.random() * 180;
+            const spd = Math.sqrt((G * 12000) / dist) * (0.85 + Math.random() * 0.3);
+            bodies.push({
+              x: cx + Math.cos(angle) * dist,
+              y: cy + Math.sin(angle) * dist,
+              vx: -Math.sin(angle) * spd,
+              vy: Math.cos(angle) * spd,
+              mass: 15 + Math.random() * 25,
+              radius: 3 + Math.random() * 3,
+              color: i % 2 === 0 ? '#38bdf8' : '#ec4899',
+              trail: []
+            });
+          }
+        }
+        if (bodyCountDisp) bodyCountDisp.textContent = bodies.length.toString();
+      }
+
+      loadPreset('solar');
+
+      // Presets buttons
+      document.querySelectorAll('[data-grav-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-grav-preset]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const p = btn.getAttribute('data-grav-preset') || 'solar';
+          loadPreset(p);
+        });
+      });
+
+      // Spawn type buttons
+      document.querySelectorAll('[data-spawn-type]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-spawn-type]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          spawnType = btn.getAttribute('data-spawn-type') || 'planet';
+        });
+      });
+
+      // Controls
+      const btnPause = document.getElementById('btn-grav-pause');
+      if (btnPause) {
+        btnPause.addEventListener('click', () => {
+          isPaused = !isPaused;
+          btnPause.textContent = isPaused ? '▶️ Davom' : '⏸️ Pauza';
+        });
+      }
+
+      const btnClear = document.getElementById('btn-grav-clear');
+      if (btnClear) {
+        btnClear.addEventListener('click', () => {
+          bodies = [];
+          if (bodyCountDisp) bodyCountDisp.textContent = '0';
+        });
+      }
+
+      const btnTrails = document.getElementById('btn-grav-trails');
+      if (btnTrails) {
+        btnTrails.addEventListener('click', () => {
+          showTrails = !showTrails;
+          btnTrails.textContent = showTrails ? 'Orbita Izlari: On' : 'Orbita Izlari: Off';
+        });
+      }
+
+      // Slingshot mouse interaction
+      let isSlingshot = false;
+      let startX = 0, startY = 0;
+      let currentX = 0, currentY = 0;
+
+      canvas.addEventListener('mousedown', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        startX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        startY = (e.clientY - rect.top) * (canvas.height / rect.height);
+        currentX = startX;
+        currentY = startY;
+        isSlingshot = true;
+      });
+
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isSlingshot) return;
+        const rect = canvas.getBoundingClientRect();
+        currentX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        currentY = (e.clientY - rect.top) * (canvas.height / rect.height);
+      });
+
+      canvas.addEventListener('mouseup', () => {
+        if (!isSlingshot) return;
+        isSlingshot = false;
+
+        const vx = (startX - currentX) * 0.12;
+        const vy = (startY - currentY) * 0.12;
+
+        let mass = 100, radius = 6, color = '#38bdf8';
+        if (spawnType === 'sun') { mass = 8000; radius = 18; color = '#fbbf24'; }
+        else if (spawnType === 'blackhole') { mass = 30000; radius = 12; color = '#a855f7'; }
+        else if (spawnType === 'moon') { mass = 15; radius = 4; color = '#cbd5e1'; }
+
+        bodies.push({ x: startX, y: startY, vx, vy, mass, radius, color, trail: [] });
+        if (bodyCountDisp) bodyCountDisp.textContent = bodies.length.toString();
+      });
+
+      function updatePhysics() {
+        const dt = 0.5;
+        const softening = 120;
+
+        for (let i = 0; i < bodies.length; i++) {
+          for (let j = i + 1; j < bodies.length; j++) {
+            const b1 = bodies[i];
+            const b2 = bodies[j];
+            const dx = b2.x - b1.x;
+            const dy = b2.y - b1.y;
+            const distSq = dx * dx + dy * dy + softening;
+            const dist = Math.sqrt(distSq);
+
+            const force = (G * b1.mass * b2.mass) / distSq;
+            const fx = (force * dx) / dist;
+            const fy = (force * dy) / dist;
+
+            b1.vx += (fx / b1.mass) * dt;
+            b1.vy += (fy / b1.mass) * dt;
+            b2.vx -= (fx / b2.mass) * dt;
+            b2.vy -= (fy / b2.mass) * dt;
+
+            // Merge collision
+            if (dist < (b1.radius + b2.radius) * 0.8) {
+              const totalM = b1.mass + b2.mass;
+              b1.vx = (b1.vx * b1.mass + b2.vx * b2.mass) / totalM;
+              b1.vy = (b1.vy * b1.mass + b2.vy * b2.mass) / totalM;
+              b1.mass = totalM;
+              b1.radius = Math.min(28, Math.pow(totalM, 0.33) * 2.2);
+              bodies.splice(j, 1);
+              j--;
+              if (bodyCountDisp) bodyCountDisp.textContent = bodies.length.toString();
+            }
+          }
+        }
+
+        // Apply velocities & update trails
+        for (const b of bodies) {
+          b.x += b.vx * dt;
+          b.y += b.vy * dt;
+
+          if (showTrails) {
+            b.trail.push({ x: b.x, y: b.y });
+            if (b.trail.length > 60) b.trail.shift();
+          }
+        }
+      }
+
+      function draw() {
+        requestAnimationFrame(draw);
+        if (currentActiveTab !== 'gravity') return;
+
+        if (!isPaused) updatePhysics();
+
+        ctx.fillStyle = '#060913';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Grid dots
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+        for (let x = 20; x < canvas.width; x += 40) {
+          for (let y = 20; y < canvas.height; y += 40) {
+            ctx.fillRect(x, y, 1.5, 1.5);
+          }
+        }
+
+        // Draw orbital trails
+        if (showTrails) {
+          for (const b of bodies) {
+            if (b.trail.length < 2) continue;
+            ctx.beginPath();
+            ctx.moveTo(b.trail[0].x, b.trail[0].y);
+            for (let i = 1; i < b.trail.length; i++) {
+              ctx.lineTo(b.trail[i].x, b.trail[i].y);
+            }
+            ctx.strokeStyle = b.color;
+            ctx.globalAlpha = 0.25;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+          }
+        }
+
+        // Draw bodies
+        for (const b of bodies) {
+          // Glow
+          const grad = ctx.createRadialGradient(b.x, b.y, b.radius * 0.2, b.x, b.y, b.radius * 2.5);
+          grad.addColorStop(0, b.color);
+          grad.addColorStop(1, 'transparent');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.radius * 2.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Core
+          ctx.fillStyle = b.color;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw Slingshot aim vector
+        if (isSlingshot) {
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(currentX, currentY);
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 2;
+          ctx.setLineDash([4, 4]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Predicted launch velocity line
+          const vx = (startX - currentX);
+          const vy = (startY - currentY);
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(startX + vx, startY + vy);
+          ctx.strokeStyle = '#ec4899';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+      }
+      draw();
+    })();
+
+    // ==========================================
+    // SIMULATION 5: MATRIX WARP (3Blue1Brown)
+    // ==========================================
+    (function setupMatrixWarp() {
+      const matCanvas = document.getElementById('matrix-canvas') as HTMLCanvasElement;
+      if (!matCanvas) return;
+      const ctx = matCanvas.getContext('2d');
+      if (!ctx) return;
+
+      const w = matCanvas.width;
+      const h = matCanvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const scale = 50;
+
       let a = 1, b = 1, c = 0, d = 1;
       let animProgress = 1;
       let animId: number | null = null;
@@ -814,871 +2179,797 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const det = a * d - b * c;
         if (detDisplay) detDisplay.textContent = det.toFixed(2);
         if (statusDisplay) {
-          if (Math.abs(det) < 1e-4) {
-            statusDisplay.textContent = 'Yassilanadi (1D chiziqqa qulaydi)';
-            statusDisplay.style.color = '#ef4444';
+          if (Math.abs(det) < 0.001) {
+            statusDisplay.textContent = "Fazo chiziqqa quladi (det = 0)";
+            statusDisplay.style.color = "#ef4444";
           } else if (det < 0) {
-            statusDisplay.textContent = 'Fazo to\'ntariladi (Akslanish)';
-            statusDisplay.style.color = '#f59e0b';
+            statusDisplay.textContent = "Fazo teskarisiga aylandi (Oriyentatsiya buzildi)";
+            statusDisplay.style.color = "#f59e0b";
           } else {
-            statusDisplay.textContent = `Maydon ${det.toFixed(2)}x o'zgaradi`;
-            statusDisplay.style.color = '#10b981';
+            statusDisplay.textContent = `${Math.abs(det).toFixed(1)}x maydon kattalashuvi`;
+            statusDisplay.style.color = "#10b981";
           }
         }
-        drawMatrixWarp();
+        drawMatrixGrid();
       }
 
-      function drawMatrixWarp() {
-        const width = matCanvas.width;
-        const height = matCanvas.height;
-        const cx = width / 2;
-        const cy = height / 2;
-        const scale = 50; // pixels per unit
-
-        ctx.clearRect(0, 0, width, height);
-
-        // Interpolated matrix: M(t) = (1-t) * I + t * A
-        const t = animProgress;
-        const ma = 1 + (a - 1) * t;
-        const mb = 0 + b * t;
-        const mc = 0 + c * t;
-        const md = 1 + (d - 1) * t;
-
-        // Transform point helper
-        function tf(x: number, y: number) {
-          const tx = ma * x + mb * y;
-          const ty = mc * x + md * y;
-          return {
-            px: cx + tx * scale,
-            py: cy - ty * scale
-          };
-        }
-
-        // Draw original faint grid
-        ctx.strokeStyle = 'rgba(150, 150, 150, 0.15)';
-        ctx.lineWidth = 1;
-        for (let i = -8; i <= 8; i++) {
-          ctx.beginPath();
-          ctx.moveTo(cx + i * scale, 0);
-          ctx.lineTo(cx + i * scale, height);
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(0, cy + i * scale);
-          ctx.lineTo(width, cy + i * scale);
-          ctx.stroke();
-        }
-
-        // Draw Transformed Grid Lines
-        ctx.strokeStyle = 'rgba(59, 130, 246, 0.45)';
-        ctx.lineWidth = 1.2;
-
-        const range = 8;
-        // Transformed vertical lines
-        for (let x = -range; x <= range; x++) {
-          const p1 = tf(x, -range);
-          const p2 = tf(x, range);
-          ctx.beginPath();
-          ctx.moveTo(p1.px, p1.py);
-          ctx.lineTo(p2.px, p2.py);
-          ctx.stroke();
-        }
-        // Transformed horizontal lines
-        for (let y = -range; y <= range; y++) {
-          const p1 = tf(-range, y);
-          const p2 = tf(range, y);
-          ctx.beginPath();
-          ctx.moveTo(p1.px, p1.py);
-          ctx.lineTo(p2.px, p2.py);
-          ctx.stroke();
-        }
-
-        // Shaded Unit Parallelogram (Determinant visualization)
-        const p00 = tf(0, 0);
-        const p10 = tf(1, 0);
-        const p11 = tf(1, 1);
-        const p01 = tf(0, 1);
-
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.28)';
-        ctx.beginPath();
-        ctx.moveTo(p00.px, p00.py);
-        ctx.lineTo(p10.px, p10.py);
-        ctx.lineTo(p11.px, p11.py);
-        ctx.lineTo(p01.px, p01.py);
-        ctx.closePath();
-        ctx.fill();
-
-        // Main coordinate axes
-        ctx.strokeStyle = 'rgba(100, 100, 100, 0.6)';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(0, cy);
-        ctx.lineTo(width, cy);
-        ctx.moveTo(cx, 0);
-        ctx.lineTo(cx, height);
-        ctx.stroke();
-
-        // Draw Basis Vector î (Red)
-        drawArrow(ctx, p00.px, p00.py, p10.px, p10.py, '#ef4444', 3.5);
-        // Draw Basis Vector ĵ (Green)
-        drawArrow(ctx, p00.px, p00.py, p01.px, p01.py, '#10b981', 3.5);
-      }
-
-      function drawArrow(ctx: CanvasRenderingContext2D, fromx: number, fromy: number, tox: number, toy: number, color: string, width: number) {
-        const headlen = 10;
-        const dx = tox - fromx;
-        const dy = toy - fromy;
-        const angle = Math.atan2(dy, dx);
-        ctx.strokeStyle = color;
-        ctx.fillStyle = color;
-        ctx.lineWidth = width;
-
-        ctx.beginPath();
-        ctx.moveTo(fromx, fromy);
-        ctx.lineTo(tox, toy);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(tox, toy);
-        ctx.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
-        ctx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
-        ctx.closePath();
-        ctx.fill();
-      }
-
-      [inputA, inputB, inputC, inputD].forEach(inp => {
-        inp?.addEventListener('input', updateMatrixVals);
+      [inputA, inputB, inputC, inputD].forEach(input => {
+        if (input) input.addEventListener('input', updateMatrixVals);
       });
 
-      sliderT?.addEventListener('input', () => {
-        animProgress = parseFloat(sliderT.value);
-        if (timeVal) timeVal.textContent = Math.round(animProgress * 100) + '%';
-        drawMatrixWarp();
-      });
-
-      document.getElementById('btn-animate-matrix')?.addEventListener('click', () => {
-        if (animId) cancelAnimationFrame(animId);
-        animProgress = 0;
-        const startTime = performance.now();
-        const duration = 1200; // ms
-
-        function step(now: number) {
-          const elapsed = now - startTime;
-          const rawP = Math.min(1, elapsed / duration);
-          // Ease out cubic
-          animProgress = 1 - Math.pow(1 - rawP, 3);
-          if (sliderT) sliderT.value = animProgress.toString();
+      if (sliderT) {
+        sliderT.addEventListener('input', () => {
+          animProgress = parseFloat(sliderT.value);
           if (timeVal) timeVal.textContent = Math.round(animProgress * 100) + '%';
-          drawMatrixWarp();
-          if (rawP < 1) animId = requestAnimationFrame(step);
-        }
-        animId = requestAnimationFrame(step);
-      });
+          drawMatrixGrid();
+        });
+      }
 
-      document.getElementById('btn-reset-matrix')?.addEventListener('click', () => {
-        inputA.value = '1'; inputB.value = '0';
-        inputC.value = '0'; inputD.value = '1';
-        sliderT.value = '1';
-        animProgress = 1;
-        if (timeVal) timeVal.textContent = '100%';
-        updateMatrixVals();
-      });
-
-      // Presets
-      document.querySelectorAll('#panel-matrix-warp .preset-pill').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const type = btn.getAttribute('data-preset');
-          if (type === 'shear') { inputA.value = '1'; inputB.value = '1'; inputC.value = '0'; inputD.value = '1'; }
-          if (type === 'rotate45') {
-            const val = (Math.SQRT2 / 2).toFixed(2);
-            inputA.value = val; inputB.value = (-val).toString(); inputC.value = val; inputD.value = val;
+      const btnAnimate = document.getElementById('btn-animate-matrix');
+      if (btnAnimate) {
+        btnAnimate.addEventListener('click', () => {
+          if (animId) cancelAnimationFrame(animId);
+          animProgress = 0;
+          function step() {
+            animProgress += 0.02;
+            if (animProgress > 1) animProgress = 1;
+            if (sliderT) sliderT.value = animProgress.toString();
+            if (timeVal) timeVal.textContent = Math.round(animProgress * 100) + '%';
+            drawMatrixGrid();
+            if (animProgress < 1) animId = requestAnimationFrame(step);
           }
-          if (type === 'rotate90') { inputA.value = '0'; inputB.value = '-1'; inputC.value = '1'; inputD.value = '0'; }
-          if (type === 'scale2') { inputA.value = '2'; inputB.value = '0'; inputC.value = '0'; inputD.value = '2'; }
-          if (type === 'reflect') { inputA.value = '1'; inputB.value = '0'; inputC.value = '0'; inputD.value = '-1'; }
-          if (type === 'squash') { inputA.value = '1'; inputB.value = '2'; inputC.value = '0.5'; inputD.value = '1'; } // det = 0
+          step();
+        });
+      }
 
+      const btnReset = document.getElementById('btn-reset-matrix');
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          inputA.value = "1"; inputB.value = "0";
+          inputC.value = "0"; inputD.value = "1";
+          animProgress = 1;
+          if (sliderT) sliderT.value = "1";
+          if (timeVal) timeVal.textContent = "100%";
           updateMatrixVals();
-          document.getElementById('btn-animate-matrix')?.click();
+        });
+      }
+
+      document.querySelectorAll('[data-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const p = btn.getAttribute('data-preset');
+          if (p === 'shear') { inputA.value = "1"; inputB.value = "1"; inputC.value = "0"; inputD.value = "1"; }
+          else if (p === 'rotate45') {
+            const rad = Math.PI / 4;
+            inputA.value = Math.cos(rad).toFixed(2); inputB.value = (-Math.sin(rad)).toFixed(2);
+            inputC.value = Math.sin(rad).toFixed(2); inputD.value = Math.cos(rad).toFixed(2);
+          }
+          else if (p === 'rotate90') { inputA.value = "0"; inputB.value = "-1"; inputC.value = "1"; inputD.value = "0"; }
+          else if (p === 'scale2') { inputA.value = "2"; inputB.value = "0"; inputC.value = "0"; inputD.value = "2"; }
+          else if (p === 'reflect') { inputA.value = "1"; inputB.value = "0"; inputC.value = "0"; inputD.value = "-1"; }
+          else if (p === 'squash') { inputA.value = "1"; inputB.value = "2"; inputC.value = "2"; inputD.value = "4"; }
+          updateMatrixVals();
         });
       });
 
+      function drawMatrixGrid() {
+        if (currentActiveTab !== 'matrix-warp') return;
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, w, h);
+
+        const curA = 1 + (a - 1) * animProgress;
+        const curB = 0 + (b - 0) * animProgress;
+        const curC = 0 + (c - 0) * animProgress;
+        const curD = 1 + (d - 1) * animProgress;
+
+        function transform(x: number, y: number) {
+          const tx = curA * x + curB * y;
+          const ty = curC * x + curD * y;
+          return { px: cx + tx * scale, py: cy - ty * scale };
+        }
+
+        // Draw Deformed Grid Lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.lineWidth = 1;
+        const range = 6;
+        for (let x = -range; x <= range; x++) {
+          const p1 = transform(x, -range);
+          const p2 = transform(x, range);
+          ctx.beginPath(); ctx.moveTo(p1.px, p1.py); ctx.lineTo(p2.px, p2.py); ctx.stroke();
+        }
+        for (let y = -range; y <= range; y++) {
+          const p1 = transform(-range, y);
+          const p2 = transform(range, y);
+          ctx.beginPath(); ctx.moveTo(p1.px, p1.py); ctx.lineTo(p2.px, p2.py); ctx.stroke();
+        }
+
+        // Unit Square / Parallelogram Determinant Area
+        const v0 = transform(0, 0);
+        const v1 = transform(1, 0);
+        const v2 = transform(1, 1);
+        const v3 = transform(0, 1);
+
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.35)';
+        ctx.beginPath();
+        ctx.moveTo(v0.px, v0.py);
+        ctx.lineTo(v1.px, v1.py);
+        ctx.lineTo(v2.px, v2.py);
+        ctx.lineTo(v3.px, v3.py);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#3b82f6';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Basis vector i-hat (Red)
+        ctx.strokeStyle = '#ef4444';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(v0.px, v0.py);
+        ctx.lineTo(v1.px, v1.py);
+        ctx.stroke();
+
+        // Basis vector j-hat (Green)
+        ctx.strokeStyle = '#10b981';
+        ctx.beginPath();
+        ctx.moveTo(v0.px, v0.py);
+        ctx.lineTo(v3.px, v3.py);
+        ctx.stroke();
+
+        // Origin Dot
+        ctx.fillStyle = '#f8fafc';
+        ctx.beginPath();
+        ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       updateMatrixVals();
-    }
+    })();
 
-    // ==============================================================
-    // SIMULATION 2: RIEMANN SUMS
-    // ==============================================================
-    const rCanvas = document.getElementById('riemann-canvas') as HTMLCanvasElement | null;
-    if (rCanvas) {
-      const ctx = rCanvas.getContext('2d')!;
-      let currentFunc = 'parabola';
-      let currentMode = 'mid';
+    // ==========================================
+    // SIMULATION 6: RIEMANN SUMS
+    // ==========================================
+    (function setupRiemann() {
+      const canvas = document.getElementById('riemann-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const w = canvas.width;
+      const h = canvas.height;
+      const a = 0, b = 2;
       let n = 10;
-      const a = 0;
-      const b = 2;
+      let mode = 'mid';
+      let funcType = 'parabola';
 
-      function fn(x: number): number {
-        if (currentFunc === 'parabola') return x * x;
-        if (currentFunc === 'sin') return Math.sin(x) + 1.2;
-        if (currentFunc === 'gauss') return 3 * Math.exp(-x * x);
-        if (currentFunc === 'poly') return x * x * x - 2 * x + 2.5;
+      const sliderN = document.getElementById('riemann-n-slider') as HTMLInputElement;
+      const nDisplay = document.getElementById('riemann-n-display');
+      const exactDisplay = document.getElementById('exact-integral-display');
+      const approxDisplay = document.getElementById('approx-integral-display');
+      const errorDisplay = document.getElementById('error-display');
+
+      function f(x: number): number {
+        if (funcType === 'parabola') return x * x;
+        if (funcType === 'sin') return Math.sin(x) + 1.2;
+        if (funcType === 'gauss') return 3 * Math.exp(-x * x);
+        if (funcType === 'poly') return x * x * x - 2 * x + 2.5;
         return x * x;
       }
 
-      function exactIntegral(): number {
-        if (currentFunc === 'parabola') return (b * b * b - a * a * a) / 3;
-        if (currentFunc === 'sin') return (-Math.cos(b) + 1.2 * b) - (-Math.cos(a) + 1.2 * a);
-        if (currentFunc === 'gauss') return 2.65868; // numerical on [0, 2]
-        if (currentFunc === 'poly') return (Math.pow(b, 4)/4 - b*b + 2.5*b) - (Math.pow(a, 4)/4 - a*a + 2.5*a);
+      function getExact(): number {
+        if (funcType === 'parabola') return 8 / 3;
+        if (funcType === 'sin') return (-Math.cos(2) + Math.cos(0)) + 1.2 * 2;
+        if (funcType === 'gauss') return 2.6544;
+        if (funcType === 'poly') return (16 / 4) - 2 * (4 / 2) + 2.5 * 2;
         return 8 / 3;
       }
 
-      function drawRiemann() {
-        const w = rCanvas.width;
-        const h = rCanvas.height;
-        ctx.clearRect(0, 0, w, h);
+      function draw() {
+        if (currentActiveTab !== 'riemann-sum') return;
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, w, h);
 
-        const padX = 50;
-        const padY = 50;
-        const plotW = w - padX * 2;
-        const plotH = h - padY * 2;
-        const maxY = 4.5;
+        const padX = 50, padY = 50;
+        const plotW = w - 2 * padX;
+        const plotH = h - 2 * padY;
 
+        let maxF = 4.5;
         function toPx(x: number, y: number) {
-          return {
-            x: padX + ((x - a) / (b - a)) * plotW,
-            y: h - padY - (y / maxY) * plotH
-          };
+          const px = padX + (x / 2.5) * plotW;
+          const py = h - padY - (y / maxF) * plotH;
+          return { px, py };
         }
 
         // Draw Axes
-        ctx.strokeStyle = 'rgba(150, 150, 150, 0.4)';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(padX, h - padY);
-        ctx.lineTo(w - padX + 20, h - padY);
-        ctx.moveTo(padX, h - padY);
-        ctx.lineTo(padX, 20);
-        ctx.stroke();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = 1;
+        const origin = toPx(0, 0);
+        ctx.beginPath(); ctx.moveTo(padX, origin.py); ctx.lineTo(w - padX, origin.py); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(origin.px, padY); ctx.lineTo(origin.px, h - padY); ctx.stroke();
 
-        // Calculate Riemann Sum
         const dx = (b - a) / n;
         let sum = 0;
 
         // Draw Rectangles
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.35)';
-        ctx.strokeStyle = 'rgba(37, 99, 235, 0.8)';
-        ctx.lineWidth = 1;
-
         for (let i = 0; i < n; i++) {
           const xLeft = a + i * dx;
           const xRight = xLeft + dx;
-          let evalX = xLeft;
-          if (currentMode === 'mid') evalX = xLeft + dx / 2;
-          if (currentMode === 'right') evalX = xRight;
+          let evalX = xLeft + dx / 2;
+          if (mode === 'left') evalX = xLeft;
+          if (mode === 'right') evalX = xRight;
 
-          const yVal = fn(evalX);
-          sum += yVal * dx;
+          const hVal = f(evalX);
+          sum += hVal * dx;
 
-          const pL = toPx(xLeft, yVal);
+          const pL = toPx(xLeft, 0);
           const pR = toPx(xRight, 0);
+          const pTop = toPx(xLeft, hVal);
 
-          if (currentMode === 'trap') {
-            const yL = fn(xLeft);
-            const yR = fn(xRight);
-            const ptL = toPx(xLeft, yL);
-            const ptR = toPx(xRight, yR);
-            const ptBL = toPx(xLeft, 0);
-            const ptBR = toPx(xRight, 0);
+          ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
+          ctx.fillRect(pL.px, pTop.py, pR.px - pL.px, pL.py - pTop.py);
 
-            ctx.beginPath();
-            ctx.moveTo(ptBL.x, ptBL.y);
-            ctx.lineTo(ptL.x, ptL.y);
-            ctx.lineTo(ptR.x, ptR.y);
-            ctx.lineTo(ptBR.x, ptBR.y);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
-          } else {
-            ctx.fillRect(pL.x, pL.y, pR.x - pL.x, h - padY - pL.y);
-            ctx.strokeRect(pL.x, pL.y, pR.x - pL.x, h - padY - pL.y);
-          }
+          ctx.strokeStyle = '#10b981';
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(pL.px, pTop.py, pR.px - pL.px, pL.py - pTop.py);
         }
 
-        if (currentMode === 'trap') {
-          // Trapezoid sum = dx * (f(a)/2 + sum + f(b)/2)
-          sum = 0;
-          for (let i = 0; i < n; i++) {
-            sum += ((fn(a + i * dx) + fn(a + (i + 1) * dx)) / 2) * dx;
-          }
-        }
-
-        // Draw Smooth Function Curve
-        ctx.strokeStyle = '#ef4444';
+        // Draw Smooth Curve
+        ctx.strokeStyle = '#38bdf8';
         ctx.lineWidth = 3;
         ctx.beginPath();
-        for (let px = 0; px <= plotW; px += 2) {
-          const xVal = a + (px / plotW) * (b - a);
-          const yVal = fn(xVal);
-          const pt = toPx(xVal, yVal);
-          if (px === 0) ctx.moveTo(pt.x, pt.y);
-          else ctx.lineTo(pt.x, pt.y);
+        for (let x = 0; x <= 2.2; x += 0.02) {
+          const pt = toPx(x, f(x));
+          if (x === 0) ctx.moveTo(pt.px, pt.py);
+          else ctx.lineTo(pt.px, pt.py);
         }
         ctx.stroke();
 
-        // Update displays
-        const exact = exactIntegral();
+        const exact = getExact();
         const err = Math.abs(exact - sum);
-        const exDisplay = document.getElementById('exact-integral-display');
-        const apDisplay = document.getElementById('approx-integral-display');
-        const errDisplay = document.getElementById('error-display');
-
-        if (exDisplay) exDisplay.textContent = exact.toFixed(4);
-        if (apDisplay) apDisplay.textContent = sum.toFixed(4);
-        if (errDisplay) errDisplay.textContent = err.toFixed(4);
+        if (exactDisplay) exactDisplay.textContent = exact.toFixed(4);
+        if (approxDisplay) approxDisplay.textContent = sum.toFixed(4);
+        if (errorDisplay) errorDisplay.textContent = err.toFixed(4);
       }
 
-      const nSlider = document.getElementById('riemann-n-slider') as HTMLInputElement;
-      const nDisplay = document.getElementById('riemann-n-display');
-      nSlider?.addEventListener('input', () => {
-        n = parseInt(nSlider.value);
-        if (nDisplay) nDisplay.textContent = n.toString();
-        drawRiemann();
-      });
+      if (sliderN) {
+        sliderN.addEventListener('input', () => {
+          n = parseInt(sliderN.value);
+          if (nDisplay) nDisplay.textContent = n.toString();
+          draw();
+        });
+      }
 
-      document.querySelectorAll('#panel-riemann-sum [data-func]').forEach(b => {
-        b.addEventListener('click', () => {
-          document.querySelectorAll('#panel-riemann-sum [data-func]').forEach(x => x.classList.remove('active'));
-          b.classList.add('active');
-          currentFunc = b.getAttribute('data-func') || 'parabola';
-          drawRiemann();
+      document.querySelectorAll('[data-mode]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-mode]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          mode = btn.getAttribute('data-mode') || 'mid';
+          draw();
         });
       });
 
-      document.querySelectorAll('#panel-riemann-sum [data-mode]').forEach(b => {
-        b.addEventListener('click', () => {
-          document.querySelectorAll('#panel-riemann-sum [data-mode]').forEach(x => x.classList.remove('active'));
-          b.classList.add('active');
-          currentMode = b.getAttribute('data-mode') || 'mid';
-          drawRiemann();
+      document.querySelectorAll('[data-func]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-func]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          funcType = btn.getAttribute('data-func') || 'parabola';
+          draw();
         });
       });
 
-      drawRiemann();
-    }
+      draw();
+    })();
 
-    // ==============================================================
-    // SIMULATION 3: MONTE CARLO PI
-    // ==============================================================
-    const mCanvas = document.getElementById('monte-canvas') as HTMLCanvasElement | null;
-    if (mCanvas) {
-      const ctx = mCanvas.getContext('2d')!;
-      let total = 0;
-      let inside = 0;
+    // ==========================================
+    // SIMULATION 7: MONTE CARLO PI
+    // ==========================================
+    (function setupMonteCarlo() {
+      const canvas = document.getElementById('monte-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const size = canvas.width;
+      const r = size / 2;
+      let total = 0, inside = 0;
       let isRunning = false;
-      let animId: number | null = null;
       let speed = 50;
 
-      function drawInitialMonte() {
-        const w = mCanvas.width;
-        ctx.clearRect(0, 0, w, w);
-        ctx.strokeStyle = '#3b82f6';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(0, 0, w, w);
+      const totalDisp = document.getElementById('monte-total');
+      const insideDisp = document.getElementById('monte-inside');
+      const piDisp = document.getElementById('monte-pi-display');
+      const speedSlider = document.getElementById('monte-speed-slider') as HTMLInputElement;
 
-        ctx.strokeStyle = '#10b981';
-        ctx.lineWidth = 2.5;
+      function clearCanvas() {
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, size, size);
+
+        // Draw Inscribed Circle
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.arc(0, w, w, -Math.PI / 2, 0); // Quarter circle
+        ctx.arc(r, r, r, 0, Math.PI * 2);
         ctx.stroke();
+
+        total = 0; inside = 0;
+        updateStats();
       }
 
-      function addDarts(count: number) {
-        const w = mCanvas.width;
+      function updateStats() {
+        if (totalDisp) totalDisp.textContent = total.toLocaleString();
+        if (insideDisp) insideDisp.textContent = inside.toLocaleString();
+        if (piDisp) {
+          const val = total > 0 ? (4 * (inside / total)).toFixed(5) : '0.00000';
+          piDisp.textContent = val;
+        }
+      }
+
+      function addPoints(count: number) {
         for (let i = 0; i < count; i++) {
-          const x = Math.random();
-          const y = Math.random();
-          const distSq = x * x + y * y;
-          const isInside = distSq <= 1;
+          const x = Math.random() * size;
+          const y = Math.random() * size;
+          const dx = x - r;
+          const dy = y - r;
+          const isInside = (dx * dx + dy * dy) <= (r * r);
+
+          ctx.fillStyle = isInside ? 'rgba(16, 185, 129, 0.65)' : 'rgba(239, 68, 68, 0.45)';
+          ctx.beginPath();
+          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
 
           total++;
           if (isInside) inside++;
-
-          ctx.fillStyle = isInside ? '#10b981' : '#ef4444';
-          ctx.beginPath();
-          ctx.arc(x * w, (1 - y) * w, 1.8, 0, Math.PI * 2);
-          ctx.fill();
         }
-
-        const estPi = total > 0 ? (4 * inside) / total : 0;
-        const totEl = document.getElementById('monte-total');
-        const inEl = document.getElementById('monte-inside');
-        const piEl = document.getElementById('monte-pi-display');
-
-        if (totEl) totEl.textContent = total.toLocaleString();
-        if (inEl) inEl.textContent = inside.toLocaleString();
-        if (piEl) piEl.textContent = estPi.toFixed(5);
+        updateStats();
       }
+
+      clearCanvas();
 
       function loop() {
-        if (!isRunning) return;
-        addDarts(speed);
-        animId = requestAnimationFrame(loop);
+        if (isRunning && currentActiveTab === 'monte-carlo') {
+          addPoints(speed);
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+
+      const btnStart = document.getElementById('btn-monte-start');
+      if (btnStart) {
+        btnStart.addEventListener('click', () => {
+          isRunning = !isRunning;
+          btnStart.textContent = isRunning ? '⏸️ To\'xtatish' : '▶ Boshlash';
+        });
       }
 
-      document.getElementById('btn-monte-start')?.addEventListener('click', () => {
-        isRunning = !isRunning;
-        if (isRunning) loop();
-        else if (animId) cancelAnimationFrame(animId);
-      });
+      const btnDrop = document.getElementById('btn-monte-drop1000');
+      if (btnDrop) btnDrop.addEventListener('click', () => addPoints(1000));
 
-      document.getElementById('btn-monte-drop1000')?.addEventListener('click', () => {
-        addDarts(1000);
-      });
+      const btnReset = document.getElementById('btn-monte-reset');
+      if (btnReset) btnReset.addEventListener('click', clearCanvas);
 
-      document.getElementById('btn-monte-reset')?.addEventListener('click', () => {
-        isRunning = false;
-        if (animId) cancelAnimationFrame(animId);
-        total = 0;
-        inside = 0;
-        drawInitialMonte();
-        addDarts(0);
-      });
+      if (speedSlider) speedSlider.addEventListener('input', () => { speed = parseInt(speedSlider.value); });
+    })();
 
-      const spSlider = document.getElementById('monte-speed-slider') as HTMLInputElement;
-      const spDisplay = document.getElementById('monte-speed-display');
-      spSlider?.addEventListener('input', () => {
-        speed = parseInt(spSlider.value);
-        if (spDisplay) spDisplay.textContent = speed + ' nuqta/kadr';
-      });
+    // ==========================================
+    // SIMULATION 8: FOURIER EPICYCLES
+    // ==========================================
+    (function setupFourier() {
+      const canvas = document.getElementById('fourier-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
-      drawInitialMonte();
-    }
-
-    // ==============================================================
-    // SIMULATION 4: FOURIER EPICYCLES
-    // ==============================================================
-    const fCanvas = document.getElementById('fourier-canvas') as HTMLCanvasElement | null;
-    if (fCanvas) {
-      const ctx = fCanvas.getContext('2d')!;
-      let time = 0;
-      let wave: number[] = [];
-      let numHarmonics = 5;
       let waveType = 'square';
+      let numCircles = 5;
+      let time = 0;
       let isPaused = false;
-      let fAnimId: number | null = null;
+      const wavePoints: number[] = [];
 
-      function renderFourier() {
-        if (isPaused) {
-          fAnimId = requestAnimationFrame(renderFourier);
-          return;
-        }
+      const nSlider = document.getElementById('fourier-n-slider') as HTMLInputElement;
+      const nDisplay = document.getElementById('fourier-n-display');
+      const formulaDisplay = document.getElementById('fourier-formula-display');
 
-        const w = fCanvas.width;
-        const h = fCanvas.height;
-        ctx.clearRect(0, 0, w, h);
+      if (nSlider) {
+        nSlider.addEventListener('input', () => {
+          numCircles = parseInt(nSlider.value);
+          if (nDisplay) nDisplay.textContent = `${numCircles} ta aylana`;
+        });
+      }
 
-        const originX = 140;
-        const originY = h / 2;
-        let x = originX;
-        let y = originY;
+      document.querySelectorAll('[data-wave]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-wave]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          waveType = btn.getAttribute('data-wave') || 'square';
+          wavePoints.length = 0;
+          if (formulaDisplay) {
+            if (waveType === 'square') formulaDisplay.textContent = 'y = 4/π · (sin(t) + sin(3t)/3 + sin(5t)/5 + ...)';
+            else if (waveType === 'sawtooth') formulaDisplay.textContent = 'y = 2/π · (sin(t) - sin(2t)/2 + sin(3t)/3 - ...)';
+            else formulaDisplay.textContent = 'y = 8/π² · (sin(t) - sin(3t)/9 + sin(5t)/25 - ...)';
+          }
+        });
+      });
 
-        for (let i = 0; i < numHarmonics; i++) {
-          const prevx = x;
-          const prevy = y;
-          let n = i * 2 + 1; // square wave default
-          let radius = 60 * (4 / (n * Math.PI));
+      const btnPause = document.getElementById('btn-fourier-pause');
+      if (btnPause) {
+        btnPause.addEventListener('click', () => {
+          isPaused = !isPaused;
+          btnPause.textContent = isPaused ? '▶️ Davom ettirish' : '⏸️ Pauza';
+        });
+      }
 
-          if (waveType === 'sawtooth') {
-            n = i + 1;
-            radius = 50 * (2 / (n * Math.PI)) * Math.pow(-1, n + 1);
-          } else if (waveType === 'triangle') {
-            n = i * 2 + 1;
-            radius = 70 * (8 / (n * n * Math.PI * Math.PI)) * Math.pow(-1, (n - 1) / 2);
+      function draw() {
+        requestAnimationFrame(draw);
+        if (currentActiveTab !== 'fourier-epicycles' || isPaused) return;
+
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        let x = 160;
+        let y = canvas.height / 2;
+
+        for (let i = 0; i < numCircles; i++) {
+          const prevX = x;
+          const prevY = y;
+
+          let nVal = 0, radius = 0;
+          if (waveType === 'square') {
+            nVal = i * 2 + 1;
+            radius = 65 * (4 / (nVal * Math.PI));
+          } else if (waveType === 'sawtooth') {
+            nVal = i + 1;
+            radius = 65 * (2 / (nVal * Math.PI));
+          } else {
+            nVal = i * 2 + 1;
+            radius = 75 * (8 / (nVal * nVal * Math.PI * Math.PI));
           }
 
-          x += radius * Math.cos(n * time);
-          y += radius * Math.sin(n * time);
+          x += radius * Math.cos(nVal * time);
+          y += radius * Math.sin(nVal * time);
 
-          // Epicycle circle
-          ctx.strokeStyle = 'rgba(150, 150, 150, 0.3)';
+          // Draw Epicycle Circle
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
           ctx.lineWidth = 1;
           ctx.beginPath();
-          ctx.arc(prevx, prevy, Math.abs(radius), 0, Math.PI * 2);
+          ctx.arc(prevX, prevY, radius, 0, Math.PI * 2);
           ctx.stroke();
 
-          // Epicycle radius arm
-          ctx.strokeStyle = 'rgba(59, 130, 246, 0.7)';
-          ctx.lineWidth = 1.5;
+          // Draw Connecting Rod
+          ctx.strokeStyle = '#38bdf8';
           ctx.beginPath();
-          ctx.moveTo(prevx, prevy);
+          ctx.moveTo(prevX, prevY);
           ctx.lineTo(x, y);
           ctx.stroke();
         }
 
-        wave.unshift(y);
-        if (wave.length > 350) wave.pop();
+        wavePoints.unshift(y);
+        if (wavePoints.length > 380) wavePoints.pop();
 
-        // Horizontal connecting pointer line
-        const waveStartX = 320;
-        ctx.strokeStyle = 'rgba(239, 68, 68, 0.6)';
-        ctx.lineWidth = 1.2;
+        // Pointer Line to Waveform
+        ctx.strokeStyle = 'rgba(236, 72, 153, 0.45)';
+        ctx.setLineDash([3, 3]);
         ctx.beginPath();
         ctx.moveTo(x, y);
-        ctx.lineTo(waveStartX, wave[0]);
+        ctx.lineTo(340, y);
         ctx.stroke();
+        ctx.setLineDash([]);
 
         // Draw Synthesized Waveform
-        ctx.strokeStyle = '#10b981';
+        ctx.strokeStyle = '#ec4899';
         ctx.lineWidth = 2.5;
         ctx.beginPath();
-        for (let i = 0; i < wave.length; i++) {
-          const px = waveStartX + i;
-          const py = wave[i];
+        for (let i = 0; i < wavePoints.length; i++) {
+          const px = 340 + i;
+          const py = wavePoints[i];
           if (i === 0) ctx.moveTo(px, py);
           else ctx.lineTo(px, py);
         }
         ctx.stroke();
 
         time += 0.035;
-        fAnimId = requestAnimationFrame(renderFourier);
       }
+      draw();
+    })();
 
-      const fSlider = document.getElementById('fourier-n-slider') as HTMLInputElement;
-      const fDisplay = document.getElementById('fourier-n-display');
-      fSlider?.addEventListener('input', () => {
-        numHarmonics = parseInt(fSlider.value);
-        if (fDisplay) fDisplay.textContent = numHarmonics + ' ta aylana';
-      });
+    // ==========================================
+    // SIMULATION 9: GALTON BOARD
+    // ==========================================
+    (function setupGalton() {
+      const canvas = document.getElementById('galton-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
-      document.querySelectorAll('#panel-fourier-epicycles [data-wave]').forEach(b => {
-        b.addEventListener('click', () => {
-          document.querySelectorAll('#panel-fourier-epicycles [data-wave]').forEach(x => x.classList.remove('active'));
-          b.classList.add('active');
-          waveType = b.getAttribute('data-wave') || 'square';
-          wave = [];
-        });
-      });
-
-      document.getElementById('btn-fourier-pause')?.addEventListener('click', () => {
-        isPaused = !isPaused;
-      });
-
-      fAnimId = requestAnimationFrame(renderFourier);
-    }
-
-    // ==============================================================
-    // SIMULATION 5: GALTON BOARD
-    // ==============================================================
-    const gCanvas = document.getElementById('galton-canvas') as HTMLCanvasElement | null;
-    if (gCanvas) {
-      const ctx = gCanvas.getContext('2d')!;
-      const rows = 9;
-      const bins = new Array(rows + 1).fill(0);
-      let totalBalls = 0;
-      let isGaltonStream = false;
-      let gAnimId: number | null = null;
+      const numBins = 15;
+      const bins = new Array(numBins).fill(0);
+      let isStreaming = false;
 
       interface Ball {
         x: number;
         y: number;
+        vx: number;
+        vy: number;
         row: number;
-        col: number;
-        finished: boolean;
       }
-      let balls: Ball[] = [];
+      const balls: Ball[] = [];
 
-      function drawGalton() {
-        const w = gCanvas.width;
-        const h = gCanvas.height;
-        ctx.clearRect(0, 0, w, h);
+      const countDisp = document.getElementById('galton-count');
+      const centerDisp = document.getElementById('galton-center-percent');
 
-        const startX = w / 2;
-        const startY = 40;
-        const spacingX = 36;
-        const spacingY = 32;
-
-        // Draw Pegs (Nails)
-        ctx.fillStyle = '#94a3b8';
-        for (let r = 0; r < rows; r++) {
-          const numPegs = r + 1;
-          const rowStartX = startX - (r * spacingX) / 2;
-          for (let p = 0; p < numPegs; p++) {
-            const px = rowStartX + p * spacingX;
-            const py = startY + r * spacingY;
-            ctx.beginPath();
-            ctx.arc(px, py, 3.5, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-
-        // Draw Bins Bar Chart
-        const binW = spacingX - 4;
-        const binStartY = startY + rows * spacingY + 20;
-        const maxBinHeight = 140;
-        const maxVal = Math.max(...bins, 10);
-
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
-        ctx.strokeStyle = '#3b82f6';
-        ctx.lineWidth = 1;
-
-        for (let b = 0; b <= rows; b++) {
-          const bx = startX - (rows * spacingX) / 2 + b * spacingX;
-          const barH = (bins[b] / maxVal) * maxBinHeight;
-          ctx.fillRect(bx - binW / 2, h - barH - 10, binW, barH);
-          ctx.strokeRect(bx - binW / 2, h - barH - 10, binW, barH);
-        }
-
-        // Update active falling balls
-        for (let i = balls.length - 1; i >= 0; i--) {
-          const ball = balls[i];
-          if (!ball.finished) {
-            ctx.fillStyle = '#ef4444';
-            ctx.beginPath();
-            ctx.arc(ball.x, ball.y, 4, 0, Math.PI * 2);
-            ctx.fill();
-
-            ball.y += 4;
-            const targetY = startY + ball.row * spacingY;
-            if (ball.y >= targetY && ball.row < rows) {
-              const goesRight = Math.random() < 0.5;
-              if (goesRight) ball.col += 1;
-              ball.row += 1;
-              const nextStartX = startX - (ball.row * spacingX) / 2;
-              ball.x = nextStartX + ball.col * spacingX;
-            } else if (ball.row >= rows) {
-              ball.finished = true;
-              bins[ball.col]++;
-              totalBalls++;
-              balls.splice(i, 1);
-            }
-          }
-        }
-
-        // Theoretical Bell Curve Overlay
-        if (totalBalls > 20) {
-          ctx.strokeStyle = '#10b981';
-          ctx.lineWidth = 2.5;
-          ctx.beginPath();
-          for (let b = 0; b <= rows; b++) {
-            const bx = startX - (rows * spacingX) / 2 + b * spacingX;
-            // Binomial distribution pmf approximation
-            const p = 0.5;
-            const n = rows;
-            const k = b;
-            const coef = factorial(n) / (factorial(k) * factorial(n - k));
-            const prob = coef * Math.pow(p, k) * Math.pow(1 - p, n - k);
-            const curveH = (prob * totalBalls / maxVal) * maxBinHeight;
-            const cy = h - curveH - 10;
-            if (b === 0) ctx.moveTo(bx, cy);
-            else ctx.lineTo(bx, cy);
-          }
-          ctx.stroke();
-        }
-
-        // Update Counter
-        const cEl = document.getElementById('galton-count');
-        const cpEl = document.getElementById('galton-center-percent');
-        if (cEl) cEl.textContent = totalBalls.toString();
-        if (cpEl && totalBalls > 0) {
-          const midBin = Math.floor(rows / 2);
-          const percent = ((bins[midBin] / totalBalls) * 100).toFixed(1);
-          cpEl.textContent = percent + '%';
-        }
-
-        if (isGaltonStream && Math.random() < 0.3) {
-          balls.push({ x: startX, y: 15, row: 0, col: 0, finished: false });
-        }
-
-        gAnimId = requestAnimationFrame(drawGalton);
-      }
-
-      function factorial(n: number): number {
-        if (n <= 1) return 1;
-        let r = 1;
-        for (let i = 2; i <= n; i++) r *= i;
-        return r;
-      }
-
-      document.getElementById('btn-galton-start')?.addEventListener('click', () => {
-        isGaltonStream = !isGaltonStream;
-      });
-
-      document.getElementById('btn-galton-drop50')?.addEventListener('click', () => {
-        const startX = gCanvas.width / 2;
-        for (let i = 0; i < 50; i++) {
-          setTimeout(() => {
-            balls.push({ x: startX, y: 15, row: 0, col: 0, finished: false });
-          }, i * 35);
-        }
-      });
-
-      document.getElementById('btn-galton-reset')?.addEventListener('click', () => {
-        bins.fill(0);
-        balls = [];
-        totalBalls = 0;
-      });
-
-      gAnimId = requestAnimationFrame(drawGalton);
-    }
-
-    // ==============================================================
-    // SIMULATION 6: GRADIENT DESCENT
-    // ==============================================================
-    const gdCanvas = document.getElementById('gradient-canvas') as HTMLCanvasElement | null;
-    if (gdCanvas) {
-      const ctx = gdCanvas.getContext('2d')!;
-      let curSurface = 'bowl';
-      let lr = 0.1;
-      let path: { x: number; y: number }[] = [];
-      let isOptimizing = false;
-
-      function surfaceF(x: number, y: number): number {
-        if (curSurface === 'bowl') return x * x + y * y;
-        if (curSurface === 'saddle') return x * x - y * y;
-        if (curSurface === 'wells') return Math.pow(x * x + y - 11, 2) + Math.pow(x + y * y - 7, 2); // Himmelblau function
-        return x * x + y * y;
-      }
-
-      function gradF(x: number, y: number): { dx: number; dy: number } {
-        const eps = 1e-5;
-        const dx = (surfaceF(x + eps, y) - surfaceF(x - eps, y)) / (2 * eps);
-        const dy = (surfaceF(x, y + eps) - surfaceF(x, y - eps)) / (2 * eps);
-        return { dx, dy };
-      }
-
-      function drawGradientLandscape() {
-        const w = gdCanvas.width;
-        const h = gdCanvas.height;
-        ctx.clearRect(0, 0, w, h);
-
-        const range = curSurface === 'wells' ? 5 : 3;
-
-        // Draw Contour Heatmap
-        const step = 8;
-        for (let px = 0; px < w; px += step) {
-          for (let py = 0; py < h; py += step) {
-            const x = ((px - w / 2) / (w / 2)) * range;
-            const y = -((py - h / 2) / (h / 2)) * range;
-            const val = surfaceF(x, y);
-
-            // Normalized heat color
-            const norm = Math.min(1, Math.max(0, val / (curSurface === 'wells' ? 120 : 12)));
-            const r = Math.round(30 + norm * 200);
-            const g = Math.round(50 + (1 - norm) * 150);
-            const b = Math.round(180 * (1 - norm));
-
-            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-            ctx.fillRect(px, py, step, step);
-          }
-        }
-
-        // Draw Axes
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(w / 2, 0); ctx.lineTo(w / 2, h);
-        ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2);
-        ctx.stroke();
-
-        // Draw Optimization Path
-        if (path.length > 0) {
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 2.5;
-          ctx.beginPath();
-          for (let i = 0; i < path.length; i++) {
-            const pt = path[i];
-            const px = w / 2 + (pt.x / range) * (w / 2);
-            const py = h / 2 - (pt.y / range) * (h / 2);
-            if (i === 0) ctx.moveTo(px, py);
-            else ctx.lineTo(px, py);
-          }
-          ctx.stroke();
-
-          // Current Ball Position
-          const last = path[path.length - 1];
-          const lx = w / 2 + (last.x / range) * (w / 2);
-          const ly = h / 2 - (last.y / range) * (h / 2);
-
-          ctx.fillStyle = '#ef4444';
-          ctx.beginPath();
-          ctx.arc(lx, ly, 6, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-
-          // Update Displays
-          const posEl = document.getElementById('grad-pos');
-          const valEl = document.getElementById('grad-val');
-          if (posEl) posEl.textContent = `(${last.x.toFixed(2)}, ${last.y.toFixed(2)})`;
-          if (valEl) valEl.textContent = surfaceF(last.x, last.y).toFixed(3);
-        }
-      }
-
-      function stepDescent() {
-        if (!isOptimizing || path.length === 0) return;
-        const current = path[path.length - 1];
-        const g = gradF(current.x, current.y);
-        const gradMag = Math.hypot(g.dx, g.dy);
-
-        if (gradMag < 1e-3 || path.length > 300) {
-          isOptimizing = false;
-          return;
-        }
-
-        const nextX = current.x - lr * g.dx;
-        const nextY = current.y - lr * g.dy;
-        path.push({ x: nextX, y: nextY });
-
-        drawGradientLandscape();
-        setTimeout(stepDescent, 35);
-      }
-
-      gdCanvas.addEventListener('click', (e) => {
-        const rect = gdCanvas.getBoundingClientRect();
-        const px = e.clientX - rect.left;
-        const py = e.clientY - rect.top;
-        const range = curSurface === 'wells' ? 5 : 3;
-
-        const x = ((px - gdCanvas.width / 2) / (gdCanvas.width / 2)) * range;
-        const y = -((py - gdCanvas.height / 2) / (gdCanvas.height / 2)) * range;
-
-        path = [{ x, y }];
-        isOptimizing = true;
-        stepDescent();
-      });
-
-      document.querySelectorAll('#panel-gradient-descent [data-surface]').forEach(b => {
-        b.addEventListener('click', () => {
-          document.querySelectorAll('#panel-gradient-descent [data-surface]').forEach(x => x.classList.remove('active'));
-          b.classList.add('active');
-          curSurface = b.getAttribute('data-surface') || 'bowl';
-          path = [];
-          isOptimizing = false;
-          drawGradientLandscape();
+      function spawnBall() {
+        balls.push({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 4,
+          y: 30,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: 2.0,
+          row: 0
         });
-      });
+      }
+
+      function draw() {
+        requestAnimationFrame(draw);
+        if (currentActiveTab !== 'galton-board') return;
+
+        if (isStreaming && Math.random() < 0.4) spawnBall();
+
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Pegs (Mixlar panjarasi)
+        const pegRows = 9;
+        const startY = 80;
+        const rowSpacing = 28;
+        const pegSpacing = 24;
+
+        ctx.fillStyle = '#94a3b8';
+        for (let r = 0; r < pegRows; r++) {
+          const count = r + 1;
+          const startX = canvas.width / 2 - (count - 1) * (pegSpacing / 2);
+          for (let c = 0; c < count; c++) {
+            const px = startX + c * pegSpacing;
+            const py = startY + r * rowSpacing;
+            ctx.beginPath();
+            ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Update & Draw Balls
+        ctx.fillStyle = '#f59e0b';
+        for (let i = balls.length - 1; i >= 0; i--) {
+          const b = balls[i];
+          b.vy += 0.2; // Gravity
+          b.x += b.vx;
+          b.y += b.vy;
+
+          // Check peg bounce
+          const rIdx = Math.floor((b.y - startY) / rowSpacing);
+          if (rIdx >= b.row && rIdx < pegRows) {
+            b.row = rIdx + 1;
+            b.vx = (Math.random() < 0.5 ? -1 : 1) * (1.2 + Math.random() * 0.6);
+            b.vy = 1.0;
+          }
+
+          // Land in Bin
+          if (b.y >= canvas.height - 120) {
+            const binIdx = Math.floor((b.x / canvas.width) * numBins);
+            if (binIdx >= 0 && binIdx < numBins) bins[binIdx]++;
+            balls.splice(i, 1);
+            continue;
+          }
+
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, 3.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw Bins & Histogram
+        const binW = canvas.width / numBins;
+        const maxBinH = 100;
+        const totalLanded = bins.reduce((a, b) => a + b, 0);
+
+        for (let i = 0; i < numBins; i++) {
+          const hRatio = totalLanded > 0 ? (bins[i] / totalLanded) : 0;
+          const bHeight = Math.min(maxBinH, hRatio * 320);
+
+          ctx.fillStyle = 'rgba(59, 130, 246, 0.7)';
+          ctx.fillRect(i * binW + 2, canvas.height - bHeight, binW - 4, bHeight);
+
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+          ctx.strokeRect(i * binW, canvas.height - 120, binW, 120);
+        }
+
+        if (countDisp) countDisp.textContent = totalLanded.toString();
+        if (centerDisp && totalLanded > 0) {
+          const mid = Math.floor(numBins / 2);
+          const centerShare = ((bins[mid] / totalLanded) * 100).toFixed(1);
+          centerDisp.textContent = `${centerShare}%`;
+        }
+      }
+      draw();
+
+      const btnStart = document.getElementById('btn-galton-start');
+      if (btnStart) {
+        btnStart.addEventListener('click', () => {
+          isStreaming = !isStreaming;
+          btnStart.textContent = isStreaming ? '⏸️ To\'xtatish' : '▶ Oqimni yoqish';
+        });
+      }
+
+      const btnDrop = document.getElementById('btn-galton-drop50');
+      if (btnDrop) {
+        btnDrop.addEventListener('click', () => {
+          for (let i = 0; i < 50; i++) setTimeout(spawnBall, i * 25);
+        });
+      }
+
+      const btnReset = document.getElementById('btn-galton-reset');
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          bins.fill(0);
+          balls.length = 0;
+        });
+      }
+    })();
+
+    // ==========================================
+    // SIMULATION 10: GRADIENT DESCENT
+    // ==========================================
+    (function setupGradientDescent() {
+      const canvas = document.getElementById('gradient-canvas') as HTMLCanvasElement;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let surface = 'bowl';
+      let lr = 0.1;
+      let currX = 2.0, currY = 2.0;
+      const history: { x: number; y: number }[] = [];
 
       const lrSlider = document.getElementById('grad-lr-slider') as HTMLInputElement;
       const lrDisplay = document.getElementById('grad-lr-display');
-      lrSlider?.addEventListener('input', () => {
-        lr = parseFloat(lrSlider.value);
-        if (lrDisplay) lrDisplay.textContent = lr.toString();
+      const posDisplay = document.getElementById('grad-pos');
+      const valDisplay = document.getElementById('grad-val');
+
+      function F(x: number, y: number): number {
+        if (surface === 'bowl') return x * x + y * y;
+        if (surface === 'saddle') return x * x - y * y;
+        if (surface === 'wells') return (x * x - 1) * (x * x - 1) + y * y;
+        return x * x + y * y;
+      }
+
+      function gradF(x: number, y: number): { gx: number; gy: number } {
+        if (surface === 'bowl') return { gx: 2 * x, gy: 2 * y };
+        if (surface === 'saddle') return { gx: 2 * x, gy: -2 * y };
+        if (surface === 'wells') return { gx: 4 * x * (x * x - 1), gy: 2 * y };
+        return { gx: 2 * x, gy: 2 * y };
+      }
+
+      function toPx(x: number, y: number) {
+        const px = canvas.width / 2 + x * 65;
+        const py = canvas.height / 2 - y * 65;
+        return { px, py };
+      }
+
+      function toCoords(px: number, py: number) {
+        const x = (px - canvas.width / 2) / 65;
+        const y = -(py - canvas.height / 2) / 65;
+        return { x, y };
+      }
+
+      function draw() {
+        if (currentActiveTab !== 'gradient-descent') return;
+
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Contour Rings
+        const step = 0.5;
+        for (let level = 0.2; level <= 8; level += step) {
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 + (level / 12)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          for (let angle = 0; angle <= Math.PI * 2; angle += 0.05) {
+            const rad = Math.sqrt(level);
+            const pt = toPx(rad * Math.cos(angle), rad * Math.sin(angle));
+            if (angle === 0) ctx.moveTo(pt.px, pt.py);
+            else ctx.lineTo(pt.px, pt.py);
+          }
+          ctx.stroke();
+        }
+
+        // Draw Trajectory Path
+        if (history.length > 1) {
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          const start = toPx(history[0].x, history[0].y);
+          ctx.moveTo(start.px, start.py);
+          for (let i = 1; i < history.length; i++) {
+            const pt = toPx(history[i].x, history[i].y);
+            ctx.lineTo(pt.px, pt.py);
+          }
+          ctx.stroke();
+
+          // Dots on each step
+          ctx.fillStyle = '#ef4444';
+          for (const h of history) {
+            const pt = toPx(h.x, h.y);
+            ctx.beginPath(); ctx.arc(pt.px, pt.py, 3, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        // Current Ball Position
+        const currPt = toPx(currX, currY);
+        ctx.fillStyle = '#10b981';
+        ctx.beginPath();
+        ctx.arc(currPt.px, currPt.py, 7, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (posDisplay) posDisplay.textContent = `(${currX.toFixed(2)}, ${currY.toFixed(2)})`;
+        if (valDisplay) valDisplay.textContent = F(currX, currY).toFixed(2);
+      }
+
+      function stepDescent() {
+        const { gx, gy } = gradF(currX, currY);
+        currX -= lr * gx;
+        currY -= lr * gy;
+        history.push({ x: currX, y: currY });
+        if (history.length > 60) history.shift();
+        draw();
+      }
+
+      setInterval(() => {
+        if (currentActiveTab === 'gradient-descent') stepDescent();
+      }, 70);
+
+      canvas.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const px = e.clientX - rect.left;
+        const py = e.clientY - rect.top;
+        const coords = toCoords(px, py);
+        currX = coords.x;
+        currY = coords.y;
+        history.length = 0;
+        history.push({ x: currX, y: currY });
+        draw();
       });
 
-      document.getElementById('btn-grad-reset')?.addEventListener('click', () => {
-        path = [];
-        isOptimizing = false;
-        drawGradientLandscape();
+      if (lrSlider) {
+        lrSlider.addEventListener('input', () => {
+          lr = parseFloat(lrSlider.value);
+          if (lrDisplay) lrDisplay.textContent = lr.toFixed(2);
+        });
+      }
+
+      document.querySelectorAll('[data-surface]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-surface]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          surface = btn.getAttribute('data-surface') || 'bowl';
+          history.length = 0;
+          currX = 2.0; currY = 2.0;
+          draw();
+        });
       });
 
-      drawGradientLandscape();
-    }
+      const btnReset = document.getElementById('btn-grad-reset');
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          history.length = 0;
+          currX = 2.0; currY = 2.0;
+          draw();
+        });
+      }
+
+      history.push({ x: currX, y: currY });
+      draw();
+    })();
   }
 
-  initLaboratory();
-  document.addEventListener('astro:page-load', initLaboratory);
-  document.addEventListener('astro:after-swap', initLaboratory);
+  // Initialize when DOM loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFullLaboratory);
+  } else {
+    initFullLaboratory();
+  }
 </script>

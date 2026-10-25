@@ -40,7 +40,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <label for="problem-input" style="font-weight: 700; color: var(--text-main); font-size: 0.95rem;">
           ✍️ Misol yoki funksiyani kiriting:
         </label>
-        <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <button type="button" id="voice-input-btn" class="btn btn-secondary voice-btn" title="Ovoz bilan aytish">
+            <span class="mic-icon">🎙️</span>
+            <span id="voice-btn-text">Ovoz bilan aytish</span>
+          </button>
           <label class="toggle-switch-label" title="Internetdagi ilmiy maqola va bazalardan qidirish">
             <input type="checkbox" id="google-search-toggle" />
             <span class="toggle-text">🌐 Google Qidiruv</span>
@@ -202,6 +206,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
       <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <button type="button" id="voice-speak-solution-btn" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; border-color: #10b981; color: #10b981; font-weight: 600;">
+          🔊 Ovozli tushuntirish
+        </button>
         <button type="button" id="ask-ai-deeper-btn" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.35rem 0.75rem; border-color: var(--primary); color: var(--primary);">
           🤖 Gemini AI dan yana-da batafsil so'rash
         </button>
@@ -226,34 +233,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div>
 
-  <!-- MODAL: WEBCAM LIVE CAPTURE -->
+  <!-- MODAL: WEBCAM LIVE CAPTURE (Photomath / Sci-Fi Scanner UI) -->
   <div id="webcam-modal-backdrop" class="modal-backdrop" style="display: none;">
-    <div class="modal-dialog" style="max-width: 580px;">
+    <div class="modal-dialog" style="max-width: 600px;">
       <div class="modal-header">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-main);">
-          📸 Kamera orqali misolni suratga olish
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+          <span style="color: #38bdf8;">⚡</span> Jonli Matematik Skaner (Photomath)
         </h3>
         <button type="button" id="webcam-close-btn" class="btn-close" aria-label="Yopish">✕</button>
       </div>
       <div class="modal-body" style="text-align: center;">
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-          Daftar yoki kitobdagi misolni kamera ro'parasiga to'g'rilab, "Suratga olish" tugmasini bosing:
+          Daftar yoki kitobdagi misolni ramka markaziga to'g'rilang:
         </p>
-        <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; background: #0f172a; aspect-ratio: 4/3; max-height: 340px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-          <video id="webcam-video" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+        <div class="scanner-viewfinder-box">
+          <video id="webcam-video" autoplay playsinline></video>
           <canvas id="webcam-canvas" style="display: none;"></canvas>
+          
+          <!-- Sci-Fi Aiming Frame and Laser -->
+          <div class="scanner-reticle">
+            <div class="reticle-corner tl"></div>
+            <div class="reticle-corner tr"></div>
+            <div class="reticle-corner bl"></div>
+            <div class="reticle-corner br"></div>
+            <div class="scanner-laser-beam"></div>
+            <div class="scanner-aim-label">Misolni ramkaga to'g'rilang</div>
+          </div>
+
           <div id="webcam-loading-spinner" style="position: absolute; color: white; font-size: 0.9rem;">
             Kamera ishga tushirilmoqda...
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" id="webcam-cancel-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
-          Bekor qilish
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" id="webcam-flip-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
+          🔄 Kamerani almashtirish
         </button>
-        <button type="button" id="webcam-snap-btn" class="btn btn-primary" style="font-size: 0.95rem; font-weight: 700; padding: 0.5rem 1.5rem;">
-          📸 Suratga olish
-        </button>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" id="webcam-cancel-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
+            Bekor qilish
+          </button>
+          <button type="button" id="webcam-snap-btn" class="btn btn-primary" style="font-size: 0.95rem; font-weight: 700; padding: 0.5rem 1.6rem; background: linear-gradient(135deg, #2563eb, #7c3aed);">
+            📸 Suratga olish
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -393,6 +416,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .problem-textarea:focus {
     outline: none;
     border-color: var(--primary);
+  }
+
+  /* Voice Button */
+  .voice-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+  }
+  .voice-btn.recording {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #b91c1c;
+    animation: pulseMic 1.2s infinite;
+  }
+  @keyframes pulseMic {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  /* Sci-Fi Scanner Viewfinder */
+  .scanner-viewfinder-box {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #060913;
+    aspect-ratio: 4/3;
+    max-height: 360px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
+    border: 1.5px solid rgba(56, 189, 248, 0.35);
+  }
+
+  .scanner-viewfinder-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scanner-reticle {
+    position: absolute;
+    inset: 14% 10%;
+    border: 1px dashed rgba(56, 189, 248, 0.45);
+    border-radius: 8px;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 8px;
+  }
+
+  .reticle-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: #38bdf8;
+    border-style: solid;
+  }
+  .reticle-corner.tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
+  .reticle-corner.tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
+  .reticle-corner.bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
+  .reticle-corner.br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
+
+  .scanner-laser-beam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #38bdf8;
+    box-shadow: 0 0 12px 3px rgba(56, 189, 248, 0.85);
+    animation: laserScan 2.2s ease-in-out infinite alternate;
+  }
+
+  @keyframes laserScan {
+    0% { top: 4%; opacity: 0.6; }
+    100% { top: 96%; opacity: 1; }
+  }
+
+  .scanner-aim-label {
+    background: rgba(0, 0, 0, 0.7);
+    color: #38bdf8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
   }
 
   /* Mode Selector Bar */
@@ -1000,31 +1119,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (webcamModal) webcamModal.style.display = 'none';
     }
 
-    cameraBtn?.addEventListener('click', async () => {
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (isMobile) {
-        cameraInput?.click();
-        return;
+    // WEBCAM & SCANNER HANDLING
+    let currentFacingMode: 'environment' | 'user' = 'environment';
+    const webcamFlipBtn = document.getElementById('webcam-flip-btn');
+
+    async function startCameraStream(facing: 'environment' | 'user') {
+      if (activeStream) {
+        activeStream.getTracks().forEach(t => t.stop());
+        activeStream = null;
       }
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && webcamModal && webcamVideo) {
-        try {
-          webcamModal.style.display = 'flex';
-          if (webcamSpinner) webcamSpinner.style.display = 'block';
-          activeStream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } },
-            audio: false
-          });
+      try {
+        if (webcamSpinner) webcamSpinner.style.display = 'block';
+        activeStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: facing, width: { ideal: 1280 }, height: { ideal: 720 } },
+          audio: false
+        });
+        if (webcamVideo) {
           webcamVideo.srcObject = activeStream;
           webcamVideo.onloadedmetadata = () => {
             if (webcamSpinner) webcamSpinner.style.display = 'none';
           };
-        } catch {
-          stopWebcam();
-          cameraInput?.click();
         }
+      } catch (err) {
+        stopWebcam();
+        cameraInput?.click();
+      }
+    }
+
+    cameraBtn?.addEventListener('click', async () => {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && webcamModal && webcamVideo) {
+        webcamModal.style.display = 'flex';
+        await startCameraStream(currentFacingMode);
       } else {
         cameraInput?.click();
       }
+    });
+
+    webcamFlipBtn?.addEventListener('click', async () => {
+      currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+      await startCameraStream(currentFacingMode);
     });
 
     webcamSnapBtn?.addEventListener('click', () => {
@@ -1039,7 +1172,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         selectedImageMime = 'image/jpeg';
         if (imagePreview && previewContainer && imageName) {
           imagePreview.src = dataUrl;
-          imageName.textContent = 'kamera_misol.jpg';
+          imageName.textContent = 'kamera_misol.jpg (Skanerlandi)';
           previewContainer.style.display = 'flex';
         }
       }
@@ -1049,6 +1182,129 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     webcamCloseBtn?.addEventListener('click', stopWebcam);
     webcamCancelBtn?.addEventListener('click', stopWebcam);
     galleryBtn?.addEventListener('click', () => galleryInput?.click());
+
+    // DRAG AND DROP IMAGE
+    const dropCard = document.querySelector('.solver-input-card') as HTMLElement | null;
+    if (dropCard) {
+      ['dragenter', 'dragover'].forEach(name => {
+        dropCard.addEventListener(name, (e) => {
+          e.preventDefault();
+          dropCard.style.borderColor = '#38bdf8';
+          dropCard.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.25)';
+        });
+      });
+      ['dragleave', 'drop'].forEach(name => {
+        dropCard.addEventListener(name, (e) => {
+          e.preventDefault();
+          dropCard.style.borderColor = '';
+          dropCard.style.boxShadow = '';
+        });
+      });
+      dropCard.addEventListener('drop', (e) => {
+        const files = (e as DragEvent).dataTransfer?.files;
+        if (files && files[0] && files[0].type.startsWith('image/')) {
+          compressAndLoadImage(files[0]);
+        }
+      });
+    }
+
+    // VOICE RECOGNITION (SPEECH-TO-TEXT)
+    const voiceBtn = document.getElementById('voice-input-btn');
+    const voiceBtnText = document.getElementById('voice-btn-text');
+    let isListening = false;
+    const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (SpeechRec) {
+      const recognizer = new SpeechRec();
+      recognizer.continuous = false;
+      recognizer.interimResults = true;
+      recognizer.lang = 'uz-UZ';
+
+      recognizer.onstart = () => {
+        isListening = true;
+        voiceBtn?.classList.add('recording');
+        if (voiceBtnText) voiceBtnText.textContent = 'Eshityapman...';
+      };
+      recognizer.onresult = (ev: any) => {
+        let str = '';
+        for (let i = ev.resultIndex; i < ev.results.length; i++) {
+          str += ev.results[i][0].transcript;
+        }
+        if (str && input) input.value = str;
+      };
+      recognizer.onerror = () => {
+        isListening = false;
+        voiceBtn?.classList.remove('recording');
+        if (voiceBtnText) voiceBtnText.textContent = 'Ovoz bilan aytish';
+      };
+      recognizer.onend = () => {
+        isListening = false;
+        voiceBtn?.classList.remove('recording');
+        if (voiceBtnText) voiceBtnText.textContent = 'Ovoz bilan aytish';
+      };
+
+      voiceBtn?.addEventListener('click', () => {
+        if (isListening) {
+          recognizer.stop();
+        } else {
+          try {
+            recognizer.start();
+          } catch {
+            recognizer.lang = 'ru-RU';
+            recognizer.start();
+          }
+        }
+      });
+    } else {
+      if (voiceBtn) voiceBtn.style.display = 'none';
+    }
+
+    // VOICE READOUT (TEXT-TO-SPEECH)
+    const voiceSpeakBtn = document.getElementById('voice-speak-solution-btn');
+    let isSpeaking = false;
+    voiceSpeakBtn?.addEventListener('click', () => {
+      if (!('speechSynthesis' in window)) {
+        alert("Brauzeringiz ovoz chiqarishni qo'llab-quvvatlamaydi.");
+        return;
+      }
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        if (voiceSpeakBtn) voiceSpeakBtn.textContent = '🔊 Ovozli tushuntirish';
+        return;
+      }
+
+      const rawText = solutionBody?.textContent || '';
+      if (!rawText.trim()) return;
+
+      const clean = rawText
+        .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1 taqsim $2')
+        .replace(/\^2/g, ' kvadrat')
+        .replace(/\^3/g, ' kub')
+        .replace(/\\int/g, 'integral ')
+        .replace(/\\lim/g, 'limit ')
+        .replace(/[\\${}]/g, '')
+        .slice(0, 800);
+
+      const u = new SpeechSynthesisUtterance(clean);
+      u.rate = 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const v = voices.find(x => x.lang.startsWith('uz') || x.lang.startsWith('tr') || x.lang.startsWith('ru'));
+      if (v) u.voice = v;
+
+      u.onstart = () => {
+        isSpeaking = true;
+        if (voiceSpeakBtn) voiceSpeakBtn.textContent = '⏹️ To\'xtatish';
+      };
+      u.onend = () => {
+        isSpeaking = false;
+        if (voiceSpeakBtn) voiceSpeakBtn.textContent = '🔊 Ovozli tushuntirish';
+      };
+      u.onerror = () => {
+        isSpeaking = false;
+        if (voiceSpeakBtn) voiceSpeakBtn.textContent = '🔊 Ovozli tushuntirish';
+      };
+      window.speechSynthesis.speak(u);
+    });
 
     cameraInput?.addEventListener('change', () => {
       if (cameraInput.files?.[0]) compressAndLoadImage(cameraInput.files[0]);
