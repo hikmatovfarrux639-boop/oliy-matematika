@@ -6,6 +6,7 @@
     "dev": "astro dev --host",
     "build": "node -e \"const fs=require('fs');fs.rmSync('.astro',{recursive:true,force:true});fs.rmSync('node_modules/.astro',{recursive:true,force:true});\" && astro build && pagefind --site dist",
     "preview": "astro preview",
+    "test": "node --experimental-strip-types tests/test-suite.ts",
     "astro": "astro"
   },
   "dependencies": {

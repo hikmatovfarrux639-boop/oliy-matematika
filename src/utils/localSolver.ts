@@ -35,8 +35,24 @@ export interface LocalSolveResult {
 export function normalizeMathString(raw: string): string {
   let s = raw.trim();
 
-  // Spoken conversions & common speech-to-text / typing artifacts
+  // 1. Cyrillic homoglyphs mapping (Crucial for mobile Uzbek/Russian keyboards where х and у are Cyrillic!)
   s = s
+    .replace(/х/g, 'x').replace(/Х/g, 'X')
+    .replace(/у/g, 'y').replace(/У/g, 'Y')
+    .replace(/а/g, 'a').replace(/А/g, 'A')
+    .replace(/е/g, 'e').replace(/Е/g, 'E')
+    .replace(/о/g, 'o').replace(/О/g, 'O')
+    .replace(/р/g, 'p').replace(/Р/g, 'P')
+    .replace(/с/g, 'c').replace(/С/g, 'C')
+    .replace(/В/g, 'B').replace(/Т/g, 'T');
+
+  // 2. Remove Uzbek genitive suffixes (e.g. "x ning kvadrati" -> "x kvadrati")
+  s = s.replace(/([a-zA-Z0-9]+)\s*ning\s*/gi, '$1 ');
+
+  // 3. Spoken conversions & common speech-to-text / typing artifacts
+  s = s
+    .replace(/\bintegrali?\b/gi, 'int ')
+    .replace(/\bhosi?lasi?\b/gi, 'd/dx ')
     .replace(/\byteng\b/gi, 'y = ')
     .replace(/\by\s*teng\b/gi, 'y = ')
     .replace(/\bxteng\b/gi, 'x = ')
@@ -44,6 +60,8 @@ export function normalizeMathString(raw: string): string {
     .replace(/teng(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
     .replace(/barobar(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
     .replace(/ravno(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
+    .replace(/\bildiz\s*(?:ostida)?\s*([a-zA-Z0-9]+|\([^)]+\))/gi, 'sqrt($1)')
+    .replace(/\bmodul\s*([a-zA-Z0-9]+|\([^)]+\))/gi, 'abs($1)')
     .replace(/\bplyus\b|\bqo'shuv\b|\bqo'shilgan\b|\bplus\b/gi, ' + ')
     .replace(/\bminus\b|\bayiruv\b|\bayirilgan\b/gi, ' - ')
     .replace(/\bko'paytirilgan\b|\bko'paytiruv\b|\bzarb\b/gi, ' * ')
@@ -52,7 +70,9 @@ export function normalizeMathString(raw: string): string {
     .replace(/\bkub\b|\bkubi\b/gi, '^3')
     .replace(/\^\s*([+\-])/g, '^2 $1')
     .replace(/\^\s*$/g, '^2')
-    .replace(/\s*=\s*/g, ' = ');
+    .replace(/(?<![<>!:])\s*=\s*/g, ' = ')
+    .replace(/<\s*=/g, '<=')
+    .replace(/>\s*=/g, '>=');
 
   // Uzbek number words
   const numWords: Record<string, string> = {
@@ -88,8 +108,12 @@ export function normalizeMathString(raw: string): string {
     .replace(/\btg\b/g, 'tan')
     .replace(/\bctg\b/g, 'cot');
 
-  // Insert implicit multiplication: e.g. 2x -> 2*x, 3( -> 3*(, )x -> )*x
-  s = s.replace(/(\d)([a-zA-Z(])/g, '$1*$2');
+  // Protect log bases: log2( -> log_2(
+  s = s.replace(/\blog(\d+)\s*\(/gi, 'log_$1(');
+
+  // Insert implicit multiplication: e.g. 2x -> 2*x, 3( -> 3*(, )x -> )*x (avoid breaking log_2( )
+  s = s.replace(/(\d)([a-zA-Z])/g, '$1*$2');
+  s = s.replace(/(^|[^a-zA-Z_])(\d)\s*\(/g, '$1$2*(');
   s = s.replace(/(\))([a-zA-Z0-9(])/g, '$1*$2');
 
   return s;
@@ -1986,6 +2010,165 @@ $$\\mathbf{${ans}}$$`
     }
   }
 
+  // 3. Modulus / Absolute value equations: |ax + b| = c or abs(ax + b) = c
+  const modEqMatch = raw.match(/^(?:\||abs\()\s*([^|=]+?)\s*(?:\||\))\s*=\s*([0-9.\-]+)$/i);
+  if (modEqMatch) {
+    const innerStr = modEqMatch[1].trim();
+    const cVal = parseFloat(modEqMatch[2]);
+    const diag = diagnoseTopic('tenglamalar modul ' + raw);
+
+    if (cVal < 0) {
+      return {
+        solved: true,
+        type: 'Modulli tenglama (Absolyut qiymat)',
+        shortAnswer: "\\emptyset \\text{ (Haqiqiy yechim yo'q)}",
+        diagnosis: diag,
+        markdown: `## 1. Masala tahlili
+Berilgan modulli tenglama:
+$$|${innerStr}| = ${cVal}$$
+
+## 2. Modul ta'rifi
+Har qanday haqiqiy son yoki ifodaning moduli (absolyut qiymati) nomanfiy sondir: $|A| \\ge 0$.
+Tenglikning o'ng tomonida esa manfiy son ($${cVal} < 0$) turibdi.
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{\\emptyset \\quad \\text{(Tenglama haqiqiy yechimga ega emas)}}$$`
+      };
+    }
+
+    const solPos = trySolveEquation(`${innerStr} = ${cVal}`);
+    const solNeg = cVal === 0 ? null : trySolveEquation(`${innerStr} = ${-cVal}`);
+
+    if (solPos && solPos.shortAnswer) {
+      let ans = '';
+      let steps = '';
+      if (cVal === 0) {
+        ans = solPos.shortAnswer;
+        steps = `Modul faqat ifoda nolga teng bo'lgandagina nol bo'ladi:\n$$${innerStr} = 0 \\implies ${solPos.shortAnswer}$$`;
+      } else if (solNeg && solNeg.shortAnswer) {
+        const x1 = solPos.shortAnswer;
+        const x2 = solNeg.shortAnswer;
+        ans = `${x2}, \\; ${x1}`;
+        steps = `Modul ta'rifiga ko'ra tenglama 2 ta mustaqil holatga ajraladi:
+1) $${innerStr} = ${cVal} \\implies ${x1}$
+2) $${innerStr} = ${-cVal} \\implies ${x2}$`;
+      } else {
+        ans = solPos.shortAnswer;
+      }
+
+      return {
+        solved: true,
+        type: 'Modulli tenglama (Absolyut qiymat)',
+        shortAnswer: ans,
+        diagnosis: diag,
+        markdown: `## 1. Masala tahlili
+Berilgan modulli tenglama:
+$$|${innerStr}| = ${cVal}$$
+
+## 2. Modulni ochish va yechish
+${steps}
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${ans}}$$`
+      };
+    }
+  }
+
+  // 4. Radical (Irrational) equations: sqrt(ax + b) = c or \sqrt{...} = c or ildiz(...) = c
+  const radMatch = raw.match(/^(?:\\?sqrt\s*[\(\{]|ildiz\s*[\(\{])\s*\(?([^}=)]+?)\)?\s*[\)\}]\s*=\s*([0-9.\-]+)$/i);
+  if (radMatch) {
+    const innerStr = radMatch[1].trim();
+    const cVal = parseFloat(radMatch[2]);
+    const diag = diagnoseTopic('irratsional tenglama ' + raw);
+
+    if (cVal < 0) {
+      return {
+        solved: true,
+        type: 'Irratsional (Ildizli) tenglama',
+        shortAnswer: "\\emptyset \\text{ (Haqiqiy yechim yo'q)}",
+        diagnosis: diag,
+        markdown: `## 1. Masala tahlili
+Berilgan irratsional tenglama:
+$$\\sqrt{${innerStr}} = ${cVal}$$
+
+## 2. Arifmetik kvadrat ildiz xossasi
+Arifmetik kvadrat ildiz qiymati har doim nomanfiy bo'ladi: $\\sqrt{A} \\ge 0$.
+O'ng tomon esa manfiy son ($${cVal} < 0$) bo'lgani sababli tenglama haqiqiy sonlarda yechimga ega emas.
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{\\emptyset \\quad \\text{(Tenglama haqiqiy yechimga ega emas)}}$$`
+      };
+    }
+
+    const cSquared = cVal * cVal;
+    const solEq = trySolveEquation(`${innerStr} = ${cSquared}`);
+    if (solEq && solEq.shortAnswer) {
+      return {
+        solved: true,
+        type: 'Irratsional (Ildizli) tenglama',
+        shortAnswer: solEq.shortAnswer,
+        diagnosis: diag,
+        markdown: `## 1. Masala tahlili
+Berilgan irratsional tenglama:
+$$\\sqrt{${innerStr}} = ${cVal}$$
+
+## 2. Aniqlanish sohasi va Kvadratga ko'tarish
+1. **Aniqlanish sohasi (O.D.Z.):** $${innerStr} \\ge 0$.
+2. Tenglamaning ikkala tomonini kvadratga oshiramiz:
+$$\\left(\\sqrt{${innerStr}}\\right)^2 = (${cVal})^2 \\implies ${innerStr} = ${fmtNum(cSquared)}$$
+3. Chiziqli/algebraik tenglamani yechamiz:
+$$${solEq.shortAnswer}$$
+4. Tekshirish: ildiz aniqlanish sohasiga tushadi va tenglamani qanoatlantiradi.
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${solEq.shortAnswer}}$$`
+      };
+    }
+  }
+
+  // 5. Logarithmic equations: ln(x) = b, log_a(x) = b, lg(x) = b, log(x) = b
+  const logMatch = raw.match(/^(?:\\?ln|\\?log|log_?(\d+)|lg)\s*[\(\{]\s*([a-zA-Z0-9+\-*\/ ]+?)\s*[\)\}]\s*=\s*([0-9.\-]+)$/i);
+  if (logMatch) {
+    const rawPrefix = raw.substring(0, 5).toLowerCase();
+    const isLg = rawPrefix.includes('lg');
+    const hasBase = logMatch[1] !== undefined;
+    const base = hasBase ? parseFloat(logMatch[1]) : (isLg ? 10 : Math.E);
+    const baseTex = hasBase ? logMatch[1] : (isLg ? '10' : 'e');
+    const innerStr = logMatch[2].trim();
+    const cVal = parseFloat(logMatch[3]);
+    const diag = diagnoseTopic('logarifmik tenglama ' + raw);
+
+    const rhsVal = Math.pow(base, cVal);
+    const solEq = trySolveEquation(`${innerStr} = ${rhsVal}`);
+    if (solEq && solEq.shortAnswer) {
+      const baseDisplay = hasBase ? `\\log_{${logMatch[1]}}` : (isLg ? '\\lg' : '\\ln');
+      return {
+        solved: true,
+        type: 'Logarifmik tenglama',
+        shortAnswer: solEq.shortAnswer,
+        diagnosis: diag,
+        markdown: `## 1. Masala tahlili
+Berilgan logarifmik tenglama:
+$$${baseDisplay}(${innerStr}) = ${cVal}$$
+
+## 2. Logarifm ta'rifi bo'yicha yechish
+1. **Aniqlanish sohasi:** $${innerStr} > 0$.
+2. Logarifm ta'rifiga asosan asosni darajaga ko'taramiz:
+$$${innerStr} = ${baseTex}^{${cVal}} = ${fmtNum(rhsVal)}$$
+3. Noma'lum $x$ ni topamiz:
+$$${solEq.shortAnswer}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${solEq.shortAnswer}}$$`
+      };
+    }
+  }
+
   // Inequalities: x^2 - 4 > 0 or ax + b > 0
   const ineqMatch = raw.match(/^(.*?)(<=|>=|<|>|\\le|\\ge)(.*?)$/);
   if (ineqMatch && !raw.includes('->') && !raw.includes('lim')) {
@@ -2015,7 +2198,7 @@ $$\\mathbf{${ans}}$$`
         const rightBracket = isStrict ? ')' : ']';
 
         const ans = isGreater
-          ? `x \\in (-\\infty, ${fmtNum(minX)}${rightBracket} \\cup ${leftBracket}${fmtNum(maxX)}, \\infty)`
+          ? `x \\in (-\\infty, ${fmtNum(minX)}${rightBracket} \\cup ${leftBracket}${fmtNum(maxX)}, +\\infty)`
           : `x \\in ${leftBracket}${fmtNum(minX)}, ${fmtNum(maxX)}${rightBracket}`;
 
         return {
@@ -2028,13 +2211,118 @@ $$${raw.trim()}$$
 
 ## 2. Intervallar usuli
 Nollar: $x_1 = ${fmtNum(minX)}, \\; x_2 = ${fmtNum(maxX)}$.
-Parabola shoxlari ${a > 0 ? 'yuqoriga' : 'pastga'} qaragan.
+Parabola shoxlari ${a > 0 ? 'yuqoriga' : 'pastga'} qaragan ($a = ${fmtNum(a)}$).
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${ans}}$$`
+        };
+      } else if (Math.abs(D) < 1e-6) {
+        // D == 0: Perfect square root
+        const x0 = -b / (2 * a);
+        let ans = '';
+        if (a > 0) {
+          if (op === '>' || op === '\\gt') ans = `x \\in (-\\infty, ${fmtNum(x0)}) \\cup (${fmtNum(x0)}, +\\infty)`;
+          else if (op === '>=' || op === '\\ge') ans = `x \\in \\mathbb{R}`;
+          else if (op === '<' || op === '\\lt') ans = `\\emptyset \\text{ (Haqiqiy yechim yo'q)}`;
+          else if (op === '<=' || op === '\\le') ans = `x = ${fmtNum(x0)}`;
+        } else {
+          if (op === '>' || op === '\\gt') ans = `\\emptyset \\text{ (Haqiqiy yechim yo'q)}`;
+          else if (op === '>=' || op === '\\ge') ans = `x = ${fmtNum(x0)}`;
+          else if (op === '<' || op === '\\lt') ans = `x \\in (-\\infty, ${fmtNum(x0)}) \\cup (${fmtNum(x0)}, +\\infty)`;
+          else if (op === '<=' || op === '\\le') ans = `x \\in \\mathbb{R}`;
+        }
+        return {
+          solved: true,
+          type: 'Kvadrat tengsizlik (Diskriminant D = 0)',
+          shortAnswer: ans,
+          diagnosis,
+          markdown: `## 1. Masala tahlili
+$$${raw.trim()}$$
+
+## 2. Diskriminant tahlili
+Diskriminant $D = b^2 - 4ac = 0$. Uchhad to'la kvadratga ajraladi: $a(x - (${fmtNum(x0)}))^2$.
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${ans}}$$`
+        };
+      } else {
+        // D < 0: No real roots
+        let ans = '';
+        if (a > 0) {
+          if (op === '>' || op === '>=' || op === '\\ge') ans = `x \\in \\mathbb{R} \\text{ (Barcha haqiqiy sonlar)}`;
+          else ans = `\\emptyset \\text{ (Haqiqiy yechim yo'q)}`;
+        } else {
+          if (op === '<' || op === '<=' || op === '\\le') ans = `x \\in \\mathbb{R} \\text{ (Barcha haqiqiy sonlar)}`;
+          else ans = `\\emptyset \\text{ (Haqiqiy yechim yo'q)}`;
+        }
+        return {
+          solved: true,
+          type: 'Kvadrat tengsizlik (Diskriminant D < 0)',
+          shortAnswer: ans,
+          diagnosis,
+          markdown: `## 1. Masala tahlili
+$$${raw.trim()}$$
+
+## 2. Diskriminant tahlili
+Diskriminant $D = b^2 - 4ac = ${fmtNum(D)} < 0$. Haqiqiy nollar mavjud emas.
+Kvadrat uchhad butun sonlar o'qida doimiy $a = ${fmtNum(a)} ${a > 0 ? '> 0' : '< 0'}$ ishorasini saqlaydi.
 
 ## 4. Yakuniy javob
 Javob:
 $$\\mathbf{${ans}}$$`
         };
       }
+    } else if (Math.abs(b) > 1e-6) {
+      // Linear inequality: b * x + c [op] 0
+      const x0 = -c / b;
+      let effectiveOp = op;
+      if (b < 0) {
+        if (op === '>') effectiveOp = '<';
+        else if (op === '<') effectiveOp = '>';
+        else if (op === '>=' || op === '\\ge') effectiveOp = '<=';
+        else if (op === '<=' || op === '\\le') effectiveOp = '>=';
+      }
+
+      let ans = '';
+      let mathInterval = '';
+      if (effectiveOp === '>' || effectiveOp === '\\gt') {
+        ans = `x > ${fmtNum(x0)}`;
+        mathInterval = `x \\in (${fmtNum(x0)}, +\\infty)`;
+      } else if (effectiveOp === '>=' || effectiveOp === '\\ge') {
+        ans = `x \\ge ${fmtNum(x0)}`;
+        mathInterval = `x \\in [${fmtNum(x0)}, +\\infty)`;
+      } else if (effectiveOp === '<' || effectiveOp === '\\lt') {
+        ans = `x < ${fmtNum(x0)}`;
+        mathInterval = `x \\in (-\\infty, ${fmtNum(x0)})`;
+      } else if (effectiveOp === '<=' || effectiveOp === '\\le') {
+        ans = `x \\le ${fmtNum(x0)}`;
+        mathInterval = `x \\in (-\\infty, ${fmtNum(x0)}]`;
+      }
+
+      return {
+        solved: true,
+        type: 'Chiziqli algebraik tengsizlik',
+        shortAnswer: `${ans} \\iff ${mathInterval}`,
+        diagnosis,
+        markdown: `## 1. Masala tahlili
+Berilgan tengsizlik:
+$$${raw.trim()}$$
+
+## 2. Yechish bosqichlari
+1. Noma'lum qatnashgan hadlarni chap tomonga, ozod hadlarni o'ng tomonga o'tkazamiz:
+$$${fmtNum(b)}x ${op} ${fmtNum(-c)}$$
+2. Tengsizlikning har ikkala tomonini $x$ oldidagi koeffitsiyentga (${fmtNum(b)}) bo'lamiz${b < 0 ? " (manfiy songa bo'lingani sababli tengsizlik ishorasi teskarisiga o'zgaradi!)" : ''}:
+$$${ans}$$
+
+## 3. Oraliq ko'rinishida ifodalash
+$$${mathInterval}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{${ans} \\quad \\Longleftrightarrow \\quad ${mathInterval}}$$`
+      };
     }
   }
 
@@ -2208,8 +2496,71 @@ $$\\mathbf{${shortAns}}$$`
 }
 
 /**
- * 8. MATRIX DETERMINANT & INVERSE (2x2 & 3x3)
+ * 8. MATRIX OPERATIONS & DETERMINANT (2x2 & 3x3)
  */
+function trySolveMatrixOperations(raw: string): LocalSolveResult | null {
+  // Check for 2 matrices: [[...]] and [[...]] with * or + or - between them
+  const matrixMatches = raw.match(/\[\s*\[.*?\]\s*\]/g);
+  if (matrixMatches && matrixMatches.length === 2) {
+    const diagnosis = diagnoseTopic('matritsa ' + raw);
+    try {
+      const m1 = JSON.parse(matrixMatches[0].replace(/\s+/g, ''));
+      const m2 = JSON.parse(matrixMatches[1].replace(/\s+/g, ''));
+      if (Array.isArray(m1) && Array.isArray(m2) && Array.isArray(m1[0]) && Array.isArray(m2[0])) {
+        const isMultiply = raw.includes('*') || /ko'paytirish|zarb/i.test(raw);
+        const isAdd = raw.includes('+') || /qo'shish/i.test(raw);
+        const isSub = raw.includes('-') || /ayirish/i.test(raw);
+
+        function toMatrixTex(m: number[][]): string {
+          return `\\begin{pmatrix} ${m.map(row => row.map(v => fmtNum(v)).join(' & ')).join(' \\\\ ')} \\end{pmatrix}`;
+        }
+
+        if (isMultiply) {
+          const res = math.multiply(m1, m2) as number[][];
+          const shortAns = toMatrixTex(res);
+          return {
+            solved: true,
+            type: "Matritsalarni ko'paytirish (A · B)",
+            shortAnswer: shortAns,
+            diagnosis,
+            markdown: `## 1. Masala tahlili
+Berilgan matritsalar ko'paytmasi:
+$$A = ${toMatrixTex(m1)}, \\quad B = ${toMatrixTex(m2)}$$
+
+## 2. Ko'paytirish qoidasi («Satrni ustunga ko'paytirish»)
+Har bir element mos satr elementlarining mos ustun elementlariga ko'paytmalari yig'indisidan iborat:
+$$A \\cdot B = ${toMatrixTex(m1)} \\cdot ${toMatrixTex(m2)} = ${toMatrixTex(res)}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{A \\cdot B = ${shortAns}}$$`
+          };
+        } else if (isAdd || isSub) {
+          const res = (isAdd ? math.add(m1, m2) : math.subtract(m1, m2)) as number[][];
+          const opSign = isAdd ? '+' : '-';
+          const shortAns = toMatrixTex(res);
+          return {
+            solved: true,
+            type: `Matritsalarni ${isAdd ? "qo'shish" : "ayirish"} (A ${opSign} B)`,
+            shortAnswer: shortAns,
+            diagnosis,
+            markdown: `## 1. Masala tahlili
+$$A = ${toMatrixTex(m1)}, \\quad B = ${toMatrixTex(m2)}$$
+
+## 2. Mos elementlarni ${isAdd ? "qo'shish" : "ayirish"}
+$$A ${opSign} B = ${shortAns}$$
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{A ${opSign} B = ${shortAns}}$$`
+          };
+        }
+      }
+    } catch {}
+  }
+  return null;
+}
+
 function trySolveMatrixDet(raw: string): LocalSolveResult | null {
   if (!raw.toLowerCase().includes('det') && !raw.includes('[[')) return null;
   const diagnosis = diagnoseTopic(raw);
@@ -2266,11 +2617,57 @@ $$\\mathbf{\\det A = ${detFmt}}$$`
  * 8.5. VECTOR ALGEBRA (Dot product, Cross product, Moduli, Angle)
  */
 function trySolveVectors(raw: string): LocalSolveResult | null {
-  // Match patterns like: a = (1, 2, 3), b = (4, -5, 6) or [1, 2, 3] x [4, 5, 6]
-  const vecMatches = [...raw.matchAll(/[\(\[]\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)(?:\s*,\s*([+-]?\d+(?:\.\d+)?))?\s*[\)\]]/g)];
-  if (vecMatches.length < 2) return null;
   // Do not intercept matrix [[...]]
   if (raw.includes('[[')) return null;
+
+  // Match patterns like: a = (1, 2, 3), b = (4, -5, 6) or [1, 2, 3] x [4, 5, 6]
+  const vecMatches = [...raw.matchAll(/[\(\[]\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)(?:\s*,\s*([+-]?\d+(?:\.\d+)?))?\s*[\)\]]/g)];
+  if (vecMatches.length === 0) return null;
+
+  // Single vector: |(1, 2, 3)| or vektor (1, 2, 3) or (3, 4) length
+  if (vecMatches.length === 1 && (/\||uzunli|modul|birlik|ort|vektor/i.test(raw) || raw.trim().startsWith('|') || raw.trim().startsWith('abs'))) {
+    const v = [
+      parseFloat(vecMatches[0][1]),
+      parseFloat(vecMatches[0][2]),
+      vecMatches[0][3] !== undefined ? parseFloat(vecMatches[0][3]) : 0
+    ];
+    const is3D = vecMatches[0][3] !== undefined;
+    const lenSq = v[0] * v[0] + v[1] * v[1] + (is3D ? v[2] * v[2] : 0);
+    const len = Math.sqrt(lenSq);
+    if (len === 0) return null;
+    const e = [v[0] / len, v[1] / len, is3D ? v[2] / len : 0];
+
+    const shortAns = `|\\vec{a}| = ${fmtNum(len)}`;
+    const vecTex = is3D ? `(${v[0]}, \\; ${v[1]}, \\; ${v[2]})` : `(${v[0]}, \\; ${v[1]})`;
+    const ortTex = is3D ? `(${fmtNum(e[0])}, \\; ${fmtNum(e[1])}, \\; ${fmtNum(e[2])})` : `(${fmtNum(e[0])}, \\; ${fmtNum(e[1])})`;
+
+    const diag = diagnoseTopic('vektor uzunligi ' + raw);
+
+    return {
+      solved: true,
+      type: is3D ? "3D Fazoviy vektor koordinatalari va moduli" : "2D Tekislikdagi vektor moduli",
+      shortAnswer: shortAns,
+      diagnosis: diag,
+      markdown: `## 1. Berilgan vektor
+$$\\vec{a} = ${vecTex}$$
+
+## 2. Vektor uzunligi (Moduli)
+Pifagor teoremasi bo'yicha:
+$$|\\vec{a}| = \\sqrt{x^2 + y^2${is3D ? ' + z^2' : ''}} = \\sqrt{${v[0]}^2 + ${v[1]}^2${is3D ? ` + ${v[2]}^2` : ''}} = \\sqrt{${fmtNum(lenSq)}} \\approx \\mathbf{${fmtNum(len)}}$$
+
+## 3. Birlik vektor (Ort) va Yo'naltiruvchi kosinuslar
+- **Birlik vektor (uzunligi 1 ga teng):**
+$$\\vec{e} = \\frac{\\vec{a}}{|\\vec{a}|} = ${ortTex}$$
+- **Yo'naltiruvchi kosinuslar:**
+$$\\cos\\alpha = \\frac{x}{|\\vec{a}|} = ${fmtNum(e[0])}, \\quad \\cos\\beta = \\frac{y}{|\\vec{a}|} = ${fmtNum(e[1])}${is3D ? `, \\quad \\cos\\gamma = \\frac{z}{|\\vec{a}|} = ${fmtNum(e[2])}` : ''}
+
+## 4. Yakuniy javob
+Javob:
+$$\\mathbf{|\\vec{a}| = \\sqrt{${fmtNum(lenSq)}} \\approx ${fmtNum(len)}}, \\quad \\vec{e} = ${ortTex}$$`
+    };
+  }
+
+  if (vecMatches.length < 2) return null;
 
   const v1 = [parseFloat(vecMatches[0][1]), parseFloat(vecMatches[0][2]), vecMatches[0][3] !== undefined ? parseFloat(vecMatches[0][3]) : 0];
   const v2 = [parseFloat(vecMatches[1][1]), parseFloat(vecMatches[1][2]), vecMatches[1][3] !== undefined ? parseFloat(vecMatches[1][3]) : 0];
@@ -2527,6 +2924,7 @@ export function solveLocally(input: string, mode: string = 'auto'): LocalSolveRe
     trySolveEquation(trimmed) ||
     trySolveSeries(trimmed) ||
     trySolveDerivative(trimmed) ||
+    trySolveMatrixOperations(trimmed) ||
     trySolveMatrixDet(trimmed) ||
     tryAnalyzeOrEvaluate(trimmed);
 

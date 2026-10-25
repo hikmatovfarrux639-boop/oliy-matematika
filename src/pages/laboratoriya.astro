@@ -311,6 +311,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="panel-section">
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
               <button id="btn-fractal-autozoom" class="btn btn-primary" style="flex: 1;">🚀 Avto-Zum (Kino rejimi)</button>
+              <button id="btn-fractal-zoomin" class="btn btn-secondary" title="Yaqinlashtirish">➕ Zum</button>
+              <button id="btn-fractal-zoomout" class="btn btn-secondary" title="Uzoqlashtirish">➖ Uzoq</button>
               <button id="btn-fractal-reset" class="btn btn-secondary">Boshlang'ich</button>
             </div>
           </div>
@@ -1039,6 +1041,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     width: 100%;
     height: auto;
     cursor: grab;
+    touch-action: none;
   }
 
   .canvas-wrapper canvas:active {
@@ -1360,6 +1363,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         prevMouse = { x: e.clientX, y: e.clientY };
       });
 
+      // Mobile Touch Support
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+      }, { passive: true });
+      window.addEventListener('touchend', () => { isDragging = false; });
+      window.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const dx = e.touches[0].clientX - prevMouse.x;
+        const dy = e.touches[0].clientY - prevMouse.y;
+        rotY += dx * 0.008;
+        rotX += dy * 0.008;
+        prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }, { passive: true });
+
       // UI Sliders
       const xwSlider = document.getElementById('tess-xw-slider') as HTMLInputElement;
       const ywSlider = document.getElementById('tess-yw-slider') as HTMLInputElement;
@@ -1513,6 +1533,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         rotX += dy * 0.008;
         prevMouse = { x: e.clientX, y: e.clientY };
       });
+
+      // Mobile Touch Support
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+      }, { passive: true });
+      window.addEventListener('touchend', () => { isDragging = false; });
+      window.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const dx = e.touches[0].clientX - prevMouse.x;
+        const dy = e.touches[0].clientY - prevMouse.y;
+        rotY += dx * 0.008;
+        rotX += dy * 0.008;
+        prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }, { passive: true });
 
       // UI Sliders
       const rhoSlider = document.getElementById('lorenz-rho-slider') as HTMLInputElement;
@@ -1752,6 +1789,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         updateHUD();
       });
 
+      // Mobile Touch pan & pinch-to-zoom
+      let lastTouchDist = 0;
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          lastX = e.touches[0].clientX;
+          lastY = e.touches[0].clientY;
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          const dx = e.touches[0].clientX - e.touches[1].clientX;
+          const dy = e.touches[0].clientY - e.touches[1].clientY;
+          lastTouchDist = Math.hypot(dx, dy);
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        isDragging = false;
+        lastTouchDist = 0;
+      });
+
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 1 && isDragging) {
+          const dx = e.touches[0].clientX - lastX;
+          const dy = e.touches[0].clientY - lastY;
+          const scale = 3.0 / (zoom * Math.min(canvas.width, canvas.height));
+          centerX -= dx * scale;
+          centerY += dy * scale;
+          lastX = e.touches[0].clientX;
+          lastY = e.touches[0].clientY;
+          updateHUD();
+        } else if (e.touches.length === 2 && lastTouchDist > 0) {
+          const dx = e.touches[0].clientX - e.touches[1].clientX;
+          const dy = e.touches[0].clientY - e.touches[1].clientY;
+          const dist = Math.hypot(dx, dy);
+          if (dist > 10) {
+            const factor = dist / lastTouchDist;
+            zoom *= factor;
+            if (zoom < 0.5) zoom = 0.5;
+            lastTouchDist = dist;
+            updateHUD();
+          }
+        }
+      }, { passive: true });
+
       // Mouse wheel zoom
       canvas.addEventListener('wheel', (e) => {
         e.preventDefault();
@@ -1760,6 +1841,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (zoom < 0.5) zoom = 0.5;
         updateHUD();
       });
+
+      // UI Zoom Buttons (for mobile & desktop)
+      const btnZoomIn = document.getElementById('btn-fractal-zoomin');
+      const btnZoomOut = document.getElementById('btn-fractal-zoomout');
+      if (btnZoomIn) {
+        btnZoomIn.addEventListener('click', () => {
+          zoom *= 1.6;
+          updateHUD();
+        });
+      }
+      if (btnZoomOut) {
+        btnZoomOut.addEventListener('click', () => {
+          zoom = Math.max(0.5, zoom / 1.6);
+          updateHUD();
+        });
+      }
 
       function updateHUD() {
         if (zoomDisp) zoomDisp.textContent = zoom >= 1000 ? zoom.toExponential(1) + '×' : zoom.toFixed(1) + '×';
@@ -1980,10 +2077,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         });
       }
 
-      // Slingshot mouse interaction
+      // Slingshot mouse & touch interaction
       let isSlingshot = false;
       let startX = 0, startY = 0;
       let currentX = 0, currentY = 0;
+
+      function handleSlingshotEnd() {
+        if (!isSlingshot) return;
+        isSlingshot = false;
+
+        const vx = (startX - currentX) * 0.12;
+        const vy = (startY - currentY) * 0.12;
+
+        let mass = 100, radius = 6, color = '#38bdf8';
+        if (spawnType === 'sun') { mass = 8000; radius = 18; color = '#fbbf24'; }
+        else if (spawnType === 'blackhole') { mass = 30000; radius = 12; color = '#a855f7'; }
+        else if (spawnType === 'moon') { mass = 15; radius = 4; color = '#cbd5e1'; }
+
+        bodies.push({ x: startX, y: startY, vx, vy, mass, radius, color, trail: [] });
+        if (bodyCountDisp) bodyCountDisp.textContent = bodies.length.toString();
+      }
 
       canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
@@ -2001,21 +2114,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         currentY = (e.clientY - rect.top) * (canvas.height / rect.height);
       });
 
-      canvas.addEventListener('mouseup', () => {
-        if (!isSlingshot) return;
-        isSlingshot = false;
+      canvas.addEventListener('mouseup', handleSlingshotEnd);
 
-        const vx = (startX - currentX) * 0.12;
-        const vy = (startY - currentY) * 0.12;
+      // Mobile Touch Slingshot
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          const rect = canvas.getBoundingClientRect();
+          startX = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width);
+          startY = (e.touches[0].clientY - rect.top) * (canvas.height / rect.height);
+          currentX = startX;
+          currentY = startY;
+          isSlingshot = true;
+        }
+      }, { passive: true });
 
-        let mass = 100, radius = 6, color = '#38bdf8';
-        if (spawnType === 'sun') { mass = 8000; radius = 18; color = '#fbbf24'; }
-        else if (spawnType === 'blackhole') { mass = 30000; radius = 12; color = '#a855f7'; }
-        else if (spawnType === 'moon') { mass = 15; radius = 4; color = '#cbd5e1'; }
+      canvas.addEventListener('touchmove', (e) => {
+        if (!isSlingshot || e.touches.length !== 1) return;
+        const rect = canvas.getBoundingClientRect();
+        currentX = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width);
+        currentY = (e.touches[0].clientY - rect.top) * (canvas.height / rect.height);
+      }, { passive: true });
 
-        bodies.push({ x: startX, y: startY, vx, vy, mass, radius, color, trail: [] });
-        if (bodyCountDisp) bodyCountDisp.textContent = bodies.length.toString();
-      });
+      canvas.addEventListener('touchend', handleSlingshotEnd);
 
       function updatePhysics() {
         const dt = 0.5;
@@ -2922,17 +3042,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (currentActiveTab === 'gradient-descent') stepDescent();
       }, 70);
 
-      canvas.addEventListener('click', (e) => {
+      function handleCanvasClick(clientX: number, clientY: number) {
         const rect = canvas.getBoundingClientRect();
-        const px = e.clientX - rect.left;
-        const py = e.clientY - rect.top;
+        const px = (clientX - rect.left) * (canvas.width / rect.width);
+        const py = (clientY - rect.top) * (canvas.height / rect.height);
         const coords = toCoords(px, py);
         currX = coords.x;
         currY = coords.y;
         history.length = 0;
         history.push({ x: currX, y: currY });
         draw();
+      }
+
+      canvas.addEventListener('click', (e) => {
+        handleCanvasClick(e.clientX, e.clientY);
       });
+
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          handleCanvasClick(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
 
       if (lrSlider) {
         lrSlider.addEventListener('input', () => {

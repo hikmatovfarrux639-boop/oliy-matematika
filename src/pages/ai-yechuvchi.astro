@@ -247,7 +247,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Daftar yoki kitobdagi misolni ramka markaziga to'g'rilang:
         </p>
         <div class="scanner-viewfinder-box">
-          <video id="webcam-video" autoplay playsinline></video>
+          <video id="webcam-video" autoplay playsinline muted></video>
           <canvas id="webcam-canvas" style="display: none;"></canvas>
           
           <!-- Sci-Fi Aiming Frame and Laser -->
@@ -1136,6 +1136,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         });
         if (webcamVideo) {
           webcamVideo.srcObject = activeStream;
+          webcamVideo.play().catch(() => {});
           webcamVideo.onloadedmetadata = () => {
             if (webcamSpinner) webcamSpinner.style.display = 'none';
           };
@@ -1221,6 +1222,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       function cleanSpokenMath(text: string): string {
         let s = text.toLowerCase();
+
+        // Cyrillic homoglyphs
+        s = s.replace(/х/g, 'x').replace(/у/g, 'y').replace(/а/g, 'a').replace(/е/g, 'e').replace(/о/g, 'o').replace(/р/g, 'p').replace(/с/g, 'c');
+
         s = s.replace(/\byteng\b/gi, 'y = ')
              .replace(/\by\s*teng\b/gi, 'y = ')
              .replace(/\bxteng\b/gi, 'x = ')
@@ -1236,7 +1241,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
              .replace(/\bminus\b|\bayiruv\b|\bayirilgan\b/gi, ' - ')
              .replace(/\bko'paytirilgan\b|\bko'paytiruv\b|\bzarb\b/gi, ' * ')
              .replace(/\bbo'lingan\b|\bbo'luv\b|\btaqsim\b/gi, ' / ')
-             .replace(/\bildiz\s*(?:ostida)?\b/gi, 'sqrt')
+             .replace(/\bildiz\s*(?:ostida)?\s*\(([^)]+)\)/gi, 'sqrt($1)')
+             .replace(/\bildiz\s*(?:ostida)?\s*([a-zA-Z0-9]+)/gi, 'sqrt($1)')
+             .replace(/\bmodul\s*\(([^)]+)\)/gi, 'abs($1)')
+             .replace(/\bmodul\s*([a-zA-Z0-9]+)/gi, 'abs($1)')
              .replace(/\^\s*([+\-])/g, '^2 $1')
              .replace(/\^\s*$/g, '^2');
 
@@ -1248,7 +1256,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           s = s.replace(new RegExp('\\b' + w + '\\b', 'gi'), n);
         }
 
-        s = s.replace(/\s*=\s*/g, ' = ')
+        s = s.replace(/(?<![<>!:])\s*=\s*/g, ' = ')
+             .replace(/<\s*=/g, '<=')
+             .replace(/>\s*=/g, '>=')
              .replace(/\s+/g, ' ')
              .trim();
         return s;
