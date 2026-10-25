@@ -10,7 +10,7 @@ description: "AX = B tenglamasini teskari matritsa orqali yechish, qachon qulayl
 Oldingi darsda o'rgangan Kramer usuli ajoyib, lekin agar bizda tenglamalar sistemasining koeffitsiyentlari bir xil bo'lib, ozod hadlari ($B$ vektori) har kuni o'zgarib tursa-chi? Masalan, iqtisodiy modellarda zavodning ishlab chiqarish quvvati bir xil, lekin har kuni yangi buyurtmalar ($B$) tushadi.
 
 Kramer usulida har safar barcha determinantlarni qaytadan hisoblashga to'g'ri kelardi.
-Ammo **Matritsa usuli**da siz bir marta $A^{-1}$ ni hisoblab qo'yasiz va har qanday yangi $B$ uchun shunchaki $X = A^{-1} B$ ko'paytmasini bajarasiz!
+Ammo **Matritsa usuli**da siz bir marta $A^{-1}$ni hisoblab qo'yasiz va har qanday yangi$B$uchun shunchaki$X = A^{-1} B$ ko'paytmasini bajarasiz!
 
 ---
 
@@ -21,7 +21,7 @@ $$
 A \cdot X = B
 $$
 
-Agar $\det A \neq 0$ bo'lsa, $A^{-1}$ mavjud. Tenglikning har ikkala tomonini **chap tomondan** $A^{-1}$ ga ko'paytiramiz:
+Agar $\det A \neq 0$bo'lsa,$A^{-1}$mavjud. Tenglikning har ikkala tomonini **chap tomondan**$A^{-1}$ ga ko'paytiramiz:
 
 $$
 A^{-1} \cdot (A \cdot X) = A^{-1} \cdot B
@@ -37,14 +37,14 @@ $$
 $$
 
 > [!WARNING]
-> **Juda muhim qoida:** Matritsalar ko'paytmasi o'rin almashmaydi ($A^{-1} B \neq B A^{-1}$). $X$ ni chapdan ko'paytirganimiz uchun, o'ng tomonda ham $A^{-1}$ **albatta $B$ ning chap tomonida turishi shart!** Aks holda $B \cdot A^{-1}$ ko'paytirish hatto o'lchamlari bo'yicha ham imkonsiz bo'lib qoladi.
+> **Juda muhim qoida:** Matritsalar ko'paytmasi o'rin almashmaydi ($A^{-1} B \neq B A^{-1}$). $X$ni chapdan ko'paytirganimiz uchun, o'ng tomonda ham$A^{-1}$**albatta$B$ning chap tomonida turishi shart!** Aks holda$B \cdot A^{-1}$ ko'paytirish hatto o'lchamlari bo'yicha ham imkonsiz bo'lib qoladi.
 
 ---
 
 ## 2. Matritsa usulining 4 bosqichli algoritmi
 
 1. $A, X, B$ matritsalarini ajratib yozish;
-2. $\det A$ ni hisoblash (agar $\det A = 0$ bo'lsa, usul ishlamaydi!);
+2. $\det A$ni hisoblash (agar$\det A = 0$ bo'lsa, usul ishlamaydi!);
 3. $A^{-1}$ teskari matritsani topish;
 4. $X = A^{-1} \cdot B$ matritsaviy ko'paytmani bajarish.
 
@@ -84,4 +84,5 @@ X = \begin{pmatrix} -2 & 1 \\ 3/2 & -1/2 \end{pmatrix} \begin{pmatrix} 5 \\ 11 \
 $$
 
 Demak: $x = 1, \; y = 2$.
+
 </details>

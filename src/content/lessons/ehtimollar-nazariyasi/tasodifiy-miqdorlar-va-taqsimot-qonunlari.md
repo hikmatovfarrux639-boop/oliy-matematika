@@ -37,9 +37,9 @@ Tasodifiy miqdorlar ikki katta toifaga bo'linadi:
 ### 1. DTM ning taqsimot qonuni (Jadval shakli):
 Har bir qiymatga uning ro'y berish ehtimoli $p_i = P(X = x_i)$ mos qo'yiladi:
 
-| $X$ | $x_1$ | $x_2$ | $x_3$ | $\dots$ | $x_n$ |
+| $X$|$x_1$|$x_2$|$x_3$|$\dots$|$x_n$ |
 |---|---|---|---|---|---|
-| $P$ | $p_1$ | $p_2$ | $p_3$ | $\dots$ | $p_n$ |
+| $P$|$p_1$|$p_2$|$p_3$|$\dots$|$p_n$ |
 
 > **Normallashtirish sharti (Oltin qoida):**
 > 
@@ -71,12 +71,12 @@ $$
 
 ## 3. Asosiy sonli tavsiflar
 
-### 1. Matematik kutilma ($M(X)$ yoki $E(X)$):
+### 1. Matematik kutilma ($M(X)$yoki$E(X)$):
 Tasodifiy miqdorning ehtimolliklar bo'yicha tortilgan o'rtacha qiymati (muvozanat markazi):
 - DTM uchun: $M(X) = \sum_{i=1}^n x_i p_i$;
 - UTM uchun: $M(X) = \int_{-\infty}^{+\infty} x f(x)\,dx$.
 
-### 2. Dispersiya ($D(X)$ yoki $\operatorname{Var}(X)$):
+### 2. Dispersiya ($D(X)$yoki$\operatorname{Var}(X)$):
 Tasodifiy miqdorning o'z o'rtacha qiymati ($M(X)$) atrofida qanchalik tarqoqligini (sochilishini) ifodalaydi:
 $$
 D(X) = M[(X - M(X))^2] = M(X^2) - [M(X)]^2
@@ -117,11 +117,11 @@ Normal taqsimlangan miqdorning qiymatlari o'z o'rtacha qiymati $a$ dan chetlanis
 
 > **Masala:** $X$ tasodifiy miqdor quyidagi taqsimot qonuniga ega:
 >
-> | $X$ | $1$ | $3$ | $5$ |
+> | $X$|$1$|$3$|$5$ |
 > |---|---|---|---|
-> | $P$ | $0.2$ | $0.5$ | $0.3$ |
+> | $P$|$0.2$|$0.5$|$0.3$ |
 >
-> Uning matematik kutilmasi $M(X)$, dispersiyasi $D(X)$ va $\sigma(X)$ ni hisoblang.
+> Uning matematik kutilmasi $M(X)$, dispersiyasi $D(X)$va$\sigma(X)$ ni hisoblang.
 
 ### 1-usul: Amaliy tezkor formula orqali ($M(X^2) - [M(X)]^2$)
 1. Matematik kutilma:
@@ -136,9 +136,7 @@ Normal taqsimlangan miqdorning qiymatlari o'z o'rtacha qiymati $a$ dan chetlanis
 ### 2-usul: Ta'rif bo'yicha to'g'ridan-to'g'ri chetlanishlar kvadrati
 Ta'rif: $D(X) = \sum (x_i - M(X))^2 p_i$.
 $M(X) = 3.2$ ekanligini bilgan holda har bir qiymatning chetlanishini hisoblaymiz:
-- $x_1 - M(X) = 1 - 3.2 = -2.2 \implies (-2.2)^2 = 4.84$
-- $x_2 - M(X) = 3 - 3.2 = -0.2 \implies (-0.2)^2 = 0.04$
-- $x_3 - M(X) = 5 - 3.2 = +1.8 \implies (1.8)^2 = 3.24$
+- $x_1 - M(X) = 1 - 3.2 = -2.2 \implies (-2.2)^2 = 4.84$-$x_2 - M(X) = 3 - 3.2 = -0.2 \implies (-0.2)^2 = 0.04$-$x_3 - M(X) = 5 - 3.2 = +1.8 \implies (1.8)^2 = 3.24$
 
 Endi ehtimolliklariga ko'paytirib yig'amiz:
 $$
@@ -152,7 +150,7 @@ Ikkala usul ham mutlaqo bir xil natija berdi! Ko'rinib turibdiki, 1-usul hisobla
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Uzluksiz tasodifiy miqdorning bitta nuqtadagi ehtimoli nolga teng:**
->    Agar $X$ uzluksiz tasodifiy miqdor bo'lsa, uning aynan bitta aniq nuqtani qabul qilishi ehtimoli nolga teng: $P(X = c) = 0$! Shu sababli:
+>    Agar $X$uzluksiz tasodifiy miqdor bo'lsa, uning aynan bitta aniq nuqtani qabul qilishi ehtimoli nolga teng:$P(X = c) = 0$! Shu sababli:
 >    $$P(a \le X \le b) = P(a < X \le b) = P(a \le X < b) = P(a < X < b)$$
 >    Tengsizlik belgisi qat'iy yoki qat'iy emasligining uzluksiz miqdorda farqi yo'q.
 > 2. **Dispersiya hech qachon manfiy bo'la olmaydi:**
@@ -165,34 +163,64 @@ Ikkala usul ham mutlaqo bir xil natija berdi! Ko'rinib turibdiki, 1-usul hisobla
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $X$ tasodifiy miqdor quyidagi taqsimot qonuniga ega:
-   $P(X = -1) = 0.3, \quad P(X = 0) = 0.2, \quad P(X = 2) = p_3$.
-   Noma'lum $p_3$ ehtimollikni, $M(X)$ va $D(X)$ ni toping.
-2. Agar $M(X) = 4$ va $D(X) = 3$ bo'lsa, $Y = 3X - 5$ tasodifiy miqdorning matematik kutilmasi $M(Y)$ va dispersiyasi $D(Y)$ ni toping.
+1. $X$tasodifiy miqdor quyidagi taqsimot qonuniga ega:$P(X = -1) = 0.3, \quad P(X = 0) = 0.2, \quad P(X = 2) = p_3$.
+   Noma'lum $p_3$ehtimollikni,$M(X)$va$D(X)$ ni toping.
+2. Agar $M(X) = 4$va$D(X) = 3$bo'lsa,$Y = 3X - 5$tasodifiy miqdorning matematik kutilmasi$M(Y)$va dispersiyasi$D(Y)$ ni toping.
 3. Uzluksiz tasodifiy miqdorning zichlik funksiyasi berilgan:
    $$f(x) = \begin{cases} C x^2, & 0 \le x \le 3 \\ 0, & x < 0 \text{ yoki } x > 3 \end{cases}$$
-   Normallashtirish shartidan o'zgarmas $C$ koeffitsiyentni va $P(1 \le X \le 2)$ ehtimollikni hisoblang.
+   Normallashtirish shartidan o'zgarmas $C$koeffitsiyentni va$P(1 \le X \le 2)$ ehtimollikni hisoblang.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); line-height: 1.7;">
-    <p><strong>1-masala:</strong></p>
-    <p>1) Normallashtirish: $0.3 + 0.2 + p_3 = 1 \implies \mathbf{p_3 = 0.5}$.</p>
-    <p>2) $M(X) = (-1)(0.3) + 0(0.2) + 2(0.5) = -0.3 + 1.0 = \mathbf{0.7}$.</p>
-    <p>3) $M(X^2) = (-1)^2(0.3) + 0^2(0.2) + 2^2(0.5) = 0.3 + 2.0 = 2.3$.</p>
-    <p>4) $D(X) = 2.3 - (0.7)^2 = 2.3 - 0.49 = \mathbf{1.81}$.</p>
+<summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
+
+**1-masala:**
+
+    
+
+1) Normallashtirish: $0.3 + 0.2 + p_3 = 1 \implies \mathbf{p_3 = 0.5}$.
+
+    
+
+2) $M(X) = (-1)(0.3) + 0(0.2) + 2(0.5) = -0.3 + 1.0 = \mathbf{0.7}$.
+
+    
+
+3) $M(X^2) = (-1)^2(0.3) + 0^2(0.2) + 2^2(0.5) = 0.3 + 2.0 = 2.3$.
+
+    
+
+4) $D(X) = 2.3 - (0.7)^2 = 2.3 - 0.49 = \mathbf{1.81}$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>2-masala:</strong></p>
-    <p>Sonli xossalardan foydalanamiz:</p>
-    <p>1) $M(Y) = M(3X - 5) = 3M(X) - 5 = 3(4) - 5 = 12 - 5 = \mathbf{7}$.</p>
-    <p>2) $D(Y) = D(3X - 5) = 3^2 D(X) = 9 \cdot 3 = \mathbf{27}$ (ozod son $-5$ dispersiyaga ta'sir qilmaydi!).</p>
+    
+
+**2-masala:**
+
+    
+
+Sonli xossalardan foydalanamiz:
+
+    
+
+1) $M(Y) = M(3X - 5) = 3M(X) - 5 = 3(4) - 5 = 12 - 5 = \mathbf{7}$.
+
+    
+
+2) $D(Y) = D(3X - 5) = 3^2 D(X) = 9 \cdot 3 = \mathbf{27}$(ozod son$-5$ dispersiyaga ta'sir qilmaydi!).
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>3-masala:</strong></p>
-    <p>1) Normallashtirish: $\int_0^3 C x^2 dx = C \left[ \frac{x^3}{3} \right]_0^3 = C \cdot \frac{27}{3} = 9C = 1 \implies \mathbf{C = \frac{1}{9}}$.</p>
-    <p>2) Ehtimollik: $P(1 \le X \le 2) = \int_1^2 \frac{1}{9} x^2 dx = \frac{1}{9} \left[ \frac{x^3}{3} \right]_1^2 = \frac{1}{27}(8 - 1) = \mathbf{\frac{7}{27} \approx 0.259}$.</p>
-  </div>
+    
+
+**3-masala:**
+
+    
+
+1) Normallashtirish: $\int_0^3 C x^2 dx = C \left[ \frac{x^3}{3} \right]_0^3 = C \cdot \frac{27}{3} = 9C = 1 \implies \mathbf{C = \frac{1}{9}}$.
+
+    
+
+2) Ehtimollik: $P(1 \le X \le 2) = \int_1^2 \frac{1}{9} x^2 dx = \frac{1}{9} \left[ \frac{x^3}{3} \right]_1^2 = \frac{1}{27}(8 - 1) = \mathbf{\frac{7}{27} \approx 0.259}$.
+
 </details>

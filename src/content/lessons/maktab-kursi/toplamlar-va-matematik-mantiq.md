@@ -18,28 +18,28 @@ Ushbu mavzuda biz nafaqat nazariy ta'riflar bilan tanishamiz, balki ularning ama
 ## 1. To'plamlar va ular ustida asosiy amallar
 
 > **To'plam** — umumiy belgisi yoki xossasiga ko'ra birlashtirilgan obyektlar (elementlar) majmuasidir.
-> Agar $x$ element $A$ to'plamga tegishli bo'lsa: $x \in A$; tegishli bo'lmasa: $x \notin A$.
+> Agar $x$element$A$to'plamga tegishli bo'lsa:$x \in A$; tegishli bo'lmasa: $x \notin A$.
 
 ### Asosiy amallar:
-1. **Birlashma ($A \cup B$):** $A$ ga **yoki** $B$ ga tegishli bo'lgan barcha elementlar to'plami:
+1. **Birlashma ($A \cup B$):** $A$ga **yoki**$B$ ga tegishli bo'lgan barcha elementlar to'plami:
    
 $$
    A \cup B = \{x \mid x \in A \text{ yoki } x \in B\}
    
 $$
-2. **Kesishma ($A \cap B$):** Ham $A$ ga, **ham** $B$ ga bir vaqtda tegishli bo'lgan umumiy elementlar to'plami:
+2. **Kesishma ($A \cap B$):** Ham $A$ga, **ham**$B$ ga bir vaqtda tegishli bo'lgan umumiy elementlar to'plami:
    
 $$
    A \cap B = \{x \mid x \in A \text{ va } x \in B\}
    
 $$
-3. **Ayirma ($A \setminus B$):** $A$ ga tegishli, lekin $B$ ga kirmaydigan elementlar:
+3. **Ayirma ($A \setminus B$):** $A$ga tegishli, lekin$B$ ga kirmaydigan elementlar:
    
 $$
    A \setminus B = \{x \mid x \in A \text{ va } x \notin B\}
    
 $$
-4. **To'ldiruvchi to'plam ($\bar{A}$ yoki $A'$):** Universal $U$ to'plamning $A$ ga kirmaydigan barcha elementlari:
+4. **To'ldiruvchi to'plam ($\bar{A}$yoki$A'$):** Universal $U$to'plamning$A$ ga kirmaydigan barcha elementlari:
    
 $$
    \bar{A} = U \setminus A
@@ -61,7 +61,7 @@ $$
 
 ## 2. Eyler-Venn diagrammalari va Quvvat (Kardinal son)
 
-Chekli to'plamdagi elementlar soni uning **quvvati** deb ataladi va $|A|$ yoki $n(A)$ kabi belgilanadi.
+Chekli to'plamdagi elementlar soni uning **quvvati** deb ataladi va $|A|$yoki$n(A)$ kabi belgilanadi.
 
 > **Kiritish va chiqarish prinsipi (Inclusion-Exclusion):**
 > Ikkita to'plam uchun:
@@ -84,10 +84,10 @@ $$
 > **Mulohaza** — mazmuniga ko'ra **chin** (1 yoki True) yoki **yolg'on** (0 yoki False) bo'lgan darak gapdir.
 
 ### Asosiy mantiqiy amallar:
-1. **Inkor ($\neg A$ yoki $\bar{A}$):** "Emas". Chin bo'lsa yolg'on, yolg'on bo'lsa chin qiladi.
-2. **Konyunksiya ($A \land B$ yoki $A \cdot B$):** "Va" (mantiqiy ko'paytirish). Faqat ikkalasi ham chin bo'lgandagina chin bo'ladi.
-3. **Dizyunksiya ($A \lor B$ yoki $A + B$):** "Yoki" (mantiqiy qo'shish). Kamida bittasi chin bo'lsa chin bo'ladi.
-4. **Implikatsiya ($A \to B$):** "Agar $A$ bo'lsa, u holda $B$". Faqat chindan yolg'on kelib chiqqanda ($1 \to 0$) yolg'on bo'ladi:
+1. **Inkor ($\neg A$yoki$\bar{A}$):** "Emas". Chin bo'lsa yolg'on, yolg'on bo'lsa chin qiladi.
+2. **Konyunksiya ($A \land B$yoki$A \cdot B$):** "Va" (mantiqiy ko'paytirish). Faqat ikkalasi ham chin bo'lgandagina chin bo'ladi.
+3. **Dizyunksiya ($A \lor B$yoki$A + B$):** "Yoki" (mantiqiy qo'shish). Kamida bittasi chin bo'lsa chin bo'ladi.
+4. **Implikatsiya ($A \to B$):** "Agar $A$bo'lsa, u holda$B$". Faqat chindan yolg'on kelib chiqqanda ($1 \to 0$) yolg'on bo'ladi:
    
 $$
    A \to B \equiv \neg A \lor B
@@ -96,7 +96,7 @@ $$
 5. **Ekvivalensiya ($A \leftrightarrow B$):** "Faqat va faqat shunda". Ikkala mulohaza bir xil qiymat qabul qilganda chin bo'ladi.
 
 ### Rostlik jadvali (Truth Table):
-| $A$ | $B$ | $\neg A$ | $A \land B$ | $A \lor B$ | $A \to B$ | $A \leftrightarrow B$ |
+| $A$|$B$|$\neg A$|$A \land B$|$A \lor B$|$A \to B$|$A \leftrightarrow B$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 1 | 1 | 0 | 1 | 1 | 1 | 1 |
 | 1 | 0 | 0 | 0 | 1 | 0 | 0 |
@@ -134,47 +134,72 @@ Ikkala usul ham mutlaqo bir xil natija berdi! Eyler-Venn diagrammasi 3 ta to'pla
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Implikatsiyadagi yolg'on asos tuzog'i:**
->    Agar dastlabki shart yolg'on bo'lsa ($A = 0$), natija qanday bo'lishidan qat'i nazar implikatsiya doimo **chin** bo'ladi ($0 \to 1 \equiv 1$ va $0 \to 0 \equiv 1$). Masalan: "Agar $2 \times 2 = 5$ bo'lsa, unda oy pishloqdan qilingan" — bu mulohaza matematik mantiqda qat'iy CHIN hisoblanadi!
+>    Agar dastlabki shart yolg'on bo'lsa ($A = 0$), natija qanday bo'lishidan qat'i nazar implikatsiya doimo **chin** bo'ladi ($0 \to 1 \equiv 1$va$0 \to 0 \equiv 1$). Masalan: "Agar $2 \times 2 = 5$ bo'lsa, unda oy pishloqdan qilingan" — bu mulohaza matematik mantiqda qat'iy CHIN hisoblanadi!
 > 2. **Konyunksiya va dizyunksiya inkorida qavslar:**
 >    $\neg(A \land B) \neq \neg A \land \neg B$! De Morgan qonuniga ko'ra o'rtadagi belgi teskarisiga aylanadi: $\neg(A \land B) \equiv \neg A \lor \neg B$.
 > 3. **To'plam elementlari va qism-to'plam belgisi:**
->    $a \in \{a, b\}$ (tegishli), lekin $\{a\} \subset \{a, b\}$ (qism-to'plam). Bularni chalkashtirish nazariy testlarda keng tarqalgan tuzoqdir.
+>    $a \in \{a, b\}$(tegishli), lekin$\{a\} \subset \{a, b\}$ (qism-to'plam). Bularni chalkashtirish nazariy testlarda keng tarqalgan tuzoqdir.
 
 ---
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $A = \{1, 2, 3, 4, 5\}$ va $B = \{3, 4, 5, 6, 7\}$ to'plamlar berilgan. $A \cap B$, $A \setminus B$ va $A \triangle B$ larni toping.
+1. $A = \{1, 2, 3, 4, 5\}$va$B = \{3, 4, 5, 6, 7\}$to'plamlar berilgan.$A \cap B$, $A \setminus B$va$A \triangle B$ larni toping.
 2. Mantiqiy ifodaning rostlik jadvalini tuzing va uning tavtologiya (doim chin) ekanligini isbotlang:
    $$(A \to B) \leftrightarrow (\neg A \lor B)$$
 3. 50 kishilik guruhda 30 kishi dasturlashni, 25 kishi grafik dizaynni, 10 kishi ikkalasini ham biladi. Guruhda ikkala kasbni ham bilmaydiganlar necha kishi?
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); line-height: 1.7;">
-    <p><strong>1-masala:</strong></p>
-    <ul>
-      <li>$A \cap B = \{3, 4, 5\}$ (umumiy elementlar);</li>
-      <li>$A \setminus B = \{1, 2\}$ (faqat A dagi elementlar);</li>
-      <li>$A \triangle B = \{1, 2, 6, 7\}$ (simmetrik ayirma).</li>
-    </ul>
+<summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
+
+**1-masala:**
+
+    
+
+      
+- $A \cap B = \{3, 4, 5\}$ (umumiy elementlar);
+
+      
+- $A \setminus B = \{1, 2\}$ (faqat A dagi elementlar);
+
+      
+- $A \triangle B = \{1, 2, 6, 7\}$ (simmetrik ayirma).
+
+    
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>2-masala:</strong></p>
-    <p>Har qanday $A, B \in \{0, 1\}$ uchun:</p>
-    <ul>
-      <li>$A=1, B=1: 1 \to 1 = 1, \quad 0 \lor 1 = 1 \implies 1 \leftrightarrow 1 = 1$</li>
-      <li>$A=1, B=0: 1 \to 0 = 0, \quad 0 \lor 0 = 0 \implies 0 \leftrightarrow 0 = 1$</li>
-      <li>$A=0, B=1: 0 \to 1 = 1, \quad 1 \lor 1 = 1 \implies 1 \leftrightarrow 1 = 1$</li>
-      <li>$A=0, B=0: 0 \to 0 = 1, \quad 1 \lor 0 = 1 \implies 1 \leftrightarrow 1 = 1$</li>
-    </ul>
-    <p>Barcha 4 ta holatda ham natija 1 chiqdi. Demak, ifoda <strong>tavtologiya</strong>!</p>
+    
+
+**2-masala:**
+
+    
+
+Har qanday $A, B \in \{0, 1\}$ uchun:
+
+    
+
+      
+- $A=1, B=1: 1 \to 1 = 1, \quad 0 \lor 1 = 1 \implies 1 \leftrightarrow 1 = 1$-$A=1, B=0: 1 \to 0 = 0, \quad 0 \lor 0 = 0 \implies 0 \leftrightarrow 0 = 1$-$A=0, B=1: 0 \to 1 = 1, \quad 1 \lor 1 = 1 \implies 1 \leftrightarrow 1 = 1$-$A=0, B=0: 0 \to 0 = 1, \quad 1 \lor 0 = 1 \implies 1 \leftrightarrow 1 = 1$
+
+    
+
+    
+
+Barcha 4 ta holatda ham natija 1 chiqdi. Demak, ifoda **tavtologiya**!
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>3-masala:</strong></p>
-    <p>Kamida bittasini biladiganlar: $|P \cup D| = 30 + 25 - 10 = 45$.</p>
-    <p>Hech birini bilmaydiganlar: $50 - 45 = \mathbf{5}$ kishi.</p>
-  </div>
+    
+
+**3-masala:**
+
+    
+
+Kamida bittasini biladiganlar: $|P \cup D| = 30 + 25 - 10 = 45$.
+
+    
+
+Hech birini bilmaydiganlar: $50 - 45 = \mathbf{5}$ kishi.
+
 </details>

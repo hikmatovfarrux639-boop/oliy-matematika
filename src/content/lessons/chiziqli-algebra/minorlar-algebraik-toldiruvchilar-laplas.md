@@ -7,7 +7,7 @@ description: "Minor va algebraik to'ldiruvchi tushunchasi, ishoralar shaxmat tax
 
 ## Nega bu mavzu juda muhim?
 
-Oldingi darsda $3 \times 3$ determinantni hisoblashni o'rgandik. Lekin $4 \times 4$, $5 \times 5$ yoki $10 \times 10$ o'lchamli determinantlarni qanday hisoblaymiz?
+Oldingi darsda $3 \times 3$determinantni hisoblashni o'rgandik. Lekin$4 \times 4$, $5 \times 5$yoki$10 \times 10$ o'lchamli determinantlarni qanday hisoblaymiz?
 Bundan tashqari, matritsaning teskari matritsasini ($A^{-1}$) topish uchun ham aynan **algebraik to'ldiruvchilar** kerak bo'ladi.
 
 Bu darsimizda har qanday tartibli determinantni oson va qulay hisoblash imkonini beruvchi qudratli usul — **Laplas teoremasi**ni o'rganamiz.
@@ -16,7 +16,7 @@ Bu darsimizda har qanday tartibli determinantni oson va qulay hisoblash imkonini
 
 ## 1. Minor tushunchasi ($M_{ij}$)
 
-$n$-tartibli $A$ matritsaning $a_{ij}$ elementining **minori ($M_{ij}$)** deb:
+$n$-tartibli $A$matritsaning$a_{ij}$ elementining **minori ($M_{ij}$)** deb:
 > Berilgan matritsadan **$i$-satr va $j$-ustunni o'chirib tashlashdan** hosil bo'lgan $(n-1)$-tartibli determinantga aytiladi.
 
 **Misol:**
@@ -43,8 +43,8 @@ A_{ij} = (-1)^{i+j} M_{ij}
 $$
 
 Ya'ni:
-- Agar indekslar yig'indisi $i + j$ **juft** bo'lsa: $A_{ij} = +M_{ij}$ (ishora o'zgarmaydi).
-- Agar indekslar yig'indisi $i + j$ **toq** bo'lsa: $A_{ij} = -M_{ij}$ (ishora qarama-qarshisiga o'zgaradi).
+- Agar indekslar yig'indisi $i + j$**juft** bo'lsa:$A_{ij} = +M_{ij}$ (ishora o'zgarmaydi).
+- Agar indekslar yig'indisi $i + j$**toq** bo'lsa:$A_{ij} = -M_{ij}$ (ishora qarama-qarshisiga o'zgaradi).
 
 ### Ishoralar "shaxmat taxtasi" qoidasi:
 $$
@@ -96,7 +96,7 @@ $$
 \Delta = 0 \cdot A_{31} + 3 \cdot A_{32} + 0 \cdot A_{33} + 0 \cdot A_{34} = 3 \cdot A_{32}
 $$
 
-$A_{32}$ ni topamiz. 3-satr va 2-ustun kesishmasi: $i+j = 3+2 = 5$ (toq son, demak oldiga minus chiqadi):
+$A_{32}$ni topamiz. 3-satr va 2-ustun kesishmasi:$i+j = 3+2 = 5$ (toq son, demak oldiga minus chiqadi):
 $$
 A_{32} = (-1)^{3+2} M_{32} = - \begin{vmatrix}
 2 & -1 & 3 \\
@@ -125,4 +125,5 @@ $$
 $$
 
 Qarang, to'rtta ulkan $3 \times 3$ determinant hisoblash o'rniga, to'g'ri satrni tanlab, masalani 2 daqiqada yechdik!
+
 </details>

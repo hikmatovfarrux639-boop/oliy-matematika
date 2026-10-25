@@ -30,7 +30,7 @@ $$
 \text{Uzoqlashadi}, & \text{agar } p \le 1 
 \end{cases}
 $$
-*Isboti:* $p=1$ da $\lim_{b\to\infty} \ln b = \infty$; $p \ne 1$ da $\left[\frac{x^{1-p}}{1-p}\right]_1^\infty$. Agar $1-p < 0 \iff p > 1$ bo'lsa, $\infty^{1-p} = 0$ bo'lib, chekli son chiqadi.
+*Isboti:* $p=1$da$\lim_{b\to\infty} \ln b = \infty$; $p \ne 1$da$\left[\frac{x^{1-p}}{1-p}\right]_1^\infty$. Agar $1-p < 0 \iff p > 1$bo'lsa,$\infty^{1-p} = 0$ bo'lib, chekli son chiqadi.
 
 ### 2-tur etalon integral:
 $$
@@ -39,13 +39,13 @@ $$
 \text{Uzoqlashadi}, & \text{agar } p \ge 1 
 \end{cases}
 $$
-*(E'tibor bering: 1-turda $p > 1$ da yaqinlashsa, 2-turda aksincha $p < 1$ da yaqinlashadi!)*
+*(E'tibor bering: 1-turda $p > 1$da yaqinlashsa, 2-turda aksincha$p < 1$ da yaqinlashadi!)*
 
 ---
 
 ## 2. Musbat funksiyalar uchun taqqoslash alomatlari
 
-Faraz qilaylik, $[a; +\infty)$ oraliqda $0 \le f(x) \le g(x)$ bo'lsin:
+Faraz qilaylik, $[a; +\infty)$oraliqda$0 \le f(x) \le g(x)$ bo'lsin:
 
 ```
                     Taqqoslash qoidasi
@@ -70,31 +70,31 @@ integrallari **bir vaqtda yaqinlashadi yoki bir vaqtda uzoqlashadi**.
 
 ## 3. Absolyut va shartli yaqinlashish. Dirixle va Abel alomatlari
 
-Agar integral ostidagi funksiya o'zgaruvchan ishorali bo'lsa (masalan, $\sin x$ yoki $\cos x$ qatnashsa):
+Agar integral ostidagi funksiya o'zgaruvchan ishorali bo'lsa (masalan, $\sin x$yoki$\cos x$ qatnashsa):
 
-1. **Absolyut yaqinlashish:** Agar $\int_a^{+\infty} |f(x)| dx$ yaqinlashsa, u holda $\int_a^{+\infty} f(x) dx$ ham yaqinlashadi va u **absolyut yaqinlashuvchi** deyiladi.
-2. **Shartli yaqinlashish:** Agar $\int_a^{+\infty} f(x) dx$ yaqinlashib, lekin modulining integrali $\int_a^{+\infty} |f(x)| dx$ uzoqlashsa, u **shartli yaqinlashuvchi** deyiladi.
+1. **Absolyut yaqinlashish:** Agar $\int_a^{+\infty} |f(x)| dx$yaqinlashsa, u holda$\int_a^{+\infty} f(x) dx$ ham yaqinlashadi va u **absolyut yaqinlashuvchi** deyiladi.
+2. **Shartli yaqinlashish:** Agar $\int_a^{+\infty} f(x) dx$yaqinlashib, lekin modulining integrali$\int_a^{+\infty} |f(x)| dx$ uzoqlashsa, u **shartli yaqinlashuvchi** deyiladi.
 
 ### Dirixle alomati:
 Agar:
-1. $F(x) = \int_a^x f(t) dt$ boshlang'ich funksiyasi barcha $x \ge a$ da chegaralangan bo'lsa ($|F(x)| \le M$);
-2. $g(x)$ funksiya monoton ravishda $0$ ga intilsa ($g(x) \searrow 0$, $x \to +\infty$),
+1. $F(x) = \int_a^x f(t) dt$boshlang'ich funksiyasi barcha$x \ge a$ da chegaralangan bo'lsa ($|F(x)| \le M$);
+2. $g(x)$funksiya monoton ravishda$0$ ga intilsa ($g(x) \searrow 0$, $x \to +\infty$),
 u holda:
 $$
 \int_a^{+\infty} f(x) g(x) \, dx \quad \text{yaqinlashuvchi bo'ladi.}
 $$
 
-**Klassik misol:** $\int_1^{+\infty} \frac{\sin x}{x} dx$. Bu yerda $|\int_1^x \sin t dt| = |\cos 1 - \cos x| \le 2$ (chegaralangan), $g(x) = \frac{1}{x} \searrow 0$. Demak, Dirixle alomatiga ko'ra integral yaqinlashadi (ammo shartli yaqinlashadi, chunki $\int_1^\infty \frac{|\sin x|}{x} dx$ uzoqlashadi).
+**Klassik misol:** $\int_1^{+\infty} \frac{\sin x}{x} dx$. Bu yerda $|\int_1^x \sin t dt| = |\cos 1 - \cos x| \le 2$(chegaralangan),$g(x) = \frac{1}{x} \searrow 0$. Demak, Dirixle alomatiga ko'ra integral yaqinlashadi (ammo shartli yaqinlashadi, chunki $\int_1^\infty \frac{|\sin x|}{x} dx$ uzoqlashadi).
 
 ---
 
 ## 4. Koshi bosh qiymati (V.P. - Valeur Principale)
 
-Agar $f(x)$ funksiya $(-\infty; +\infty)$ oraliqda aniqlangan bo'lib, uning alohida qismlari uzoqlashsa, simmetrik oraliq bo'yicha limit olinadi:
+Agar $f(x)$funksiya$(-\infty; +\infty)$ oraliqda aniqlangan bo'lib, uning alohida qismlari uzoqlashsa, simmetrik oraliq bo'yicha limit olinadi:
 $$
 \text{v.p.} \int_{-\infty}^{+\infty} f(x) dx = \lim_{R \to +\infty} \int_{-R}^R f(x) dx
 $$
-**Misol:** $\int_{-\infty}^{+\infty} x \, dx$ odatiy ma'noda uzoqlashuvchi, chunki $\lim_{A\to\infty}\int_0^A x dx = \infty$.
+**Misol:** $\int_{-\infty}^{+\infty} x \, dx$odatiy ma'noda uzoqlashuvchi, chunki$\lim_{A\to\infty}\int_0^A x dx = \infty$.
 Biroq Koshi bosh qiymati ma'nosida:
 $$
 \text{v.p.} \int_{-\infty}^{+\infty} x \, dx = \lim_{R\to\infty} \int_{-R}^R x \, dx = \lim_{R\to\infty} \left[\frac{x^2}{2}\right]_{-R}^R = \lim_{R\to\infty} (0) = 0
@@ -148,7 +148,7 @@ $$
 $$
 
 **Yechish:**
-Bu yerda uzilish nuqtasi yuqori chegara $x = 2$ dir, chunki $\lim_{x\to 2^-} \frac{1}{\sqrt{4-x^2}} = +\infty$.
+Bu yerda uzilish nuqtasi yuqori chegara $x = 2$dir, chunki$\lim_{x\to 2^-} \frac{1}{\sqrt{4-x^2}} = +\infty$.
 Ta'rif bo'yicha limitga o'tamiz:
 $$
 I = \lim_{\varepsilon \to 0^+} \int_0^{2-\varepsilon} \frac{dx}{\sqrt{4 - x^2}} = \lim_{\varepsilon \to 0^+} \left[ \arcsin\left(\frac{x}{2}\right) \right]_0^{2-\varepsilon}
@@ -162,8 +162,8 @@ Integral yaqinlashuvchi va uning qiymati $\frac{\pi}{2}$ ga teng.
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Ichki uzilish nuqtasini ko'rmay qolish:** Masalan, $\int_{-1}^1 \frac{dx}{x^3}$. Agar Nyuton-Leybnitsni to'g'ridan-to'g'ri qo'llasangiz: $\left[-\frac{1}{2x^2}\right]_{-1}^1 = -\frac{1}{2} - (-\frac{1}{2}) = 0$ chiqadi. **Bu mutlaqo noto'g'ri!** $x=0$ nuqtada uzilish bor. Integral ikkiga bo'linishi kerak: $\int_{-1}^0 \frac{dx}{x^3} + \int_0^1 \frac{dx}{x^3} = -\infty + \infty$ (integral uzoqlashuvchi).
-> 2. **Etalon ko'rsatkichlarni chalkashtirish:** 1-turda $p > 1$ yaqinlashadi, 2-turda esa $p < 1$ yaqinlashadi. Ko'pchilik talabalar 2-tur integralda ham $p > 1$ ni qidirib adashadilar.
+> 1. **Ichki uzilish nuqtasini ko'rmay qolish:** Masalan, $\int_{-1}^1 \frac{dx}{x^3}$. Agar Nyuton-Leybnitsni to'g'ridan-to'g'ri qo'llasangiz: $\left[-\frac{1}{2x^2}\right]_{-1}^1 = -\frac{1}{2} - (-\frac{1}{2}) = 0$chiqadi. **Bu mutlaqo noto'g'ri!**$x=0$nuqtada uzilish bor. Integral ikkiga bo'linishi kerak:$\int_{-1}^0 \frac{dx}{x^3} + \int_0^1 \frac{dx}{x^3} = -\infty + \infty$ (integral uzoqlashuvchi).
+> 2. **Etalon ko'rsatkichlarni chalkashtirish:** 1-turda $p > 1$yaqinlashadi, 2-turda esa$p < 1$yaqinlashadi. Ko'pchilik talabalar 2-tur integralda ham$p > 1$ ni qidirib adashadilar.
 
 ---
 
@@ -179,15 +179,15 @@ $$
 <summary>👉 Yechimni tekshirish</summary>
 
 **Yechish:**
-$x \to +\infty$ da maxrajdagi eng katta darajani topamiz:
-$\sqrt[3]{x^5} = x^{5/3}$. Bu had $x^1$ ga qaraganda tezroq o'sadi.
+$x \to +\infty$da maxrajdagi eng katta darajani topamiz:$\sqrt[3]{x^5} = x^{5/3}$. Bu had $x^1$ ga qaraganda tezroq o'sadi.
 Shuning uchun taqqoslash funksiyasi: $g(x) = \frac{1}{x^{5/3}}$.
 $$
 \lim_{x\to\infty} \frac{\frac{1}{x + \sqrt[3]{x^5+2}}}{\frac{1}{x^{5/3}}} = \lim_{x\to\infty} \frac{x^{5/3}}{x + x^{5/3}\sqrt[3]{1 + 2/x^5}} = 1
 $$
-$\int_1^{+\infty} \frac{dx}{x^{5/3}}$ etalon integrali $p = \frac{5}{3} > 1$ bo'lgani uchun yaqinlashuvchi.
+$\int_1^{+\infty} \frac{dx}{x^{5/3}}$etalon integrali$p = \frac{5}{3} > 1$ bo'lgani uchun yaqinlashuvchi.
 
 **Javob:** Integral limitli taqqoslash alomatiga ko'ra **yaqinlashuvchi**.
+
 </details>
 
 ### 2-mashq
@@ -200,7 +200,7 @@ $$
 <summary>👉 Yechimni tekshirish</summary>
 
 **Yechish:**
-$x = 1$ nuqtada $\ln 1 = 0$, ya'ni funksiya uzilishga ega (2-tur xosmas integral).
+$x = 1$nuqtada$\ln 1 = 0$, ya'ni funksiya uzilishga ega (2-tur xosmas integral).
 $$
 \int_1^e \frac{d(\ln x)}{\ln^2 x} = \lim_{\delta \to 0^+} \int_{1+\delta}^e \frac{d(\ln x)}{\ln^2 x} = \lim_{\delta \to 0^+} \left[ -\frac{1}{\ln x} \right]_{1+\delta}^e
 $$
@@ -210,4 +210,5 @@ $$
 Integral uzoqlashuvchi!
 
 **Javob:** Integral **uzoqlashadi** ($+\infty$).
+
 </details>

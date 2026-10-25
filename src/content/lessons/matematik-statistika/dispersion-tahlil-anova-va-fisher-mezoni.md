@@ -11,7 +11,7 @@ Matematik statistikada ikkita bosh to'plamning o'rtacha qiymatlarini solishtiris
 
 ## 1. Nima uchun juft-juft $t$-test emas, balki ANOVA ishlatiladi?
 
-Agar bizda $k = 5$ ta guruh bo'lsa, ularni juft-juft solishtirish uchun $C_5^2 = 10$ marta Styudent $t$-mezonini qo'llashga to'g'ri keladi. Har bir testda $\alpha = 0.05$ ahamiyatlilik darajasi olinsa, kamida bitta testda to'g'ri $H_0$ gipotezani xato ravishda rad etish (1-tur xatolik) ehtimoli keskin oshib ketadi:
+Agar bizda $k = 5$ta guruh bo'lsa, ularni juft-juft solishtirish uchun$C_5^2 = 10$marta Styudent$t$-mezonini qo'llashga to'g'ri keladi. Har bir testda $\alpha = 0.05$ahamiyatlilik darajasi olinsa, kamida bitta testda to'g'ri$H_0$ gipotezani xato ravishda rad etish (1-tur xatolik) ehtimoli keskin oshib ketadi:
 $$
 P(\text{kamida bitta xato}) = 1 - (1 - 0.05)^{10} \approx 0.401 \quad (40.1\%)
 $$
@@ -31,7 +31,7 @@ muqobil gipoteza $H_1: \text{"kamida ikkita guruh o'rtachasi bir-biridan farq qi
 
 ## 2. Kvadratlar yig'indilarining ajralish teoremasi ($SST = SSB + SSW$)
 
-Faraz qilaylik, $A$ omilning $k$ ta darajasi (guruhlari) bo'yicha kuzatuvlar o'tkazilgan bo'lsin. $i$-guruhda $n_i$ ta kuzatuv $x_{i1}, x_{i2}, \dots, x_{in_i}$ mavjud ($i = 1, \dots, k$). Umumiy kuzatuvlar soni:
+Faraz qilaylik, $A$omilning$k$ta darajasi (guruhlari) bo'yicha kuzatuvlar o'tkazilgan bo'lsin.$i$-guruhda $n_i$ta kuzatuv$x_{i1}, x_{i2}, \dots, x_{in_i}$ mavjud ($i = 1, \dots, k$). Umumiy kuzatuvlar soni:
 $$
 N = \sum_{i=1}^{k} n_i
 $$
@@ -46,16 +46,16 @@ $$
 \bar{x} = \frac{1}{N} \sum_{i=1}^{k} \sum_{j=1}^{n_i} x_{ij} = \frac{1}{N} \sum_{i=1}^{k} n_i \bar{x}_i
 $$
 
-Har bir kuzatuvning umumiy o'rtachadan chetlanishini ikki qismga ajratamiz: $(x_{ij} - \bar{x}) = (\bar{x}_i - \bar{x}) + (x_{ij} - \bar{x}_i)$. Kvadratga oshirib, barcha $i$ va $j$ bo'yicha yig'indi olsak, **dispersion tahlilning asosiy ayniyati** kelib chiqadi:
+Har bir kuzatuvning umumiy o'rtachadan chetlanishini ikki qismga ajratamiz: $(x_{ij} - \bar{x}) = (\bar{x}_i - \bar{x}) + (x_{ij} - \bar{x}_i)$. Kvadratga oshirib, barcha $i$va$j$ bo'yicha yig'indi olsak, **dispersion tahlilning asosiy ayniyati** kelib chiqadi:
 
 $$
 \underbrace{\sum_{i=1}^{k} \sum_{j=1}^{n_i} (x_{ij} - \bar{x})^2}_{SST \text{ (Umumiy)}} = \underbrace{\sum_{i=1}^{k} n_i (\bar{x}_i - \bar{x})^2}_{SSB \text{ (Guruhlararo)}} + \underbrace{\sum_{i=1}^{k} \sum_{j=1}^{n_i} (x_{ij} - \bar{x}_i)^2}_{SSW \text{ (Guruh ichidagi)}}
 $$
 
 Bu yerda:
-* **$SST$ (Total Sum of Squares — Umumiy kvadratlar yig'indisi):** Barcha omillar ta'siridagi to'liq o'zgaruvchanlikni ifodalaydi. Erkinlik darajasi: $df_{\text{um}} = N - 1$.
-* **$SSB$ (Sum of Squares Between groups — Guruhlararo kvadratlar yig'indisi, yoki $SS_{\text{omil}}$):** Guruh o'rtachalarining umumiy o'rtachadan farqini, ya'ni tekshirilayotgan **omil ta'sirini** o'lchaydi. Erkinlik darajasi: $df_B = k - 1$.
-* **$SSW$ (Sum of Squares Within groups — Guruh ichidagi / qoldiq kvadratlar yig'indisi, yoki $SS_{\text{qoldiq}}$):** Har bir guruh ichidagi **tasodifiy xatoliklar** ta'sirini o'lchaydi. Erkinlik darajasi: $df_W = N - k$.
+* **$SST$(Total Sum of Squares — Umumiy kvadratlar yig'indisi):** Barcha omillar ta'siridagi to'liq o'zgaruvchanlikni ifodalaydi. Erkinlik darajasi:$df_{\text{um}} = N - 1$.
+* **$SSB$(Sum of Squares Between groups — Guruhlararo kvadratlar yig'indisi, yoki$SS_{\text{omil}}$):** Guruh o'rtachalarining umumiy o'rtachadan farqini, ya'ni tekshirilayotgan **omil ta'sirini** o'lchaydi. Erkinlik darajasi: $df_B = k - 1$.
+* **$SSW$(Sum of Squares Within groups — Guruh ichidagi / qoldiq kvadratlar yig'indisi, yoki$SS_{\text{qoldiq}}$):** Har bir guruh ichidagi **tasodifiy xatoliklar** ta'sirini o'lchaydi. Erkinlik darajasi: $df_W = N - k$.
 
 Erkinlik darajalari uchun ham qo'shilish qonuni o'rinli:
 $$
@@ -79,16 +79,16 @@ $$
 
 > [!IMPORTANT]
 > **Fisherning $F$-statistikasi:**
-> Agar $H_0$ gipoteza o'rinli bo'lsa (ya'ni omil o'rtachalarga ta'sir qilmasa), $MSB$ ham, $MSW$ ham yagona $\sigma^2$ bosh dispersiyaning siljimagan bahosi bo'ladi va ularning nisbati $1$ ga yaqin bo'lishi kerak. Agar omil ta'siri kuchli bo'lsa, $MSB \gg MSW$ bo'ladi.
+> Agar $H_0$gipoteza o'rinli bo'lsa (ya'ni omil o'rtachalarga ta'sir qilmasa),$MSB$ham,$MSW$ham yagona$\sigma^2$bosh dispersiyaning siljimagan bahosi bo'ladi va ularning nisbati$1$ga yaqin bo'lishi kerak. Agar omil ta'siri kuchli bo'lsa,$MSB \gg MSW$ bo'ladi.
 > 
 $$
 > F_{\text{kuz}} = \frac{MSB}{MSW} = \frac{SSB / (k - 1)}{SSW / (N - k)}
 > 
 $$
-> $H_0$ o'rinli bo'lganda $F_{\text{kuz}}$ statistika erkinlik darajalari $\nu_1 = k - 1$ va $\nu_2 = N - k$ bo'lgan **Fisher-Snedekor $F(\nu_1, \nu_2)$ taqsimotiga** bo'ysunadi.
+> $H_0$o'rinli bo'lganda$F_{\text{kuz}}$statistika erkinlik darajalari$\nu_1 = k - 1$va$\nu_2 = N - k$bo'lgan **Fisher-Snedekor$F(\nu_1, \nu_2)$ taqsimotiga** bo'ysunadi.
 
 ### Qaror qabul qilish qoidasi (O'ng tomonlama kritik soha):
-Tanlangan $\alpha$ ahamiyatlilik darajasi uchun Fisher jadvalidan $F_{\text{krit}} = F_{\alpha}(k - 1; N - k)$ kritik nuqta topiladi:
+Tanlangan $\alpha$ahamiyatlilik darajasi uchun Fisher jadvalidan$F_{\text{krit}} = F_{\alpha}(k - 1; N - k)$ kritik nuqta topiladi:
 * Agar $F_{\text{kuz}} > F_{\text{krit}}$ bo'lsa — **$H_0$ gipoteza rad etiladi** (omil o'rtacha qiymatlarga statistik ahamiyatli ta'sir ko'rsatadi).
 * Agar $F_{\text{kuz}} \le F_{\text{krit}}$ bo'lsa — **$H_0$ gipotezani rad etish uchun asos yo'q** (guruh o'rtachalari orasidagi farq tasodifiy).
 
@@ -100,9 +100,9 @@ Dispersion tahlil natijalari xalqaro standart bo'yicha quyidagi jadval ko'rinish
 
 | Variatsiya manbai | Kvadratlar yig'indisi ($SS$) | Erkinlik darajasi ($df$) | O'rtacha kvadrat ($MS$) | $F$-statistika ($F_{\text{kuz}}$) |
 | :--- | :---: | :---: | :---: | :---: |
-| **Guruhlararo (Omil)** | $SSB$ | $k - 1$ | $MSB = \frac{SSB}{k-1}$ | $F = \frac{MSB}{MSW}$ |
-| **Guruh ichida (Qoldiq)** | $SSW$ | $N - k$ | $MSW = \frac{SSW}{N-k}$ | — |
-| **Umumiy (Total)** | $SST = SSB + SSW$ | $N - 1$ | — | — |
+| **Guruhlararo (Omil)** | $SSB$|$k - 1$|$MSB = \frac{SSB}{k-1}$|$F = \frac{MSB}{MSW}$ |
+| **Guruh ichida (Qoldiq)** | $SSW$|$N - k$|$MSW = \frac{SSW}{N-k}$ | — |
+| **Umumiy (Total)** | $SST = SSB + SSW$|$N - 1$ | — | — |
 
 Qo'shimcha ravishda omilning umumiy o'zgaruvchanlikdagi ulushini baholash uchun **effekt ulushi (eta-kvadrat)** hisoblanadi:
 $$
@@ -142,26 +142,21 @@ $$
 \bar{x} = \frac{4 + 6 + 8}{3} = 6
 $$
 
-**3-qadam. Kvadratlar yig'indilarini ($SSB$ va $SSW$) hisoblaymiz:**
+**3-qadam. Kvadratlar yig'indilarini ($SSB$va$SSW$) hisoblaymiz:**
 Guruhlararo kvadratlar yig'indisi ($SSB$):
 $$
 SSB = \sum_{i=1}^{3} n_i (\bar{x}_i - \bar{x})^2 = 4(4 - 6)^2 + 4(6 - 6)^2 + 4(8 - 6)^2 = 4(4) + 0 + 4(4) = 32
 $$
 
 Guruh ichidagi kvadratlar yig'indisi ($SSW$):
-* 1-guruh uchun: $(4-4)^2 + (5-4)^2 + (4-4)^2 + (3-4)^2 = 0 + 1 + 0 + 1 = 2$
-* 2-guruh uchun: $(6-6)^2 + (7-6)^2 + (5-6)^2 + (6-6)^2 = 0 + 1 + 1 + 0 = 2$
-* 3-guruh uchun: $(8-8)^2 + (9-8)^2 + (7-8)^2 + (8-8)^2 = 0 + 1 + 1 + 0 = 2$
+* 1-guruh uchun: $(4-4)^2 + (5-4)^2 + (4-4)^2 + (3-4)^2 = 0 + 1 + 0 + 1 = 2$* 2-guruh uchun:$(6-6)^2 + (7-6)^2 + (5-6)^2 + (6-6)^2 = 0 + 1 + 1 + 0 = 2$* 3-guruh uchun:$(8-8)^2 + (9-8)^2 + (7-8)^2 + (8-8)^2 = 0 + 1 + 1 + 0 = 2$
 $$
 SSW = 2 + 2 + 2 = 6
 $$
 Umumiy kvadratlar yig'indisi: $SST = SSB + SSW = 32 + 6 = 38$.
 
 **4-qadam. Erkinlik darajalari va o'rtacha kvadratlarni ($MSB, MSW$) topamiz:**
-* $df_B = k - 1 = 3 - 1 = 2 \implies MSB = \frac{SSB}{df_B} = \frac{32}{2} = 16$
-* $df_W = N - k = 12 - 3 = 9 \implies MSW = \frac{SSW}{df_W} = \frac{6}{9} \approx 0.667$
-
-**5-qadam. Fisher $F$-statistikasini hisoblaymiz va xulosa chiqaramiz:**
+* $df_B = k - 1 = 3 - 1 = 2 \implies MSB = \frac{SSB}{df_B} = \frac{32}{2} = 16$*$df_W = N - k = 12 - 3 = 9 \implies MSW = \frac{SSW}{df_W} = \frac{6}{9} \approx 0.667$**5-qadam. Fisher$F$-statistikasini hisoblaymiz va xulosa chiqaramiz:**
 $$
 F_{\text{kuz}} = \frac{MSB}{MSW} = \frac{16}{6/9} = \frac{16 \cdot 9}{6} = 24.0
 $$
@@ -170,7 +165,7 @@ Solishtiramiz:
 $$
 F_{\text{kuz}} = 24.0 > F_{\text{krit}} = 4.26
 $$
-**Xulosa:** $H_0$ gipoteza rad etiladi. O'qitish metodikasi talabalarning o'zlashtirish ko'rsatkichiga statistik jihatdan juda kuchli ta'sir ko'rsatadi. Effekt ulushi: $\eta^2 = \frac{32}{38} \approx 0.842$ (umumiy o'zgaruvchanlikning $84.2\%$ qismi metodika turiga bog'liq).
+**Xulosa:** $H_0$gipoteza rad etiladi. O'qitish metodikasi talabalarning o'zlashtirish ko'rsatkichiga statistik jihatdan juda kuchli ta'sir ko'rsatadi. Effekt ulushi:$\eta^2 = \frac{32}{38} \approx 0.842$(umumiy o'zgaruvchanlikning$84.2\%$ qismi metodika turiga bog'liq).
 
 ---
 
@@ -178,24 +173,21 @@ $$
 
 1. Dispersion tahlilda "guruhlararo dispersiya" va "guruh ichidagi dispersiya" nimani ifodalaydi?
 2. Nima sababdan ANOVA da Fisher mezoni har doim **bir tomonlama (o'ng tomonlama)** kritik sohaga ega?
-3. Agar barcha guruhlardagi xususiy o'rtachalar bir-biriga aynan teng bo'lib chiqsa ($\bar{x}_1 = \bar{x}_2 = \dots = \bar{x}_k$), $SSB$ va $F_{\text{kuz}}$ qanday qiymat qabul qiladi?
+3. Agar barcha guruhlardagi xususiy o'rtachalar bir-biriga aynan teng bo'lib chiqsa ($\bar{x}_1 = \bar{x}_2 = \dots = \bar{x}_k$), $SSB$va$F_{\text{kuz}}$ qanday qiymat qabul qiladi?
 4. ANOVA $H_0$ gipotezani rad etganidan so'ng, aynan qaysi juftliklar o'zaro farq qilishini aniqlash uchun qanday qo'shimcha mezonlar (Post-hoc tests) qo'llaniladi? *(Javob: Tyuki HSD, Sheffe yoki Bonferroni tuzatmasi).*
 
 ---
 
 ## Mustaqil yechish uchun masalalar
 
-1. **1-masala:** $k = 4$ ta guruhning har birida $n_i = 6$ tadan kuzatuv o'tkazildi. Agar $SSB = 45$ va $SSW = 60$ bo'lsa:
+1. **1-masala:** $k = 4$ta guruhning har birida$n_i = 6$tadan kuzatuv o'tkazildi. Agar$SSB = 45$va$SSW = 60$ bo'lsa:
    a) erkinlik darajalari $df_B, df_W, df_{\text{um}}$ ni;
-   b) $MSB, MSW$ va $F_{\text{kuz}}$ statistikani;
-   c) $\eta^2$ effekt ulushini toping. ($\alpha = 0.05$ da $F_{0.05}(3; 20) = 3.10$).
+   b) $MSB, MSW$va$F_{\text{kuz}}$ statistikani;
+   c) $\eta^2$ effekt ulushini toping. ($\alpha = 0.05$da$F_{0.05}(3; 20) = 3.10$).
 2. **2-masala:** Uchta korxonada ishlab chiqarilgan detallarning mustahkamligi sinovdan o'tkazildi ($n_1 = n_2 = n_3 = 3$):
-   * 1-korxona: $10, \, 12, \, 11$
-   * 2-korxona: $13, \, 15, \, 14$
-   * 3-korxona: $9, \, 10, \, 11$
-   ANOVA jadvalini tuzing va $\alpha = 0.05$ da korxonalar orasida farq bor-yo'qligini tekshiring ($F_{0.05}(2; 6) = 5.14$).
+   * 1-korxona: $10, \, 12, \, 11$* 2-korxona:$13, \, 15, \, 14$* 3-korxona:$9, \, 10, \, 11$ANOVA jadvalini tuzing va$\alpha = 0.05$ da korxonalar orasida farq bor-yo'qligini tekshiring ($F_{0.05}(2; 6) = 5.14$).
 3. **3-masala:** To'liq bo'lmagan ANOVA jadvalidagi tushirib qoldirilgan qiymatlarni tiklang:
-   $k = 5$, $N = 25$, $SST = 250$, $MSB = 30$. $SSB, SSW, MSW$ va $F_{\text{kuz}}$ ni toping.
+   $k = 5$, $N = 25$, $SST = 250$, $MSB = 30$. $SSB, SSW, MSW$va$F_{\text{kuz}}$ ni toping.
 
 ---
 

@@ -16,8 +16,8 @@ Bunday aylanma simmetriyaga ega sohalarda hisoblashni o'nlab marta osonlashtiris
 ## 1. Qutb koordinatalari formulalari
 
 Tekislikdagi har bir nuqta ikkita kattalik bilan ifodalanadi:
-- $r$ — qutb radiusi (koordinata boshidan nuqtagacha bo'lgan masofa, $r \ge 0$);
-- $\varphi$ — qutb burchagi ($Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchak, $0 \le \varphi < 2\pi$).
+- $r$— qutb radiusi (koordinata boshidan nuqtagacha bo'lgan masofa,$r \ge 0$);
+- $\varphi$ — qutb burchagi ($Ox$o'qining musbat yo'nalishi bilan hosil qilgan burchak,$0 \le \varphi < 2\pi$).
 
 ### O'tish formulalari:
 $$
@@ -35,7 +35,7 @@ $$
 
 ## 2. Yuza elementi va Yakobian siri
 
-O'zgaruvchilarni almashtirganda yuza elementi $dx dy$ shunchaki $dr d\varphi$ ga teng bo'lib qolmaydi! Ular orasidagi mutanosiblik koeffitsiyenti — **almashtirish Yakobiani ($J$)** deb ataladi:
+O'zgaruvchilarni almashtirganda yuza elementi $dx dy$shunchaki$dr d\varphi$ ga teng bo'lib qolmaydi! Ular orasidagi mutanosiblik koeffitsiyenti — **almashtirish Yakobiani ($J$)** deb ataladi:
 
 $$
 J = \begin{vmatrix}
@@ -110,7 +110,7 @@ Integralni hisoblang:
 $$
 \iint_D \sqrt{4 - x^2 - y^2} \, dx dy
 $$
-bu yerda $D$ — $x^2 + y^2 \le 4, \; y \ge 0$ (yuqori yarim doira).
+bu yerda $D$—$x^2 + y^2 \le 4, \; y \ge 0$ (yuqori yarim doira).
 
 #### 1-usul: Qutb koordinatalariga o'tish
 1. Soha chegaralari:
@@ -148,8 +148,8 @@ Hisoblash mutlaqo to'g'ri ekanligi geometrik isbotlandi!
 
 ### 2-masala: Siljigan doirada integrallash (Imtihon klassikasi)
 
-Soha: $x^2 + y^2 \le 2x$ (markazi $(1, 0)$ nuqtada va radiusi $R = 1$ bo'lgan doira).
-Ushbu soha bo'yicha $r$ va $\varphi$ chegaralarini aniqlang.
+Soha: $x^2 + y^2 \le 2x$(markazi$(1, 0)$nuqtada va radiusi$R = 1$ bo'lgan doira).
+Ushbu soha bo'yicha $r$va$\varphi$ chegaralarini aniqlang.
 
 #### Yechish:
 1. Tenglamaga $x = r\cos\varphi, y = r\sin\varphi$ ni qo'yamiz:
@@ -182,9 +182,9 @@ $$
 ## 6. Imtihondagi asosiy tuzoqlar
 
 > [!WARNING] Imtihondagi tuzoqlar
-> 1. **Yakobian $r$ ni yozishni unutish:** Talabalar ko'pincha $dx dy = dr d\varphi$ deb yozishadi va natijada barcha hisob-kitoblar noto'g'ri chiqadi. Har doim $r dr d\varphi$ deb tekshiring!
+> 1. **Yakobian $r$ni yozishni unutish:** Talabalar ko'pincha$dx dy = dr d\varphi$deb yozishadi va natijada barcha hisob-kitoblar noto'g'ri chiqadi. Har doim$r dr d\varphi$ deb tekshiring!
 > 2. **Siljigan aylanada burchakni $0 \le \varphi \le 2\pi$ deb olish:** Agar doira koordinata boshidan o'ngga siljigan bo'lsa ($x^2 + y^2 \le 2ax$), u faqat I va IV choraklarda yotadi, shuning uchun burchak $[-\pi/2; \pi/2]$ oralig'ida bo'ladi!
-> 3. **Elliptik sohada $ab$ ko'paytuvchisini unutish:** $\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$ da $dx dy = ab \cdot r dr d\varphi$ bo'ladi. $ab$ ni tashlab ketish javobni $ab$ barobar kichraytirib yuboradi.
+> 3. **Elliptik sohada $ab$ko'paytuvchisini unutish:**$\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$da$dx dy = ab \cdot r dr d\varphi$bo'ladi.$ab$ni tashlab ketish javobni$ab$ barobar kichraytirib yuboradi.
 
 ---
 
@@ -205,6 +205,7 @@ $$
 I = \int_0^{2\pi} d\varphi \int_0^1 r^2 \cdot r \, dr = 2\pi \int_0^1 r^3 dr = 2\pi \left[ \frac{r^4}{4} \right]_0^1 = 2\pi \cdot \frac{1}{4} = \frac{\pi}{2}
 $$
 Javob: $\frac{\pi}{2}$.
+
 </details>
 
 ### 2-mashq
@@ -219,4 +220,5 @@ $$
 S = \iint_D dx dy = \int_0^{2\pi} d\varphi \int_0^1 6r \, dr = 2\pi \cdot 6 \left[ \frac{r^2}{2} \right]_0^1 = 12\pi \cdot \frac{1}{2} = 6\pi
 $$
 *(Ma'lumki, ellips yuzi $\pi a b = \pi \cdot 3 \cdot 2 = 6\pi$!).*
+
 </details>

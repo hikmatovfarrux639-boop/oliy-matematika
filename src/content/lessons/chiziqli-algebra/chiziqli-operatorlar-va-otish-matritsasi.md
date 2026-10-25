@@ -34,7 +34,7 @@ Ushbu hosil bo'lgan koeffitsiyentlar operator matritsasining **ustunlari**ga ayl
 
 ## 2. Yangi bazisga o'tishda matritsaning o'zgarishi
 
-Agar eski bazisdan yangi bazisga o'tish matritsasi $T$ bo'lsa, operatorning yangi bazisdagi $A'$ matritsasi quyidagi mashhur formula bilan bog'lanadi:
+Agar eski bazisdan yangi bazisga o'tish matritsasi $T$bo'lsa, operatorning yangi bazisdagi$A'$ matritsasi quyidagi mashhur formula bilan bog'lanadi:
 
 $$
 \mathbf{A' = T^{-1} \cdot A \cdot T}

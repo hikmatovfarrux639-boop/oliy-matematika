@@ -23,7 +23,7 @@ Agar shunday skalyar $U(x, y, z)$ funksiya mavjud bo'lib, uning gradienti berilg
 $$
 \vec{F} = \operatorname{grad} U = \frac{\partial U}{\partial x}\vec{i} + \frac{\partial U}{\partial y}\vec{j} + \frac{\partial U}{\partial z}\vec{k}
 $$
-u holda $\vec{F}$ **potensial maydon**, skalyar $U(x, y, z)$ esa uning **potensial funksiyasi (potensiali)** deyiladi.
+u holda $\vec{F}$**potensial maydon**, skalyar$U(x, y, z)$ esa uning **potensial funksiyasi (potensiali)** deyiladi.
 
 ### Maydonning potensial bo'lishining zaruriy va yetarli sharti:
 Maydon bir bog'lamli sohada potensial bo'lishi uchun uning **rotori (uyurmasi) aynan nolga teng** bo'lishi zarur va yetarli:
@@ -57,7 +57,7 @@ bunday maydon **solenoidal (uyurmali) maydon** deyiladi.
 $$
 \Phi = \oiint_S \vec{F} \cdot d\vec{S} = \iiint_V \operatorname{div}\vec{F} \, dV = 0
 $$
-- Har qanday solenoidal maydon uchun shunday $\vec{A}$ **vektor potensiali** mavjudki, $\vec{F} = \operatorname{rot} \vec{A}$ bo'ladi (chunki $\operatorname{div}(\operatorname{rot}\vec{A}) \equiv 0$).
+- Har qanday solenoidal maydon uchun shunday $\vec{A}$**vektor potensiali** mavjudki,$\vec{F} = \operatorname{rot} \vec{A}$bo'ladi (chunki$\operatorname{div}(\operatorname{rot}\vec{A}) \equiv 0$).
 
 ---
 
@@ -75,19 +75,19 @@ $$
 $$
 \operatorname{rot} \vec{F} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ 2xy+z^2 & x^2+3y^2 & 2xz+1 \end{vmatrix}
 $$
-- $\vec{i}$ bo'yicha: $\frac{\partial}{\partial y}(2xz+1) - \frac{\partial}{\partial z}(x^2+3y^2) = 0 - 0 = 0$;
-- $\vec{j}$ bo'yicha: $\frac{\partial}{\partial z}(2xy+z^2) - \frac{\partial}{\partial x}(2xz+1) = 2z - 2z = 0$;
-- $\vec{k}$ bo'yicha: $\frac{\partial}{\partial x}(x^2+3y^2) - \frac{\partial}{\partial y}(2xy+z^2) = 2x - 2x = 0$.
+- $\vec{i}$bo'yicha:$\frac{\partial}{\partial y}(2xz+1) - \frac{\partial}{\partial z}(x^2+3y^2) = 0 - 0 = 0$;
+- $\vec{j}$bo'yicha:$\frac{\partial}{\partial z}(2xy+z^2) - \frac{\partial}{\partial x}(2xz+1) = 2z - 2z = 0$;
+- $\vec{k}$bo'yicha:$\frac{\partial}{\partial x}(x^2+3y^2) - \frac{\partial}{\partial y}(2xy+z^2) = 2x - 2x = 0$.
 $\operatorname{rot} \vec{F} = \vec{0}$, demak maydon haqiqatan ham **potensial**!
 
 ---
 
 #### 1-usul: Ketma-ket integrallash va hosila olish zanjiri
-$\frac{\partial U}{\partial x} = 2xy + z^2$ ekanligidan $x$ bo'yicha integrallaymiz:
+$\frac{\partial U}{\partial x} = 2xy + z^2$ekanligidan$x$ bo'yicha integrallaymiz:
 $$
 U(x, y, z) = x^2 y + x z^2 + C(y, z)
 $$
-Endi $y$ bo'yicha xususiy hosila olib, $Q(x, y, z)$ ga tenglashtiramiz:
+Endi $y$bo'yicha xususiy hosila olib,$Q(x, y, z)$ ga tenglashtiramiz:
 $$
 \frac{\partial U}{\partial y} = x^2 + \frac{\partial C(y, z)}{\partial y} = x^2 + 3y^2 \implies \frac{\partial C(y, z)}{\partial y} = 3y^2
 $$
@@ -95,7 +95,7 @@ $y$ bo'yicha integrallasak:
 $$
 C(y, z) = y^3 + D(z) \implies U(x, y, z) = x^2 y + x z^2 + y^3 + D(z)
 $$
-Endi $z$ bo'yicha hosila olib, $R(x, y, z)$ ga tenglashtiramiz:
+Endi $z$bo'yicha hosila olib,$R(x, y, z)$ ga tenglashtiramiz:
 $$
 \frac{\partial U}{\partial z} = 2xz + D'(z) = 2xz + 1 \implies D'(z) = 1 \implies D(z) = z + C_0
 $$
@@ -134,7 +134,7 @@ Ikkala usul ham soniyalar ichida bir xil mukammal natija berdi!
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Divergensiya bilan Rotorni adashtirish:** Potensial bo'lishi uchun $\operatorname{rot} \vec{F} = \vec{0}$ bo'lishi shart! Divergensiyaning nolga tengligi ($\operatorname{div} \vec{F} = 0$) esa maydonning **solenoidal** ekanligini bildiradi. Bular mutlaqo ikki xil xossa.
-> 2. **Siniq chiziq bo'ylab integrallashda o'zgaruvchilarni adashtirish:** 2-integralda $x$ o'zgarmas parametr sifatida saqlanib turishi shart, ko'pchilik talabalar 2-integralda ham $x$ o'rniga $0$ qo'yib $x^2 y$ hadini yo'qotib qo'yishadi!
+> 2. **Siniq chiziq bo'ylab integrallashda o'zgaruvchilarni adashtirish:** 2-integralda $x$o'zgarmas parametr sifatida saqlanib turishi shart, ko'pchilik talabalar 2-integralda ham$x$o'rniga$0$qo'yib$x^2 y$ hadini yo'qotib qo'yishadi!
 
 ---
 
@@ -160,6 +160,7 @@ $$
 Divergensiya aynan nolga teng.
 
 **Javob:** Maydon **solenoidal**dir.
+
 </details>
 
 ### 2-mashq
@@ -182,4 +183,5 @@ $$
 $$
 
 **Javob:** $U(x, y, z) = xy + yz + zx + C$.
+
 </details>

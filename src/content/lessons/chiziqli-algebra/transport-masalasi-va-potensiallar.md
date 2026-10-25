@@ -7,7 +7,7 @@ description: "Yopiq va ochiq transport modellari, Shimoli-g'arb va Minimal xaraj
 
 ## Transport masalasining mohiyati
 
-Tasavvur qiling, $m$ ta omborda bir xil mahsulot saqlanmoqda, uni $n$ ta do'konga yetkazib berish kerak.
+Tasavvur qiling, $m$ta omborda bir xil mahsulot saqlanmoqda, uni$n$ ta do'konga yetkazib berish kerak.
 Har bir ombordan har bir do'kongacha 1 birlik yuk tashish narxi $c_{ij}$ ma'lum.
 Vazifa: barcha do'konlar talabini qondirib, omborlarni bo'shatgan holda **umumiy transport xarajatini eng kam (minimal) qilish**!
 

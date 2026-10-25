@@ -32,13 +32,20 @@ export default async function handler(req, res) {
 
     if (!apiKey) {
       return res.status(401).json({ 
-        error: "Gemini API kaliti topilmadi. Iltimos, Vercel sozlamalarida GEMINI_API_KEY o'zgaruvchisini qo'shing yoki sayt sozlamalaridan shaxsiy kalitingizni kiriting." 
+        error: "Serverda GEMINI_API_KEY sozlanmagan yoki shaxsiy kalit kiritilmagan." 
       });
     }
 
-    // Clean model name
-    const cleanModel = model.replace(/^models\//, '');
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${cleanModel}:generateContent?key=${apiKey}`;
+    // Automatic model failover list (prioritizing fast, stable models and falling back if 503/429/404)
+    const requestedModel = (model || '').replace(/^models\//, '');
+    const candidateModels = Array.from(new Set([
+      requestedModel,
+      'gemini-3.5-flash-lite',
+      'gemini-3.5-flash',
+      'gemini-3.6-flash',
+      'gemini-flash-lite-latest',
+      'gemini-3.8-flash'
+    ])).filter(Boolean);
 
     const requestBody = {
       contents,
@@ -47,20 +54,44 @@ export default async function handler(req, res) {
       ...(tools ? { tools } : {})
     };
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 25000);
+    let lastStatus = 500;
+    let lastData = { error: "Gemini modeliga ulanib bo'lmadi." };
 
-    const geminiRes = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestBody),
-      signal: controller.signal
-    });
+    for (const candidateModel of candidateModels) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${candidateModel}:generateContent?key=${apiKey}`;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 18000);
 
-    clearTimeout(timeout);
+      try {
+        const geminiRes = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody),
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
 
-    const data = await geminiRes.json();
-    return res.status(geminiRes.status).json(data);
+        const data = await geminiRes.json();
+        if (geminiRes.ok && data?.candidates?.[0]) {
+          return res.status(200).json(data);
+        }
+
+        lastStatus = geminiRes.status;
+        lastData = data;
+
+        // If key is invalid (400/403 API_KEY_INVALID), don't waste time trying other models
+        const errMsg = JSON.stringify(data || '');
+        if (errMsg.includes('API_KEY_INVALID') || geminiRes.status === 401) {
+          break;
+        }
+      } catch (fetchErr) {
+        clearTimeout(timeout);
+        lastStatus = 504;
+        lastData = { error: fetchErr.name === 'AbortError' ? "Model javob berishga kechikdi." : fetchErr.message };
+      }
+    }
+
+    return res.status(lastStatus).json(lastData);
   } catch (error) {
     return res.status(500).json({ 
       error: error.name === 'AbortError' ? "AI so'rovi vaqti tugadi (timeout)." : (error.message || "Serverda noma'lum xatolik yuz berdi.")

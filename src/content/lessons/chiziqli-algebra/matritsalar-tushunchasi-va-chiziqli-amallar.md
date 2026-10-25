@@ -35,7 +35,7 @@ Demak, matritsa — bu shunchaki quruq formula emas, balki **katta hajmdagi bog'
 
 Matritsa gorizontal qatorlar — **satrlar (rows)** va vertikal qatorlar — **ustunlar (columns)**dan tashkil topadi.
 
-Agar matritsada $m$ ta satr va $n$ ta ustun bo'lsa, uning **o'lchami** $m \times n$ deb aytiladi ("m ning n ga matritsasi"):
+Agar matritsada $m$ta satr va$n$ta ustun bo'lsa, uning **o'lchami**$m \times n$ deb aytiladi ("m ning n ga matritsasi"):
 
 $$
 A = \begin{pmatrix}
@@ -64,14 +64,14 @@ Matritsalarni to'g'ri taniy bilish — ularni yechishning yarmi demakdir:
 
 2. **Bosh diagonal va yordamchi diagonal:** Kvadrat matritsada yuqori chap burchakdan pastki o'ng burchakka o'tuvchi chiziq **bosh diagonal** ($a_{11}, a_{22}, \dots, a_{nn}$) deyiladi. Yuqori o'ngdan pastki chapga o'tuvchisi esa **yordamchi diagonal** deyiladi.
 
-3. **Birlik matritsa ($E$ yoki $I$):** Bosh diagonali faqat $1$ lardan, qolgan barcha elementlari $0$ lardan iborat kvadrat matritsa. U oddiy arifmetikadagi $1$ soni vazifasini bajaradi!
+3. **Birlik matritsa ($E$yoki$I$):** Bosh diagonali faqat $1$lardan, qolgan barcha elementlari$0$lardan iborat kvadrat matritsa. U oddiy arifmetikadagi$1$ soni vazifasini bajaradi!
    $$E = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
 
-4. **Nol matritsa ($O$):** Barcha elementlari $0$ bo'lgan matritsa (arifmetikadagi $0$ kabi).
+4. **Nol matritsa ($O$):** Barcha elementlari $0$bo'lgan matritsa (arifmetikadagi$0$ kabi).
 
 5. **Diagonal matritsa:** Bosh diagonaldan tashqaridagi barcha elementlari $0$ bo'lgan kvadrat matritsa.
 
-6. **Transponirlangan matritsa ($A^T$ yoki $A'$):** Matritsaning satrlarini mos ravishda ustunlar qilib yozib chiqish amali:
+6. **Transponirlangan matritsa ($A^T$yoki$A'$):** Matritsaning satrlarini mos ravishda ustunlar qilib yozib chiqish amali:
    $$A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \implies A^T = \begin{pmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{pmatrix}$$
 
 ---
@@ -107,14 +107,14 @@ Matritsalarni qo'shish va songa ko'paytirish oddiy sonlar kabi qulay qonunlarga 
 2. $(A + B) + C = A + (B + C)$ *(Assotsiativlik)*;
 3. $A + O = A$ *(Nol matritsaning xossasi)*;
 4. $A + (-A) = O$ *(Qarama-qarshi matritsa)*;
-5. $k(A + B) = kA + kB$ va $(k + m)A = kA + mA$ *(Distributivlik)*;
-6. $(A^T)^T = A$ va $(A + B)^T = A^T + B^T$.
+5. $k(A + B) = kA + kB$va$(k + m)A = kA + mA$ *(Distributivlik)*;
+6. $(A^T)^T = A$va$(A + B)^T = A^T + B^T$.
 
 ---
 
 ## 5. Keng qamrovli amaliy misol
 
-**Masala:** Berilgan $A = \begin{pmatrix} 1 & -3 & 2 \\ 4 & 0 & -1 \end{pmatrix}$ va $B = \begin{pmatrix} 2 & 1 & -1 \\ -3 & 2 & 5 \end{pmatrix}$ matritsalar uchun $C = 2A - 3B$ ifodani hisoblang.
+**Masala:** Berilgan $A = \begin{pmatrix} 1 & -3 & 2 \\ 4 & 0 & -1 \end{pmatrix}$va$B = \begin{pmatrix} 2 & 1 & -1 \\ -3 & 2 & 5 \end{pmatrix}$matritsalar uchun$C = 2A - 3B$ ifodani hisoblang.
 
 <details>
 <summary><strong>Batafsil yechimni ko'rish (Bosqichma-bosqich)</strong></summary>
@@ -135,10 +135,11 @@ C = \begin{pmatrix} 2 - 6 & -6 - 3 & 4 - (-3) \\ 8 - (-9) & 0 - 6 & -2 - 15 \end
 $$
 
 **Javob:** $C = \begin{pmatrix} -4 & -9 & 7 \\ 17 & -6 & -17 \end{pmatrix}$.
+
 </details>
 
 ---
 
 ## 💡 Talabalar yo'l qo'yadigan tipik xatolar va tuzoqlar
-- **1-tuzoq:** Turli o'lchamli matritsalarni qo'shishga urinish ($2 \times 2$ matritsaga $2 \times 3$ matritsani qo'shib bo'lmaydi!).
+- **1-tuzoq:** Turli o'lchamli matritsalarni qo'shishga urinish ($2 \times 2$matritsaga$2 \times 3$ matritsani qo'shib bo'lmaydi!).
 - **2-tuzoq:** Songa ko'paytirishda faqat birinchi satrni ko'paytirib, qolganlarini unutish. Determinantda faqat bitta satr ko'paytirilsa, **matritsada har bir element** ko'paytiriladi!

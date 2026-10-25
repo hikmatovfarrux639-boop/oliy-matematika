@@ -15,16 +15,16 @@ Mexanikada aylanma harakat hosil qiluvchi kuch momenti ($\vec{M} = \vec{r} \time
 
 ## 1. Vektor ko'paytma ta'rifi
 
-> **Ta'rif:** $\vec{a}$ va $\vec{b}$ vektorlarning **vektor ko'paytmasi** deb quyidagi 3 shartni qanoatlantiruvchi $\vec{c} = \vec{a} \times \vec{b}$ (yoki $[\vec{a}, \vec{b}]$) vektorga aytiladi:
+> **Ta'rif:** $\vec{a}$va$\vec{b}$vektorlarning **vektor ko'paytmasi** deb quyidagi 3 shartni qanoatlantiruvchi$\vec{c} = \vec{a} \times \vec{b}$(yoki$[\vec{a}, \vec{b}]$) vektorga aytiladi:
 >
-> 1. $\vec{c}$ vektor $\vec{a}$ ga ham, $\vec{b}$ ga ham perpendikulyar: $\vec{c} \perp \vec{a}$ va $\vec{c} \perp \vec{b}$;
+> 1. $\vec{c}$vektor$\vec{a}$ga ham,$\vec{b}$ga ham perpendikulyar:$\vec{c} \perp \vec{a}$va$\vec{c} \perp \vec{b}$;
 > 2. Uning uzunligi:
 >    
 $$
 >    \lvert \vec{c} \rvert = \lvert \vec{a} \times \vec{b} \rvert = \lvert \vec{a} \rvert \cdot \lvert \vec{b} \rvert \cdot \sin \varphi
 >    
 $$
-> 3. $\vec{a}, \vec{b}, \vec{c}$ uchlik **o'ng uchlikni** tashkil qiladi (o'ng qo'l qoidasi: barmog'ingizni $\vec{a}$ dan $\vec{b}$ ga burganda, bosh barmoq $\vec{c}$ tomonga qaraydi).
+> 3. $\vec{a}, \vec{b}, \vec{c}$uchlik **o'ng uchlikni** tashkil qiladi (o'ng qo'l qoidasi: barmog'ingizni$\vec{a}$dan$\vec{b}$ga burganda, bosh barmoq$\vec{c}$ tomonga qaraydi).
 
 ### Asosiy xossalari:
 - **Antikommutativlik (o'rin almashganda ishora teskarisiga o'zgaradi!):**
@@ -39,13 +39,13 @@ $$
   \vec{a} \times \vec{a} = \vec{0}
   
 $$
-- **Kollinearlik sharti:** Ikki vektor parallel bo'lsa ($\varphi = 0$ yoki $\pi$), $\sin \varphi = 0$, demak $\vec{a} \times \vec{b} = \vec{0}$.
+- **Kollinearlik sharti:** Ikki vektor parallel bo'lsa ($\varphi = 0$yoki$\pi$), $\sin \varphi = 0$, demak $\vec{a} \times \vec{b} = \vec{0}$.
 
 ---
 
 ## 2. Koordinatalar sistemasida vektor ko'paytma
 
-Agar $\vec{a} = (a_x, a_y, a_z)$ va $\vec{b} = (b_x, b_y, b_z)$ bo'lsa, vektor ko'paytma $3 \times 3$ determinant yordamida oson hisoblanadi:
+Agar $\vec{a} = (a_x, a_y, a_z)$va$\vec{b} = (b_x, b_y, b_z)$bo'lsa, vektor ko'paytma$3 \times 3$ determinant yordamida oson hisoblanadi:
 
 $$
 \vec{a} \times \vec{b} = \begin{vmatrix}
@@ -61,13 +61,13 @@ bu yerda $\vec{i} = (1, 0, 0), \, \vec{j} = (0, 1, 0), \, \vec{k} = (0, 0, 1)$ â
 
 ## 3. Geometrik tatbiqlari: Yuza hisoblash
 
-1. $\vec{a}$ va $\vec{b}$ vektorlarga qurilgan **parallelogramm yuzi**:
+1. $\vec{a}$va$\vec{b}$ vektorlarga qurilgan **parallelogramm yuzi**:
    
 $$
    S_{parall} = \lvert \vec{a} \times \vec{b} \rvert
    
 $$
-2. $\vec{a}$ va $\vec{b}$ vektorlarga qurilgan **uchburchak yuzi**:
+2. $\vec{a}$va$\vec{b}$ vektorlarga qurilgan **uchburchak yuzi**:
    
 $$
    S_{\triangle} = \frac{1}{2} \lvert \vec{a} \times \vec{b} \rvert
@@ -118,10 +118,10 @@ $$
 ## Amaliy namunaviy misollar
 
 ### 1-misol: Vektor ko'paytma va uchburchak yuzi
-Uchlari $A(1, 2, 0)$, $B(3, 0, -1)$ va $C(2, 3, 1)$ nuqtalarda bo'lgan uchburchak yuzini toping.
+Uchlari $A(1, 2, 0)$, $B(3, 0, -1)$va$C(2, 3, 1)$ nuqtalarda bo'lgan uchburchak yuzini toping.
 
 **Yechilishi:**
-1. $\vec{AB}$ va $\vec{AC}$ vektorlarni tuzamiz:
+1. $\vec{AB}$va$\vec{AC}$ vektorlarni tuzamiz:
    $$\vec{AB} = (3 - 1, \, 0 - 2, \, -1 - 0) = (2, -2, -1)$$
    $$\vec{AC} = (2 - 1, \, 3 - 2, \, 1 - 0) = (1, 1, 1)$$
 2. Vektor ko'paytmani hisoblaymiz:
@@ -134,10 +134,7 @@ $$
    \end{vmatrix}
    
 $$
-   - $\vec{i}$-komponent: $(-2)(1) - (-1)(1) = -2 + 1 = -1$
-   - $\vec{j}$-komponent: $- [2(1) - (-1)(1)] = -(2 + 1) = -3$
-   - $\vec{k}$-komponent: $2(1) - (-2)(1) = 2 + 2 = 4$
-   Demak: $\vec{AB} \times \vec{AC} = (-1, -3, 4)$.
+   - $\vec{i}$-komponent: $(-2)(1) - (-1)(1) = -2 + 1 = -1$-$\vec{j}$-komponent: $- [2(1) - (-1)(1)] = -(2 + 1) = -3$-$\vec{k}$-komponent: $2(1) - (-2)(1) = 2 + 2 = 4$Demak:$\vec{AB} \times \vec{AC} = (-1, -3, 4)$.
 3. Vektor modulini topamiz:
    $$\lvert \vec{AB} \times \vec{AC} \rvert = \sqrt{(-1)^2 + (-3)^2 + 4^2} = \sqrt{1 + 9 + 16} = \sqrt{26}$$
 4. Uchburchak yuzi:
@@ -168,15 +165,21 @@ $$V = \frac{1}{6} \lvert 3 \rvert = \frac{3}{6} = 0.5$$
 
 ## Mustaqil yechish uchun mashqlar
 
-1. $\vec{i} \times \vec{j}$ va $\vec{j} \times \vec{i}$ nimaga teng?
-2. $\vec{a} = (1, 0, 0)$ va $\vec{b} = (0, 2, 0)$ vektorlarga qurilgan parallelogramm yuzini toping.
-3. $\vec{u} = (1, 2, 3)$, $\vec{v} = (2, 4, 6)$ va $\vec{w} = (0, 1, 5)$ vektorlar komplanarmi?
+1. $\vec{i} \times \vec{j}$va$\vec{j} \times \vec{i}$ nimaga teng?
+2. $\vec{a} = (1, 0, 0)$va$\vec{b} = (0, 2, 0)$ vektorlarga qurilgan parallelogramm yuzini toping.
+3. $\vec{u} = (1, 2, 3)$, $\vec{v} = (2, 4, 6)$va$\vec{w} = (0, 1, 5)$ vektorlar komplanarmi?
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $\vec{i} \times \vec{j} = \vec{k}$, $\vec{j} \times \vec{i} = -\vec{k}$.</p>
-    <p><strong>2-masala:</strong> $\vec{a} \times \vec{b} = (0, 0, 2) \implies S = \sqrt{0 + 0 + 4} = 2$.</p>
-    <p><strong>3-masala:</strong> $\vec{v} = 2\vec{u}$, ya'ni dastlabki ikkita vektor kollinear. Shuning uchun ular komplanar, aralash ko'paytma $0$ ga teng.</p>
-  </div>
+<summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+
+**1-masala:** $\vec{i} \times \vec{j} = \vec{k}$, $\vec{j} \times \vec{i} = -\vec{k}$.
+
+    
+
+**2-masala:** $\vec{a} \times \vec{b} = (0, 0, 2) \implies S = \sqrt{0 + 0 + 4} = 2$.
+
+    
+
+**3-masala:** $\vec{v} = 2\vec{u}$, ya'ni dastlabki ikkita vektor kollinear. Shuning uchun ular komplanar, aralash ko'paytma $0$ ga teng.
+
 </details>

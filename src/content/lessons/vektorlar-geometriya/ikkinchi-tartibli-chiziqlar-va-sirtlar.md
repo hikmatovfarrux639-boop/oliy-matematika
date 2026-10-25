@@ -7,7 +7,7 @@ description: "Aylana, ellips, giperbola, parabola kanonik tenglamalari, ikkinchi
 
 ## Kirish: Chiziqli shakllardan egrilikka
 
-Tekislikda $Ax + By + C = 0$ va fazoda $Ax + By + Cz + D = 0$ tenglamalari to'g'ri chiziq va tekislik kabi 1-tartibli chiziqli obyektlarni ifodalaydi.
+Tekislikda $Ax + By + C = 0$va fazoda$Ax + By + Cz + D = 0$ tenglamalari to'g'ri chiziq va tekislik kabi 1-tartibli chiziqli obyektlarni ifodalaydi.
 
 Biroq tabiatdagi aksariyat harakatlar — sayyoralarning Quyosh atrofida aylanishi, sun'iy yo'ldoshlar orbitasi, projektor nurlari fokuslanishi va ko'priklarning arkalari — **ikkinchi tartibli egri chiziqlar va fazoviy sirtlar** orqali tavsiflanadi.
 
@@ -32,10 +32,10 @@ $$
 > 
 $$
 
-- $a$ — katta yarim o'q, $b$ — kichik yarim o'q.
-- Fokuslar orasidagi masofa: $c = \sqrt{a^2 - b^2}$, fokuslar $F_1(-c, 0)$ va $F_2(c, 0)$.
+- $a$— katta yarim o'q,$b$ — kichik yarim o'q.
+- Fokuslar orasidagi masofa: $c = \sqrt{a^2 - b^2}$, fokuslar $F_1(-c, 0)$va$F_2(c, 0)$.
 - **Ekssentrisitet:** $e = \frac{c}{a} < 1$.
-- Xususiy hol: $a = b = R$ bo'lganda $x^2 + y^2 = R^2$ **aylana** hosil bo'ladi ($e = 0$).
+- Xususiy hol: $a = b = R$bo'lganda$x^2 + y^2 = R^2$ **aylana** hosil bo'ladi ($e = 0$).
 
 ### 2. Giperbola
 
@@ -46,7 +46,7 @@ $$
 > 
 $$
 
-- $c = \sqrt{a^2 + b^2}$, fokuslar $F_1(-c, 0)$ va $F_2(c, 0)$.
+- $c = \sqrt{a^2 + b^2}$, fokuslar $F_1(-c, 0)$va$F_2(c, 0)$.
 - **Ekssentrisitet:** $e = \frac{c}{a} > 1$.
 - **Asimptotalar:** $y = \pm \frac{b}{a} x$ to'g'ri chiziqlari (egri chiziq cheksizlikda bu chiziqlarga cheksiz yaqinlashadi).
 
@@ -91,7 +91,7 @@ $$
 $$
 
 - Barcha koordinata tekisliklari bilan kesimi **ellipslardan** iborat yopiq sirt.
-- Agar $a = b = c = R$ bo'lsa, **sfera** $x^2 + y^2 + z^2 = R^2$ hosil bo'ladi.
+- Agar $a = b = c = R$bo'lsa, **sfera**$x^2 + y^2 + z^2 = R^2$ hosil bo'ladi.
 
 ### 2. Bir pallali giperboloid
 
@@ -129,8 +129,7 @@ $$
 
 ### 6. Ikkinchi tartibli konus va silindrlar
 
-- **Konus:** $\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0$
-- **Elliptik silindr:** $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ ($z$ o'qi bo'ylab cheksiz cho'zilgan quvur).
+- **Konus:** $\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0$- **Elliptik silindr:**$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ ($z$ o'qi bo'ylab cheksiz cho'zilgan quvur).
 - **Parabolik silindr:** $y^2 = 2px$.
 
 ---
@@ -184,4 +183,4 @@ $$
 \frac{(x - 2)^2}{6} + \frac{(y + 1)^2}{3} + \frac{(z - 2)^2}{1.5} = 1
 $$
 
-**Xulosa:** Bu markazi $(2, -1, 2)$ nuqtada bo'lgan va yarim o'qlari $a = \sqrt{6}, b = \sqrt{3}, c = \sqrt{1.5}$ bo'lgan **ellipsoiddir**!
+**Xulosa:** Bu markazi $(2, -1, 2)$nuqtada bo'lgan va yarim o'qlari$a = \sqrt{6}, b = \sqrt{3}, c = \sqrt{1.5}$ bo'lgan **ellipsoiddir**!

@@ -46,7 +46,7 @@ $$
 <details>
 <summary><strong>Uchburchak usulida hisoblash bosqichlari</strong></summary>
 
-**1-qadam:** 1-ustundagi $a_{11} = 1$ dan tayanch (pivoting) sifatida foydalanib, uning tagidagi sonlarni ($2$ va $-1$) nol qilamiz:
+**1-qadam:** 1-ustundagi $a_{11} = 1$ dan tayanch (pivoting) sifatida foydalanib, uning tagidagi sonlarni ($2$va$-1$) nol qilamiz:
 - 2-satrdan 1-satrning 2 barobarini ayiramiz ($S_2 - 2S_1$);
 - 3-satrga 1-satrni qo'shamiz ($S_3 + S_1$):
 
@@ -62,7 +62,7 @@ $$
 \end{vmatrix}
 $$
 
-**2-qadam:** Endi 2-satrdagi $a_{22} = 1$ yordamida uning tagidagi $3$ ni nol qilamiz:
+**2-qadam:** Endi 2-satrdagi $a_{22} = 1$yordamida uning tagidagi$3$ ni nol qilamiz:
 - 3-satrdan 2-satrning 3 barobarini ayiramiz ($S_3 - 3S_2$):
 
 $$
@@ -83,6 +83,7 @@ $$
 $$
 
 **Javob:** $\Delta = -6$.
+
 </details>
 
 ---

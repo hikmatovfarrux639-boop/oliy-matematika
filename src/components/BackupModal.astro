@@ -43,7 +43,11 @@
           placeholder='{"completed": [...], "timestamp": ...}' 
           style="width: 100%; height: 70px; padding: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-main); resize: none; margin-bottom: 0.5rem;"
         ></textarea>
-        <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <label for="upload-backup-file" class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.45rem 0.75rem; cursor: pointer; margin: 0;">
+            📂 Fayldan tanlash (.json)
+            <input type="file" id="upload-backup-file" accept=".json,application/json" style="display: none;" />
+          </label>
           <button type="button" id="import-backup-btn" class="btn btn-secondary" style="font-size: 0.85rem; font-weight: 700; color: var(--primary);">
             🔄 Natijalarni tiklash
           </button>
@@ -67,6 +71,7 @@
     const downloadBtn = document.getElementById('download-backup-btn');
     const importBtn = document.getElementById('import-backup-btn');
     const importInput = document.getElementById('import-backup-input') as HTMLTextAreaElement | null;
+    const uploadFileInput = document.getElementById('upload-backup-file') as HTMLInputElement | null;
     const feedback = document.getElementById('backup-feedback-msg');
 
     function updateStats() {
@@ -125,12 +130,7 @@
       showFeedback("✅ Fayl yuklab olindi!", true);
     });
 
-    importBtn?.addEventListener('click', () => {
-      const raw = importInput?.value.trim();
-      if (!raw) {
-        showFeedback("Iltimos, zaxira kodini kiriting.", false);
-        return;
-      }
+    function restoreFromJsonString(raw: string) {
       try {
         const parsed = JSON.parse(raw);
         if (!parsed || !Array.isArray(parsed.completed)) {
@@ -149,8 +149,29 @@
           window.location.reload();
         }, 1200);
       } catch (e) {
-        showFeedback("❌ Zaxira kodi noto'g'ri yoki buzilgan.", false);
+        showFeedback("❌ Zaxira kodi yoki fayli noto'g'ri formatda.", false);
       }
+    }
+
+    importBtn?.addEventListener('click', () => {
+      const raw = importInput?.value.trim();
+      if (!raw) {
+        showFeedback("Iltimos, zaxira kodini kiriting yoki .json faylni tanlang.", false);
+        return;
+      }
+      restoreFromJsonString(raw);
+    });
+
+    uploadFileInput?.addEventListener('change', () => {
+      const file = uploadFileInput.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const content = String(reader.result || '').trim();
+        if (importInput) importInput.value = content;
+        restoreFromJsonString(content);
+      };
+      reader.readAsText(file);
     });
 
     closeBtn?.addEventListener('click', () => {
@@ -161,9 +182,23 @@
       if (e.target === modal) modal.style.display = 'none';
     });
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+      }
+    });
+
     // Global trigger
     document.querySelectorAll('[data-open-backup]').forEach(btn => {
       btn.addEventListener('click', () => {
+        // Close mobile drawer if open
+        const drawer = document.getElementById('mobile-drawer');
+        const backdrop = document.getElementById('drawer-backdrop');
+        if (drawer?.classList.contains('open')) {
+          drawer.classList.remove('open');
+          backdrop?.classList.remove('open');
+          document.body.style.overflow = '';
+        }
         updateStats();
         modal.style.display = 'flex';
       });

@@ -7,7 +7,7 @@ description: "Modul va argument (φ), Eyler formulasi, geometrik ko'paytirish va
 
 ## Kirish: Nega algebraik shakl yetarli emas?
 
-Agar sizdan $(1 + i\sqrt{3})^{60}$ ni hisoblash so'ralsa, qavslarni oltmish marta ochib Nyuton binomi orqali ko'paytirish deyarli imkonsiz! Xuddi shuningdek, kompleks sondan $n$-darajali ildiz chiqarish algebraik shaklda juda mashaqqatli.
+Agar sizdan $(1 + i\sqrt{3})^{60}$ni hisoblash so'ralsa, qavslarni oltmish marta ochib Nyuton binomi orqali ko'paytirish deyarli imkonsiz! Xuddi shuningdek, kompleks sondan$n$-darajali ildiz chiqarish algebraik shaklda juda mashaqqatli.
 
 Shu sababli buyuk matematik Leonard Eyler kompleks sonlarni **trigonometrik** va **ko'rsatkichli** shaklga o'tkazish usulini yaratdi. Bu usul yordamida har qanday yuqori darajaga ko'tarish sanoqli soniyalarda hal bo'ladi!
 
@@ -15,14 +15,14 @@ Shu sababli buyuk matematik Leonard Eyler kompleks sonlarni **trigonometrik** va
 
 ## 1. Modul va Argument ($\varphi$)
 
-Kompleks tekislikda har bir $z = a + bi$ soniga $(a; b)$ nuqta mos keladi. Ushbu nuqtani to'g'ri burchakli Dekart koordinatalari o'rniga **qutb koordinatalari** ($r, \varphi$) orqali ifodalash mumkin:
+Kompleks tekislikda har bir $z = a + bi$soniga$(a; b)$ nuqta mos keladi. Ushbu nuqtani to'g'ri burchakli Dekart koordinatalari o'rniga **qutb koordinatalari** ($r, \varphi$) orqali ifodalash mumkin:
 
 1. **Modul ($r$):** Boshlang'ich nuqtadan nuqtagacha bo'lgan masofa:
    $$r = |z| = \sqrt{a^2 + b^2}$$
 2. **Argument ($\varphi$):** Musbat haqiqiy yarim o'q bilan radius-vektor orasidagi burchak (radianda):
    $$\cos\varphi = \frac{a}{r}, \quad \sin\varphi = \frac{b}{r}$$
 
-Bosh argument $\varphi = \arg(z)$ odatda $(-\pi; \pi]$ oralig'ida olinadi:
+Bosh argument $\varphi = \arg(z)$odatda$(-\pi; \pi]$ oralig'ida olinadi:
 - **I chorak ($a > 0, b > 0$):** $\varphi = \operatorname{arctg}\left(\frac{b}{a}\right)$
 - **II chorak ($a < 0, b > 0$):** $\varphi = \pi - \operatorname{arctg}\left|\frac{b}{a}\right|$
 - **III chorak ($a < 0, b < 0$):** $\varphi = -\pi + \operatorname{arctg}\left|\frac{b}{a}\right|$
@@ -33,7 +33,7 @@ Bosh argument $\varphi = \arg(z)$ odatda $(-\pi; \pi]$ oralig'ida olinadi:
 ## 2. Trigonometrik va Ko'rsatkichli (Eyler) shakllar
 
 ### Trigonometrik shakl:
-$a = r\cos\varphi$ va $b = r\sin\varphi$ ekanligidan:
+$a = r\cos\varphi$va$b = r\sin\varphi$ ekanligidan:
 $$
 z = r(\cos\varphi + i\sin\varphi)
 $$
@@ -49,7 +49,7 @@ z = r e^{i\varphi}
 $$
 
 > **Eyler ayniyati (Matematikaning eng go'zal formulasi):**
-> Agar $\varphi = \pi$ deb olsak: $\cos\pi = -1, \sin\pi = 0 \implies e^{i\pi} + 1 = 0$.
+> Agar $\varphi = \pi$deb olsak:$\cos\pi = -1, \sin\pi = 0 \implies e^{i\pi} + 1 = 0$.
 > Unda matematikaning 5 ta eng muhim o'zgarmasi birlashgan: $e, i, \pi, 1, 0$!
 
 ---
@@ -151,11 +151,11 @@ $$
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Argument $\varphi$ ni topishda chorakni inobatga olmaslik:**
->    Eng xavfli xato — $z = -1 - i$ soni berilganda $\varphi = \operatorname{arctg}\left(\frac{-1}{-1}\right) = \operatorname{arctg}(1) = \frac{\pi}{4}$ deb yozishdir! E'tibor bering, $a = -1 < 0, b = -1 < 0$ bo'lib, nuqta **III chorakda** yotadi. Demak, uning argumenti $\varphi = -\pi + \frac{\pi}{4} = -\frac{3\pi}{4}$ (yoki $\frac{5\pi}{4}$) bo'ladi!
+>    Eng xavfli xato — $z = -1 - i$soni berilganda$\varphi = \operatorname{arctg}\left(\frac{-1}{-1}\right) = \operatorname{arctg}(1) = \frac{\pi}{4}$deb yozishdir! E'tibor bering,$a = -1 < 0, b = -1 < 0$bo'lib, nuqta **III chorakda** yotadi. Demak, uning argumenti$\varphi = -\pi + \frac{\pi}{4} = -\frac{3\pi}{4}$(yoki$\frac{5\pi}{4}$) bo'ladi!
 > 2. **Trigonometrik shaklda minus ishorasi:**
->    Agar ifoda $z = 2(\cos\frac{\pi}{6} - i\sin\frac{\pi}{6})$ deb berilgan bo'lsa, bu kanonik trigonometrik shakl emas (chunki oradagi ishora plyus bo'lishi shart). Kosinus juft va sinus toqligidan foydalanib minusni ichkariga kiritish kerak: $z = 2\left[\cos\left(-\frac{\pi}{6}\right) + i\sin\left(-\frac{\pi}{6}\right)\right]$.
+>    Agar ifoda $z = 2(\cos\frac{\pi}{6} - i\sin\frac{\pi}{6})$deb berilgan bo'lsa, bu kanonik trigonometrik shakl emas (chunki oradagi ishora plyus bo'lishi shart). Kosinus juft va sinus toqligidan foydalanib minusni ichkariga kiritish kerak:$z = 2\left[\cos\left(-\frac{\pi}{6}\right) + i\sin\left(-\frac{\pi}{6}\right)\right]$.
 > 3. **Modul manfiy bo'lishi mumkin emas:**
->    $z = -3(\cos\varphi + i\sin\varphi)$ ko'rinishida $r = -3$ deb aytish xatodir. Modul $r = 3 > 0$ bo'lib, minus ishorasi argumentga $\pi$ qo'shish orqali yo'qotiladi.
+>    $z = -3(\cos\varphi + i\sin\varphi)$ko'rinishida$r = -3$deb aytish xatodir. Modul$r = 3 > 0$bo'lib, minus ishorasi argumentga$\pi$ qo'shish orqali yo'qotiladi.
 
 ---
 
@@ -176,6 +176,7 @@ $$
    z = 2 e^{i\frac{5\pi}{6}}
    
 $$
+
 </details>
 
 ### 2-mashq
@@ -194,4 +195,5 @@ $$
 \frac{1}{-1} = -1
 $$
 Javob: $-1$.
+
 </details>

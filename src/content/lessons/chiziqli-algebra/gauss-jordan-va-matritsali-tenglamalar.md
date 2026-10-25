@@ -19,12 +19,10 @@ Teskari yurish qilishga hojat qolmaydi — o'ng tomonda yechim tayyor holda chiq
 
 ---
 
-## 1. Gauss-Jordan yordamida teskari matritsa topish: $(A \mid E) \sim (E \mid A^{-1})$
+## 1. Gauss-Jordan yordamida teskari matritsa topish: $(A \mid E) \sim (E \mid A^{-1})$Bu usul$3 \times 3$va ayniqsa$4 \times 4$ o'lchamli matritsalarning teskarisini topishda algebraik to'ldiruvchilar usulidan ancha tezroq va xavfsizroqdir:
 
-Bu usul $3 \times 3$ va ayniqsa $4 \times 4$ o'lchamli matritsalarning teskarisini topishda algebraik to'ldiruvchilar usulidan ancha tezroq va xavfsizroqdir:
-
-1. Kengaytirilgan $(A \mid E)$ matritsa tuziladi (chapda $A$, o'ngda birlik matritsa $E$);
-2. Satrlar ustida elementar amallar bajarib, chap tomondagi $A$ birlik matritsa $E$ ga aylantiriladi;
+1. Kengaytirilgan $(A \mid E)$matritsa tuziladi (chapda$A$, o'ngda birlik matritsa $E$);
+2. Satrlar ustida elementar amallar bajarib, chap tomondagi $A$birlik matritsa$E$ ga aylantiriladi;
 3. Bu vaqtda o'ng tomonda turgan $E$ avtomatik ravishda **$A^{-1}$ ga aylanadi!**
 
 ---
@@ -35,9 +33,9 @@ Chiziqli algebrada matritsali tenglamalarning 3 ta asosiy turi uchraydi:
 
 | Tenglama turi | Yechish usuli | Yodda tutish qoidasi |
 |---|---|---|
-| **$A \cdot X = B$** | $X = A^{-1} \cdot B$ | $A$ chapda bo'lgani uchun $A^{-1}$ ham chapdan ko'paytiriladi |
-| **$X \cdot A = B$** | $X = B \cdot A^{-1}$ | $A$ o'ngda bo'lgani uchun $A^{-1}$ ham o'ngdan ko'paytiriladi |
-| **$A \cdot X \cdot B = C$** | $X = A^{-1} \cdot C \cdot B^{-1}$ | Chapdan $A^{-1}$, o'ngdan $B^{-1}$ ga ko'paytiriladi |
+| **$A \cdot X = B$** | $X = A^{-1} \cdot B$|$A$chapda bo'lgani uchun$A^{-1}$ ham chapdan ko'paytiriladi |
+| **$X \cdot A = B$** | $X = B \cdot A^{-1}$|$A$o'ngda bo'lgani uchun$A^{-1}$ ham o'ngdan ko'paytiriladi |
+| **$A \cdot X \cdot B = C$** | $X = A^{-1} \cdot C \cdot B^{-1}$| Chapdan$A^{-1}$, o'ngdan $B^{-1}$ ga ko'paytiriladi |
 
 ---
 
@@ -57,4 +55,5 @@ X = \begin{pmatrix} 1 & 4 \\ 2 & 1 \end{pmatrix} \begin{pmatrix} 2 & -3 \\ -1 & 
 $$
 
 **Javob:** $X = \begin{pmatrix} -2 & 5 \\ 3 & -4 \end{pmatrix}$.
+
 </details>

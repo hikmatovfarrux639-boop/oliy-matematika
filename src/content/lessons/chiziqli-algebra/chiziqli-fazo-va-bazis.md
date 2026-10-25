@@ -12,9 +12,9 @@ Matematikada "fazo" deganda shunchaki biz yashayotgan 3 o'lchamli dunyo emas, ba
 Agar biror $V$ to'plam elementlari uchun **qo'shish ($+$)** va **songa ko'paytirish ($\cdot$)** amallari aniqlangan bo'lib, ular 8 ta mashhur aksiomani (kommutativlik, assotsiativlik, nol element, qarama-qarshi element va h.k.) qanoatlantirsa, $V$ to'plamga **Chiziqli fazo (yoki Vektor fazo)** deyiladi.
 
 Misollar:
-- $\mathbb{R}^n$ — barcha $n$ o'lchamli sonli vektorlar fazosi;
-- $P_n$ — darajasi $n$ dan oshmaydigan ko'pxadlar fazosi;
-- $M_{m \times n}$ — barcha $m \times n$ matritsalar fazosi.
+- $\mathbb{R}^n$— barcha$n$ o'lchamli sonli vektorlar fazosi;
+- $P_n$— darajasi$n$ dan oshmaydigan ko'pxadlar fazosi;
+- $M_{m \times n}$— barcha$m \times n$ matritsalar fazosi.
 
 ---
 
@@ -42,4 +42,4 @@ $$
 Masalan:
 - Tekislikda 2 ta no-kollinear vektor bazis bo'ladi ($\operatorname{dim} = 2$);
 - Fazoda 3 ta no-komplanar vektor bazis bo'ladi ($\operatorname{dim} = 3$);
-- $\mathbb{R}^n$ da standart bazis: $e_1 = (1,0,\dots,0), e_2 = (0,1,\dots,0), \dots, e_n = (0,0,\dots,1)$.
+- $\mathbb{R}^n$da standart bazis:$e_1 = (1,0,\dots,0), e_2 = (0,1,\dots,0), \dots, e_n = (0,0,\dots,1)$.

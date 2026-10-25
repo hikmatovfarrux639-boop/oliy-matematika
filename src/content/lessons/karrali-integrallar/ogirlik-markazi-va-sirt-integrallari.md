@@ -21,7 +21,7 @@ Ushbu darsda biz karrali integrallarning barcha asosiy fizik tatbiqlarini va 1- 
 ## 1. Karrali integrallarning fizik tatbiqlari: Massa va zichlik
 
 ### Tekis plastinkaning massasi:
-Aytaylik, $Oxy$ tekisligida yotgan yupqa tekis plastinka $D$ sohani egallagan bo'lsin. Agar plastinkaning har bir $(x, y)$ nuqtasidagi sirtiy zichligi $\rho(x, y)$ uzluksiz funksiya bilan berilgan bo'lsa, uning to'la **massasi ($M$)** ikki karrali integral orqali aniqlanadi:
+Aytaylik, $Oxy$tekisligida yotgan yupqa tekis plastinka$D$sohani egallagan bo'lsin. Agar plastinkaning har bir$(x, y)$nuqtasidagi sirtiy zichligi$\rho(x, y)$ uzluksiz funksiya bilan berilgan bo'lsa, uning to'la **massasi ($M$)** ikki karrali integral orqali aniqlanadi:
 $$
 M = \iint_D \rho(x, y) \, dx dy
 $$
@@ -30,7 +30,7 @@ Agar plastinka **bir jinsli** (zichligi hamma yerda bir xil o'zgarmas son: $\rho
 $$
 M = \rho_0 \iint_D dx dy = \rho_0 \cdot S
 $$
-bu yerda $S$ — $D$ sohaning geometrik yuzi. (Odatda matematik hisoblashlarda bir jinsli jism uchun $\rho_0 = 1$ deb olinadi).
+bu yerda $S$—$D$sohaning geometrik yuzi. (Odatda matematik hisoblashlarda bir jinsli jism uchun$\rho_0 = 1$ deb olinadi).
 
 ---
 
@@ -62,15 +62,15 @@ x_C = \frac{1}{S} \iint_D x \, dx dy, \quad y_C = \frac{1}{S} \iint_D y \, dx dy
 $$
 
 > **Geometrik simmetriya qoidasi (Hisobni 2 marta tezlashtirish):**
-> 1. Agar bir jinsli $D$ soha $Oy$ o'qiga nisbatan simmetrik bo'lsa, darhol $x_C = 0$ bo'ladi!
-> 2. Agar soha $Ox$ o'qiga nisbatan simmetrik bo'lsa, darhol $y_C = 0$ bo'ladi!
+> 1. Agar bir jinsli $D$soha$Oy$o'qiga nisbatan simmetrik bo'lsa, darhol$x_C = 0$ bo'ladi!
+> 2. Agar soha $Ox$o'qiga nisbatan simmetrik bo'lsa, darhol$y_C = 0$ bo'ladi!
 > 3. Og'irlik markazi har doim shaklning simmetriya o'qida (yoki simmetriya markazida) yotadi.
 
 ---
 
 ## 3. Fazoviy jismning massasi va og'irlik markazi (Uch karrali integral)
 
-Fazoda $V$ sohani egallagan va hajmiy zichligi $\rho(x, y, z)$ bo'lgan uch o'lchamli jism uchun:
+Fazoda $V$sohani egallagan va hajmiy zichligi$\rho(x, y, z)$ bo'lgan uch o'lchamli jism uchun:
 
 - **Jismning to'liq massasi:**
 $$
@@ -118,8 +118,8 @@ $$
 $$
 I_z = \iiint_V (x^2 + y^2) \rho(x, y, z) \, dx dy dz
 $$
-- **$Ox$ o'qiga nisbatan:** $I_x = \iiint_V (y^2 + z^2) \rho \, dV$
-- **$Oy$ o'qiga nisbatan:** $I_y = \iiint_V (x^2 + z^2) \rho \, dV$
+- **$Ox$o'qiga nisbatan:**$I_x = \iiint_V (y^2 + z^2) \rho \, dV$
+- **$Oy$o'qiga nisbatan:**$I_y = \iiint_V (x^2 + z^2) \rho \, dV$
 
 ---
 
@@ -128,18 +128,18 @@ $$
 Egri chiziqli integral chiziq bo'yicha integrallash bo'lsa, **sirt integrali** fazodagi egri sirt bo'yicha integrallashdir.
 
 > **Ta'rif:**
-> Fazodagi silliq $\sigma$ sirtda aniqlangan $f(x, y, z)$ funksiyaning **birinchi tur sirt integrali** quyidagicha belgilanadi:
+> Fazodagi silliq $\sigma$sirtda aniqlangan$f(x, y, z)$ funksiyaning **birinchi tur sirt integrali** quyidagicha belgilanadi:
 > $$
 > \iint_\sigma f(x, y, z) \, dS
 > $$
 > bunda $dS$ — sirtning differensial maydon elementi.
 
 ### Geometrik va fizik ma'nosi:
-- Agar $f(x, y, z) = 1$ bo'lsa, integral $\sigma$ sirtning to'liq **yuzasini** beradi: $S_\sigma = \iint_\sigma dS$.
+- Agar $f(x, y, z) = 1$bo'lsa, integral$\sigma$sirtning to'liq **yuzasini** beradi:$S_\sigma = \iint_\sigma dS$.
 - Agar $f(x, y, z) = \rho(x, y, z)$ bo'lsa, integral egri sirt qobig'ining **massasini** beradi.
 
 ### Hisoblash qoidasi (Tekislikka proyeksiyalash):
-Agar sirt $z = z(x, y)$ tenglama orqali berilgan bo'lib, uning $Oxy$ tekisligidagi proyeksiyasi $D$ soha bo'lsa:
+Agar sirt $z = z(x, y)$tenglama orqali berilgan bo'lib, uning$Oxy$tekisligidagi proyeksiyasi$D$ soha bo'lsa:
 $$
 dS = \sqrt{1 + \left( \frac{\partial z}{\partial x} \right)^2 + \left( \frac{\partial z}{\partial y} \right)^2} \, dx dy
 $$
@@ -161,10 +161,10 @@ bu yerda $\mathbf{n} = (\cos\alpha, \cos\beta, \cos\gamma)$ — sirtning tanlang
 ## 6. To'liq yechilgan namunaviy masalalar
 
 ### 1-masala: Parabola segmentining og'irlik markazi
-$y = x^2$ va $y = 4$ chiziqlar bilan chegaralangan bir jinsli tekis plastinkaning og'irlik markazini toping.
+$y = x^2$va$y = 4$ chiziqlar bilan chegaralangan bir jinsli tekis plastinkaning og'irlik markazini toping.
 
 **Yechilishi:**
-1. **Sohani tahlil qilamiz:** Parabola $y = x^2$ ning shoxlari yuqoriga qaragan, $y = 4$ gorizontal to'g'ri chiziq.
+1. **Sohani tahlil qilamiz:** Parabola $y = x^2$ning shoxlari yuqoriga qaragan,$y = 4$ gorizontal to'g'ri chiziq.
 Kesishish nuqtalari: $x^2 = 4 \implies x = \pm 2$.
 Soha $Oy$ o'qiga nisbatan to'liq simmetrik!
 Demak, simmetriya qoidasiga ko'ra darhol:
@@ -203,7 +203,7 @@ $$
 $x^2 + y^2 \le R^2, \; y \ge 0$ bir jinsli yarim doiraning og'irlik markazini toping.
 
 **Yechilishi:**
-1. Soha $Oy$ o'qiga nisbatan simmetrik $\implies x_C = 0$.
+1. Soha $Oy$o'qiga nisbatan simmetrik$\implies x_C = 0$.
 2. Yarim doira yuzi: $S = \frac{\pi R^2}{2}$.
 3. Qutb koordinatalariga o'tamiz ($x = r\cos\varphi, y = r\sin\varphi, dx dy = r \, dr d\varphi$):
    $\varphi \in [0, \pi]$, $r \in [0, R]$.
@@ -220,7 +220,7 @@ $$
 ---
 
 ### 3-masala: Birinchi tur sirt integrali
-$\iint_\sigma (x + y + z) \, dS$ integralni hisoblang, bu yerda $\sigma$ — $x + y + z = 1$ tekislikning 1-oktantda ($x \ge 0, y \ge 0, z \ge 0$) yotgan uchburchak shaklidagi qismi.
+$\iint_\sigma (x + y + z) \, dS$integralni hisoblang, bu yerda$\sigma$—$x + y + z = 1$ tekislikning 1-oktantda ($x \ge 0, y \ge 0, z \ge 0$) yotgan uchburchak shaklidagi qismi.
 
 **Yechilishi:**
 1. Sirt tenglamasi: $z = 1 - x - y$.
@@ -249,9 +249,9 @@ $$
 Quyidagi masalalarni mustaqil ishlab ko'ring:
 
 1. **Uchburchak og'irlik markazi:** Uchlari $O(0, 0), A(3, 0), B(0, 6)$ nuqtalarda bo'lgan bir jinsli uchburchak plastinkaning og'irlik markazini toping.
-2. **Inersiya momenti:** $0 \le x \le a, \; 0 \le y \le b$ to'g'ri to'rtburchak bir jinsli ($\rho = 1$) plastinkaning $Ox$ o'qiga nisbatan inersiya momenti $I_x$ ni hisoblang.
+2. **Inersiya momenti:** $0 \le x \le a, \; 0 \le y \le b$ to'g'ri to'rtburchak bir jinsli ($\rho = 1$) plastinkaning $Ox$o'qiga nisbatan inersiya momenti$I_x$ ni hisoblang.
 3. **Qutb inersiya momenti:** Radiusi $R$ bo'lgan bir jinsli doiraning ($x^2 + y^2 \le R^2$, massasi $M$) o'z markaziga nisbatan qutb inersiya momentini toping.
-4. **Sirt integrali:** $\iint_\sigma z \, dS$ integralni hisoblang, bu yerda $\sigma$ — $z = \sqrt{x^2 + y^2}$ konusning $0 \le z \le 2$ qismi.
+4. **Sirt integrali:** $\iint_\sigma z \, dS$integralni hisoblang, bu yerda$\sigma$—$z = \sqrt{x^2 + y^2}$konusning$0 \le z \le 2$ qismi.
 
 ---
 
@@ -269,7 +269,7 @@ Quyidagi masalalarni mustaqil ishlab ko'ring:
    $$
    I_x = \int_0^a dx \int_0^b y^2 \, dy = a \cdot \left[ \frac{y^3}{3} \right]_0^b = \frac{a b^3}{3}
    $$
-   Plastinka massasi $M = ab$ bo'lgani uchun: $I_x = \frac{1}{3} M b^2$.
+   Plastinka massasi $M = ab$bo'lgani uchun:$I_x = \frac{1}{3} M b^2$.
    **Javob:** $I_x = \frac{a b^3}{3}$.
 
 3. **3-mashq:**
@@ -277,14 +277,14 @@ Quyidagi masalalarni mustaqil ishlab ko'ring:
    $$
    I_0 = \iint_D (x^2 + y^2) \, dx dy = \int_0^{2\pi} d\varphi \int_0^R r^2 \cdot r \, dr = 2\pi \left[ \frac{r^4}{4} \right]_0^R = \frac{\pi R^4}{2}
    $$
-   Doira massasi $M = \pi R^2$ bo'lgani sababli: $I_0 = \frac{1}{2} M R^2$.
+   Doira massasi $M = \pi R^2$bo'lgani sababli:$I_0 = \frac{1}{2} M R^2$.
    **Javob:** $I_0 = \frac{\pi R^4}{2} = \frac{1}{2} M R^2$.
 
 4. **4-mashq:**
    - Konus sirti: $z = \sqrt{x^2 + y^2}$.
    - $z'_x = \frac{x}{\sqrt{x^2+y^2}}, \; z'_y = \frac{y}{\sqrt{x^2+y^2}}$.
    - $dS = \sqrt{1 + \frac{x^2}{x^2+y^2} + \frac{y^2}{x^2+y^2}} \, dx dy = \sqrt{1 + 1} \, dx dy = \sqrt{2} \, dx dy$.
-   - $z = r$ (qutb koordinatalarida), $r \in [0, 2]$, $\varphi \in [0, 2\pi]$.
+   - $z = r$(qutb koordinatalarida),$r \in [0, 2]$, $\varphi \in [0, 2\pi]$.
    $$
    \iint_\sigma z \, dS = \iint_D r \sqrt{2} \cdot r \, dr d\varphi = \sqrt{2} \int_0^{2\pi} d\varphi \int_0^2 r^2 \, dr = \sqrt{2} \cdot 2\pi \cdot \frac{8}{3} = \frac{16\sqrt{2}\pi}{3}
    $$

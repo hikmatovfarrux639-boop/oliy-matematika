@@ -16,8 +16,8 @@ Tayanch yechimni topish uchun biz sistemani turli xil bazislar bo'yicha ketma-ke
 
 ## 1. Bazisli yechim nima?
 
-$m$ ta tenglama va $n$ ta noma'lumli ($m < n$) sistemada:
-- Agar $m$ ta o'zgaruvchi **bazis** deb tanlansa va qolgan $n - m$ ta erkin o'zgaruvchiga **nol ($0$)** qiymat berilsa, hosil bo'lgan yechimga **BAZISLI YECHIM** deyiladi.
+$m$ta tenglama va$n$ ta noma'lumli ($m < n$) sistemada:
+- Agar $m$ta o'zgaruvchi **bazis** deb tanlansa va qolgan$n - m$ ta erkin o'zgaruvchiga **nol ($0$)** qiymat berilsa, hosil bo'lgan yechimga **BAZISLI YECHIM** deyiladi.
 - Agar barcha bazisli o'zgaruvchilar **manfiy bo'lmasa ($x_i \ge 0$)**, bu yechim **TAYANCH YECHIM (BOSHLANG'ICH REJA)** deyiladi!
 
 Mavjud bo'lishi mumkin bo'lgan maksimal bazislar soni kombinatorika formulasi bilan aniqlanadi:

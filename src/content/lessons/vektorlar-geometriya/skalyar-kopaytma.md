@@ -7,7 +7,7 @@ description: "Skalyar ko'paytma ta'rifi, fizik ma'nosi (bajarilgan ish), koordin
 
 ## Kirish: Fizikadagi ishdan geometriyadagi burchakkacha
 
-Fizika darslaridan ma'lumki, moddiy jism $\vec{s}$ masofaga ko'chganda unga ta'sir qiluvchi o'zgarmas $\vec{F}$ kuch bajargan mexanik ish quyidagi formula bilan hisoblanadi:
+Fizika darslaridan ma'lumki, moddiy jism $\vec{s}$masofaga ko'chganda unga ta'sir qiluvchi o'zgarmas$\vec{F}$ kuch bajargan mexanik ish quyidagi formula bilan hisoblanadi:
 
 $$
 A = |\vec{F}| \cdot |\vec{s}| \cdot \cos\varphi
@@ -23,7 +23,7 @@ Matematikada bu tushuncha umumlashtirilib, **vektorlarning skalyar ko'paytmasi**
 
 ## 1. Skalyar ko'paytma ta'rifi va xossalari
 
-> **Geometrik ta'rif:** Ikki $\vec{a}$ va $\vec{b}$ vektorning **skalyar ko'paytmasi** deb, ularning uzunliklari bilan ular orasidagi burchak kosinusining ko'paytmasiga teng bo'lgan **songa (skalyarga)** aytiladi:
+> **Geometrik ta'rif:** Ikki $\vec{a}$va$\vec{b}$ vektorning **skalyar ko'paytmasi** deb, ularning uzunliklari bilan ular orasidagi burchak kosinusining ko'paytmasiga teng bo'lgan **songa (skalyarga)** aytiladi:
 >
 > 
 $$
@@ -53,7 +53,7 @@ $$
 
 ## 2. Koordinatalar sistemasida skalyar ko'paytma
 
-Fazoda $\vec{a} = (a_x, a_y, a_z)$ va $\vec{b} = (b_x, b_y, b_z)$ vektorlar berilgan bo'lsa:
+Fazoda $\vec{a} = (a_x, a_y, a_z)$va$\vec{b} = (b_x, b_y, b_z)$ vektorlar berilgan bo'lsa:
 
 $$
 \vec{a} \cdot \vec{b} = a_x b_x + a_y b_y + a_z b_z
@@ -89,15 +89,15 @@ $$
 $$
 
 Burchakning turini bilish qoidasi:
-- Agar $\vec{a} \cdot \vec{b} > 0$ bo'lsa $\implies \cos\varphi > 0 \implies$ burchak **o'tkir** ($0^\circ \le \varphi < 90^\circ$);
-- Agar $\vec{a} \cdot \vec{b} = 0$ bo'lsa $\implies \cos\varphi = 0 \implies$ burchak **to'g'ri** ($\varphi = 90^\circ$);
-- Agar $\vec{a} \cdot \vec{b} < 0$ bo'lsa $\implies \cos\varphi < 0 \implies$ burchak **o'tmas** ($90^\circ < \varphi \le 180^\circ$).
+- Agar $\vec{a} \cdot \vec{b} > 0$bo'lsa$\implies \cos\varphi > 0 \implies$ burchak **o'tkir** ($0^\circ \le \varphi < 90^\circ$);
+- Agar $\vec{a} \cdot \vec{b} = 0$bo'lsa$\implies \cos\varphi = 0 \implies$ burchak **to'g'ri** ($\varphi = 90^\circ$);
+- Agar $\vec{a} \cdot \vec{b} < 0$bo'lsa$\implies \cos\varphi < 0 \implies$ burchak **o'tmas** ($90^\circ < \varphi \le 180^\circ$).
 
 ---
 
 ## 5. Vektorning proyeksiyalari
 
-1. **Skalyar proyeksiya ($\vec{a}$ vektorning $\vec{b}$ o'qidagi sonli soyasi):**
+1. **Skalyar proyeksiya ($\vec{a}$vektorning$\vec{b}$ o'qidagi sonli soyasi):**
    
 $$
    \operatorname{pr}_{\vec{b}} \vec{a} = |\vec{a}| \cos\varphi = \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|}
@@ -115,7 +115,7 @@ $$
 ## 6. Amaliy misollar va batafsil yechimlar
 
 ### 1-misol: Koordinatalar orqali skalyar ko'paytma
-$\vec{a} = (3, -2, 4)$ va $\vec{b} = (5, 1, -2)$ vektorlarning skalyar ko'paytmasini toping.
+$\vec{a} = (3, -2, 4)$va$\vec{b} = (5, 1, -2)$ vektorlarning skalyar ko'paytmasini toping.
 
 **Yechilishi:**
 $$
@@ -128,7 +128,7 @@ Skalyar ko'paytma musbat ($5 > 0$), demak ular orasidagi burchak o'tkir.
 ---
 
 ### 2-misol: Perpendikulyarlik parametrini topish
-$\vec{a} = (\lambda, 4, -1)$ va $\vec{b} = (2, -3, 6)$ vektorlar o'zaro perpendikulyar bo'lishi uchun $\lambda$ qanday bo'lishi kerak?
+$\vec{a} = (\lambda, 4, -1)$va$\vec{b} = (2, -3, 6)$vektorlar o'zaro perpendikulyar bo'lishi uchun$\lambda$ qanday bo'lishi kerak?
 
 **Yechilishi:**
 Perpendikulyarlik shartiga ko'ra ularning skalyar ko'paytmasi nolga teng bo'lishi shart:
@@ -144,7 +144,7 @@ $$
 ---
 
 ### 3-misol: Vektorlar orasidagi burchakni topish
-$\vec{a} = (1, 2, 2)$ va $\vec{b} = (0, 3, 4)$ vektorlar orasidagi burchakni toping.
+$\vec{a} = (1, 2, 2)$va$\vec{b} = (0, 3, 4)$ vektorlar orasidagi burchakni toping.
 
 **Yechilishi:**
 1. Skalyar ko'paytma:
@@ -164,9 +164,8 @@ $\vec{a} = (1, 2, 2)$ va $\vec{b} = (0, 3, 4)$ vektorlar orasidagi burchakni top
 Uchburchak uchlari koordinatalari berilgan: $A(1, 2), B(4, 6), C(1, 6)$. $\angle B$ burchagini toping.
 
 **Yechilishi:**
-$B$ uchidan chiquvchi ikkita vektor tuzamiz: $\vec{BA}$ va $\vec{BC}$:
-- $\vec{BA} = (1 - 4, 2 - 6) = (-3, -4)$
-- $\vec{BC} = (1 - 4, 6 - 6) = (-3, 0)$
+$B$uchidan chiquvchi ikkita vektor tuzamiz:$\vec{BA}$va$\vec{BC}$:
+- $\vec{BA} = (1 - 4, 2 - 6) = (-3, -4)$-$\vec{BC} = (1 - 4, 6 - 6) = (-3, 0)$
 1. Skalyar ko'paytma:
    $$\vec{BA} \cdot \vec{BC} = (-3)(-3) + (-4)(0) = 9 + 0 = 9$$
 2. Uzunliklar:
@@ -181,12 +180,11 @@ $B$ uchidan chiquvchi ikkita vektor tuzamiz: $\vec{BA}$ va $\vec{BC}$:
 ---
 
 ### 5-misol: Skalyar proyeksiya
-$\vec{a} = (2, -1, 2)$ vektorning $\vec{b} = (3, 0, 4)$ vektor yo'nalishidagi proyeksiyasini toping.
+$\vec{a} = (2, -1, 2)$vektorning$\vec{b} = (3, 0, 4)$ vektor yo'nalishidagi proyeksiyasini toping.
 
 **Yechilishi:**
 Formula: $\operatorname{pr}_{\vec{b}}\vec{a} = \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|}$.
-- $\vec{a} \cdot \vec{b} = 2(3) + (-1)(0) + 2(4) = 6 + 0 + 8 = 14$
-- $|\vec{b}| = \sqrt{3^2 + 0^2 + 4^2} = \sqrt{9 + 0 + 16} = \sqrt{25} = 5$
+- $\vec{a} \cdot \vec{b} = 2(3) + (-1)(0) + 2(4) = 6 + 0 + 8 = 14$-$|\vec{b}| = \sqrt{3^2 + 0^2 + 4^2} = \sqrt{9 + 0 + 16} = \sqrt{25} = 5$
 $$
 \operatorname{pr}_{\vec{b}}\vec{a} = \frac{14}{5} = 2.8
 $$
@@ -204,7 +202,7 @@ $$
    > Ikki vektor perpendikulyar bo'lsa, ularning skalyar ko'paytmasi $0$ bo'ladi. Talabalar ko'pincha proyeksiyani yoki uzunlikni nolga tenglab xato qilishadi.
 
 3. **Uchburchak burchagini topishda vektor yo'nalishini chalkashtirish:**
-   > Masalan, $B$ burchakni topayotganda bitta vektorni $\vec{BA}$ deb, ikkinchisini esa $\vec{CB}$ deb olinsa, burchak o'rniga unga qo'shni burchak ($180^\circ - \varphi$) topib qo'yiladi. Ikkala vektor ham **$B$ uchidan chiquvchi** ($\vec{BA}$ va $\vec{BC}$) bo'lishi shart!
+   > Masalan, $B$burchakni topayotganda bitta vektorni$\vec{BA}$deb, ikkinchisini esa$\vec{CB}$ deb olinsa, burchak o'rniga unga qo'shni burchak ($180^\circ - \varphi$) topib qo'yiladi. Ikkala vektor ham **$B$ uchidan chiquvchi** ($\vec{BA}$va$\vec{BC}$) bo'lishi shart!
 
 ---
 
@@ -216,17 +214,26 @@ Mexanikada yoki geometriyada agar sizga "Vektorlar orasidagi burchakni toping" y
 
 ## ✍️ Mustaqil yechish uchun mashqlar
 
-1. $\vec{a} = (2, -3)$ va $\vec{b} = (4, 1)$ vektorlarning skalyar ko'paytmasini toping.
-2. $\vec{a} = (x, 2, -1)$ va $\vec{b} = (3, x, 5)$ vektorlar perpendikulyar bo'lsa, $x$ ni toping.
-3. Uzunliklari $|\vec{a}| = 4$, $|\vec{b}| = 5$ va ular orasidagi burchak $60^\circ$ bo'lsa, $\vec{a} \cdot \vec{b}$ nimaga teng?
-4. $\vec{a} = (3, 4)$ vektorning $\vec{b} = (1, 0)$ gorizontal o'qdagi proyeksiyasini toping.
+1. $\vec{a} = (2, -3)$va$\vec{b} = (4, 1)$ vektorlarning skalyar ko'paytmasini toping.
+2. $\vec{a} = (x, 2, -1)$va$\vec{b} = (3, x, 5)$vektorlar perpendikulyar bo'lsa,$x$ ni toping.
+3. Uzunliklari $|\vec{a}| = 4$, $|\vec{b}| = 5$va ular orasidagi burchak$60^\circ$bo'lsa,$\vec{a} \cdot \vec{b}$ nimaga teng?
+4. $\vec{a} = (3, 4)$vektorning$\vec{b} = (1, 0)$ gorizontal o'qdagi proyeksiyasini toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $\vec{a} \cdot \vec{b} = 2(4) + (-3)(1) = 8 - 3 = 5$.</p>
-    <p><strong>2-masala:</strong> $3x + 2x - 5 = 0 \implies 5x = 5 \implies x = 1$.</p>
-    <p><strong>3-masala:</strong> $4 \cdot 5 \cdot \cos(60^\circ) = 20 \cdot \frac{1}{2} = 10$.</p>
-    <p><strong>4-masala:</strong> $\vec{a} \cdot \vec{b} = 3(1) + 4(0) = 3$. $|\vec{b}| = 1$. Proyeksiya: $\frac{3}{1} = 3$.</p>
-  </div>
+<summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
+
+**1-masala:** $\vec{a} \cdot \vec{b} = 2(4) + (-3)(1) = 8 - 3 = 5$.
+
+    
+
+**2-masala:** $3x + 2x - 5 = 0 \implies 5x = 5 \implies x = 1$.
+
+    
+
+**3-masala:** $4 \cdot 5 \cdot \cos(60^\circ) = 20 \cdot \frac{1}{2} = 10$.
+
+    
+
+**4-masala:** $\vec{a} \cdot \vec{b} = 3(1) + 4(0) = 3$. $|\vec{b}| = 1$. Proyeksiya: $\frac{3}{1} = 3$.
+
 </details>

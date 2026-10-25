@@ -13,12 +13,12 @@ Bu savollarga javob berish uchun sirt bo'yicha integrallash — ya'ni **Gauss-Os
 
 ## 1. 2-tur sirt integrali va vektor maydon oqimi
 
-Aytaylik, fazoda silliq oriyentatsiyalangan (yo'naltirilgan) $S$ sirt berilgan bo'lib, uning har bir nuqtasidagi birlik normal vektor $\vec{n} = (\cos\alpha, \cos\beta, \cos\gamma)$ bo'lsin. Fazoda esa vektor maydon aniqlangan:
+Aytaylik, fazoda silliq oriyentatsiyalangan (yo'naltirilgan) $S$sirt berilgan bo'lib, uning har bir nuqtasidagi birlik normal vektor$\vec{n} = (\cos\alpha, \cos\beta, \cos\gamma)$ bo'lsin. Fazoda esa vektor maydon aniqlangan:
 $$
 \vec{F}(x, y, z) = P(x, y, z)\vec{i} + Q(x, y, z)\vec{j} + R(x, y, z)\vec{k}
 $$
 
-$\vec{F}$ vektor maydonining $S$ sirt orqali o'tuvchi **oqimi (flux)** deb quyidagi sirt integraliga aytiladi:
+$\vec{F}$vektor maydonining$S$ sirt orqali o'tuvchi **oqimi (flux)** deb quyidagi sirt integraliga aytiladi:
 $$
 \Pi = \iint_S (\vec{F} \cdot \vec{n}) \, dS = \iint_S (P\cos\alpha + Q\cos\beta + R\cos\gamma) \, dS
 $$
@@ -44,7 +44,7 @@ $$
 
 ## 3. Gauss-Ostrogradskiy teoremasi
 
-Agar $V$ fazoviy jism silliq berk $S$ sirt bilan chegaralangan bo'lsa, u holda $\vec{F}$ vektor maydonining $S$ berk sirt orqali tashqi tomonga yo'nalgan to'liq oqimi shu jism hajmi bo'yicha olingan divergensiyaning 3 karrali integraliga tengdir:
+Agar $V$fazoviy jism silliq berk$S$sirt bilan chegaralangan bo'lsa, u holda$\vec{F}$vektor maydonining$S$ berk sirt orqali tashqi tomonga yo'nalgan to'liq oqimi shu jism hajmi bo'yicha olingan divergensiyaning 3 karrali integraliga tengdir:
 $$
 \oiint_S \vec{F} \cdot \vec{n} \, dS = \iiint_V \operatorname{div} \vec{F} \, dV
 $$
@@ -59,7 +59,7 @@ Bu teorema 6 ta yoki undan ko'p yoqli murakkab sirt integrallarini bitta oddiy 3
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** $\vec{F} = 2x\vec{i} - y\vec{j} + z\vec{k}$ vektor maydonining koordinata tekisliklari $x=0, y=0, z=0$ hamda $x+y+z=1$ tekislik bilan chegaralangan piramida (tetraedr) ning tashqi sirti $S$ orqali o'tuvchi to'liq oqimini hisoblang.
+> **Masala:** $\vec{F} = 2x\vec{i} - y\vec{j} + z\vec{k}$vektor maydonining koordinata tekisliklari$x=0, y=0, z=0$hamda$x+y+z=1$tekislik bilan chegaralangan piramida (tetraedr) ning tashqi sirti$S$ orqali o'tuvchi to'liq oqimini hisoblang.
 
 ### 1-usul: Gauss-Ostrogradskiy formulasi orqali (Zamonaviy va tez)
 1. Divergensiyani hisoblaymiz:
@@ -75,7 +75,7 @@ $$
    \Pi = \iiint_V \operatorname{div}\vec{F} \, dV = \iiint_V 2 \, dV = 2 \cdot V_{\text{piramida}}
    
 $$
-3. Tetraedrning hajmini topamiz: asoslari $1 \times 1$ to'g'ri burchakli uchburchak, balandligi $h = 1$:
+3. Tetraedrning hajmini topamiz: asoslari $1 \times 1$to'g'ri burchakli uchburchak, balandligi$h = 1$:
    
 $$
    V = \frac{1}{6} \cdot 1 \cdot 1 \cdot 1 = \frac{1}{6}
@@ -91,10 +91,10 @@ $$
 
 ### 2-usul: 4 ta yoq bo'yicha sirt integrallarini to'g'ridan-to'g'ri hisoblash
 Tetraedr 4 ta tekis yoqdan iborat: $S = S_1 + S_2 + S_3 + S_4$.
-1. **$S_1$ (tekislik $z=0$, orqa tomon):** Normal $\vec{n} = (0, 0, -1)$. Bu yerda $z=0$, shuning uchun $\vec{F} \cdot \vec{n} = -z = 0$. Oqim $\Pi_1 = 0$.
-2. **$S_2$ (tekislik $y=0$):** Normal $\vec{n} = (0, -1, 0)$. $\vec{F} \cdot \vec{n} = y = 0$. Oqim $\Pi_2 = 0$.
-3. **$S_3$ (tekislik $x=0$):** Normal $\vec{n} = (-1, 0, 0)$. $\vec{F} \cdot \vec{n} = -2x = 0$. Oqim $\Pi_3 = 0$.
-4. **$S_4$ (qiya tekislik $x+y+z=1$):**
+1. **$S_1$(tekislik$z=0$, orqa tomon):** Normal $\vec{n} = (0, 0, -1)$. Bu yerda $z=0$, shuning uchun $\vec{F} \cdot \vec{n} = -z = 0$. Oqim $\Pi_1 = 0$.
+2. **$S_2$(tekislik$y=0$):** Normal $\vec{n} = (0, -1, 0)$. $\vec{F} \cdot \vec{n} = y = 0$. Oqim $\Pi_2 = 0$.
+3. **$S_3$(tekislik$x=0$):** Normal $\vec{n} = (-1, 0, 0)$. $\vec{F} \cdot \vec{n} = -2x = 0$. Oqim $\Pi_3 = 0$.
+4. **$S_4$(qiya tekislik$x+y+z=1$):**
    Tekislik tenglamasi $z = 1 - x - y$. Normal vektor $\vec{N} = (1, 1, 1)$, birlik normal $\vec{n} = \frac{1}{\sqrt{3}}(1, 1, 1)$.
    Maydonning skalyar ko'paytmasi:
    
@@ -134,6 +134,6 @@ $$
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $\vec{F} = x^3\vec{i} + y^3\vec{j} + z^3\vec{k}$ maydonning $x^2 + y^2 + z^2 = R^2$ sfera tashqi sirti orqali oqimini Gauss-Ostrogradskiy formulasi bilan hisoblang (sferik koordinatalar yordamida).
-2. $\vec{F} = (x + y)\vec{i} + (y + z)\vec{j} + (z + x)\vec{k}$ maydonning birlik kub $0 \le x, y, z \le 1$ sirti orqali to'liq oqimini toping.
+1. $\vec{F} = x^3\vec{i} + y^3\vec{j} + z^3\vec{k}$maydonning$x^2 + y^2 + z^2 = R^2$ sfera tashqi sirti orqali oqimini Gauss-Ostrogradskiy formulasi bilan hisoblang (sferik koordinatalar yordamida).
+2. $\vec{F} = (x + y)\vec{i} + (y + z)\vec{j} + (z + x)\vec{k}$maydonning birlik kub$0 \le x, y, z \le 1$ sirti orqali to'liq oqimini toping.
 3. Elektrostatik maydondagi Gauss teoremasi $\oiint_S \vec{E} \cdot d\vec{S} = \frac{q}{\varepsilon_0}$ aynan Gauss-Ostrogradskiy matematikasining fizik ko'rinishi ekanini tahlil qiling.

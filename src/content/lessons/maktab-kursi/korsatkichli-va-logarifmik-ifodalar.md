@@ -13,10 +13,10 @@ Ko'rsatkichli ($e^x$) va logarifmik ($\ln x$) funksiyalar butun oliy matematikan
 
 ## 1. Ko'rsatkichli ifodalar va ularning xossalari
 
-Ko'rsatkichli ifoda $a^x$ ko'rinishida bo'lib, bu yerda $a > 0, \, a \neq 1$.
+Ko'rsatkichli ifoda $a^x$ko'rinishida bo'lib, bu yerda$a > 0, \, a \neq 1$.
 - **Agar $a > 1$ bo'lsa:** funksiya butun sonlar o'qida qat'iy o'suvchi;
 - **Agar $0 < a < 1$ bo'lsa:** funksiya qat'iy kamayuvchi bo'ladi;
-- Ixtiyoriy haqiqiy $x$ uchun daraja doimo qat'iy musbat: $a^x > 0$.
+- Ixtiyoriy haqiqiy $x$uchun daraja doimo qat'iy musbat:$a^x > 0$.
 
 ### Eyler soni ($e$):
 Matematik analizdagi eng mashhur o'zgarmas asos:
@@ -28,7 +28,7 @@ $$
 
 ## 2. Logarifm ta'rifi va cheklovlari
 
-> **Ta'rif:** $b$ sonining $a$ asosga ko'ra **logarifmi** deb, $b$ sonini hosil qilish uchun $a$ asosni ko'tarish lozim bo'lgan daraja ko'rsatkichiga aytiladi:
+> **Ta'rif:** $b$sonining$a$asosga ko'ra **logarifmi** deb,$b$sonini hosil qilish uchun$a$ asosni ko'tarish lozim bo'lgan daraja ko'rsatkichiga aytiladi:
 >
 > 
 $$
@@ -42,8 +42,7 @@ $$
 3. Logarifm ostidagi ifoda qat'iy musbat bo'lishi shart: $b > 0$.
 
 ### Maxsus logarifmlar:
-- **O'nli logarifm:** $\lg x = \log_{10} x$
-- **Natural logarifm:** $\ln x = \log_e x$
+- **O'nli logarifm:** $\lg x = \log_{10} x$- **Natural logarifm:**$\ln x = \log_e x$
 
 ---
 
@@ -109,7 +108,7 @@ $$
 Viyet teoremasi bo'yicha:
 $$(t - 4)(t + 1) = 0 \implies t_1 = 4, \quad t_2 = -1$$
 - $t_1 = 4 \implies 2^x = 4 = 2^2 \implies x = 2$.
-- $t_2 = -1 \implies 2^x = -1$ — yechim yo'q (chunki $2^x > 0$ har doim musbat).
+- $t_2 = -1 \implies 2^x = -1$— yechim yo'q (chunki$2^x > 0$ har doim musbat).
 
 **Javob:** $x = 2$
 
@@ -131,7 +130,7 @@ $$
 4. Ildizlarni topamiz:
    $$(x - 1)(x - 5) = 0 \implies x_1 = 1, \quad x_2 = 5$$
 5. Aniqlanish sohasini tekshiramiz ($x > 4$):
-   - $x = 1$ chet ildiz (chunki $1 - 2 = -1 < 0$ logarifm ostiga manfiy son tushadi);
+   - $x = 1$chet ildiz (chunki$1 - 2 = -1 < 0$ logarifm ostiga manfiy son tushadi);
    - $x = 5 > 4$ yaroqli yagona yechim.
 
 **Javob:** $x = 5$
@@ -165,9 +164,9 @@ $$
    > Logarifmik tenglamani yechgandan keyin chiqqan ildizlarni albatta dastlabki ifodaga qo'yib tekshirish shart! Ko'pincha chet ildizlar chiqadi va ularni tashlab yubormaslik butun misolni nolga tenglashtiradi.
 
 2. **Asos 1 dan kichik bo'lganda ishorani o'zgartirishni unutish:**
-   > $\log_{0.2} x > 2$ da $x > 0.04$ deb yozish xato. To'g'risi: $0 < x < 0.04$.
+   > $\log_{0.2} x > 2$da$x > 0.04$deb yozish xato. To'g'risi:$0 < x < 0.04$.
 
-3. **$\log_a(x + y)$ ni $\log_a x + \log_a y$ deb o'ylash:**
+3. **$\log_a(x + y)$ni$\log_a x + \log_a y$ deb o'ylash:**
    > Logarifmlar yig'indisi ko'paytmaning logarifmiga teng: $\log_a(xy) = \log_a x + \log_a y$. Ammo qavs ichidagi yig'indini $\log_a(x + y)$ alohida qilib yoyib bo'lmaydi!
 
 ---
@@ -188,11 +187,20 @@ Bu usul har qanday chigal ko'rsatkichli tenglamani chiziqli tenglamaga aylantira
 4. $\left(\frac{1}{3}\right)^x \le 9$ tengsizlikni yeching.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $7 + \log_5(\frac{50}{2}) = 7 + \log_5 25 = 7 + 2 = 9$.</p>
-    <p><strong>2-masala:</strong> $t = 3^x \implies t^2 - 4t + 3 = 0 \implies t_1 = 1, t_2 = 3$. $3^x = 1 \implies x = 0$; $3^x = 3 \implies x = 1$. Javob: $x \in \{0, 1\}$.</p>
-    <p><strong>3-masala:</strong> $x + 3 = 2^3 = 8 \implies x = 5$.</p>
-    <p><strong>4-masala:</strong> $3^{-x} \le 3^2 \implies -x \le 2 \implies x \ge -2$. Javob: $x \in [-2; +\infty)$.</p>
-  </div>
+<summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
+
+**1-masala:** $7 + \log_5(\frac{50}{2}) = 7 + \log_5 25 = 7 + 2 = 9$.
+
+    
+
+**2-masala:** $t = 3^x \implies t^2 - 4t + 3 = 0 \implies t_1 = 1, t_2 = 3$. $3^x = 1 \implies x = 0$; $3^x = 3 \implies x = 1$. Javob: $x \in \{0, 1\}$.
+
+    
+
+**3-masala:** $x + 3 = 2^3 = 8 \implies x = 5$.
+
+    
+
+**4-masala:** $3^{-x} \le 3^2 \implies -x \le 2 \implies x \ge -2$. Javob: $x \in [-2; +\infty)$.
+
 </details>

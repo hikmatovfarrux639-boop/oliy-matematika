@@ -36,13 +36,10 @@ $$
 ## 2. Qismiy yig'indilar ketma-ketligi va qator yig'indisi ($S$)
 
 Cheksiz ifodaning qiymatini hisoblash uchun uning dastlabki $n$ ta hadi yig'indisini tuzamiz:
-- $S_1 = a_1$
-- $S_2 = a_1 + a_2$
-- $S_3 = a_1 + a_2 + a_3$
-- $S_n = a_1 + a_2 + \dots + a_n = \sum_{k=1}^n a_k$ — qatorning **$n$-qismiy yig'indisi**.
+- $S_1 = a_1$-$S_2 = a_1 + a_2$-$S_3 = a_1 + a_2 + a_3$-$S_n = a_1 + a_2 + \dots + a_n = \sum_{k=1}^n a_k$ — qatorning **$n$-qismiy yig'indisi**.
 
 > **Yaqinlashish ta'rifi:**
-> Agar $n \to \infty$ da qismiy yig'indilar ketma-ketligi chekli $S$ limitga ega bo'lsa:
+> Agar $n \to \infty$da qismiy yig'indilar ketma-ketligi chekli$S$ limitga ega bo'lsa:
 >
 > 
 $$
@@ -64,7 +61,7 @@ $$
 $$
 
 Qismiy yig'indi: $S_n = \frac{b_1(1 - q^n)}{1 - q}$.
-- **Agar $|q| < 1$ bo'lsa:** $n \to \infty$ da $q^n \to 0$ bo'lib, qator **yaqinlashadi** va uning yig'indisi:
+- **Agar $|q| < 1$bo'lsa:**$n \to \infty$da$q^n \to 0$ bo'lib, qator **yaqinlashadi** va uning yig'indisi:
   
 $$
   S = \frac{b_1}{1 - q}
@@ -98,7 +95,7 @@ Bunga eng yorqin misol — **Garmonik qator**dir:
 $$
 \sum_{n=1}^\infty \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \dots
 $$
-Bu yerda $a_n = \frac{1}{n} \to 0$ (zaruriy shart bajariladi), ammo shunga qaramasdan garmonik qator **uzoqlashuvchidir** (uning yig'indisi cheksizlik $\infty$ ga teng!).
+Bu yerda $a_n = \frac{1}{n} \to 0$(zaruriy shart bajariladi), ammo shunga qaramasdan garmonik qator **uzoqlashuvchidir** (uning yig'indisi cheksizlik$\infty$ ga teng!).
 Chunki uning hadlari nolga yetarlicha tez kamaymaydi.
 
 ---
@@ -197,10 +194,7 @@ $$
 \frac{1}{(2n - 1)(2n + 1)} = \frac{1}{2} \left( \frac{1}{2n - 1} - \frac{1}{2n + 1} \right)
 $$
 Dastlabki bir nechta hadlarni yozamiz:
-- $n = 1$: $\frac{1}{2}(1 - \frac{1}{3})$
-- $n = 2$: $\frac{1}{2}(\frac{1}{3} - \frac{1}{5})$
-- $n = 3$: $\frac{1}{2}(\frac{1}{5} - \frac{1}{7})$
-- $n$: $\frac{1}{2}(\frac{1}{2n - 1} - \frac{1}{2n + 1})$
+- $n = 1$: $\frac{1}{2}(1 - \frac{1}{3})$-$n = 2$: $\frac{1}{2}(\frac{1}{3} - \frac{1}{5})$-$n = 3$: $\frac{1}{2}(\frac{1}{5} - \frac{1}{7})$-$n$: $\frac{1}{2}(\frac{1}{2n - 1} - \frac{1}{2n + 1})$
 
 Qo'shganda barcha o'rta hadlar yo'qoladi:
 $$
@@ -218,20 +212,20 @@ $$
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **"Zaruriy shart bajarilsa, qator yaqinlashadi" deb xulosa qilish:**
-   > $\lim a_n = 0$ bo'lishi qatorning yaqinlashishiga KAFOLAT BERMAYDI! Garmonik qatorda $\frac{1}{n} \to 0$, lekin u uzoqlashadi. Faqat agar $\lim a_n \neq 0$ bo'lsagina, uzoqlashadi deb aniq aytish mumkin.
+   > $\lim a_n = 0$bo'lishi qatorning yaqinlashishiga KAFOLAT BERMAYDI! Garmonik qatorda$\frac{1}{n} \to 0$, lekin u uzoqlashadi. Faqat agar $\lim a_n \neq 0$ bo'lsagina, uzoqlashadi deb aniq aytish mumkin.
 
 2. **Geometrik qatorda birinchi had $b_1$ ni adashtirish:**
-   > Agar qator $\sum_{n=0}^\infty q^n$ bo'lsa, birinchi had $b_1 = q^0 = 1$. Agar $\sum_{n=1}^\infty q^n$ bo'lsa, birinchi had $b_1 = q^1 = q$ bo'ladi! Qator yig'indisida $b_1$ qaysi sondan boshlanayotganiga diqqat qiling.
+   > Agar qator $\sum_{n=0}^\infty q^n$bo'lsa, birinchi had$b_1 = q^0 = 1$. Agar $\sum_{n=1}^\infty q^n$bo'lsa, birinchi had$b_1 = q^1 = q$bo'ladi! Qator yig'indisida$b_1$ qaysi sondan boshlanayotganiga diqqat qiling.
 
 3. **Uzoqlashuvchi qator hadlarini guruhlash:**
-   > $1 - 1 + 1 - 1 + 1 - \dots$ qatorida hadlarni $(1-1) + (1-1) = 0$ yoki $1 - (1-1) - (1-1) = 1$ deb ixtiyoriy guruhlash mumkin emas. Chekli yig'indi mavjud bo'lmagan qatorlarda arifmetik amallar o'z kuchini yo'qotadi.
+   > $1 - 1 + 1 - 1 + 1 - \dots$qatorida hadlarni$(1-1) + (1-1) = 0$yoki$1 - (1-1) - (1-1) = 1$ deb ixtiyoriy guruhlash mumkin emas. Chekli yig'indi mavjud bo'lmagan qatorlarda arifmetik amallar o'z kuchini yo'qotadi.
 
 ---
 
 ## 💡 Ustozdan maslahat
 
 Qator berilganda har doim 1-qadamda **umumiy hadning limitini** xayolan hisoblab ko'ring:
-$\lim_{n \to \infty} a_n$ nolga intiladimi? Agar nol chiqmasa (masalan $1$, $\frac{1}{2}$ yoki $\infty$), hech qanday Dalamber yoki Koshi alomatlarini qo'llab o'tirmang, darhol: *"Zaruriy shart bajarilmagani sababli qator uzoqlashadi"* deb yozing!
+$\lim_{n \to \infty} a_n$nolga intiladimi? Agar nol chiqmasa (masalan$1$, $\frac{1}{2}$yoki$\infty$), hech qanday Dalamber yoki Koshi alomatlarini qo'llab o'tirmang, darhol: *"Zaruriy shart bajarilmagani sababli qator uzoqlashadi"* deb yozing!
 
 ---
 
@@ -243,11 +237,20 @@ $\lim_{n \to \infty} a_n$ nolga intiladimi? Agar nol chiqmasa (masalan $1$, $\fr
 4. $\sum_{n=1}^\infty \frac{1}{n(n+2)}$ qatorning yig'indisini teleskopik usulda hisoblang.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $\lim_{n \to \infty} \frac{n}{3n + 1} = \frac{1}{3} \neq 0$. Zaruriy shart bajarilmadi $\implies$ qator uzoqlashadi.</p>
-    <p><strong>2-masala:</strong> $b_1 = \frac{2}{3}, q = \frac{2}{3}$. $S = \frac{2/3}{1 - 2/3} = \frac{2/3}{1/3} = 2$.</p>
-    <p><strong>3-masala:</strong> $b_1 = 0.7, q = 0.1$. $S = \frac{0.7}{1 - 0.1} = \frac{0.7}{0.9} = \frac{7}{9}$.</p>
-    <p><strong>4-masala:</strong> $\frac{1}{n(n+2)} = \frac{1}{2}(\frac{1}{n} - \frac{1}{n+2})$. Qisqargandan so'ng dastlabki ikkita musbat had qoladi: $\frac{1}{2}(1 + \frac{1}{2}) = \frac{1}{2} \cdot \frac{3}{2} = \frac{3}{4}$.</p>
-  </div>
+<summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
+
+**1-masala:** $\lim_{n \to \infty} \frac{n}{3n + 1} = \frac{1}{3} \neq 0$. Zaruriy shart bajarilmadi $\implies$ qator uzoqlashadi.
+
+    
+
+**2-masala:** $b_1 = \frac{2}{3}, q = \frac{2}{3}$. $S = \frac{2/3}{1 - 2/3} = \frac{2/3}{1/3} = 2$.
+
+    
+
+**3-masala:** $b_1 = 0.7, q = 0.1$. $S = \frac{0.7}{1 - 0.1} = \frac{0.7}{0.9} = \frac{7}{9}$.
+
+    
+
+**4-masala:** $\frac{1}{n(n+2)} = \frac{1}{2}(\frac{1}{n} - \frac{1}{n+2})$. Qisqargandan so'ng dastlabki ikkita musbat had qoladi: $\frac{1}{2}(1 + \frac{1}{2}) = \frac{1}{2} \cdot \frac{3}{2} = \frac{3}{4}$.
+
 </details>

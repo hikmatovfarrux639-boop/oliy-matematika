@@ -25,8 +25,8 @@ bu yerda $A$ — **simmetrik kvadrat matritsa** ($A = A^T$, ya'ni $a_{ij} = a_{j
 
 ## 1. Kvadratik formalarning ishora turlari
 
-1. **Musbat aniqlangan:** Barcha $X \neq 0$ uchun $Q(X) > 0$ (Grafigi botiq kosadek, minimumga ega);
-2. **Manfiy aniqlangan:** Barcha $X \neq 0$ uchun $Q(X) < 0$ (Grafigi qavariq gumbazdek, maksimumga ega);
+1. **Musbat aniqlangan:** Barcha $X \neq 0$uchun$Q(X) > 0$ (Grafigi botiq kosadek, minimumga ega);
+2. **Manfiy aniqlangan:** Barcha $X \neq 0$uchun$Q(X) < 0$ (Grafigi qavariq gumbazdek, maksimumga ega);
 3. **Noaniq (ishorasi o'zgaruvchan):** Ba'zi nuqtalarda musbat, ba'zilarida manfiy (egarsimon sirt — egar nuqta).
 
 ---

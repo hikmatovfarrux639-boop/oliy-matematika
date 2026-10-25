@@ -8,9 +8,7 @@ description: "Matritsa rangi nima, o'rab oluvchi minorlar usuli, elementar almas
 ## Kirish: Matritsa rangi nima va u nimani o'lchaydi?
 
 Tasavvur qiling, sizga 3 ta tenglama berilgan:
-1) $x + y = 5$
-2) $2x + 2y = 10$
-3) $x - y = 1$
+1) $x + y = 5$2)$2x + 2y = 10$3)$x - y = 1$
 
 Diqqat qiling: 2-tenglama aslida 1-tenglamaning shunchaki 2 ga ko'paytirilgani! Ya'ni u hech qanday yangi axborot bermaydi — u "ortiqcha" (chiziqli bog'liq). Haqiqiy yangi axborot beruvchi mustaqil tenglamalar soni esa atigi 2 ta (1- va 3-tenglama).
 
@@ -20,7 +18,7 @@ Mana shu matritsadagi **haqiqiy, mustaqil (chiziqli erkli) axborotlar soni — M
 
 ## 1. Rasmily ta'riflar
 
-> **1-ta'rif (Minorlar orqali):** Matritsaning rangi deb uning **nolga teng bo'lmagan eng yuqori tartibli minori**ga aytiladi va u $\operatorname{rang}(A)$ yoki $\operatorname{rank}(A)$ deb belgilanadi.
+> **1-ta'rif (Minorlar orqali):** Matritsaning rangi deb uning **nolga teng bo'lmagan eng yuqori tartibli minori**ga aytiladi va u $\operatorname{rang}(A)$yoki$\operatorname{rank}(A)$ deb belgilanadi.
 >
 > **2-ta'rif (Chiziqli algebrada):** Matritsaning rangi deb uning **maksimal chiziqli erkli satrlari (yoki ustunlari)** soniga aytiladi.
 
@@ -65,8 +63,7 @@ $$
 <summary><strong>Yechimni ko'rish</strong></summary>
 
 Diqqat qiling: 2-satr 1-satrning 2 barobari ($S_2 = 2S_1$), 3-satr esa 3 barobari ($S_3 = 3S_1$).
-- $S_2 - 2S_1 \to S_2$
-- $S_3 - 3S_1 \to S_3$
+- $S_2 - 2S_1 \to S_2$-$S_3 - 3S_1 \to S_3$
 
 $$
 A \sim \begin{pmatrix}
@@ -98,4 +95,5 @@ Demak:
 $$
 \operatorname{rang}(A) = 2
 $$
+
 </details>

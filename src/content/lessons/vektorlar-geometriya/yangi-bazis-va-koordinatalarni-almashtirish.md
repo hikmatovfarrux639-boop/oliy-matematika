@@ -21,11 +21,8 @@ Ushbu jarayonlarning barchasi bitta fundamental algebraik mexanizmga tayanadi â€
 
 ---
 
-## 1. Affin bazis va o'tish matritsasi $C$
-
-Faraz qilaylik, $n$-o'lchovli chiziqli fazoda (xususan, tekislikda $n=2$ yoki fazoda $n=3$) ikkita bazis berilgan:
-- **Eski bazis:** $B = (\vec{e}_1, \vec{e}_2, \dots, \vec{e}_n)$
-- **Yangi bazis:** $B' = (\vec{e}'_1, \vec{e}'_2, \dots, \vec{e}'_n)$
+## 1. Affin bazis va o'tish matritsasi $C$Faraz qilaylik,$n$-o'lchovli chiziqli fazoda (xususan, tekislikda $n=2$yoki fazoda$n=3$) ikkita bazis berilgan:
+- **Eski bazis:** $B = (\vec{e}_1, \vec{e}_2, \dots, \vec{e}_n)$- **Yangi bazis:**$B' = (\vec{e}'_1, \vec{e}'_2, \dots, \vec{e}'_n)$
 
 Yangi bazis vektorlarining har birini eski bazis vektorlarining chiziqli kombinatsiyasi sifatida ifodalash mumkin:
 
@@ -38,7 +35,7 @@ $$
 \end{cases}
 $$
 
-> **Ta'rif:** Yangi bazis vektorlarining eski bazisdagi koordinatalaridan tuzilgan quyidagi matritsaga **eski bazisdan yangi bazisga o'tish matritsasi** deyiladi va $C$ (yoki $T$) harfi bilan belgilanadi:
+> **Ta'rif:** Yangi bazis vektorlarining eski bazisdagi koordinatalaridan tuzilgan quyidagi matritsaga **eski bazisdan yangi bazisga o'tish matritsasi** deyiladi va $C$(yoki$T$) harfi bilan belgilanadi:
 > 
 > $$
 > C = \begin{pmatrix}
@@ -86,7 +83,7 @@ $$
 
 > **Diqqat! Imtihondagi eng mashhur adashish:**
 > Ko'pchilik talabalar shoshilib $X' = C \cdot X$ deb o'ylashadi. Bu mutlaqo noto'g'ri!
-> Yangi bazis vektorlari $B' = B \cdot C$ qoidasi bilan o'zgarsa, koordinatalar ustuni **kontravariant** (teskari) ravishda o'zgaradi: $X = C \cdot X'$, ya'ni yangi koordinatalar $X' = C^{-1} X$ orqali topiladi!
+> Yangi bazis vektorlari $B' = B \cdot C$qoidasi bilan o'zgarsa, koordinatalar ustuni **kontravariant** (teskari) ravishda o'zgaradi:$X = C \cdot X'$, ya'ni yangi koordinatalar $X' = C^{-1} X$ orqali topiladi!
 
 ---
 
@@ -96,8 +93,8 @@ Tekislikda $Oxy$ to'g'ri burchakli Dekart koordinatalar sistemasini o'zgartirish
 
 ### 1. Koordinata o'qlarini parallel ko'chirish
 
-Agar koordinata boshi $O(0, 0)$ nuqtadan yangi $O'(x_0, y_0)$ nuqtaga ko'chirilsa, o'qlarning yo'nalishi va masshtabi o'zgarmaydi.
-Tekislikdagi ixtiyoriy $M$ nuqtaning eski $(x, y)$ va yangi $(x', y')$ koordinatalari quyidagicha bog'lanadi:
+Agar koordinata boshi $O(0, 0)$nuqtadan yangi$O'(x_0, y_0)$ nuqtaga ko'chirilsa, o'qlarning yo'nalishi va masshtabi o'zgarmaydi.
+Tekislikdagi ixtiyoriy $M$nuqtaning eski$(x, y)$va yangi$(x', y')$ koordinatalari quyidagicha bog'lanadi:
 
 $$
 \begin{cases}
@@ -115,7 +112,7 @@ $$
 
 ### 2. Koordinata o'qlarini $\alpha$ burchakka burish
 
-Faraz qilaylik, koordinata boshi $O$ qo'zg'almas qoldirilib, har ikkala koordinata o'qi musbat yo'nalishda (soat miliga qarama-qarshi) $\alpha$ burchakka burildi.
+Faraz qilaylik, koordinata boshi $O$qo'zg'almas qoldirilib, har ikkala koordinata o'qi musbat yo'nalishda (soat miliga qarama-qarshi)$\alpha$ burchakka burildi.
 
 Eski bazis ortlari: $\vec{i} = (1, 0)$, $\vec{j} = (0, 1)$.
 Yangi bazis ortlari:
@@ -137,7 +134,7 @@ C = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-Bu matritsa **ortogonal matritsa** bo'lib, uning determinanti $\det C = \cos^2\alpha + \sin^2\alpha = 1$ ga teng. Uning teskarisi shunchaki transponirlanganiga teng: $C^{-1} = C^T$.
+Bu matritsa **ortogonal matritsa** bo'lib, uning determinanti $\det C = \cos^2\alpha + \sin^2\alpha = 1$ga teng. Uning teskarisi shunchaki transponirlanganiga teng:$C^{-1} = C^T$.
 
 Koordinatalar bog'lanishi:
 - **Eski koordinatalarni yangi orqali ifodalash ($X = C X'$):**
@@ -163,7 +160,7 @@ $$
 
 ### 3. Umumiy harakat (Burish va parallel ko'chirish birgalikda)
 
-Agar koordinata o'qlari avval $\alpha$ burchakka burilib, so'ngra yangi koordinata boshi $O'(x_0, y_0)$ nuqtaga ko'chirilsa:
+Agar koordinata o'qlari avval $\alpha$burchakka burilib, so'ngra yangi koordinata boshi$O'(x_0, y_0)$ nuqtaga ko'chirilsa:
 
 $$
 \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha \end{pmatrix} \begin{pmatrix} x' \\ y' \end{pmatrix} + \begin{pmatrix} x_0 \\ y_0 \end{pmatrix}
@@ -312,11 +309,7 @@ $$
 $$
 
 3. Orqaga qaytish:
-   - $2x'_3 = 2 \implies x'_3 = 1$
-   - $x'_2 + 3(1) = 4 \implies x'_2 = 1$
-   - $x'_1 + 1 + 1 = 3 \implies x'_1 = 1$
-
-Demak, yangi bazisda $\vec{a}$ vektorining koordinatalari:
+   - $2x'_3 = 2 \implies x'_3 = 1$-$x'_2 + 3(1) = 4 \implies x'_2 = 1$-$x'_1 + 1 + 1 = 3 \implies x'_1 = 1$Demak, yangi bazisda$\vec{a}$ vektorining koordinatalari:
 
 $$
 X' = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \iff \vec{a} = \vec{e}'_1 + \vec{e}'_2 + \vec{e}'_3
@@ -326,11 +319,11 @@ $$
 
 ### 3-misol: Koordinata o'qlarini burish va egri chiziq tenglamasining soddalashishi
 
-Tekislikda $xy = 1$ (teng tomonli giperbola) tenglamasi berilgan. Koordinata o'qlarini $\alpha = 45^\circ$ burchakka burilgandagi yangi tenglamasini toping.
+Tekislikda $xy = 1$(teng tomonli giperbola) tenglamasi berilgan. Koordinata o'qlarini$\alpha = 45^\circ$ burchakka burilgandagi yangi tenglamasini toping.
 
 **Yechish:**
 
-$\alpha = 45^\circ$ bo'lganda $\cos 45^\circ = \sin 45^\circ = \frac{\sqrt{2}}{2} = \frac{1}{\sqrt{2}}$.
+$\alpha = 45^\circ$bo'lganda$\cos 45^\circ = \sin 45^\circ = \frac{\sqrt{2}}{2} = \frac{1}{\sqrt{2}}$.
 Burish formulalari:
 
 $$
@@ -343,19 +336,18 @@ $$
 \left(\frac{x' - y'}{\sqrt{2}}\right) \cdot \left(\frac{x' + y'}{\sqrt{2}}\right) = 1 \implies \frac{(x')^2 - (y')^2}{2} = 1 \implies \frac{(x')^2}{2} - \frac{(y')^2}{2} = 1
 $$
 
-Ko'rib turganimizdek, $45^\circ$ ga burish natijasida maktabdan ma'lum bo'lgan teskari proporsionallik funksiyasi $y = \frac{1}{x}$ ning grafigi aslida yarim o'qlari $a = b = \sqrt{2}$ bo'lgan **kanonik teng tomonli giperbola** ekanligi yaqqol namoyon bo'ldi!
+Ko'rib turganimizdek, $45^\circ$ga burish natijasida maktabdan ma'lum bo'lgan teskari proporsionallik funksiyasi$y = \frac{1}{x}$ning grafigi aslida yarim o'qlari$a = b = \sqrt{2}$ bo'lgan **kanonik teng tomonli giperbola** ekanligi yaqqol namoyon bo'ldi!
 
 ---
 
 ## 5. Mustaqil mashqlar va javoblar
 
 ### 1-masala
-Eski bazisda $\vec{e}_1, \vec{e}_2$ berilgan. Yangi bazis:
-$\vec{e}'_1 = \vec{e}_1 + 2\vec{e}_2$, $\vec{e}'_2 = 3\vec{e}_1 + 5\vec{e}_2$.
+Eski bazisda $\vec{e}_1, \vec{e}_2$berilgan. Yangi bazis:$\vec{e}'_1 = \vec{e}_1 + 2\vec{e}_2$, $\vec{e}'_2 = 3\vec{e}_1 + 5\vec{e}_2$.
 Eski bazisdagi koordinatalari $\vec{v} = (5, 9)^T$ bo'lgan vektorning yangi bazisdagi koordinatalarini aniqlang.
 
 ### 2-masala
-Koordinata o'qlari $\alpha = 30^\circ$ ga burildi va koordinata boshi $O'(2, -3)$ nuqtaga ko'chirildi. Yangi koordinatalar sistemasida koordinatalari $x' = \sqrt{3}, y' = 1$ bo'lgan nuqtaning eski koordinatalarini toping.
+Koordinata o'qlari $\alpha = 30^\circ$ga burildi va koordinata boshi$O'(2, -3)$nuqtaga ko'chirildi. Yangi koordinatalar sistemasida koordinatalari$x' = \sqrt{3}, y' = 1$ bo'lgan nuqtaning eski koordinatalarini toping.
 
 ---
 

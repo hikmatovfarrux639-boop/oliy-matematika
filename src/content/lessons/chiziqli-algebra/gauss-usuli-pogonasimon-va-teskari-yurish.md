@@ -55,8 +55,7 @@ $$
 $$
 
 1-satrdagi $a_{11} = 1$ yordamida 1-ustundagi pastki sonlarni nolga aylantiramiz:
-- $S_2 - 2S_1 \to S_2$
-- $S_3 - 3S_1 \to S_3$
+- $S_2 - 2S_1 \to S_2$-$S_3 - 3S_1 \to S_3$
 
 $$
 \sim \begin{pmatrix}
@@ -102,10 +101,11 @@ $$
    $$x_3 = \frac{24}{10} = 2.4$$
 2. 2-tenglamaga $x_3$ ni qo'yamiz:
    $$3x_2 - 5(2.4) = -9 \implies 3x_2 - 12 = -9 \implies 3x_2 = 3 \implies x_2 = 1$$
-3. 1-tenglamaga $x_2$ va $x_3$ ni qo'yamiz:
+3. 1-tenglamaga $x_2$va$x_3$ ni qo'yamiz:
    $$x_1 - 1 + 2(2.4) = 5 \implies x_1 - 1 + 4.8 = 5 \implies x_1 + 3.8 = 5 \implies x_1 = 1.2$$
 
 **Javob:** $x_1 = 1.2, \; x_2 = 1, \; x_3 = 2.4$.
+
 </details>
 
 ---

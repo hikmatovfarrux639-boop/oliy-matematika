@@ -218,7 +218,7 @@ const searchTags = getKeywordsForLesson(lesson.data.module, lesson.data.title);
                 ✨ AI Yechuvchi
               </a>
               <a 
-                href="/testlar" 
+                href={`/testlar?modul=${lesson.data.module}#quiz-section`} 
                 class="btn btn-secondary" 
                 style="flex: 1; font-size: 0.8rem; padding: 0.45rem 0.6rem; text-align: center; border-color: #3b82f6; color: #3b82f6;"
                 title="Mavzu bo'yicha HEMIS testlarini ishlash"

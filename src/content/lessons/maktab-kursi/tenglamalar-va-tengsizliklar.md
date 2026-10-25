@@ -51,7 +51,7 @@ $$
 x_1 + x_2 = -\frac{b}{a}, \qquad x_1 \cdot x_2 = \frac{c}{a}
 $$
 
-> **Amaliy layfxak:** Ildizlarni og'zaki topishda $q$ ning bo'luvchilarini ko'rib chiqish eng tez usuldir. Masalan, $x^2 - 7x + 12 = 0 \implies 3 \cdot 4 = 12$ va $3 + 4 = 7 \implies x_1 = 3, x_2 = 4$.
+> **Amaliy layfxak:** Ildizlarni og'zaki topishda $q$ning bo'luvchilarini ko'rib chiqish eng tez usuldir. Masalan,$x^2 - 7x + 12 = 0 \implies 3 \cdot 4 = 12$va$3 + 4 = 7 \implies x_1 = 3, x_2 = 4$.
 
 ---
 
@@ -64,18 +64,14 @@ $$
 
 Butun koeffitsiyentli tenglamalarning butun ildizlari faqat ozod had $a_0$ ning bo'luvchilari orasidan qidiriladi.
 
-Bitta $x = x_0$ ildiz topilgach, ko'phadni $(x - x_0)$ ga bo'lish uchun **Gorner sxemasi** qo'llaniladi.
+Bitta $x = x_0$ildiz topilgach, ko'phadni$(x - x_0)$ ga bo'lish uchun **Gorner sxemasi** qo'llaniladi.
 
-### Misol: $x^3 - 4x^2 + x + 6 = 0$
-Ozod had $6$ ning bo'luvchilari: $\pm 1, \pm 2, \pm 3, \pm 6$.
-- $x = -1$ ni tekshiramiz: $(-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0$. Ildiz topildi!
+### Misol: $x^3 - 4x^2 + x + 6 = 0$Ozod had$6$ning bo'luvchilari:$\pm 1, \pm 2, \pm 3, \pm 6$.
+- $x = -1$ni tekshiramiz:$(-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0$. Ildiz topildi!
 - Gorner jadvali:
   Koeffitsiyentlar: $1, \quad -4, \quad 1, \quad 6$.
   $x_0 = -1$:
-  - Birinchi son tushadi: $1$
-  - $(-1) \cdot 1 + (-4) = -5$
-  - $(-1) \cdot (-5) + 1 = 6$
-  - $(-1) \cdot 6 + 6 = 0$ (qoldiq nol).
+  - Birinchi son tushadi: $1$-$(-1) \cdot 1 + (-4) = -5$-$(-1) \cdot (-5) + 1 = 6$-$(-1) \cdot 6 + 6 = 0$ (qoldiq nol).
 
 Hosil bo'lgan kvadrat tenglama: $x^2 - 5x + 6 = 0 \implies (x - 2)(x - 3) = 0$.
 Demak, tenglama ildizlari: $x_1 = -1, \, x_2 = 2, \, x_3 = 3$.
@@ -126,16 +122,16 @@ $$
 $$
 
 **Yechilishi:**
-1. Surat nollari: $x = 1$ (karraligi 2 — juft daraja!), $x = -3$ (karraligi 1 — toq daraja).
+1. Surat nollari: $x = 1$(karraligi 2 — juft daraja!),$x = -3$ (karraligi 1 — toq daraja).
 2. Maxraj nollari: $x = 4$ ($x \neq 4$).
-3. Sonlar o'qida nuqtalarni belgilaymiz: $-3$ (yopiq), $1$ (yopiq), $4$ (ochiq).
+3. Sonlar o'qida nuqtalarni belgilaymiz: $-3$(yopiq),$1$(yopiq),$4$ (ochiq).
 4. Oraliqlar:
    - $(4; +\infty)$: masalan $x = 5 \implies \frac{(+)^2 (+)}{+} > 0$ ($+$).
    - $(1; 4)$: masalan $x = 2 \implies \frac{(+)^2 (+)}{-} < 0$ ($-$).
-   - $(-3; 1)$: masalan $x = 0 \implies \frac{(-)^2 (+)}{-} < 0$ ($-$). Diqqat: $x = 1$ nuqtadan o'tganda ishora o'zgarmadi, chunki $(x - 1)^2$ juft daraja!
+   - $(-3; 1)$: masalan $x = 0 \implies \frac{(-)^2 (+)}{-} < 0$ ($-$). Diqqat: $x = 1$nuqtadan o'tganda ishora o'zgarmadi, chunki$(x - 1)^2$ juft daraja!
    - $(-\infty; -3)$: masalan $x = -4 \implies \frac{(-)^2 (-)}{-} > 0$ ($+$).
 5. Bizga $\le 0$ oraliqlar kerak:
-   Oraliqlar: $[-3; 1]$ va $[1; 4)$, ya'ni birlashtirganda $[-3; 4)$.
+   Oraliqlar: $[-3; 1]$va$[1; 4)$, ya'ni birlashtirganda $[-3; 4)$.
    $x = 1$ da ifoda nolga teng bo'ladi va shartni qanoatlantiradi.
 
 **Javob:** $x \in [-3; 4)$
@@ -149,10 +145,16 @@ $$
 3. $\frac{x - 2}{x + 5} \ge 0$ tengsizlikning yechimini oraliq shaklida yozing.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $(x - 2)(x - 3) \le 0 \implies x \in [2; 3]$.</p>
-    <p><strong>2-masala:</strong> $-5 < 2x - 3 < 5 \implies -2 < 2x < 8 \implies -1 < x < 4$, ya'ni $(-1; 4)$.</p>
-    <p><strong>3-masala:</strong> Surat noli $x = 2$ (yopiq), maxraj $x \neq -5$ (ochiq). Natija: $(-\infty; -5) \cup [2; +\infty)$.</p>
-  </div>
+<summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+
+**1-masala:** $(x - 2)(x - 3) \le 0 \implies x \in [2; 3]$.
+
+    
+
+**2-masala:** $-5 < 2x - 3 < 5 \implies -2 < 2x < 8 \implies -1 < x < 4$, ya'ni $(-1; 4)$.
+
+    
+
+**3-masala:** Surat noli $x = 2$(yopiq), maxraj$x \neq -5$(ochiq). Natija:$(-\infty; -5) \cup [2; +\infty)$.
+
 </details>

@@ -811,7 +811,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ${lenA > 0 ? `
           <div style="margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color); font-size: 0.88rem; color: var(--text-muted);">
             <b>a⃗ vektorning birlik orti:</b> $\\vec{a}_0 = (${fmt(ortAx)}, \\; ${fmt(ortAy)}${dim === 3 ? ', \\; ' + fmt(ortAz) : ''})$<br>
-            <b>Yo'naltiruvchi kosinuslar:</b> $\\cos\\alpha = ${fmt(ortAx)}, \\; \\cos\\beta = ${fmt(ortAy)}${dim === 3 ? ', \\; \\cos\\gamma = ' + fmt(ortAz) : ''}
+            <b>Yo'naltiruvchi kosinuslar:</b> $\\cos\\alpha = ${fmt(ortAx)}, \\; \\cos\\beta = ${fmt(ortAy)}${dim === 3 ? ', \\; \\cos\\gamma = ' + fmt(ortAz) : ''}$
             &nbsp; $\\left(\\cos^2\\alpha + \\cos^2\\beta ${dim === 3 ? '+ \\cos^2\\gamma' : ''} = 1\\right)$
           </div>
         ` : ''}
@@ -949,6 +949,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const box = document.getElementById('results-box');
     if (!box || (box as any)._hasVecInit) return;
     (box as any)._hasVecInit = true;
+    dim = 3;
 
     // Dimension Tabs
     document.querySelectorAll('.dim-tab').forEach(tab => {
@@ -959,12 +960,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         document.querySelectorAll('.coord-z').forEach(el => {
           el.style.display = dim === 2 ? 'none' : '';
         });
-        if (dim === 2) {
-          draw2DVectorCanvas(getVector('a'), getVector('b'));
-        } else {
-          const card = document.getElementById('vector-canvas-card');
-          if (card) card.style.display = 'none';
-        }
+        runCalculations('full');
       });
     });
 

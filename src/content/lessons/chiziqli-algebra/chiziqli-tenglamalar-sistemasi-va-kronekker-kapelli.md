@@ -16,7 +16,7 @@ Xuddi shifokor davolashdan oldin diagnoz qo'yganidek, matematik ham tenglamalar 
 
 ## 1. Asosiy tushunchalar va belgilar
 
-$m$ ta tenglama va $n$ ta noma'lumdan iborat chiziqli tenglamalar sistemasi (CHTS):
+$m$ta tenglama va$n$ ta noma'lumdan iborat chiziqli tenglamalar sistemasi (CHTS):
 
 $$
 \begin{cases}
@@ -28,7 +28,7 @@ a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = b_m
 $$
 
 - **Asosiy matritsa ($A$):** Koeffitsiyentlardan tuzilgan $m \times n$ matritsa;
-- **Kengaytirilgan matritsa ($\bar{A}$ yoki $(A \mid B)$):** Asosiy matritsaga ozod hadlar ustuni qo'shilgan $m \times (n+1)$ matritsa:
+- **Kengaytirilgan matritsa ($\bar{A}$yoki$(A \mid B)$):** Asosiy matritsaga ozod hadlar ustuni qo'shilgan $m \times (n+1)$ matritsa:
 
 $$
 \bar{A} = \begin{pmatrix}
@@ -90,8 +90,8 @@ $$
 $$
 
 Ko'rib turibmizki:
-- Asosiy matritsa $A$ da nolmas satrlar soni: $\operatorname{rang}(A) = 1$.
-- Kengaytirilgan matritsa $\bar{A}$ da esa 2-satrda $3$ soni bor, demak $\operatorname{rang}(\bar{A}) = 2$.
+- Asosiy matritsa $A$da nolmas satrlar soni:$\operatorname{rang}(A) = 1$.
+- Kengaytirilgan matritsa $\bar{A}$da esa 2-satrda$3$soni bor, demak$\operatorname{rang}(\bar{A}) = 2$.
 
 $$
 \operatorname{rang}(A) = 1 \neq 2 = \operatorname{rang}(\bar{A})
@@ -99,4 +99,5 @@ $$
 Qarang, 2-satr aslida $0 \cdot x_1 + 0 \cdot x_2 + 0 \cdot x_3 = 3$, ya'ni $0 = 3$ degan mutlaqo mantiqsiz ziddiyatga olib keldi!
 
 **Xulosa:** Sistema birgalikda emas, yechimga ega emas!
+
 </details>

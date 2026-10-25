@@ -30,8 +30,8 @@ Bunday tenglamalarni yechishda Lagranjning o'zgarmaslarni variatsiyalash usuli u
 > $$
 
 Bu yerda:
-- $y_{oj}$ — $y'' + p y' + q y = 0$ bir jinsli tenglamaning xarakteristik tenglama orqali topiladigan umumiy yechimi;
-- $y_{xus}$ — $y'' + p y' + q y = f(x)$ tenglamani ayniyatga aylantiruvchi, o'zgarmas koeffitsiyentlarsiz olingan bitta aniq funksiya.
+- $y_{oj}$—$y'' + p y' + q y = 0$ bir jinsli tenglamaning xarakteristik tenglama orqali topiladigan umumiy yechimi;
+- $y_{xus}$—$y'' + p y' + q y = f(x)$ tenglamani ayniyatga aylantiruvchi, o'zgarmas koeffitsiyentlarsiz olingan bitta aniq funksiya.
 
 ### Superpozitsiya prinsipi:
 Agar tenglamaning o'ng tomoni bir nechta funksiyaning yig'indisidan iborat bo'lsa:
@@ -57,28 +57,28 @@ $$
 \gamma = \alpha \pm i\beta
 $$
 
-Xususiy yechim ko'rinishi ushbu $\gamma$ sonining xarakteristik tenglama ildizlari ($k_1, k_2$) orasida necha marta uchrashiga ($s$ karraliligiga, $s \in \{0, 1, 2\}$) bog'liq bo'ladi:
+Xususiy yechim ko'rinishi ushbu $\gamma$ sonining xarakteristik tenglama ildizlari ($k_1, k_2$) orasida necha marta uchrashiga ($s$karraliligiga,$s \in \{0, 1, 2\}$) bog'liq bo'ladi:
 $$
 y_{xus} = x^s e^{\alpha x} \left[ R_l(x) \cos(\beta x) + T_l(x) \sin(\beta x) \right]
 $$
-bu yerda $l = \max(m, n)$, $R_l(x)$ va $T_l(x)$ — noaniq koeffitsiyentli $l$-darajali ko'phadlar.
+bu yerda $l = \max(m, n)$, $R_l(x)$va$T_l(x)$— noaniq koeffitsiyentli$l$-darajali ko'phadlar.
 
 Quyida amaliyotda uchraydigan barcha holatlarni jamlagan **to'liq 12 qatorli jadval** keltirilgan:
 
-| T/r | O'ng tomon $f(x)$ | Tekshiruvchi son $\gamma$ | Xarakteristik ildizlar bilan munosabati | Xususiy yechim ko'rinishi $y_{xus}$ |
+| T/r | O'ng tomon $f(x)$| Tekshiruvchi son$\gamma$| Xarakteristik ildizlar bilan munosabati | Xususiy yechim ko'rinishi$y_{xus}$ |
 |---|---|---|---|---|
-| **1** | $A$ (o'zgarmas son) | $\gamma = 0$ | $k=0$ ildiz emas ($q \neq 0$) | $y_{xus} = B$ |
-| **2** | $A$ (o'zgarmas son) | $\gamma = 0$ | $k=0$ bitta ildiz ($q=0, p \neq 0$) | $y_{xus} = B x$ |
-| **3** | $Ax + B$ (1-darajali ko'phad) | $\gamma = 0$ | $k=0$ ildiz emas | $y_{xus} = M x + N$ |
-| **4** | $Ax^2 + Bx + C$ | $\gamma = 0$ | $k=0$ ildiz emas | $y_{xus} = M x^2 + N x + P$ |
-| **5** | $P_n(x)$ ($n$-darajali ko'phad) | $\gamma = 0$ | $k=0$ soni $s$-karrali ildiz ($s=0, 1, 2$) | $y_{xus} = x^s (A_n x^n + \dots + A_1 x + A_0)$ |
-| **6** | $A e^{ax}$ | $\gamma = a$ | $a$ xarakteristik ildiz emas | $y_{xus} = M e^{ax}$ |
-| **7** | $A e^{ax}$ | $\gamma = a$ | $a$ oddiy (1 karrali) ildiz | $y_{xus} = M x e^{ax}$ |
-| **8** | $A e^{ax}$ | $\gamma = a$ | $a$ karrali (2 karrali) ildiz | $y_{xus} = M x^2 e^{ax}$ |
-| **9** | $P_n(x) e^{ax}$ | $\gamma = a$ | $a$ soni $s$-karrali ildiz ($s=0, 1, 2$) | $y_{xus} = x^s Q_n(x) e^{ax}$ |
-| **10** | $A\cos(\beta x)$ yoki $B\sin(\beta x)$ | $\gamma = \pm i\beta$ | $\pm i\beta$ xarakteristik ildiz emas | $y_{xus} = M \cos(\beta x) + N \sin(\beta x)$ |
-| **11** | $A\cos(\beta x) + B\sin(\beta x)$ | $\gamma = \pm i\beta$ | $\pm i\beta$ xarakteristik ildiz (**Rezonans!**) | $y_{xus} = x (M \cos(\beta x) + N \sin(\beta x))$ |
-| **12** | $e^{\alpha x}(A\cos\beta x + B\sin\beta x)$ | $\gamma = \alpha \pm i\beta$ | $\alpha \pm i\beta$ soni $s$-karrali ildiz ($s=0, 1$) | $y_{xus} = x^s e^{\alpha x}(M \cos\beta x + N \sin\beta x)$ |
+| **1** | $A$(o'zgarmas son) |$\gamma = 0$|$k=0$ ildiz emas ($q \neq 0$) | $y_{xus} = B$ |
+| **2** | $A$(o'zgarmas son) |$\gamma = 0$|$k=0$ bitta ildiz ($q=0, p \neq 0$) | $y_{xus} = B x$ |
+| **3** | $Ax + B$(1-darajali ko'phad) |$\gamma = 0$|$k=0$ildiz emas |$y_{xus} = M x + N$ |
+| **4** | $Ax^2 + Bx + C$|$\gamma = 0$|$k=0$ildiz emas |$y_{xus} = M x^2 + N x + P$ |
+| **5** | $P_n(x)$ ($n$-darajali ko'phad) | $\gamma = 0$|$k=0$soni$s$-karrali ildiz ($s=0, 1, 2$) | $y_{xus} = x^s (A_n x^n + \dots + A_1 x + A_0)$ |
+| **6** | $A e^{ax}$|$\gamma = a$|$a$xarakteristik ildiz emas |$y_{xus} = M e^{ax}$ |
+| **7** | $A e^{ax}$|$\gamma = a$|$a$oddiy (1 karrali) ildiz |$y_{xus} = M x e^{ax}$ |
+| **8** | $A e^{ax}$|$\gamma = a$|$a$karrali (2 karrali) ildiz |$y_{xus} = M x^2 e^{ax}$ |
+| **9** | $P_n(x) e^{ax}$|$\gamma = a$|$a$soni$s$-karrali ildiz ($s=0, 1, 2$) | $y_{xus} = x^s Q_n(x) e^{ax}$ |
+| **10** | $A\cos(\beta x)$yoki$B\sin(\beta x)$|$\gamma = \pm i\beta$|$\pm i\beta$xarakteristik ildiz emas |$y_{xus} = M \cos(\beta x) + N \sin(\beta x)$ |
+| **11** | $A\cos(\beta x) + B\sin(\beta x)$|$\gamma = \pm i\beta$|$\pm i\beta$xarakteristik ildiz (**Rezonans!**) |$y_{xus} = x (M \cos(\beta x) + N \sin(\beta x))$ |
+| **12** | $e^{\alpha x}(A\cos\beta x + B\sin\beta x)$|$\gamma = \alpha \pm i\beta$|$\alpha \pm i\beta$soni$s$-karrali ildiz ($s=0, 1$) | $y_{xus} = x^s e^{\alpha x}(M \cos\beta x + N \sin\beta x)$ |
 
 > **Muhim eslatma (Trigonometriya qoidasi):**
 > Agar o'ng tomonda faqat sinus (masalan, $f(x) = \sin 3x$) yoki faqat kosinus bo'lsa ham, xususiy yechim tarkibiga **har doim sinus ham, kosinus ham** kiritilishi shart: $y_{xus} = M\cos 3x + N\sin 3x$! Chunki hosila olinganda sinus kosinusga, kosinus esa sinusga aylanadi.
@@ -87,7 +87,7 @@ Quyida amaliyotda uchraydigan barcha holatlarni jamlagan **to'liq 12 qatorli jad
 
 ## 3. Rezonans tushunchasi va ko'paytuvchi $x^s$ ning kelib chiqishi
 
-Nega o'ng tomon xarakteristik ildizga to'g'ri kelib qolganda qo'shimcha $x$ yoki $x^2$ ko'paytuvchisi kiritiladi?
+Nega o'ng tomon xarakteristik ildizga to'g'ri kelib qolganda qo'shimcha $x$yoki$x^2$ ko'paytuvchisi kiritiladi?
 
 ### Matematik sababi:
 Aytaylik, $y'' - 3y' + 2y = e^x$ tenglama berilgan bo'lsin.
@@ -98,7 +98,7 @@ Agar biz xususiy yechimni odatdagidek $y_{xus} = A e^x$ deb qidirsak, uni tengla
 $$
 y_{xus}'' - 3y_{xus}' + 2y_{xus} = A e^x - 3A e^x + 2A e^x = (1 - 3 + 2) A e^x = 0 \cdot A e^x = 0
 $$
-Chap tomon har qanday $A$ uchun $0$ ga aylanib ketadi va hech qachon o'ng tomondagi $e^x$ ga teng bo'la olmaydi! Chunki $e^x$ bir jinsli tenglamaning o'z yechimidir.
+Chap tomon har qanday $A$uchun$0$ga aylanib ketadi va hech qachon o'ng tomondagi$e^x$ga teng bo'la olmaydi! Chunki$e^x$ bir jinsli tenglamaning o'z yechimidir.
 
 Yechimni chiziqli erkli qilish uchun uni $x$ ga ko'paytiramiz:
 $$
@@ -122,7 +122,7 @@ $$
 Demak, $y_{xus} = -x e^x$!
 
 ### Fizik talqini:
-Prujinadagi yukning xususiy chastotasi $\omega_0$ bo'lsin: $x'' + \omega_0^2 x = F_0 \cos(\omega t)$.
+Prujinadagi yukning xususiy chastotasi $\omega_0$bo'lsin:$x'' + \omega_0^2 x = F_0 \cos(\omega t)$.
 Agar tashqi kuch chastotasi xususiy chastotaga teng bo'lsa ($\omega = \omega_0$), **rezonans** yuz beradi. Xususiy yechim:
 $$
 x_{xus}(t) = \frac{F_0}{2\omega_0} t \sin(\omega_0 t)
@@ -160,10 +160,7 @@ X_N = x + y y'
 $$
 
 Geometrik kesmalar:
-- **Suburinma (subtangent):** $S_T = |x - X_T| = \left| \frac{y}{y'} \right|$
-- **Subnormal:** $S_N = |X_N - x| = |y \cdot y'|$
-- **Urinma kesmasi uzunligi:** $T = \sqrt{y^2 + S_T^2} = |y| \sqrt{1 + \frac{1}{(y')^2}} = \left| \frac{y}{y'} \right| \sqrt{1 + (y')^2}$
-- **Normal kesmasi uzunligi:** $N = \sqrt{y^2 + S_N^2} = |y| \sqrt{1 + (y')^2}$
+- **Suburinma (subtangent):** $S_T = |x - X_T| = \left| \frac{y}{y'} \right|$- **Subnormal:**$S_N = |X_N - x| = |y \cdot y'|$- **Urinma kesmasi uzunligi:**$T = \sqrt{y^2 + S_T^2} = |y| \sqrt{1 + \frac{1}{(y')^2}} = \left| \frac{y}{y'} \right| \sqrt{1 + (y')^2}$- **Normal kesmasi uzunligi:**$N = \sqrt{y^2 + S_N^2} = |y| \sqrt{1 + (y')^2}$
 
 #### Geometrik masala namunasi:
 Har qanday nuqtasidagi subnormali o'zgarmas musbat $a$ soniga teng bo'lgan egri chiziqni toping.
@@ -194,7 +191,7 @@ Bu simmetriya o'qi $Ox$ bo'lgan **parabolalar oilasidir**!
 Fizikada ortogonal trayektoriyalar juda katta ahamiyatga ega: elektrostatikada **ekvipotensial chiziqlarga** (bir xil potensialli chiziqlarga) ortogonal bo'lgan chiziqlar **elektr maydoni kuch chiziqlaridir**; gidrodinamikada oqim chiziqlari potensial sath chiziqlariga ortogonal bo'ladi.
 
 ### Ortogonal trayektoriyalarni topish algoritmi:
-1. Berilgan $\Phi(x, y, C) = 0$ tenglikni $x$ bo'yicha differensiallab va sistemadan $C$ parametrni yo'qotib, oilaning differensial tenglamasi tuziladi:
+1. Berilgan $\Phi(x, y, C) = 0$tenglikni$x$bo'yicha differensiallab va sistemadan$C$ parametrni yo'qotib, oilaning differensial tenglamasi tuziladi:
 $$
 y' = f(x, y)
 $$
@@ -213,13 +210,13 @@ $y = C x^2$ parabolalar oilasining ortogonal trayektoriyalarini toping.
 
 **Yechilishi:**
 1. Differensiallaymiz: $y' = 2Cx$.
-$y = C x^2$ dan $C = \frac{y}{x^2}$ ekanligini qo'yamiz:
+$y = C x^2$dan$C = \frac{y}{x^2}$ ekanligini qo'yamiz:
 $$
 y' = 2 \left( \frac{y}{x^2} \right) x = \frac{2y}{x}
 $$
 Bu parabolalar oilasining differensial tenglamasi.
 
-2. $y'$ o'rniga $-\frac{1}{y'}$ qo'yamiz:
+2. $y'$o'rniga$-\frac{1}{y'}$ qo'yamiz:
 $$
 -\frac{1}{y'} = \frac{2y}{x} \implies y' = -\frac{x}{2y}
 $$
@@ -236,7 +233,7 @@ Ikkala tomonni $C_1$ ga bo'lsak:
 $$
 \frac{x^2}{2C_1} + \frac{y^2}{C_1} = 1
 $$
-Bu yarim o'qlari nisbati $\sqrt{2}$ bo'lgan **ellipslar oilasidir**! Parabolalar va ellipslar bir-birini har bir kesishish nuqtasida aynan $90^\circ$ burchak ostida kesadi.
+Bu yarim o'qlari nisbati $\sqrt{2}$bo'lgan **ellipslar oilasidir**! Parabolalar va ellipslar bir-birini har bir kesishish nuqtasida aynan$90^\circ$ burchak ostida kesadi.
 
 ---
 
@@ -247,13 +244,13 @@ Jismning sovush tezligi uning harorati va atrof-muhit harorati ayirmasiga to'g'r
 $$
 \frac{dT}{dt} = -k(T - T_m)
 $$
-bu yerda $T(t)$ — jismning $t$ vaqtdagi harorati, $T_m$ — atrof-muhit harorati ($T_m = \text{const}$), $k > 0$ — jismning issiqlik o'tkazuvchanlik koeffitsiyenti.
+bu yerda $T(t)$— jismning$t$vaqtdagi harorati,$T_m$ — atrof-muhit harorati ($T_m = \text{const}$), $k > 0$ — jismning issiqlik o'tkazuvchanlik koeffitsiyenti.
 
 O'zgaruvchilarni ajratamiz:
 $$
 \frac{dT}{T - T_m} = -k \, dt \implies \ln|T - T_m| = -kt + \ln C \implies T(t) = T_m + C e^{-kt}
 $$
-Agar boshlang'ich vaqtda $t = 0$ da harorat $T(0) = T_0$ bo'lsa, $C = T_0 - T_m$ bo'ladi:
+Agar boshlang'ich vaqtda $t = 0$da harorat$T(0) = T_0$bo'lsa,$C = T_0 - T_m$ bo'ladi:
 $$
 T(t) = T_m + (T_0 - T_m) e^{-kt}
 $$
@@ -270,7 +267,7 @@ $$
 Bu qonuniyat arxeologiyada qazilmalarning yoshini radiouglerod (${}^{14}\text{C}$, $T_{1/2} \approx 5730$ yil) orqali aniqlashda asosiy qurol hisoblanadi.
 
 ### 3. Idishdagi aralashmalar dinamikasi
-Sig'imi $V$ bo'lgan idishga daqiqasiga $v_{kir}$ tezlik bilan $c_{kir}$ konsentratsiyali tuzli eritma quyilmoqda. Idishdagi yaxshilab aralashtirilgan eritma xuddi shunday $v_{chiq}$ tezlik bilan oqib chiqmoqda.
+Sig'imi $V$bo'lgan idishga daqiqasiga$v_{kir}$tezlik bilan$c_{kir}$konsentratsiyali tuzli eritma quyilmoqda. Idishdagi yaxshilab aralashtirilgan eritma xuddi shunday$v_{chiq}$ tezlik bilan oqib chiqmoqda.
 
 Idishdagi tuz miqdori $x(t)$ uchun differensial tenglama:
 $$
@@ -302,7 +299,7 @@ Quyidagi masalalarni mustaqil ishlang:
    $x^2 + y^2 = 2Cx$ aylanalar oilasiga ortogonal bo'lgan trayektoriyalar oilasini toping.
 
 5. **Nyuton sovush qonuni:**
-   Qaynab turgan choy ($100^\circ\text{C}$) xona harorati $20^\circ\text{C}$ bo'lgan xonaga qo'yildi. 10 daqiqadan so'ng uning harorati $60^\circ\text{C}$ ga tushdi. Choy harorati $30^\circ\text{C}$ ga tushishi uchun yana necha daqiqa kerak bo'ladi?
+   Qaynab turgan choy ($100^\circ\text{C}$) xona harorati $20^\circ\text{C}$bo'lgan xonaga qo'yildi. 10 daqiqadan so'ng uning harorati$60^\circ\text{C}$ga tushdi. Choy harorati$30^\circ\text{C}$ ga tushishi uchun yana necha daqiqa kerak bo'ladi?
 
 ---
 
@@ -310,16 +307,16 @@ Quyidagi masalalarni mustaqil ishlang:
 
 1. **1-mashq:**
    Xarakteristik tenglama: $k^2 - 4k + 4 = 0 \implies (k - 2)^2 = 0 \implies k_1 = k_2 = 2$ (2 karrali ildiz).
-   - a) $f(x) = 3x^2 - 1 \implies \gamma = 0$ (ildiz emas, $s=0$).
+   - a) $f(x) = 3x^2 - 1 \implies \gamma = 0$(ildiz emas,$s=0$).
      **Javob:** $y_{xus} = Ax^2 + Bx + C$.
-   - b) $f(x) = 5e^{2x} \implies \gamma = 2$ (2 karrali ildiz, $s=2$).
+   - b) $f(x) = 5e^{2x} \implies \gamma = 2$(2 karrali ildiz,$s=2$).
      **Javob:** $y_{xus} = A x^2 e^{2x}$.
-   - c) $f(x) = e^{2x} \sin x \implies \gamma = 2 \pm i$ (ildiz emas, $s=0$).
+   - c) $f(x) = e^{2x} \sin x \implies \gamma = 2 \pm i$(ildiz emas,$s=0$).
      **Javob:** $y_{xus} = e^{2x}(A\cos x + B\sin x)$.
 
 2. **2-mashq:**
    - Xarakteristik tenglama: $k^2 + 9 = 0 \implies k = \pm 3i$. $y_{oj} = C_1 \cos(3x) + C_2 \sin(3x)$.
-   - $\gamma = \pm 3i$ ildiz bo'lgani uchun $s=1$: $y_{xus} = x(A\cos 3x + B\sin 3x)$.
+   - $\gamma = \pm 3i$ildiz bo'lgani uchun$s=1$: $y_{xus} = x(A\cos 3x + B\sin 3x)$.
    - Hosilalarni hisoblab tenglamaga qo'ysak: $-6A\sin 3x + 6B\cos 3x = 6\cos 3x \implies B = 1, A = 0$.
    - $y_{xus} = x\sin(3x)$. Umumiy yechim: $y = C_1 \cos(3x) + C_2 \sin(3x) + x\sin(3x)$.
    - $y(0) = 1 \implies C_1 = 1$. $y'(0) = 3C_2 = 0 \implies C_2 = 0$.
@@ -333,13 +330,13 @@ Quyidagi masalalarni mustaqil ishlang:
 4. **4-mashq:**
    - $2C = \frac{x^2 + y^2}{x}$. Differensiallaymiz: $2x + 2y y' = 2C = \frac{x^2+y^2}{x} \implies 2x^2 + 2xy y' = x^2 + y^2 \implies y' = \frac{y^2 - x^2}{2xy}$.
    - Ortogonal shart: $y' \to -\frac{1}{y'} \implies y' = \frac{2xy}{x^2 - y^2}$.
-   - Bu bir jinsli tenglama ($y = ux$ almashtirish). Yechimi: $x^2 + y^2 = 2 C_1 y$.
+   - Bu bir jinsli tenglama ($y = ux$almashtirish). Yechimi:$x^2 + y^2 = 2 C_1 y$.
    **Javob:** $x^2 + y^2 = 2 C_1 y$ ($Oy$ o'qiga uringan aylanalar oilasi).
 
 5. **5-mashq:**
    - $T(t) = 20 + 80 e^{-kt}$.
-   - $t = 10$ da: $60 = 20 + 80 e^{-10k} \implies 80 e^{-10k} = 40 \implies e^{-10k} = \frac{1}{2} \implies 10k = \ln 2 \implies k = \frac{\ln 2}{10}$.
-   - $T(t) = 30$ bo'lishi uchun: $30 = 20 + 80 e^{-kt} \implies 80 e^{-kt} = 10 \implies e^{-kt} = \frac{1}{8} = 2^{-3} \implies kt = 3\ln 2$.
+   - $t = 10$da:$60 = 20 + 80 e^{-10k} \implies 80 e^{-10k} = 40 \implies e^{-10k} = \frac{1}{2} \implies 10k = \ln 2 \implies k = \frac{\ln 2}{10}$.
+   - $T(t) = 30$bo'lishi uchun:$30 = 20 + 80 e^{-kt} \implies 80 e^{-kt} = 10 \implies e^{-kt} = \frac{1}{8} = 2^{-3} \implies kt = 3\ln 2$.
    - $t = \frac{3\ln 2}{k} = 3 \cdot 10 = 30$ daqiqa.
    - Demak, jami 30 daqiqa, ya'ni dastlabki 10 daqiqadan so'ng yana **20 daqiqa** kerak bo'ladi.
    **Javob:** Yana 20 daqiqa (boshidan hisoblaganda 30 daqiqa).

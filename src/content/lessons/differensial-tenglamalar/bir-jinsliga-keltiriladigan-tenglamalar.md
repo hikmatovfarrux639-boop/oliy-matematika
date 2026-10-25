@@ -57,7 +57,7 @@ $$
 P(x, y) \, dx + Q(x, y) \, dy = 0
 $$
 
-Agar ushbu ifodaning chap tomoni biror $U(x, y)$ funksiyaning to'liq differensiali $dU = \frac{\partial U}{\partial x}dx + \frac{\partial U}{\partial y}dy$ bo'lsa, tenglama **to'liq differensialli** deyiladi va uning umumiy integrali shunchaki:
+Agar ushbu ifodaning chap tomoni biror $U(x, y)$funksiyaning to'liq differensiali$dU = \frac{\partial U}{\partial x}dx + \frac{\partial U}{\partial y}dy$ bo'lsa, tenglama **to'liq differensialli** deyiladi va uning umumiy integrali shunchaki:
 $$
 U(x, y) = C
 $$
@@ -69,33 +69,31 @@ $$
 $$
 
 ### $U(x, y)$ funksiyani tiklash algoritmi:
-1. $\frac{\partial U}{\partial x} = P(x, y)$ ekanligidan $x$ bo'yicha integrallaymiz:
+1. $\frac{\partial U}{\partial x} = P(x, y)$ekanligidan$x$ bo'yicha integrallaymiz:
    
 $$
    U(x, y) = \int P(x, y) dx + \varphi(y)
    
 $$
-   bu yerda $\varphi(y)$ — $x$ ga bog'liq bo'lmagan integrallash "o'zgarmasi".
-2. Hosil bo'lgan ifodadan $y$ bo'yicha xususiy hosila olib, $Q(x, y)$ ga tenglashtiramiz:
+   bu yerda $\varphi(y)$—$x$ ga bog'liq bo'lmagan integrallash "o'zgarmasi".
+2. Hosil bo'lgan ifodadan $y$bo'yicha xususiy hosila olib,$Q(x, y)$ ga tenglashtiramiz:
    
 $$
    \frac{\partial U}{\partial y} = \frac{\partial}{\partial y}\left(\int P(x, y) dx\right) + \varphi'(y) = Q(x, y)
    
 $$
-   Bu yerdan $\varphi'(y)$ topiladi va oddiy integrallash orqali $\varphi(y)$ aniqlanadi.
+   Bu yerdan $\varphi'(y)$topiladi va oddiy integrallash orqali$\varphi(y)$ aniqlanadi.
 
 ---
 
-## 3. Integrallovchi ko'paytuvchi $\mu(x, y)$
-
-Agar $\frac{\partial P}{\partial y} \ne \frac{\partial Q}{\partial x}$ bo'lsa, tenglama to'liq differensialli emas. Biroq ba'zan shunday $\mu(x, y)$ funksiyasini topish mumkinki, tenglamani unga ko'paytirganda u to'liq differensialliga aylanadi:
-1. Agar $\frac{\frac{\partial P}{\partial y} - \frac{\partial Q}{\partial x}}{Q} = \psi(x)$ (faqat $x$ ga bog'liq) bo'lsa:
+## 3. Integrallovchi ko'paytuvchi $\mu(x, y)$Agar$\frac{\partial P}{\partial y} \ne \frac{\partial Q}{\partial x}$bo'lsa, tenglama to'liq differensialli emas. Biroq ba'zan shunday$\mu(x, y)$ funksiyasini topish mumkinki, tenglamani unga ko'paytirganda u to'liq differensialliga aylanadi:
+1. Agar $\frac{\frac{\partial P}{\partial y} - \frac{\partial Q}{\partial x}}{Q} = \psi(x)$(faqat$x$ ga bog'liq) bo'lsa:
    
 $$
    \mu(x) = e^{\int \psi(x) dx}
    
 $$
-2. Agar $\frac{\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}}{P} = \theta(y)$ (faqat $y$ ga bog'liq) bo'lsa:
+2. Agar $\frac{\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}}{P} = \theta(y)$(faqat$y$ ga bog'liq) bo'lsa:
    
 $$
    \mu(y) = e^{\int \theta(y) dy}
@@ -113,7 +111,7 @@ $$
 $$
 
 #### 1-usul: Analitik xususiy hosilalar usuli
-$P(x, y) = 2x + 3y^2$ va $Q(x, y) = 6xy + 4y^3$.
+$P(x, y) = 2x + 3y^2$va$Q(x, y) = 6xy + 4y^3$.
 Shartni tekshiramiz:
 $$
 \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(2x + 3y^2) = 6y
@@ -140,7 +138,7 @@ x^2 + 3x y^2 + y^4 = C
 $$
 
 #### 2-usul: Egri chiziqli integral (Trayektoriyalar usuli)
-Boshlang'ich nuqta sifatida $(x_0, y_0) = (0, 0)$ ni olamiz. To'liq differensial integrali yo'lga bog'liq bo'lmagani uchun $(0,0) \to (x,0) \to (x,y)$ siniq chiziq bo'ylab integrallash mumkin:
+Boshlang'ich nuqta sifatida $(x_0, y_0) = (0, 0)$ni olamiz. To'liq differensial integrali yo'lga bog'liq bo'lmagani uchun$(0,0) \to (x,0) \to (x,y)$ siniq chiziq bo'ylab integrallash mumkin:
 $$
 U(x, y) = \int_0^x P(t, 0) dt + \int_0^y Q(x, t) dt
 $$
@@ -193,7 +191,7 @@ $$
 $$
 \ln(z^2+1) + \operatorname{arctg} z = -2\ln|u| + C \implies \ln(u^2(z^2+1)) + \operatorname{arctg} z = C
 $$
-$z = \frac{v}{u}$ bo'lgani uchun $u^2(z^2+1) = u^2 + v^2$:
+$z = \frac{v}{u}$bo'lgani uchun$u^2(z^2+1) = u^2 + v^2$:
 $$
 \ln(u^2 + v^2) + \operatorname{arctg}\left(\frac{v}{u}\right) = C
 $$
@@ -205,8 +203,8 @@ $$
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **To'liq differensial shartida hosilalarni chalkashtirish:** Talabalar ko'pincha $P$ dan $x$ bo'yicha, $Q$ dan $y$ bo'yicha hosila olib tekshirishadi. **Eslab qoling:** $dx$ oldidagi $P(x,y)$ dan $y$ bo'yicha ($\partial P / \partial y$), $dy$ oldidagi $Q(x,y)$ dan esa $x$ bo'yicha ($\partial Q / \partial x$) hosila olinishi shart!
-> 2. **Ozod hadlar kesishish nuqtasi ishoralari:** $x = u + x_0$ va $y = v + y_0$ almashtirishida topilgan ildizlarni qo'yishda manfiy ishoralarni adashtirish butun bir jinsli tenglamani buzib yuboradi.
+> 1. **To'liq differensial shartida hosilalarni chalkashtirish:** Talabalar ko'pincha $P$dan$x$bo'yicha,$Q$dan$y$bo'yicha hosila olib tekshirishadi. **Eslab qoling:**$dx$oldidagi$P(x,y)$dan$y$ bo'yicha ($\partial P / \partial y$), $dy$oldidagi$Q(x,y)$dan esa$x$ bo'yicha ($\partial Q / \partial x$) hosila olinishi shart!
+> 2. **Ozod hadlar kesishish nuqtasi ishoralari:** $x = u + x_0$va$y = v + y_0$ almashtirishida topilgan ildizlarni qo'yishda manfiy ishoralarni adashtirish butun bir jinsli tenglamani buzib yuboradi.
 
 ---
 
@@ -232,6 +230,7 @@ $\frac{\partial U}{\partial y} = 6x^2 y + \varphi'(y) = 6x^2 y + 4y^3 \implies \
 $$
 x^3 + 3x^2 y^2 + y^4 = C
 $$
+
 </details>
 
 ### 2-mashq
@@ -246,7 +245,7 @@ $$
 **Yechish:**
 $\Delta = 1(-1) - 1(1) = -2 \ne 0$.
 Kesishish nuqtasi:
-$x_0 + y_0 - 2 = 0$ va $x_0 - y_0 + 4 = 0 \implies 2x_0 + 2 = 0 \implies x_0 = -1, y_0 = 3$.
+$x_0 + y_0 - 2 = 0$va$x_0 - y_0 + 4 = 0 \implies 2x_0 + 2 = 0 \implies x_0 = -1, y_0 = 3$.
 $x = u - 1, y = v + 3$.
 $(u + v) du + (u - v) dv = 0$.
 Bu ham to'liq differensialli tenglama! Chunki $P = u+v \implies \partial P/\partial v = 1$, $Q = u-v \implies \partial Q/\partial u = 1$.
@@ -256,4 +255,5 @@ $$
 (x+1)^2 + 2(x+1)(y-3) - (y-3)^2 = C
 $$
 **Javob:** $(x+1)^2 + 2(x+1)(y-3) - (y-3)^2 = C$.
+
 </details>

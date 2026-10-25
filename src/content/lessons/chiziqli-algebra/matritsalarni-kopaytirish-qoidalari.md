@@ -15,7 +15,7 @@ Sababi: Matritsalar matematikaning alohida tili bo'lib, ular dastlab **chiziqli 
 
 ## 1. Ko'paytirishning oltin sharti (O'lchamlar mosligi)
 
-Ikkita $A$ va $B$ matritsani ko'paytirish ($A \cdot B$) uchun:
+Ikkita $A$va$B$ matritsani ko'paytirish ($A \cdot B$) uchun:
 > **1-matritsaning ustunlar soni 2-matritsaning satrlar soniga teng bo'lishi SHART!**
 
 $$
@@ -28,7 +28,7 @@ Agar ichki sonlar ($k$) teng bo'lmasa, **ko'paytirish mutlaqo mumkin emas!** Nat
 
 ## 2. "Satrni Ustunga" ko'paytirish algoritmi
 
-$C = A \cdot B$ matritsaning $c_{ij}$ elementi quyidagicha hisoblanadi:
+$C = A \cdot B$matritsaning$c_{ij}$ elementi quyidagicha hisoblanadi:
 > $A$ matritsaning **$i$-satrini** oling va $B$ matritsaning **$j$-ustuniga** mosma-mos ko'paytirib, yig'indisini hisoblang:
 
 $$
@@ -40,10 +40,7 @@ $$
 A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad B = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}
 $$
 
-1. $c_{11}$ (1-satr $\times$ 1-ustun): $(1 \cdot 5) + (2 \cdot 7) = 5 + 14 = 19$
-2. $c_{12}$ (1-satr $\times$ 2-ustun): $(1 \cdot 6) + (2 \cdot 8) = 6 + 16 = 22$
-3. $c_{21}$ (2-satr $\times$ 1-ustun): $(3 \cdot 5) + (4 \cdot 7) = 15 + 28 = 43$
-4. $c_{22}$ (2-satr $\times$ 2-ustun): $(3 \cdot 6) + (4 \cdot 8) = 18 + 32 = 50$
+1. $c_{11}$(1-satr$\times$1-ustun):$(1 \cdot 5) + (2 \cdot 7) = 5 + 14 = 19$2.$c_{12}$(1-satr$\times$2-ustun):$(1 \cdot 6) + (2 \cdot 8) = 6 + 16 = 22$3.$c_{21}$(2-satr$\times$1-ustun):$(3 \cdot 5) + (4 \cdot 7) = 15 + 28 = 43$4.$c_{22}$(2-satr$\times$2-ustun):$(3 \cdot 6) + (4 \cdot 8) = 18 + 32 = 50$
 
 $$
 C = A \cdot B = \begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix}
@@ -51,9 +48,7 @@ $$
 
 ---
 
-## 3. Matritsalar ko'paytmasining eng muhim xossasi: $A \cdot B \neq B \cdot A$
-
-Oddiy sonlarda $2 \cdot 3 = 3 \cdot 2 = 6$. Ammo matritsalarda ko'paytirish tartibi o'zgarsa, natija mutlaqo boshqa chiqadi yoki hatto ko'paytirish imkonsiz bo'lib qoladi!
+## 3. Matritsalar ko'paytmasining eng muhim xossasi: $A \cdot B \neq B \cdot A$Oddiy sonlarda$2 \cdot 3 = 3 \cdot 2 = 6$. Ammo matritsalarda ko'paytirish tartibi o'zgarsa, natija mutlaqo boshqa chiqadi yoki hatto ko'paytirish imkonsiz bo'lib qoladi!
 
 > [!WARNING]
 > Matritsalar ko'paytmasida **kommutativlik o'rinli emas**:
@@ -62,7 +57,7 @@ Oddiy sonlarda $2 \cdot 3 = 3 \cdot 2 = 6$. Ammo matritsalarda ko'paytirish tart
 
 ### Boshqa asosiy xossalar:
 1. $(A \cdot B) \cdot C = A \cdot (B \cdot C)$ *(Assotsiativlik)*;
-2. $(A + B) \cdot C = A \cdot C + B \cdot C$ va $A \cdot (B + C) = A \cdot B + A \cdot C$ *(Distributivlik)*;
+2. $(A + B) \cdot C = A \cdot C + B \cdot C$va$A \cdot (B + C) = A \cdot B + A \cdot C$ *(Distributivlik)*;
 3. $A \cdot E = E \cdot A = A$ *(Birlik matritsaga ko'paytirish matritsani o'zgartirmaydi)*;
 4. $(A \cdot B)^T = B^T \cdot A^T$ *(Transponirlashda ko'paytuvchilar o'rni almashadi!)*;
 5. $A \cdot O = O \cdot A = O$.
@@ -76,7 +71,7 @@ $$
 A^2 = A \cdot A, \quad A^3 = A^2 \cdot A = A \cdot A \cdot A, \quad A^0 = E
 $$
 
-**Namunaviy masala:** $A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ bo'lsa, $A^n$ formulasini toping.
+**Namunaviy masala:** $A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$bo'lsa,$A^n$ formulasini toping.
 
 <details>
 <summary><strong>Yechim va induksiya</strong></summary>
@@ -88,11 +83,12 @@ Qonuniyat ko'rinib turibdi:
 $$
 A^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}
 $$
+
 </details>
 
 ---
 
 ## 💡 Mashqlar va o'z-o'zini tekshirish
 $A = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$ ($1 \times 3$) va $B = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix}$ ($3 \times 1$) matritsalar berilgan.
-1. $A \cdot B$ ni hisoblang (Natija: $1 \times 1$ sonli matritsa: $(32)$).
-2. $B \cdot A$ ni hisoblang (Natija: $3 \times 3$ to'liq matritsa!). Ko'ryapsizmi, tartib o'zgarishi natijani tubdan o'zgartiradi!
+1. $A \cdot B$ni hisoblang (Natija:$1 \times 1$sonli matritsa:$(32)$).
+2. $B \cdot A$ni hisoblang (Natija:$3 \times 3$ to'liq matritsa!). Ko'ryapsizmi, tartib o'zgarishi natijani tubdan o'zgartiradi!

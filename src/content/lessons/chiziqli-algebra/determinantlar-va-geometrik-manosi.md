@@ -7,7 +7,7 @@ description: "Determinant nima? 2D da yo'naltirilgan yuz, 3D da hajm. 2- va 3-ta
 
 ## Kirish: Determinant nima va u qayerdan keladi?
 
-Har bir kvadrat matritsaga mos keluvchi bitta yagona maxsus son mavjud bo'lib, unga **matritsaning determinanti (aniqlovchisi)** deyiladi va u $\det A$ yoki $|A|$ kabi belgilanadi.
+Har bir kvadrat matritsaga mos keluvchi bitta yagona maxsus son mavjud bo'lib, unga **matritsaning determinanti (aniqlovchisi)** deyiladi va u $\det A$yoki$|A|$ kabi belgilanadi.
 
 Lekin bu son nimani anglatadi?
 > **Geometrik mohiyat:**
@@ -86,22 +86,17 @@ $$
 <summary><strong>Qadam-baqadam yechim</strong></summary>
 
 Musbat hadlar:
-1. Bosh diagonal: $2 \cdot 2 \cdot 2 = 8$
-2. 1-uchburchak: $(-1) \cdot 1 \cdot (-3) = 3$
-3. 2-uchburchak: $4 \cdot 1 \cdot 3 = 12$
-Musbatlar yig'indisi: $8 + 3 + 12 = 23$.
+1. Bosh diagonal: $2 \cdot 2 \cdot 2 = 8$2. 1-uchburchak:$(-1) \cdot 1 \cdot (-3) = 3$3. 2-uchburchak:$4 \cdot 1 \cdot 3 = 12$Musbatlar yig'indisi:$8 + 3 + 12 = 23$.
 
 Manfiy hadlar:
-1. Yordamchi diagonal: $3 \cdot 2 \cdot (-3) = -18$
-2. 1-uchburchak: $(-1) \cdot 4 \cdot 2 = -8$
-3. 2-uchburchak: $1 \cdot 1 \cdot 2 = 2$
-Manfiylar yig'indisi: $-18 + (-8) + 2 = -24$.
+1. Yordamchi diagonal: $3 \cdot 2 \cdot (-3) = -18$2. 1-uchburchak:$(-1) \cdot 4 \cdot 2 = -8$3. 2-uchburchak:$1 \cdot 1 \cdot 2 = 2$Manfiylar yig'indisi:$-18 + (-8) + 2 = -24$.
 
 Natija:
 $$
 \Delta = 23 - (-24) = 23 + 24 = 47
 $$
 **Javob:** $\Delta = 47$.
+
 </details>
 
 ---
@@ -109,4 +104,4 @@ $$
 ## 💡 Maslahat va ogohlantirish
 > [!IMPORTANT]
 > Sarryus qoidasi va uchburchaklar qoidasi **FAQAT VA FAQAT $3 \times 3$ determinantlar uchun ishlaydi!**
-> Uni hech qachon $4 \times 4$ yoki undan katta determinantlarga qo'llab bo'lmaydi (chunki $4 \times 4$ da $4! = 24$ ta had bo'ladi, 6 ta emas). $4 \times 4$ determinantlar uchun keyingi darsimizdagi **Laplas teoremasi** va **xossalar** qo'llanadi!
+> Uni hech qachon $4 \times 4$yoki undan katta determinantlarga qo'llab bo'lmaydi (chunki$4 \times 4$da$4! = 24$ta had bo'ladi, 6 ta emas).$4 \times 4$ determinantlar uchun keyingi darsimizdagi **Laplas teoremasi** va **xossalar** qo'llanadi!

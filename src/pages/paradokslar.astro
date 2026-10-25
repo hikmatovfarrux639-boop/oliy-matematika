@@ -11,6 +11,17 @@ function renderFormula(latex?: string): string {
     return latex;
   }
 }
+
+function renderInlineMath(text: string): string {
+  if (!text) return '';
+  return text.replace(/\$([^$]+)\$/g, (_, math) => {
+    try {
+      return katex.renderToString(math.trim(), { displayMode: false, throwOnError: false });
+    } catch {
+      return math;
+    }
+  });
+}
 ---
 
 <BaseLayout 
@@ -49,7 +60,7 @@ function renderFormula(latex?: string): string {
               <div class="section-label">
                 <span>❓ Jumboq mohiyati:</span>
               </div>
-              <p class="story-text">{item.story}</p>
+              <p class="story-text" set:html={renderInlineMath(item.story)} />
             </div>
 
             <!-- Mathematical Explanation -->
@@ -57,7 +68,7 @@ function renderFormula(latex?: string): string {
               <div class="section-label">
                 <span>💡 Matematik isbot va yechim:</span>
               </div>
-              <p class="explanation-text">{item.explanation}</p>
+              <p class="explanation-text" set:html={renderInlineMath(item.explanation)} />
 
               {item.mathFormula && (
                 <div class="math-box" set:html={renderFormula(item.mathFormula)} />
@@ -66,7 +77,7 @@ function renderFormula(latex?: string): string {
 
             <!-- Takeaway -->
             <div class="takeaway-box">
-              <strong>Asosiy xulosa:</strong> {item.takeaway}
+              <strong>Asosiy xulosa:</strong> <span set:html={renderInlineMath(item.takeaway)} />
             </div>
           </div>
         </article>

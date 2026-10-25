@@ -24,8 +24,8 @@ A \cdot v = \lambda \cdot v
 $$
 
 tenglik bajarilsa:
-- $\lambda$ soni — $A$ matritsaning **xos soni (eigenvalue)**;
-- $v$ vektor — $\lambda$ xos songa mos keluvchi **xos vektor (eigenvector)** deyiladi.
+- $\lambda$soni —$A$ matritsaning **xos soni (eigenvalue)**;
+- $v$vektor —$\lambda$ xos songa mos keluvchi **xos vektor (eigenvector)** deyiladi.
 
 ---
 
@@ -48,7 +48,7 @@ Bu tenglamaga matritsaning **Xarakteristik tenglamasi** deyiladi. Uni yechib bar
 
 ## 3. Matritsani diagonallashtirish
 
-Agar $n$-tartibli $A$ matritsa $n$ ta chiziqli erkli xos vektorga ega bo'lsa, uni xos vektorlardan tuzilgan $T$ o'tish matritsasi yordamida **diagonal ko'rinishga** keltirish mumkin:
+Agar $n$-tartibli $A$matritsa$n$ta chiziqli erkli xos vektorga ega bo'lsa, uni xos vektorlardan tuzilgan$T$ o'tish matritsasi yordamida **diagonal ko'rinishga** keltirish mumkin:
 
 $$
 T^{-1} A T = \Lambda = \begin{pmatrix}

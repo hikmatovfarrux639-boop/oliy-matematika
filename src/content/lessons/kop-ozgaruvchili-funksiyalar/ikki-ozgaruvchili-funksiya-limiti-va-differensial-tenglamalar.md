@@ -12,7 +12,7 @@ difficulty: "Qiyin"
 
 Bir o'zgaruvchili matematik analizda $x \to x_0$ intilishida argument to'g'ri chiziq bo'ylab harakatlanadi va nuqtaga faqat ikkita tomondan: chapdan ($x \to x_0^-$) yoki o'ngdan ($x \to x_0^+$) yaqinlashish mumkin. Agar bu ikki bir tomonlama limit teng bo'lsa, limit mavjud deb hisoblanadi.
 
-Biroq ikki o'zgaruvchili $z = f(x, y)$ funksiyalarda nuqta $M_0(x_0, y_0)$ ga tekislik bo'ylab **cheksiz ko'p yo'nalishlar** — to'g'ri chiziqlar, parabolalar, kubik egri chiziqlar yoki spirallar orqali yaqinlashishi mumkin! Aynan shu sababli ko'p o'zgaruvchili funksiyalar limiti tushunchasi o'ziga xos nozikliklarga va qiziqarli matematik paradokslarga boydir.
+Biroq ikki o'zgaruvchili $z = f(x, y)$funksiyalarda nuqta$M_0(x_0, y_0)$ ga tekislik bo'ylab **cheksiz ko'p yo'nalishlar** — to'g'ri chiziqlar, parabolalar, kubik egri chiziqlar yoki spirallar orqali yaqinlashishi mumkin! Aynan shu sababli ko'p o'zgaruvchili funksiyalar limiti tushunchasi o'ziga xos nozikliklarga va qiziqarli matematik paradokslarga boydir.
 
 Ushbu darsda biz ikki karrali va takroriy limitlar, ularning o'zaro bog'liqligi, limitning yo'qligini isbotlash texnikasi, qutb koordinatalari usuli hamda oliy texnika o'quv yurtlarida eng ko'p beriladigan masalalardan biri — **funksiyaning xususiy hosilali differensial tenglamani qanoatlantirishini tekshirishni** o'rganamiz.
 
@@ -20,20 +20,20 @@ Ushbu darsda biz ikki karrali va takroriy limitlar, ularning o'zaro bog'liqligi,
 
 ## 1. Ikki karrali (umumiy) limit ta'rifi va yo'nalishga bog'liqlik
 
-Faraz qilaylik, $z = f(x, y)$ funksiya $M_0(x_0, y_0)$ nuqtaning biror atrofida aniqlangan bo'lsin ($M_0$ nuqtaning o'zida aniqlanmagan bo'lishi ham mumkin).
+Faraz qilaylik, $z = f(x, y)$funksiya$M_0(x_0, y_0)$ nuqtaning biror atrofida aniqlangan bo'lsin ($M_0$ nuqtaning o'zida aniqlanmagan bo'lishi ham mumkin).
 
 ### Koshi bo'yicha ($\epsilon - \delta$ tilida) ta'rif:
-Agar ixtiyoriy $\epsilon > 0$ soni uchun shunday $\delta > 0$ soni topilsaki, $0 < \sqrt{(x - x_0)^2 + (y - y_0)^2} < \delta$ tengsizlikni qanoatlantiruvchi barcha $(x, y)$ nuqtalarda:
+Agar ixtiyoriy $\epsilon > 0$soni uchun shunday$\delta > 0$soni topilsaki,$0 < \sqrt{(x - x_0)^2 + (y - y_0)^2} < \delta$tengsizlikni qanoatlantiruvchi barcha$(x, y)$ nuqtalarda:
 $$
 |f(x, y) - L| < \epsilon
 $$
-tengsizlik bajarilsa, u holda $L$ soni $f(x, y)$ funksiyaning $(x_0, y_0)$ nuqtadagi **ikki karrali (umumiy) limiti** deyiladi va quyidagicha belgilanadi:
+tengsizlik bajarilsa, u holda $L$soni$f(x, y)$funksiyaning$(x_0, y_0)$ nuqtadagi **ikki karrali (umumiy) limiti** deyiladi va quyidagicha belgilanadi:
 $$
 \lim_{\substack{x \to x_0 \\ y \to y_0}} f(x, y) = L \quad \text{yoki} \quad \lim_{(x, y) \to (x_0, y_0)} f(x, y) = L
 $$
 
 > [!IMPORTANT]
-> **Eng muhim tamoyil:** Agar limit mavjud bo'lsa, argument $(x, y)$ nuqta $(x_0, y_0)$ ga **qanday trayektoriya (qaysi egri chiziq) bo'yicha intilishidan qat'i nazar**, barcha yo'nalishlarda natija aynan bitta $L$ soniga teng bo'lishi shart!
+> **Eng muhim tamoyil:** Agar limit mavjud bo'lsa, argument $(x, y)$nuqta$(x_0, y_0)$ga **qanday trayektoriya (qaysi egri chiziq) bo'yicha intilishidan qat'i nazar**, barcha yo'nalishlarda natija aynan bitta$L$ soniga teng bo'lishi shart!
 > Agar kamida ikkita turli yo'nalish bo'yicha turlicha natija chiqsa, umumiy limit **mavjud emas**.
 
 ---
@@ -49,22 +49,22 @@ L = \lim_{\substack{x \to 0 \\ y \to 0}} \frac{xy}{x^2 + y^2}
 $$
 
 **Yechish:**
-1. $(0, 0)$ nuqtaga $y = kx$ to'g'ri chiziqlar dastasi bo'yicha intilamiz ($k \in \mathbb{R}$ — ixtiyoriy burchak koeffitsiyenti).
-2. $y$ o'rniga $kx$ qo'yamiz va $x \to 0$ dagi limitni tekshiramiz:
+1. $(0, 0)$nuqtaga$y = kx$ to'g'ri chiziqlar dastasi bo'yicha intilamiz ($k \in \mathbb{R}$ — ixtiyoriy burchak koeffitsiyenti).
+2. $y$o'rniga$kx$qo'yamiz va$x \to 0$ dagi limitni tekshiramiz:
 $$
 \lim_{x \to 0} \frac{x \cdot (kx)}{x^2 + (kx)^2} = \lim_{x \to 0} \frac{k x^2}{x^2(1 + k^2)} = \frac{k}{1 + k^2}
 $$
 3. Natijaga e'tibor bering: limit $k$ burchak koeffitsiyentiga bevosita bog'liq bo'lib qoldi!
-   - Agar $k = 1$ ($y = x$ chizig'i bo'yicha) yaqinlashsak: $L = \frac{1}{1 + 1} = \frac{1}{2}$;
-   - Agar $k = -1$ ($y = -x$ chizig'i bo'yicha) yaqinlashsak: $L = \frac{-1}{1 + 1} = -\frac{1}{2}$;
-   - Agar $k = 0$ ($y = 0$, $Ox$ o'qi bo'yicha) yaqinlashsak: $L = 0$.
+   - Agar $k = 1$ ($y = x$chizig'i bo'yicha) yaqinlashsak:$L = \frac{1}{1 + 1} = \frac{1}{2}$;
+   - Agar $k = -1$ ($y = -x$chizig'i bo'yicha) yaqinlashsak:$L = \frac{-1}{1 + 1} = -\frac{1}{2}$;
+   - Agar $k = 0$ ($y = 0$, $Ox$o'qi bo'yicha) yaqinlashsak:$L = 0$.
 4. **Xulosa:** Har xil yo'nalishlarda har xil natija chiqqani uchun, umumiy ikki karrali limit **mavjud emas!**
 
 ---
 
 ### Klassik Tuzoq: To'g'ri chiziqlar bo'yicha 0, lekin parabola bo'yicha 1/2!
 
-Ko'pgina talabalar $y = kx$ bo'yicha limit $k$ ga bog'liq bo'lmay $0$ chiqsa, darhol "limit 0 ga teng" deb xulosa qilishadi. Bu jiddiy xatodir!
+Ko'pgina talabalar $y = kx$bo'yicha limit$k$ga bog'liq bo'lmay$0$ chiqsa, darhol "limit 0 ga teng" deb xulosa qilishadi. Bu jiddiy xatodir!
 
 Hisoblang:
 $$
@@ -77,7 +77,7 @@ $$
 $$
 Ko'rinib turibdiki, qaysi to'g'ri chiziq bo'yicha bormang, limit doimo $0$ chiqadi.
 
-2. Endi esa $(0, 0)$ ga parabola bo'yicha intilamiz: $x = k y^2$. Xususan, $x = y^2$ parabolasi bo'yicha:
+2. Endi esa $(0, 0)$ga parabola bo'yicha intilamiz:$x = k y^2$. Xususan, $x = y^2$ parabolasi bo'yicha:
 $$
 \lim_{y \to 0} \frac{(y^2) \cdot y^2}{(y^2)^2 + y^4} = \lim_{y \to 0} \frac{y^4}{y^4 + y^4} = \lim_{y \to 0} \frac{y^4}{2y^4} = \mathbf{\frac{1}{2}}
 $$
@@ -85,7 +85,7 @@ $$
 Demak, umumiy limit **mavjud emas!**
 
 > [!TIP]
-> **Darajalar mutanosibligi qoidasi:** Kasr maxrajida $x^n + y^m$ bo'lsa, tekshirish trayektoriyasi sifatida $x = c \cdot y^{m/n}$ ko'rinishidagi egri chiziqni tanlash kerak. Yuqoridagi misolda $x^2 + y^4$ bo'lgani uchun $x \sim y^2$ trayektoriyasi tanlandi.
+> **Darajalar mutanosibligi qoidasi:** Kasr maxrajida $x^n + y^m$bo'lsa, tekshirish trayektoriyasi sifatida$x = c \cdot y^{m/n}$ko'rinishidagi egri chiziqni tanlash kerak. Yuqoridagi misolda$x^2 + y^4$bo'lgani uchun$x \sim y^2$ trayektoriyasi tanlandi.
 
 ---
 
@@ -96,7 +96,7 @@ $$
 x = r \cos \varphi, \quad y = r \sin \varphi \qquad (r \to 0, \quad \varphi \in [0; 2\pi))
 $$
 
-Agar $r \to 0$ da ifoda $\varphi$ burchagiga bog'liq bo'lmagan $L$ soniga intilsa va uning farqi burchakdan qat'i nazar nolga intiluvchi funksiya bilan chegaralansa ($|f - L| \le g(r) \to 0$), limit mavjud bo'ladi.
+Agar $r \to 0$da ifoda$\varphi$burchagiga bog'liq bo'lmagan$L$ soniga intilsa va uning farqi burchakdan qat'i nazar nolga intiluvchi funksiya bilan chegaralansa ($|f - L| \le g(r) \to 0$), limit mavjud bo'ladi.
 
 ### 2-Misol: Limit mavjudligini isbotlash
 Hisoblang:
@@ -146,7 +146,7 @@ $$
    $$
    Ikkalasi ham 0 ga teng, ammo 2-bo'limda ko'rganimizdek, umumiy limit umuman mavjud emas!
 3. **Umumiy limit mavjud bo'lsa:** Agar umumiy ikki karrali limit mavjud bo'lsa ($L$) va takroriy limitlar ham mavjud bo'lsa, ular albatta umumiy limitga teng bo'ladi: $L_1 = L_2 = L$.
-4. **Ichki limitlar mavjud bo'lmasligi mumkin:** Umumiy limit mavjud bo'lgani holda takroriy limitlar mavjud bo'lmasligi ham mumkin (masalan, $f(x, y) = x \sin(1/y)$ da $(0, 0)$ nuqtada umumiy limit 0, ammo $\lim_{y \to 0} \sin(1/y)$ mavjud emas).
+4. **Ichki limitlar mavjud bo'lmasligi mumkin:** Umumiy limit mavjud bo'lgani holda takroriy limitlar mavjud bo'lmasligi ham mumkin (masalan, $f(x, y) = x \sin(1/y)$da$(0, 0)$nuqtada umumiy limit 0, ammo$\lim_{y \to 0} \sin(1/y)$ mavjud emas).
 
 ---
 
@@ -165,10 +165,10 @@ Ikki o'zgaruvchili funksiyalarda esa uzilish nuqtalari tekislikda butun boshli *
 
 | Funksiya | Maxraj nolga teng bo'ladigan shart | Uzilish chizig'ining geometrik shakli |
 |---|---|---|
-| $z = \frac{1}{x - y}$ | $y = x$ | To'g'ri chiziq |
-| $z = \frac{1}{x^2 + y^2 - 4}$ | $x^2 + y^2 = 4$ | Radiusi $R = 2$ bo'lgan aylana |
-| $z = \frac{1}{y - x^2}$ | $y = x^2$ | Parabola |
-| $z = \frac{1}{x^2 - y^2}$ | $y = \pm x$ | Ikkita kesishuvchi to'g'ri chiziq |
+| $z = \frac{1}{x - y}$|$y = x$ | To'g'ri chiziq |
+| $z = \frac{1}{x^2 + y^2 - 4}$|$x^2 + y^2 = 4$| Radiusi$R = 2$ bo'lgan aylana |
+| $z = \frac{1}{y - x^2}$|$y = x^2$ | Parabola |
+| $z = \frac{1}{x^2 - y^2}$|$y = \pm x$ | Ikkita kesishuvchi to'g'ri chiziq |
 
 ---
 
@@ -222,13 +222,13 @@ Ayniyat isbotlandi! ($0 = 0$). Demak, berilgan funksiya haqiqatan ham Laplas ten
 ---
 
 ### 4-Misol: Ixtiyoriy differensiallanuvchi funksiya qatnashgan tenglama
-Isbotlang: $z = y \cdot f(x^2 - y^2)$ ko'rinishidagi ixtiyoriy differensiallanuvchi $f$ funksiya quyidagi tenglamani qanoatlantiradi:
+Isbotlang: $z = y \cdot f(x^2 - y^2)$ko'rinishidagi ixtiyoriy differensiallanuvchi$f$ funksiya quyidagi tenglamani qanoatlantiradi:
 $$
 \frac{1}{x} \frac{\partial z}{\partial x} + \frac{1}{y} \frac{\partial z}{\partial y} = \frac{z}{y^2}
 $$
 
 **Isbot:**
-$u = x^2 - y^2$ deb belgilaymiz. U holda $z = y \cdot f(u)$.
+$u = x^2 - y^2$deb belgilaymiz. U holda$z = y \cdot f(u)$.
 
 1. $x$ bo'yicha xususiy hosila:
 $$
@@ -269,7 +269,7 @@ L = \lim_{\substack{x \to 0 \\ y \to 0}} \frac{\sin(xy)}{x^2 + y^2}
 $$
 
 **Yechish:**
-1. $y = kx$ nurlar dastasi bo'yicha intilamiz. $x \to 0$ da $xy = kx^2 \to 0$, demak $\sin(kx^2) \sim kx^2$.
+1. $y = kx$nurlar dastasi bo'yicha intilamiz.$x \to 0$da$xy = kx^2 \to 0$, demak $\sin(kx^2) \sim kx^2$.
 2. Limit:
 $$
 \lim_{x \to 0} \frac{kx^2}{x^2 + k^2 x^2} = \lim_{x \to 0} \frac{k}{1 + k^2} = \frac{k}{1 + k^2}
@@ -294,16 +294,13 @@ $$
 \lim_{\substack{x \to 0 \\ y \to 0}} \frac{x^2 y^2}{x^2 + y^2}
 $$
 *Ko'rsatma:* $x = r \cos\varphi, y = r \sin\varphi$ almashtirishini bajaring.
-*Javob:* $\mathbf{0}$
-
-3. **Mashq (Differensial tenglama):**
-$z = e^{x/y}$ funksiyasi quyidagi tenglamani qanoatlantirishini tekshiring:
+*Javob:* $\mathbf{0}$3. **Mashq (Differensial tenglama):**$z = e^{x/y}$ funksiyasi quyidagi tenglamani qanoatlantirishini tekshiring:
 $$
 x \frac{\partial z}{\partial x} + y \frac{\partial z}{\partial y} = 0
 $$
-*Ko'rsatma:* $\frac{\partial z}{\partial x} = \frac{1}{y} e^{x/y}$ va $\frac{\partial z}{\partial y} = -\frac{x}{y^2} e^{x/y}$.
+*Ko'rsatma:* $\frac{\partial z}{\partial x} = \frac{1}{y} e^{x/y}$va$\frac{\partial z}{\partial y} = -\frac{x}{y^2} e^{x/y}$.
 *Javob:* Ayniyat bajariladi ($0 = 0$).
 
 4. **Mashq (To'lqin tenglamasi):**
-$u(x, t) = \sin(x - at) + \cos(x + at)$ funksiyasi to'lqin tenglamasi $\frac{\partial^2 u}{\partial t^2} = a^2 \frac{\partial^2 u}{\partial x^2}$ ni qanoatlantirishini isbotlang.
+$u(x, t) = \sin(x - at) + \cos(x + at)$funksiyasi to'lqin tenglamasi$\frac{\partial^2 u}{\partial t^2} = a^2 \frac{\partial^2 u}{\partial x^2}$ ni qanoatlantirishini isbotlang.
 *Javob:* Ikkala tomon ham $-a^2[\sin(x-at) + \cos(x+at)]$ ga teng bo'lib, ayniyat o'rinli.

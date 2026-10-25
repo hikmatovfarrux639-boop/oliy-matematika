@@ -16,7 +16,7 @@ Ushbu darsda oliy o'quv yurtlari imtihonlarida eng ko'p tushadigan irratsional i
 ## 1. Oddiy chiziqli va kasr-chiziqli irratsional integrallar
 
 ### A. $\int R\left(x, x^{p_1/q_1}, x^{p_2/q_2}, \dots\right) dx$ ko'rinishidagi integrallar
-Agar integral ostida bir xil $x$ argumentining turli kasr ko'rsatkichli ildizlari qatnashsa, barcha maxrajlarning eng kichik umumiy karralisi (EKUK) $k = \operatorname{EKUK}(q_1, q_2, \dots)$ topiladi va quyidagi almashtirish bajariladi:
+Agar integral ostida bir xil $x$argumentining turli kasr ko'rsatkichli ildizlari qatnashsa, barcha maxrajlarning eng kichik umumiy karralisi (EKUK)$k = \operatorname{EKUK}(q_1, q_2, \dots)$ topiladi va quyidagi almashtirish bajariladi:
 $$
 x = t^k \implies dx = k t^{k-1} dt
 $$
@@ -27,7 +27,7 @@ Bir xil kasr-chiziqli ifodaning ildizi qatnashsa:
 $$
 \frac{ax+b}{cx+d} = t^n \implies ax+b = t^n(cx+d) \implies x = \frac{d t^n - b}{a - c t^n}
 $$
-Differensial $dx$ hisoblanadi va integral butunlay $t$ ga bog'liq ratsional kasrga aylanadi.
+Differensial $dx$hisoblanadi va integral butunlay$t$ ga bog'liq ratsional kasrga aylanadi.
 
 ---
 
@@ -39,8 +39,7 @@ ax^2+bx+c = a\left[\left(x + \frac{b}{2a}\right)^2 + \left(\frac{c}{a} - \frac{b
 $$
 Shundan so'ng $u = x + \frac{b}{2a}$ chiziqli almashtirish orqali integral quyidagi 3 ta jadval integralidan biriga keladi:
 1. $\int \frac{du}{\sqrt{u^2 + k}} = \ln\left|u + \sqrt{u^2 + k}\right| + C$ ("uzun logarifm")
-2. $\int \frac{du}{\sqrt{a^2 - u^2}} = \arcsin\left(\frac{u}{a}\right) + C$
-3. Agar suratda chiziqli ifoda bo'lsa, $\int \frac{Ax+B}{\sqrt{ax^2+bx+c}} dx$, suratda ildiz ostining hosilasi $2ax+b$ sun'iy ajratib olinadi.
+2. $\int \frac{du}{\sqrt{a^2 - u^2}} = \arcsin\left(\frac{u}{a}\right) + C$3. Agar suratda chiziqli ifoda bo'lsa,$\int \frac{Ax+B}{\sqrt{ax^2+bx+c}} dx$, suratda ildiz ostining hosilasi $2ax+b$ sun'iy ajratib olinadi.
 
 ---
 
@@ -68,7 +67,7 @@ Ikkala tomon kvadratga oshiriladi:
 $$
 ax^2+bx+c = ax^2 + 2\sqrt{a}xt + t^2 \implies bx - 2\sqrt{a}xt = t^2 - c \implies x = \frac{t^2 - c}{b - 2\sqrt{a}t}
 $$
-$x$ ning $t$ ga nisbatan chiziqli ifodasi topilgani sababli $dx$ ham ratsional bo'ladi va ildiz butunlay yo'qoladi!
+$x$ning$t$ga nisbatan chiziqli ifodasi topilgani sababli$dx$ ham ratsional bo'ladi va ildiz butunlay yo'qoladi!
 
 ### 2-Eyler almashtirishi ($c > 0$ bo'lganda)
 Agar ozod had musbat bo'lsa:
@@ -97,9 +96,9 @@ Amaliyotda Eyler almashtirishlari ko'pincha juda katta darajali kasrlarni keltir
 
 | Ildiz ko'rinishi | Tavsiya etiladigan almashtirish | Trigonometrik ayniyat |
 | :--- | :--- | :--- |
-| $\sqrt{a^2 - x^2}$ | $x = a \sin t \implies dx = a \cos t dt$ | $\sqrt{a^2 - a^2\sin^2 t} = a \cos t$ |
-| $\sqrt{a^2 + x^2}$ | $x = a \operatorname{tg} t \implies dx = \frac{a \, dt}{\cos^2 t}$ | $\sqrt{a^2 + a^2\operatorname{tg}^2 t} = \frac{a}{\cos t}$ |
-| $\sqrt{x^2 - a^2}$ | $x = \frac{a}{\cos t} \implies dx = \frac{a \sin t}{\cos^2 t} dt$ | $\sqrt{\frac{a^2}{\cos^2 t} - a^2} = a \operatorname{tg} t$ |
+| $\sqrt{a^2 - x^2}$|$x = a \sin t \implies dx = a \cos t dt$|$\sqrt{a^2 - a^2\sin^2 t} = a \cos t$ |
+| $\sqrt{a^2 + x^2}$|$x = a \operatorname{tg} t \implies dx = \frac{a \, dt}{\cos^2 t}$|$\sqrt{a^2 + a^2\operatorname{tg}^2 t} = \frac{a}{\cos t}$ |
+| $\sqrt{x^2 - a^2}$|$x = \frac{a}{\cos t} \implies dx = \frac{a \sin t}{\cos^2 t} dt$|$\sqrt{\frac{a^2}{\cos^2 t} - a^2} = a \operatorname{tg} t$ |
 
 ---
 
@@ -112,7 +111,7 @@ I = \int \frac{dx}{x \sqrt{x^2 - 1}} \quad (x > 1)
 $$
 
 #### 1-usul: Trigonometrik almashtirish usuli
-$x = \frac{1}{\cos t}$ deb olamiz, unda $dx = \frac{\sin t}{\cos^2 t} dt$.
+$x = \frac{1}{\cos t}$deb olamiz, unda$dx = \frac{\sin t}{\cos^2 t} dt$.
 Ildiz ifodasi:
 $$
 \sqrt{x^2 - 1} = \sqrt{\frac{1}{\cos^2 t} - 1} = \sqrt{\operatorname{tg}^2 t} = \operatorname{tg} t = \frac{\sin t}{\cos t}
@@ -155,7 +154,7 @@ $$
 $$
 
 **Yechish:**
-Ildiz $\sqrt{x+1}$ barcha joyda bir xil. Shu sababli $x+1 = t^2$ almashtirishini kiritamiz ($t > 0$).
+Ildiz $\sqrt{x+1}$barcha joyda bir xil. Shu sababli$x+1 = t^2$ almashtirishini kiritamiz ($t > 0$).
 Unda $x = t^2 - 1 \implies dx = 2t \, dt$.
 $$
 \int \frac{t + 2}{t^4 - t} \cdot 2t \, dt = 2 \int \frac{t(t+2)}{t(t^3-1)} dt = 2 \int \frac{t+2}{t^3-1} dt
@@ -164,9 +163,9 @@ Maxrajni ko'paytuvchilarga ajratamiz: $t^3 - 1 = (t-1)(t^2+t+1)$.
 $$
 \frac{t+2}{(t-1)(t^2+t+1)} = \frac{A}{t-1} + \frac{Bt+C}{t^2+t+1}
 $$
-$t=1$ qo'ysak: $3 = A(1+1+1) \implies 3 = 3A \implies A = 1$.
-$t=0$ qo'ysak: $2 = A(1) + C(-1) \implies 2 = 1 - C \implies C = -1$.
-$t^2$ koeffitsiyentlari: $0 = A + B \implies B = -A = -1$.
+$t=1$qo'ysak:$3 = A(1+1+1) \implies 3 = 3A \implies A = 1$.
+$t=0$qo'ysak:$2 = A(1) + C(-1) \implies 2 = 1 - C \implies C = -1$.
+$t^2$koeffitsiyentlari:$0 = A + B \implies B = -A = -1$.
 Demak:
 $$
 2 \int \left(\frac{1}{t-1} - \frac{t+1}{t^2+t+1}\right) dt
@@ -184,8 +183,8 @@ Oxirida $t = \sqrt{x+1}$ qo'yiladi.
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Eyler almashtirishida $dx$ ni unutish:** Talabalar ko'pincha $x = \phi(t)$ ni topgach, to'g'ridan-to'g'ri $dx$ o'rniga shunchaki $dt$ yozib ketishadi. $dx = \phi'(t) dt$ bo'lishini hech qachon unutmang!
-> 2. **Trigonometrik almashtirishda teskari qaytish:** $x = a\sin t$ deb yechib, oxirida javobda $t$ qolib ketadi. Javob doim boshlang'ich o'zgaruvchi $x$ orqali ifodalanishi shart.
+> 1. **Eyler almashtirishida $dx$ni unutish:** Talabalar ko'pincha$x = \phi(t)$ni topgach, to'g'ridan-to'g'ri$dx$o'rniga shunchaki$dt$yozib ketishadi.$dx = \phi'(t) dt$ bo'lishini hech qachon unutmang!
+> 2. **Trigonometrik almashtirishda teskari qaytish:** $x = a\sin t$deb yechib, oxirida javobda$t$qolib ketadi. Javob doim boshlang'ich o'zgaruvchi$x$ orqali ifodalanishi shart.
 > 3. **Ildiz ishorasi:** $\sqrt{u^2} = |u|$. Agar integrallash oralig'ida $u < 0$ bo'lsa, modulni minus ishora bilan ochish kerak.
 
 ---
@@ -202,7 +201,7 @@ $$
 <summary>👉 Yechimni tekshirish</summary>
 
 **Yechish:**
-$x = 2\sin t$ deb olamiz, unda $dx = 2\cos t dt$, $\sqrt{4 - x^2} = 2\cos t$.
+$x = 2\sin t$deb olamiz, unda$dx = 2\cos t dt$, $\sqrt{4 - x^2} = 2\cos t$.
 $$
 \int \frac{2\cos t}{(2\sin t)^2} \cdot 2\cos t \, dt = \int \frac{4\cos^2 t}{4\sin^2 t} dt = \int \operatorname{ctg}^2 t \, dt = \int (\frac{1}{\sin^2 t} - 1) dt = -\operatorname{ctg} t - t + C
 $$
@@ -214,6 +213,7 @@ $\operatorname{ctg} t = \frac{\cos t}{\sin t} = \frac{\sqrt{1 - \sin^2 t}}{\sin 
 $$
 -\frac{\sqrt{4-x^2}}{x} - \arcsin\left(\frac{x}{2}\right) + C
 $$
+
 </details>
 
 ### 2-mashq
@@ -239,4 +239,5 @@ $$
 \ln\left|x+2 + \sqrt{x^2+4x+13}\right| + C
 $$
 **Javob:** $\ln\left|x+2 + \sqrt{x^2+4x+13}\right| + C$.
+
 </details>

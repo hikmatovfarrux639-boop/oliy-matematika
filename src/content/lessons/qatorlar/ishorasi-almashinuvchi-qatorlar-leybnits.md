@@ -45,29 +45,29 @@ $$
 >    
 $$
 >
-> u holda qator **YAQINLASHADI**, uning yig'indisi $S$ musbat bo'lib, birinchi hadidan oshmaydi: $0 < S \le a_1$.
+> u holda qator **YAQINLASHADI**, uning yig'indisi $S$musbat bo'lib, birinchi hadidan oshmaydi:$0 < S \le a_1$.
 
 ---
 
 ## 3. Qator qoldig'ini baholash (Taqribiy hisoblashlar asosi)
 
-Kompyuterda va hisoblash matematikasida qator yig'indisi cheksiz ko'p hadlar bo'yicha emas, balki dastlabki $n$ ta hadi yig'indisi $S_n$ orqali taqribiy hisoblanadi. Bunda yo'l qo'yiladigan xatolik (qator qoldig'i $R_n = S - S_n$) keyingi tashlab yuborilgan birinchi hadning modulidan oshmaydi:
+Kompyuterda va hisoblash matematikasida qator yig'indisi cheksiz ko'p hadlar bo'yicha emas, balki dastlabki $n$ta hadi yig'indisi$S_n$orqali taqribiy hisoblanadi. Bunda yo'l qo'yiladigan xatolik (qator qoldig'i$R_n = S - S_n$) keyingi tashlab yuborilgan birinchi hadning modulidan oshmaydi:
 
 $$
 |R_n| \le a_{n+1}
 $$
 
-> Masalan, agar talab qilingan aniqlik $\varepsilon = 0.001$ bo'lsa, shunchaki $a_{n+1} \le 0.001$ tengsizlikni qanoatlantiruvchi eng kichik $n$ ni topish kifoya!
+> Masalan, agar talab qilingan aniqlik $\varepsilon = 0.001$bo'lsa, shunchaki$a_{n+1} \le 0.001$tengsizlikni qanoatlantiruvchi eng kichik$n$ ni topish kifoya!
 
 ---
 
 ## 4. Mutlaq va shartli yaqinlashish
 
-Ixtiyoriy ishorali $\sum u_n$ qator berilgan bo'lsin. Uning modullaridan tuzilgan $\sum |u_n|$ musbat qatorni tekshiramiz.
+Ixtiyoriy ishorali $\sum u_n$qator berilgan bo'lsin. Uning modullaridan tuzilgan$\sum |u_n|$ musbat qatorni tekshiramiz.
 
 > **Ta'riflar:**
-> 1. Agar modullardan tuzilgan $\sum |u_n|$ qator yaqinlashsa, dastlabki $\sum u_n$ qator **MUTLAQ YAQINLASHUVCHI** deyiladi.
-> 2. Agar dastlabki $\sum u_n$ qator yaqinlashsa-yu, lekin uning modullaridan tuzilgan $\sum |u_n|$ qator uzoqlashsa, dastlabki qator **SHARTLI YAQINLASHUVCHI** deyiladi.
+> 1. Agar modullardan tuzilgan $\sum |u_n|$qator yaqinlashsa, dastlabki$\sum u_n$ qator **MUTLAQ YAQINLASHUVCHI** deyiladi.
+> 2. Agar dastlabki $\sum u_n$qator yaqinlashsa-yu, lekin uning modullaridan tuzilgan$\sum |u_n|$ qator uzoqlashsa, dastlabki qator **SHARTLI YAQINLASHUVCHI** deyiladi.
 
 ### Misollar:
 - $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^2}$: modullari $\sum \frac{1}{n^2}$ ($p = 2 > 1$) yaqinlashadi. Demak, **mutlaq yaqinlashadi**.
@@ -81,7 +81,7 @@ Oddiy arifmetikadan bilamizki, qo'shiluvchilarning o'rni almashgani bilan yig'in
 
 Ammo **shartli yaqinlashuvchi** qatorlarda bu qoida butunlay buziladi!
 
-> **Riman teoremasi:** Shartli yaqinlashuvchi qator hadlarining o'rnini almashtirish orqali uning yig'indisini **oldindan berilgan istalgan ixtiyoriy son** $L \in \mathbb{R}$ ga teng qilish, hatto uni $+\infty$ yoki $-\infty$ ga intiladigan qilish mumkin!
+> **Riman teoremasi:** Shartli yaqinlashuvchi qator hadlarining o'rnini almashtirish orqali uning yig'indisini **oldindan berilgan istalgan ixtiyoriy son** $L \in \mathbb{R}$ga teng qilish, hatto uni$+\infty$yoki$-\infty$ ga intiladigan qilish mumkin!
 
 ---
 
@@ -128,18 +128,12 @@ $$
 a_{n+1} = \frac{1}{(n+1)!} \le \frac{1}{100} \iff (n + 1)! \ge 100
 $$
 Faktoriallarni hisoblaymiz:
-- $1! = 1$
-- $2! = 2$
-- $3! = 6$
-- $4! = 24$
-- $5! = 120 \ge 100$
-
-Demak, $n + 1 = 5 \implies n = 4$ ta hadni olish yetarli!
+- $1! = 1$-$2! = 2$-$3! = 6$-$4! = 24$-$5! = 120 \ge 100$Demak,$n + 1 = 5 \implies n = 4$ ta hadni olish yetarli!
 Taqribiy yig'indini hisoblaymiz:
 $$
 S \approx S_4 = 1 - \frac{1}{2} + \frac{1}{6} - \frac{1}{24} = \frac{24 - 12 + 4 - 1}{24} = \frac{15}{24} = \frac{5}{8} = 0.625
 $$
-*(Ma'lumot uchun: bu qator $1 - e^{-1} \approx 0.6321$ ga intiladi, xatolik $|0.6321 - 0.625| = 0.0071 < 0.01$!).*
+*(Ma'lumot uchun: bu qator $1 - e^{-1} \approx 0.6321$ga intiladi, xatolik$|0.6321 - 0.625| = 0.0071 < 0.01$!).*
 
 ---
 
@@ -147,9 +141,9 @@ $$
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Monotonlik shartini tekshirishni unutish:**
->    $\lim_{n \to \infty} a_n = 0$ shartining o'zi yetarli emas! Hadlar moduli $a_n$ albatta monoton kamayishi shart. Agar hadlar sakrab o'zgarsa, qator uzoqlashishi mumkin.
+>    $\lim_{n \to \infty} a_n = 0$shartining o'zi yetarli emas! Hadlar moduli$a_n$ albatta monoton kamayishi shart. Agar hadlar sakrab o'zgarsa, qator uzoqlashishi mumkin.
 > 2. **Ixtiyoriy ishorali qator bilan adashtirish:**
->    Masalan, $\sum \frac{\sin n}{n^2}$ qatorida ishoralar $+ - + -$ kabi tartibli galma-gal kelmaydi ($\sin 1 > 0, \sin 2 > 0, \sin 3 > 0, \sin 4 < 0$). Bunday qatorlarga Leybnits alomatini qo'llab bo'lmaydi! Ularni darhol modullar qatori orqali taqqoslash kerak ($|\frac{\sin n}{n^2}| \le \frac{1}{n^2}$).
+>    Masalan, $\sum \frac{\sin n}{n^2}$qatorida ishoralar$+ - + -$ kabi tartibli galma-gal kelmaydi ($\sin 1 > 0, \sin 2 > 0, \sin 3 > 0, \sin 4 < 0$). Bunday qatorlarga Leybnits alomatini qo'llab bo'lmaydi! Ularni darhol modullar qatori orqali taqqoslash kerak ($|\frac{\sin n}{n^2}| \le \frac{1}{n^2}$).
 > 3. **Mutlaq yaqinlashuvchi qatorda Leybnitsga to'xtab qolish:**
 >    Agar qator modullari bo'yicha yaqinlashsa (masalan $\sum \frac{(-1)^n}{n^3}$), faqat Leybnits alomati bilan kifoyalanib "yaqinlashadi" deb qo'yish to'liq javob emas. U **mutlaq yaqinlashadi** deb yozilishi shart!
 
@@ -168,9 +162,10 @@ $$
 
 1. Modullarini olamiz: $\sum \frac{1}{n^3 + 1}$.
 2. Taqqoslash alomati: $\frac{1}{n^3 + 1} < \frac{1}{n^3}$.
-   $\sum \frac{1}{n^3}$ qator $p = 3 > 1$ bo'lgani uchun yaqinlashuvchi.
+   $\sum \frac{1}{n^3}$qator$p = 3 > 1$ bo'lgani uchun yaqinlashuvchi.
 3. Demak, modullar qatori yaqinlashadi.
 Xulosa: Qator **mutlaq yaqinlashuvchi**.
+
 </details>
 
 ### 2-mashq
@@ -182,4 +177,5 @@ $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{2n - 1}$ qatorining xarakterini aniqlang.
 1. Modullar qatori: $\sum \frac{1}{2n - 1} \sim \frac{1}{2n}$ — uzoqlashuvchi garmonik qator.
 2. Leybnits shartlari: $a_n = \frac{1}{2n - 1} \to 0$ va monoton kamayadi. Leybnits bo'yicha yaqinlashadi.
 Xulosa: Qator **shartli yaqinlashuvchi** (uning yig'indisi $\frac{\pi}{4}$ ga teng).
+
 </details>

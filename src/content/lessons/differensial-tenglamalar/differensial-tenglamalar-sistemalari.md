@@ -49,8 +49,8 @@ $$
    y' = \frac{1}{a_{12}} \left( x'' - a_{11} x' \right)
    
 $$
-3. $y$ va $y'$ larni sistemadagi 2-tenglamaga qo'yamiz.
-Natijada faqat bitta noma'lum $x(t)$ ga bog'liq **2-tartibli o'zgarmas koeffitsiyentli chiziqli differensial tenglama** hosil bo'ladi! Uni yechib $x(t)$ topilgach, 1-qadamdagi formula orqali $y(t)$ osongina hisoblanadi.
+3. $y$va$y'$ larni sistemadagi 2-tenglamaga qo'yamiz.
+Natijada faqat bitta noma'lum $x(t)$ga bog'liq **2-tartibli o'zgarmas koeffitsiyentli chiziqli differensial tenglama** hosil bo'ladi! Uni yechib$x(t)$topilgach, 1-qadamdagi formula orqali$y(t)$ osongina hisoblanadi.
 
 ---
 
@@ -145,18 +145,18 @@ $$
 $$
 Xos sonlar: $\lambda_1 = 1, \lambda_2 = 5$.
 
-1. $\lambda_1 = 1$ uchun xos vektorni topamiz: $(A - 1\cdot E)\vec{v}_1 = 0$:
+1. $\lambda_1 = 1$uchun xos vektorni topamiz:$(A - 1\cdot E)\vec{v}_1 = 0$:
 $$
 \begin{pmatrix} 1 & 1 \\ 3 & 3 \end{pmatrix} \begin{pmatrix} v_x \\ v_y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies v_x + v_y = 0 \implies v_y = -v_x
 $$
-$v_x = 1$ desak, $\vec{v}_1 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+$v_x = 1$desak,$\vec{v}_1 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
 Xususiy yechim: $\vec{X}_1(t) = \begin{pmatrix} 1 \\ -1 \end{pmatrix} e^t$.
 
-2. $\lambda_2 = 5$ uchun xos vektorni topamiz: $(A - 5\cdot E)\vec{v}_2 = 0$:
+2. $\lambda_2 = 5$uchun xos vektorni topamiz:$(A - 5\cdot E)\vec{v}_2 = 0$:
 $$
 \begin{pmatrix} -3 & 1 \\ 3 & -1 \end{pmatrix} \begin{pmatrix} v_x \\ v_y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \implies -3v_x + v_y = 0 \implies v_y = 3v_x
 $$
-$v_x = 1$ desak, $\vec{v}_2 = \begin{pmatrix} 1 \\ 3 \end{pmatrix}$.
+$v_x = 1$desak,$\vec{v}_2 = \begin{pmatrix} 1 \\ 3 \end{pmatrix}$.
 Xususiy yechim: $\vec{X}_2(t) = \begin{pmatrix} 1 \\ 3 \end{pmatrix} e^{5t}$.
 
 Umumiy matritsaviy yechim:
@@ -175,7 +175,7 @@ Ikkala usul ham mutlaqo bir xil natija berdi!
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **O'zgarmaslar soni:** 2 ta 1-tartibli tenglamalar sistemasining umumiy yechimida faqat 2 ta ixtiyoriy o'zgarmas ($C_1$ va $C_2$) bo'lishi kerak. Talabalar $x(t)$ ni yechib $C_1, C_2$, keyin $y(t)$ ni alohida yechib yangi $C_3, C_4$ deb yozishadi va o'zgarmaslar bog'liqligini yo'qotib, qo'pol xatoga yo'l qo'yishadi.
+> 1. **O'zgarmaslar soni:** 2 ta 1-tartibli tenglamalar sistemasining umumiy yechimida faqat 2 ta ixtiyoriy o'zgarmas ($C_1$va$C_2$) bo'lishi kerak. Talabalar $x(t)$ni yechib$C_1, C_2$, keyin $y(t)$ni alohida yechib yangi$C_3, C_4$ deb yozishadi va o'zgarmaslar bog'liqligini yo'qotib, qo'pol xatoga yo'l qo'yishadi.
 > 2. **Xos vektor koordinatalari proporsiyasi:** $(A-\lambda E)\vec{v} = 0$ sistemasida qatorlar chiziqli bog'liq bo'ladi. Ulardan faqat bittasini tanlab, koordinatalarning nisbatini to'g'ri olish zarur.
 
 ---
@@ -214,6 +214,7 @@ x(t) = C_1 \cos 2t + C_2 \sin 2t \\
 y(t) = -2C_1 \sin 2t + 2C_2 \cos 2t
 \end{cases}
 $$
+
 </details>
 
 ### 2-mashq
@@ -243,4 +244,5 @@ y(t) = C_1 e^{3t} - C_2 e^{-t}
 \end{cases}
 $$
 *(Muvozanat nuqtasi turi: "Egarchasimon nuqta" (Sedlo), chunki $\lambda_1 > 0, \lambda_2 < 0$).*
+
 </details>

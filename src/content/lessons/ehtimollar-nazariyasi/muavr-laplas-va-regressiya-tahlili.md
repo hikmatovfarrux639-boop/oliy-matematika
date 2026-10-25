@@ -19,25 +19,24 @@ Shuningdek, bugungi kunda Big Data, Machine Learning va Data Science ning poydev
 
 ## 1. Lokal Muavr-Laplas teoremasi
 
-Agar har bir erkli sinovda $A$ hodisaning ro'y berish ehtimoli $p$ ($0 < p < 1$) bo'lsa va sinovlar soni $n$ yetarlicha katta bo'lsa ($npq \ge 9..10$), hodisa $n$ ta sinovda **aynan $k$ marta** ro'y berish ehtimoli quyidagi asimptotik formula bilan hisoblanadi:
+Agar har bir erkli sinovda $A$hodisaning ro'y berish ehtimoli$p$ ($0 < p < 1$) bo'lsa va sinovlar soni $n$ yetarlicha katta bo'lsa ($npq \ge 9..10$), hodisa $n$ta sinovda **aynan$k$ marta** ro'y berish ehtimoli quyidagi asimptotik formula bilan hisoblanadi:
 
 $$
 P_n(k) \approx \frac{1}{\sqrt{npq}} \varphi(x)
 $$
 
 Bu yerda:
-- $x = \frac{k - np}{\sqrt{npq}}$
-- $\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$ — standart normal taqsimotning zichlik funksiyasi (Gauss funksiyasi).
+- $x = \frac{k - np}{\sqrt{npq}}$-$\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$ — standart normal taqsimotning zichlik funksiyasi (Gauss funksiyasi).
 
 ### Gauss funksiyasi $\varphi(x)$ xossalari:
 1. **Juft funksiya:** $\varphi(-x) = \varphi(x)$. (Jadvalda faqat musbat $x$ beriladi).
-2. $x > 4$ bo'lganda $\varphi(x) \approx 0$ deb hisoblanadi.
+2. $x > 4$bo'lganda$\varphi(x) \approx 0$ deb hisoblanadi.
 
 ---
 
 ## 2. Integral Muavr-Laplas teoremasi
 
-Hodisa $n$ ta erkli sinovda **$k_1$ tadan $k_2$ tagacha** oraliqda ro'y berish ehtimoli quyidagi formula orqali topiladi:
+Hodisa $n$ ta erkli sinovda **$k_1$tadan$k_2$ tagacha** oraliqda ro'y berish ehtimoli quyidagi formula orqali topiladi:
 
 $$
 P_n(k_1 \le k \le k_2) \approx \Phi(x_2) - \Phi(x_1)
@@ -54,7 +53,7 @@ $$
 
 ### Laplas funksiyasi $\Phi(x)$ xossalari:
 1. **Toq funksiya:** $\Phi(-x) = -\Phi(x)$. Demak, $\Phi(x_2) - \Phi(-|x_1|) = \Phi(x_2) + \Phi(|x_1|)$.
-2. $x \ge 5$ bo'lganda $\Phi(x) \approx 0.5$ deb qabul qilinadi.
+2. $x \ge 5$bo'lganda$\Phi(x) \approx 0.5$ deb qabul qilinadi.
 3. **O'rtachadan chetlanish ehtimoli:**
    
 $$
@@ -66,7 +65,7 @@ $$
 
 ## 3. Chiziqli regressiya va Eng Kichik Kvadratlar Usuli (EKU)
 
-Ikki miqdor ($X$ va $Y$) o'rtasida to'g'ri chiziqli empirik bog'lanish $y = ax + b$ ko'rinishida qidiriladi.
+Ikki miqdor ($X$va$Y$) o'rtasida to'g'ri chiziqli empirik bog'lanish $y = ax + b$ ko'rinishida qidiriladi.
 
 Tajribada olingan $(x_i, y_i)$ ($i = 1, \dots, n$) nuqtalar uchun nazariy to'g'ri chiziqdan chetlanishlar kvadratlari yig'indisi minimal bo'lishi talab qilinadi:
 
@@ -106,16 +105,13 @@ $$
 
 ### 1-masala: Integral Muavr-Laplas tatbiqi
 
-Zavodda tayyorlanayotgan mahsulotning standartga to'g'ri kelish ehtimoli $p = 0.8$ ga teng. Tasodifiy tanlab olingan $n = 400$ ta mahsulot ichida standart detallar soni 310 tadan 330 tagacha bo'lishi ehtimolini toping.
+Zavodda tayyorlanayotgan mahsulotning standartga to'g'ri kelish ehtimoli $p = 0.8$ga teng. Tasodifiy tanlab olingan$n = 400$ ta mahsulot ichida standart detallar soni 310 tadan 330 tagacha bo'lishi ehtimolini toping.
 
 #### Yechish:
 1. Parametrlarni aniqlaymiz:
-   - $n = 400$, $p = 0.8$, $q = 1 - p = 0.2$
-   - Matematik kutilma: $np = 400 \cdot 0.8 = 320$
-   - Dispersiya: $npq = 400 \cdot 0.8 \cdot 0.2 = 64 \implies \sqrt{npq} = \sqrt{64} = 8$
-   $npq = 64 > 10$ sharti to'liq bajarilmoqda, demak Integral Muavr-Laplas teoremasi juda yuqori aniqlik beradi.
+   - $n = 400$, $p = 0.8$, $q = 1 - p = 0.2$- Matematik kutilma:$np = 400 \cdot 0.8 = 320$- Dispersiya:$npq = 400 \cdot 0.8 \cdot 0.2 = 64 \implies \sqrt{npq} = \sqrt{64} = 8$ $npq = 64 > 10$ sharti to'liq bajarilmoqda, demak Integral Muavr-Laplas teoremasi juda yuqori aniqlik beradi.
 
-2. Integrallash chegaralari $x_1$ va $x_2$ ni topamiz ($k_1 = 310, k_2 = 330$):
+2. Integrallash chegaralari $x_1$va$x_2$ ni topamiz ($k_1 = 310, k_2 = 330$):
    
 $$
    x_1 = \frac{k_1 - np}{\sqrt{npq}} = \frac{310 - 320}{8} = \frac{-10}{8} = -1.25
@@ -162,10 +158,7 @@ Eng kichik kvadratlar usuli bo'yicha $y = ax + b$ chiziqli regressiya to'g'ri ch
 
 #### Yechish:
 Hisoblash jadvalini tuzamiz ($n = 4$):
-- $\sum x_i = 1 + 2 + 3 + 4 = 10 \implies \bar{x} = 10/4 = 2.5$
-- $\sum y_i = 2 + 3 + 5 + 6 = 16 \implies \bar{y} = 16/4 = 4.0$
-- $\sum x_i^2 = 1^2 + 2^2 + 3^2 + 4^2 = 1 + 4 + 9 + 16 = 30$
-- $\sum x_i y_i = (1 \cdot 2) + (2 \cdot 3) + (3 \cdot 5) + (4 \cdot 6) = 2 + 6 + 15 + 24 = 47$
+- $\sum x_i = 1 + 2 + 3 + 4 = 10 \implies \bar{x} = 10/4 = 2.5$-$\sum y_i = 2 + 3 + 5 + 6 = 16 \implies \bar{y} = 16/4 = 4.0$-$\sum x_i^2 = 1^2 + 2^2 + 3^2 + 4^2 = 1 + 4 + 9 + 16 = 30$-$\sum x_i y_i = (1 \cdot 2) + (2 \cdot 3) + (3 \cdot 5) + (4 \cdot 6) = 2 + 6 + 15 + 24 = 47$
 
 Normal tenglamalar formulasiga qo'yamiz:
 $$
@@ -186,8 +179,8 @@ $$
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Puasson va Laplasni aralashtirish:** Agar $p \le 0.05$ (hodisa juda kam uchraydigan bo'lsa), Muavr-Laplas emas, balki **Puasson taqsimoti** ($P_n(k) \approx \frac{\lambda^k}{k!} e^{-\lambda}$, $\lambda = np$) qo'llanilishi kerak! Muavr-Laplas faqat $npq > 9$ bo'lgandagina to'g'ri ishlaydi.
-> 2. **Laplas funksiyasining 0.5 bilan adashtirilishi:** Turli darsliklarda Laplas funksiyasi ikki xil ta'riflanadi: $\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_0^x e^{-t^2/2} dt$ (bizdagi kabi, $\Phi(0) = 0, \Phi(+\infty) = 0.5$) yoki $\Phi^*(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2} dt$ ($\Phi^*(0) = 0.5, \Phi^*(+\infty) = 1$). Imtihonda siz foydalanayotgan jadval qaysi turdaligini jadvalning 0 nuqtasiga qarab darhol aniqlab oling!
-> 3. **Toqlik xossasida ishora:** $\Phi(-x) = -\Phi(x)$. Agar $x_1 = -2$ bo'lsa, $\Phi(-2) = -\Phi(2)$ bo'lib, $\Phi(x_2) - \Phi(x_1) = \Phi(x_2) + \Phi(2)$ ga aylanadi. Talabalar ko'pincha minusni plyusga almashtirishni unutishadi.
+> 2. **Laplas funksiyasining 0.5 bilan adashtirilishi:** Turli darsliklarda Laplas funksiyasi ikki xil ta'riflanadi: $\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_0^x e^{-t^2/2} dt$(bizdagi kabi,$\Phi(0) = 0, \Phi(+\infty) = 0.5$) yoki $\Phi^*(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2} dt$ ($\Phi^*(0) = 0.5, \Phi^*(+\infty) = 1$). Imtihonda siz foydalanayotgan jadval qaysi turdaligini jadvalning 0 nuqtasiga qarab darhol aniqlab oling!
+> 3. **Toqlik xossasida ishora:** $\Phi(-x) = -\Phi(x)$. Agar $x_1 = -2$bo'lsa,$\Phi(-2) = -\Phi(2)$bo'lib,$\Phi(x_2) - \Phi(x_1) = \Phi(x_2) + \Phi(2)$ ga aylanadi. Talabalar ko'pincha minusni plyusga almashtirishni unutishadi.
 
 ---
 
@@ -204,6 +197,7 @@ Urug'ning unib chiqish ehtimoli $p = 0.75$. Ekilgan 600 ta urug'dan 450 tasi uni
    $npq = 450 \cdot 0.25 = 112.5 \implies \sqrt{npq} = \sqrt{112.5} \approx 10.607$.
 2. $x = \frac{k - np}{\sqrt{npq}} = \frac{450 - 450}{10.607} = 0$.
 3. $P_{600}(450) \approx \frac{1}{10.607} \varphi(0) = \frac{0.3989}{10.607} \approx 0.0376$ ($3.76\%$).
+
 </details>
 
 ### 2-mashq
@@ -215,4 +209,5 @@ Agar $n = 100, p = 0.5$ (tanga 100 marta tashlanganda) gerb tomoni 40 martadan 6
 1. $np = 50$, $npq = 25 \implies \sqrt{npq} = 5$.
 2. $x_1 = \frac{40 - 50}{5} = -2$, $x_2 = \frac{60 - 50}{5} = 2$.
 3. $P \approx \Phi(2) - \Phi(-2) = 2\Phi(2) \approx 2 \cdot 0.4772 = 0.9544$ ($95.44\%$).
+
 </details>

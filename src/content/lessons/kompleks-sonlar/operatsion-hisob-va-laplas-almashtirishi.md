@@ -19,8 +19,8 @@ Bu usul elektrotexnika, avtomatika, radioinjiniring va kibernetikada eng asosiy 
 
 ## 1. Laplas almashtirishi nima?
 
-$t \ge 0$ vaqtda aniqlangan $f(t)$ funksiya (unga **original** deyiladi) berilgan bo'lsin.
-Ushbu funksiyaning **Laplas tasviri** $F(p)$ (bu yerda $p = s + i\sigma$ — kompleks o'zgaruvchi) quyidagi xosmas integral bilan aniqlanadi:
+$t \ge 0$vaqtda aniqlangan$f(t)$ funksiya (unga **original** deyiladi) berilgan bo'lsin.
+Ushbu funksiyaning **Laplas tasviri** $F(p)$(bu yerda$p = s + i\sigma$ — kompleks o'zgaruvchi) quyidagi xosmas integral bilan aniqlanadi:
 
 $$
 F(p) = \mathcal{L}\{f(t)\} = \int_0^{\infty} f(t) e^{-pt} \, dt
@@ -37,14 +37,14 @@ $$
 
 | Original $f(t)$ ($t \ge 0$) | Tasvir $F(p)$ |
 |---|---|
-| $1$ (birlik bosqich) | $\frac{1}{p}$ |
-| $t$ | $\frac{1}{p^2}$ |
-| $t^n$ | $\frac{n!}{p^{n+1}}$ |
-| $e^{at}$ | $\frac{1}{p - a}$ |
-| $\sin(\omega t)$ | $\frac{\omega}{p^2 + \omega^2}$ |
-| $\cos(\omega t)$ | $\frac{p}{p^2 + \omega^2}$ |
-| $e^{at} \sin(\omega t)$ | $\frac{\omega}{(p - a)^2 + \omega^2}$ |
-| $e^{at} \cos(\omega t)$ | $\frac{p - a}{(p - a)^2 + \omega^2}$ |
+| $1$(birlik bosqich) |$\frac{1}{p}$ |
+| $t$|$\frac{1}{p^2}$ |
+| $t^n$|$\frac{n!}{p^{n+1}}$ |
+| $e^{at}$|$\frac{1}{p - a}$ |
+| $\sin(\omega t)$|$\frac{\omega}{p^2 + \omega^2}$ |
+| $\cos(\omega t)$|$\frac{p}{p^2 + \omega^2}$ |
+| $e^{at} \sin(\omega t)$|$\frac{\omega}{(p - a)^2 + \omega^2}$ |
+| $e^{at} \cos(\omega t)$|$\frac{p - a}{(p - a)^2 + \omega^2}$ |
 
 ---
 
@@ -71,7 +71,7 @@ $$
 ## 4. Differensial tenglamalarni yechish algoritmi
 
 1. Tenglamadagi har bir hadning Laplas tasviriga o'tamiz ($y(t) \to Y(p)$, $y' \to pY - y(0)$, $y'' \to p^2 Y - py(0) - y'(0)$).
-2. $Y(p)$ ga nisbatan hosil bo'lgan **oddiy algebraik tenglamani** yechamiz va $Y(p)$ ni topamiz.
+2. $Y(p)$ga nisbatan hosil bo'lgan **oddiy algebraik tenglamani** yechamiz va$Y(p)$ ni topamiz.
 3. Topilgan $Y(p)$ kasr-ratsional funksiyani **oddiy kasrlarga ajratamiz**.
 4. Jadvaldan foydalanib, original $y(t)$ funksiyaga qaytamiz (teskari Laplas almashtirishi).
 5. Javob tayyor! Hech qanday qo'shimcha o'zgarmaslarni aniqlash shart emas.
@@ -85,9 +85,7 @@ $$
 
 **Yechish:**
 1. Tasvirlarga o'tamiz:
-   * $y(t) \fallingdotseq Y(p)$
-   * $y'(t) \fallingdotseq pY(p) - y(0) = pY(p) - 1$
-   * $4 \fallingdotseq \frac{4}{p}$
+   * $y(t) \fallingdotseq Y(p)$*$y'(t) \fallingdotseq pY(p) - y(0) = pY(p) - 1$*$4 \fallingdotseq \frac{4}{p}$
 2. Operator tenglamasini tuzamiz:
    
 $$
@@ -111,16 +109,14 @@ $$
    \frac{p + 4}{p(p + 2)} = \frac{A}{p} + \frac{B}{p + 2}
    
 $$
-   * $p = 0 \implies A = \frac{4}{2} = 2$
-   * $p = -2 \implies B = \frac{-2 + 4}{-2} = -1$
+   * $p = 0 \implies A = \frac{4}{2} = 2$*$p = -2 \implies B = \frac{-2 + 4}{-2} = -1$
    
 $$
    Y(p) = \frac{2}{p} - \frac{1}{p + 2}
    
 $$
 5. Jadvaldan originalga o'tamiz:
-   * $\frac{2}{p} \risingdotseq 2 \cdot 1 = 2$
-   * $\frac{1}{p + 2} \risingdotseq e^{-2t}$
+   * $\frac{2}{p} \risingdotseq 2 \cdot 1 = 2$*$\frac{1}{p + 2} \risingdotseq e^{-2t}$
    
 $$
    y(t) = 2 - e^{-2t}
@@ -135,9 +131,7 @@ $$
 
 **Yechish:**
 1. Tasvirlar:
-   * $y'' \fallingdotseq p^2 Y(p) - p y(0) - y'(0) = p^2 Y(p) - 2p - 6$
-   * $9y \fallingdotseq 9 Y(p)$
-   * $0 \fallingdotseq 0$
+   * $y'' \fallingdotseq p^2 Y(p) - p y(0) - y'(0) = p^2 Y(p) - 2p - 6$*$9y \fallingdotseq 9 Y(p)$*$0 \fallingdotseq 0$
 2. Operator tenglamasi:
    
 $$
@@ -156,8 +150,7 @@ $$
    
 $$
 4. Jadvaldan darhol ko'rinadi:
-   * $\frac{p}{p^2 + 3^2} \risingdotseq \cos(3t)$
-   * $\frac{3}{p^2 + 3^2} \risingdotseq \sin(3t)$
+   * $\frac{p}{p^2 + 3^2} \risingdotseq \cos(3t)$*$\frac{3}{p^2 + 3^2} \risingdotseq \sin(3t)$
 5. Demak:
    
 $$
@@ -186,8 +179,7 @@ $$
 **Yechish bosqichlari:**
 1. Tasvirga o'tamiz:
    $(pY(p) - 5) - 3Y(p) = 0$.
-2. $Y(p)$ ni topamiz:
-   $(p - 3)Y(p) = 5 \implies Y(p) = \frac{5}{p - 3}$.
+2. $Y(p)$ni topamiz:$(p - 3)Y(p) = 5 \implies Y(p) = \frac{5}{p - 3}$.
 3. Jadvalga ko'ra $\frac{1}{p - 3} \risingdotseq e^{3t}$.
 4. Original:
    
@@ -197,4 +189,5 @@ $$
 $$
 
 **Javob:** $\mathbf{y(t) = 5e^{3t}}$
+
 </details>

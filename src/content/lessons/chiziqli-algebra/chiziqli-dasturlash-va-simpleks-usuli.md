@@ -11,7 +11,7 @@ Iqtisodiyotda resurslar (xomashyo, ish vaqti, energiya) cheklangan bo'ladi.
 Kompaniyaning maqsadi: **mavjud resurslar chegarasida maksimal foyda olish yoki xarajatlarni minimallashtirish**!
 
 Matematik model:
-- **Maqsad funksiyasi:** $F(X) = c_1 x_1 + c_2 x_2 + \dots + c_n x_n \to \max$ (yoki $\min$);
+- **Maqsad funksiyasi:** $F(X) = c_1 x_1 + c_2 x_2 + \dots + c_n x_n \to \max$(yoki$\min$);
 - **Cheklovlar sistemasi:** $A X \le B, \; X \ge 0$.
 
 ---

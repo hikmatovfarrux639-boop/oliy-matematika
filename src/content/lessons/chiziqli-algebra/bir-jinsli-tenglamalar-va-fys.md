@@ -90,7 +90,7 @@ A = \begin{pmatrix}
 4 & 5 & -2 & 3
 \end{pmatrix}
 $$
-$S_2 - 3S_1$ va $S_3 - 4S_1$:
+$S_2 - 3S_1$va$S_3 - 4S_1$:
 $$
 \sim \begin{pmatrix}
 1 & 2 & 4 & -3 \\
@@ -144,4 +144,5 @@ Erkin o'zgaruvchilar $(x_3, x_4)$ ga navbat bilan birlik matritsa qatorlarini be
 $$
 X = C_1 \begin{pmatrix} 8 \\ -6 \\ 1 \\ 0 \end{pmatrix} + C_2 \begin{pmatrix} -7 \\ 5 \\ 0 \\ 1 \end{pmatrix}, \quad C_1, C_2 \in \mathbb{R}
 $$
+
 </details>

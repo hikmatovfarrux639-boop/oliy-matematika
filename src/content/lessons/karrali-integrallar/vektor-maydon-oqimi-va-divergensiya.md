@@ -21,7 +21,7 @@ Ushbu darsda biz:
 
 ## 1. Skalyar va vektor maydonlar
 
-* **Skalyar maydon:** Fazoning har bir $M(x, y, z)$ nuqtasiga bitta son mos keladi: $u = u(x, y, z)$ (masalan, xonadagi harorat taqsimoti, atmosfera bosimi).
+* **Skalyar maydon:** Fazoning har bir $M(x, y, z)$nuqtasiga bitta son mos keladi:$u = u(x, y, z)$ (masalan, xonadagi harorat taqsimoti, atmosfera bosimi).
   * Skalyar maydonning o'zgarish yo'nalishi va tezligi **Gradiyent** bilan ifodalanadi:
     
 $$
@@ -40,10 +40,7 @@ $$
 
 ## 2. Vektor maydon oqimi (Potok)
 
-$\vec{a} = P\vec{i} + Q\vec{j} + R\vec{k}$ vektor maydoni va oriyentatsiyalangan $\Omega$ sirti berilgan bo'lsin.
-$\vec{n} = (\cos\alpha, \cos\beta, \cos\gamma)$ — sirtga o'tkazilgan birlik normal vektor bo'lsin.
-
-$\vec{a}$ vektor maydonining $\Omega$ sirt orqali **oqimi ($\Pi$)** deb quyidagi sirt integraliga aytiladi:
+$\vec{a} = P\vec{i} + Q\vec{j} + R\vec{k}$vektor maydoni va oriyentatsiyalangan$\Omega$sirti berilgan bo'lsin.$\vec{n} = (\cos\alpha, \cos\beta, \cos\gamma)$— sirtga o'tkazilgan birlik normal vektor bo'lsin.$\vec{a}$vektor maydonining$\Omega$ sirt orqali **oqimi ($\Pi$)** deb quyidagi sirt integraliga aytiladi:
 $$
 \Pi = \iint_{\Omega} (\vec{a} \cdot \vec{n}) \, d\sigma = \iint_{\Omega} (P\cos\alpha + Q\cos\beta + R\cos\gamma) \, d\sigma
 $$
@@ -53,7 +50,7 @@ $$
 \Pi = \iint_{\Omega} P \, dy dz + Q \, dz dx + R \, dx dy
 $$
 
-Fizik ma'nosi: Agar $\vec{a}$ suyuqlik tezlik maydoni bo'lsa, $\Pi$ — birlik vaqt ichida $\Omega$ sirtidan oqib o'tgan suyuqlik hajmidir.
+Fizik ma'nosi: Agar $\vec{a}$suyuqlik tezlik maydoni bo'lsa,$\Pi$— birlik vaqt ichida$\Omega$ sirtidan oqib o'tgan suyuqlik hajmidir.
 
 ---
 
@@ -67,13 +64,13 @@ $$
 
 * Agar $\operatorname{div} \vec{a} > 0$ bo'lsa — bu nuqtada maydonning **manbasi** (fontan) bor, ya'ni maydon chiziqlari bu nuqtadan tashqariga sochiladi.
 * Agar $\operatorname{div} \vec{a} < 0$ bo'lsa — bu nuqtada **yutuvchi** (voronka) bor.
-* Agar $\operatorname{div} \vec{a} = 0$ bo'lsa — maydon **solenoidal** (quvursimon) deyiladi, unda manba ham, yutuvchi ham yo'q (masalan, magnit maydoni: $\operatorname{div} \vec{B} = 0$).
+* Agar $\operatorname{div} \vec{a} = 0$bo'lsa — maydon **solenoidal** (quvursimon) deyiladi, unda manba ham, yutuvchi ham yo'q (masalan, magnit maydoni:$\operatorname{div} \vec{B} = 0$).
 
 ---
 
 ## 4. Gauss-Ostrogradskiy formulasi (Eng kuchli teorema)
 
-Agar $\Omega$ — biror fazoviy $V$ hajmli jismni o'rab turgan **yopiq sirt** bo'lsa, uning tashqi tomoni orqali o'tuvchi oqim ushbu jism bo'yicha olingan **uch karrali integralga** teng bo'ladi!
+Agar $\Omega$— biror fazoviy$V$ hajmli jismni o'rab turgan **yopiq sirt** bo'lsa, uning tashqi tomoni orqali o'tuvchi oqim ushbu jism bo'yicha olingan **uch karrali integralga** teng bo'ladi!
 
 $$
 \oiint_{\Omega} P \, dy dz + Q \, dz dx + R \, dx dy = \iiint_V \operatorname{div} \vec{a} \, dx dy dz
@@ -92,13 +89,11 @@ $$
 ## 5. To'liq yechilgan namunaviy masalalar
 
 ### 1-misol: Divergensiyani hisoblash
-**Shart:** $\vec{a} = (x^3 + y)\vec{i} + (y^3 + z)\vec{j} + (z^3 + x)\vec{k}$ vektor maydonining $M(1, -1, 2)$ nuqtadagi divergensiyasini toping.
+**Shart:** $\vec{a} = (x^3 + y)\vec{i} + (y^3 + z)\vec{j} + (z^3 + x)\vec{k}$vektor maydonining$M(1, -1, 2)$ nuqtadagi divergensiyasini toping.
 
 **Yechish:**
 1. Xususiy hosilalarni olamiz:
-   * $\frac{\partial P}{\partial x} = \frac{\partial}{\partial x}(x^3 + y) = 3x^2$
-   * $\frac{\partial Q}{\partial y} = \frac{\partial}{\partial y}(y^3 + z) = 3y^2$
-   * $\frac{\partial R}{\partial z} = \frac{\partial}{\partial z}(z^3 + x) = 3z^2$
+   * $\frac{\partial P}{\partial x} = \frac{\partial}{\partial x}(x^3 + y) = 3x^2$*$\frac{\partial Q}{\partial y} = \frac{\partial}{\partial y}(y^3 + z) = 3y^2$*$\frac{\partial R}{\partial z} = \frac{\partial}{\partial z}(z^3 + x) = 3z^2$
 2. Divergensiya formulasi:
    
 $$
@@ -116,7 +111,7 @@ $$
 ---
 
 ### 2-misol: Gauss-Ostrogradskiy bo'yicha oqimni topish
-**Shart:** $\vec{a} = 2x\vec{i} - y\vec{j} + 3z\vec{k}$ vektor maydonining $x^2 + y^2 + z^2 = R^2$ sferaning tashqi sirti orqali oqimini hisoblang.
+**Shart:** $\vec{a} = 2x\vec{i} - y\vec{j} + 3z\vec{k}$vektor maydonining$x^2 + y^2 + z^2 = R^2$ sferaning tashqi sirti orqali oqimini hisoblang.
 
 **Yechish:**
 1. Sirt yopiq (shar sirti), demak Gauss–Ostrogradskiy formulasini qo'llaymiz:
@@ -133,7 +128,7 @@ $$
    \Pi = \iiint_V 4 \, dV = 4 \iiint_V dV = 4 \cdot V_{\text{shar}}
    
 $$
-4. Radiusi $R$ bo'lgan sharning hajmi $V = \frac{4}{3}\pi R^3$ ekani ma'lum:
+4. Radiusi $R$bo'lgan sharning hajmi$V = \frac{4}{3}\pi R^3$ ekani ma'lum:
    
 $$
    \Pi = 4 \cdot \left(\frac{4}{3}\pi R^3\right) = \frac{16}{3}\pi R^3
@@ -153,7 +148,7 @@ $$
 
 ## ✍️ O'zingizni sinab ko'ring (Mustaqil mashq)
 
-**Masala:** $\vec{a} = x\vec{i} + y\vec{j} + z\vec{k}$ vektor maydonining birlik kub $0 \le x \le 1, 0 \le y \le 1, 0 \le z \le 1$ ning to'liq tashqi sirti orqali o'tuvchi oqimini toping.
+**Masala:** $\vec{a} = x\vec{i} + y\vec{j} + z\vec{k}$vektor maydonining birlik kub$0 \le x \le 1, 0 \le y \le 1, 0 \le z \le 1$ ning to'liq tashqi sirti orqali o'tuvchi oqimini toping.
 
 <details>
 <summary>👉 To'liq yechimni ko'rish (Tekshirish)</summary>
@@ -180,4 +175,5 @@ $$
 $$
 
 **Javob:** $\mathbf{\Pi = 3}$
+
 </details>

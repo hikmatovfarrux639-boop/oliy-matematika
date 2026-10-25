@@ -22,8 +22,8 @@ Ushbu darsda barcha bu qadamlarni bitta mukammal tizimda o'rganamiz.
 
 ## 1. Kesmani berilgan nisbatda bo'lish formulasi
 
-Faraz qilaylik, fazoda (yoki tekislikda) ikkita nuqta berilgan: $A(x_1, y_1, z_1)$ va $B(x_2, y_2, z_2)$.
-Agar $M(x, y, z)$ nuqta $AB$ kesmani $\lambda = \frac{AM}{MB}$ nisbatda bo'lsa:
+Faraz qilaylik, fazoda (yoki tekislikda) ikkita nuqta berilgan: $A(x_1, y_1, z_1)$va$B(x_2, y_2, z_2)$.
+Agar $M(x, y, z)$nuqta$AB$kesmani$\lambda = \frac{AM}{MB}$ nisbatda bo'lsa:
 
 $$
 x = \frac{x_1 + \lambda x_2}{1 + \lambda}, \qquad y = \frac{y_1 + \lambda y_2}{1 + \lambda}, \qquad z = \frac{z_1 + \lambda z_2}{1 + \lambda}
@@ -62,21 +62,19 @@ Uchlari berilgan: $A_1, A_2, A_3, A_4$.
    $$S = \frac{1}{2} |\vec{a} \times \vec{b}|$$
 4. **Piramida hajmi:**
    $$V = \frac{1}{6} |(\vec{a}, \vec{b}, \vec{c})| = \frac{1}{6} \left| \begin{vmatrix} x_2-x_1 & y_2-y_1 & z_2-z_1 \\ x_3-x_1 & y_3-y_1 & z_3-z_1 \\ x_4-x_1 & y_4-y_1 & z_4-z_1 \end{vmatrix} \right|$$
-5. **$A_4$ uchidan $A_1 A_2 A_3$ asosga tushirilgan balandlik ($h$):**
+5. **$A_4$uchidan$A_1 A_2 A_3$ asosga tushirilgan balandlik ($h$):**
    $$V = \frac{1}{3} S_{\text{asos}} \cdot h \implies h = \frac{3V}{S_{\text{asos}}}$$
 
 ---
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** Uchlari $A_1(1, 2, 0)$, $A_2(3, 0, -3)$, $A_3(5, 2, 6)$ va $A_4(8, 4, -9)$ bo'lgan tetraedr berilgan.
-> $A_4$ uchidan $A_1 A_2 A_3$ yoqqa tushirilgan balandlik uzunligi $h$ ni toping.
+> **Masala:** Uchlari $A_1(1, 2, 0)$, $A_2(3, 0, -3)$, $A_3(5, 2, 6)$va$A_4(8, 4, -9)$ bo'lgan tetraedr berilgan.
+> $A_4$uchidan$A_1 A_2 A_3$yoqqa tushirilgan balandlik uzunligi$h$ ni toping.
 
 ### 1-usul: Hajm va yuza orqali topish ($h = \frac{3V}{S_{\text{asos}}}$)
 1. Vektorlar:
-   - $\vec{A_1 A_2} = (3-1, 0-2, -3-0) = (2, -2, -3)$
-   - $\vec{A_1 A_3} = (5-1, 2-2, 6-0) = (4, 0, 6)$
-   - $\vec{A_1 A_4} = (8-1, 4-2, -9-0) = (7, 2, -9)$
+   - $\vec{A_1 A_2} = (3-1, 0-2, -3-0) = (2, -2, -3)$-$\vec{A_1 A_3} = (5-1, 2-2, 6-0) = (4, 0, 6)$-$\vec{A_1 A_4} = (8-1, 4-2, -9-0) = (7, 2, -9)$
 2. Vektor ko'paytma (asos normali):
    $$\vec{n} = \vec{A_1 A_2} \times \vec{A_1 A_3} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & -2 & -3 \\ 4 & 0 & 6 \end{vmatrix} = \vec{i}(-12) - \vec{j}(12 + 12) + \vec{k}(0 - (-8)) = (-12, -24, 8)$$
    Moduli:
@@ -91,7 +89,7 @@ Uchlari berilgan: $A_1, A_2, A_3, A_4$.
    $$h = \frac{3V}{S_{\text{asos}}} = \frac{3 \cdot 34}{14} = \frac{102}{14} = \mathbf{\frac{51}{7} \approx 7.286}$$
 
 ### 2-usul: Nuqtadan tekislikkacha masofa formulasi orqali
-1. Asos tekisligi tenglamasini tuzamiz. Normali $\vec{n} = (-12, -24, 8)$ ni $-4$ ga qisqartirsak: $\vec{n}_0 = (3, 6, -2)$.
+1. Asos tekisligi tenglamasini tuzamiz. Normali $\vec{n} = (-12, -24, 8)$ni$-4$ga qisqartirsak:$\vec{n}_0 = (3, 6, -2)$.
    $A_1(1, 2, 0)$ nuqtadan o'tuvchi tekislik:
    $$3(x - 1) + 6(y - 2) - 2(z - 0) = 0 \implies 3x + 6y - 2z - 15 = 0$$
 2. $A_4(8, 4, -9)$ nuqtadan ushbu tekislikkacha masofani hisoblaymiz:
@@ -105,7 +103,7 @@ Ikkala usul ham mutlaqo bir xil natija berdi!
 > 1. **Piramida hajmida $\frac{1}{6}$ koeffitsiyentni unutish:**
 >    Uchburchakli piramidada asos uchburchak bo'lgani uchun $V = \frac{1}{6} |(\vec{a}, \vec{b}, \vec{c})|$ bo'ladi. Ko'pchilik talabalar parallelepiped hajmi bilan adashtirib, 6 ga bo'lishni unutadi.
 > 2. **Kesmani tashqi bo'lishda manfiy $\lambda$:**
->    Agar $M$ nuqta kesmaning tashqarisida yotsa, nisbat $\lambda < 0$ manfiy olinadi!
+>    Agar $M$nuqta kesmaning tashqarisida yotsa, nisbat$\lambda < 0$ manfiy olinadi!
 > 3. **Yoqlar orasidagi burchak:**
 >    Ikki yoq orasidagi burchak ularning normal vektorlari orasidagi burchak orqali topiladi: $\cos\varphi = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1| |\vec{n}_2|}$.
 
@@ -113,27 +111,49 @@ Ikkala usul ham mutlaqo bir xil natija berdi!
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $A(2, -3, 5)$ va $B(6, 1, -3)$ nuqtalar berilgan. $AB$ kesmani $\lambda = 3$ nisbatda bo'luvchi $M$ nuqtaning koordinatalarini toping.
+1. $A(2, -3, 5)$va$B(6, 1, -3)$nuqtalar berilgan.$AB$kesmani$\lambda = 3$nisbatda bo'luvchi$M$ nuqtaning koordinatalarini toping.
 2. Uchlari $A(0, 0, 0), B(2, 0, 0), C(0, 3, 0), D(0, 0, 4)$ bo'lgan tetraedr hajmini va og'irlik markazini toping.
 3. Uchburchak uchlari $A(1, 1), B(4, 5), C(13, -4)$. Uning $A$ uchidan o'tkazilgan medianasi uzunligini toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); line-height: 1.7;">
-    <p><strong>1-masala:</strong></p>
-    <p>$x = \frac{2 + 3(6)}{1 + 3} = \frac{20}{4} = 5, \quad y = \frac{-3 + 3(1)}{4} = 0, \quad z = \frac{5 + 3(-3)}{4} = \frac{-4}{4} = -1$.</p>
-    <p>Javob: $M(5, 0, -1)$.</p>
+<summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
+
+**1-masala:**
+
+    
+
+$x = \frac{2 + 3(6)}{1 + 3} = \frac{20}{4} = 5, \quad y = \frac{-3 + 3(1)}{4} = 0, \quad z = \frac{5 + 3(-3)}{4} = \frac{-4}{4} = -1$.
+
+    
+
+Javob: $M(5, 0, -1)$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>2-masala:</strong></p>
-    <p>1) Qirralar o'qlar bo'ylab yo'nalgan: $V = \frac{1}{6}(2 \cdot 3 \cdot 4) = \mathbf{4}$.</p>
-    <p>2) Og'irlik markazi: $x_T = \frac{0+2+0+0}{4} = 0.5, \quad y_T = \frac{0+0+3+0}{4} = 0.75, \quad z_T = \frac{0+0+0+4}{4} = 1.0$. Nuqta: $(0.5; 0.75; 1)$.</p>
+    
+
+**2-masala:**
+
+    
+
+1) Qirralar o'qlar bo'ylab yo'nalgan: $V = \frac{1}{6}(2 \cdot 3 \cdot 4) = \mathbf{4}$.
+
+    
+
+2) Og'irlik markazi: $x_T = \frac{0+2+0+0}{4} = 0.5, \quad y_T = \frac{0+0+3+0}{4} = 0.75, \quad z_T = \frac{0+0+0+4}{4} = 1.0$. Nuqta: $(0.5; 0.75; 1)$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>3-masala:</strong></p>
-    <p>$BC$ o'rtasi $M$: $x_M = \frac{4+13}{2} = 8.5, \quad y_M = \frac{5+(-4)}{2} = 0.5$.</p>
-    <p>Mediana uzunligi: $|AM| = \sqrt{(8.5 - 1)^2 + (0.5 - 1)^2} = \sqrt{(7.5)^2 + (-0.5)^2} = \sqrt{56.25 + 0.25} = \sqrt{56.5} \approx \mathbf{7.517}$.</p>
-  </div>
+    
+
+**3-masala:**
+
+    
+
+$BC$o'rtasi$M$: $x_M = \frac{4+13}{2} = 8.5, \quad y_M = \frac{5+(-4)}{2} = 0.5$.
+
+    
+
+Mediana uzunligi: $|AM| = \sqrt{(8.5 - 1)^2 + (0.5 - 1)^2} = \sqrt{(7.5)^2 + (-0.5)^2} = \sqrt{56.25 + 0.25} = \sqrt{56.5} \approx \mathbf{7.517}$.
+
 </details>

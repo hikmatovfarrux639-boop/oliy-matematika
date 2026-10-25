@@ -1708,7 +1708,7 @@ Qat'iy qoidalar:
             temperature: 0.15,
             thinkingConfig: { thinkingLevel: 'low' }
           },
-          model: 'gemini-3.8-flash'
+          model: 'gemini-3.5-flash-lite'
         };
         if (useGoogleSearch) {
           requestPayload.tools = [{ google_search: {} }];
@@ -1717,7 +1717,7 @@ Qat'iy qoidalar:
         // 1. Try secure backend serverless proxy
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 22000);
+          const timeoutId = setTimeout(() => controller.abort(), 25000);
 
           const headers: Record<string, string> = { 'Content-Type': 'application/json' };
           if (userCustomKey) {
@@ -1742,12 +1742,12 @@ Qat'iy qoidalar:
           lastErrorMsg = proxyErr.message || String(proxyErr);
         }
 
-        // 2. Fallback: If proxy is unreachable and user provided their own key, try direct Google API
+        // 2. Fallback: If proxy is unreachable (e.g. local static dev) and user provided their own key
         if (!data && userCustomKey) {
-          for (const modelName of ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest']) {
+          for (const modelName of ['gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-3.6-flash', 'gemini-flash-lite-latest', 'gemini-3.8-flash']) {
             try {
               const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 12000);
+              const timeoutId = setTimeout(() => controller.abort(), 15000);
               const directEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${userCustomKey}`;
               const directRes = await fetch(directEndpoint, {
                 method: 'POST',
@@ -1761,8 +1761,11 @@ Qat'iy qoidalar:
               });
               clearTimeout(timeoutId);
               if (directRes.ok) {
-                data = await directRes.json();
-                break;
+                const candidateJson = await directRes.json();
+                if (candidateJson?.candidates?.[0]) {
+                  data = candidateJson;
+                  break;
+                }
               }
             } catch (e: any) {
               lastErrorMsg = e.message || String(e);
@@ -1806,20 +1809,18 @@ Qat'iy qoidalar:
           }
         }
 
-        // Hybrid Cross-Verification: Check if local math solver can verify numerical results
+        // Hybrid Cross-Verification: Check if local math solver also verified the problem
         let verificationNotice = '';
-        if (problemText) {
-          const localCheck = tryLocalSolve(problemText);
-          if (localCheck.solved && localCheck.shortAnswer) {
-            verificationNotice = `
-              <div style="margin-bottom: 1.25rem; background: rgba(16, 185, 129, 0.1); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
-                <span style="font-size: 1.35rem;">✅</span>
-                <div style="font-size: 0.9rem; line-height: 1.45; color: var(--text-main);">
-                  <strong style="color: #10b981;">Mashinaviy Gibrid Tekshiruv:</strong> Mahalliy matematik yadro ushbu masalani parallel hisobladi va natijani tasdiqladi: <code style="font-weight: 700; color: var(--primary);">${localCheck.shortAnswer}</code>
-                </div>
+        if (problemText && localResult.solved) {
+          const summaryBadge = localResult.shortAnswer || localResult.type || 'Analitik tasdiqlangan';
+          verificationNotice = `
+            <div style="margin-bottom: 1.25rem; background: rgba(16, 185, 129, 0.1); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
+              <span style="font-size: 1.35rem;">✅</span>
+              <div style="font-size: 0.9rem; line-height: 1.45; color: var(--text-main);">
+                <strong style="color: #10b981;">Mashinaviy Gibrid Tekshiruv:</strong> Mahalliy matematik yadro ushbu masalani parallel hisobladi va tasdiqladi (<code style="font-weight: 700; color: var(--primary);">${summaryBadge}</code>).
               </div>
-            `;
-          }
+            </div>
+          `;
         }
 
         if (solutionBody) {
@@ -1835,12 +1836,53 @@ Qat'iy qoidalar:
         }
       } catch (err: any) {
         const errMsg = err.message || '';
-        if (errMsg.includes('API key') || errMsg.includes('API_KEY_INVALID')) {
+        // If user entered an invalid custom key, clear it
+        if (userCustomKey && (errMsg.includes('API key') || errMsg.includes('API_KEY_INVALID') || errMsg.includes('401'))) {
           localStorage.removeItem('gemini_user_api_key');
           updateKeyStatus();
-          showError("⚠️ Kiritilgan Gemini API kaliti noto'g'ri. Iltimos, aistudio.google.com/app/apikey dan yangi kalit oling.");
+        }
+
+        // Graceful Academic Deep-Dive Fallback when Cloud AI is unavailable / unconfigured
+        if (problemText && !selectedImageBase64) {
+          const diag = localResult.diagnosis;
+          const formulasMd = (diag.keyFormulas || [])
+            .map((f) => `- **${f.name}:**\n$$${f.latex}$$`)
+            .join('\n');
+          const relatedLinksMd = [diag.primaryLesson, ...(diag.relatedLessons || [])]
+            .filter(Boolean)
+            .map((l) => `- [${l.title}](${l.url})`)
+            .join('\n');
+
+          const deepAcademicMd = [
+            localResult.solved && localResult.markdown
+              ? localResult.markdown
+              : `## 1. Masala sharti va mavzu tashxisi\nBerilgan ifoda: \`${problemText}\`\nUshbu masala **${diag.moduleTitle}** modulining **${diag.topicName}** mavzusiga mansub (${diag.difficulty}).`,
+            `\n---\n## 📚 Chuqurlashtirilgan Nazariy Tahlil va Isbot Asosi\n**Nega aynan shu usul qo'llaniladi?**\n${diag.whyThisTopic}`,
+            formulasMd ? `\n## 📐 Asosiy Teorema va Formulalar Baza\n${formulasMd}` : '',
+            `\n## 🎯 Professor Maslahati (Imtihon va HEMIS uchun)\n**Eslab qoling:** ${diag.studyAdvice}`,
+            relatedLinksMd ? `\n## 📖 Chuqur o'rganish uchun tavsiya etilgan darslar\n${relatedLinksMd}` : ''
+          ].filter(Boolean).join('\n');
+
+          lastRawSolutionText = deepAcademicMd;
+          if (solutionBody) {
+            solutionBody.innerHTML = renderMathMarkdown(deepAcademicMd);
+          }
+          if (solutionEngineBadge) {
+            solutionEngineBadge.innerHTML = `🧠 Akademik Ekspert Tizimi (${localResult.type || diag.topicName}) • To'liq nazariy tahlil`;
+          }
+          if (solutionContainer) {
+            solutionContainer.style.display = 'block';
+            diagnosisCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         } else {
-          showError(`AI xatoligi: ${errMsg}`);
+          if (solutionContainer && forceAi) {
+            solutionContainer.style.display = 'none';
+          }
+          if (selectedImageBase64) {
+            showError("📷 Rasmdagi misolni o'qish (OCR) uchun yuqoridagi «🔑 Shaxsiy Gemini API kalit» tugmasini bosib, yangi kalit kiriting (yoki misolni matn ko'rinishida yozing).");
+          } else {
+            showError(`AI server javob bermadi (${errMsg}). Iltimos, misolni standart matematik yozuvda kiriting yoki yangi Gemini API kalitini ulang.`);
+          }
         }
       } finally {
         solveBtn!.removeAttribute('disabled');

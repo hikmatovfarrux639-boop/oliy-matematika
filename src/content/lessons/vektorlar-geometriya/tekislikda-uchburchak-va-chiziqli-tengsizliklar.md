@@ -28,33 +28,29 @@ Ushbu darsda biz mashhur **mathprofi.ru** uslubiyoti asosida uchburchakning barc
 ## 1. Tekislikdagi chiziqli tengsizliklar va yarim tekisliklar (Sinov nuqtasi qoidasi)
 
 Tekislikda $Ax + By + C = 0$ to'g'ri chizig'i butun tekislikni ikkita **ochiq yarim tekislikka** ajratadi:
-- Bir tomonida: $Ax + By + C > 0$
-- Ikkinchi tomonida: $Ax + By + C < 0$
-- To'g'ri chiziqning o'zida: $Ax + By + C = 0$
+- Bir tomonida: $Ax + By + C > 0$- Ikkinchi tomonida:$Ax + By + C < 0$- To'g'ri chiziqning o'zida:$Ax + By + C = 0$
 
-Agar tengsizlik noqat'iy bo'lsa ($Ax + By + C \ge 0$ yoki $\le 0$), to'g'ri chiziqning o'zi ham sohaga kiradi va chizmada **tutash (uzluksiz)** chiziq bilan chiziladi. Qat'iy tengsizlikda ($>$ yoki $<$) esa chiziq **punktir** bilan ko'rsatiladi.
+Agar tengsizlik noqat'iy bo'lsa ($Ax + By + C \ge 0$yoki$\le 0$), to'g'ri chiziqning o'zi ham sohaga kiradi va chizmada **tutash (uzluksiz)** chiziq bilan chiziladi. Qat'iy tengsizlikda ($>$yoki$<$) esa chiziq **punktir** bilan ko'rsatiladi.
 
 ### Sinov nuqtasi (Test point) qoidasi
 
 Qaysi yarim tekislik tengsizlikni qanoatlantirishini aniqlashning eng ishonchli va tezkor usuli:
 
-1. To'g'ri chiziqda yotmaydigan ixtiyoriy sinov nuqtasi $M_0(x_0, y_0)$ tanlanadi. Agar to'g'ri chiziq koordinata boshidan o'tmasa, eng qulay sinov nuqtasi doimo **koordinata boshi $O(0, 0)$** hisoblanadi!
+1. To'g'ri chiziqda yotmaydigan ixtiyoriy sinov nuqtasi $M_0(x_0, y_0)$tanlanadi. Agar to'g'ri chiziq koordinata boshidan o'tmasa, eng qulay sinov nuqtasi doimo **koordinata boshi$O(0, 0)$** hisoblanadi!
 2. Nuqtaning koordinatalari tengsizlikka qo'yiladi:
-   - Agar $A(0) + B(0) + C$ tengsizlikni **to'g'ri** qilsa, demak $O(0, 0)$ yotgan tomon shtrixlanadi (bo'yaladi).
+   - Agar $A(0) + B(0) + C$tengsizlikni **to'g'ri** qilsa, demak$O(0, 0)$ yotgan tomon shtrixlanadi (bo'yaladi).
    - Agar tengsizlik **noto'g'ri** bo'lib chiqsa, to'g'ri chiziqning $O(0, 0)$ yotmagan **qarama-qarshi tomoni** shtrixlanadi.
 
 > **Misol:** $2x - 3y + 6 \le 0$ tengsizlik sohasini aniqlang.
 > 
 > 1) Chegara to'g'ri chiziq: $2x - 3y + 6 = 0$.
->    - $x = 0 \implies y = 2 \implies (0, 2)$
->    - $y = 0 \implies x = -3 \implies (-3, 0)$
-> 2) Sinov nuqtasi sifatida $O(0, 0)$ ni qo'yamiz:
+>    - $x = 0 \implies y = 2 \implies (0, 2)$>    -$y = 0 \implies x = -3 \implies (-3, 0)$> 2) Sinov nuqtasi sifatida$O(0, 0)$ ni qo'yamiz:
 >    
 > $$
 >    2(0) - 3(0) + 6 \le 0 \implies 6 \le 0 \quad (\text{Noto'g'ri!})
 > $$
 >    
-> Demak, koordinata boshi $O(0,0)$ yotgan taraf emas, balki to'g'ri chiziqning $O(0,0)$ ga teskari bo'lgan yuqori yarim tekisligi talab qilingan soha bo'ladi.
+> Demak, koordinata boshi $O(0,0)$yotgan taraf emas, balki to'g'ri chiziqning$O(0,0)$ ga teskari bo'lgan yuqori yarim tekisligi talab qilingan soha bo'ladi.
 
 ---
 
@@ -85,15 +81,15 @@ Quyidagi jadval barcha 12 elementni topishning standart matematik formulasini ja
 |---|---|---|---|
 | **1** | Tomon to'g'ri chiziqlari ($AB, BC, AC$) | $\frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} \implies Ax + By + C = 0$ | 2 nuqtadan o'tuvchi to'g'ri chiziq |
 | **2** | Tomon uzunliklari | $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ | Pifagor teoremasi asosi |
-| **3** | Ichki burchaklar ($\cos \angle A, \dots$) | $\cos A = \frac{\vec{AB} \cdot \vec{AC}}{|\vec{AB}| \cdot |\vec{AC}|}$ | Vektorlar bitta uchdan chiquvchi bo'lishi shart |
-| **4** | Uchburchak yuzi $S$ | $S = \frac{1}{2} \left| \begin{vmatrix} x_2 - x_1 & y_2 - y_1 \\ x_3 - x_1 & y_3 - y_1 \end{vmatrix} \right|$ | 2-tartibli determinant moduli |
+| **3** | Ichki burchaklar ($\cos \angle A, \dots$) | $\cos A = \frac{\vec{AB} \cdot \vec{AC}}{\lvert\vec{AB}\rvert \cdot \lvert\vec{AC}\rvert}$ | Vektorlar bitta uchdan chiquvchi bo'lishi shart |
+| **4** | Uchburchak yuzi $S$ | $S = \frac{1}{2} \lvert (x_2 - x_1)(y_3 - y_1) - (x_3 - x_1)(y_2 - y_1) \rvert$ | 2-tartibli determinant moduli |
 | **5** | Balandlik tenglamasi ($h_A$) | $BC$ tomonga perpendikulyar va $A$ dan o'tadi: $\vec{s}_{h_A} = \vec{n}_{BC}$ | $\vec{n}_{BC} = (A_{BC}, B_{BC})$ yo'naltiruvchi bo'ladi |
-| **6** | Balandlik uzunligi ($|h_A|$) | $|h_A| = \frac{|A_{BC} x_1 + B_{BC} y_1 + C_{BC}|}{\sqrt{A_{BC}^2 + B_{BC}^2}} = \frac{2S}{|BC|}$ | Nuqtadan to'g'ri chiziqqacha masofa |
+| **6** | Balandlik uzunligi ($\lvert h_A \rvert$) | $\lvert h_A \rvert = \frac{\lvert A_{BC} x_1 + B_{BC} y_1 + C_{BC}\rvert}{\sqrt{A_{BC}^2 + B_{BC}^2}} = \frac{2S}{\lvert BC\rvert}$ | Nuqtadan to'g'ri chiziqqacha masofa |
 | **7** | Mediana tenglamasi va uzunligi | $M$ — tomon o'rtasi: $\left(\frac{x_2+x_3}{2}, \frac{y_2+y_3}{2}\right)$; $A$ va $M$ orqali o'tadi | Tomon o'rtasi va qarama-qarshi uch |
-| **8** | Bissektrisa tenglamasi | Bissektrisa qarama-qarshi tomonni yondosh tomonlarga proporsional bo'ladi | $\lambda = \frac{|AB|}{|AC|}$, $D = \frac{B + \lambda C}{1 + \lambda}$ |
+| **8** | Bissektrisa tenglamasi | Bissektrisa qarama-qarshi tomonni yondosh tomonlarga proporsional bo'ladi | $\lambda = \frac{\lvert AB\rvert}{\lvert AC\rvert}$, $D = \frac{B + \lambda C}{1 + \lambda}$ |
 | **9** | Og'irlik markazi (medianalar kesishishi $M$) | $x_M = \frac{x_1 + x_2 + x_3}{3}, \quad y_M = \frac{y_1 + y_2 + y_3}{3}$ | Medianalarni $2:1$ nisbatda bo'ladi |
 | **10** | Ortomarkaz (balandliklar kesishishi $H$) | Ikkita balandlik tenglamasining sistemasidan topiladi | $\begin{cases} h_A(x, y) = 0 \\ h_B(x, y) = 0 \end{cases}$ |
-| **11** | Tashqi aylana markazi ($O$) va radiusi ($R$) | Tomonlar o'rta perpendikulyarlari kesishmasi; $R = \frac{abc}{4S}$ | $R = |OA| = |OB| = |OC|$ |
+| **11** | Tashqi aylana markazi ($O$) va radiusi ($R$) | Tomonlar o'rta perpendikulyarlari kesishmasi; $R = \frac{abc}{4S}$ | $R = \lvert OA\rvert = \lvert OB\rvert = \lvert OC\rvert$ |
 | **12** | Ichki aylana radiusi ($r$) va simmetrik nuqta | $r = \frac{S}{p}$; $A$ ning $BC$ ga nisbatan simmetrik $A'$ nuqtasi | $H_A$ nuqta $AA'$ kesmaning o'rtasi |
 
 ---
@@ -119,9 +115,9 @@ Quyidagi jadval barcha 12 elementni topishning standart matematik formulasini ja
 > 9. $A$ burchak bissektrisasi tenglamasi;
 > 10. Uchburchakning og'irlik markazi $M$ (og'irlik markazi);
 > 11. Balandliklar kesishgan nuqta — ortomarkaz $H$;
-> 12. Tashqi chizilgan aylana markazi $O$ va radiusi $R$;
-> 13. Ichki chizilgan aylana radiusi $r$ va uning markazi $I$;
-> 14. $A$ nuqtaga $BC$ to'g'ri chizig'iga nisbatan simmetrik bo'lgan $A'$ nuqtaning koordinatalari;
+> 12. Tashqi chizilgan aylana markazi $O$va radiusi$R$;
+> 13. Ichki chizilgan aylana radiusi $r$va uning markazi$I$;
+> 14. $A$nuqtaga$BC$to'g'ri chizig'iga nisbatan simmetrik bo'lgan$A'$ nuqtaning koordinatalari;
 > 15. Uchburchakning ichki sohasini aniqlovchi chiziqli tengsizliklar sistemasini tuzing va sinov nuqtasi bilan tekshiring.
 
 ---
@@ -134,16 +130,14 @@ $$
 \frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1}
 $$
 
-1. **$AC$ tomoni:**
-   $A(1, 2)$ va $C(1, 8)$. Bu yerda $x_1 = x_2 = 1$. Demak, to'g'ri chiziq $Oy$ o'qiga parallel vertikal chiziqdir:
+1. **$AC$tomoni:**$A(1, 2)$va$C(1, 8)$. Bu yerda $x_1 = x_2 = 1$. Demak, to'g'ri chiziq $Oy$ o'qiga parallel vertikal chiziqdir:
    
 $$
    x - 1 = 0 \quad \text{yoki} \quad x = 1
    
 $$
 
-2. **$AB$ tomoni:**
-   $A(1, 2)$ va $B(5, 5)$ orqali:
+2. **$AB$tomoni:**$A(1, 2)$va$B(5, 5)$ orqali:
    
 $$
    \frac{x - 1}{5 - 1} = \frac{y - 2}{5 - 2} \implies \frac{x - 1}{4} = \frac{y - 2}{3}
@@ -156,8 +150,7 @@ $$
    
 $$
 
-3. **$BC$ tomoni:**
-   $B(5, 5)$ va $C(1, 8)$ orqali:
+3. **$BC$tomoni:**$B(5, 5)$va$C(1, 8)$ orqali:
    
 $$
    \frac{x - 5}{1 - 5} = \frac{y - 5}{8 - 5} \implies \frac{x - 5}{-4} = \frac{y - 5}{3}
@@ -183,7 +176,7 @@ $$
 - $|AB| = \sqrt{(5 - 1)^2 + (5 - 2)^2} = \sqrt{4^2 + 3^2} = \sqrt{16 + 9} = \sqrt{25} = 5$;
 - $|BC| = \sqrt{(1 - 5)^2 + (8 - 5)^2} = \sqrt{(-4)^2 + 3^2} = \sqrt{16 + 9} = 5$.
 
-> **Muhim xulosa:** $|AB| = |BC| = 5$ bo'lganligi sababli, $\triangle ABC$ — **asosiy tomoni $AC = 6$ bo'lgan teng yonli uchburchakdir!**
+> **Muhim xulosa:** $|AB| = |BC| = 5$bo'lganligi sababli,$\triangle ABC$— **asosiy tomoni$AC = 6$ bo'lgan teng yonli uchburchakdir!**
 > Bu fakt keyingi hisob-kitoblarimizni tekshirishda katta qulaylik yaratadi.
 
 Perimetr:
@@ -204,8 +197,7 @@ $$
 
 Burchak kosinusini topishda vektorlar yo'nalishiga qat'iy e'tibor berish lozim: ikkala vektor ham ko'rilayotgan uchdan **chiquvchi** bo'lishi shart!
 
-1. **$A$ burchak kosinusi:**
-   $\vec{AB} = (5 - 1, 5 - 2) = (4, 3)$, uzunligi $|\vec{AB}| = 5$.
+1. **$A$burchak kosinusi:**$\vec{AB} = (5 - 1, 5 - 2) = (4, 3)$, uzunligi $|\vec{AB}| = 5$.
    $\vec{AC} = (1 - 1, 8 - 2) = (0, 6)$, uzunligi $|\vec{AC}| = 6$.
    
 $$
@@ -226,8 +218,7 @@ $$
    
 $$
 
-3. **$B$ burchak kosinusi:**
-   $\vec{BA} = -\vec{AB} = (-4, -3)$, $\vec{BC} = (1 - 5, 8 - 5) = (-4, 3)$.
+3. **$B$burchak kosinusi:**$\vec{BA} = -\vec{AB} = (-4, -3)$, $\vec{BC} = (1 - 5, 8 - 5) = (-4, 3)$.
    
 $$
    \cos B = \frac{\vec{BA} \cdot \vec{BC}}{|\vec{BA}| \cdot |\vec{BC}|} = \frac{(-4)(-4) + (-3)(3)}{5 \cdot 5} = \frac{16 - 9}{25} = \frac{7}{25} = 0.28
@@ -262,7 +253,7 @@ $$
 $$
 
 3. **Asos va balandlik ko'paytmasi:**
-   $AC$ asosi vertikal bo'lib, uzunligi $6$ ga teng. $B(5, 5)$ uchidan $AC$ ($x=1$) to'g'ri chiziqqacha bo'lgan gorizontal masofa $h_B = 5 - 1 = 4$.
+   $AC$asosi vertikal bo'lib, uzunligi$6$ga teng.$B(5, 5)$uchidan$AC$ ($x=1$) to'g'ri chiziqqacha bo'lgan gorizontal masofa $h_B = 5 - 1 = 4$.
    
 $$
    S = \frac{1}{2} \cdot |AC| \cdot h_B = \frac{1}{2} \cdot 6 \cdot 4 = 12
@@ -273,8 +264,7 @@ $$
 
 ### 5-qadam: Balandliklar tenglamalari va uzunliklari
 
-1. **$B$ uchidan tushirilgan $h_B$ balandligi:**
-   $AC$ tomoni $x = 1$ vertikal to'g'ri chiziq bo'lgani uchun, unga perpendikulyar bo'lgan har qanday to'g'ri chiziq gorizontal bo'ladi, ya'ni uning tenglamasi $y = \text{const}$ ko'rinishida bo'ladi.
+1. **$B$uchidan tushirilgan$h_B$balandligi:**$AC$tomoni$x = 1$vertikal to'g'ri chiziq bo'lgani uchun, unga perpendikulyar bo'lgan har qanday to'g'ri chiziq gorizontal bo'ladi, ya'ni uning tenglamasi$y = \text{const}$ ko'rinishida bo'ladi.
    Ushbu balandlik $B(5, 5)$ nuqtadan o'tadi, binobarin:
    
 $$
@@ -288,17 +278,17 @@ $$
    
 $$
 
-2. **$A$ uchidan tushirilgan $h_A$ balandligi:**
-   U $BC$ tomonga perpendikulyar. $BC$ ning umumiy tenglamasi: $3x + 4y - 35 = 0$.
+2. **$A$uchidan tushirilgan$h_A$ balandligi:**
+   U $BC$tomonga perpendikulyar.$BC$ning umumiy tenglamasi:$3x + 4y - 35 = 0$.
    Uning normal vektori $\vec{n}_{BC} = (3, 4)$.
-   $BC$ ga perpendikulyar bo'lgan to'g'ri chiziqning normal vektori unga ortogonal bo'lishi kerak, masalan $\vec{n} = (4, -3)$.
+   $BC$ga perpendikulyar bo'lgan to'g'ri chiziqning normal vektori unga ortogonal bo'lishi kerak, masalan$\vec{n} = (4, -3)$.
    Chiziq $A(1, 2)$ nuqtadan o'tadi:
    
 $$
    4(x - 1) - 3(y - 2) = 0 \implies 4x - 4 - 3y + 6 = 0 \implies 4x - 3y + 2 = 0
    
 $$
-   Uzunligi: $A(1, 2)$ nuqtadan $3x + 4y - 35 = 0$ to'g'ri chiziqqacha masofa:
+   Uzunligi: $A(1, 2)$nuqtadan$3x + 4y - 35 = 0$ to'g'ri chiziqqacha masofa:
    
 $$
    h_A = \frac{|3(1) + 4(2) - 35|}{\sqrt{3^2 + 4^2}} = \frac{|3 + 8 - 35|}{\sqrt{25}} = \frac{|-24|}{5} = \frac{24}{5} = 4.8
@@ -310,20 +300,19 @@ $$
 
 ### 6-qadam: Medianalar tenglamalari va uzunliklari
 
-1. **$B$ uchidan o'tkazilgan $BM$ medianasi:**
-   $AC$ tomonining o'rtasi $M_B$:
+1. **$B$uchidan o'tkazilgan$BM$medianasi:**$AC$tomonining o'rtasi$M_B$:
    
 $$
    x_{M_B} = \frac{x_A + x_C}{2} = \frac{1 + 1}{2} = 1, \quad y_{M_B} = \frac{y_A + y_C}{2} = \frac{2 + 8}{2} = 5 \implies M_B(1, 5)
    
 $$
-   $B(5, 5)$ va $M_B(1, 5)$ orqali o'tuvchi to'g'ri chiziq:
+   $B(5, 5)$va$M_B(1, 5)$ orqali o'tuvchi to'g'ri chiziq:
    
 $$
    y = 5 \quad \text{yoki} \quad y - 5 = 0
    
 $$
-   > Teng yonli uchburchakda asosga tushirilgan balandlik, mediana va bissektrisa **ustma-ust tushadi!** Shuning uchun $BM$ mediana $h_B$ balandlik bilan bir xil to'g'ri chiziqdir.
+   > Teng yonli uchburchakda asosga tushirilgan balandlik, mediana va bissektrisa **ustma-ust tushadi!** Shuning uchun $BM$mediana$h_B$ balandlik bilan bir xil to'g'ri chiziqdir.
    
    Uzunligi:
    
@@ -332,14 +321,13 @@ $$
    
 $$
 
-2. **$A$ uchidan o'tkazilgan $AM_A$ medianasi:**
-   $BC$ tomonining o'rtasi $M_A$:
+2. **$A$uchidan o'tkazilgan$AM_A$medianasi:**$BC$tomonining o'rtasi$M_A$:
    
 $$
    x_{M_A} = \frac{5 + 1}{2} = 3, \quad y_{M_A} = \frac{5 + 8}{2} = \frac{13}{2} = 6.5 \implies M_A(3; 6.5)
    
 $$
-   $A(1, 2)$ va $M_A(3; 6.5)$ orqali o'tuvchi to'g'ri chiziq tenglamasi:
+   $A(1, 2)$va$M_A(3; 6.5)$ orqali o'tuvchi to'g'ri chiziq tenglamasi:
    
 $$
    \frac{x - 1}{3 - 1} = \frac{y - 2}{6.5 - 2} \implies \frac{x - 1}{2} = \frac{y - 2}{4.5} \implies \frac{x - 1}{2} = \frac{2(y - 2)}{9}
@@ -361,7 +349,7 @@ $$
 
 ### 7-qadam: $A$ burchak bissektrisasi tenglamasi
 
-Bissektrisa $BC$ tomonni $D(x_D, y_D)$ nuqtada kesib o'tsin. Bissektrisa xossasiga ko'ra, u qarama-qarshi tomonni yondosh tomonlarga mutanosib bo'laklarga ajratadi:
+Bissektrisa $BC$tomonni$D(x_D, y_D)$ nuqtada kesib o'tsin. Bissektrisa xossasiga ko'ra, u qarama-qarshi tomonni yondosh tomonlarga mutanosib bo'laklarga ajratadi:
 
 $$
 \frac{|BD|}{|DC|} = \frac{|AB|}{|AC|} = \frac{5}{6} = \lambda
@@ -377,7 +365,7 @@ $$
 y_D = \frac{y_B + \lambda y_C}{1 + \lambda} = \frac{5 + \frac{5}{6} \cdot 8}{1 + \frac{5}{6}} = \frac{5 + \frac{40}{6}}{\frac{11}{6}} = \frac{\frac{70}{6}}{\frac{11}{6}} = \frac{70}{11}
 $$
 
-Endi $A(1, 2)$ va $D\left(\frac{35}{11}, \frac{70}{11}\right)$ nuqtalardan o'tuvchi to'g'ri chiziq tenglamasini tuzamiz:
+Endi $A(1, 2)$va$D\left(\frac{35}{11}, \frac{70}{11}\right)$ nuqtalardan o'tuvchi to'g'ri chiziq tenglamasini tuzamiz:
 
 $$
 x_D - x_A = \frac{35}{11} - 1 = \frac{24}{11}, \quad y_D - y_A = \frac{70}{11} - 2 = \frac{48}{11}
@@ -414,8 +402,7 @@ $$
 ### 9-qadam: Ortomarkaz (balandliklar kesishishi $H$)
 
 Ortomarkazni topish uchun ikkita balandlik tenglamalaridan tuzilgan sistemani yechamiz:
-- $h_B$: $y = 5$
-- $h_A$: $4x - 3y + 2 = 0$
+- $h_B$: $y = 5$-$h_A$: $4x - 3y + 2 = 0$
 
 $y = 5$ qiymatini ikkinchi tenglamaga qo'yamiz:
 
@@ -431,13 +418,11 @@ $$
 
 ---
 
-### 10-qadam: Tashqi chizilgan aylana markazi $O$ va radiusi $R$
-
-Teng yonli uchburchakda tashqi aylana markazi simmetriya o'qi bo'lgan $y = 5$ to'g'ri chiziqda yotadi, shuning uchun $y_O = 5$.
+### 10-qadam: Tashqi chizilgan aylana markazi $O$va radiusi$R$Teng yonli uchburchakda tashqi aylana markazi simmetriya o'qi bo'lgan$y = 5$to'g'ri chiziqda yotadi, shuning uchun$y_O = 5$.
 
 $AB$ tomonning o'rtasidan o'tuvchi o'rta perpendikulyar tenglamasini tuzamiz:
-- $AB$ o'rtasi $M_C$: $x = \frac{1+5}{2} = 3, y = \frac{2+5}{2} = 3.5 \implies M_C(3; 3.5)$.
-- $AB$ ning yo'naltiruvchi vektori $\vec{s}_{AB} = (4, 3)$. O'rta perpendikulyar unga tik bo'lgani uchun, uning normal vektori $\vec{n} = (4, 3)$ bo'ladi.
+- $AB$o'rtasi$M_C$: $x = \frac{1+5}{2} = 3, y = \frac{2+5}{2} = 3.5 \implies M_C(3; 3.5)$.
+- $AB$ning yo'naltiruvchi vektori$\vec{s}_{AB} = (4, 3)$. O'rta perpendikulyar unga tik bo'lgani uchun, uning normal vektori $\vec{n} = (4, 3)$ bo'ladi.
 - O'rta perpendikulyar tenglamasi:
   
 $$
@@ -474,7 +459,7 @@ Hisob-kitob 100% to'g'ri!
 
 ---
 
-### 11-qadam: Ichki chizilgan aylana radiusi $r$ va markazi $I$
+### 11-qadam: Ichki chizilgan aylana radiusi $r$va markazi$I$
 
 Ichki aylana radiusi:
 
@@ -484,7 +469,7 @@ $$
 
 Ichki aylana markazi $I(x_I, y_I)$:
 1. U ham simmetriya o'qida yotadi: $y_I = 5$.
-2. U $AC$ ($x = 1$) to'g'ri chizig'iga urinadi. Uchburchak $x \ge 1$ yarim tekislikda joylashgani uchun markaz $AC$ dan o'ng tomonga $r = 1.5$ masofada bo'ladi:
+2. U $AC$ ($x = 1$) to'g'ri chizig'iga urinadi. Uchburchak $x \ge 1$yarim tekislikda joylashgani uchun markaz$AC$dan o'ng tomonga$r = 1.5$ masofada bo'ladi:
    
 $$
    x_I = 1 + r = 1 + 1.5 = 2.5 = \frac{5}{2}
@@ -499,10 +484,10 @@ $$
 
 ---
 
-### 12-qadam: $A(1, 2)$ uchining $BC$ tomonga nisbatan simmetrik nuqtasi $A'$
+### 12-qadam: $A(1, 2)$uchining$BC$tomonga nisbatan simmetrik nuqtasi$A'$
 
-$BC$ to'g'ri chizig'i: $3x + 4y - 35 = 0$.
-$A$ dan tushirilgan balandlik asosi $H_A(x, y)$ ni topish uchun sistemani yechamiz:
+$BC$to'g'ri chizig'i:$3x + 4y - 35 = 0$.
+$A$dan tushirilgan balandlik asosi$H_A(x, y)$ ni topish uchun sistemani yechamiz:
 
 $$
 \begin{cases}
@@ -511,7 +496,7 @@ $$
 \end{cases}
 $$
 
-Birinchi tenglamani $3$ ga, ikkinchisini $4$ ga ko'paytirib qo'shamiz:
+Birinchi tenglamani $3$ga, ikkinchisini$4$ ga ko'paytirib qo'shamiz:
 
 $$
 \begin{cases}
@@ -525,7 +510,7 @@ $$
 4(3.88) - 3y + 2 = 0 \implies 15.52 + 2 = 3y \implies 3y = 17.52 \implies y = 5.84 = \frac{146}{25}
 $$
 
-$H_A(3.88; 5.84)$ nuqta $A(1, 2)$ va qidirilayotgan $A'(x', y')$ nuqtalar kesmasining qoq o'rtasidir:
+$H_A(3.88; 5.84)$nuqta$A(1, 2)$va qidirilayotgan$A'(x', y')$ nuqtalar kesmasining qoq o'rtasidir:
 
 $$
 \frac{1 + x'}{2} = 3.88 \implies 1 + x' = 7.76 \implies x' = 6.76 = \frac{169}{25}
@@ -546,12 +531,8 @@ $$
 ### 13-qadam: Uchburchak sohasining chiziqli tengsizliklar sistemasi
 
 Uchburchak uchta to'g'ri chiziq bilan chegaralangan:
-1. $AC$: $x - 1 = 0$
-2. $AB$: $3x - 4y + 5 = 0$
-3. $BC$: $3x + 4y - 35 = 0$
-
-Uchburchak ichidagi sinov nuqtasi sifatida uning ichki markazi $I(2.5, 5)$ ni olamiz:
-1. $x - 1$: $2.5 - 1 = 1.5 > 0 \implies x - 1 \ge 0$ (yoki $x \ge 1$);
+1. $AC$: $x - 1 = 0$2.$AB$: $3x - 4y + 5 = 0$3.$BC$: $3x + 4y - 35 = 0$Uchburchak ichidagi sinov nuqtasi sifatida uning ichki markazi$I(2.5, 5)$ ni olamiz:
+1. $x - 1$: $2.5 - 1 = 1.5 > 0 \implies x - 1 \ge 0$(yoki$x \ge 1$);
 2. $3x - 4y + 5$: $3(2.5) - 4(5) + 5 = 7.5 - 20 + 5 = -7.5 < 0 \implies 3x - 4y + 5 \le 0$;
 3. $3x + 4y - 35$: $3(2.5) + 4(5) - 35 = 7.5 + 20 - 35 = -7.5 < 0 \implies 3x + 4y - 35 \le 0$.
 
@@ -570,11 +551,11 @@ $$
 ## 5. Imtihondagi asosiy tuzoqlar va xatolar
 
 1. **Burchak kosinusida vektor yo'nalishini adashtirish:**
-   $\angle A$ burchakni topayotganda $\vec{AB}$ va $\vec{AC}$ vektorlarini olish shart. Agar talaba e'tiborsizlik qilib $\vec{BA}$ va $\vec{AC}$ ni olsa, burchak kosinusi manfiy bo'lib chiqadi va ichki burchak o'rniga tashqi qo'shni burchak topib qo'yiladi!
+   $\angle A$burchakni topayotganda$\vec{AB}$va$\vec{AC}$vektorlarini olish shart. Agar talaba e'tiborsizlik qilib$\vec{BA}$va$\vec{AC}$ ni olsa, burchak kosinusi manfiy bo'lib chiqadi va ichki burchak o'rniga tashqi qo'shni burchak topib qo'yiladi!
 2. **Bissektrisada proporsiya yo'nalishi:**
-   $\frac{|BD|}{|DC|} = \frac{|AB|}{|AC|}$ nisbatda uchlar tartibiga e'tibor bering: suratda $B$ bo'lsa, o'ng tomonda ham $B$ qatnashgan tomon $|AB|$ bo'lishi shart.
+   $\frac{|BD|}{|DC|} = \frac{|AB|}{|AC|}$nisbatda uchlar tartibiga e'tibor bering: suratda$B$bo'lsa, o'ng tomonda ham$B$qatnashgan tomon$|AB|$ bo'lishi shart.
 3. **Balandlik tenglamasida normal va yo'naltiruvchi vektor:**
-   To'g'ri chiziq $Ax + By + C = 0$ ga perpendikulyar bo'lgan chiziqning tenglamasi $Bx - Ay + D = 0$ ko'rinishida yoziladi (koeffitsiyentlar o'rni almashadi va birining ishorasi teskarisiga o'zgaradi).
+   To'g'ri chiziq $Ax + By + C = 0$ga perpendikulyar bo'lgan chiziqning tenglamasi$Bx - Ay + D = 0$ ko'rinishida yoziladi (koeffitsiyentlar o'rni almashadi va birining ishorasi teskarisiga o'zgaradi).
 
 ---
 
@@ -590,8 +571,8 @@ Uchburchak uchlari berilgan: $A(-2, 1)$, $B(2, 4)$, $C(6, 1)$.
 ### 2-masala
 $A(0, 0)$, $B(3, 4)$, $C(6, 0)$ uchburchagining:
 1. Ichki burchaklari kosinuslarini toping;
-2. Ichki chizilgan va tashqi chizilgan aylanalar radiuslari ($r$ va $R$) ni toping;
-3. Og'irlik markazi $M$ va ortomarkaz $H$ koordinatalarini aniqlang.
+2. Ichki chizilgan va tashqi chizilgan aylanalar radiuslari ($r$va$R$) ni toping;
+3. Og'irlik markazi $M$va ortomarkaz$H$ koordinatalarini aniqlang.
 
 ---
 
@@ -599,8 +580,8 @@ $A(0, 0)$, $B(3, 4)$, $C(6, 0)$ uchburchagining:
 
 #### 1-masala:
 - Tomonlar: $AB: 3x - 4y + 10 = 0$; $BC: 3x + 4y - 18 = 0$; $AC: y = 1$ ($y - 1 = 0$).
-- $AC$ tomon uzunligi $8$, $AB = 5$, $BC = 5$. Teng yonli uchburchak.
-- $B$ dan tushirilgan balandlik va mediana: $x = 2$ ($x - 2 = 0$), uzunligi $h_B = m_B = 3$.
+- $AC$tomon uzunligi$8$, $AB = 5$, $BC = 5$. Teng yonli uchburchak.
+- $B$dan tushirilgan balandlik va mediana:$x = 2$ ($x - 2 = 0$), uzunligi $h_B = m_B = 3$.
 - $S = \frac{1}{2} \cdot 8 \cdot 3 = 12$, $P = 5 + 5 + 8 = 18$.
 - Tengsizliklar sistemasi: $\begin{cases} y \ge 1 \\ 3x - 4y + 10 \ge 0 \\ 3x + 4y - 18 \le 0 \end{cases}$
 

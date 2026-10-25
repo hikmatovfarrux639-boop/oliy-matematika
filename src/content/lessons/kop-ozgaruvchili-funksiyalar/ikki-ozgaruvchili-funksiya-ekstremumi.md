@@ -16,7 +16,7 @@ Bir o'zgaruvchili funksiyalarda tepalik yoki vodiy bitta o'q bo'ylab qidirilsa, 
 ## 1. Ekstremumning zaruriy sharti (Statsionar nuqtalar)
 
 > **Ferma teoremasi:**
-> Agar $z = f(x, y)$ funksiya differensiallanuvchi bo'lib, $M_0(x_0, y_0)$ nuqtada lokal ekstremumga (minimum yoki maksimumga) erishsa, bu nuqtada uning birinchi tartibli barcha xususiy hosilalari **nolga teng** bo'ladi:
+> Agar $z = f(x, y)$funksiya differensiallanuvchi bo'lib,$M_0(x_0, y_0)$ nuqtada lokal ekstremumga (minimum yoki maksimumga) erishsa, bu nuqtada uning birinchi tartibli barcha xususiy hosilalari **nolga teng** bo'ladi:
 >
 > 
 $$
@@ -50,8 +50,8 @@ $$
 
 ### Qaror qabul qilish qoidalari:
 1. **Agar $\Delta > 0$ bo'lsa — EKSTREMUM MAVJUD:**
-   - agar $A > 0$ (yoki $C > 0$) bo'lsa $\implies$ **Lokal minimum** ($z_{\min}$);
-   - agar $A < 0$ (yoki $C < 0$) bo'lsa $\implies$ **Lokal maksimum** ($z_{\max}$).
+   - agar $A > 0$(yoki$C > 0$) bo'lsa $\implies$ **Lokal minimum** ($z_{\min}$);
+   - agar $A < 0$(yoki$C < 0$) bo'lsa $\implies$ **Lokal maksimum** ($z_{\max}$).
 2. **Agar $\Delta < 0$ bo'lsa — EKSTREMUM MAVJUD EMAS:**
    - Bu nuqta **egar nuqtasi** (saddle point) deyiladi (bitta yo'nalish bo'yicha minimum, boshqa yo'nalish bo'yicha maksimum).
 3. **Agar $\Delta = 0$ bo'lsa — NOANIQ HOLAT:**
@@ -62,7 +62,7 @@ $$
 ## 3. Shartli ekstremum va Lagranj ko'paytuvchilari
 
 Ko'pincha argumentlar biror cheklov (bog'lanish tenglamasi) bilan cheklangan bo'ladi:
-$z = f(x, y)$ funksiyaning $\varphi(x, y) = 0$ shartdagi ekstremumini topish talab etiladi.
+$z = f(x, y)$funksiyaning$\varphi(x, y) = 0$ shartdagi ekstremumini topish talab etiladi.
 
 ### 1. Lagranj funksiyasini tuzish:
 $$
@@ -83,10 +83,10 @@ $$
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** $x + 2y = 12$ shartida $z = x \cdot y$ ko'paytmaning eng katta (maksimal) qiymatini toping ($x > 0, y > 0$).
+> **Masala:** $x + 2y = 12$shartida$z = x \cdot y$ ko'paytmaning eng katta (maksimal) qiymatini toping ($x > 0, y > 0$).
 
 ### 1-usul: Bir o'zgaruvchini yo'qotish usuli (Klassik analiz)
-Bog'lanish tenglamasidan $x$ ni $y$ orqali ifodalaymiz:
+Bog'lanish tenglamasidan $x$ni$y$ orqali ifodalaymiz:
 $$
 x = 12 - 2y
 $$
@@ -122,7 +122,7 @@ L'_y = x + 2\lambda = 0 \implies x = -2\lambda \\
 L'_\lambda = x + 2y - 12 = 0
 \end{cases}
 $$
-$\lambda = -y$ ni ikkinchisiga qo'ysak: $x = -2(-y) = 2y$.
+$\lambda = -y$ni ikkinchisiga qo'ysak:$x = -2(-y) = 2y$.
 Buni uchinchi tenglamaga qo'yamiz:
 $$
 2y + 2y - 12 = 0 \implies 4y = 12 \implies \mathbf{y = 3}
@@ -135,15 +135,15 @@ $$
 z_{\max} = 6 \cdot 3 = \mathbf{18}
 $$
 
-*Xulosa:* Ikkala usul ham mutlaqo bir xil $z_{\max} = 18$ natijani berdi! Ammo bog'lanish tenglamasidan o'zgaruvchini ajratib olish qiyin bo'lgan murakkab hollarda (masalan, $x^3 + y^3 - 3xy = 0$) aynan 2-usul — Lagranj ko'paytuvchilari usuli tengsiz qurolga aylanadi.
+*Xulosa:* Ikkala usul ham mutlaqo bir xil $z_{\max} = 18$natijani berdi! Ammo bog'lanish tenglamasidan o'zgaruvchini ajratib olish qiyin bo'lgan murakkab hollarda (masalan,$x^3 + y^3 - 3xy = 0$) aynan 2-usul — Lagranj ko'paytuvchilari usuli tengsiz qurolga aylanadi.
 
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Gesse determinanti belgisini adashtirish:**
 >    Kvadrat tenglama diskriminanti ($D = b^2 - 4ac$) bilan Gesse determinantini ($\Delta = AC - B^2$) aslo adashtirmang! Ekstremum mavjud bo'lishi uchun aynan $\Delta = AC - B^2 > 0$ bo'lishi shart!
-> 2. **Har xil ishorali $A$ va $C$:**
->    Agar $A = z''_{xx} > 0$ va $C = z''_{yy} < 0$ bo'lsa, ularning ko'paytmasi $AC < 0$ bo'ladi. U holda $\Delta = AC - B^2$ har doim manfiy bo'ladi ($\Delta < 0$)! Demak, bunday statsionar nuqtada hech qachon ekstremum bo'lmaydi — u darhol egar nuqtasi deb topiladi.
+> 2. **Har xil ishorali $A$va$C$:**
+>    Agar $A = z''_{xx} > 0$va$C = z''_{yy} < 0$bo'lsa, ularning ko'paytmasi$AC < 0$bo'ladi. U holda$\Delta = AC - B^2$ har doim manfiy bo'ladi ($\Delta < 0$)! Demak, bunday statsionar nuqtada hech qachon ekstremum bo'lmaydi — u darhol egar nuqtasi deb topiladi.
 > 3. **Yopiq sohadagi eng katta/eng kichik qiymat:**
 >    Agar berilgan sohada eng katta va eng kichik qiymat so'ralsa, faqat ichki statsionar nuqtalarni tekshirish yetarli emas! Funksiyaning soha chegarasidagi qiymatlarini ham alohida tekshirish shart.
 
@@ -152,35 +152,80 @@ $$
 ## Mustaqil yechish uchun amaliy mashqlar
 
 1. $z = x^2 + xy + y^2 - 3x - 6y$ funksiyaning statsionar nuqtasini toping va uni ekstremumga tekshiring.
-2. $z = 2x^3 + xy^2 + 5x^2 + y^2$ funksiyaning $(0, 0)$ statsionar nuqtasidagi xarakterini (Gesse mezoni orqali) aniqlang.
-3. $x^2 + y^2 = 1$ birlik aylanada $z = x + y$ funksiyaning eng katta va eng kichik qiymatlarini Lagranj usuli yordamida toping.
+2. $z = 2x^3 + xy^2 + 5x^2 + y^2$funksiyaning$(0, 0)$ statsionar nuqtasidagi xarakterini (Gesse mezoni orqali) aniqlang.
+3. $x^2 + y^2 = 1$birlik aylanada$z = x + y$ funksiyaning eng katta va eng kichik qiymatlarini Lagranj usuli yordamida toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); line-height: 1.7;">
-    <p><strong>1-masala:</strong></p>
-    <p>1) Statsionar sistema: $z'_x = 2x + y - 3 = 0, \quad z'_y = x + 2y - 6 = 0$.</p>
-    <p>$y = 3 - 2x \implies x + 2(3 - 2x) - 6 = 0 \implies -3x = 0 \implies x = 0, y = 3$. Statsionar nuqta: $M(0, 3)$.</p>
-    <p>2) 2-hosilalar: $A = z''_{xx} = 2, \quad B = z''_{xy} = 1, \quad C = z''_{yy} = 2$.</p>
-    <p>3) $\Delta = AC - B^2 = 2(2) - 1^2 = 4 - 1 = 3 > 0$.</p>
-    <p>$\Delta > 0$ va $A = 2 > 0$ bo'lgani uchun $M(0, 3)$ nuqtada **lokal minimum** mavjud: $z_{\min} = 0 + 0 + 9 - 0 - 18 = \mathbf{-9}$.</p>
+<summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
+
+**1-masala:**
+
+    
+
+1) Statsionar sistema: $z'_x = 2x + y - 3 = 0, \quad z'_y = x + 2y - 6 = 0$.
+
+    
+
+$y = 3 - 2x \implies x + 2(3 - 2x) - 6 = 0 \implies -3x = 0 \implies x = 0, y = 3$. Statsionar nuqta: $M(0, 3)$.
+
+    
+
+2) 2-hosilalar: $A = z''_{xx} = 2, \quad B = z''_{xy} = 1, \quad C = z''_{yy} = 2$.
+
+    
+
+3) $\Delta = AC - B^2 = 2(2) - 1^2 = 4 - 1 = 3 > 0$.
+
+    
+
+$\Delta > 0$va$A = 2 > 0$bo'lgani uchun$M(0, 3)$nuqtada **lokal minimum** mavjud:$z_{\min} = 0 + 0 + 9 - 0 - 18 = \mathbf{-9}$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>2-masala:</strong></p>
-    <p>$z'_x = 6x^2 + y^2 + 10x$, $z'_y = 2xy + 2y$. Nuqta $(0, 0)$ da ikkalasi ham nol.</p>
-    <p>$z''_{xx} = 12x + 10 \implies A = 10$.</p>
-    <p>$z''_{xy} = 2y \implies B = 0$.</p>
-    <p>$z''_{yy} = 2x + 2 \implies C = 2$.</p>
-    <p>$\Delta = AC - B^2 = 10(2) - 0 = 20 > 0$. $A = 10 > 0$ bo'lgani sababli $(0, 0)$ nuqtada **lokal minimum** bor: $z_{\min} = 0$.</p>
+    
+
+**2-masala:**
+
+    
+
+$z'_x = 6x^2 + y^2 + 10x$, $z'_y = 2xy + 2y$. Nuqta $(0, 0)$da ikkalasi ham nol.$z''_{xx} = 12x + 10 \implies A = 10$.
+
+    
+
+$z''_{xy} = 2y \implies B = 0$.
+
+    
+
+$z''_{yy} = 2x + 2 \implies C = 2$.
+
+    
+
+$\Delta = AC - B^2 = 10(2) - 0 = 20 > 0$. $A = 10 > 0$bo'lgani sababli$(0, 0)$nuqtada **lokal minimum** bor:$z_{\min} = 0$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
-    <p><strong>3-masala:</strong></p>
-    <p>$L = x + y + \lambda(x^2 + y^2 - 1)$.</p>
-    <p>$L'_x = 1 + 2\lambda x = 0 \implies x = -\frac{1}{2\lambda}$.</p>
-    <p>$L'_y = 1 + 2\lambda y = 0 \implies y = -\frac{1}{2\lambda} \implies x = y$.</p>
-    <p>$x^2 + x^2 = 1 \implies 2x^2 = 1 \implies x = \pm\frac{1}{\sqrt{2}} \implies y = \pm\frac{1}{\sqrt{2}}$.</p>
-    <p>Qiymatlar: $z_{\max} = \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}} = \mathbf{\sqrt{2}}$, $z_{\min} = -\mathbf{\sqrt{2}}$.</p>
-  </div>
+    
+
+**3-masala:**
+
+    
+
+$L = x + y + \lambda(x^2 + y^2 - 1)$.
+
+    
+
+$L'_x = 1 + 2\lambda x = 0 \implies x = -\frac{1}{2\lambda}$.
+
+    
+
+$L'_y = 1 + 2\lambda y = 0 \implies y = -\frac{1}{2\lambda} \implies x = y$.
+
+    
+
+$x^2 + x^2 = 1 \implies 2x^2 = 1 \implies x = \pm\frac{1}{\sqrt{2}} \implies y = \pm\frac{1}{\sqrt{2}}$.
+
+    
+
+Qiymatlar: $z_{\max} = \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}} = \mathbf{\sqrt{2}}$, $z_{\min} = -\mathbf{\sqrt{2}}$.
+
 </details>

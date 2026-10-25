@@ -5,7 +5,7 @@ order: 9
 description: "Kompleks o'zgaruvchili funksiyalarning Loran qatoriga yoyilishi, yakkalangan maxsus nuqtalar tasnifi va chegirmalar yordamida murakkab kontur integrallarini bir zumda hisoblash."
 ---
 
-Matematik analizda Teylor qatori funksiyani uning **differensiallanuvchi (analitik)** sohasida qatorga yoyish imkonini beradi. Ammo agar funksiya biror nuqtada nolga bo'linsa yoki uzilishga ega bo'lsa (masalan, $f(z) = \frac{1}{z(z-1)}$ funksiya $z=0$ va $z=1$ da), Teylor qatori ojiz qoladi.
+Matematik analizda Teylor qatori funksiyani uning **differensiallanuvchi (analitik)** sohasida qatorga yoyish imkonini beradi. Ammo agar funksiya biror nuqtada nolga bo'linsa yoki uzilishga ega bo'lsa (masalan, $f(z) = \frac{1}{z(z-1)}$funksiya$z=0$va$z=1$ da), Teylor qatori ojiz qoladi.
 
 Aynan shunday singulyar (maxsus) nuqtalar atrofida funksiyalarni tadqiq qilish uchun 1843-yilda fransuz matematigi **Pyer Alfons Loran** o'zining mashhur qatorini kashf etdi. Uning asosida vujudga kelgan **Chegirmalar (vychetlar) nazariyasi** esa hatto haqiqiy o'qdagi hisoblab bo'lmaydigan eng dahshatli integrallarni ham 2-3 qatorda yechish imkonini beradi!
 
@@ -13,7 +13,7 @@ Aynan shunday singulyar (maxsus) nuqtalar atrofida funksiyalarni tadqiq qilish u
 
 ## 1. Loran qatori tushunchasi
 
-Aytaylik, $f(z)$ funksiya $z_0$ markazli konsentrik halqada analitik bo'lsin:
+Aytaylik, $f(z)$funksiya$z_0$ markazli konsentrik halqada analitik bo'lsin:
 $$
 V = \{z \in \mathbb{C} : r < |z - z_0| < R\}
 $$
@@ -46,7 +46,7 @@ Loran qatorining bosh qismidagi hadlar soniga qarab $z_0$ maxsus nuqtasi 3 ta tu
 | Maxsus nuqta turi | Loran qatorining bosh qismi | Limit $\lim_{z \to z_0} f(z)$ | Misol |
 | :--- | :--- | :--- | :--- |
 | **1. Yo'qotiladigan maxsus nuqta** | Bosh qismi umuman yo'q ($c_{-n} = 0, \forall n \ge 1$) | Chekli son mavjud | $f(z) = \frac{\sin z}{z} = 1 - \frac{z^2}{6} + \dots$ |
-| **2. $m$-tartibli qutb (Polyus)** | Chekli sondagi manfiy hadlar mavjud ($c_{-m} \neq 0$) | $\lim_{z \to z_0} f(z) = \infty$ | $f(z) = \frac{1}{(z - 2)^3} + \frac{5}{z - 2}$ |
+| **2. $m$-tartibli qutb (Polyus)** | Chekli sondagi manfiy hadlar mavjud ($c_{-m} \neq 0$) | $\lim_{z \to z_0} f(z) = \infty$|$f(z) = \frac{1}{(z - 2)^3} + \frac{5}{z - 2}$ |
 | **3. Muhim maxsus nuqta** | Cheksiz ko'p manfiy darajali hadlar mavjud | Limit umuman mavjud emas | $f(z) = e^{1/z} = 1 + \frac{1}{z} + \frac{1}{2! z^2} + \dots$ |
 
 ---
@@ -66,7 +66,7 @@ $$
    \operatorname{Res}[f(z), z_0] = \lim_{z \to z_0} (z - z_0) f(z)
    
 $$
-   Yoki agar $f(z) = \frac{\varphi(z)}{\psi(z)}$ bo'lib, $\varphi(z_0) \neq 0$ va $\psi(z_0) = 0, \psi'(z_0) \neq 0$ bo'lsa:
+   Yoki agar $f(z) = \frac{\varphi(z)}{\psi(z)}$bo'lib,$\varphi(z_0) \neq 0$va$\psi(z_0) = 0, \psi'(z_0) \neq 0$ bo'lsa:
    
 $$
    \operatorname{Res}[f(z), z_0] = \frac{\varphi(z_0)}{\psi'(z_0)}
@@ -84,7 +84,7 @@ $$
 
 ## 4. Koshi chegirmalar haqidagi asosiy teoremasi
 
-Agar $f(z)$ funksiya berk $C$ konturda va uning ichida chekli sondagi $z_1, z_2, \dots, z_k$ maxsus nuqtalardan tashqari hamma joyda analitik bo'lsa, u holda:
+Agar $f(z)$funksiya berk$C$konturda va uning ichida chekli sondagi$z_1, z_2, \dots, z_k$ maxsus nuqtalardan tashqari hamma joyda analitik bo'lsa, u holda:
 $$
 \oint_C f(z) \, dz = 2\pi i \sum_{k=1}^n \operatorname{Res}[f(z), z_k]
 $$
@@ -95,11 +95,11 @@ Bu teorema murakkab kompleks integrallarni faqatgina qutblardagi chegirmalarni t
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** $\oint_{|z| = 2} \frac{e^z}{z(z - 1)} \, dz$ integralini hisoblang. Integrallash konturi — markazi $0$ da, radiusi $R = 2$ bo'lgan aylana.
+> **Masala:** $\oint_{|z| = 2} \frac{e^z}{z(z - 1)} \, dz$integralini hisoblang. Integrallash konturi — markazi$0$da, radiusi$R = 2$ bo'lgan aylana.
 
 ### 1-usul: Chegirmalar teoremasi yordamida (Standart va universal)
 1. Maxsus nuqtalarni topamiz: maxraj $z(z - 1) = 0 \implies z_1 = 0, z_2 = 1$.
-2. Ikkala nuqta ham $|z| = 2$ aylananing ichida yotadi: $|0| = 0 < 2$ va $|1| = 1 < 2$. Ikkalasi ham 1-tartibli oddiy qutbdir.
+2. Ikkala nuqta ham $|z| = 2$aylananing ichida yotadi:$|0| = 0 < 2$va$|1| = 1 < 2$. Ikkalasi ham 1-tartibli oddiy qutbdir.
 3. $z_1 = 0$ nuqtadagi chegirma:
    
 $$
@@ -124,7 +124,7 @@ $\frac{1}{z(z - 1)} = \frac{1}{z - 1} - \frac{1}{z}$ ekanligidan:
 $$
 \oint_{|z|=2} \frac{e^z}{z(z-1)} dz = \oint_{|z|=2} \frac{e^z}{z-1} dz - \oint_{|z|=2} \frac{e^z}{z} dz
 $$
-Koshi formulasi: $\oint_C \frac{g(z)}{z - z_0} dz = 2\pi i \cdot g(z_0)$ (bu yerda $g(z) = e^z$ butun tekislikda analitik).
+Koshi formulasi: $\oint_C \frac{g(z)}{z - z_0} dz = 2\pi i \cdot g(z_0)$(bu yerda$g(z) = e^z$ butun tekislikda analitik).
 - 1-integral: $2\pi i \cdot e^1 = 2\pi i e$;
 - 2-integral: $2\pi i \cdot e^0 = 2\pi i$;
 - Ayirmasi: $2\pi i e - 2\pi i = 2\pi i (e - 1)$.
@@ -134,13 +134,13 @@ Koshi formulasi: $\oint_C \frac{g(z)}{z - z_0} dz = 2\pi i \cdot g(z_0)$ (bu yer
 ---
 
 > [!WARNING] Imtihondagi eng xavfli tuzoqlar
-> 1. **Konturdan tashqaridagi nuqtalarni hisobga olish:** Agar integral $\oint_{|z| = 0.5} \frac{e^z}{z(z-1)} dz$ bo'lsa, $z=1$ nuqta aylana tashqarisida qoladi! Tashqaridagi nuqtalar chegirmalar yig'indisiga kiritilmaydi (faqat $z=0$ olinadi: $2\pi i (-1)$).
-> 2. **Karrali qutbda $\frac{1}{(m-1)!}$ ko'paytuvchini unutish:** Masalan, $(z-2)^3$ bo'lsa, $m=3$ va oldida $\frac{1}{2!} = \frac{1}{2}$ turishi shart.
+> 1. **Konturdan tashqaridagi nuqtalarni hisobga olish:** Agar integral $\oint_{|z| = 0.5} \frac{e^z}{z(z-1)} dz$bo'lsa,$z=1$nuqta aylana tashqarisida qoladi! Tashqaridagi nuqtalar chegirmalar yig'indisiga kiritilmaydi (faqat$z=0$olinadi:$2\pi i (-1)$).
+> 2. **Karrali qutbda $\frac{1}{(m-1)!}$ko'paytuvchini unutish:** Masalan,$(z-2)^3$bo'lsa,$m=3$va oldida$\frac{1}{2!} = \frac{1}{2}$ turishi shart.
 
 ---
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $f(z) = \frac{1 - \cos z}{z^3}$ funksiyaning $z = 0$ nuqtadagi maxsuslik turini va chegirmasini aniqlang.
+1. $f(z) = \frac{1 - \cos z}{z^3}$funksiyaning$z = 0$ nuqtadagi maxsuslik turini va chegirmasini aniqlang.
 2. $\oint_{|z| = 3} \frac{z^2 + 1}{(z - 1)^2 (z + 2)} \, dz$ integralini chegirmalar yordamida hisoblang.
-3. Haqiqiy o'qdagi $\int_{-\infty}^{+\infty} \frac{dx}{x^2 + 1}$ integralini yarim tekislikdagi kontur va chegirmalar yordamida hisoblab, $\pi$ chiqishini isbotlang.
+3. Haqiqiy o'qdagi $\int_{-\infty}^{+\infty} \frac{dx}{x^2 + 1}$integralini yarim tekislikdagi kontur va chegirmalar yordamida hisoblab,$\pi$ chiqishini isbotlang.

@@ -31,14 +31,14 @@ $$
 
 bu yerda:
 - **$\Delta$ (Asosiy determinant):** Noma'lumlar oldidagi koeffitsiyentlardan tuzilgan determinant;
-- **$\Delta_j$ (Yordamchi determinant):** Asosiy determinantdagi $j$-ustun o'rniga **ozod hadlar ustuni ($B$)** qo'yilgan determinant.
+- **$\Delta_j$(Yordamchi determinant):** Asosiy determinantdagi$j$-ustun o'rniga **ozod hadlar ustuni ($B$)** qo'yilgan determinant.
 
 ---
 
 ## 3. Agar $\Delta = 0$ bo'lsa nima bo'ladi?
 
 > [!CAUTION]
-> Agar asosiy determinant $\Delta = 0$ bo'lsa, Kramer formulasidagi maxraj $0$ ga aylanadi. Nolga bo'lish mumkin bo'lmagani uchun:
+> Agar asosiy determinant $\Delta = 0$bo'lsa, Kramer formulasidagi maxraj$0$ ga aylanadi. Nolga bo'lish mumkin bo'lmagani uchun:
 > 1. Agar barcha $\Delta_1 = \Delta_2 = \dots = \Delta_n = 0$ bo'lsa — sistema **cheksiz ko'p yechimga ega** bo'lishi mumkin (yoki yechimga ega emas).
 > 2. Agar yordamchi determinantlardan kamida bittasi noldan farqli bo'lsa (masalan, $\Delta_1 \neq 0$) — sistema **yechimga ega emas**!
 > Bunday vaziyatda darhol **Gauss usuli**ga o'tish shart!
@@ -127,4 +127,5 @@ $$
 2-tenglamaga qo'yamiz: $3(2) + 2(-1) + 2(-3) = 6 - 2 - 6 = -2$ (To'g'ri!)
 
 **Javob:** $x = 2, \; y = -1, \; z = -3$.
+
 </details>

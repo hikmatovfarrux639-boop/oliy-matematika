@@ -1,5 +1,5 @@
 ---
-title: "Pirson $\\chi^2$ (xi-kvadrat) moslik mezoni va Gipotezalarni tekshirish"
+title: "Pirson χ² (xi-kvadrat) moslik mezoni va Gipotezalarni tekshirish"
 module: "matematik-statistika"
 order: 6
 description: "Empirik ma'lumotlarning nazariy taqsimotga (normal, Puasson, tekis) mosligini Pirson xi-kvadrat mezoni yordamida tekshirish, erkinlik darajalari va kritik sohani aniqlash."
@@ -23,9 +23,9 @@ Ushbu muammolarni hal qilish uchun ingliz olimi **Karl Pirson 1900-yilda $\chi^2
 
 ## 2. Pirson $\chi^2$ kuzatilgan qiymati formulasi
 
-Aytaylik, $n$ ta kuzatuv natijasida $k$ ta guruh (interval) bo'yicha ma'lumotlar olindi:
-- $n_i$ — $i$-intervaldagi **empirik (amaliy kuzatilgan)** chastota;
-- $n'_i = n \cdot p_i$ — $H_0$ gipoteza asosida hisoblangan **nazariy (kutilgan)** chastota (bu yerda $p_i$ — tasodifiy miqdorning shu intervalga tushish ehtimoli).
+Aytaylik, $n$ta kuzatuv natijasida$k$ ta guruh (interval) bo'yicha ma'lumotlar olindi:
+- $n_i$—$i$-intervaldagi **empirik (amaliy kuzatilgan)** chastota;
+- $n'_i = n \cdot p_i$—$H_0$gipoteza asosida hisoblangan **nazariy (kutilgan)** chastota (bu yerda$p_i$ — tasodifiy miqdorning shu intervalga tushish ehtimoli).
 
 Karl Pirson kashf etgan test statistikasi:
 $$
@@ -40,20 +40,20 @@ $$
 
 ## 3. Erkinlik darajasi ($k - r - 1$) va Qaror qabul qilish qoidasi
 
-Kritik qiymat $\chi^2_{\text{krit}}(\alpha, \nu)$ maxsus $\chi^2$-jadvalidan quyidagi **erkinlik darajasi** $\nu$ bo'yicha topiladi:
+Kritik qiymat $\chi^2_{\text{krit}}(\alpha, \nu)$maxsus$\chi^2$-jadvalidan quyidagi **erkinlik darajasi** $\nu$ bo'yicha topiladi:
 $$
 \nu = k - r - 1
 $$
 bu yerda:
 - $k$ — intervallar (guruhlar) soni;
 - $r$ — empirik ma'lumotlar bo'yicha baholangan noma'lum parametrlar soni:
-  - Tekis taqsimot uchun: $r = 0$ (yoki chegaralar baholansa $r=2$);
-  - Puasson taqsimoti uchun: $r = 1$ (faqat $\lambda = \bar{x}$ baholanadi);
-  - Normal taqsimot uchun: $r = 2$ (ikkita parametr $\mu = \bar{x}$ va $\sigma = s$ baholanadi).
+  - Tekis taqsimot uchun: $r = 0$(yoki chegaralar baholansa$r=2$);
+  - Puasson taqsimoti uchun: $r = 1$(faqat$\lambda = \bar{x}$ baholanadi);
+  - Normal taqsimot uchun: $r = 2$(ikkita parametr$\mu = \bar{x}$va$\sigma = s$ baholanadi).
 
 ### Qaror qabul qilish mezoni:
-1. Agar $\mathbf{\chi^2_{\text{kuz}} \le \chi^2_{\text{krit}}}$ bo'lsa — **Nol gipoteza $H_0$ qabul qilinadi** (farqlar tasodifiy, taqsimot qonuniyati mos keladi).
-2. Agar $\mathbf{\chi^2_{\text{kuz}} > \chi^2_{\text{krit}}}$ bo'lsa — **Nol gipoteza $H_0$ rad etiladi** va $H_1$ qabul qilinadi (amaliy natijalar nazariyaga mos kelmaydi).
+1. Agar $\mathbf{\chi^2_{\text{kuz}} \le \chi^2_{\text{krit}}}$bo'lsa — **Nol gipoteza$H_0$ qabul qilinadi** (farqlar tasodifiy, taqsimot qonuniyati mos keladi).
+2. Agar $\mathbf{\chi^2_{\text{kuz}} > \chi^2_{\text{krit}}}$bo'lsa — **Nol gipoteza$H_0$rad etiladi** va$H_1$ qabul qilinadi (amaliy natijalar nazariyaga mos kelmaydi).
 
 ---
 
@@ -79,14 +79,14 @@ $$
 $$
 3. Pirson statistikasini hisoblash jadvali:
 
-| $i$ | $n_i$ | $n'_i$ | $n_i - n'_i$ | $(n_i - n'_i)^2$ | $\frac{(n_i - n'_i)^2}{n'_i}$ |
+| $i$|$n_i$|$n'_i$|$n_i - n'_i$|$(n_i - n'_i)^2$|$\frac{(n_i - n'_i)^2}{n'_i}$ |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1 | 15 | 20 | $-5$ | 25 | $1.25$ |
-| 2 | 28 | 20 | $+8$ | 64 | $3.20$ |
-| 3 | 17 | 20 | $-3$ | 9 | $0.45$ |
-| 4 | 16 | 20 | $-4$ | 16 | $0.80$ |
-| 5 | 26 | 20 | $+6$ | 36 | $1.80$ |
-| 6 | 18 | 20 | $-2$ | 4 | $0.20$ |
+| 1 | 15 | 20 | $-5$| 25 |$1.25$ |
+| 2 | 28 | 20 | $+8$| 64 |$3.20$ |
+| 3 | 17 | 20 | $-3$| 9 |$0.45$ |
+| 4 | 16 | 20 | $-4$| 16 |$0.80$ |
+| 5 | 26 | 20 | $+6$| 36 |$1.80$ |
+| 6 | 18 | 20 | $-2$| 4 |$0.20$ |
 | **$\sum$** | **120** | **120** | **0** | — | **$\chi^2_{\text{kuz}} = \mathbf{7.70}$** |
 
 4. Erkinlik darajasi: $k = 6$, parametr baholanmagan ($r = 0$), demak:
@@ -134,6 +134,6 @@ $$
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. Tanga 200 marta tashlanganda 115 marta gerb va 85 marta raqam tushdi. $\alpha = 0.05$ da tanga simmetrik ekanligini $\chi^2$ mezoni bilan tekshiring ($\chi^2_{\text{krit}}(0.05; 1) = 3.84$).
+1. Tanga 200 marta tashlanganda 115 marta gerb va 85 marta raqam tushdi. $\alpha = 0.05$da tanga simmetrik ekanligini$\chi^2$ mezoni bilan tekshiring ($\chi^2_{\text{krit}}(0.05; 1) = 3.84$).
 2. Telefon stansiyasiga 1 minutda keladigan qo'ng'iroqlar soni bo'yicha olingan ma'lumotlarning Puasson taqsimotiga mosligini tekshiring.
 3. Nima sababdan normal taqsimot tekshirilayotganda erkinlik darajasi $\nu = k - 3$ deb olinadi?

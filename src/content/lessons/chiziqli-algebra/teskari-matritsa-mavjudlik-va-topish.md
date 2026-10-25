@@ -7,7 +7,7 @@ description: "Teskari matritsa nima, maxsusmaslik sharti (det A ≠ 0), ittifoqd
 
 ## Kirish: Matritsalarda bo'lish amali bormi?
 
-Oddiy arifmetikada agar $5x = 20$ bo'lsa, biz $x = \frac{20}{5} = 4$ deb topamiz. Ya'ni bo'lish amali mavjud.
+Oddiy arifmetikada agar $5x = 20$bo'lsa, biz$x = \frac{20}{5} = 4$ deb topamiz. Ya'ni bo'lish amali mavjud.
 Ammo **matritsalarda bo'lish amali mavjud emas!** $\frac{B}{A}$ deb yozish qo'pol xato hisoblanadi.
 
 Unda nima qilamiz?
@@ -24,13 +24,13 @@ $$
 A \cdot A^{-1} = A^{-1} \cdot A = E
 $$
 
-tenglikni qanoatlantiruvchi $A^{-1}$ matritsa mavjud bo'lsa, unga **$A$ matritsaning teskari matritsasi** deyiladi (bu yerda $E$ — birlik matritsa).
+tenglikni qanoatlantiruvchi $A^{-1}$ matritsa mavjud bo'lsa, unga **$A$matritsaning teskari matritsasi** deyiladi (bu yerda$E$ — birlik matritsa).
 
 ---
 
 ## 2. Teskari matritsa mavjud bo'lishining zarur va yetarli sharti
 
-> **Teorema:** Kvadrat $A$ matritsaning teskarisi $A^{-1}$ mavjud bo'lishi uchun uning determinanti **nolga teng bo'lmasligi** zarur va yetarlidir:
+> **Teorema:** Kvadrat $A$matritsaning teskarisi$A^{-1}$ mavjud bo'lishi uchun uning determinanti **nolga teng bo'lmasligi** zarur va yetarlidir:
 > 
 > $$
 > \det A \neq 0
@@ -85,21 +85,13 @@ $\det A = -4 \neq 0$. Demak, teskari matritsa **mavjud**!
 
 ### 2-qadam: Barcha 9 ta element uchun algebraik to'ldiruvchilarni hisoblaymiz
 1-satr uchun:
-- $A_{11} = +\begin{vmatrix} 0 & 2 \\ -2 & 5 \end{vmatrix} = 0 - (-4) = 4$
-- $A_{12} = -\begin{vmatrix} 3 & 2 \\ 4 & 5 \end{vmatrix} = -(15 - 8) = -7$
-- $A_{13} = +\begin{vmatrix} 3 & 0 \\ 4 & -2 \end{vmatrix} = -6 - 0 = -6$
+- $A_{11} = +\begin{vmatrix} 0 & 2 \\ -2 & 5 \end{vmatrix} = 0 - (-4) = 4$-$A_{12} = -\begin{vmatrix} 3 & 2 \\ 4 & 5 \end{vmatrix} = -(15 - 8) = -7$-$A_{13} = +\begin{vmatrix} 3 & 0 \\ 4 & -2 \end{vmatrix} = -6 - 0 = -6$
 
 2-satr uchun:
-- $A_{21} = -\begin{vmatrix} 2 & -1 \\ -2 & 5 \end{vmatrix} = -(10 - 2) = -8$
-- $A_{22} = +\begin{vmatrix} 1 & -1 \\ 4 & 5 \end{vmatrix} = 5 - (-4) = 9$
-- $A_{23} = -\begin{vmatrix} 1 & 2 \\ 4 & -2 \end{vmatrix} = -(-2 - 8) = 10$
+- $A_{21} = -\begin{vmatrix} 2 & -1 \\ -2 & 5 \end{vmatrix} = -(10 - 2) = -8$-$A_{22} = +\begin{vmatrix} 1 & -1 \\ 4 & 5 \end{vmatrix} = 5 - (-4) = 9$-$A_{23} = -\begin{vmatrix} 1 & 2 \\ 4 & -2 \end{vmatrix} = -(-2 - 8) = 10$
 
 3-satr uchun:
-- $A_{31} = +\begin{vmatrix} 2 & -1 \\ 0 & 2 \end{vmatrix} = 4 - 0 = 4$
-- $A_{32} = -\begin{vmatrix} 1 & -1 \\ 3 & 2 \end{vmatrix} = -(2 - (-3)) = -5$
-- $A_{33} = +\begin{vmatrix} 1 & 2 \\ 3 & 0 \end{vmatrix} = 0 - 6 = -6$
-
-### 3-qadam: Ittifoqdosh matritsa $C^T$ ni tuzamiz (Transponirlashni unutmang!)
+- $A_{31} = +\begin{vmatrix} 2 & -1 \\ 0 & 2 \end{vmatrix} = 4 - 0 = 4$-$A_{32} = -\begin{vmatrix} 1 & -1 \\ 3 & 2 \end{vmatrix} = -(2 - (-3)) = -5$-$A_{33} = +\begin{vmatrix} 1 & 2 \\ 3 & 0 \end{vmatrix} = 0 - 6 = -6$### 3-qadam: Ittifoqdosh matritsa$C^T$ ni tuzamiz (Transponirlashni unutmang!)
 $$
 C^T = \begin{pmatrix}
 A_{11} & A_{21} & A_{31} \\
@@ -130,14 +122,15 @@ $$
 \begin{pmatrix} 1 & 2 & -1 \\ 3 & 0 & 2 \\ 4 & -2 & 5 \end{pmatrix} \cdot \frac{1}{-4} \begin{pmatrix} 4 & -8 & 4 \\ -7 & 9 & -5 \\ -6 & 10 & -6 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = E
 $$
 Tekshiruv muvaffaqiyatli o'tdi!
+
 </details>
 
 ---
 
 ## 5. $2 \times 2$ matritsalar uchun tezkor 5 soniyalik usul
 Agar $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ bo'lsa:
-> 1. Bosh diagonal elementlarining o'rnini almashtiring ($a$ va $d$ almashadi);
-> 2. Yordamchi diagonal elementlarining ishorasini o'zgartiring ($-b$ va $-c$ bo'ladi);
+> 1. Bosh diagonal elementlarining o'rnini almashtiring ($a$va$d$ almashadi);
+> 2. Yordamchi diagonal elementlarining ishorasini o'zgartiring ($-b$va$-c$ bo'ladi);
 > 3. Natijani $\det A = ad - bc$ ga bo'ling:
 
 $$
