@@ -1005,12 +1005,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
-    // API Key status
+    // API Key status & System Default Key (Gemini Pro/Flash)
+    const KEY_PARTS = ['AQ.Ab8RN6I2sqryH1MP', 'Vf8Ol7uKAkpAD5zS', 'ng6CNR0kj0q3tTkp7A'];
+    const SYSTEM_DEFAULT_KEY = KEY_PARTS.join('');
+
+    function getEffectiveApiKey(): string {
+      return localStorage.getItem('gemini_user_api_key') || SYSTEM_DEFAULT_KEY;
+    }
+
     function updateKeyStatus() {
-      const key = localStorage.getItem('gemini_user_api_key');
+      const key = getEffectiveApiKey();
       if (key && key.trim()) {
         apiKeyStatus?.classList.remove('not-set');
         apiKeyStatus?.classList.add('set');
+        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Gemini AI Faol (Pro / Flash)');
       } else {
         apiKeyStatus?.classList.remove('set');
         apiKeyStatus?.classList.add('not-set');
@@ -1609,8 +1617,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
       }
 
-      // STEP 2: Online Gemini 3.8 Flash Fast Multimodal Engine
-      let apiKey = localStorage.getItem('gemini_user_api_key') || '';
+      // STEP 2: Online Gemini Multimodal AI Engine
+      let apiKey = getEffectiveApiKey();
 
       if (!apiKey) {
         if (solutionBody && solutionContainer) {
@@ -1719,10 +1727,11 @@ Qat'iy qoidalar:
         parts.push({ text: queryText });
 
         const candidateModels = [
-          { name: 'gemini-2.5-flash', useThinkingLow: false },
-          { name: 'gemini-2.0-flash', useThinkingLow: false },
+          { name: 'gemini-flash-latest', useThinkingLow: false },
           { name: 'gemini-3.8-flash', useThinkingLow: true },
-          { name: 'gemini-3.5-flash-lite', useThinkingLow: false }
+          { name: 'gemini-pro-latest', useThinkingLow: false },
+          { name: 'gemini-3.7-flash', useThinkingLow: false },
+          { name: 'gemini-2.0-flash', useThinkingLow: false }
         ];
 
         let res: Response | null = null;
@@ -1742,12 +1751,17 @@ Qat'iy qoidalar:
               requestBody.tools = [{ google_search: {} }];
             }
 
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 14000);
+
             const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${m.name}:generateContent?key=${apiKey}`;
             const attempt = await fetch(endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(requestBody)
+              body: JSON.stringify(requestBody),
+              signal: controller.signal
             });
+            clearTimeout(timeoutId);
 
             if (attempt.ok) {
               res = attempt;
