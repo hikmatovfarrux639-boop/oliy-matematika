@@ -42,10 +42,18 @@ function isModuleActive(slug: string): boolean {
 
   <div class="drawer-body">
     <!-- Mobile Theme Switcher -->
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: var(--bg-muted); border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: var(--bg-muted); border-radius: var(--radius-md); margin-bottom: 0.75rem;">
       <span style="font-size: 0.85rem; font-weight: 600;">Mavzu:</span>
       <button id="mobile-theme-btn" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;">
         🌓 Tungi / Kunduzgi
+      </button>
+    </div>
+
+    <!-- Mobile Backup & Restore -->
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: var(--bg-muted); border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+      <span style="font-size: 0.85rem; font-weight: 600;">Natijalar (Zaxira):</span>
+      <button type="button" class="btn btn-secondary" data-open-backup style="font-size: 0.75rem; padding: 0.25rem 0.65rem; color: var(--primary); font-weight: 600;">
+        💾 Saqlash & Tiklash
       </button>
     </div>
 

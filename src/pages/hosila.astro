@@ -516,6 +516,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         return;
       }
 
+      if (rawExpr.length > 250) {
+        showError("Kiritilgan ifoda juda uzun (maksimal 250 belgi). Iltimos, ixchamroq ifoda kiriting.");
+        return;
+      }
+
       try {
         // Parse and compute derivative via math.js
         const parsedExpr = math.parse(rawExpr);

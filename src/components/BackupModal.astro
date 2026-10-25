@@ -1,0 +1,213 @@
+---
+// Backup and Restore Modal for student progress persistence
+---
+
+<div id="backup-modal" class="backup-modal-backdrop" style="display: none;">
+  <div class="backup-modal-card">
+    <div class="backup-modal-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.1rem; color: var(--text-main);">
+        <span>💾</span>
+        <span>O'qish Natijalarini Saqlash va Tiklash</span>
+      </div>
+      <button type="button" id="close-backup-modal-btn" class="btn-icon" aria-label="Yopish">✕</button>
+    </div>
+
+    <div class="backup-modal-body">
+      <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
+        O'zlashtirgan darslaringiz ro'yxatini boshqa telefonga yoki kompyuterga o'tkazish, shuningdek brauzer keshi tozalanganda yo'qolib ketmasligi uchun zaxira nusxasini oling.
+      </p>
+
+      <!-- Stat Box -->
+      <div style="background: var(--bg-muted); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+        <div>
+          <div style="font-size: 0.78rem; color: var(--text-subtle);">Hozirgi holat:</div>
+          <strong id="backup-stats-text" style="font-size: 1.05rem; color: var(--primary);">0 ta dars o'zlashtirilgan</strong>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" id="export-backup-btn" class="btn btn-primary" style="font-size: 0.82rem; padding: 0.45rem 0.85rem;">
+            📋 Nusxalash
+          </button>
+          <button type="button" id="download-backup-btn" class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.45rem 0.75rem;">
+            📥 Fayl (.json)
+          </button>
+        </div>
+      </div>
+
+      <!-- Import Section -->
+      <div style="border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+        <label for="import-backup-input" style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); display: block; margin-bottom: 0.4rem;">
+          Boshqa qurilmadan tiklash (Zaxira kodini kiriting):
+        </label>
+        <textarea 
+          id="import-backup-input" 
+          placeholder='{"completed": [...], "timestamp": ...}' 
+          style="width: 100%; height: 70px; padding: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-main); resize: none; margin-bottom: 0.5rem;"
+        ></textarea>
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+          <button type="button" id="import-backup-btn" class="btn btn-secondary" style="font-size: 0.85rem; font-weight: 700; color: var(--primary);">
+            🔄 Natijalarni tiklash
+          </button>
+        </div>
+      </div>
+
+      <div id="backup-feedback-msg" style="display: none; margin-top: 0.75rem; padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.85rem; text-align: center;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupBackupModal() {
+    const modal = document.getElementById('backup-modal');
+    if (!modal || (modal as any)._hasBackupInit) return;
+    (modal as any)._hasBackupInit = true;
+
+    const closeBtn = document.getElementById('close-backup-modal-btn');
+    const statsText = document.getElementById('backup-stats-text');
+    const exportBtn = document.getElementById('export-backup-btn');
+    const downloadBtn = document.getElementById('download-backup-btn');
+    const importBtn = document.getElementById('import-backup-btn');
+    const importInput = document.getElementById('import-backup-input') as HTMLTextAreaElement | null;
+    const feedback = document.getElementById('backup-feedback-msg');
+
+    function updateStats() {
+      try {
+        const completed: string[] = JSON.parse(localStorage.getItem('math_completed_lessons') || '[]');
+        if (statsText) {
+          statsText.textContent = `${completed.length} ta dars o'zlashtirilgan`;
+        }
+      } catch (e) {
+        if (statsText) statsText.textContent = "0 ta dars";
+      }
+    }
+
+    function getBackupData(): string {
+      const data = {
+        app: 'OliyMatematika',
+        version: '1.0',
+        completed: JSON.parse(localStorage.getItem('math_completed_lessons') || '[]'),
+        theme: localStorage.getItem('math_theme') || 'light',
+        timestamp: new Date().toISOString()
+      };
+      return JSON.stringify(data, null, 2);
+    }
+
+    function showFeedback(text: string, isSuccess: boolean) {
+      if (!feedback) return;
+      feedback.textContent = text;
+      feedback.style.display = 'block';
+      feedback.style.background = isSuccess ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)';
+      feedback.style.color = isSuccess ? '#10b981' : '#ef4444';
+      feedback.style.border = `1px solid ${isSuccess ? '#10b981' : '#ef4444'}`;
+      setTimeout(() => {
+        if (feedback) feedback.style.display = 'none';
+      }, 4000);
+    }
+
+    exportBtn?.addEventListener('click', async () => {
+      const jsonStr = getBackupData();
+      try {
+        await navigator.clipboard.writeText(jsonStr);
+        showFeedback("✅ Zaxira kodi xotiraga nusxalandi!", true);
+      } catch (e) {
+        showFeedback("Nusxalab bo'lmadi. Matnni qo'lda oling.", false);
+      }
+    });
+
+    downloadBtn?.addEventListener('click', () => {
+      const jsonStr = getBackupData();
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `oliy-matematika-natijalar-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showFeedback("✅ Fayl yuklab olindi!", true);
+    });
+
+    importBtn?.addEventListener('click', () => {
+      const raw = importInput?.value.trim();
+      if (!raw) {
+        showFeedback("Iltimos, zaxira kodini kiriting.", false);
+        return;
+      }
+      try {
+        const parsed = JSON.parse(raw);
+        if (!parsed || !Array.isArray(parsed.completed)) {
+          throw new Error("Formati noto'g'ri");
+        }
+        const existing: string[] = JSON.parse(localStorage.getItem('math_completed_lessons') || '[]');
+        const merged = Array.from(new Set([...existing, ...parsed.completed]));
+        localStorage.setItem('math_completed_lessons', JSON.stringify(merged));
+        if (parsed.theme) {
+          localStorage.setItem('math_theme', parsed.theme);
+        }
+        updateStats();
+        showFeedback(`✅ Muvaffaqiyatli tiklandi! Jami: ${merged.length} ta dars.`, true);
+        if (importInput) importInput.value = '';
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      } catch (e) {
+        showFeedback("❌ Zaxira kodi noto'g'ri yoki buzilgan.", false);
+      }
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+
+    // Global trigger
+    document.querySelectorAll('[data-open-backup]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        updateStats();
+        modal.style.display = 'flex';
+      });
+    });
+  }
+
+  setupBackupModal();
+  document.addEventListener('astro:page-load', setupBackupModal);
+  document.addEventListener('astro:after-swap', setupBackupModal);
+</script>
+
+<style>
+  .backup-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .backup-modal-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+
+  .backup-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .backup-modal-body {
+    padding: 1.25rem;
+  }
+</style>

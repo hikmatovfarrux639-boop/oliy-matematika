@@ -35,6 +35,9 @@ export default defineConfig({
             if (id.includes('node_modules/function-plot')) {
               return 'vendor-plot';
             }
+            if (id.includes('node_modules/three')) {
+              return 'vendor-three';
+            }
           }
         }
       }

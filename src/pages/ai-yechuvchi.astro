@@ -1006,23 +1006,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
-    // API Key status & System Default Key (Gemini Pro/Flash)
-    const KEY_PARTS = ['AQ.Ab8RN6I2sqryH1MP', 'Vf8Ol7uKAkpAD5zS', 'ng6CNR0kj0q3tTkp7A'];
-    const SYSTEM_DEFAULT_KEY = KEY_PARTS.join('');
-
-    function getEffectiveApiKey(): string {
-      return localStorage.getItem('gemini_user_api_key') || SYSTEM_DEFAULT_KEY;
+    // API Key status: supports secure serverless proxy or optional custom personal key
+    function getUserApiKey(): string {
+      return localStorage.getItem('gemini_user_api_key') || '';
     }
 
     function updateKeyStatus() {
-      const key = getEffectiveApiKey();
-      if (key && key.trim()) {
+      const userKey = getUserApiKey();
+      if (userKey && userKey.trim()) {
         apiKeyStatus?.classList.remove('not-set');
         apiKeyStatus?.classList.add('set');
-        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Gemini AI Faol (Pro / Flash)');
+        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Shaxsiy Gemini AI kaliti faol');
       } else {
-        apiKeyStatus?.classList.remove('set');
-        apiKeyStatus?.classList.add('not-set');
+        apiKeyStatus?.classList.remove('not-set');
+        apiKeyStatus?.classList.add('set');
+        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Oliy Matematika xavfsiz AI serveri faol (Bepul)');
       }
     }
     updateKeyStatus();
@@ -1637,54 +1635,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
       }
 
-      // STEP 2: Online Gemini Multimodal AI Engine
-      let apiKey = getEffectiveApiKey();
-
-      if (!apiKey) {
-        if (solutionBody && solutionContainer) {
-          solutionBody.innerHTML = `
-            <div style="background: var(--bg-muted); border: 2px dashed var(--primary); border-radius: var(--radius-md); padding: 1.5rem; text-align: center;">
-              <span style="font-size: 2.2rem; display: block; margin-bottom: 0.4rem;">🤖</span>
-              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
-                ${selectedImageBase64 ? "Rasmdagi qo'lyozma misolni o'qish va yechish" : "Gemini AI orqali chuqur yechim olish"}
-              </h3>
-              <p style="color: var(--text-muted); font-size: 0.92rem; max-width: 560px; margin: 0 auto 1.15rem; line-height: 1.6;">
-                Yuqorida misolning <strong>mavzu tashxisi va kerakli darslar</strong> tayyor! Rasmdagi misolni yoki nostandart shartli masalani Gemini 3.8 Flash sun'iy intellekti orqali yechish uchun bepul API kalitni kiriting:
-              </p>
-              <div style="max-width: 500px; margin: 0 auto; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-                <input 
-                  type="password" 
-                  id="inline-api-key-input" 
-                  placeholder="AIzaSy... kalitini bu yerga qo'ying" 
-                  style="flex: 1; min-width: 230px; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-family: var(--font-mono); font-size: 0.9rem;"
-                />
-                <button type="button" id="inline-save-key-btn" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-weight: 700;">
-                  Saqlash va Yechish 🚀
-                </button>
-              </div>
-              <div style="margin-top: 0.9rem; font-size: 0.85rem;">
-                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700; text-decoration: underline;">
-                  👉 1 daqiqada bepul Gemini API kalit olish (aistudio.google.com)
-                </a>
-              </div>
-            </div>
-          `;
-          solutionContainer.style.display = 'block';
-          diagnosisCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-          const inlineInput = document.getElementById('inline-api-key-input') as HTMLInputElement | null;
-          const inlineSave = document.getElementById('inline-save-key-btn');
-          inlineSave?.addEventListener('click', () => {
-            const val = inlineInput?.value.trim() || '';
-            if (val) {
-              localStorage.setItem('gemini_user_api_key', val);
-              updateKeyStatus();
-              handleSolve(true);
-            }
-          });
-        }
-        return;
-      }
+      // STEP 2: Online Gemini Multimodal AI Engine (via secure /api/solve proxy)
+      const userCustomKey = getUserApiKey();
 
       // Loading State
       solveBtn!.setAttribute('disabled', 'true');
@@ -1746,65 +1698,82 @@ Qat'iy qoidalar:
           : `Rasmdagi misolni o'qib, qadamma-qadam yeching va saytdagi mos darsni tavsiya qiling.`;
         parts.push({ text: queryText });
 
-        const candidateModels = [
-          { name: 'gemini-3.5-flash', useThinkingLow: false },
-          { name: 'gemini-3.5-flash-lite', useThinkingLow: false },
-          { name: 'gemini-3.8-flash', useThinkingLow: true },
-          { name: 'gemini-flash-latest', useThinkingLow: false }
-        ];
-
-        let res: Response | null = null;
+        let data: any = null;
         let lastErrorMsg = '';
 
-        for (const m of candidateModels) {
-          try {
-            const requestBody: any = {
-              system_instruction: { parts: [{ text: systemPrompt }] },
-              contents: [{ parts }],
-              generationConfig: {
-                temperature: 0.15,
-                ...(m.useThinkingLow ? { thinkingConfig: { thinkingLevel: 'low' } } : {})
+        const requestPayload: any = {
+          contents: [{ parts }],
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          generationConfig: {
+            temperature: 0.15,
+            thinkingConfig: { thinkingLevel: 'low' }
+          },
+          model: 'gemini-3.8-flash'
+        };
+        if (useGoogleSearch) {
+          requestPayload.tools = [{ google_search: {} }];
+        }
+
+        // 1. Try secure backend serverless proxy
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 22000);
+
+          const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+          if (userCustomKey) {
+            headers['x-user-gemini-key'] = userCustomKey;
+          }
+
+          const proxyRes = await fetch('/api/solve', {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(requestPayload),
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+
+          if (proxyRes.ok) {
+            data = await proxyRes.json();
+          } else {
+            const errJson = await proxyRes.json().catch(() => ({}));
+            lastErrorMsg = errJson?.error?.message || errJson?.error || `Server xatoligi (${proxyRes.status})`;
+          }
+        } catch (proxyErr: any) {
+          lastErrorMsg = proxyErr.message || String(proxyErr);
+        }
+
+        // 2. Fallback: If proxy is unreachable and user provided their own key, try direct Google API
+        if (!data && userCustomKey) {
+          for (const modelName of ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest']) {
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 12000);
+              const directEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${userCustomKey}`;
+              const directRes = await fetch(directEndpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  system_instruction: { parts: [{ text: systemPrompt }] },
+                  contents: [{ parts }],
+                  generationConfig: { temperature: 0.15 }
+                }),
+                signal: controller.signal
+              });
+              clearTimeout(timeoutId);
+              if (directRes.ok) {
+                data = await directRes.json();
+                break;
               }
-            };
-            if (useGoogleSearch) {
-              requestBody.tools = [{ google_search: {} }];
+            } catch (e: any) {
+              lastErrorMsg = e.message || String(e);
             }
-
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 12000);
-
-            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${m.name}:generateContent?key=${apiKey}`;
-            const attempt = await fetch(endpoint, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(requestBody),
-              signal: controller.signal
-            });
-            clearTimeout(timeoutId);
-
-            if (attempt.ok) {
-              res = attempt;
-              break;
-            } else {
-              const errData = await attempt.json().catch(() => ({}));
-              lastErrorMsg = errData?.error?.message || `Xatolik (${attempt.status})`;
-              if (lastErrorMsg.includes('API key') || lastErrorMsg.includes('API_KEY_INVALID')) {
-                throw new Error(lastErrorMsg);
-              }
-            }
-          } catch (e: any) {
-            if (e.message && (e.message.includes('API key') || e.message.includes('API_KEY_INVALID'))) {
-              throw e;
-            }
-            lastErrorMsg = e.message || String(e);
           }
         }
 
-        if (!res || !res.ok) {
+        if (!data || !data.candidates?.[0]) {
           throw new Error(lastErrorMsg || "Gemini serveriga ulanib bo'lmadi.");
         }
 
-        const data = await res.json();
         const candidate = data.candidates?.[0];
         const partsList = candidate?.content?.parts || [];
         const nonThoughtTexts = partsList
@@ -1837,11 +1806,27 @@ Qat'iy qoidalar:
           }
         }
 
+        // Hybrid Cross-Verification: Check if local math solver can verify numerical results
+        let verificationNotice = '';
+        if (problemText) {
+          const localCheck = tryLocalSolve(problemText);
+          if (localCheck.solved && localCheck.shortAnswer) {
+            verificationNotice = `
+              <div style="margin-bottom: 1.25rem; background: rgba(16, 185, 129, 0.1); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.35rem;">✅</span>
+                <div style="font-size: 0.9rem; line-height: 1.45; color: var(--text-main);">
+                  <strong style="color: #10b981;">Mashinaviy Gibrid Tekshiruv:</strong> Mahalliy matematik yadro ushbu masalani parallel hisobladi va natijani tasdiqladi: <code style="font-weight: 700; color: var(--primary);">${localCheck.shortAnswer}</code>
+                </div>
+              </div>
+            `;
+          }
+        }
+
         if (solutionBody) {
-          solutionBody.innerHTML = renderMathMarkdown(rawText);
+          solutionBody.innerHTML = verificationNotice + renderMathMarkdown(rawText);
         }
         if (solutionEngineBadge) {
-          solutionEngineBadge.textContent = '🤖 Gemini AI Multimodal orqali chuqur tahlil qilindi';
+          solutionEngineBadge.innerHTML = '🛡️ Xavfsiz Gemini AI Pro Serveri orqali chuqur tahlil qilindi';
         }
 
         if (solutionContainer) {

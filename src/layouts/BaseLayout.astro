@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
 import MobileDrawer from '../components/MobileDrawer.astro';
+import BackupModal from '../components/BackupModal.astro';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
@@ -89,8 +90,40 @@ const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
   </script>
 </head>
 <body>
+  <!-- Telegram In-App Browser Resilience Banner -->
+  <div id="tg-notice-banner" style="display: none; background: #0284c7; color: white; padding: 0.55rem 1rem; font-size: 0.85rem; justify-content: center; align-items: center; gap: 0.75rem; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+    <span>📱 <strong>Telegram brauzeridasiz:</strong> Dars natijalari kesh tozalanganda yo'qolmasligi uchun saytni doimiy brauzeringizda (Chrome, Safari) ochish tavsiya etiladi.</span>
+    <button id="tg-dismiss-btn" type="button" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; border-radius: 4px; padding: 0.15rem 0.6rem; font-size: 0.75rem; cursor: pointer; white-space: nowrap;">
+      Tushunarli ✕
+    </button>
+  </div>
+
   <Header />
   <MobileDrawer />
+  <BackupModal />
+
+  <script is:inline>
+    function checkTelegramWebview() {
+      try {
+        const isTg = /Telegram/i.test(navigator.userAgent);
+        const isDismissed = sessionStorage.getItem('tg_notice_dismissed');
+        const banner = document.getElementById('tg-notice-banner');
+        if (isTg && !isDismissed && banner) {
+          banner.style.display = 'flex';
+          document.getElementById('tg-dismiss-btn')?.addEventListener('click', function() {
+            banner.style.display = 'none';
+            sessionStorage.setItem('tg_notice_dismissed', '1');
+          });
+        }
+      } catch (e) {}
+    }
+    document.addEventListener('astro:page-load', checkTelegramWebview);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkTelegramWebview);
+    } else {
+      checkTelegramWebview();
+    }
+  </script>
 
   <div class="layout-container">
     {showSidebar && <Sidebar />}
