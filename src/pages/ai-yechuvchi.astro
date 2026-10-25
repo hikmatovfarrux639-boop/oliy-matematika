@@ -1219,6 +1219,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       recognizer.interimResults = true;
       recognizer.lang = 'uz-UZ';
 
+      function cleanSpokenMath(text: string): string {
+        let s = text.toLowerCase();
+        s = s.replace(/\byteng\b/gi, 'y = ')
+             .replace(/\by\s*teng\b/gi, 'y = ')
+             .replace(/\bxteng\b/gi, 'x = ')
+             .replace(/\bx\s*teng\b/gi, 'x = ')
+             .replace(/\bteng\b|\bbarobar\b/gi, ' = ')
+             .replace(/([a-z0-9])\s*(?:ning\s*)?kvadrati?\b/gi, '$1^2')
+             .replace(/([a-z0-9])\s*(?:ning\s*)?kubi?\b/gi, '$1^3')
+             .replace(/\bkvadrat\b|\bkvadrati\b/gi, '^2')
+             .replace(/\bkub\b|\bkubi\b/gi, '^3')
+             .replace(/\bplyus\b|\bqo'shuv\b|\bqo'shilgan\b|\bplus\b/gi, ' + ')
+             .replace(/\bminus\b|\bayiruv\b|\bayirilgan\b/gi, ' - ')
+             .replace(/\bko'paytirilgan\b|\bko'paytiruv\b|\bzarb\b/gi, ' * ')
+             .replace(/\bbo'lingan\b|\bbo'luv\b|\btaqsim\b/gi, ' / ')
+             .replace(/\bildiz\s*(?:ostida)?\b/gi, 'sqrt')
+             .replace(/\^\s*([+\-])/g, '^2 $1')
+             .replace(/\^\s*$/g, '^2')
+             .replace(/\s+/g, ' ')
+             .trim();
+        return s;
+      }
+
       recognizer.onstart = () => {
         isListening = true;
         voiceBtn?.classList.add('recording');
@@ -1229,7 +1252,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         for (let i = ev.resultIndex; i < ev.results.length; i++) {
           str += ev.results[i][0].transcript;
         }
-        if (str && input) input.value = str;
+        if (str && input) {
+          input.value = cleanSpokenMath(str);
+        }
       };
       recognizer.onerror = () => {
         isListening = false;

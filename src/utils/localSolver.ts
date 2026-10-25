@@ -35,6 +35,16 @@ export interface LocalSolveResult {
 export function normalizeMathString(raw: string): string {
   let s = raw.trim();
 
+  // Spoken conversions & common speech-to-text / typing artifacts
+  s = s
+    .replace(/\byteng\b/gi, 'y = ')
+    .replace(/\by\s*teng\b/gi, 'y = ')
+    .replace(/\bxteng\b/gi, 'x = ')
+    .replace(/\bx\s*teng\b/gi, 'x = ')
+    .replace(/\bteng\b|\bbarobar\b/gi, ' = ')
+    .replace(/\^\s*([+\-])/g, '^2 $1')
+    .replace(/\^\s*$/g, '^2');
+
   s = s
     .replace(/×/g, '*')
     .replace(/÷/g, '/')
@@ -2327,12 +2337,24 @@ $$\\mathbf{${ans}}$$`
  * 10. FUNCTION INVESTIGATION & ARITHMETIC EVALUATOR
  */
 function tryAnalyzeOrEvaluate(raw: string): LocalSolveResult | null {
-  if (raw.includes('=')) return null;
   // If user typed dx, it was meant as an integral, do not treat as function!
   if (/dx\s*$/i.test(raw)) return null;
 
-  const diagnosis = diagnoseTopic(raw);
-  const norm = normalizeMathString(raw);
+  let expr = raw.trim();
+
+  // Handle y = f(x) or f(x) = ... or yteng ...
+  const funcMatch = expr.match(/^(?:y|f\s*\(\s*x\s*\))\s*=\s*(.+)$/i) ||
+                    expr.match(/^yteng\s*(.+)$/i);
+  let isExplicitFunction = false;
+  if (funcMatch) {
+    expr = funcMatch[1].trim();
+    isExplicitFunction = true;
+  } else if (expr.includes('=')) {
+    return null;
+  }
+
+  const diagnosis = diagnoseTopic(expr);
+  const norm = normalizeMathString(expr);
 
   // If contains x, perform function analysis
   if (/\bx\b/i.test(norm)) {
@@ -2346,22 +2368,87 @@ function tryAnalyzeOrEvaluate(raw: string): LocalSolveResult | null {
 
       diagnosis.graphFn = norm;
 
+      // Special Parabola / Quadratic Analysis
+      let parabolaSection = '';
+      let functionTypeName = "Funksiyani to'liq tekshirish va xossalari";
+      
+      const quadMatch = norm.replace(/\s+/g, '').match(/^([+-]?\d*(?:\.\d+)?)?\*?x\^2(?:([+-]\d*(?:\.\d+)?)\*?x)?([+-]\d+(?:\.\d+)?)?$/);
+      if (quadMatch) {
+        functionTypeName = "Kvadratik funksiya (Parabola) to'liq tahlili";
+        let a = 1;
+        if (quadMatch[1]) {
+          if (quadMatch[1] === '+' || quadMatch[1] === '') a = 1;
+          else if (quadMatch[1] === '-') a = -1;
+          else a = parseFloat(quadMatch[1]);
+        }
+        let b = 0;
+        if (quadMatch[2]) {
+          if (quadMatch[2] === '+' || quadMatch[2] === '') b = 1;
+          else if (quadMatch[2] === '-') b = -1;
+          else b = parseFloat(quadMatch[2]);
+        }
+        let c = 0;
+        if (quadMatch[3]) c = parseFloat(quadMatch[3]);
+
+        const x0 = -b / (2 * a);
+        const y0 = a * x0 * x0 + b * x0 + c;
+        const disc = b * b - 4 * a * c;
+        const branchDir = a > 0 ? "yuqoriga yo'nalgan" : "pastga yo'nalgan";
+        const vertexType = a > 0 ? "Global minimum" : "Global maksimum";
+
+        let rootsText = '';
+        if (disc > 0) {
+          const r1 = (-b - Math.sqrt(disc)) / (2 * a);
+          const r2 = (-b + Math.sqrt(disc)) / (2 * a);
+          rootsText = `Ikki nuqtada kesishadi: $x_1 = ${fmtNum(r1)}, \\; x_2 = ${fmtNum(r2)}$`;
+        } else if (Math.abs(disc) < 1e-9) {
+          rootsText = `Uchi $Ox$ o'qiga tegadi: $x = ${fmtNum(x0)}$`;
+        } else {
+          rootsText = `$Ox$ o'qi bilan kesishmaydi ($D < 0$)`;
+        }
+
+        parabolaSection = `\n## 2. Parabola geometrik xossalari
+- **Tarmoqlari:** $a = ${fmtNum(a)} ${a > 0 ? '> 0' : '< 0'}$ bo'lgani uchun tarmoqlari **${branchDir}**.
+- **Parabola uchi (V):** $x_0 = -\\frac{b}{2a} = ${fmtNum(x0)}, \\quad y_0 = f(${fmtNum(x0)}) = ${fmtNum(y0)}$ $\\implies \\mathbf{(${fmtNum(x0)}, \\; ${fmtNum(y0)})}$
+- **Simmetriya o'qi:** $x = ${fmtNum(x0)}$
+- **Ekstremum:** $x = ${fmtNum(x0)}$ da **${vertexType}:** $y = ${fmtNum(y0)}$
+- **$Ox$ o'qi bilan kesishishi:** ${rootsText}
+- **$Oy$ o'qi bilan kesishishi:** $(0, \\; ${fmtNum(c)})$
+- **Aniqlanish sohasi:** $D(y) = (-\\infty; +\\infty)$
+- **Qiymatlar sohasi:** $E(y) = ${a > 0 ? `[${fmtNum(y0)}; +\\infty)` : `(-\\infty; ${fmtNum(y0)}]`}`;
+      }
+
+      // Generate Values Table for plotting
+      const testX = [-3, -2, -1, 0, 1, 2, 3];
+      const valTableRows = testX.map(xVal => {
+        const yVal = safeEvalAt(norm, 'x', xVal);
+        return isFinite(yVal) ? fmtNum(yVal) : '-';
+      });
+
+      const tableMd = `\n## ${parabolaSection ? '3' : '2'}. Qiymatlar jadvali
+| $x$ | ${testX.map(x => fmtNum(x)).join(' | ')} |
+|:---:|${testX.map(() => ':---:').join('|')}|
+| $y$ | ${valTableRows.join(' | ')} |`;
+
+      const titleFormula = isExplicitFunction ? `y = ${origTex}` : `f(x) = ${origTex}`;
+
       return {
         solved: true,
-        type: "Funksiyani analitik tekshirish (Hosila va Xossalar)",
-        shortAnswer: `f'(x) = ${d1Tex}`,
+        type: functionTypeName,
+        shortAnswer: `${titleFormula}, \\; y' = ${d1Tex}`,
         diagnosis,
-        markdown: `## 1. Funksiya tahlili
-$$f(x) = ${origTex}$$
-- $Oy$ o'qi bilan kesishishi: $f(0) = ${isFinite(f0) ? fmtNum(f0) : '\\text{mavjud emas}'}$
+        markdown: `## 1. Funksiya ko'rinishi
+$$${titleFormula}$$
+${parabolaSection}
+${tableMd}
 
-## 2. Hosilalar
-- **1-tartibli hosila:** $f'(x) = ${d1Tex}$
-- **2-tartibli hosila:** $f''(x) = ${d2Tex}$
+## ${parabolaSection ? '4' : '3'}. Hosilalar va Monotonlik
+- **1-tartibli hosila:** $y' = ${d1Tex}$
+- **2-tartibli hosila (botiqlik):** $y'' = ${d2Tex}$
 
-## 4. Yakuniy javob
+## ${parabolaSection ? '5' : '4'}. Yakuniy xulosa
 Javob:
-$$\\mathbf{f'(x) = ${d1Tex}}$$`
+$$\\mathbf{${titleFormula}}$$`
       };
     } catch {}
   }
