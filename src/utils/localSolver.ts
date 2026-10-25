@@ -376,12 +376,12 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
       difficulty: "O'rta (1-kurs)",
       whyThisTopic: "Masalada matritsalar, determinantlar yoki tenglamalar sistemasi berilgan.",
       primaryLesson: hasTwoEqs
-        ? { title: 'Chiziqli tenglamalar sistemasi va Kramer qoidasi', url: '/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasi', badge: 'Asosiy dars' }
-        : { title: 'Determinantlar va ularning xossalari', url: '/dars/chiziqli-algebra/determinantlar', badge: 'Asosiy dars' },
+        ? { title: 'Chiziqli tenglamalar sistemasi va Kramer qoidasi', url: '/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasi-va-kronekker-kapelli', badge: 'Asosiy dars' }
+        : { title: 'Determinantlar va ularning xossalari', url: '/dars/chiziqli-algebra/determinantlar-va-geometrik-manosi', badge: 'Asosiy dars' },
       relatedLessons: [
-        { title: 'Matritsalar va ular ustida amallar', url: '/dars/chiziqli-algebra/matritsalar-va-amallar' },
-        { title: 'Teskari matritsa va matritsa rangi', url: '/dars/chiziqli-algebra/teskari-matritsa-va-rang' },
-        { title: 'Gauss usuli (Amaliy qo\'llanma)', url: '/dars/chiziqli-algebra/gauss-usuli-amaliy' }
+        { title: 'Matritsalar va ular ustida amallar', url: '/dars/chiziqli-algebra/matritsalar-tushunchasi-va-chiziqli-amallar' },
+        { title: 'Teskari matritsa va matritsa rangi', url: '/dars/chiziqli-algebra/teskari-matritsa-mavjudlik-va-topish' },
+        { title: 'Gauss usuli (Amaliy qo\'llanma)', url: '/dars/chiziqli-algebra/gauss-usuli-pogonasimon-va-teskari-yurish' }
       ],
       keyFormulas: [
         { name: '2x2 Determinant', latex: '\\det A = ad - bc' },

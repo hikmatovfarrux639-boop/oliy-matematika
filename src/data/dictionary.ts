@@ -18,7 +18,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'algebra',
     definition: 'Kvadrat matritsaga mos keluvchi maxsus skalyar son. U matritsa ifodalagan chiziqli akslantirishning hajm o\'zgarish koeffitsiyentini bildiradi. Agar det = 0 bo\'lsa, matritsa teskarilanmaydi.',
     formula: '\\det A = |A| = \\sum_{j=1}^n (-1)^{i+j} a_{ij} M_{ij}',
-    lessonUrl: '/dars/chiziqli-algebra/determinantlar'
+    lessonUrl: '/dars/chiziqli-algebra/determinantlar-va-geometrik-manosi'
   },
   {
     id: 'matritsa-rangi',
@@ -28,7 +28,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'algebra',
     definition: 'Matritsaning noldan farqli eng yuqori tartibli minorining tartibi, yoki chiziqli erkli qatorlari (ustunlari) ning maksimal soni.',
     formula: '\\operatorname{rank}(A) \\le \\min(m, n)',
-    lessonUrl: '/dars/chiziqli-algebra/teskari-matritsa-va-rang'
+    lessonUrl: '/dars/chiziqli-algebra/matritsa-rangi-va-pogonasimon-shakl'
   },
   {
     id: 'xos-son',
@@ -48,7 +48,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'algebra',
     definition: 'Berilgan kvadrat A matritsaga ko\'paytirilganda birlik matritsani hosil qiluvchi matritsa. Faqat determinant nolga teng bo\'lmaganda mavjud.',
     formula: 'A^{-1} = \\frac{1}{\\det A} A^*, \\quad A \\cdot A^{-1} = E',
-    lessonUrl: '/dars/chiziqli-algebra/teskari-matritsa-va-rang'
+    lessonUrl: '/dars/chiziqli-algebra/teskari-matritsa-mavjudlik-va-topish'
   },
   {
     id: 'fys',
@@ -58,7 +58,7 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'algebra',
     definition: 'Bir jinsli chiziqli tenglamalar sistemasining barcha yechimlari chiziqli kombinatsiyasi orqali ifodalanadigan chiziqli erkli yechimlar bazisi. Yechimlar soni n - rank(A) ga teng.',
     formula: 'k = n - r',
-    lessonUrl: '/dars/chiziqli-algebra/bir-jinsli-tenglamalar-fys'
+    lessonUrl: '/dars/chiziqli-algebra/bir-jinsli-tenglamalar-va-fys'
   },
   {
     id: 'gradient',
@@ -258,6 +258,6 @@ export const MATH_DICTIONARY: MathTerm[] = [
     category: 'algebra',
     definition: 'Ikki algebraik struktura (masalan, chiziqli fazolar) o\'rtasidagi barcha amallarni (qo\'shish, songa ko\'paytirish) saqlaydigan o\'zaro bir qiymatli (biyektiv) moslik.',
     formula: 'V \\cong W \\iff \\dim V = \\dim W',
-    lessonUrl: '/dars/chiziqli-algebra/chiziqli-fazo-bazis-operatorlar'
+    lessonUrl: '/dars/chiziqli-algebra/chiziqli-fazo-va-bazis'
   }
 ];

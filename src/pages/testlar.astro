@@ -75,7 +75,7 @@ import { MODULES } from '../data/modules';
 
       <div class="module-cards-grid">
         {MODULES.map((m) => (
-          <a href={`/testlar?modul=${m.slug}`} class="module-test-card">
+          <a href={`/testlar?modul=${m.slug}#quiz-section`} class="module-test-card" data-module-slug={m.slug}>
             <div class="mod-card-top">
               <span class="mod-num">#{m.id}</span>
               <span class="mod-action">Testni boshlash ➔</span>
@@ -462,3 +462,46 @@ import { MODULES } from '../data/modules';
     }
   }
 </style>
+
+<script>
+  function handleModuleCardClicks() {
+    const cards = document.querySelectorAll('.module-test-card');
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const slug = card.getAttribute('data-module-slug');
+        if (!slug) return;
+        const select = document.getElementById('module-select-filter') as HTMLSelectElement | null;
+        const quizSection = document.getElementById('quiz-section');
+        if (select && quizSection) {
+          e.preventDefault();
+          select.value = slug;
+          select.dispatchEvent(new Event('change'));
+          // Update URL without full reload
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.set('modul', slug);
+          newUrl.hash = 'quiz-section';
+          window.history.pushState({}, '', newUrl.toString());
+          quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Check if loaded with ?modul= or #quiz-section
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('modul') || window.location.hash === '#quiz-section') {
+      const quizSection = document.getElementById('quiz-section');
+      if (quizSection) {
+        setTimeout(() => {
+          quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+    }
+  }
+
+  document.addEventListener('astro:page-load', handleModuleCardClicks);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleModuleCardClicks);
+  } else {
+    handleModuleCardClicks();
+  }
+</script>

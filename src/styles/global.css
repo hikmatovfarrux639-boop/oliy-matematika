@@ -206,7 +206,7 @@ a {
 .mobile-nav-toggle {
   display: none;
 }
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .mobile-nav-toggle {
     display: inline-flex;
   }
@@ -279,7 +279,7 @@ a {
   overflow-y: auto;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .sidebar-nav {
     display: none;
   }

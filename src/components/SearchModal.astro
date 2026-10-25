@@ -251,21 +251,31 @@
     const resultsContainer = document.getElementById('search-results-list');
     const noResults = document.getElementById('search-no-results');
 
+    let selectedIndex = -1;
+
     function openModal() {
-      if (!backdrop || !input) return;
-      backdrop.style.display = 'flex';
-      input.value = '';
-      if (emptyState) emptyState.style.display = 'block';
-      if (resultsContainer) resultsContainer.style.display = 'none';
-      if (noResults) noResults.style.display = 'none';
-      setTimeout(() => input.focus(), 50);
+      const curBackdrop = document.getElementById('search-modal-backdrop');
+      const curInput = document.getElementById('search-input') as HTMLInputElement | null;
+      const curEmpty = document.getElementById('search-empty-state');
+      const curResults = document.getElementById('search-results-list');
+      const curNoRes = document.getElementById('search-no-results');
+
+      if (!curBackdrop || !curInput) return;
+      curBackdrop.style.display = 'flex';
+      curInput.value = '';
+      selectedIndex = -1;
+      if (curEmpty) curEmpty.style.display = 'block';
+      if (curResults) curResults.style.display = 'none';
+      if (curNoRes) curNoRes.style.display = 'none';
+      setTimeout(() => curInput.focus(), 50);
       document.body.style.overflow = 'hidden';
       getPagefind(); // Preload
     }
 
     function closeModal() {
-      if (!backdrop) return;
-      backdrop.style.display = 'none';
+      const curBackdrop = document.getElementById('search-modal-backdrop');
+      if (!curBackdrop) return;
+      curBackdrop.style.display = 'none';
       document.body.style.overflow = '';
     }
 
@@ -279,20 +289,31 @@
       });
     }
 
-    // Keyboard shortcuts: Ctrl+K, Cmd+K (guard against duplicate global listeners)
+    // Keyboard shortcuts: Ctrl+K, Cmd+K, Esc (runs globally and always finds active DOM)
     if (!(window as any)._hasSearchKeydown) {
       (window as any)._hasSearchKeydown = true;
       window.addEventListener('keydown', (e) => {
-        const currentBackdrop = document.getElementById('search-modal-backdrop');
+        const curBackdrop = document.getElementById('search-modal-backdrop');
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
           e.preventDefault();
-          if (currentBackdrop?.style.display === 'flex') {
+          if (curBackdrop?.style.display === 'flex') {
             closeModal();
           } else {
             openModal();
           }
-        } else if (e.key === 'Escape' && currentBackdrop?.style.display === 'flex') {
+        } else if (e.key === 'Escape' && curBackdrop?.style.display === 'flex') {
           closeModal();
+        }
+      });
+    }
+
+    function updateSelection(items: NodeListOf<HTMLAnchorElement>) {
+      items.forEach((item, idx) => {
+        if (idx === selectedIndex) {
+          item.classList.add('selected');
+          item.scrollIntoView({ block: 'nearest' });
+        } else {
+          item.classList.remove('selected');
         }
       });
     }
@@ -304,6 +325,7 @@
       const query = input.value.trim();
 
       if (!query) {
+        selectedIndex = -1;
         if (emptyState) emptyState.style.display = 'block';
         if (resultsContainer) resultsContainer.style.display = 'none';
         if (noResults) noResults.style.display = 'none';
@@ -328,14 +350,15 @@
         if (emptyState) emptyState.style.display = 'none';
 
         if (results.length === 0) {
+          selectedIndex = -1;
           if (resultsContainer) resultsContainer.style.display = 'none';
           if (noResults) noResults.style.display = 'block';
         } else {
           if (noResults) noResults.style.display = 'none';
           if (resultsContainer) {
             resultsContainer.style.display = 'block';
-            resultsContainer.innerHTML = results.map(item => `
-              <a href="${item.url}" class="search-item-card">
+            resultsContainer.innerHTML = results.map((item, idx) => `
+              <a href="${item.url}" class="search-item-card ${idx === 0 ? 'selected' : ''}">
                 <div class="search-item-title">
                   <span>${item.meta.title || 'Mavzu'}</span>
                   <span style="font-size: 0.75rem; color: var(--text-subtle);">O'tish →</span>
@@ -343,6 +366,8 @@
                 <div class="search-item-excerpt">${item.excerpt}</div>
               </a>
             `).join('');
+
+            selectedIndex = 0;
 
             // Close modal when a search item is clicked
             resultsContainer.querySelectorAll('a').forEach(a => {
@@ -352,8 +377,31 @@
         }
       }, 150);
     });
+
+    // Arrow keys & Enter navigation on the search input
+    input?.addEventListener('keydown', (e) => {
+      const items = resultsContainer?.querySelectorAll<HTMLAnchorElement>('.search-item-card');
+      if (!items || items.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex + 1) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+          closeModal();
+          items[selectedIndex].click();
+        }
+      }
+    });
   }
 
   setupSearch();
+  document.addEventListener('astro:page-load', setupSearch);
   document.addEventListener('astro:after-swap', setupSearch);
 </script>

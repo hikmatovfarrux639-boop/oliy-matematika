@@ -1,6 +1,27 @@
 ---
 import { MODULES } from '../data/modules';
+import { getCollection } from 'astro:content';
+
 const currentPath = Astro.url.pathname;
+const allLessons = await getCollection('lessons');
+
+// Group lessons by module and sort
+const lessonsByModule: Record<string, typeof allLessons> = {};
+for (const lesson of allLessons) {
+  const mod = lesson.data.module || 'boshqa';
+  if (!lessonsByModule[mod]) lessonsByModule[mod] = [];
+  lessonsByModule[mod].push(lesson);
+}
+for (const mod in lessonsByModule) {
+  lessonsByModule[mod].sort((a, b) => a.data.order - b.data.order);
+}
+
+function isModuleActive(slug: string): boolean {
+  return currentPath === `/modullar/${slug}` || 
+         currentPath === `/modullar/${slug}/` || 
+         currentPath.startsWith(`/dars/${slug}/`) || 
+         currentPath.includes(`/${slug}/`);
+}
 ---
 
 <aside class="sidebar-nav">
@@ -8,19 +29,38 @@ const currentPath = Astro.url.pathname;
     <div class="sidebar-section-title">Oliy Matematika Modullari</div>
     <ul class="module-nav-list">
       {MODULES.map(m => {
-        const isCurrent = currentPath === `/modullar/${m.slug}` || currentPath.includes(`/${m.slug}/`);
+        const isCurrent = isModuleActive(m.slug);
+        const moduleLessons = lessonsByModule[m.slug] || [];
         return (
           <li class={`module-nav-item ${isCurrent ? 'active' : ''} ${!m.isActive ? 'inactive' : ''}`}>
             <a href={`/modullar/${m.slug}`} title={m.title}>
-              <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 190px;">
+              <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 175px;">
                 {m.title}
               </span>
               {m.isActive ? (
-                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent);" title="Faol modul"></span>
+                <span class="module-counter-badge">{moduleLessons.length} dars</span>
               ) : (
                 <span style="font-size: 0.65rem; color: var(--text-subtle); background: var(--bg-muted); padding: 0.15rem 0.35rem; border-radius: 4px;">Tez orada</span>
               )}
             </a>
+
+            {isCurrent && moduleLessons.length > 0 && (
+              <ul class="sidebar-sublesson-list">
+                {moduleLessons.map(l => {
+                  const lessonSlug = l.id.replace(/\.mdx?$/, '');
+                  const lessonUrl = `/dars/${lessonSlug}`;
+                  const isLessonActive = currentPath === lessonUrl || currentPath === `${lessonUrl}/`;
+                  return (
+                    <li class={`sublesson-item ${isLessonActive ? 'active' : ''}`}>
+                      <a href={lessonUrl} title={l.data.title}>
+                        <span class="sublesson-order">{l.data.order}.</span>
+                        <span class="sublesson-title">{l.data.title}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </li>
         );
       })}
@@ -108,3 +148,91 @@ const currentPath = Astro.url.pathname;
     </ul>
   </div>
 </aside>
+
+<script>
+  function handleSidebarActiveScroll() {
+    const sidebar = document.querySelector('.sidebar-nav');
+    if (!sidebar) return;
+
+    // Prioritize active sublesson, fallback to active module
+    const activeSub = sidebar.querySelector('.sublesson-item.active') as HTMLElement | null;
+    const activeMod = sidebar.querySelector('.module-nav-item.active') as HTMLElement | null;
+    const target = activeSub || activeMod;
+
+    if (target) {
+      target.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    }
+  }
+
+  document.addEventListener('astro:page-load', handleSidebarActiveScroll);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleSidebarActiveScroll);
+  } else {
+    handleSidebarActiveScroll();
+  }
+</script>
+
+<style>
+  .module-counter-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    background: var(--bg-muted);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .module-nav-item.active > a .module-counter-badge {
+    background: var(--primary);
+    color: white;
+  }
+
+  .sidebar-sublesson-list {
+    list-style: none;
+    margin: 0.35rem 0 0.6rem 0.75rem;
+    padding-left: 0.6rem;
+    border-left: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .sublesson-item a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .sublesson-item a:hover {
+    background-color: var(--bg-muted);
+    color: var(--primary);
+  }
+
+  .sublesson-item.active a {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .sublesson-order {
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  .sublesson-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 195px;
+  }
+</style>

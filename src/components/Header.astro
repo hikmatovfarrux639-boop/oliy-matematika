@@ -399,7 +399,7 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
     if (!(document as any)._hasGlobalDropClose) {
       (document as any)._hasGlobalDropClose = true;
       document.addEventListener('click', () => {
-        dropdowns.forEach(d => d.classList.remove('is-open'));
+        document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('is-open'));
       });
     }
   }

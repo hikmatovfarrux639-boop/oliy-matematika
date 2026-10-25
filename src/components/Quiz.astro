@@ -262,7 +262,17 @@ const {
         filtered = shuffleArray(QUIZ_DATABASE).slice(0, 10);
       }
 
-      activeQuestions = filtered;
+      // Randomize options for each question so correct answer is evenly distributed across A, B, C, D
+      activeQuestions = filtered.map(q => {
+        const paired = q.options.map((opt, idx) => ({ opt, isCorrect: idx === q.correctIndex }));
+        const shuffledPairs = shuffleArray(paired);
+        return {
+          ...q,
+          options: shuffledPairs.map(p => p.opt),
+          correctIndex: shuffledPairs.findIndex(p => p.isCorrect)
+        };
+      });
+
       currentIndex = 0;
       correctCount = 0;
       wrongCount = 0;

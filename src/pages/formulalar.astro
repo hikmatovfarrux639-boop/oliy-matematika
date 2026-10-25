@@ -50,7 +50,7 @@ const formulasWithHtml = FORMULAS.map(f => ({
       <!-- Action & Search -->
       <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
         <!-- Download Full 27-page Mathprofi PDF Book -->
-        <a href="/mathprofi-toliq-qollanma.pdf" download="Mathprofi_Toliq_Mavzular_va_Formulalar_Kitobi.pdf" class="print-btn" style="text-decoration: none; background: var(--color-primary); color: #fff; border-color: var(--color-primary);" title="Mathprofi.ru barcha maxsus mavzular, jadvallar va formulalar kitobini (27 sahifali PDF) yuklab olish">
+        <a href="/mathprofi-toliq-qollanma.pdf" download="Mathprofi_Toliq_Mavzular_va_Formulalar_Kitobi.pdf" class="print-btn" style="text-decoration: none; background: var(--primary); color: #ffffff; border-color: var(--primary);" title="Mathprofi.ru barcha maxsus mavzular, jadvallar va formulalar kitobini (27 sahifali PDF) yuklab olish">
           <span>📥 To'liq PDF Kitob (27 bet)</span>
         </a>
 
@@ -92,6 +92,13 @@ const formulasWithHtml = FORMULAS.map(f => ({
         </div>
       </div>
     ))}
+  </div>
+
+  <!-- Empty Search State -->
+  <div id="empty-formulas-state" style="display: none; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-top: 1.5rem;">
+    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">Mos keluvchi formula topilmadi</h3>
+    <p style="color: var(--text-muted); font-size: 0.95rem;">Qidiruv so'zini boshqacharoq yozib ko'ring yoki yuqoridagi barcha toifalarni tanlang.</p>
   </div>
 </BaseLayout>
 
@@ -265,8 +272,11 @@ const formulasWithHtml = FORMULAS.map(f => ({
       window.print();
     });
 
+    const emptyState = document.getElementById('empty-formulas-state');
+
     function filterCards() {
       const query = searchInput?.value.toLowerCase().trim() || '';
+      let visibleCount = 0;
 
       cards.forEach(card => {
         const el = card as HTMLElement;
@@ -279,10 +289,15 @@ const formulasWithHtml = FORMULAS.map(f => ({
 
         if (matchesCategory && matchesQuery) {
           el.style.display = 'flex';
+          visibleCount++;
         } else {
           el.style.display = 'none';
         }
       });
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
     }
 
     // Tabs

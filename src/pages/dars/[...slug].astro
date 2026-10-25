@@ -119,6 +119,43 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
         </button>
       </div>
     </div>
+
+    <!-- In-Module Quick Lesson Navigation -->
+    <div style="margin-top: 1rem; padding-top: 0.85rem; border-top: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1; min-width: 260px;">
+        <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); white-space: nowrap;">
+          📖 Modul darslari ({moduleLessons.length} ta):
+        </span>
+        <select 
+          id="lesson-quick-jump-select"
+          style="flex: 1; max-width: 380px; padding: 0.4rem 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-size: 0.85rem; cursor: pointer;"
+          aria-label="Modul darslariga tezkor o'tish"
+        >
+          {moduleLessons.map(ml => {
+            const mlSlug = ml.id.replace(/\.mdx?$/, '');
+            const isCurrent = mlSlug === cleanSlug;
+            return (
+              <option value={`/dars/${mlSlug}`} selected={isCurrent}>
+                {ml.data.order}-dars: {ml.data.title}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        {prevLesson && (
+          <a href={`/dars/${prevLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" title="Oldingi dars">
+            ← Oldingi
+          </a>
+        )}
+        {nextLesson && (
+          <a href={`/dars/${nextLesson.id.replace(/\.mdx?$/, '')}`} class="btn btn-primary" style="padding: 0.35rem 0.65rem; font-size: 0.8rem;" title="Keyingi dars">
+            Keyingi →
+          </a>
+        )}
+      </div>
+    </div>
   </div>
 
   <!-- Layout: Table of Contents (if headings exist) & Content -->
@@ -371,6 +408,14 @@ const readTime = Math.max(3, Math.ceil(wordCount / 140));
         } else {
           toast.style.display = 'none';
         }
+      }
+    });
+
+    // Quick lesson jump dropdown handler
+    const jumpSelect = document.getElementById('lesson-quick-jump-select') as HTMLSelectElement | null;
+    jumpSelect?.addEventListener('change', () => {
+      if (jumpSelect.value) {
+        window.location.href = jumpSelect.value;
       }
     });
   }

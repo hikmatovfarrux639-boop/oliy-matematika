@@ -1,6 +1,27 @@
 ---
 import { MODULES } from '../data/modules';
+import { getCollection } from 'astro:content';
+
 const currentPath = Astro.url.pathname;
+const allLessons = await getCollection('lessons');
+
+// Group lessons by module and sort
+const lessonsByModule: Record<string, typeof allLessons> = {};
+for (const lesson of allLessons) {
+  const mod = lesson.data.module || 'boshqa';
+  if (!lessonsByModule[mod]) lessonsByModule[mod] = [];
+  lessonsByModule[mod].push(lesson);
+}
+for (const mod in lessonsByModule) {
+  lessonsByModule[mod].sort((a, b) => a.data.order - b.data.order);
+}
+
+function isModuleActive(slug: string): boolean {
+  return currentPath === `/modullar/${slug}` || 
+         currentPath === `/modullar/${slug}/` || 
+         currentPath.startsWith(`/dars/${slug}/`) || 
+         currentPath.includes(`/${slug}/`);
+}
 ---
 
 <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
@@ -110,17 +131,36 @@ const currentPath = Astro.url.pathname;
       <div class="sidebar-section-title">Barcha 14 ta Modul</div>
       <ul class="module-nav-list">
         {MODULES.map(m => {
-          const isCurrent = currentPath === `/modullar/${m.slug}` || currentPath.includes(`/${m.slug}/`);
+          const isCurrent = isModuleActive(m.slug);
+          const moduleLessons = lessonsByModule[m.slug] || [];
           return (
             <li class={`module-nav-item ${isCurrent ? 'active' : ''} ${!m.isActive ? 'inactive' : ''}`}>
-              <a href={`/modullar/${m.slug}`}>
+              <a href={`/modullar/${m.slug}`} style="display: flex; align-items: center; justify-content: space-between;">
                 <span style="font-size: 0.85rem;">{m.title}</span>
                 {m.isActive ? (
-                  <span style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--accent); flex-shrink: 0;"></span>
+                  <span class="mobile-count-badge">{moduleLessons.length} dars</span>
                 ) : (
                   <span style="font-size: 0.65rem; color: var(--text-subtle);">Tez orada</span>
                 )}
               </a>
+
+              {isCurrent && moduleLessons.length > 0 && (
+                <ul class="mobile-sublesson-list">
+                  {moduleLessons.map(l => {
+                    const lessonSlug = l.id.replace(/\.mdx?$/, '');
+                    const lessonUrl = `/dars/${lessonSlug}`;
+                    const isLessonActive = currentPath === lessonUrl || currentPath === `${lessonUrl}/`;
+                    return (
+                      <li class={`mobile-sublesson-item ${isLessonActive ? 'active' : ''}`}>
+                        <a href={lessonUrl}>
+                          <span style="font-weight: 700; opacity: 0.7; font-size: 0.75rem;">{l.data.order}.</span>
+                          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{l.data.title}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </li>
           );
         })}
@@ -178,3 +218,46 @@ const currentPath = Astro.url.pathname;
   document.addEventListener('astro:page-load', setupMobileDrawer);
   document.addEventListener('astro:after-swap', setupMobileDrawer);
 </script>
+
+<style>
+  .mobile-count-badge {
+    font-size: 0.65rem;
+    background: var(--bg-muted);
+    color: var(--text-subtle);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .module-nav-item.active > a .mobile-count-badge {
+    background: var(--primary);
+    color: white;
+  }
+
+  .mobile-sublesson-list {
+    list-style: none;
+    margin: 0.25rem 0 0.5rem 0.6rem;
+    padding-left: 0.6rem;
+    border-left: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .mobile-sublesson-item a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .mobile-sublesson-item.active a {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+  }
+</style>
