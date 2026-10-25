@@ -982,6 +982,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let selectedImageMime: string | null = null;
     let currentMode: string = 'auto';
     let lastRawSolutionText = '';
+    let lastProblemText = '';
     let activeStream: MediaStream | null = null;
 
     // Render KaTeX on preset buttons
@@ -1587,11 +1588,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
      */
     async function handleSolve(forceAi = false) {
       hideError();
-      const problemText = input!.value.trim();
+      const problemText = input!.value.trim() || lastProblemText;
+      if (problemText) lastProblemText = problemText;
 
       if (!problemText && !selectedImageBase64) {
         showError('Iltimos, misolni yozing yoki uning rasmini yuklang.');
         return;
+      }
+
+      // If forcing AI, show loading inside solution card
+      if (forceAi) {
+        if (askAiDeeperBtn) {
+          askAiDeeperBtn.setAttribute('disabled', 'true');
+          askAiDeeperBtn.textContent = '⏳ Gemini AI tahlil qilmoqda...';
+        }
+        if (solutionBody) {
+          solutionBody.innerHTML = `
+            <div style="text-align: center; padding: 2.5rem 1rem;">
+              <div class="spinner-border" style="width: 2.2rem; height: 2.2rem; color: var(--primary); margin-bottom: 0.8rem; display: inline-block;"></div>
+              <h4 style="font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">Gemini AI chuqur akademik yechim tayyorlamoqda...</h4>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Formulalar, teoremalar va qadamma-qadam isbotlar generatsiya qilinmoqda</p>
+            </div>
+          `;
+          if (solutionContainer) solutionContainer.style.display = 'block';
+        }
       }
 
       // Always run instant Topic Diagnosis immediately (< 1ms)
@@ -1727,11 +1747,10 @@ Qat'iy qoidalar:
         parts.push({ text: queryText });
 
         const candidateModels = [
-          { name: 'gemini-flash-latest', useThinkingLow: false },
+          { name: 'gemini-3.5-flash', useThinkingLow: false },
+          { name: 'gemini-3.5-flash-lite', useThinkingLow: false },
           { name: 'gemini-3.8-flash', useThinkingLow: true },
-          { name: 'gemini-pro-latest', useThinkingLow: false },
-          { name: 'gemini-3.7-flash', useThinkingLow: false },
-          { name: 'gemini-2.0-flash', useThinkingLow: false }
+          { name: 'gemini-flash-latest', useThinkingLow: false }
         ];
 
         let res: Response | null = null;
@@ -1752,7 +1771,7 @@ Qat'iy qoidalar:
             }
 
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 14000);
+            const timeoutId = setTimeout(() => controller.abort(), 12000);
 
             const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${m.name}:generateContent?key=${apiKey}`;
             const attempt = await fetch(endpoint, {
@@ -1822,7 +1841,7 @@ Qat'iy qoidalar:
           solutionBody.innerHTML = renderMathMarkdown(rawText);
         }
         if (solutionEngineBadge) {
-          solutionEngineBadge.textContent = '🤖 Gemini 3.8 Flash Multimodal AI orqali tahlil qilindi';
+          solutionEngineBadge.textContent = '🤖 Gemini AI Multimodal orqali chuqur tahlil qilindi';
         }
 
         if (solutionContainer) {
@@ -1842,6 +1861,10 @@ Qat'iy qoidalar:
         solveBtn!.removeAttribute('disabled');
         if (solveBtnText) solveBtnText.textContent = '🚀 Tahlil qilish va Yechish';
         if (solveBtnSpinner) solveBtnSpinner.style.display = 'none';
+        if (askAiDeeperBtn) {
+          askAiDeeperBtn.removeAttribute('disabled');
+          askAiDeeperBtn.textContent = '🤖 Gemini AI dan yana-da batafsil so\'rash';
+        }
       }
     }
 
