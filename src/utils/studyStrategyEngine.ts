@@ -1082,9 +1082,12 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
 ];
 
 /**
- * Finds the best matching StudyStrategyPlan for any natural language user query.
+ * Finds the best matching StudyStrategyPlan for any natural language user query and mode.
  */
-export function generateStudyStrategy(rawQuery: string): StudyStrategyPlan {
+export function generateStudyStrategy(
+  rawQuery: string,
+  mode: 'express' | 'deep' | 'exam' = 'deep'
+): StudyStrategyPlan {
   const q = normalizeQueryForStrategy(rawQuery);
 
   let bestRule = STRATEGY_RULES[STRATEGY_RULES.length - 1]; // Default to "Noldan boshlash" if completely generic
@@ -1103,7 +1106,51 @@ export function generateStudyStrategy(rawQuery: string): StudyStrategyPlan {
     }
   }
 
-  return bestRule.plan;
+  const base = bestRule.plan;
+
+  if (mode === 'express') {
+    // Express mode: Only 1-2 core practical lessons + instant calculator + express advice
+    const coreSteps = base.steps.filter((s) => s.phase === 'Asosiy' || s.phase === 'Amaliyot');
+    const selectedSteps = (coreSteps.length >= 2 ? coreSteps.slice(0, 2) : base.steps.slice(0, 2)).map((s, idx) => ({
+      ...s,
+      stepNumber: idx + 1,
+      phase: 'Asosiy' as const,
+      duration: '10–12 daqiqa',
+      whyRead: `[Tezkor Reja] ${s.whyRead}`
+    }));
+
+    return {
+      ...base,
+      topicTitle: `⚡ Ekspress Reja: ${base.topicTitle} (Faqat eng asosiysi)`,
+      estimatedTotalTime: '20–25 daqiqa',
+      empathyMessage: `Vaqtingiz oz bo'lsa, xavotir olmang! Ortiqcha nazariyalarga to'xtalmasdan, aynan shu mavzuning 2 ta asosiy darsini o'qib, formulalarni kalkulyatorda sinab olsangiz, ertangi dars yoki oraliqqa tayyor bo'lasiz.`,
+      rootCauseWhyHard: `Tezkor o'rganishda eng asosiysi — formulaning ishoralarini yodlab olish va darhol amaliy misol ustida qo'llash.`,
+      steps: selectedSteps,
+      examTip: `⚡ Ekspress hiyla: ${base.examTip}`
+    };
+  }
+
+  if (mode === 'exam') {
+    // Exam mode: Focus on exam traps, shortcuts, and quiz practice
+    const examSteps = base.steps.map((s, idx) => ({
+      ...s,
+      stepNumber: idx + 1,
+      whyRead: `[HEMIS Tayyorgarlik] Imtihonda tushadigan tipik savollar va qoidalar: ${s.whyRead}`
+    }));
+
+    return {
+      ...base,
+      topicTitle: `📝 HEMIS Imtihon Rejasi: ${base.topicTitle}`,
+      estimatedTotalTime: '35–45 daqiqa',
+      empathyMessage: `Oraliq va yakuniy nazoratlarda eng ko'p ball olib keladigan tipik savollar, hisoblashdagi tuzoqlar va test variantlariga yo'naltirilgan tayyorgarlik strategiyasi.`,
+      rootCauseWhyHard: `Imtihonda talabalar odatda vaqt yetishmasligidan va shoshilish tufayli oddiy arifmetik ishoralarda adashadilar.`,
+      steps: examSteps,
+      examTip: `🎯 Imtihon tekshiruvi: ${base.examTip}`
+    };
+  }
+
+  // Default: Full Deep Foundation Plan
+  return base;
 }
 
 /**

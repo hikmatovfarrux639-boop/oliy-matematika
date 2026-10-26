@@ -194,6 +194,19 @@
     padding: 0.9rem 1rem;
   }
 
+  :global(.modal-mode-chip) {
+    font-size: 0.76rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    display: inline-block;
+  }
+  :global(.modal-mode-chip:hover) {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
   :global(.modal-strategy-step) {
     display: flex;
     align-items: center;
@@ -396,23 +409,34 @@
 
         // 1. Always render smart AI Study Strategy Roadmap card when query >= 3 chars
         if (strategyBox && query.length >= 3) {
-          const plan = generateStudyStrategy(query);
+          const plan = generateStudyStrategy(query, 'deep');
           const isExplicitStrategy = isStrategyOrTopicHelpQuery(query);
-          const topSteps = plan.steps.slice(0, 3);
+          const topSteps = plan.steps.slice(0, 2);
           strategyBox.style.display = 'block';
           strategyBox.innerHTML = `
             <div class="modal-strategy-card">
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
                 <span style="font-size: 0.78rem; font-weight: 800; color: #059669;">
-                  🧭 AI O'QUV STRATEGIYASI (${plan.topicTitle})
+                  🧭 AI O'QUV NAVIGATORI: ${plan.topicTitle}
                 </span>
-                <a href="/strategiya?q=${encodeURIComponent(query)}" class="modal-open-full-strategy" style="font-size: 0.78rem; font-weight: 700; color: var(--primary); text-decoration: underline;">
-                  To'liq 5 bosqichli reja →
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Formatni tanlang:</span>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.55rem;">
+                ${isExplicitStrategy ? plan.empathyMessage : "Ushbu mavzuni qanday o'rganmoqchisiz? Faqat asosiy darsmi yoki poydevordan chuqurmi?"}
+              </div>
+
+              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                <a href="/strategiya?q=${encodeURIComponent(query)}&mode=express" class="modal-mode-chip" style="background: rgba(234, 88, 12, 0.12); color: #ea580c; border: 1px solid rgba(234, 88, 12, 0.3);">
+                  ⚡ Faqat shu mavzu (Tezkor 20 daqiqa) →
+                </a>
+                <a href="/strategiya?q=${encodeURIComponent(query)}&mode=deep" class="modal-mode-chip" style="background: rgba(16, 185, 129, 0.12); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700;">
+                  🎓 Poydevor bilan chuqur (To'liq xarita) →
+                </a>
+                <a href="/strategiya?q=${encodeURIComponent(query)}&mode=exam" class="modal-mode-chip" style="background: rgba(37, 99, 235, 0.12); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.3);">
+                  📝 HEMIS imtihon rejasi →
                 </a>
               </div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">
-                ${isExplicitStrategy ? plan.empathyMessage : "Ushbu mavzuni qiynalmasdan o'zlashtirish uchun quyidagi tartibda o'qing:"}
-              </div>
+
               ${topSteps
                 .map(
                   (s, i) => `

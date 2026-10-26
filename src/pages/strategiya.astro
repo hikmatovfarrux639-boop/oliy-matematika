@@ -4,25 +4,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout 
   title="AI O'quv Strategiyasi va Shaxsiy Yo'l Xaritasi — Oliy Matematika"
-  description="Oliy matematikadan qaysi mavzuda qiynalyapsiz? Sun'iy intellekt saytdagi 156 ta dars ichidan siz uchun qadamma-qadam o'rganish strategiyasi va yo'l xaritasini tuzib beradi."
+  description="Oliy matematikadan qaysi mavzuda qiynalyapsiz? AI sizdan maqsadingizni so'raydi (faqat shu mavzumi yoki chuqurmi) va saytdagi 156 ta dars ichidan shaxsiy o'quv strategiyasini tuzib beradi."
 >
   <div class="strategy-page">
     <!-- Hero Header -->
     <header class="strategy-hero">
       <div class="hero-pill">
         <span>🧭</span>
-        <span>AI O'quv Navigatori • 14 ta modul va 156 ta dars bo'yicha shaxsiy yo'l xaritasi</span>
+        <span>AI O'quv Repetitori • 14 ta modul va 156 ta dars bo'yicha moslashuvchan yo'l xaritasi</span>
       </div>
       <h1>Qaysi mavzuda qiynalyapsiz?</h1>
       <p>
-        Darsda tushunmay qolgan mavzungizni oddiy so'z bilan yozing (masalan: <em>«Men darsda determinantga qiynalyapman»</em> yoki <em>«Ertaga integrallardan oraliq imtihonim bor»</em>). AI tizimi saytimizdagi darslarni <strong>aniq ketma-ketlikda</strong> («avval buni o'qing, keyin buni mashq qiling») siz uchun strategiya qilib tuzib beradi!
+        Darsda tushunmay qolgan mavzungizni oddiy so'z bilan yozing (masalan: <em>«Men darsda determinantga qiynalyapman»</em>). AI sizdan <strong>«Faqat shu mavzuning o'zimi yoki poydevordan chuqurmi?»</strong> deb so'raydi va maqsadingizga qarab eng mos o'rganish ketma-ketligini tuzib beradi!
       </p>
     </header>
 
-    <!-- Interactive Input Box -->
+    <!-- Step 1: Input Section -->
     <section class="strategy-input-card">
       <label for="strategy-query-input" class="input-label">
-        <span>💬 Vaziyatingizni yoki qiynalayotgan mavzungizni yozing:</span>
+        <span>💬 Qiynalayotgan mavzungiz yoki vaziyatingizni yozing:</span>
       </label>
       <div class="input-row">
         <input
@@ -32,67 +32,134 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           autocomplete="off"
         />
         <button type="button" id="build-strategy-btn" class="btn btn-primary build-btn">
-          <span>🧭 Strategiya tuzish</span>
+          <span>🔍 Yo'l xaritasini topish</span>
         </button>
-      </div>
-
-      <!-- Study Pace / Mode Selector -->
-      <div class="pace-selector-row">
-        <span class="pace-label">O'rganish rejimi:</span>
-        <div class="pace-tabs">
-          <button type="button" class="pace-tab active" data-pace="standard">
-            📅 Bosqichma-bosqich (To'liq)
-          </button>
-          <button type="button" class="pace-tab" data-pace="express">
-            ⚡ Imtihonga tezkor (1 soatda)
-          </button>
-          <button type="button" class="pace-tab" data-pace="foundation">
-            🧱 Noldan (Poydevor bilan)
-          </button>
-        </div>
       </div>
 
       <!-- Quick Sample Prompts -->
       <div class="sample-prompts">
-        <span class="sample-title">Tezkor vaziyatlar (bosib ko'ring):</span>
+        <span class="sample-title">Tezkor namunalar (bosib ko'ring):</span>
         <div class="sample-chips">
-          <button type="button" class="sample-chip" data-query="Men darsda determinantga qiynalyapman, nimadan boshlay?">
+          <button type="button" class="sample-chip" data-query="Men darsda determinantga qiynalyapman">
             😟 Determinantga qiynalyapman
           </button>
-          <button type="button" class="sample-chip" data-query="Tenglamalar sistemasini Kramer va Gauss usulida yechishni tushunmayapman">
+          <button type="button" class="sample-chip" data-query="Tenglamalar sistemasini Kramer va Gauss usulida yechish">
             🔢 Kramer va Gauss usuli
           </button>
-          <button type="button" class="sample-chip" data-query="Limitlarda aniqmasliklarni ochish va ajoyib limitlarga adashyapman">
+          <button type="button" class="sample-chip" data-query="Limitlarda aniqmasliklarni ochish va ajoyib limitlar">
             📉 Limitlar va aniqmasliklar
           </button>
-          <button type="button" class="sample-chip" data-query="Murakkab funksiya hosilasi va urinma tenglamasini o'rganmoqchiman">
+          <button type="button" class="sample-chip" data-query="Murakkab funksiya hosilasi va urinma tenglamasi">
             📈 Hosila va urinma
           </button>
-          <button type="button" class="sample-chip" data-query="Integrallarni bo'laklab va almashtirib yechishda qaysi usulni tanlashni bilmayman">
+          <button type="button" class="sample-chip" data-query="Integrallarni bo'laklab va almashtirib yechish">
             ∫ Integrallarni yechish
           </button>
-          <button type="button" class="sample-chip" data-query="Vektorlar, skalyar ko'paytma va piramida hajmini topishga qiynalyapman">
+          <button type="button" class="sample-chip" data-query="Vektorlar, skalyar ko'paytma va piramida hajmi">
             📐 Vektorlar va Geometriya
           </button>
-          <button type="button" class="sample-chip" data-query="Differensial tenglamalar turlarini bir-biridan ajrata olmayapman">
+          <button type="button" class="sample-chip" data-query="Differensial tenglamalar turlarini bir-biridan ajratish">
             ⚙️ Differensial tenglamalar
           </button>
-          <button type="button" class="sample-chip" data-query="Ehtimollar nazariyasi, Bayes va Bernulli formulalarini o'rganishim kerak">
+          <button type="button" class="sample-chip" data-query="Ehtimollar nazariyasi, Bayes va Bernulli formulalari">
             🎲 Ehtimollar va Statistika
           </button>
-          <button type="button" class="sample-chip" data-query="Maktab bazam bo'sh, oliy matematikani noldan qanday boshlasam bo'ladi?">
+          <button type="button" class="sample-chip" data-query="Maktab bazam bo'sh, noldan qanday boshlay?">
             🧱 Maktab bazam bo'sh (Noldan)
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Strategy Output Container -->
+    <!-- Step 2: AI Clarification Modal / Choice Section (The core requirement!) -->
+    <section id="ai-clarify-section" class="clarify-card" style="display: none;">
+      <div class="clarify-header">
+        <div style="font-size: 1.8rem;">🤖</div>
+        <div>
+          <h2 id="clarify-topic-heading" style="margin: 0 0 0.25rem 0; font-size: 1.25rem; color: var(--text-main);">
+            AI Tahlili: Sizga qanday o'rganish formati kerak?
+          </h2>
+          <p id="clarify-intro-text" style="margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;"></p>
+        </div>
+      </div>
+
+      <div class="clarify-options-grid">
+        <!-- Option 1: Express (Only this topic) -->
+        <button type="button" class="clarify-btn" data-mode="express">
+          <div class="clarify-btn-badge" style="background: rgba(234, 88, 12, 0.15); color: #ea580c;">
+            ⚡ TEZKOR / EKSPRESS (20–25 daqiqa)
+          </div>
+          <div class="clarify-btn-title">Faqat shu mavzuning o'zi (Eng zaruri)</div>
+          <div class="clarify-btn-desc">
+            Vaqtingiz kam bo'lsa yoki ertaga dars bo'lsa: ortiqcha nazariyasiz, faqat 1–2 ta eng asosiy dars, tayyor formulalar va kalkulyatorda yechish.
+          </div>
+          <div class="clarify-btn-action">
+            <span>Ushbu variantni tanlash →</span>
+          </div>
+        </button>
+
+        <!-- Option 2: Deep (Foundational) -->
+        <button type="button" class="clarify-btn recommended" data-mode="deep">
+          <div class="clarify-btn-badge" style="background: rgba(16, 185, 129, 0.15); color: #059669;">
+            🎓 TAVSIYA ETILADI • CHUQUR (50–70 daqiqa)
+          </div>
+          <div class="clarify-btn-title">Poydevor bilan to'liq chuqur o'rganish</div>
+          <div class="clarify-btn-desc">
+            Mavzuni noldan, uning mohiyati, nima uchun bunday qilinishi, barcha teoremalari, isbotlari va xossalari bilan puxta o'zlashtirish.
+          </div>
+          <div class="clarify-btn-action">
+            <span>To'liq yo'l xaritasini ochish →</span>
+          </div>
+        </button>
+
+        <!-- Option 3: Exam (HEMIS) -->
+        <button type="button" class="clarify-btn" data-mode="exam">
+          <div class="clarify-btn-badge" style="background: rgba(37, 99, 235, 0.15); color: #2563eb;">
+            📝 HEMIS IMTIHON REJASI (35–45 daqiqa)
+          </div>
+          <div class="clarify-btn-title">Faqat nazorat va testlar uchun</div>
+          <div class="clarify-btn-desc">
+            Oraliq va yakuniy nazoratlarda eng ko'p tushadigan tipik savollar, hisoblashdagi xavfli tuzoqlar va test savollariga qaratilgan reja.
+          </div>
+          <div class="clarify-btn-action">
+            <span>Test rejasini ko'rish →</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 3: Strategy Output Container -->
     <div id="strategy-result-wrapper" style="display: none;">
+      <!-- Active Mode Switch Bar (Allows switching anytime) -->
+      <div class="active-mode-bar">
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-main);">
+          Tanlangan rejim:
+        </div>
+        <div class="mode-pills">
+          <button type="button" class="mode-pill" data-switch="express">
+            ⚡ Faqat shu mavzu (Tezkor)
+          </button>
+          <button type="button" class="mode-pill active" data-switch="deep">
+            🎓 Chuqur (Poydevor bilan)
+          </button>
+          <button type="button" class="mode-pill" data-switch="exam">
+            📝 HEMIS Test rejasi
+          </button>
+        </div>
+        <div class="share-actions">
+          <button type="button" id="copy-strategy-btn" class="btn btn-secondary btn-sm" title="Rejani nusxalash">
+            📋 Nusxalash
+          </button>
+          <a id="telegram-share-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="color: #0284c7; border-color: #0284c7;" title="Telegramga yuborish">
+            📲 Telegramga saqlash
+          </a>
+        </div>
+      </div>
+
       <!-- Diagnosis & Empathy Banner -->
       <div class="diagnosis-banner" id="strategy-diagnosis-banner"></div>
 
-      <!-- Progress Bar for This Roadmap -->
+      <!-- Progress Tracker -->
       <div class="roadmap-progress-card">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
           <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">
@@ -106,13 +173,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div id="roadmap-progress-fill" class="progress-fill" style="width: 0%;"></div>
         </div>
         <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">
-          💡 Darsni o'qib bo'lgach, dars oxiridagi «✅ Darsni o'zlashtirdim» tugmasini bossangiz, ushbu xaritadagi qadam avtomatik yashilga aylanadi!
+          💡 Darslarni o'qib bo'lgach, katakchalarni belgilang — natijangiz brauzeringizda avtomatik saqlanadi.
         </div>
       </div>
 
       <!-- Step-by-Step Timeline -->
       <div class="timeline-section">
-        <h2 class="section-heading">🗺️ Qadamma-qadam O'quv Strategiyasi (Ketma-ketlikni buzmang!)</h2>
+        <h2 class="section-heading" id="timeline-main-heading">🗺️ Qadamma-qadam Tavsiya Etilgan Darslar</h2>
         <div id="strategy-steps-list" class="timeline-list"></div>
       </div>
 
@@ -133,7 +200,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p id="strategy-exam-tip" style="margin: 0 0 1.25rem 0; font-size: 0.95rem; line-height: 1.6; color: var(--text-main);"></p>
 
           <button type="button" id="ask-gemini-mentor-btn" class="btn ai-mentor-btn">
-            <span>🤖 Gemini AI Mentoridan shaxsiy kunlik reja va maslahat olish</span>
+            <span>🤖 Gemini AI Mentoridan qo'shimcha shaxsiy maslahat olish</span>
           </button>
         </div>
       </div>
@@ -144,13 +211,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div style="display: flex; align-items: center; gap: 0.6rem;">
             <span style="font-size: 1.4rem;">🎓</span>
             <div>
-              <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">AI Shaxsiy Kouch va Kunlik Tayyorgarlik Rejasi</h3>
-              <span id="ai-mentor-badge" style="font-size: 0.78rem; color: var(--primary); font-weight: 600;">Sayt o'quv dasturi asosida moslashtirildi</span>
+              <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">AI Shaxsiy Kouch Xulosasi</h3>
+              <span id="ai-mentor-badge" style="font-size: 0.78rem; color: var(--primary); font-weight: 600;">Sayt o'quv dasturi asosida tuzildi</span>
             </div>
           </div>
         </div>
         <div id="ai-mentor-body" class="ai-mentor-body prose-content"></div>
       </div>
+
+      <!-- Interactive Q&A Chat with AI Mentor -->
+      <section class="mentor-chat-section">
+        <div class="chat-section-header">
+          <div style="font-size: 1.4rem;">💬</div>
+          <div>
+            <h3 style="margin: 0 0 0.2rem 0; font-size: 1.1rem; color: var(--text-main);">AI Repetitorga savol bering</h3>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
+              Ushbu mavzu bo'yicha tushunmagan joyingizni so'rang (masalan: <em>«Minus ishora qayerga qo'yiladi?»</em> yoki <em>«1-qadamni o'qidim, endi qanday misol yechay?»</em>)
+            </p>
+          </div>
+        </div>
+
+        <div id="mentor-chat-messages" class="chat-messages-container"></div>
+
+        <div class="chat-input-bar">
+          <input 
+            type="text" 
+            id="mentor-chat-input" 
+            placeholder="AI Repetitordan so'rang (masalan: Sarryus qoidasida minus qayerga qo'yiladi?)..." 
+          />
+          <button type="button" id="mentor-chat-send-btn" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-weight: 700;">
+            Yuborish 🚀
+          </button>
+        </div>
+      </section>
     </div>
   </div>
 </BaseLayout>
@@ -203,6 +296,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   function setupStrategyPage() {
     const queryInput = document.getElementById('strategy-query-input') as HTMLInputElement | null;
     const buildBtn = document.getElementById('build-strategy-btn');
+    const clarifySection = document.getElementById('ai-clarify-section');
+    const clarifyHeading = document.getElementById('clarify-topic-heading');
+    const clarifyIntro = document.getElementById('clarify-intro-text');
     const resultWrapper = document.getElementById('strategy-result-wrapper');
     const diagnosisBanner = document.getElementById('strategy-diagnosis-banner');
     const stepsList = document.getElementById('strategy-steps-list');
@@ -214,13 +310,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const mentorCard = document.getElementById('ai-mentor-response-card');
     const mentorBody = document.getElementById('ai-mentor-body');
     const mentorBadge = document.getElementById('ai-mentor-badge');
+    const copyBtn = document.getElementById('copy-strategy-btn');
+    const telegramShareBtn = document.getElementById('telegram-share-btn') as HTMLAnchorElement | null;
+    const chatInput = document.getElementById('mentor-chat-input') as HTMLInputElement | null;
+    const chatSendBtn = document.getElementById('mentor-chat-send-btn');
+    const chatMessages = document.getElementById('mentor-chat-messages');
 
-    if (!queryInput || !buildBtn || (buildBtn as any)._hasStrategyInit) return;
-    (buildBtn as any)._hasStrategyInit = true;
+    if (!queryInput || !buildBtn || (buildBtn as any)._hasStrategyV2Init) return;
+    (buildBtn as any)._hasStrategyV2Init = true;
 
-    let currentPace: 'standard' | 'express' | 'foundation' = 'standard';
+    let activeMode: 'express' | 'deep' | 'exam' = 'deep';
     let currentPlan: StudyStrategyPlan | null = null;
-    let lastUserQuery = '';
+    let activeQuery = '';
 
     function getCompletedLessons(): string[] {
       try {
@@ -230,87 +331,137 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
-    function renderPlan(rawQuery: string) {
-      lastUserQuery = rawQuery.trim() || 'Men darsda determinantga qiynalyapman';
-      const basePlan = generateStudyStrategy(lastUserQuery);
-      currentPlan = basePlan;
-
+    function toggleLessonCompletion(slug: string) {
+      if (!slug) return;
       const completed = getCompletedLessons();
-
-      // Filter or augment steps based on selected pace
-      let steps = [...basePlan.steps];
-      if (currentPace === 'express') {
-        // Express mode: focus on core practical lessons
-        steps = steps.filter((s) => s.phase === 'Asosiy' || s.phase === 'Amaliyot');
-        if (steps.length === 0) steps = basePlan.steps.slice(0, 2);
-      } else if (currentPace === 'foundation' && basePlan.id !== 'maktab-noldan') {
-        // Foundation mode: prepend school foundation refresher if not already present
-        steps = [
-          {
-            stepNumber: 0,
-            phase: 'Poydevor',
-            badgeColor: '#8b5cf6',
-            title: 'Maktab poydevori: Algebraik ayniyatlar va tenglamalar',
-            url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish',
-            slug: 'maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish',
-            duration: '10 daqiqa',
-            whyRead: 'Hisob-kitoblarda ishora va kasr xatolariga yo\'l qo\'ymaslik uchun bazaviy qoidalarni eslab olish.',
-            focusPoints: ['Qisqa ko\'paytirish formulalari', 'Daraja va kasrlar ustida amallar']
-          },
-          ...steps
-        ];
+      let updated: string[];
+      if (completed.includes(slug)) {
+        updated = completed.filter((s) => s !== slug);
+      } else {
+        updated = [...completed, slug];
       }
+      localStorage.setItem('math_completed_lessons', JSON.stringify(updated));
+      updateProgressDisplay();
+    }
 
-      // Diagnosis banner
-      if (diagnosisBanner) {
-        const paceBadgeText =
-          currentPace === 'express'
-            ? '⚡ Tezkor Imtihon Rejimi'
-            : currentPace === 'foundation'
-            ? '🧱 Poydevor + To\'liq Rejim'
-            : '📅 Standart Bosqichma-Bosqich Rejim';
-
-        diagnosisBanner.innerHTML = `
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
-            <span class="module-pill">${basePlan.moduleTitle}</span>
-            <span class="time-pill">${paceBadgeText} • ⏱ ${basePlan.estimatedTotalTime}</span>
-          </div>
-          <h2 style="margin: 0 0 0.6rem 0; font-size: 1.5rem; color: var(--text-main);">
-            🎯 Strategiya: ${basePlan.topicTitle}
-          </h2>
-          <p style="margin: 0 0 0.85rem 0; font-size: 0.98rem; color: var(--text-main); line-height: 1.55;">
-            <strong>💬 AI Mentor:</strong> ${basePlan.empathyMessage}
-          </p>
-          <div class="root-cause-box">
-            <strong>🔍 Nega talabalar bu mavzuda qiynaladi?</strong> ${basePlan.rootCauseWhyHard}
-          </div>
-        `;
-      }
-
-      // Progress calculation
+    function updateProgressDisplay() {
+      if (!currentPlan) return;
+      const completed = getCompletedLessons();
       let completedInPlan = 0;
-      steps.forEach((s) => {
+      currentPlan.steps.forEach((s) => {
         if (s.slug && completed.includes(s.slug)) {
           completedInPlan++;
         }
       });
-      const pct = steps.length > 0 ? Math.round((completedInPlan / steps.length) * 100) : 0;
+      const total = currentPlan.steps.length;
+      const pct = total > 0 ? Math.round((completedInPlan / total) * 100) : 0;
       if (progressLabel) {
-        progressLabel.textContent = `${completedInPlan} / ${steps.length} qadam o'zlashtirilgan (${pct}%)`;
+        progressLabel.textContent = `${completedInPlan} / ${total} qadam o'zlashtirilgan (${pct}%)`;
       }
       if (progressFill) {
         progressFill.style.width = `${pct}%`;
       }
 
-      // Steps rendering
+      // Update checkboxes and cards
+      document.querySelectorAll('.timeline-card').forEach((card) => {
+        const slug = card.getAttribute('data-slug');
+        const chk = card.querySelector('.step-check') as HTMLInputElement | null;
+        if (slug && completed.includes(slug)) {
+          card.classList.add('is-completed');
+          if (chk) chk.checked = true;
+          const badge = card.querySelector('.completion-indicator');
+          if (badge) badge.innerHTML = '<span class="done-badge">✅ O\'zlashtirilgan</span>';
+        } else {
+          card.classList.remove('is-completed');
+          if (chk) chk.checked = false;
+          const badge = card.querySelector('.completion-indicator');
+          if (badge) badge.innerHTML = '<span class="todo-badge">⭕ O\'qish kerak</span>';
+        }
+      });
+    }
+
+    function onUserSubmitsTopic(raw: string, directMode?: 'express' | 'deep' | 'exam') {
+      activeQuery = raw.trim() || 'Men darsda determinantga qiynalyapman';
+      const basePlan = generateStudyStrategy(activeQuery, 'deep');
+
+      if (clarifyHeading) {
+        clarifyHeading.textContent = `AI Tahlili: «${basePlan.topicTitle}» bo'yicha yordam`;
+      }
+      if (clarifyIntro) {
+        clarifyIntro.innerHTML = `Mavzuni aniqladik: <strong>${basePlan.moduleTitle}</strong>. O'qishni boshlashdan oldin bitta savol: Sizga aynan qaysi formatda yordam kerak?`;
+      }
+
+      if (directMode) {
+        // Direct mode requested via URL or quick button
+        renderRoadmap(activeQuery, directMode);
+      } else {
+        // Show Clarification Question section
+        if (clarifySection) {
+          clarifySection.style.display = 'block';
+          clarifySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (resultWrapper) {
+          resultWrapper.style.display = 'none';
+        }
+      }
+    }
+
+    function renderRoadmap(rawQuery: string, mode: 'express' | 'deep' | 'exam') {
+      activeMode = mode;
+      activeQuery = rawQuery;
+      currentPlan = generateStudyStrategy(activeQuery, activeMode);
+
+      // Hide clarify question
+      if (clarifySection) clarifySection.style.display = 'none';
+
+      // Update active mode pill
+      document.querySelectorAll('.mode-pill').forEach((pill) => {
+        if (pill.getAttribute('data-switch') === activeMode) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      // Diagnosis banner
+      if (diagnosisBanner) {
+        const modeBadge =
+          activeMode === 'express'
+            ? '⚡ Tezkor (Faqat eng asosiysi)'
+            : activeMode === 'exam'
+            ? '📝 HEMIS Imtihon Rejasi'
+            : '🎓 Chuqur (Poydevor bilan)';
+
+        diagnosisBanner.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span class="module-pill">${currentPlan.moduleTitle}</span>
+            <span class="time-pill">${modeBadge} • ⏱ ${currentPlan.estimatedTotalTime}</span>
+          </div>
+          <h2 style="margin: 0 0 0.6rem 0; font-size: 1.45rem; color: var(--text-main);">
+            🎯 ${currentPlan.topicTitle}
+          </h2>
+          <p style="margin: 0 0 0.85rem 0; font-size: 0.98rem; color: var(--text-main); line-height: 1.55;">
+            <strong>💬 AI Repetitor:</strong> ${currentPlan.empathyMessage}
+          </p>
+          <div class="root-cause-box">
+            <strong>🔍 Nega talabalar bu mavzuda qiynaladi?</strong> ${currentPlan.rootCauseWhyHard}
+          </div>
+        `;
+      }
+
+      // Steps list rendering with Interactive Checkbox
+      const completed = getCompletedLessons();
       if (stepsList) {
-        stepsList.innerHTML = steps
+        stepsList.innerHTML = currentPlan.steps
           .map((step, idx) => {
             const isDone = step.slug ? completed.includes(step.slug) : false;
             return `
-              <div class="timeline-card ${isDone ? 'is-completed' : ''}">
+              <div class="timeline-card ${isDone ? 'is-completed' : ''}" data-slug="${step.slug || ''}">
+                <div class="step-check-col">
+                  <input type="checkbox" class="step-check" ${isDone ? 'checked' : ''} aria-label="O'zlashtirildi deb belgilash" />
+                </div>
                 <div class="timeline-num" style="background: ${isDone ? '#10b981' : step.badgeColor};">
-                  ${isDone ? '✓' : idx + 1}
+                  ${idx + 1}
                 </div>
                 <div class="timeline-content">
                   <div class="timeline-top">
@@ -319,11 +470,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         ${idx + 1}-QADAM • ${step.phase.toUpperCase()}
                       </span>
                       <span class="duration-badge">⏱ ${step.duration}</span>
-                      ${
-                        isDone
-                          ? '<span class="done-badge">✅ O\'zlashtirilgan</span>'
-                          : '<span class="todo-badge">⭕ O\'qish tavsiya etiladi</span>'
-                      }
+                      <span class="completion-indicator">
+                        ${isDone ? '<span class="done-badge">✅ O\'zlashtirilgan</span>' : '<span class="todo-badge">⭕ O\'qish kerak</span>'}
+                      </span>
                     </div>
                   </div>
 
@@ -342,7 +491,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                   <div style="margin-top: 0.85rem;">
                     <a href="${step.url}" class="btn btn-primary step-open-btn">
-                      <span>📖 ${idx + 1}-qadam darsini boshlash</span>
+                      <span>📖 ${idx + 1}-qadam darsini ochish</span>
                       <span>→</span>
                     </a>
                   </div>
@@ -351,11 +500,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             `;
           })
           .join('');
+
+        // Attach checkbox event listeners
+        stepsList.querySelectorAll('.step-check').forEach((chk) => {
+          chk.addEventListener('change', (e) => {
+            const card = (e.target as HTMLElement).closest('.timeline-card');
+            const slug = card?.getAttribute('data-slug');
+            if (slug) toggleLessonCompletion(slug);
+          });
+        });
       }
 
       // Tools rendering
       if (toolsList) {
-        toolsList.innerHTML = basePlan.interactiveTools
+        toolsList.innerHTML = currentPlan.interactiveTools
           .map(
             (t) => `
             <a href="${t.url}" class="tool-item-card">
@@ -375,12 +533,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
 
       if (examTipEl) {
-        examTipEl.textContent = basePlan.examTip;
+        examTipEl.textContent = currentPlan.examTip;
       }
 
-      if (mentorCard) {
-        mentorCard.style.display = 'none';
+      // Telegram share link
+      if (telegramShareBtn) {
+        const text = encodeURIComponent(
+          `Assalomu alaykum! OliyMatematika saytidan shaxsiy o'quv rejam:\n\n` +
+          `🎯 Mavzu: ${currentPlan.topicTitle}\n` +
+          `⏱ Rejim: ${activeMode.toUpperCase()} (${currentPlan.estimatedTotalTime})\n\n` +
+          currentPlan.steps.map((s, i) => `${i + 1}-qadam: ${s.title} (https://oliy-matematika.vercel.app${s.url})`).join('\n') +
+          `\n\n💡 Maslahat: ${currentPlan.examTip}`
+        );
+        telegramShareBtn.href = `https://t.me/share/url?url=${encodeURIComponent('https://oliy-matematika.vercel.app/strategiya?q=' + activeQuery + '&mode=' + activeMode)}&text=${text}`;
       }
+
+      updateProgressDisplay();
 
       if (resultWrapper) {
         resultWrapper.style.display = 'block';
@@ -388,46 +556,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
-    // Build button & Enter key
+    // Clarification buttons click
+    document.querySelectorAll('.clarify-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = (btn.getAttribute('data-mode') as any) || 'deep';
+        renderRoadmap(activeQuery, mode);
+      });
+    });
+
+    // Active mode switch pills inside roadmap
+    document.querySelectorAll('.mode-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const mode = (pill.getAttribute('data-switch') as any) || 'deep';
+        renderRoadmap(activeQuery, mode);
+      });
+    });
+
+    // Copy strategy button
+    copyBtn?.addEventListener('click', async () => {
+      if (!currentPlan) return;
+      const text =
+        `OliyMatematika — Shaxsiy O'quv Rejasi:\nMavzu: ${currentPlan.topicTitle}\n\n` +
+        currentPlan.steps.map((s, i) => `${i + 1}. ${s.title} -> https://oliy-matematika.vercel.app${s.url}`).join('\n') +
+        `\n\nMaslahat: ${currentPlan.examTip}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = '✅ Nusxalandi!';
+        setTimeout(() => (copyBtn.textContent = '📋 Nusxalash'), 2500);
+      } catch {
+        alert("Nusxalab bo'lmadi.");
+      }
+    });
+
+    // User submits search query
     buildBtn.addEventListener('click', () => {
-      renderPlan(queryInput.value);
+      onUserSubmitsTopic(queryInput.value);
     });
 
     queryInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        renderPlan(queryInput.value);
+        onUserSubmitsTopic(queryInput.value);
       }
     });
 
-    // Pace tabs
-    document.querySelectorAll('.pace-tab').forEach((tab) => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.pace-tab').forEach((t) => t.classList.remove('active'));
-        tab.classList.add('active');
-        currentPace = (tab.getAttribute('data-pace') as any) || 'standard';
-        if (currentPlan || queryInput.value.trim()) {
-          renderPlan(queryInput.value || lastUserQuery);
-        }
-      });
-    });
-
-    // Sample chips
+    // Sample prompt chips
     document.querySelectorAll('.sample-chip').forEach((chip) => {
       chip.addEventListener('click', () => {
         const q = chip.getAttribute('data-query') || '';
         queryInput.value = q;
-        renderPlan(q);
+        onUserSubmitsTopic(q);
       });
     });
 
-    // Gemini AI Personal Mentor Handler
+    // Gemini Deep Personal Mentor button
     askMentorBtn?.addEventListener('click', async () => {
       if (!currentPlan || !mentorCard || !mentorBody) return;
       askMentorBtn.setAttribute('disabled', 'true');
       askMentorBtn.textContent = '⏳ AI Mentor shaxsiy reja tuzmoqda...';
       mentorCard.style.display = 'block';
-      mentorBody.innerHTML = `<p style="color: var(--text-muted);">⏳ Sizning so'rovingiz («${lastUserQuery}») va saytdagi darslar asosida shaxsiy kunlik reja tuzilmoqda...</p>`;
+      mentorBody.innerHTML = `<p style="color: var(--text-muted);">⏳ Sizning so'rovingiz («${activeQuery}») va tanlangan «${activeMode}» rejimi asosida chuqur akademik ko'rsatma tayyorlanmoqda...</p>`;
 
       const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
       let aiText = '';
@@ -446,7 +634,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               {
                 parts: [
                   {
-                    text: `Talaba murojaati: "${lastUserQuery}". O'rganish rejimi: ${currentPace}. Unga motivatsiya bering va saytimizdagi dars havolalari bilan 3 bosqichli aniq o'rganish strategiyasi tuzib bering.`
+                    text: `Talaba so'rovi: "${activeQuery}". Tanlangan rejim: ${activeMode}. Unga motivatsiya bering va saytimizdagi dars havolalari bilan ${activeMode === 'express' ? 'faqat eng zarur 2 ta asosiy dars va formulalar bilan qisqa tezkor reja' : 'chuqur poydevorli yo\'l xaritasi'} tuzib bering.`
                   }
                 ]
               }
@@ -460,51 +648,121 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
         }
       } catch {
-        // Fallback handled below
+        // Fallback below
       }
 
       if (!aiText) {
-        // Rich Local AI Mentor Fallback so it always works 100% reliably
         const stepLinks = currentPlan.steps
           .map((s, i) => `${i + 1}. **[${s.title}](${s.url})** — *(${s.duration})* ${s.whyRead}`)
           .join('\n- ');
         const toolLink = currentPlan.interactiveTools[0];
 
-        aiText = `## 🎯 «${lastUserQuery}» bo'yicha Shaxsiy Kunlik Tayyorgarlik Strategiyasi
+        aiText = `## 🎯 «${activeQuery}» bo'yicha Shaxsiy Tayyorgarlik Rejasi (${activeMode.toUpperCase()})
 
 **1. Nima uchun hozir qiynalyapsiz va buni qanday yengamiz?**
 ${currentPlan.empathyMessage} ${currentPlan.rootCauseWhyHard}
 
-## 📅 Qadamma-qadam Harakatlar Rejasi (Ketma-ket bajaring):
+## 📅 Ketma-ket Qadamlar:
 - ${stepLinks}
 
-## 🧪 Amaliyot va Tekshiruv Qoidasi
-Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifasiga o'tib, kamida 3 ta misolni o'zingiz kiritib tekshirib ko'ring. So'ngra **[${currentPlan.moduleTitle} HEMIS Testi](/testlar?modul=${currentPlan.moduleSlug}#quiz-section)** orqali bilimingizni mustahkamlang!
+## 🧪 Amaliy Mashq va Tekshiruv
+Darslarni o'qigach, **[${toolLink.title}](${toolLink.url})** da misollarni hisoblang va **[${currentPlan.moduleTitle} HEMIS Testi](/testlar?modul=${currentPlan.moduleSlug}#quiz-section)** orqali o'zingizni sinab ko'ring!
 
 **💡 Oltin qoida:** ${currentPlan.examTip}`;
-        if (mentorBadge) {
-          mentorBadge.textContent = "⚡ Akademik AI Navigatori tomonidan tuzildi";
-        }
+        if (mentorBadge) mentorBadge.textContent = "⚡ Sayt Akademik AI Navigatori tomonidan tuzildi";
       } else if (mentorBadge) {
         mentorBadge.textContent = "🛡️ Gemini AI Pro Mentor tomonidan jonli tuzildi";
       }
 
       mentorBody.innerHTML = renderMarkdownWithLinksAndMath(aiText);
       askMentorBtn.removeAttribute('disabled');
-      askMentorBtn.innerHTML = '<span>🤖 Gemini AI Mentoridan shaxsiy kunlik reja va maslahat olish</span>';
+      askMentorBtn.innerHTML = '<span>🤖 Gemini AI Mentoridan qo\'shimcha shaxsiy maslahat olish</span>';
       mentorCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
-    // Auto-run if ?q=... is in URL
+    // Interactive Q&A Chat Handler
+    async function sendChatMessage() {
+      if (!chatInput || !chatMessages) return;
+      const question = chatInput.value.trim();
+      if (!question) return;
+
+      chatInput.value = '';
+
+      // Append user bubble
+      const userBubble = document.createElement('div');
+      userBubble.className = 'chat-bubble user-bubble';
+      userBubble.textContent = question;
+      chatMessages.appendChild(userBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Append AI loading bubble
+      const aiBubble = document.createElement('div');
+      aiBubble.className = 'chat-bubble ai-bubble';
+      aiBubble.innerHTML = '<span class="typing-indicator">AI Repetitor javob yozmoqda...</span>';
+      chatMessages.appendChild(aiBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
+      let replyText = '';
+
+      try {
+        const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+        if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
+
+        const res = await fetch('/api/solve', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            model: 'gemini-3.5-flash-lite',
+            systemInstruction: { parts: [{ text: `${SITE_CURRICULUM_PROMPT_MAP}\nSiz repetitorsiz. Mavzu: ${currentPlan?.topicTitle}. Savolga qisqa, tushunarli, formulalar bilan javob bering va dars havolasini ko'rsating.` }] },
+            contents: [
+              {
+                parts: [
+                  {
+                    text: `Mavzu konteksti: ${currentPlan?.topicTitle || activeQuery}. Talaba savoli: "${question}". O'zbek tilida aniq, formulalar ($...$) bilan javob bering.`
+                  }
+                ]
+              }
+            ],
+            generationConfig: { temperature: 0.2 }
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        }
+      } catch {
+        // Fallback
+      }
+
+      if (!replyText) {
+        replyText = `Savolingiz uchun rahmat! Ushbu savol bo'yicha to'liq ma'lumot va qadamma-qadam formulalar yuqoridagi **[${currentPlan?.steps[0]?.title || 'Dars'}](${currentPlan?.steps[0]?.url || '/'})** sahifasida batafsil yoritilgan. O'sha darsni o'qib chiqsangiz, barcha savollaringizga to'liq javob olasiz!`;
+      }
+
+      aiBubble.innerHTML = renderMarkdownWithLinksAndMath(replyText);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    chatSendBtn?.addEventListener('click', sendChatMessage);
+    chatInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendChatMessage();
+      }
+    });
+
+    // URL parameter handling (?q=...&mode=...)
     const params = new URLSearchParams(window.location.search);
     const urlQuery = params.get('q');
+    const urlMode = params.get('mode') as 'express' | 'deep' | 'exam' | null;
     if (urlQuery) {
       queryInput.value = urlQuery;
-      renderPlan(urlQuery);
+      onUserSubmitsTopic(urlQuery, urlMode || undefined);
     } else {
-      // Show default example ("Determinant") so the page immediately looks alive and helpful!
-      queryInput.value = 'Men darsda determinantga qiynalyapman, nimadan boshlay?';
-      renderPlan(queryInput.value);
+      // Show default query prompt
+      queryInput.value = 'Men darsda determinantga qiynalyapman';
+      onUserSubmitsTopic(queryInput.value);
     }
   }
 
@@ -606,47 +864,6 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     white-space: nowrap;
   }
 
-  .pace-selector-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px dashed var(--border-color);
-  }
-
-  .pace-label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-muted);
-  }
-
-  .pace-tabs {
-    display: flex;
-    gap: 0.45rem;
-    flex-wrap: wrap;
-  }
-
-  .pace-tab {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-color);
-    background: var(--bg-muted);
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .pace-tab.active,
-  .pace-tab:hover {
-    background: var(--primary-light);
-    color: var(--primary);
-    border-color: var(--primary);
-  }
-
   .sample-title {
     display: block;
     font-size: 0.8rem;
@@ -677,6 +894,139 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     border-color: #10b981;
     background: rgba(16, 185, 129, 0.08);
     color: #059669;
+  }
+
+  /* Clarification / Question Card (The User's Core Request!) */
+  .clarify-card {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(16, 185, 129, 0.08) 100%);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  .clarify-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .clarify-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .clarify-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .clarify-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .clarify-btn.recommended {
+    border-color: #10b981;
+    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(16, 185, 129, 0.05) 100%);
+  }
+
+  .clarify-btn-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.65rem;
+  }
+
+  .clarify-btn-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.45rem;
+    line-height: 1.3;
+  }
+
+  .clarify-btn-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .clarify-btn-action {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* Active Mode Bar */
+  .active-mode-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .mode-pills {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .mode-pill {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .mode-pill.active,
+  .mode-pill:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .share-actions {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    text-decoration: none;
   }
 
   .diagnosis-banner {
@@ -755,7 +1105,8 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
 
   :global(.timeline-card) {
     display: flex;
-    gap: 1.1rem;
+    align-items: flex-start;
+    gap: 1rem;
     background: var(--bg-surface);
     border: 1.5px solid var(--border-color);
     border-radius: var(--radius-lg);
@@ -773,13 +1124,24 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     background: rgba(16, 185, 129, 0.03);
   }
 
+  :global(.step-check-col) {
+    padding-top: 0.4rem;
+  }
+
+  :global(.step-check) {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #10b981;
+  }
+
   :global(.timeline-num) {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     color: white;
     font-weight: 800;
-    font-size: 1.05rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -867,7 +1229,7 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .tools-box,
@@ -925,7 +1287,7 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     border: 2px solid #10b981;
     border-radius: var(--radius-lg);
     padding: 1.5rem;
-    margin-top: 1.5rem;
+    margin-bottom: 2rem;
     box-shadow: var(--shadow-md);
   }
 
@@ -933,6 +1295,80 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     padding-bottom: 0.85rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Interactive Q&A Chat */
+  .mentor-chat-section {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .chat-section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .chat-messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 340px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+
+  :global(.chat-bubble) {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    max-width: 85%;
+  }
+
+  :global(.user-bubble) {
+    align-self: flex-end;
+    background: var(--primary);
+    color: white;
+    border-bottom-right-radius: 2px;
+  }
+
+  :global(.ai-bubble) {
+    align-self: flex-start;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-bottom-left-radius: 2px;
+  }
+
+  .chat-input-bar {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  #mentor-chat-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-body);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  #mentor-chat-input:focus {
+    border-color: var(--primary);
   }
 
   :global(.mentor-inline-link) {
@@ -946,5 +1382,16 @@ Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifas
     border-radius: 6px;
     text-decoration: none;
     font-size: 0.9em;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
