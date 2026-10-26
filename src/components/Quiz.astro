@@ -436,6 +436,9 @@ const {
 
         explanationContent.innerHTML = html;
         explanationBox.style.display = 'block';
+        setTimeout(() => {
+          explanationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
       }
 
       // Show Next / Finish button
@@ -448,7 +451,12 @@ const {
 
     function finishQuiz() {
       if (activeCard) activeCard.style.display = 'none';
-      if (resultCard) resultCard.style.display = 'block';
+      if (resultCard) {
+        resultCard.style.display = 'block';
+        setTimeout(() => {
+          resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
 
       const total = activeQuestions.length;
       const percentage = Math.round((correctCount / total) * 100);

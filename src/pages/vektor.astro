@@ -151,8 +151,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Results Section -->
     <div class="results-container" id="results-box" style="display: none;">
       <div class="results-header">
-        <h2 class="results-title">Qadamma-qadam Hisoblash Natijalari</h2>
-        <button type="button" class="btn-copy-res" id="btn-copy-res">📋 Nusxa olish</button>
+        <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
+          <span class="badge" style="background: var(--primary); color: white; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800; font-size: 0.74rem;">
+            🎯 ASOSIY NATIJA
+          </span>
+          <h2 class="results-title" style="margin: 0;">Qadamma-qadam Hisoblash Natijalari</h2>
+        </div>
+        <button type="button" class="btn-copy-res" id="btn-copy-res">📋 Natijani nusxalash</button>
       </div>
       <div class="results-body" id="results-content">
         <!-- Rendered results appear here -->
@@ -455,10 +460,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .results-container {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--primary);
     border-radius: 20px;
     padding: 1.75rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12);
   }
 
   .results-header {
@@ -914,6 +919,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     if (!box || !content) return;
     box.style.display = 'block';
     content.innerHTML = renderMathInHtml(html);
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Render 2D Vector Canvas if in 2D mode
     draw2DVectorCanvas(a, b);

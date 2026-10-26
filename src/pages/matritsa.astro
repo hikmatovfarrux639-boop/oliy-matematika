@@ -172,6 +172,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div id="solution-content" style="display: none;">
+        <!-- Dedicated Primary Result Hero Box (Alohida Aniq Oyna) -->
+        <div id="primary-hero-result" class="hero-result-card" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="hero-result-badge">🎯 ASOSIY NATIJA</span>
+            <button type="button" id="copy-hero-latex-btn" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.3rem 0.75rem;">📋 Natijani nusxalash</button>
+          </div>
+          <h3 class="hero-result-title" id="hero-result-title">Hisoblash Natijasi</h3>
+          <p class="hero-result-desc" id="hero-result-desc"></p>
+          <div class="hero-result-latex" id="hero-result-latex"></div>
+        </div>
+
         <!-- Overview Summary Cards -->
         <div class="summary-cards-grid" id="summary-cards"></div>
 
@@ -577,6 +588,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 700;
     color: var(--text-main, #0f172a);
     margin-bottom: 0.5rem;
+  }
+
+  /* Dedicated Primary Result Hero Box */
+  .hero-result-card {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.08));
+    border: 2px solid var(--primary, #2563eb);
+    border-radius: var(--radius-lg, 16px);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12);
+    animation: fadeIn 0.25s ease-out;
+  }
+  .hero-result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--primary, #2563eb);
+    color: white;
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+  .hero-result-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main, #0f172a);
+    margin: 0 0 0.35rem;
+  }
+  .hero-result-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted, #64748b);
+    margin: 0 0 0.75rem;
+    line-height: 1.45;
+  }
+  .hero-result-latex {
+    background: var(--bg-surface, #ffffff);
+    border: 2px solid #10b981;
+    border-radius: var(--radius-md, 10px);
+    padding: 1.25rem 1.5rem;
+    font-size: 1.35rem;
+    overflow-x: auto;
+    color: var(--text-main, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
   }
 
   /* Summary Cards */
@@ -1138,10 +1198,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       summaryCards!.innerHTML = '';
       stepsContainer!.innerHTML = '';
 
+      let heroTitleText = 'Hisoblash Natijasi';
+      let heroDescText = 'Amal natijasi muvaffaqiyatli hisoblandi:';
+      let heroLatexText = '';
+
       if (currentMode === 'single') {
         const det = calcDeterminant(A);
         const tr = A.reduce((acc, row, idx) => acc + row[idx], 0);
         const rankObj = calcRankWithSteps(A);
+
+        heroTitleText = "Matritsaning Asosiy Xarakteristikalari";
+        heroDescText = `Berilgan ${n}×${n} o'lchamli kvadrat matritsaning asosiy ko'rsatkichlari:`;
+        heroLatexText = `\\det A = ${formatNum(det)}, \\quad \\operatorname{rank}(A) = ${rankObj.rank}, \\quad \\operatorname{tr}(A) = ${formatNum(tr)}`;
 
         // Summary cards
         summaryCards!.innerHTML = `
@@ -1166,6 +1234,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         // Step 1: Determinant
         if (action === 'all' || action === 'det') {
+          if (action === 'det') {
+            heroTitleText = "Matritsa Determinanti |A|";
+            heroDescText = `${n}×${n} o'lchamli matritsaning hisoblangan sonli determinanti:`;
+            heroLatexText = `\\det A = ${formatNum(det)}`;
+          }
           const step1 = document.createElement('div');
           step1.className = 'step-box';
           step1.innerHTML = `
@@ -1190,6 +1263,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         // Step 2: Inverse Matrix
         if (action === 'all' || action === 'inv') {
+          if (action === 'inv') {
+            heroTitleText = "Teskari Matritsa A⁻¹";
+            if (Math.abs(det) < 1e-9) {
+              heroDescText = "Determinant nolga teng bo'lgani sababli, teskari matritsa mavjud emas:";
+              heroLatexText = "\\det A = 0 \\implies A^{-1} \\text{ mavjud emas (xos matritsa)}";
+            } else {
+              const invMat = calcInverse(A, det);
+              heroDescText = "Teskari matritsa $A \\cdot A^{-1} = E$ xossasini to'liq qanoatlantiradi:";
+              heroLatexText = `A^{-1} = ${matrixToLatex(invMat)}`;
+            }
+          }
           const step2 = document.createElement('div');
           step2.className = 'step-box';
           if (Math.abs(det) < 1e-9) {
@@ -1241,6 +1325,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         // Step 3: Rank
         if (action === 'all' || action === 'rank') {
+          if (action === 'rank') {
+            heroTitleText = "Matritsa Rangi: rang(A)";
+            heroDescText = "Elementar satr almashtirishlari (Gauss usuli) bo'yicha chiziqli erkli satrlar soni:";
+            heroLatexText = `\\operatorname{rank}(A) = ${rankObj.rank}`;
+          }
           const step3 = document.createElement('div');
           step3.className = 'step-box';
           step3.innerHTML = `
@@ -1258,6 +1347,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         // Step 4: Transpose
         if (action === 'all' || action === 'trans') {
           const transA = transpose(A);
+          if (action === 'trans') {
+            heroTitleText = "Transponirlangan Matritsa Aᵀ";
+            heroDescText = "Satrlar va ustunlar o'rni almashtirilgan holat ($a^T_{ij} = a_{ji}$):";
+            heroLatexText = `A^T = ${matrixToLatex(transA)}`;
+          }
           const stepTrans = document.createElement('div');
           stepTrans.className = 'step-box';
           stepTrans.innerHTML = `
@@ -1293,10 +1387,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               const l1 = (trA + Math.sqrt(D)) / 2;
               const l2 = (trA - Math.sqrt(D)) / 2;
               eigenLatex += `\\implies \\lambda_1 = ${formatNum(l1)}, \\; \\lambda_2 = ${formatNum(l2)}`;
+              if (action === 'eigen') {
+                heroTitleText = "Xos Sonlar (Eigenvalues): λ₁, λ₂";
+                heroDescText = "Kvadrat xarakteristik tenglama ildizlari:";
+                heroLatexText = `\\lambda_1 = ${formatNum(l1)}, \\quad \\lambda_2 = ${formatNum(l2)}`;
+              }
             } else {
               const re = trA / 2;
               const im = Math.sqrt(-D) / 2;
               eigenLatex += `\\implies \\lambda_{1,2} = ${formatNum(re)} \\pm ${formatNum(im)}i \\text{ (kompleks xos sonlar)}`;
+              if (action === 'eigen') {
+                heroTitleText = "Xos Sonlar (Kompleks Spektr): λ₁,₂";
+                heroDescText = "Kompleks qo'shma xos sonlar:";
+                heroLatexText = `\\lambda_{1,2} = ${formatNum(re)} \\pm ${formatNum(im)}i`;
+              }
             }
             renderLatex(step4.querySelector('#latex-char-eq')!, eigenLatex);
           } else if (n === 3) {
@@ -1342,10 +1446,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 const r2 = (-qb + Math.sqrt(dClamped)) / 2;
                 const r3 = (-qb - Math.sqrt(dClamped)) / 2;
                 rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_2 = ${formatNum(r2)}, \\; \\lambda_3 = ${formatNum(r3)}`;
+                if (action === 'eigen') {
+                  heroTitleText = "Xos Sonlar: λ₁, λ₂, λ₃";
+                  heroDescText = "3-tartibli xarakteristik tenglama ildizlari:";
+                  heroLatexText = `\\lambda_1 = ${formatNum(r1)}, \\; \\lambda_2 = ${formatNum(r2)}, \\; \\lambda_3 = ${formatNum(r3)}`;
+                }
               } else {
                 const re = -qb / 2;
                 const im = Math.sqrt(-disc) / 2;
                 rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)} \\pm ${formatNum(im)}i`;
+                if (action === 'eigen') {
+                  heroTitleText = "Xos Sonlar: λ₁, λ₂,₃";
+                  heroDescText = "Haqiqiy va kompleks xos sonlar:";
+                  heroLatexText = `\\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)} \\pm ${formatNum(im)}i`;
+                }
               }
             }
 
@@ -1364,6 +1478,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p>Xos sonlar $\\det(A - \\lambda E) = 0$ tenglamadan topiladi, bu yerda $\\operatorname{tr}(A) = ${formatNum(tr)}$ va $\\det A = ${formatNum(det)}$.</p>
             `;
             stepsContainer!.appendChild(step4);
+            if (action === 'eigen') {
+              heroTitleText = "Xarakteristik Ko'rsatkichlar";
+              heroDescText = "4x4 matritsa xarakteristikalari:";
+              heroLatexText = `\\operatorname{tr}(A) = ${formatNum(tr)}, \\quad \\det A = ${formatNum(det)}`;
+            }
           }
         }
       } else if (currentMode === 'sle') {
@@ -1422,11 +1541,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         renderLatex(kkBox.querySelector('#latex-kk-status')!, kkLatex);
 
         if (!isCompatible) {
+          heroTitleText = "Sistema Birgalikda Emas (Yechim Yo'q)";
+          heroDescText = "Kroneker-Kapelli teoremasi bo'yicha asosiy va kengaytirilgan matritsalar ranglari teng emas:";
+          heroLatexText = `\\operatorname{rang}(A) = ${rankA} \\neq \\operatorname{rang}(A|B) = ${rankAug} \\implies \\varnothing`;
+          const heroCard = document.getElementById('primary-hero-result');
+          const heroTitleEl = document.getElementById('hero-result-title');
+          const heroDescEl = document.getElementById('hero-result-desc');
+          const heroLatexEl = document.getElementById('hero-result-latex');
+          if (heroCard && heroTitleEl && heroDescEl && heroLatexEl) {
+            heroTitleEl.textContent = heroTitleText;
+            heroDescEl.innerHTML = renderMathText(heroDescText);
+            heroLatexEl.innerHTML = katex.renderToString(heroLatexText, { displayMode: true, throwOnError: false });
+            heroCard.style.display = 'block';
+          }
           renderInlineMath(stepsContainer!);
+          document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           return;
         }
 
         const cramerRes = solveCramer(A, B);
+
+        if (isUnique) {
+          heroTitleText = "Chiziqli Tenglamalar Sistemasi Yagona Yechimi: X";
+          heroDescText = `Berilgan ${n} ta noma'lumli sistemaning barcha tenglamalarini to'liq qanoatlantiruvchi ildizlari:`;
+          heroLatexText = `\\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = \\begin{pmatrix} ${cramerRes.x.map(v => formatNum(v)).join(' \\\\ ')} \\end{pmatrix}`;
+        } else if (isInfinite) {
+          heroTitleText = "Tenglamalar Sistemasi Cheksiz Ko'p Yechimli";
+          heroDescText = `Kroneker-Kapelli teoremasi: $\\operatorname{rang}(A) = \\operatorname{rang}(A|B) = ${rankA} < ${n}$:`;
+          heroLatexText = `\\operatorname{rang}(A) = ${rankA} < n = ${n} \\implies \\text{Erkin parametrlar soni: } k = ${n - rankA} \\text{ ta}`;
+        }
 
         // 1-USUL: KRAMER QOIDASI
         if (action === 'sle-all' || action === 'sle-cramer' || action === 'all') {
@@ -1609,9 +1752,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         const binLatex = `A ${opSymbol} B = ${matrixToLatex(A)} ${opSymbol} ${matrixToLatex(B)} = ${matrixToLatex(resultMat)}`;
         renderLatex(stepBox.querySelector('#latex-bin-result')!, binLatex);
+
+        heroTitleText = `Ikki Matritsa Amali: ${sumLabel}`;
+        heroDescText = `Amal natijasida hosil bo'lgan ${n}×${n} o'lchamli natijaviy matritsa:`;
+        heroLatexText = `A ${opSymbol} B = ${matrixToLatex(resultMat)}`;
+      }
+
+      const heroCard = document.getElementById('primary-hero-result');
+      const heroTitleEl = document.getElementById('hero-result-title');
+      const heroDescEl = document.getElementById('hero-result-desc');
+      const heroLatexEl = document.getElementById('hero-result-latex');
+      const copyHeroBtn = document.getElementById('copy-hero-latex-btn');
+
+      if (heroCard && heroTitleEl && heroDescEl && heroLatexEl && heroLatexText) {
+        heroTitleEl.textContent = heroTitleText;
+        heroDescEl.innerHTML = renderMathText(heroDescText);
+        heroLatexEl.innerHTML = katex.renderToString(heroLatexText, { displayMode: true, throwOnError: false });
+        heroCard.style.display = 'block';
+
+        if (copyHeroBtn) {
+          copyHeroBtn.onclick = () => {
+            navigator.clipboard.writeText(heroLatexText);
+            copyHeroBtn.textContent = '✅ Nusxalandi!';
+            setTimeout(() => { copyHeroBtn.textContent = '📋 Natijani nusxalash'; }, 2000);
+          };
+        }
       }
 
       renderInlineMath(stepsContainer!);
+      document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     // Set matrix size

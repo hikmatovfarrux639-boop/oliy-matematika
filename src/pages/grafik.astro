@@ -185,6 +185,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
+        <!-- Dedicated Analytical Analysis Card (Alohida Natija Oynasi) -->
+        <div id="grafik-analysis-card" class="grafik-analysis-box">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.4rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="badge" style="background: var(--primary); color: white; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800; font-size: 0.74rem;">
+                🎯 ASOSIY NATIJA VA TAHLIL
+              </span>
+              <span style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">
+                Funksiyaning Analitik Xossalari
+              </span>
+            </div>
+            <span id="grafik-analysis-status" style="font-size: 0.78rem; color: #10b981; font-weight: 600;">
+              ⚡ Muvaffaqiyatli chizildi
+            </span>
+          </div>
+          <div id="grafik-analysis-content" class="analysis-grid">
+            <div class="analysis-item">
+              <span class="analysis-label">Asosiy Formula:</span>
+              <span class="analysis-val">f₁(x) = x² - 4</span>
+            </div>
+            <div class="analysis-item">
+              <span class="analysis-label">Oy o'qi bilan kesishish:</span>
+              <span class="analysis-val">(0, -4)</span>
+            </div>
+            <div class="analysis-item">
+              <span class="analysis-label">Hosilasi f'(x):</span>
+              <span class="analysis-val" style="color: #dc2626;">2x</span>
+            </div>
+            <div class="analysis-item">
+              <span class="analysis-label">Simmetriya:</span>
+              <span class="analysis-val">Juft funksiya</span>
+            </div>
+          </div>
+        </div>
+
         <div id="main-plotter-canvas" class="plotter-canvas-viewport">
           <div style="color: var(--text-muted); font-size: 0.95rem;">Grafik yuklanmoqda...</div>
         </div>
@@ -231,6 +266,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <script>
   import functionPlot from 'function-plot';
+  import katex from 'katex';
+  import * as math from 'mathjs';
 
   function initPlotter() {
     function getPlotFn(mod: any) {
@@ -471,8 +508,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           disableZoom: false
         });
 
-        if (shouldScroll && window.innerWidth < 960) {
-          canvas.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Compute and render analytical properties for primary function
+        const primaryFn = fn1 || fn2 || fn3;
+        const analysisEl = document.getElementById('grafik-analysis-content');
+        if (primaryFn && analysisEl) {
+          try {
+            const parsed = (math as any).parse(primaryFn);
+            const compiled = parsed.compile();
+            let y0Str = 'Mavjud emas';
+            try {
+              const y0 = compiled.evaluate({ x: 0 });
+              if (typeof y0 === 'number' && !isNaN(y0) && isFinite(y0)) {
+                y0Str = `(0, ${Math.round(y0 * 100) / 100})`;
+              }
+            } catch {}
+
+            let diffStr = '';
+            try {
+              diffStr = (math as any).simplify((math as any).derivative(parsed, 'x')).toTex();
+            } catch {}
+
+            let symStr = "Umumiy ko'rinishdagi";
+            try {
+              const v1 = compiled.evaluate({ x: 2 });
+              const v2 = compiled.evaluate({ x: -2 });
+              if (typeof v1 === 'number' && typeof v2 === 'number' && isFinite(v1) && isFinite(v2)) {
+                if (Math.abs(v1 - v2) < 1e-4) symStr = 'Juft funksiya: f(-x) = f(x)';
+                else if (Math.abs(v1 + v2) < 1e-4) symStr = 'Toq funksiya: f(-x) = -f(x)';
+              }
+            } catch {}
+
+            let texFormula = '';
+            try { texFormula = katex.renderToString(`f_1(x) = ${parsed.toTex()}`, { throwOnError: false }); } catch { texFormula = primaryFn; }
+            let texDiff = '';
+            try { texDiff = diffStr ? katex.renderToString(`f_1'(x) = ${diffStr}`, { throwOnError: false }) : ''; } catch {}
+
+            analysisEl.innerHTML = `
+              <div class="analysis-item">
+                <span class="analysis-label">Asosiy Formula:</span>
+                <span class="analysis-val">${texFormula}</span>
+              </div>
+              <div class="analysis-item">
+                <span class="analysis-label">Oy kesishishi (x=0):</span>
+                <span class="analysis-val">${y0Str}</span>
+              </div>
+              ${texDiff ? `
+              <div class="analysis-item">
+                <span class="analysis-label">Hosilasi f'(x):</span>
+                <span class="analysis-val" style="color: #dc2626;">${texDiff}</span>
+              </div>` : ''}
+              <div class="analysis-item">
+                <span class="analysis-label">Simmetriya turi:</span>
+                <span class="analysis-val">${symStr}</span>
+              </div>
+            `;
+          } catch (e) {
+            console.warn('Analysis error:', e);
+          }
+        }
+
+        if (shouldScroll) {
+          const card = document.getElementById('grafik-analysis-card');
+          card?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       } catch (err: any) {
         console.error('Grafik chizish xatosi:', err);
@@ -711,6 +808,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Analytical Result Box */
+  .grafik-analysis-box {
+    background: var(--bg-surface);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+  }
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+  }
+  .analysis-item {
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .analysis-label {
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+  .analysis-val {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    overflow-x: auto;
   }
 
   /* Keypad styles */

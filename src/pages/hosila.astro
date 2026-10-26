@@ -108,26 +108,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
   <!-- Calculation Results (Formula Box) -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+  <div id="hosila-results-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
     <!-- Original Function Card -->
-    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; border-top: 4px solid #2563eb;">
-      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 0.5rem;">
-        Asosiy Funksiya f(x)
+    <div style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; border-top: 4px solid #2563eb;">
+      <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 0.5rem;">
+        1. Kiritilgan Funksiya f(x)
       </div>
-      <div id="render-fx-latex" style="font-size: 1.35rem; min-height: 48px; display: flex; align-items: center;">
+      <div id="render-fx-latex" style="font-size: 1.35rem; min-height: 48px; display: flex; align-items: center; overflow-x: auto;">
         <!-- KaTeX injected -->
       </div>
     </div>
 
-    <!-- Computed Derivative Card -->
-    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; border-top: 4px solid #dc2626;">
-      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #dc2626; margin-bottom: 0.5rem;">
+    <!-- Computed Derivative Card (Primary Result) -->
+    <div style="background: var(--bg-surface); border: 2px solid #dc2626; border-radius: var(--radius-md); padding: 1.5rem; border-top: 4px solid #dc2626; box-shadow: 0 10px 25px -4px rgba(220, 38, 38, 0.15);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.4rem;">
+        <span class="badge" style="background: #dc2626; color: white; padding: 0.25rem 0.65rem; border-radius: 999px; font-weight: 800; font-size: 0.74rem;">
+          🎯 ASOSIY NATIJA
+        </span>
+        <button type="button" id="copy-dfx-btn" class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;">
+          📋 Nusxalash
+        </button>
+      </div>
+      <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #dc2626; margin-bottom: 0.35rem;">
         Hosilasi f'(x)
       </div>
-      <div id="render-dfx-latex" style="font-size: 1.35rem; min-height: 48px; display: flex; align-items: center; color: #dc2626;">
+      <div id="render-dfx-latex" style="font-size: 1.45rem; min-height: 48px; display: flex; align-items: center; color: #dc2626; font-weight: 700; overflow-x: auto;">
         <!-- KaTeX injected -->
       </div>
     </div>
+  </div>
+
+  <!-- Theoretical Step Explanation Banner -->
+  <div id="hosila-rule-banner" style="background: var(--bg-surface); border: 1.5px solid var(--border-color); border-left: 4px solid var(--primary); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--primary); margin-bottom: 0.2rem;">
+        💡 Differensiallash Qoidasi va Tahlili:
+      </div>
+      <div style="font-size: 0.92rem; color: var(--text-main); line-height: 1.5;">
+        Funksiyaning hosilasi har bir nuqtada funksiya grafigiga o'tkazilgan urinmaning burchak koeffitsiyentini {'$k = \\operatorname{tg} \\alpha = f\'(x_0)$'} ifodalaydi.
+      </div>
+    </div>
+    <a href="/dars/hosila/differensiallash-qoidalari-va-jadval" class="btn btn-secondary" style="font-size: 0.82rem; font-weight: 700; white-space: nowrap;">
+      📖 Darsni o'rganish →
+    </a>
   </div>
 
   <!-- Visual Dual Graph Comparison -->
@@ -547,6 +570,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           dfxTarget.innerHTML = katex.renderToString(`f'(x) = ${dfxTex}`, { displayMode: false, throwOnError: false, output: 'html' });
         }
 
+        const copyBtn = document.getElementById('copy-dfx-btn');
+        if (copyBtn) {
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(`f'(x) = ${dfxTex}`);
+            copyBtn.textContent = '✅ Nusxalandi!';
+            setTimeout(() => { copyBtn.textContent = '📋 Nusxalash'; }, 2000);
+          };
+        }
+
         // Prepare functions for plotting
         const fn1Str = rawExpr;
         const fn2Str = simplified.toString();
@@ -575,6 +607,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           ],
           disableZoom: false
         });
+
+        // Smooth scroll down to the prominent results
+        document.getElementById('hosila-results-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       } catch (err: any) {
         console.error('Hosila hisoblashda xatolik:', err);
