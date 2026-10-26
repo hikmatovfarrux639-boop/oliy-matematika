@@ -384,6 +384,8 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
         const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('math_theme', newTheme);
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) metaTheme.setAttribute('content', newTheme === 'dark' ? '#0d1322' : '#ffffff');
         updateIcons(newTheme);
       });
     }

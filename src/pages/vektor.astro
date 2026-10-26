@@ -560,7 +560,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   function parseCoord(valStr: string): number {
-    const s = (valStr || '').trim();
+    const s = (valStr || '').trim().replace(',', '.');
     if (s.includes('/')) {
       const parts = s.split('/');
       const num = parseFloat(parts[0]);

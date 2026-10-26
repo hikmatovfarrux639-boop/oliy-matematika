@@ -471,6 +471,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       str = str.replace(/−/g, '-').replace(/×/g, '*').replace(/÷/g, '/');
 
       // Inverse trigonometric symbols: arctg -> atan, arcctg -> (pi/2 - atan), arcsin -> asin, arccos -> acos
+      str = str.replace(/\b(tg|tan)\s+([a-zA-Z0-9]+)/gi, 'tan($2)');
+      str = str.replace(/\b(ctg|cot)\s+([a-zA-Z0-9]+)/gi, '(1/tan($2))');
+      str = str.replace(/\bln\s+([a-zA-Z0-9]+)/gi, 'log($2)');
+      str = str.replace(/\b(sin|cos)\s+([a-zA-Z0-9]+)/gi, '$1($2)');
+      str = str.replace(/\barctg\s+([a-zA-Z0-9]+)/gi, 'atan($1)');
+      str = str.replace(/\barcsin\s+([a-zA-Z0-9]+)/gi, 'asin($1)');
+      str = str.replace(/\barccos\s+([a-zA-Z0-9]+)/gi, 'acos($1)');
+
       str = str.replace(/\barctg\s*\(/gi, 'atan(');
       str = str.replace(/\barcctg\s*\(([^)]+)\)/gi, '(pi/2 - atan($1))');
       str = str.replace(/\barcsin\s*\(/gi, 'asin(');

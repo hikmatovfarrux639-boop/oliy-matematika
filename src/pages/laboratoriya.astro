@@ -1253,6 +1253,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   import * as THREE from 'three';
 
   function initFullLaboratory() {
+    const firstTab = document.querySelector('.lab-tab');
+    if (!firstTab || (firstTab as any)._hasLabInit) return;
+    (firstTab as any)._hasLabInit = true;
+
     let currentActiveTab = 'tesseract';
 
     // 1. TAB CONTROLLER
@@ -3096,10 +3100,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     })();
   }
 
-  // Initialize when DOM loads
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFullLaboratory);
-  } else {
-    initFullLaboratory();
-  }
+  // Initialize when DOM loads or on Astro SPA page load
+  initFullLaboratory();
+  document.addEventListener('astro:page-load', initFullLaboratory);
 </script>

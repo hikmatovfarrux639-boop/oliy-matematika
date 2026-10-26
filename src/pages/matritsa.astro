@@ -850,7 +850,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             mat[r][c] = 0;
             continue;
           }
-          const raw = el.value.trim();
+          const raw = el.value.trim().replace(',', '.');
           if (raw.includes('/')) {
             const parts = raw.split('/');
             const num = parseFloat(parts[0]);
