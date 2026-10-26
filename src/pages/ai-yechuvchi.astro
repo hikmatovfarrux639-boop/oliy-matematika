@@ -187,21 +187,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div>
 
-  <!-- 1. SMART TOPIC DIAGNOSIS & COURSE NAVIGATOR CARD -->
-  <div id="topic-diagnosis-card" class="diagnosis-card" style="display: none;">
-    <!-- Populated dynamically in 0.01s -->
-  </div>
-
-  <!-- 2. SOLUTION OUTPUT CONTAINER -->
+  <!-- 1. SOLUTION OUTPUT CONTAINER (Always shown first) -->
   <div id="solution-container" class="solution-container" style="display: none;">
     <div class="solution-header">
-      <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
-        <span style="font-size: 1.5rem;">📝</span>
+      <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="font-size: 1.6rem;">📝</span>
         <div>
-          <h2 id="solution-title-heading" style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin: 0;">
-            Qadamma-qadam Yechim
-          </h2>
-          <span id="solution-engine-badge" style="font-size: 0.78rem; color: #10b981; font-weight: 600;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.2rem; flex-wrap: wrap;">
+            <span class="badge solution-step-badge">
+              1-BOSQICH: ASOSIY YECHIM
+            </span>
+            <h2 id="solution-title-heading" style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin: 0;">
+              Qadamma-qadam Yechim va Javob
+            </h2>
+          </div>
+          <span id="solution-engine-badge" style="font-size: 0.8rem; color: #10b981; font-weight: 600;">
             ⚡ Analitik dvigatel orqali 0.01 soniyada yechildi
           </span>
         </div>
@@ -232,6 +232,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div id="solution-body" class="solution-body markdown-body">
       <!-- Generated solution goes here -->
     </div>
+  </div>
+
+  <!-- 2. SMART TOPIC DIAGNOSIS & COURSE NAVIGATOR CARD (Shown below solution) -->
+  <div id="topic-diagnosis-card" class="diagnosis-card" style="display: none;">
+    <!-- Populated dynamically -->
   </div>
 
   <!-- MODAL: WEBCAM LIVE CAPTURE (Photomath / Sci-Fi Scanner UI) -->
@@ -725,15 +730,98 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--text-main);
   }
 
-  /* SMART TOPIC DIAGNOSIS CARD */
-  .diagnosis-card {
+  /* 1. SOLUTION OUTPUT CONTAINER (Primary: Always on Top) */
+  .solution-container {
     background: var(--bg-surface);
     border: 2px solid var(--primary);
     border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    animation: fadeIn 0.25s ease-out;
+  }
+  .solution-step-badge {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    font-weight: 800;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+  .solution-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.25rem;
+  }
+  .solution-body {
+    line-height: 1.7;
+    font-size: 1.04rem;
+    color: var(--text-main);
+  }
+  .solution-body :global(h2), .solution-body :global(h3) {
+    color: var(--primary);
+    margin-top: 1.35rem;
+    margin-bottom: 0.5rem;
+  }
+  .solution-body :global(.step-box) {
+    background: var(--bg-muted);
+    border-left: 4px solid var(--primary);
+    padding: 0.85rem 1.25rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin: 1rem 0;
+  }
+  .solution-body :global(.answer-box) {
+    background: rgba(16, 185, 129, 0.12);
+    border: 2px solid #10b981;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin: 1.25rem 0;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  }
+  .solution-body :global(.inline-course-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0.2rem 0;
+  }
+
+  /* 2. SMART TOPIC DIAGNOSIS CARD (Secondary: Under the Solution) */
+  .diagnosis-card {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-top: 4px solid #8b5cf6;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.12);
-    animation: fadeIn 0.2s ease-out;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 18px -4px rgba(139, 92, 246, 0.1);
+    animation: fadeIn 0.25s ease-out;
+  }
+  .diag-step-badge {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    font-weight: 800;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
   }
   .diagnosis-card :global(.diag-header) {
     display: flex;
@@ -764,8 +852,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
-    border: 1.5px solid var(--primary);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.08));
+    border: 1.5px solid rgba(37, 99, 235, 0.35);
     border-radius: var(--radius-md);
     padding: 1rem 1.25rem;
     margin-bottom: 1.15rem;
@@ -807,65 +895,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
     padding: 0.65rem 0.85rem;
-  }
-
-  /* Solution Container */
-  .solution-container {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 1.75rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    margin-bottom: 2rem;
-    animation: fadeIn 0.25s ease-out;
-  }
-  .solution-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1.25rem;
-  }
-  .solution-body {
-    line-height: 1.7;
-    font-size: 1.04rem;
-    color: var(--text-main);
-  }
-  .solution-body :global(h2), .solution-body :global(h3) {
-    color: var(--primary);
-    margin-top: 1.35rem;
-    margin-bottom: 0.5rem;
-  }
-  .solution-body :global(.step-box) {
-    background: var(--bg-muted);
-    border-left: 4px solid var(--primary);
-    padding: 0.85rem 1.25rem;
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    margin: 1rem 0;
-  }
-  .solution-body :global(.answer-box) {
-    background: rgba(16, 185, 129, 0.1);
-    border: 2px solid #10b981;
-    padding: 1rem 1.25rem;
-    border-radius: var(--radius-md);
-    margin: 1.25rem 0;
-    font-size: 1.15rem;
-  }
-  .solution-body :global(.inline-course-link) {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: var(--primary-light);
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 0.3rem 0.75rem;
-    border-radius: 6px;
-    font-weight: 700;
-    text-decoration: none;
-    margin: 0.2rem 0;
   }
 
   /* Modal */
@@ -1461,6 +1490,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
 
       diagnosisCard.innerHTML = `
+        <!-- Step 2: Educational Platform Navigation Banner -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.95rem; padding-bottom: 0.75rem; border-bottom: 1.5px dashed var(--border-color);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="badge diag-step-badge">
+              2-BOSQICH: PLATFORMA BO'YICHA YO'NALTIRISH
+            </span>
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-main);">
+              Mavzuni o'zlashtirish va mustahkamlash
+            </span>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">
+            💡 Repetitor tavsiyalari
+          </span>
+        </div>
+
         <div class="diag-header">
           <div>
             <a href="${diag.moduleUrl}" class="diag-module-badge">
@@ -1599,30 +1643,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         return;
       }
 
-      // If forcing AI, show loading inside solution card
-      if (forceAi) {
-        if (askAiDeeperBtn) {
-          askAiDeeperBtn.setAttribute('disabled', 'true');
-          askAiDeeperBtn.textContent = '⏳ Gemini AI tahlil qilmoqda...';
-        }
-        if (solutionBody) {
-          solutionBody.innerHTML = `
-            <div style="text-align: center; padding: 2.5rem 1rem;">
-              <div class="spinner-border" style="width: 2.2rem; height: 2.2rem; color: var(--primary); margin-bottom: 0.8rem; display: inline-block;"></div>
-              <h4 style="font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">Gemini AI chuqur akademik yechim tayyorlamoqda...</h4>
-              <p style="color: var(--text-muted); font-size: 0.9rem;">Formulalar, teoremalar va qadamma-qadam isbotlar generatsiya qilinmoqda</p>
-            </div>
-          `;
-          if (solutionContainer) solutionContainer.style.display = 'block';
-        }
-      }
-
-      // Always run instant Topic Diagnosis immediately (< 1ms)
-      const localResult = solveLocally(problemText || 'funksiya', currentMode);
-      renderDiagnosisCard(localResult.diagnosis);
-
       // STEP 1: Instant Local Analytical Engine (unless user uploaded a photo or explicitly forced AI)
       if (problemText && !selectedImageBase64 && !forceAi && currentMode !== 'ai') {
+        const localResult = solveLocally(problemText, currentMode);
         if (localResult.solved && localResult.markdown) {
           lastRawSolutionText = localResult.markdown;
           if (solutionBody) {
@@ -1634,19 +1657,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           if (groundingContainer) groundingContainer.style.display = 'none';
           if (solutionContainer) {
             solutionContainer.style.display = 'block';
-            diagnosisCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
+          renderDiagnosisCard(localResult.diagnosis);
           return;
         }
       }
 
       // STEP 2: Online Gemini Multimodal AI Engine (via secure /api/solve proxy)
       const userCustomKey = getUserApiKey();
+      const isImage = !!selectedImageBase64;
 
       // Loading State
       solveBtn!.setAttribute('disabled', 'true');
-      if (solveBtnText) solveBtnText.textContent = 'Gemini AI yechmoqda...';
+      if (solveBtnText) solveBtnText.textContent = isImage ? '📷 Rasm tahlil qilinmoqda...' : 'Gemini AI yechmoqda...';
       if (solveBtnSpinner) solveBtnSpinner.style.display = 'inline-block';
+
+      // Hide diagnosis card during AI solving so user is not confused by outdated/placeholder diagnosis!
+      if (diagnosisCard) diagnosisCard.style.display = 'none';
+
+      if (askAiDeeperBtn && forceAi) {
+        askAiDeeperBtn.setAttribute('disabled', 'true');
+        askAiDeeperBtn.textContent = '⏳ Gemini AI tahlil qilmoqda...';
+      }
+
+      if (solutionBody) {
+        solutionBody.innerHTML = `
+          <div style="text-align: center; padding: 2.75rem 1rem;">
+            <div class="spinner-border" style="width: 2.4rem; height: 2.4rem; color: var(--primary); margin-bottom: 0.9rem; display: inline-block;"></div>
+            <h4 style="font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">
+              ${isImage ? '📷 Rasmdagi misol skanerlanmoqda va AI yechmoqda...' : '⏳ Gemini AI akademik yechim tayyorlamoqda...'}
+            </h4>
+            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 520px; margin: 0 auto;">
+              ${isImage ? 'Gemini Vision formulalarni OCR orqali aniqlab, to\'liq o\'zbek tilida bosqichma-bosqich yechim hosil qilmoqda' : 'Formulalar, teoremalar va qadamma-qadam isbotlar generatsiya qilinmoqda'}
+            </p>
+          </div>
+        `;
+        if (solutionEngineBadge) {
+          solutionEngineBadge.innerHTML = isImage ? '📷 Gemini Vision (Rasmli OCR tahlil)' : '🤖 Gemini AI Akademik Yadro';
+        }
+        if (solutionContainer) {
+          solutionContainer.style.display = 'block';
+          solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
 
       try {
         const useGoogleSearch = searchToggle?.checked || false;
@@ -1793,8 +1847,9 @@ Qat'iy qoidalar:
           : (partsList[0]?.text || "Yechim hosil qilib bo'lmadi.");
         lastRawSolutionText = rawText;
 
-        // Also update the diagnosis card based on the recognized math text from AI!
-        const aiDiag = diagnoseTopic(problemText + ' ' + rawText.slice(0, 350));
+        // Also update and show the diagnosis card below the solution based on the recognized math text!
+        const textForDiagnosis = problemText || rawText.slice(0, 450);
+        const aiDiag = diagnoseTopic(textForDiagnosis);
         renderDiagnosisCard(aiDiag);
 
         // Render Grounding Sources if Google Search was used
@@ -1835,12 +1890,17 @@ Qat'iy qoidalar:
           solutionBody.innerHTML = verificationNotice + renderMathMarkdown(rawText);
         }
         if (solutionEngineBadge) {
-          solutionEngineBadge.innerHTML = '🛡️ Xavfsiz Gemini AI Pro Serveri orqali chuqur tahlil qilindi';
+          solutionEngineBadge.innerHTML = selectedImageBase64
+            ? '📷 Gemini AI Vision (Rasmdan o\'qilgan va yechilgan) • To\'liq akademik tahlil'
+            : '🛡️ Xavfsiz Gemini AI Pro Serveri orqali chuqur tahlil qilindi';
         }
 
         if (solutionContainer) {
           solutionContainer.style.display = 'block';
-          diagnosisCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (diagnosisCard) {
+          diagnosisCard.style.display = 'block';
         }
       } catch (err: any) {
         const errMsg = err.message || '';
@@ -1880,7 +1940,11 @@ Qat'iy qoidalar:
           }
           if (solutionContainer) {
             solutionContainer.style.display = 'block';
-            diagnosisCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            solutionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          if (diagnosisCard) {
+            renderDiagnosisCard(diag);
+            diagnosisCard.style.display = 'block';
           }
         } else {
           if (solutionContainer && forceAi) {
