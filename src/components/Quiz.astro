@@ -144,6 +144,9 @@ const {
 
     <!-- Detailed Review List -->
     <div id="quiz-review-container" class="quiz-review-container" style="display: none;">
+      <!-- AI Recovery Recommendation Banner -->
+      <div id="quiz-ai-recovery-box" style="display: none; margin-bottom: 1.25rem;"></div>
+
       <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-main);">
         Barcha savollar tahlili:
       </h3>
@@ -158,6 +161,7 @@ const {
 <script>
   import katex from 'katex';
   import { QUIZ_DATABASE, EXAM_PRESETS, type QuizQuestion } from '../data/quizzes';
+  import { generateStudyStrategy } from '../utils/studyStrategyEngine';
 
   function initQuiz() {
     const appContainer = document.getElementById('quiz-app');
@@ -403,7 +407,34 @@ const {
         explanationTitle.textContent = isCorrect 
           ? "✅ Barakalla! To'g'ri javob:" 
           : "❌ Noto'g'ri. To'g'ri yechim:";
-        explanationContent.innerHTML = renderMathText(q.explanation);
+
+        let html = renderMathText(q.explanation);
+
+        if (!isCorrect) {
+          const recPlan = generateStudyStrategy(q.question + ' ' + q.moduleName, 'express');
+          const recLesson = recPlan.steps.find((s) => s.phase === 'Asosiy') || recPlan.steps[0];
+          html += `
+            <div class="wrong-ai-analysis-box" style="margin-top: 1rem; padding: 0.85rem 1rem; background: rgba(245, 158, 11, 0.08); border: 1.5px solid rgba(245, 158, 11, 0.35); border-radius: var(--radius-md);">
+              <div style="font-size: 0.85rem; font-weight: 800; color: #d97706; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem;">
+                <span>🎯</span>
+                <span>AI Repetitor Maslahati (Qaysi darsni o'qish kerak?):</span>
+              </div>
+              <div style="font-size: 0.84rem; color: var(--text-main); line-height: 1.45; margin-bottom: 0.6rem;">
+                Ushbu savolda adashmaslik uchun saytimizdagi mana bu darsni qayta ko'rib chiqishni tavsiya qilamiz:
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="${recLesson.url}" target="_blank" rel="noopener noreferrer" class="quiz-rec-lesson-link" style="display: inline-flex; align-items: center; gap: 0.35rem; background: var(--primary); color: white; padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 700; text-decoration: none;">
+                  📖 ${recLesson.title} →
+                </a>
+                <a href="/strategiya?q=${encodeURIComponent(q.moduleName + ' ' + q.question.slice(0, 60))}" target="_blank" rel="noopener noreferrer" class="quiz-rec-strategy-link" style="display: inline-flex; align-items: center; gap: 0.35rem; background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border-color); padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 600; text-decoration: none;">
+                  🧭 Yo'l xaritasi →
+                </a>
+              </div>
+            </div>
+          `;
+        }
+
+        explanationContent.innerHTML = html;
         explanationBox.style.display = 'block';
       }
 
@@ -474,6 +505,32 @@ const {
         resultFeedbackText.textContent = feedback;
       }
 
+      // AI Recovery Recommendation Banner
+      const recoveryBox = document.getElementById('quiz-ai-recovery-box');
+      if (recoveryBox) {
+        if (wrongCount > 0) {
+          const wrongModules = Array.from(new Set(userAnswers.filter(a => !a.isCorrect).map(a => a.question.moduleName))).join(', ');
+          recoveryBox.style.display = 'block';
+          recoveryBox.innerHTML = `
+            <div style="background: linear-gradient(135deg, rgba(234, 88, 12, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%); border: 1.5px solid #ea580c; border-radius: var(--radius-md); padding: 1.1rem 1.25rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                <span style="font-size: 1.3rem;">🎯</span>
+                <strong style="font-size: 1.05rem; color: var(--text-main);">AI Murabbiy Xulosasi: Xatolarni tuzatish rejasi</strong>
+              </div>
+              <p style="margin: 0 0 0.75rem 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                Siz ${wrongCount} ta savolda adashdingiz (asosan: <strong>${wrongModules}</strong>). Oraliq nazoratda A'lo (5 baho) olish uchun, saytimizdagi darslarni takrorlab, o'zingizga mos o'quv strategiyasini oling.
+              </p>
+              <a href="/strategiya?q=${encodeURIComponent(wrongModules || 'oliy matematika')}" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.45rem 1rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <span>🧭 Ushbu mavzular bo'yicha Shaxsiy O'quv Rejasini ochish</span>
+                <span>→</span>
+              </a>
+            </div>
+          `;
+        } else {
+          recoveryBox.style.display = 'none';
+        }
+      }
+
       // Build Review Cards
       renderReviewCards();
     }
@@ -513,6 +570,20 @@ const {
           <div class="review-explanation-toggle">
             <strong>Yechish usuli:</strong> ${renderMathText(q.explanation)}
           </div>
+          ${!ans.isCorrect ? (() => {
+            const recPlan = generateStudyStrategy(q.question + ' ' + q.moduleName, 'express');
+            const recLesson = recPlan.steps.find((s) => s.phase === 'Asosiy') || recPlan.steps[0];
+            return `
+              <div class="review-rec-lesson-box" style="margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="font-size: 0.8rem; color: var(--text-muted);">
+                  🎯 <strong>Saytdagi tavsiya etilgan dars:</strong>
+                </span>
+                <a href="${recLesson.url}" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; font-weight: 700; color: var(--primary); text-decoration: underline;">
+                  📖 ${recLesson.title} →
+                </a>
+              </div>
+            `;
+          })() : ''}
         `;
 
         reviewList.appendChild(item);
