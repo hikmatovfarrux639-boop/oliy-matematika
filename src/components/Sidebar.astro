@@ -82,6 +82,12 @@ function isModuleActive(slug: string): boolean {
           <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Yangi</span>
         </a>
       </li>
+      <li class={`module-nav-item ${currentPath.startsWith('/strategiya') ? 'active' : ''}`} style="border-left: 3px solid #059669; margin-bottom: 0.25rem;">
+        <a href="/strategiya" style="color: #059669; font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+          <span>🧭 AI O'quv Strategiyasi</span>
+          <span style="font-size: 0.65rem; background: #059669; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Mentor</span>
+        </a>
+      </li>
       <li class={`module-nav-item ${currentPath === '/laboratoriya' ? 'active' : ''}`} style="border-left: 3px solid #ec4899; margin-bottom: 0.25rem;">
         <a href="/laboratoriya" style="color: #ec4899; font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
           <span>🔮 Laboratoriya</span>

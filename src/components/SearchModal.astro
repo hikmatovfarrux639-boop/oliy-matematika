@@ -22,7 +22,7 @@
       <input 
         type="text" 
         id="search-input" 
-        placeholder="Darslar, mavzular va formulalarni qidirish..."
+        placeholder="Mavzu qidiring yoki: «Determinantga qiynalyapman» deb yozing..."
         autocomplete="off"
         spellcheck="false"
       />
@@ -35,14 +35,19 @@
     <div id="search-results-container" class="search-results-list">
       <div id="search-empty-state" class="search-empty-state">
         <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
-        <p style="font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem;">Matematika bo'yicha qidiring</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">
-          Masalan: <code>limit</code>, <code>hosila</code>, <code>urinma</code>, <code>parabola</code>, <code>koshi</code>
+        <p style="font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem;">Mavzu qidiring yoki AI Strategdan so'rang</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Masalan: <code>limit</code>, <code>hosila</code>, <code>determinantga qiynalyapman</code>, <code>integrallarni qanday o'rganay</code>
         </p>
+        <a href="/strategiya" class="ai-strategy-promo-btn" id="search-empty-strategy-link">
+          <span>🧭</span>
+          <span>Qiynalayotgan mavzungiz bo'yicha <strong>AI O'quv Strategiyasi</strong> tuzish →</span>
+        </a>
       </div>
+      <div id="search-strategy-box" style="display: none; margin-bottom: 0.75rem;"></div>
       <div id="search-results-list" style="display: none;"></div>
-      <div id="search-no-results" style="display: none; text-align: center; padding: 2rem; color: var(--text-muted);">
-        Hech narsa topilmadi. Boshqa so'z bilan qidirib ko'ring.
+      <div id="search-no-results" style="display: none; text-align: center; padding: 1.5rem 1rem; color: var(--text-muted);">
+        Hech narsa topilmadi. Yuqoridagi AI Strategiya orqali o'quv rejasini ochib ko'ring.
       </div>
     </div>
 
@@ -161,7 +166,52 @@
 
   .search-empty-state {
     text-align: center;
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
+  }
+
+  .ai-strategy-promo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(37, 99, 235, 0.12));
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .ai-strategy-promo-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-1px);
+  }
+
+  :global(.modal-strategy-card) {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
+    border: 1.5px solid #10b981;
+    border-radius: var(--radius-md);
+    padding: 0.9rem 1rem;
+  }
+
+  :global(.modal-strategy-step) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.65rem;
+    margin-top: 0.35rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.84rem;
+    color: var(--text-main);
+    font-weight: 600;
+    transition: border-color 0.15s ease;
+  }
+  :global(.modal-strategy-step:hover) {
+    border-color: var(--primary);
+    color: var(--primary);
   }
 
   .search-item-card {
@@ -226,6 +276,8 @@
 </style>
 
 <script>
+  import { generateStudyStrategy, isStrategyOrTopicHelpQuery, normalizeQueryForStrategy } from '../utils/studyStrategyEngine';
+
   let pagefindInstance: any = null;
 
   async function getPagefind() {
@@ -248,8 +300,10 @@
     const closeBtn = document.getElementById('search-close-btn');
     const input = document.getElementById('search-input') as HTMLInputElement | null;
     const emptyState = document.getElementById('search-empty-state');
+    const strategyBox = document.getElementById('search-strategy-box');
     const resultsContainer = document.getElementById('search-results-list');
     const noResults = document.getElementById('search-no-results');
+    const emptyStrategyLink = document.getElementById('search-empty-strategy-link');
 
     let selectedIndex = -1;
 
@@ -257,6 +311,7 @@
       const curBackdrop = document.getElementById('search-modal-backdrop');
       const curInput = document.getElementById('search-input') as HTMLInputElement | null;
       const curEmpty = document.getElementById('search-empty-state');
+      const curStrategy = document.getElementById('search-strategy-box');
       const curResults = document.getElementById('search-results-list');
       const curNoRes = document.getElementById('search-no-results');
 
@@ -265,6 +320,7 @@
       curInput.value = '';
       selectedIndex = -1;
       if (curEmpty) curEmpty.style.display = 'block';
+      if (curStrategy) curStrategy.style.display = 'none';
       if (curResults) curResults.style.display = 'none';
       if (curNoRes) curNoRes.style.display = 'none';
       setTimeout(() => curInput.focus(), 50);
@@ -278,6 +334,8 @@
       curBackdrop.style.display = 'none';
       document.body.style.overflow = '';
     }
+
+    emptyStrategyLink?.addEventListener('click', closeModal);
 
     if (openBtn && !(openBtn as any)._hasSearchInit) {
       (openBtn as any)._hasSearchInit = true;
@@ -327,32 +385,76 @@
       if (!query) {
         selectedIndex = -1;
         if (emptyState) emptyState.style.display = 'block';
+        if (strategyBox) strategyBox.style.display = 'none';
         if (resultsContainer) resultsContainer.style.display = 'none';
         if (noResults) noResults.style.display = 'none';
         return;
       }
 
       debounceTimer = setTimeout(async () => {
+        if (emptyState) emptyState.style.display = 'none';
+
+        // 1. Always render smart AI Study Strategy Roadmap card when query >= 3 chars
+        if (strategyBox && query.length >= 3) {
+          const plan = generateStudyStrategy(query);
+          const isExplicitStrategy = isStrategyOrTopicHelpQuery(query);
+          const topSteps = plan.steps.slice(0, 3);
+          strategyBox.style.display = 'block';
+          strategyBox.innerHTML = `
+            <div class="modal-strategy-card">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.35rem;">
+                <span style="font-size: 0.78rem; font-weight: 800; color: #059669;">
+                  🧭 AI O'QUV STRATEGIYASI (${plan.topicTitle})
+                </span>
+                <a href="/strategiya?q=${encodeURIComponent(query)}" class="modal-open-full-strategy" style="font-size: 0.78rem; font-weight: 700; color: var(--primary); text-decoration: underline;">
+                  To'liq 5 bosqichli reja →
+                </a>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+                ${isExplicitStrategy ? plan.empathyMessage : "Ushbu mavzuni qiynalmasdan o'zlashtirish uchun quyidagi tartibda o'qing:"}
+              </div>
+              ${topSteps
+                .map(
+                  (s, i) => `
+                <a href="${s.url}" class="modal-strategy-step">
+                  <span><strong>${i + 1}-qadam (${s.phase}):</strong> ${s.title}</span>
+                  <span style="font-size: 0.75rem; color: var(--primary); flex-shrink: 0;">⏱ ${s.duration} →</span>
+                </a>
+              `
+                )
+                .join('')}
+            </div>
+          `;
+          strategyBox.querySelectorAll('a').forEach((a) => {
+            a.addEventListener('click', closeModal);
+          });
+        } else if (strategyBox) {
+          strategyBox.style.display = 'none';
+        }
+
         const pf = await getPagefind();
         if (!pf) {
-          if (noResults) {
-            noResults.textContent = "Qidiruv indeksi mavjud emas (npm run build orqali hosil qilinadi).";
-            noResults.style.display = 'block';
-          }
-          if (emptyState) emptyState.style.display = 'none';
           return;
         }
 
-        const search = await pf.search(query);
+        // Normalize typos (e.g. "dterminant" -> "determinant") and strip conversational filler words for Pagefind search
+        const normalizedQuery = normalizeQueryForStrategy(query)
+          .replace(/\b(men|darsda|qiynalyapman|tushunmayapman|nimadan|boshlay|qanday|organay|kerak|uchun)\b/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim() || normalizeQueryForStrategy(query);
+
+        let search = await pf.search(query);
+        if (search.results.length === 0 && normalizedQuery !== query.toLowerCase()) {
+          search = await pf.search(normalizedQuery);
+        }
+
         const dataPromises = search.results.slice(0, 8).map((r: any) => r.data());
         const results = await Promise.all(dataPromises);
-
-        if (emptyState) emptyState.style.display = 'none';
 
         if (results.length === 0) {
           selectedIndex = -1;
           if (resultsContainer) resultsContainer.style.display = 'none';
-          if (noResults) noResults.style.display = 'block';
+          if (noResults) noResults.style.display = strategyBox?.style.display === 'block' ? 'none' : 'block';
         } else {
           if (noResults) noResults.style.display = 'none';
           if (resultsContainer) {

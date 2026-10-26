@@ -42,10 +42,37 @@ const totalCount = MODULES.length;
       <a href="/ai-yechuvchi" class="btn btn-secondary" style="border-color: #10b981; color: #10b981; font-weight: 700;">
         <span>🤖 AI Yechuvchi</span>
       </a>
+      <a href="/strategiya" class="btn" style="background: linear-gradient(135deg, #059669, #2563eb); color: white; font-weight: 700; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);">
+        <span>🧭 AI O'quv Strategiyasi</span>
+      </a>
       <a href="/formulalar" class="btn btn-secondary">
         <span>📚 Formulalar</span>
       </a>
     </div>
+  </section>
+
+  <!-- Interactive AI Study Strategy Quick-Bar on Home Page -->
+  <section style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(37, 99, 235, 0.1) 100%); border: 1.5px solid #10b981; border-radius: var(--radius-lg); padding: 1.35rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1; min-width: 260px;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+        <span style="font-size: 1.35rem;">🧭</span>
+        <strong style="font-size: 1.1rem; color: var(--text-main);">Darsda biror mavzuga qiynalyapsizmi? (AI O'quv Navigatori)</strong>
+      </div>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+        Masalan: <em>«Men darsda determinantga qiynalyapman»</em> deb yozing — sun'iy intellekt avval qaysi mavzuni, keyin qaysi darsni o'qish va qayerda mashq qilish kerakligini qadamma-qadam tuzib beradi!
+      </p>
+    </div>
+    <form action="/strategiya" method="get" style="display: flex; gap: 0.5rem; flex-wrap: wrap; width: 100%; max-width: 460px;">
+      <input 
+        type="text" 
+        name="q" 
+        placeholder="Masalan: Determinantga qiynalyapman..." 
+        style="flex: 1; min-width: 200px; padding: 0.65rem 0.9rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-size: 0.9rem;"
+      />
+      <button type="submit" class="btn btn-primary" style="background: #059669; border-color: #059669; font-weight: 700; white-space: nowrap;">
+        🧭 Reja tuzish →
+      </button>
+    </form>
   </section>
 
   <!-- HEMIS & AI & LAB TRIPLE PROMO BANNER -->

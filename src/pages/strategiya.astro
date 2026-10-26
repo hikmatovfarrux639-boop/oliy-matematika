@@ -1,0 +1,950 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="AI O'quv Strategiyasi va Shaxsiy Yo'l Xaritasi — Oliy Matematika"
+  description="Oliy matematikadan qaysi mavzuda qiynalyapsiz? Sun'iy intellekt saytdagi 156 ta dars ichidan siz uchun qadamma-qadam o'rganish strategiyasi va yo'l xaritasini tuzib beradi."
+>
+  <div class="strategy-page">
+    <!-- Hero Header -->
+    <header class="strategy-hero">
+      <div class="hero-pill">
+        <span>🧭</span>
+        <span>AI O'quv Navigatori • 14 ta modul va 156 ta dars bo'yicha shaxsiy yo'l xaritasi</span>
+      </div>
+      <h1>Qaysi mavzuda qiynalyapsiz?</h1>
+      <p>
+        Darsda tushunmay qolgan mavzungizni oddiy so'z bilan yozing (masalan: <em>«Men darsda determinantga qiynalyapman»</em> yoki <em>«Ertaga integrallardan oraliq imtihonim bor»</em>). AI tizimi saytimizdagi darslarni <strong>aniq ketma-ketlikda</strong> («avval buni o'qing, keyin buni mashq qiling») siz uchun strategiya qilib tuzib beradi!
+      </p>
+    </header>
+
+    <!-- Interactive Input Box -->
+    <section class="strategy-input-card">
+      <label for="strategy-query-input" class="input-label">
+        <span>💬 Vaziyatingizni yoki qiynalayotgan mavzungizni yozing:</span>
+      </label>
+      <div class="input-row">
+        <input
+          type="text"
+          id="strategy-query-input"
+          placeholder="Masalan: Men darsda determinantga qiynalyapman, nimadan boshlay?"
+          autocomplete="off"
+        />
+        <button type="button" id="build-strategy-btn" class="btn btn-primary build-btn">
+          <span>🧭 Strategiya tuzish</span>
+        </button>
+      </div>
+
+      <!-- Study Pace / Mode Selector -->
+      <div class="pace-selector-row">
+        <span class="pace-label">O'rganish rejimi:</span>
+        <div class="pace-tabs">
+          <button type="button" class="pace-tab active" data-pace="standard">
+            📅 Bosqichma-bosqich (To'liq)
+          </button>
+          <button type="button" class="pace-tab" data-pace="express">
+            ⚡ Imtihonga tezkor (1 soatda)
+          </button>
+          <button type="button" class="pace-tab" data-pace="foundation">
+            🧱 Noldan (Poydevor bilan)
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Sample Prompts -->
+      <div class="sample-prompts">
+        <span class="sample-title">Tezkor vaziyatlar (bosib ko'ring):</span>
+        <div class="sample-chips">
+          <button type="button" class="sample-chip" data-query="Men darsda determinantga qiynalyapman, nimadan boshlay?">
+            😟 Determinantga qiynalyapman
+          </button>
+          <button type="button" class="sample-chip" data-query="Tenglamalar sistemasini Kramer va Gauss usulida yechishni tushunmayapman">
+            🔢 Kramer va Gauss usuli
+          </button>
+          <button type="button" class="sample-chip" data-query="Limitlarda aniqmasliklarni ochish va ajoyib limitlarga adashyapman">
+            📉 Limitlar va aniqmasliklar
+          </button>
+          <button type="button" class="sample-chip" data-query="Murakkab funksiya hosilasi va urinma tenglamasini o'rganmoqchiman">
+            📈 Hosila va urinma
+          </button>
+          <button type="button" class="sample-chip" data-query="Integrallarni bo'laklab va almashtirib yechishda qaysi usulni tanlashni bilmayman">
+            ∫ Integrallarni yechish
+          </button>
+          <button type="button" class="sample-chip" data-query="Vektorlar, skalyar ko'paytma va piramida hajmini topishga qiynalyapman">
+            📐 Vektorlar va Geometriya
+          </button>
+          <button type="button" class="sample-chip" data-query="Differensial tenglamalar turlarini bir-biridan ajrata olmayapman">
+            ⚙️ Differensial tenglamalar
+          </button>
+          <button type="button" class="sample-chip" data-query="Ehtimollar nazariyasi, Bayes va Bernulli formulalarini o'rganishim kerak">
+            🎲 Ehtimollar va Statistika
+          </button>
+          <button type="button" class="sample-chip" data-query="Maktab bazam bo'sh, oliy matematikani noldan qanday boshlasam bo'ladi?">
+            🧱 Maktab bazam bo'sh (Noldan)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Output Container -->
+    <div id="strategy-result-wrapper" style="display: none;">
+      <!-- Diagnosis & Empathy Banner -->
+      <div class="diagnosis-banner" id="strategy-diagnosis-banner"></div>
+
+      <!-- Progress Bar for This Roadmap -->
+      <div class="roadmap-progress-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">
+            📊 Ushbu strategiya bo'yicha shaxsiy natijangiz:
+          </div>
+          <span id="roadmap-progress-label" style="font-size: 0.85rem; font-weight: 700; color: var(--primary);">
+            0 / 4 qadam o'zlashtirilgan (0%)
+          </span>
+        </div>
+        <div class="progress-track">
+          <div id="roadmap-progress-fill" class="progress-fill" style="width: 0%;"></div>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">
+          💡 Darsni o'qib bo'lgach, dars oxiridagi «✅ Darsni o'zlashtirdim» tugmasini bossangiz, ushbu xaritadagi qadam avtomatik yashilga aylanadi!
+        </div>
+      </div>
+
+      <!-- Step-by-Step Timeline -->
+      <div class="timeline-section">
+        <h2 class="section-heading">🗺️ Qadamma-qadam O'quv Strategiyasi (Ketma-ketlikni buzmang!)</h2>
+        <div id="strategy-steps-list" class="timeline-list"></div>
+      </div>
+
+      <!-- Interactive Practice Tools & Exam Tip -->
+      <div class="tools-and-tips-grid">
+        <div class="tools-box">
+          <h3 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; color: var(--text-main);">
+            🛠️ Amaliy Mashq va Tekshiruv Asboblari
+          </h3>
+          <div id="strategy-tools-list" class="tools-cards"></div>
+        </div>
+
+        <div class="exam-tip-box">
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.05rem; color: #d97706; margin-bottom: 0.6rem;">
+            <span>🏆</span>
+            <span>Professorning Imtihon Siri (HEMIS va Oraliq uchun)</span>
+          </div>
+          <p id="strategy-exam-tip" style="margin: 0 0 1.25rem 0; font-size: 0.95rem; line-height: 1.6; color: var(--text-main);"></p>
+
+          <button type="button" id="ask-gemini-mentor-btn" class="btn ai-mentor-btn">
+            <span>🤖 Gemini AI Mentoridan shaxsiy kunlik reja va maslahat olish</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Gemini AI Deep Personal Mentor Box -->
+      <div id="ai-mentor-response-card" class="ai-mentor-card" style="display: none;">
+        <div class="ai-mentor-header">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.4rem;">🎓</span>
+            <div>
+              <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">AI Shaxsiy Kouch va Kunlik Tayyorgarlik Rejasi</h3>
+              <span id="ai-mentor-badge" style="font-size: 0.78rem; color: var(--primary); font-weight: 600;">Sayt o'quv dasturi asosida moslashtirildi</span>
+            </div>
+          </div>
+        </div>
+        <div id="ai-mentor-body" class="ai-mentor-body prose-content"></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { generateStudyStrategy, SITE_CURRICULUM_PROMPT_MAP, type StudyStrategyPlan } from '../utils/studyStrategyEngine';
+  import katex from 'katex';
+
+  function renderMarkdownWithLinksAndMath(md: string): string {
+    let html = md
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Block math
+    html = html.replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => {
+      try {
+        return katex.renderToString(m.trim(), { displayMode: true, throwOnError: false });
+      } catch {
+        return m;
+      }
+    });
+
+    // Inline math
+    html = html.replace(/\$([^\$\n]+?)\$/g, (_, m) => {
+      try {
+        return katex.renderToString(m.trim(), { displayMode: false, throwOnError: false });
+      } catch {
+        return m;
+      }
+    });
+
+    // Course links [Title](/dars/...)
+    html = html.replace(
+      /\[([^\]]+)\]\((\/[^\)]+)\)/g,
+      '<a href="$2" class="mentor-inline-link">📖 $1 →</a>'
+    );
+
+    html = html
+      .replace(/^### (.*$)/gim, '<h4 style="margin: 1rem 0 0.4rem; color: var(--text-main);">$1</h4>')
+      .replace(/^## (.*$)/gim, '<h3 style="margin: 1.25rem 0 0.5rem; color: var(--primary);">$1</h3>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n- /g, '<br>• ');
+
+    return html;
+  }
+
+  function setupStrategyPage() {
+    const queryInput = document.getElementById('strategy-query-input') as HTMLInputElement | null;
+    const buildBtn = document.getElementById('build-strategy-btn');
+    const resultWrapper = document.getElementById('strategy-result-wrapper');
+    const diagnosisBanner = document.getElementById('strategy-diagnosis-banner');
+    const stepsList = document.getElementById('strategy-steps-list');
+    const toolsList = document.getElementById('strategy-tools-list');
+    const examTipEl = document.getElementById('strategy-exam-tip');
+    const progressLabel = document.getElementById('roadmap-progress-label');
+    const progressFill = document.getElementById('roadmap-progress-fill');
+    const askMentorBtn = document.getElementById('ask-gemini-mentor-btn');
+    const mentorCard = document.getElementById('ai-mentor-response-card');
+    const mentorBody = document.getElementById('ai-mentor-body');
+    const mentorBadge = document.getElementById('ai-mentor-badge');
+
+    if (!queryInput || !buildBtn || (buildBtn as any)._hasStrategyInit) return;
+    (buildBtn as any)._hasStrategyInit = true;
+
+    let currentPace: 'standard' | 'express' | 'foundation' = 'standard';
+    let currentPlan: StudyStrategyPlan | null = null;
+    let lastUserQuery = '';
+
+    function getCompletedLessons(): string[] {
+      try {
+        return JSON.parse(localStorage.getItem('math_completed_lessons') || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function renderPlan(rawQuery: string) {
+      lastUserQuery = rawQuery.trim() || 'Men darsda determinantga qiynalyapman';
+      const basePlan = generateStudyStrategy(lastUserQuery);
+      currentPlan = basePlan;
+
+      const completed = getCompletedLessons();
+
+      // Filter or augment steps based on selected pace
+      let steps = [...basePlan.steps];
+      if (currentPace === 'express') {
+        // Express mode: focus on core practical lessons
+        steps = steps.filter((s) => s.phase === 'Asosiy' || s.phase === 'Amaliyot');
+        if (steps.length === 0) steps = basePlan.steps.slice(0, 2);
+      } else if (currentPace === 'foundation' && basePlan.id !== 'maktab-noldan') {
+        // Foundation mode: prepend school foundation refresher if not already present
+        steps = [
+          {
+            stepNumber: 0,
+            phase: 'Poydevor',
+            badgeColor: '#8b5cf6',
+            title: 'Maktab poydevori: Algebraik ayniyatlar va tenglamalar',
+            url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish',
+            slug: 'maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish',
+            duration: '10 daqiqa',
+            whyRead: 'Hisob-kitoblarda ishora va kasr xatolariga yo\'l qo\'ymaslik uchun bazaviy qoidalarni eslab olish.',
+            focusPoints: ['Qisqa ko\'paytirish formulalari', 'Daraja va kasrlar ustida amallar']
+          },
+          ...steps
+        ];
+      }
+
+      // Diagnosis banner
+      if (diagnosisBanner) {
+        const paceBadgeText =
+          currentPace === 'express'
+            ? '⚡ Tezkor Imtihon Rejimi'
+            : currentPace === 'foundation'
+            ? '🧱 Poydevor + To\'liq Rejim'
+            : '📅 Standart Bosqichma-Bosqich Rejim';
+
+        diagnosisBanner.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <span class="module-pill">${basePlan.moduleTitle}</span>
+            <span class="time-pill">${paceBadgeText} • ⏱ ${basePlan.estimatedTotalTime}</span>
+          </div>
+          <h2 style="margin: 0 0 0.6rem 0; font-size: 1.5rem; color: var(--text-main);">
+            🎯 Strategiya: ${basePlan.topicTitle}
+          </h2>
+          <p style="margin: 0 0 0.85rem 0; font-size: 0.98rem; color: var(--text-main); line-height: 1.55;">
+            <strong>💬 AI Mentor:</strong> ${basePlan.empathyMessage}
+          </p>
+          <div class="root-cause-box">
+            <strong>🔍 Nega talabalar bu mavzuda qiynaladi?</strong> ${basePlan.rootCauseWhyHard}
+          </div>
+        `;
+      }
+
+      // Progress calculation
+      let completedInPlan = 0;
+      steps.forEach((s) => {
+        if (s.slug && completed.includes(s.slug)) {
+          completedInPlan++;
+        }
+      });
+      const pct = steps.length > 0 ? Math.round((completedInPlan / steps.length) * 100) : 0;
+      if (progressLabel) {
+        progressLabel.textContent = `${completedInPlan} / ${steps.length} qadam o'zlashtirilgan (${pct}%)`;
+      }
+      if (progressFill) {
+        progressFill.style.width = `${pct}%`;
+      }
+
+      // Steps rendering
+      if (stepsList) {
+        stepsList.innerHTML = steps
+          .map((step, idx) => {
+            const isDone = step.slug ? completed.includes(step.slug) : false;
+            return `
+              <div class="timeline-card ${isDone ? 'is-completed' : ''}">
+                <div class="timeline-num" style="background: ${isDone ? '#10b981' : step.badgeColor};">
+                  ${isDone ? '✓' : idx + 1}
+                </div>
+                <div class="timeline-content">
+                  <div class="timeline-top">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                      <span class="phase-badge" style="background: ${step.badgeColor}18; color: ${step.badgeColor}; border: 1px solid ${step.badgeColor}40;">
+                        ${idx + 1}-QADAM • ${step.phase.toUpperCase()}
+                      </span>
+                      <span class="duration-badge">⏱ ${step.duration}</span>
+                      ${
+                        isDone
+                          ? '<span class="done-badge">✅ O\'zlashtirilgan</span>'
+                          : '<span class="todo-badge">⭕ O\'qish tavsiya etiladi</span>'
+                      }
+                    </div>
+                  </div>
+
+                  <h3 class="step-title">
+                    <a href="${step.url}">${step.title}</a>
+                  </h3>
+
+                  <p class="step-why">
+                    <strong>Nima uchun bu dars?</strong> ${step.whyRead}
+                  </p>
+
+                  <div class="focus-list">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Diqqat qiling:</span>
+                    ${step.focusPoints.map((fp) => `<span class="focus-chip">✓ ${fp}</span>`).join('')}
+                  </div>
+
+                  <div style="margin-top: 0.85rem;">
+                    <a href="${step.url}" class="btn btn-primary step-open-btn">
+                      <span>📖 ${idx + 1}-qadam darsini boshlash</span>
+                      <span>→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      // Tools rendering
+      if (toolsList) {
+        toolsList.innerHTML = basePlan.interactiveTools
+          .map(
+            (t) => `
+            <a href="${t.url}" class="tool-item-card">
+              <div style="font-size: 1.6rem;">${t.icon}</div>
+              <div>
+                <div style="font-weight: 700; color: var(--primary); font-size: 0.95rem; margin-bottom: 0.2rem;">
+                  ${t.title} →
+                </div>
+                <div style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.4;">
+                  ${t.desc}
+                </div>
+              </div>
+            </a>
+          `
+          )
+          .join('');
+      }
+
+      if (examTipEl) {
+        examTipEl.textContent = basePlan.examTip;
+      }
+
+      if (mentorCard) {
+        mentorCard.style.display = 'none';
+      }
+
+      if (resultWrapper) {
+        resultWrapper.style.display = 'block';
+        resultWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Build button & Enter key
+    buildBtn.addEventListener('click', () => {
+      renderPlan(queryInput.value);
+    });
+
+    queryInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        renderPlan(queryInput.value);
+      }
+    });
+
+    // Pace tabs
+    document.querySelectorAll('.pace-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.pace-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentPace = (tab.getAttribute('data-pace') as any) || 'standard';
+        if (currentPlan || queryInput.value.trim()) {
+          renderPlan(queryInput.value || lastUserQuery);
+        }
+      });
+    });
+
+    // Sample chips
+    document.querySelectorAll('.sample-chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const q = chip.getAttribute('data-query') || '';
+        queryInput.value = q;
+        renderPlan(q);
+      });
+    });
+
+    // Gemini AI Personal Mentor Handler
+    askMentorBtn?.addEventListener('click', async () => {
+      if (!currentPlan || !mentorCard || !mentorBody) return;
+      askMentorBtn.setAttribute('disabled', 'true');
+      askMentorBtn.textContent = '⏳ AI Mentor shaxsiy reja tuzmoqda...';
+      mentorCard.style.display = 'block';
+      mentorBody.innerHTML = `<p style="color: var(--text-muted);">⏳ Sizning so'rovingiz («${lastUserQuery}») va saytdagi darslar asosida shaxsiy kunlik reja tuzilmoqda...</p>`;
+
+      const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
+      let aiText = '';
+
+      try {
+        const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+        if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
+
+        const res = await fetch('/api/solve', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            model: 'gemini-3.5-flash-lite',
+            systemInstruction: { parts: [{ text: SITE_CURRICULUM_PROMPT_MAP }] },
+            contents: [
+              {
+                parts: [
+                  {
+                    text: `Talaba murojaati: "${lastUserQuery}". O'rganish rejimi: ${currentPace}. Unga motivatsiya bering va saytimizdagi dars havolalari bilan 3 bosqichli aniq o'rganish strategiyasi tuzib bering.`
+                  }
+                ]
+              }
+            ],
+            generationConfig: { temperature: 0.2 }
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        }
+      } catch {
+        // Fallback handled below
+      }
+
+      if (!aiText) {
+        // Rich Local AI Mentor Fallback so it always works 100% reliably
+        const stepLinks = currentPlan.steps
+          .map((s, i) => `${i + 1}. **[${s.title}](${s.url})** — *(${s.duration})* ${s.whyRead}`)
+          .join('\n- ');
+        const toolLink = currentPlan.interactiveTools[0];
+
+        aiText = `## 🎯 «${lastUserQuery}» bo'yicha Shaxsiy Kunlik Tayyorgarlik Strategiyasi
+
+**1. Nima uchun hozir qiynalyapsiz va buni qanday yengamiz?**
+${currentPlan.empathyMessage} ${currentPlan.rootCauseWhyHard}
+
+## 📅 Qadamma-qadam Harakatlar Rejasi (Ketma-ket bajaring):
+- ${stepLinks}
+
+## 🧪 Amaliyot va Tekshiruv Qoidasi
+Har bir darsni o'qigach, darhol **[${toolLink.title}](${toolLink.url})** sahifasiga o'tib, kamida 3 ta misolni o'zingiz kiritib tekshirib ko'ring. So'ngra **[${currentPlan.moduleTitle} HEMIS Testi](/testlar?modul=${currentPlan.moduleSlug}#quiz-section)** orqali bilimingizni mustahkamlang!
+
+**💡 Oltin qoida:** ${currentPlan.examTip}`;
+        if (mentorBadge) {
+          mentorBadge.textContent = "⚡ Akademik AI Navigatori tomonidan tuzildi";
+        }
+      } else if (mentorBadge) {
+        mentorBadge.textContent = "🛡️ Gemini AI Pro Mentor tomonidan jonli tuzildi";
+      }
+
+      mentorBody.innerHTML = renderMarkdownWithLinksAndMath(aiText);
+      askMentorBtn.removeAttribute('disabled');
+      askMentorBtn.innerHTML = '<span>🤖 Gemini AI Mentoridan shaxsiy kunlik reja va maslahat olish</span>';
+      mentorCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Auto-run if ?q=... is in URL
+    const params = new URLSearchParams(window.location.search);
+    const urlQuery = params.get('q');
+    if (urlQuery) {
+      queryInput.value = urlQuery;
+      renderPlan(urlQuery);
+    } else {
+      // Show default example ("Determinant") so the page immediately looks alive and helpful!
+      queryInput.value = 'Men darsda determinantga qiynalyapman, nimadan boshlay?';
+      renderPlan(queryInput.value);
+    }
+  }
+
+  setupStrategyPage();
+  document.addEventListener('astro:page-load', setupStrategyPage);
+  document.addEventListener('astro:after-swap', setupStrategyPage);
+</script>
+
+<style>
+  .strategy-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 0 4rem;
+  }
+
+  .strategy-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+  }
+
+  .strategy-hero h1 {
+    font-size: 2.15rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 0.65rem;
+  }
+
+  .strategy-hero p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 740px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .strategy-input-card {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+  }
+
+  .input-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin-bottom: 0.65rem;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .input-row {
+      flex-direction: column;
+    }
+  }
+
+  #strategy-query-input {
+    flex: 1;
+    padding: 0.85rem 1.1rem;
+    font-size: 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-body);
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  #strategy-query-input:focus {
+    border-color: var(--primary);
+  }
+
+  .build-btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.98rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .pace-selector-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color);
+  }
+
+  .pace-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .pace-tabs {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .pace-tab {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .pace-tab.active,
+  .pace-tab:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .sample-title {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    margin-bottom: 0.5rem;
+  }
+
+  .sample-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .sample-chip {
+    padding: 0.38rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-body);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .sample-chip:hover {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.08);
+    color: #059669;
+  }
+
+  .diagnosis-banner {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border: 1.5px solid var(--primary);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  :global(.module-pill) {
+    background: var(--primary);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  :global(.time-pill) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  :global(.root-cause-box) {
+    background: var(--bg-surface);
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .roadmap-progress-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 10px;
+    background: var(--bg-muted);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #10b981);
+    border-radius: 999px;
+    transition: width 0.35s ease;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 1rem;
+  }
+
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.timeline-card) {
+    display: flex;
+    gap: 1.1rem;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+    transition: all 0.2s ease;
+  }
+
+  :global(.timeline-card:hover) {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  :global(.timeline-card.is-completed) {
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.03);
+  }
+
+  :global(.timeline-num) {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 800;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  :global(.timeline-content) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  :global(.phase-badge) {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.18rem 0.55rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  :global(.duration-badge) {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  :global(.done-badge) {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #059669;
+    background: rgba(16, 185, 129, 0.12);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  :global(.todo-badge) {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+  }
+
+  :global(.step-title) {
+    margin: 0.45rem 0 0.4rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+
+  :global(.step-title a) {
+    color: var(--text-main);
+    text-decoration: none;
+  }
+
+  :global(.step-title a:hover) {
+    color: var(--primary);
+  }
+
+  :global(.step-why) {
+    margin: 0 0 0.65rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  :global(.focus-list) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  :global(.focus-chip) {
+    font-size: 0.78rem;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-color);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+  }
+
+  :global(.step-open-btn) {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.95rem;
+  }
+
+  .tools-and-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tools-box,
+  .exam-tip-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+  }
+
+  .exam-tip-box {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, rgba(234, 88, 12, 0.1) 100%);
+    border-color: rgba(245, 158, 11, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .tools-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  :global(.tool-item-card) {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: var(--bg-body);
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  :global(.tool-item-card:hover) {
+    border-color: var(--primary);
+    transform: translateY(-1px);
+  }
+
+  .ai-mentor-btn {
+    background: linear-gradient(135deg, #059669, #2563eb);
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .ai-mentor-card {
+    background: var(--bg-surface);
+    border: 2px solid #10b981;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .ai-mentor-header {
+    padding-bottom: 0.85rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  :global(.mentor-inline-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+</style>
