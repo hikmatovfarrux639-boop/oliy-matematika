@@ -66,7 +66,7 @@ export default async function handler(req, res) {
     for (const candidateModel of candidateModels) {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${candidateModel}:generateContent?key=${apiKey}`;
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 18000);
+      const timeout = setTimeout(() => controller.abort(), 12000);
 
       try {
         const geminiRes = await fetch(endpoint, {

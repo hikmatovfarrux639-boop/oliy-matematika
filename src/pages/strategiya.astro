@@ -636,6 +636,45 @@ Ushbu mavzuda formulalar, teoremalar yoki misollar bo'yicha qayerida qiynalayotg
       renderQuickChips(getTopicQuickQuestions(plan));
     }
 
+    function getConversationalReply(rawQuestion: string, plan: StudyStrategyPlan): string | null {
+      const q = rawQuestion.trim().toLowerCase();
+      const firstStep = plan.steps[0] || { title: 'Asosiy dars', url: '/' };
+      const tool = plan.interactiveTools[0] || { title: 'Kalkulyator', url: '/kalkulyator' };
+
+      // 1. Greetings (Salom, Assalomu alaykum, etc.)
+      if (/^(salom|assalom|privet|hello|hey|salomaleykum|assalomu\s*alaykum|qaleysiz|qalaysiz)/i.test(q)) {
+        return `Assalomu alaykum! Xush kelibsiz! 😊 Men sizning **«${plan.topicTitle}»** mavzusi bo'yicha shaxsiy repetitoringizman.
+
+Ushbu mavzuda aynan qayerida qiynalayotgan bo'lsangiz, bemalol so'rang (masalan: formulasi, qoidasi yoki tipik xatolar). Yoki quyidagi tayyor savollardan birini tanlashingiz mumkin! 👇`;
+      }
+
+      // 2. Gratitude & Understanding (Rahmat, Tashakkur, Tushundim)
+      if (/^(rahmat|tashakkur|raxmat|katta rahmat|tushundim|yaxshi|tushunarli|ha tushundim|rahmat tushundim)/i.test(q)) {
+        return `Arzimaydi, tushunganingizdan juda xursandman! 🎯 
+
+Endi mavzuni to'liq mustahkamlash uchun **[${tool.title}](${tool.url})** da birorta misol hisoblab ko'ramizmi yoki keyingi qadam darsiga o'tamizmi?`;
+      }
+
+      // 3. Affirmation / Start (Ha, mayli, boshladik, davom etamiz)
+      if (/^(ha|mayli|boshladik|davom|davom etamiz|kettik|qani|albatta|boshlaylik)/i.test(q)) {
+        return `Ajoyib! Unda keling, 1-qadam darsimiz: **[${firstStep.title}](${firstStep.url})** dagi asosiy tushunchadan boshlaymiz. 
+
+📌 **Bu darsda nimalarga diqqat qiling:**
+${firstStep.focusPoints.map((p) => `• **${p}**`).join('\n')}
+
+Ushbu dars bo'yicha formulalarni ko'rib chiqdingizmi yoki savolingiz bormi?`;
+      }
+
+      // 4. Identity (Kim siz, vazifangiz nima)
+      if (/^(kim siz|kimsan|vazifangiz|nima qila olasiz|siz kimsiz)/i.test(q)) {
+        return `Men OliyMatematika platformasining sun'iy intellektga asoslangan shaxsiy repetitoriman. 🎓
+
+Mening vazifam — sizga **«${plan.topicTitle}»** mavzusidagi formulalar, qoidalar va misollarni erinmasdan, sodda tilda tushuntirib berish va amaliyotga yo'naltirishdir!`;
+      }
+
+      return null;
+    }
+
     function generateIntelligentFallback(question: string, plan: StudyStrategyPlan): string {
       const qLower = question.toLowerCase();
       const firstStep = plan.steps[0] || { title: 'Asosiy dars', url: '/' };
@@ -695,7 +734,7 @@ Agar $\\det A = 0$ bo'lsa, bunday matritsaning **teskarisi mavjud bo'lmaydi** ($
       }
 
       // Default rich tutor guidance
-      return `### 🎯 «${question}» bo'yicha AI Repetitor Javobi
+      return `### 🎯 «${question}» bo'yicha AI Repetitor Ko'rsatmasi
 
 Ushbu savol bo'yicha eng to'liq va qadamma-qadam tushuntirish saytimizning **[${firstStep.title}](${firstStep.url})** darsida formulalar va chizmalar bilan keltirilgan.
 
@@ -727,7 +766,24 @@ Darsni o'qib bo'lgach, **[${tool.title}](${tool.url})** yordamida tekshirib ko'r
       chatMessages.appendChild(userBubble);
       chatMessages.scrollTop = chatMessages.scrollHeight;
 
-      // Append AI loading bubble
+      // 1. FAST-PATH: Check conversational intents (Greetings, Gratitude, Affirmation)
+      const instantReply = getConversationalReply(question, currentPlan);
+      if (instantReply) {
+        const aiBubble = document.createElement('div');
+        aiBubble.className = 'chat-bubble ai-bubble';
+        chatMessages.appendChild(aiBubble);
+
+        setTimeout(() => {
+          chatHistory.push({ role: 'user', parts: [{ text: question }] });
+          chatHistory.push({ role: 'model', parts: [{ text: instantReply }] });
+          updateAiBubbleWithContent(aiBubble, instantReply);
+          chatSendBtn?.removeAttribute('disabled');
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 180);
+        return;
+      }
+
+      // 2. REMOTE AI PATH (For actual math questions)
       const aiBubble = document.createElement('div');
       aiBubble.className = 'chat-bubble ai-bubble';
       aiBubble.innerHTML = `
@@ -754,38 +810,48 @@ Darsni o'qib bo'lgach, **[${tool.title}](${tool.url})** yordamida tekshirib ko'r
         parts: [{ text: fullUserText }]
       });
 
-      if (chatHistory.length > 10) {
-        chatHistory = chatHistory.slice(-10);
+      if (chatHistory.length > 8) {
+        chatHistory = chatHistory.slice(-8);
       }
 
       const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
       let replyText = '';
 
+      // Lean, hyper-focused prompt (replaces 7.4KB overhead with ~300 bytes)
+      const leanInstruction = `Siz Oliy Matematika repetitorisiz. Joriy mavzu: "${currentPlan.topicTitle}" (${currentPlan.moduleTitle}).
+Asosiy darslar:
+${currentPlan.steps.map((s, i) => `${i + 1}. [${s.title}](${s.url})`).join('\n')}
+Amaliy vosita: [${currentPlan.interactiveTools[0]?.title || 'Kalkulyator'}](${currentPlan.interactiveTools[0]?.url || '/kalkulyator'})
+Talaba savoliga o'zbek tilida, aniq, formulalar ($...$) va do'stona ohangda qisqa javob bering.`;
+
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 9500);
+
         const headers: Record<string, string> = { 'Content-Type': 'application/json' };
         if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
 
         const res = await fetch('/api/solve', {
           method: 'POST',
           headers,
+          signal: controller.signal,
           body: JSON.stringify({
             model: 'gemini-flash-lite-latest',
             systemInstruction: {
-              parts: [{
-                text: `${SITE_CURRICULUM_PROMPT_MAP}\nSiz Oliy Matematika bo'yicha talabaga sabr bilan tushuntiruvchi do'stona repetitorsiz. Hozirgi mavzu: ${currentPlan.topicTitle}. Savollarga do'stona, formulalar ($...$), amaliy misollar va sayt dars havolalari bilan javob bering.`
-              }]
+              parts: [{ text: leanInstruction }]
             },
             contents: chatHistory,
             generationConfig: { temperature: 0.25 }
           })
         });
+        clearTimeout(timeoutId);
 
         if (res.ok) {
           const data = await res.json();
           replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
         }
       } catch (err) {
-        console.warn('AI fetch error:', err);
+        console.warn('AI fetch fallback:', err);
       }
 
       if (!replyText) {
