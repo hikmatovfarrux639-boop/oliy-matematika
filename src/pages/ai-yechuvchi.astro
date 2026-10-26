@@ -17,8 +17,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </span>
       </div>
 
-      <button id="api-key-settings-btn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">
-        ⚙️ Gemini API Kaliti <span id="api-key-status" class="key-status-dot not-set" title="Kalit belgilanmagan"></span>
+      <button id="api-key-settings-btn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.35rem 0.75rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+        <span id="api-key-status" class="key-status-dot set" title="Gemini AI serveri to'liq faol"></span>
+        <span id="api-key-btn-label">🟢 Gemini AI Faol</span>
       </button>
     </div>
 
@@ -291,30 +292,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <button type="button" id="modal-close-btn" class="btn-close" aria-label="Yopish">✕</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
-          Barcha asosiy matematik misollar (tenglamalar, hosilalar, limitlar, integrallar, matritsalar, differensial tenglamalar) va <strong>mavzu tashxisi 100% bepul va kalitsiz</strong> ishlaydi. Faqat rasmdagi qo'lyozmalarni o'qish uchun Google Gemini bepul kalitidan foydalaniladi.
-        </p>
-
-        <div style="background: var(--bg-muted); padding: 0.75rem 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; font-size: 0.85rem; border: 1px solid var(--border-color);">
-          <strong>1 daqiqada bepul kalit olish:</strong>
-          <ol style="margin: 0.35rem 0 0 1.25rem; padding: 0;">
-            <li><a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">aistudio.google.com/app/apikey</a> saytiga kiring.</li>
-            <li>Google akkauntingiz bilan kiring va <strong>"Create API key"</strong> tugmasini bosing.</li>
-            <li>Hosil bo'lgan kalitni nusxalab, quyidagi maydonga qo'ying.</li>
-          </ol>
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+          <div style="font-weight: 700; color: #10b981; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.95rem;">
+            <span>✅</span>
+            <span>Gemini AI Serveri To'liq Faol!</span>
+          </div>
+          <p style="margin: 0; font-size: 0.85rem; color: var(--text-main); line-height: 1.5;">
+            Saytimizga eng so'nggi Gemini AI modeli xavfsiz integratsiya qilingan. Barcha savollar, dars tavsiyalari va rasmli masalalar <strong>avtomatik tarzda kalitsiz ishlaydi</strong>. Sizdan hech qanday kalit kiritish talab qilinmaydi!
+          </p>
         </div>
 
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.6rem;">
+          <em>Ixtiyoriy sozlama:</em> Agar siz o'zingizning boshqa alohida Pro kalitingizni ulab ishlatmoqchi bo'lsangiz, uni quyidagi maydonga kiritishingiz mumkin:
+        </p>
+
         <label for="api-key-input" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.35rem; color: var(--text-main);">
-          Sizning Gemini API Kalitingiz:
+          Qo'shimcha shaxsiy kalit (ixtiyoriy):
         </label>
         <input 
           type="password" 
           id="api-key-input" 
-          placeholder="AIzaSy..." 
+          placeholder="O'rnatilgan tizim kaliti faol..." 
           style="width: 100%; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 0.5rem;"
         />
         <div style="font-size: 0.75rem; color: var(--text-subtle);">
-          🔒 Kalitingiz faqat o'zingizning brauzeringiz xotirasida (localStorage) saqlanadi.
+          🔒 Bu maydon bo'sh bo'lsa ham sayt to'liq avtomatik rejimda ishlayveradi.
         </div>
       </div>
       <div class="modal-footer">
@@ -973,6 +975,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const saveKeyBtn = document.getElementById('save-key-btn');
     const removeKeyBtn = document.getElementById('remove-key-btn');
     const apiKeyStatus = document.getElementById('api-key-status');
+    const apiKeyBtnLabel = document.getElementById('api-key-btn-label');
 
     if (!input || !solveBtn) return;
     if ((input as any)._hasAiSolverInitialized) return;
@@ -1017,10 +1020,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         apiKeyStatus?.classList.remove('not-set');
         apiKeyStatus?.classList.add('set');
         if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Shaxsiy Gemini AI kaliti faol');
+        if (apiKeyBtnLabel) apiKeyBtnLabel.textContent = '🟢 Shaxsiy Kalit Faol';
       } else {
         apiKeyStatus?.classList.remove('not-set');
         apiKeyStatus?.classList.add('set');
-        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Oliy Matematika xavfsiz AI serveri faol (Bepul)');
+        if (apiKeyStatus) apiKeyStatus.setAttribute('title', "🟢 Gemini AI Serveri Faol (O'rnatilgan)");
+        if (apiKeyBtnLabel) apiKeyBtnLabel.textContent = '🟢 Gemini AI Faol';
       }
     }
     updateKeyStatus();
