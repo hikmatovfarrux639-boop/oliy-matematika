@@ -206,13 +206,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- Gemini AI Deep Personal Mentor Box -->
-      <div id="ai-mentor-response-card" class="ai-mentor-card" style="display: none;">
+      <div id="ai-mentor-response-card" class="ai-mentor-card">
         <div class="ai-mentor-header">
-          <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <span style="font-size: 1.4rem;">🎓</span>
-            <div>
-              <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-main);">AI Shaxsiy Kouch Xulosasi</h3>
-              <span id="ai-mentor-badge" style="font-size: 0.78rem; color: var(--primary); font-weight: 600;">Sayt o'quv dasturi asosida tuzildi</span>
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="font-size: 1.4rem;">🎓</span>
+              <div>
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-main);">AI Shaxsiy Kouch Maslahati</h3>
+                <span id="ai-mentor-badge" style="font-size: 0.78rem; color: var(--primary); font-weight: 700;">Sayt o'quv dasturi asosida tuzildi</span>
+              </div>
+            </div>
+            <div class="mentor-card-actions">
+              <button type="button" id="mentor-speak-btn" class="btn btn-secondary btn-sm" title="Ovozli eshitish">
+                🔊 Ovozli eshitish
+              </button>
+              <button type="button" id="mentor-copy-btn" class="btn btn-secondary btn-sm" title="Nusxalash">
+                📋 Nusxalash
+              </button>
             </div>
           </div>
         </div>
@@ -222,13 +232,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Interactive Q&A Chat with AI Mentor -->
       <section class="mentor-chat-section">
         <div class="chat-section-header">
-          <div style="font-size: 1.4rem;">💬</div>
-          <div>
-            <h3 style="margin: 0 0 0.2rem 0; font-size: 1.1rem; color: var(--text-main);">AI Repetitorga savol bering</h3>
-            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
-              Ushbu mavzu bo'yicha tushunmagan joyingizni so'rang (masalan: <em>«Minus ishora qayerga qo'yiladi?»</em> yoki <em>«1-qadamni o'qidim, endi qanday misol yechay?»</em>)
-            </p>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="font-size: 1.6rem;">💬</div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h3 style="margin: 0; font-size: 1.15rem; color: var(--text-main);">AI Repetitor bilan Jonli Suhbat</h3>
+                <span class="live-pill">🟢 Faol</span>
+              </div>
+              <p style="margin: 0.2rem 0 0; font-size: 0.86rem; color: var(--text-muted);">
+                Mavzu bo'yicha tushunmagan joyingizni so'rang — AI kontekstni eslab qoladi va qadamma-qadam o'rgatadi.
+              </p>
+            </div>
           </div>
+          <button type="button" id="clear-chat-btn" class="btn btn-secondary btn-sm" title="Suhbat tarixini tozalash">
+            🔄 Suhbatni tozalash
+          </button>
+        </div>
+
+        <!-- Quick Question Chips -->
+        <div class="quick-questions-wrapper">
+          <div class="quick-questions-title">💡 Eng ko'p so'raladigan savollar (bosib ko'ring):</div>
+          <div id="chat-quick-chips" class="chat-quick-chips"></div>
         </div>
 
         <div id="mentor-chat-messages" class="chat-messages-container"></div>
@@ -240,7 +264,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             placeholder="AI Repetitordan so'rang (masalan: Sarryus qoidasida minus qayerga qo'yiladi?)..." 
           />
           <button type="button" id="mentor-chat-send-btn" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-weight: 700;">
-            Yuborish 🚀
+            <span>Yuborish 🚀</span>
           </button>
         </div>
       </section>
@@ -253,42 +277,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   import katex from 'katex';
 
   function renderMarkdownWithLinksAndMath(md: string): string {
-    let html = md
+    const mathPlaceholders: string[] = [];
+
+    // 1. Extract block math $$...$$
+    let text = md.replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => {
+      const idx = mathPlaceholders.length;
+      try {
+        mathPlaceholders.push(katex.renderToString(m.trim(), { displayMode: true, throwOnError: false }));
+      } catch {
+        mathPlaceholders.push(`$$${m}$$`);
+      }
+      return `%%%MATH_BLOCK_${idx}%%%`;
+    });
+
+    // 2. Extract inline math $...$
+    text = text.replace(/\$([^\$\n]+?)\$/g, (_, m) => {
+      const idx = mathPlaceholders.length;
+      try {
+        mathPlaceholders.push(katex.renderToString(m.trim(), { displayMode: false, throwOnError: false }));
+      } catch {
+        mathPlaceholders.push(`$${m}$`);
+      }
+      return `%%%MATH_INLINE_${idx}%%%`;
+    });
+
+    // 3. Escape HTML safely on remaining prose
+    let html = text
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
-    // Block math
-    html = html.replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => {
-      try {
-        return katex.renderToString(m.trim(), { displayMode: true, throwOnError: false });
-      } catch {
-        return m;
-      }
-    });
-
-    // Inline math
-    html = html.replace(/\$([^\$\n]+?)\$/g, (_, m) => {
-      try {
-        return katex.renderToString(m.trim(), { displayMode: false, throwOnError: false });
-      } catch {
-        return m;
-      }
-    });
-
-    // Course links [Title](/dars/...)
+    // 4. Course links [Title](/dars/...)
     html = html.replace(
       /\[([^\]]+)\]\((\/[^\)]+)\)/g,
       '<a href="$2" class="mentor-inline-link">📖 $1 →</a>'
     );
 
+    // 5. Basic markdown formatting
     html = html
-      .replace(/^### (.*$)/gim, '<h4 style="margin: 1rem 0 0.4rem; color: var(--text-main);">$1</h4>')
-      .replace(/^## (.*$)/gim, '<h3 style="margin: 1.25rem 0 0.5rem; color: var(--primary);">$1</h3>')
+      .replace(/^### (.*$)/gim, '<h4 style="margin: 0.9rem 0 0.35rem; color: var(--text-main); font-weight: 700;">$1</h4>')
+      .replace(/^## (.*$)/gim, '<h3 style="margin: 1.1rem 0 0.45rem; color: var(--primary); font-weight: 800;">$1</h3>')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/\n\n/g, '<br><br>')
       .replace(/\n- /g, '<br>• ');
+
+    // 6. Restore math blocks and inlines
+    html = html.replace(/%%%MATH_(BLOCK|INLINE)_(\d+)%%%/g, (_, type, idxStr) => {
+      return mathPlaceholders[parseInt(idxStr, 10)] || '';
+    });
 
     return html;
   }
@@ -310,11 +347,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const mentorCard = document.getElementById('ai-mentor-response-card');
     const mentorBody = document.getElementById('ai-mentor-body');
     const mentorBadge = document.getElementById('ai-mentor-badge');
+    const mentorSpeakBtn = document.getElementById('mentor-speak-btn');
+    const mentorCopyBtn = document.getElementById('mentor-copy-btn');
     const copyBtn = document.getElementById('copy-strategy-btn');
     const telegramShareBtn = document.getElementById('telegram-share-btn') as HTMLAnchorElement | null;
     const chatInput = document.getElementById('mentor-chat-input') as HTMLInputElement | null;
     const chatSendBtn = document.getElementById('mentor-chat-send-btn');
     const chatMessages = document.getElementById('mentor-chat-messages');
+    const quickChipsContainer = document.getElementById('chat-quick-chips');
+    const clearChatBtn = document.getElementById('clear-chat-btn');
 
     if (!queryInput || !buildBtn || (buildBtn as any)._hasStrategyV2Init) return;
     (buildBtn as any)._hasStrategyV2Init = true;
@@ -322,6 +363,82 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let activeMode: 'express' | 'deep' | 'exam' = 'deep';
     let currentPlan: StudyStrategyPlan | null = null;
     let activeQuery = '';
+    let mentorAdviceText = '';
+
+    // Multi-turn conversation memory
+    let chatHistory: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+
+    // Text-To-Speech (SpeechSynthesis) Manager
+    let currentSpeakingBtn: HTMLElement | null = null;
+
+    function stopSpeech() {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      if (currentSpeakingBtn) {
+        currentSpeakingBtn.textContent = '🔊 Ovozli eshitish';
+        currentSpeakingBtn.classList.remove('speaking');
+        currentSpeakingBtn = null;
+      }
+    }
+
+    function speakText(text: string, triggerBtn?: HTMLElement) {
+      if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+        alert("Brauzeringizda nutq sintezi (SpeechSynthesis) qo'llab-quvvatlanmaydi.");
+        return;
+      }
+
+      if (currentSpeakingBtn === triggerBtn && window.speechSynthesis.speaking) {
+        stopSpeech();
+        return;
+      }
+
+      stopSpeech();
+
+      // Clean markdown, links and format math symbols for clear pronunciation
+      let clean = text
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+        .replace(/\$\$([\s\S]+?)\$\$/g, ' formula: $1 ')
+        .replace(/\$([^\$]+?)\$/g, ' $1 ')
+        .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, ' $1 taqsim $2 ')
+        .replace(/\\sqrt\{([^}]+)\}/g, ' ildiz ostida $1 ')
+        .replace(/\^2/g, ' kvadrat ')
+        .replace(/\^3/g, ' kub ')
+        .replace(/\\ne/g, ' teng emas ')
+        .replace(/\\le/g, ' kichik yoki teng ')
+        .replace(/\\ge/g, ' katta yoki teng ')
+        .replace(/\\cdot|\\times/g, ' ko\'paytirilgan ')
+        .replace(/\\pm/g, ' plyus minus ')
+        .replace(/\\det/g, ' determinant ')
+        .replace(/\\int/g, ' integral ')
+        .replace(/\\lim/g, ' limit ')
+        .replace(/\\to/g, ' intilganda ')
+        .replace(/[*#_`~>]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      if (!clean) return;
+
+      const utterance = new SpeechSynthesisUtterance(clean);
+      utterance.rate = 0.95;
+      utterance.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const uzVoice = voices.find(v => v.lang.startsWith('uz') || v.lang.startsWith('tr') || v.lang.startsWith('ru'));
+      if (uzVoice) utterance.voice = uzVoice;
+
+      if (triggerBtn) {
+        currentSpeakingBtn = triggerBtn;
+        triggerBtn.textContent = '⏹ To\'xtatish';
+        triggerBtn.classList.add('speaking');
+      }
+
+      utterance.onend = () => stopSpeech();
+      utterance.onerror = () => stopSpeech();
+
+      window.speechSynthesis.speak(utterance);
+    }
 
     function getCompletedLessons(): string[] {
       try {
@@ -392,10 +509,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
 
       if (directMode) {
-        // Direct mode requested via URL or quick button
         renderRoadmap(activeQuery, directMode);
       } else {
-        // Show Clarification Question section
         if (clarifySection) {
           clarifySection.style.display = 'block';
           clarifySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -406,10 +521,370 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
+    function getTopicQuickQuestions(plan: StudyStrategyPlan): string[] {
+      const title = plan.topicTitle;
+      const questions: string[] = [];
+
+      questions.push(`💡 «${title}» oddiy tilda nima o'zi?`);
+      questions.push(`⚠️ Talabalar bu mavzuda eng ko'p qanday xatoga yo'l qo'yishadi?`);
+
+      if (plan.steps.length > 0) {
+        questions.push(`🔢 1-qadam darsi bo'yicha bitta oddiy misol ko'rsating`);
+      }
+
+      const id = plan.id.toLowerCase();
+      if (id.includes('determinant')) {
+        questions.push(`📐 Sarryus qoidasida qaysi hadlar oldiga minus qo'yiladi?`);
+        questions.push(`⚡ Determinant qachon nolga teng bo'ladi?`);
+      } else if (id.includes('kramer') || id.includes('gauss') || id.includes('tizim')) {
+        questions.push(`⚖️ Kramer usuli qulaymi yoki Gauss usulimi?`);
+        questions.push(`⚡ Qachon sistema yechimga ega bo'lmaydi?`);
+      } else if (id.includes('limit')) {
+        questions.push(`🚀 0/0 aniqmaslikni ochishning eng tez usuli nima?`);
+        questions.push(`📉 Birinchi va ikkinchi ajoyib limitlar formulasi qanday?`);
+      } else if (id.includes('hosila')) {
+        questions.push(`📈 Hosilaning geometrik ma'nosi nima?`);
+        questions.push(`⛓️ Murakkab funksiya hosilasi (zanjir) qoidasini tushuntiring`);
+      } else if (id.includes('integral')) {
+        questions.push(`✂️ Qachon bo'laklab integrallash (udv) usuli tanlanadi?`);
+        questions.push(`🔄 O'zgaruvchini almashtirishda eng muhim qoida nima?`);
+      } else if (id.includes('vektor')) {
+        questions.push(`📐 Skalyar ko'paytma bilan vektor ko'paytma farqi nima?`);
+        questions.push(`🔺 Piramida hajmini qanday formula bilan topamiz?`);
+      } else if (id.includes('differensial')) {
+        questions.push(`⚙️ Differensial tenglama tartibi qanday aniqlanadi?`);
+        questions.push(`🎯 O'zgaruvchilari ajraladigan tenglamalarni yechish sxemasi`);
+      } else if (id.includes('ehtimol')) {
+        questions.push(`🎲 Geometrik ehtimollik bilan klassik ehtimollik farqi?`);
+        questions.push(`📊 Bayes formulasi qachon ishlatiladi?`);
+      } else {
+        questions.push(`🎯 Oraliq yoki HEMIS nazoratida qanday tipik savollar tushadi?`);
+        questions.push(`⚡ Ushbu mavzuni tez va oson o'zlashtirish siri nima?`);
+      }
+
+      return questions.slice(0, 4);
+    }
+
+    function renderQuickChips(questions: string[]) {
+      if (!quickChipsContainer) return;
+      quickChipsContainer.innerHTML = questions
+        .map(
+          (q) => `<button type="button" class="chat-chip-btn" data-question="${q.replace(/"/g, '&quot;')}">${q}</button>`
+        )
+        .join('');
+
+      quickChipsContainer.querySelectorAll('.chat-chip-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const question = btn.getAttribute('data-question') || '';
+          if (question) {
+            sendChatMessage(question);
+          }
+        });
+      });
+    }
+
+    function updateAiBubbleWithContent(aiBubble: HTMLElement, text: string) {
+      const renderedHtml = renderMarkdownWithLinksAndMath(text);
+      aiBubble.innerHTML = `
+        <div class="bubble-header ai-header">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <span class="ai-avatar">🤖</span>
+            <strong>AI Repetitor</strong>
+          </div>
+          <span class="ai-badge-active">Jonli</span>
+        </div>
+        <div class="bubble-text prose-content">${renderedHtml}</div>
+        <div class="bubble-actions">
+          <button type="button" class="bubble-action-btn speak-btn" title="Ovozli eshitish">
+            🔊 Ovozli eshitish
+          </button>
+          <button type="button" class="bubble-action-btn copy-btn" title="Javobni nusxalash">
+            📋 Nusxalash
+          </button>
+        </div>
+      `;
+
+      const speakBtn = aiBubble.querySelector('.speak-btn') as HTMLElement | null;
+      const bubbleCopyBtn = aiBubble.querySelector('.copy-btn') as HTMLElement | null;
+
+      speakBtn?.addEventListener('click', () => {
+        speakText(text, speakBtn);
+      });
+
+      bubbleCopyBtn?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text);
+          bubbleCopyBtn.textContent = '✅ Nusxalandi!';
+          setTimeout(() => (bubbleCopyBtn.textContent = '📋 Nusxalash'), 2000);
+        } catch {
+          alert("Nusxalab bo'lmadi");
+        }
+      });
+    }
+
+    function initChatGreeting(plan: StudyStrategyPlan) {
+      if (!chatMessages) return;
+      const greetingMd = `Assalomu alaykum! Men sizning **«${plan.topicTitle}»** mavzusi bo'yicha shaxsiy AI repetitoringizman. 🎓
+
+Ushbu mavzuda formulalar, teoremalar yoki misollar bo'yicha qayerida qiynalayotgan bo'lsangiz, bemalol so'rang. Quyidagi tayyor savollardan birini tanlashingiz yoki o'zingiz yozishingiz mumkin:`;
+
+      const aiBubble = document.createElement('div');
+      aiBubble.className = 'chat-bubble ai-bubble';
+      updateAiBubbleWithContent(aiBubble, greetingMd);
+      chatMessages.appendChild(aiBubble);
+
+      renderQuickChips(getTopicQuickQuestions(plan));
+    }
+
+    function generateIntelligentFallback(question: string, plan: StudyStrategyPlan): string {
+      const qLower = question.toLowerCase();
+      const firstStep = plan.steps[0] || { title: 'Asosiy dars', url: '/' };
+      const tool = plan.interactiveTools[0] || { title: 'Kalkulyator', url: '/kalkulyator' };
+
+      // Pitfall / exam question
+      if (qLower.includes('xato') || qLower.includes('adash') || qLower.includes('imtihon') || qLower.includes('tuzoq')) {
+        return `### ⚠️ «${plan.topicTitle}» bo'yicha Tipik Xatolar va Imtihon Siri
+
+Talabalarning eng ko'p adashadigan nuqtasi:
+**${plan.rootCauseWhyHard}**
+
+**🏆 Professorning Imtihon Maslahati:**
+${plan.examTip}
+
+Buni amalda mustahkamlash uchun **[${firstStep.title}](${firstStep.url})** darsidagi maxsus misollarni ko'rib chiqing va **[${tool.title}](${tool.url})** da tekshirib ko'ring!`;
+      }
+
+      // Definition / intuition question
+      if (qLower.includes('nima o\'zi') || qLower.includes('oddiy') || qLower.includes('tushuntir') || qLower.includes('mohiyat')) {
+        return `### 💡 «${plan.topicTitle}» Mohiyati Qisqa va Oddiy So'zda
+
+${plan.empathyMessage}
+
+**Asosiy o'rganish rejasi:**
+1. **[${firstStep.title}](${firstStep.url})** — *${firstStep.whyRead}*
+2. Diqqat qiling: ${firstStep.focusPoints.join(', ')}.
+
+**Amaliy maslahat:** Ushbu tushunchani yaxshi o'zlashtirish uchun **[${tool.title}](${tool.url})** da o'z sonlaringizni kiritib natijani ko'ring!`;
+      }
+
+      // Sarrus / determinant specifics
+      if (qLower.includes('sarrus') || qLower.includes('minus') || qLower.includes('ishora')) {
+        return `### 📐 Sarryus (Uchburchak) Qoidasida Ishoralar
+
+$3 \\times 3$ determinantni hisoblashda:
+$$\\det A = (a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{21}a_{32}a_{13}) - (a_{13}a_{22}a_{31} + a_{12}a_{21}a_{33} + a_{23}a_{32}a_{11})$$
+
+**Qoida:**
+- Bosh diagonal va unga parallel uchburchaklar ko'paytmalari **musbat ($+$)** olinadi.
+- Yordamchi diagonal va unga parallel uchburchaklar ko'paytmalari **manfiy ($-$)** olinadi.
+
+Batafsil vizual chizma va misollar: **[2- va 3-tartibli determinantlar](/dars/chiziqli-algebra/determinantlar-va-geometrik-manosi)** darsida!`;
+      }
+
+      // Zero determinant
+      if (qLower.includes('nol') || qLower.includes('qachon 0')) {
+        return `### ⚡ Determinant Qachon 0 ga Teng Bo'ladi?
+
+Determinant quyidagi 4 ta asosiy holatda doimo nolga teng:
+1. Biror satr (yoki ustun) butunlay nollardan iborat bo'lsa.
+2. Ikkita satr (yoki ustun) bir xil bo'lsa.
+3. Ikkita satr (yoki ustun) o'zaro proporsional bo'lsa ($S_2 = k \\cdot S_1$).
+4. Satrlar chiziqli bog'liq bo'lsa (bir satr boshqalarining yig'indisi bo'lsa).
+
+Agar $\\det A = 0$ bo'lsa, bunday matritsaning **teskarisi mavjud bo'lmaydi** ($A^{-1}$ yo'q) va Kramer usuli bilan yagona yechim topib bo'lmaydi!`;
+      }
+
+      // Default rich tutor guidance
+      return `### 🎯 «${question}» bo'yicha AI Repetitor Javobi
+
+Ushbu savol bo'yicha eng to'liq va qadamma-qadam tushuntirish saytimizning **[${firstStep.title}](${firstStep.url})** darsida formulalar va chizmalar bilan keltirilgan.
+
+**Muhim qoidalar:**
+- ${firstStep.whyRead}
+- Asosiy e'tibor: ${firstStep.focusPoints.join(', ')}.
+
+**💡 Maslahat:** ${plan.examTip}
+Darsni o'qib bo'lgach, **[${tool.title}](${tool.url})** yordamida tekshirib ko'ring!`;
+    }
+
+    async function sendChatMessage(customPrompt?: string) {
+      if (!chatInput || !chatMessages || !currentPlan) return;
+      const question = (customPrompt || chatInput.value).trim();
+      if (!question) return;
+
+      chatInput.value = '';
+      chatSendBtn?.setAttribute('disabled', 'true');
+
+      // Append user bubble to DOM
+      const userBubble = document.createElement('div');
+      userBubble.className = 'chat-bubble user-bubble';
+      userBubble.innerHTML = `
+        <div class="bubble-header user-header">
+          <span>👤 Siz</span>
+        </div>
+        <div class="bubble-text">${question.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+      `;
+      chatMessages.appendChild(userBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Append AI loading bubble
+      const aiBubble = document.createElement('div');
+      aiBubble.className = 'chat-bubble ai-bubble';
+      aiBubble.innerHTML = `
+        <div class="bubble-header ai-header">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <span class="ai-avatar">🤖</span>
+            <strong>AI Repetitor</strong>
+          </div>
+          <span class="ai-badge-active">Javob yozilmoqda...</span>
+        </div>
+        <div class="bubble-text typing-text" style="color: var(--text-muted); font-style: italic;">
+          AI Repetitor formulalar va darslar bilan javob tayyorlamoqda...
+        </div>
+      `;
+      chatMessages.appendChild(aiBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      const fullUserText = chatHistory.length === 0
+        ? `Mavzu konteksti: "${currentPlan.topicTitle}". Rejim: "${activeMode}". Talaba savoli: "${question}". O'zbek tilida aniq, tushunarli, formulalar ($...$) va saytimizdagi dars havolalari bilan javob bering.`
+        : question;
+
+      chatHistory.push({
+        role: 'user',
+        parts: [{ text: fullUserText }]
+      });
+
+      if (chatHistory.length > 10) {
+        chatHistory = chatHistory.slice(-10);
+      }
+
+      const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
+      let replyText = '';
+
+      try {
+        const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+        if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
+
+        const res = await fetch('/api/solve', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            model: 'gemini-flash-lite-latest',
+            systemInstruction: {
+              parts: [{
+                text: `${SITE_CURRICULUM_PROMPT_MAP}\nSiz Oliy Matematika bo'yicha talabaga sabr bilan tushuntiruvchi do'stona repetitorsiz. Hozirgi mavzu: ${currentPlan.topicTitle}. Savollarga do'stona, formulalar ($...$), amaliy misollar va sayt dars havolalari bilan javob bering.`
+              }]
+            },
+            contents: chatHistory,
+            generationConfig: { temperature: 0.25 }
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        }
+      } catch (err) {
+        console.warn('AI fetch error:', err);
+      }
+
+      if (!replyText) {
+        replyText = generateIntelligentFallback(question, currentPlan);
+      }
+
+      chatHistory.push({
+        role: 'model',
+        parts: [{ text: replyText }]
+      });
+
+      updateAiBubbleWithContent(aiBubble, replyText);
+      chatSendBtn?.removeAttribute('disabled');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function loadAiMentorAdvice(forceRefresh = false) {
+      if (!currentPlan || !mentorCard || !mentorBody) return;
+      mentorCard.style.display = 'block';
+
+      const stepLinks = currentPlan.steps
+        .map((s, i) => `${i + 1}. **[${s.title}](${s.url})** — *(${s.duration})* ${s.whyRead}`)
+        .join('\n- ');
+      const toolLink = currentPlan.interactiveTools[0] || { title: 'Kalkulyator', url: '/kalkulyator' };
+      const modeTitle = activeMode === 'express' ? 'TEZKOR REJA' : activeMode === 'exam' ? 'HEMIS IMTIHON REJASI' : 'CHUQUR POYDEVOR';
+
+      const baselineAdvice = `## 🎯 «${currentPlan.topicTitle}» bo'yicha Shaxsiy Tayyorgarlik (${modeTitle})
+
+**1. Hozirgi holat va psixologik dalda:**
+${currentPlan.empathyMessage} ${currentPlan.rootCauseWhyHard}
+
+## 📅 Ketma-ket O'rganish Qadamlari:
+- ${stepLinks}
+
+## 🧪 Amaliy Mustahkamlash:
+Darslarni o'qib bo'lgach, **[${toolLink.title}](${toolLink.url})** asbobida misollarni o'zingiz kiritib tekshiring va **[${currentPlan.moduleTitle} Testi](/testlar?modul=${currentPlan.moduleSlug}#quiz-section)** orqali o'zlashtirish darajangizni baholang!
+
+**💡 Professorning Oltin Maslahati:** ${currentPlan.examTip}`;
+
+      mentorAdviceText = baselineAdvice;
+      mentorBody.innerHTML = renderMarkdownWithLinksAndMath(baselineAdvice);
+      if (mentorBadge) mentorBadge.textContent = "⚡ Sayt Akademik AI Navigatori tomonidan tuzildi";
+
+      if (forceRefresh) {
+        if (askMentorBtn) {
+          askMentorBtn.setAttribute('disabled', 'true');
+          askMentorBtn.textContent = '⏳ AI Kouch yangi tahlil tayyorlamoqda...';
+        }
+        if (mentorBadge) mentorBadge.textContent = "⏳ Gemini AI jonli tahlil qilmoqda...";
+
+        const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
+        try {
+          const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+          if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
+
+          const res = await fetch('/api/solve', {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              model: 'gemini-flash-lite-latest',
+              systemInstruction: { parts: [{ text: SITE_CURRICULUM_PROMPT_MAP }] },
+              contents: [
+                {
+                  parts: [
+                    {
+                      text: `Talaba so'rovi: "${activeQuery}". Mavzu: "${currentPlan.topicTitle}". Tanlangan rejim: ${activeMode}. Unga kuchli motivatsiya bering va saytimizdagi dars havolalari bilan ${activeMode === 'express' ? 'faqat eng zarur 2 ta asosiy dars va formulalar bilan qisqa tezkor reja' : 'chuqur poydevorli yo\'l xaritasi'} tuzib bering.`
+                    }
+                  ]
+                }
+              ],
+              generationConfig: { temperature: 0.2 }
+            })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            const liveText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (liveText) {
+              mentorAdviceText = liveText;
+              mentorBody.innerHTML = renderMarkdownWithLinksAndMath(liveText);
+              if (mentorBadge) mentorBadge.textContent = "🛡️ Gemini AI Pro Mentor tomonidan jonli tuzildi";
+            }
+          }
+        } catch (e) {
+          console.warn('AI mentor live fetch error:', e);
+        } finally {
+          if (askMentorBtn) {
+            askMentorBtn.removeAttribute('disabled');
+            askMentorBtn.innerHTML = '<span>🤖 Gemini AI Mentoridan yangi maslahat olish</span>';
+          }
+        }
+      }
+    }
+
     function renderRoadmap(rawQuery: string, mode: 'express' | 'deep' | 'exam') {
       activeMode = mode;
       activeQuery = rawQuery;
       currentPlan = generateStudyStrategy(activeQuery, activeMode);
+      stopSpeech();
 
       // Hide clarify question
       if (clarifySection) clarifySection.style.display = 'none';
@@ -550,6 +1025,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       updateProgressDisplay();
 
+      // Automatically load AI Mentor advice
+      loadAiMentorAdvice(false);
+
+      // Reset and initialize live chat with AI Repetitor
+      chatHistory = [];
+      if (chatMessages) {
+        chatMessages.innerHTML = '';
+        initChatGreeting(currentPlan);
+      }
+
       if (resultWrapper) {
         resultWrapper.style.display = 'block';
         resultWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -609,142 +1094,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
-    // Gemini Deep Personal Mentor button
-    askMentorBtn?.addEventListener('click', async () => {
-      if (!currentPlan || !mentorCard || !mentorBody) return;
-      askMentorBtn.setAttribute('disabled', 'true');
-      askMentorBtn.textContent = '⏳ AI Mentor shaxsiy reja tuzmoqda...';
-      mentorCard.style.display = 'block';
-      mentorBody.innerHTML = `<p style="color: var(--text-muted);">⏳ Sizning so'rovingiz («${activeQuery}») va tanlangan «${activeMode}» rejimi asosida chuqur akademik ko'rsatma tayyorlanmoqda...</p>`;
-
-      const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
-      let aiText = '';
-
-      try {
-        const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-        if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
-
-        const res = await fetch('/api/solve', {
-          method: 'POST',
-          headers,
-          body: JSON.stringify({
-            model: 'gemini-flash-lite-latest',
-            systemInstruction: { parts: [{ text: SITE_CURRICULUM_PROMPT_MAP }] },
-            contents: [
-              {
-                parts: [
-                  {
-                    text: `Talaba so'rovi: "${activeQuery}". Tanlangan rejim: ${activeMode}. Unga motivatsiya bering va saytimizdagi dars havolalari bilan ${activeMode === 'express' ? 'faqat eng zarur 2 ta asosiy dars va formulalar bilan qisqa tezkor reja' : 'chuqur poydevorli yo\'l xaritasi'} tuzib bering.`
-                  }
-                ]
-              }
-            ],
-            generationConfig: { temperature: 0.2 }
-          })
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        }
-      } catch {
-        // Fallback below
-      }
-
-      if (!aiText) {
-        const stepLinks = currentPlan.steps
-          .map((s, i) => `${i + 1}. **[${s.title}](${s.url})** — *(${s.duration})* ${s.whyRead}`)
-          .join('\n- ');
-        const toolLink = currentPlan.interactiveTools[0];
-
-        aiText = `## 🎯 «${activeQuery}» bo'yicha Shaxsiy Tayyorgarlik Rejasi (${activeMode.toUpperCase()})
-
-**1. Nima uchun hozir qiynalyapsiz va buni qanday yengamiz?**
-${currentPlan.empathyMessage} ${currentPlan.rootCauseWhyHard}
-
-## 📅 Ketma-ket Qadamlar:
-- ${stepLinks}
-
-## 🧪 Amaliy Mashq va Tekshiruv
-Darslarni o'qigach, **[${toolLink.title}](${toolLink.url})** da misollarni hisoblang va **[${currentPlan.moduleTitle} HEMIS Testi](/testlar?modul=${currentPlan.moduleSlug}#quiz-section)** orqali o'zingizni sinab ko'ring!
-
-**💡 Oltin qoida:** ${currentPlan.examTip}`;
-        if (mentorBadge) mentorBadge.textContent = "⚡ Sayt Akademik AI Navigatori tomonidan tuzildi";
-      } else if (mentorBadge) {
-        mentorBadge.textContent = "🛡️ Gemini AI Pro Mentor tomonidan jonli tuzildi";
-      }
-
-      mentorBody.innerHTML = renderMarkdownWithLinksAndMath(aiText);
-      askMentorBtn.removeAttribute('disabled');
-      askMentorBtn.innerHTML = '<span>🤖 Gemini AI Mentoridan qo\'shimcha shaxsiy maslahat olish</span>';
-      mentorCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    // Gemini Deep Personal Mentor button (refresh)
+    askMentorBtn?.addEventListener('click', () => {
+      loadAiMentorAdvice(true);
     });
 
-    // Interactive Q&A Chat Handler
-    async function sendChatMessage() {
-      if (!chatInput || !chatMessages) return;
-      const question = chatInput.value.trim();
-      if (!question) return;
+    // Mentor Card action buttons (Voice TTS & Copy)
+    mentorSpeakBtn?.addEventListener('click', () => {
+      if (mentorAdviceText) speakText(mentorAdviceText, mentorSpeakBtn as HTMLElement);
+    });
 
-      chatInput.value = '';
-
-      // Append user bubble
-      const userBubble = document.createElement('div');
-      userBubble.className = 'chat-bubble user-bubble';
-      userBubble.textContent = question;
-      chatMessages.appendChild(userBubble);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      // Append AI loading bubble
-      const aiBubble = document.createElement('div');
-      aiBubble.className = 'chat-bubble ai-bubble';
-      aiBubble.innerHTML = '<span class="typing-indicator">AI Repetitor javob yozmoqda...</span>';
-      chatMessages.appendChild(aiBubble);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      const userCustomKey = localStorage.getItem('gemini_user_api_key') || '';
-      let replyText = '';
-
+    mentorCopyBtn?.addEventListener('click', async () => {
+      if (!mentorAdviceText) return;
       try {
-        const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-        if (userCustomKey) headers['x-user-gemini-key'] = userCustomKey;
-
-        const res = await fetch('/api/solve', {
-          method: 'POST',
-          headers,
-          body: JSON.stringify({
-            model: 'gemini-flash-lite-latest',
-            systemInstruction: { parts: [{ text: `${SITE_CURRICULUM_PROMPT_MAP}\nSiz repetitorsiz. Mavzu: ${currentPlan?.topicTitle}. Savolga qisqa, tushunarli, formulalar bilan javob bering va dars havolasini ko'rsating.` }] },
-            contents: [
-              {
-                parts: [
-                  {
-                    text: `Mavzu konteksti: ${currentPlan?.topicTitle || activeQuery}. Talaba savoli: "${question}". O'zbek tilida aniq, formulalar ($...$) bilan javob bering.`
-                  }
-                ]
-              }
-            ],
-            generationConfig: { temperature: 0.2 }
-          })
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        }
+        await navigator.clipboard.writeText(mentorAdviceText);
+        mentorCopyBtn.textContent = '✅ Nusxalandi!';
+        setTimeout(() => (mentorCopyBtn.textContent = '📋 Nusxalash'), 2000);
       } catch {
-        // Fallback
+        alert("Nusxalab bo'lmadi");
       }
+    });
 
-      if (!replyText) {
-        replyText = `Savolingiz uchun rahmat! Ushbu savol bo'yicha to'liq ma'lumot va qadamma-qadam formulalar yuqoridagi **[${currentPlan?.steps[0]?.title || 'Dars'}](${currentPlan?.steps[0]?.url || '/'})** sahifasida batafsil yoritilgan. O'sha darsni o'qib chiqsangiz, barcha savollaringizga to'liq javob olasiz!`;
+    // Clear chat button
+    clearChatBtn?.addEventListener('click', () => {
+      stopSpeech();
+      chatHistory = [];
+      if (chatMessages && currentPlan) {
+        chatMessages.innerHTML = '';
+        initChatGreeting(currentPlan);
       }
+    });
 
-      aiBubble.innerHTML = renderMarkdownWithLinksAndMath(replyText);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    chatSendBtn?.addEventListener('click', sendChatMessage);
+    chatSendBtn?.addEventListener('click', () => sendChatMessage());
     chatInput?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -1297,6 +1678,12 @@ Darslarni o'qigach, **[${toolLink.title}](${toolLink.url})** da misollarni hisob
     border-bottom: 1px solid var(--border-color);
   }
 
+  .mentor-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   /* Interactive Q&A Chat */
   .mentor-chat-section {
     background: var(--bg-surface);
@@ -1308,47 +1695,194 @@ Darslarni o'qigach, **[${toolLink.title}](${toolLink.url})** da misollarni hisob
 
   .chat-section-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 0.75rem;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border-color);
   }
 
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  :global([data-theme="dark"]) .live-pill {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+
+  .quick-questions-wrapper {
+    margin-bottom: 0.9rem;
+  }
+
+  .quick-questions-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.45rem;
+  }
+
+  .chat-quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  :global(.chat-chip-btn) {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+    white-space: normal;
+  }
+
+  :global(.chat-chip-btn:hover) {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+  }
+
   .chat-messages-container {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    max-height: 340px;
+    gap: 0.9rem;
+    max-height: 480px;
     overflow-y: auto;
-    padding: 0.5rem;
+    padding: 0.85rem;
     margin-bottom: 1rem;
     background: var(--bg-body);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
     border-radius: var(--radius-md);
+    scroll-behavior: smooth;
   }
 
   :global(.chat-bubble) {
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.1rem;
     border-radius: var(--radius-md);
-    font-size: 0.92rem;
-    line-height: 1.5;
-    max-width: 85%;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    max-width: 90%;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @media (max-width: 640px) {
+    :global(.chat-bubble) {
+      max-width: 96%;
+      padding: 0.75rem 0.85rem;
+    }
   }
 
   :global(.user-bubble) {
     align-self: flex-end;
-    background: var(--primary);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color: white;
-    border-bottom-right-radius: 2px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+  }
+
+  :global(.user-bubble .bubble-header) {
+    font-size: 0.75rem;
+    opacity: 0.85;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
   }
 
   :global(.ai-bubble) {
     align-self: flex-start;
     background: var(--bg-surface);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
     color: var(--text-main);
-    border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 3px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  :global(.bubble-header.ai-header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.82rem;
+    color: var(--primary);
+  }
+
+  :global(.ai-badge-active) {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+
+  :global([data-theme="dark"]) :global(.ai-badge-active) {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+  }
+
+  :global(.ai-typing-dot) {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: pulse 1s infinite alternate;
+  }
+
+  :global(.bubble-actions) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border-color);
+  }
+
+  :global(.bubble-action-btn) {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  :global(.bubble-action-btn:hover) {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  :global(.bubble-action-btn.speaking) {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    border-color: #ef4444;
+    font-weight: 700;
   }
 
   .chat-input-bar {
@@ -1392,6 +1926,17 @@ Darslarni o'qigach, **[${toolLink.title}](${toolLink.url})** da misollarni hisob
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    from {
+      opacity: 0.4;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.2);
     }
   }
 </style>

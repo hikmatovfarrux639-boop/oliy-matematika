@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { contents, systemInstruction, generationConfig, model = 'gemini-2.5-flash', tools } = req.body || {};
+    const { contents, systemInstruction, generationConfig, model = 'gemini-flash-lite-latest', tools } = req.body || {};
 
     if (!contents || !Array.isArray(contents)) {
       return res.status(400).json({ error: "Noto'g'ri so'rov: 'contents' massivi talab qilinadi." });
@@ -46,11 +46,11 @@ export default async function handler(req, res) {
     // Automatic model failover list (prioritizing fast, stable models and falling back if 503/429/404)
     const requestedModel = (model || '').replace(/^models\//, '');
     const candidateModels = Array.from(new Set([
-      requestedModel,
       'gemini-flash-lite-latest',
+      requestedModel,
       'gemini-flash-latest',
-      'gemini-pro-latest',
-      'gemini-3.8-flash'
+      'gemini-3.8-flash',
+      'gemini-pro-latest'
     ])).filter(Boolean);
 
     const requestBody = {
