@@ -49,23 +49,34 @@ export function normalizeMathString(raw: string): string {
   // 2. Remove Uzbek genitive suffixes (e.g. "x ning kvadrati" -> "x kvadrati")
   s = s.replace(/([a-zA-Z0-9]+)\s*ning\s*/gi, '$1 ');
 
+  // 2.5 Strip conversational command prefixes and instructions
+  s = s
+    .replace(/^\s*(?:tenglamani\s+(?:yeching|yech)|tenglama(?:ni)?|yeching|yech)\s*[:=-]?\s*/gi, '')
+    .replace(/^\s*(?:kramer\s+(?:usuli(?:da)?|sistemasi)|chiziqli\s+tenglamalar\s+sistemasi|tenglamalar\s+sistemasi|sistemani\s+(?:yeching|yech)|sistema)\s*[:=-]?\s*/gi, '')
+    .replace(/^\s*(?:differensial\s+tenglama|diff\s+tenglama)\s*[:=-]?\s*/gi, '')
+    .replace(/^\s*(?:matritsalar(?:ni)?\s+(?:ko['’`]?paytirish|qo['’`]?shish|hisoblash)|matritsa\s+determinanti(?:ni\s+(?:toping|top))?|\d+x\d+\s+matri[st]a|matri[st]a|determinant)\s*[:=-]?\s*/gi, '')
+    .replace(/^\s*(?:vektorlar(?:ni)?|vektor)\s*[:=-]?\s*/gi, '')
+    .replace(/^\s*(?:int[ie]gral(?:i)?(?:ni)?\s+(?:hisoblang|hisobla)|int[ie]gral(?:i)?(?:ni)?)\s*[:=-]?\s*/gi, 'int ')
+    .replace(/^\s*(?:hosi?la(?:si)?(?:ni)?\s+(?:toping|top|hisoblang|hisobla)|hosi?la(?:si)?(?:ni)?)\s*[:=-]?\s*/gi, 'd/dx ')
+    .replace(/^\s*(?:limit(?:i)?(?:ni)?\s+(?:hisoblang|hisobla)|limit(?:i)?(?:ni)?)\s*[:=-]?\s*/gi, '');
+
   // 3. Spoken conversions & common speech-to-text / typing artifacts
   s = s
-    .replace(/\bintegrali?\b/gi, 'int ')
-    .replace(/\bhosi?lasi?\b/gi, 'd/dx ')
+    .replace(/\bint[ie]grali?\b/gi, 'int ')
+    .replace(/\bhosi?la(?:si)?(?:ni)?(?:\s+(?:toping|top|hisoblang|hisobla))?\b/gi, 'd/dx ')
     .replace(/\byteng\b/gi, 'y = ')
     .replace(/\by\s*teng\b/gi, 'y = ')
     .replace(/\bxteng\b/gi, 'x = ')
     .replace(/\bx\s*teng\b/gi, 'x = ')
-    .replace(/teng(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
-    .replace(/barobar(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
-    .replace(/ravno(?=[\d\s+\-a-zA-Z]|$)/gi, ' = ')
+    .replace(/\bteng\b|teng(?=[\d\s+\-(=])/gi, ' = ')
+    .replace(/\bbarobar\b|barobar(?=[\d\s+\-(=])/gi, ' = ')
+    .replace(/\bravno\b|ravno(?=[\d\s+\-(=])/gi, ' = ')
     .replace(/\bildiz\s*(?:ostida)?\s*([a-zA-Z0-9]+|\([^)]+\))/gi, 'sqrt($1)')
     .replace(/\bmodul\s*([a-zA-Z0-9]+|\([^)]+\))/gi, 'abs($1)')
-    .replace(/\bplyus\b|\bqo'shuv\b|\bqo'shilgan\b|\bplus\b/gi, ' + ')
-    .replace(/\bminus\b|\bayiruv\b|\bayirilgan\b/gi, ' - ')
-    .replace(/\bko'paytirilgan\b|\bko'paytiruv\b|\bzarb\b/gi, ' * ')
-    .replace(/\bbo'lingan\b|\bbo'luv\b|\btaqsim\b/gi, ' / ')
+    .replace(/\bplyus\b|\bqo['’`]?shuv\b|\bqo['’`]?shilgan\b|\bqo['’`]?shilsin\b|\bplus\b/gi, ' + ')
+    .replace(/\bminus\b|\bayiruv\b|\bayirilgan\b|\bayrilgan\b|\bayrilsin\b/gi, ' - ')
+    .replace(/\bko['’`]?paytirilgan\b|\bko['’`]?paytiruv\b|\bko['’`]?paytrilgan\b|\bko['’`]?paytirilsin\b|\bzarb\b/gi, ' * ')
+    .replace(/\bbo['’`]?lingan\b|\bbo['’`]?luv\b|\bbo['’`]?linsin\b|\btaqsim\b/gi, ' / ')
     .replace(/\bkvadrat\b|\bkvadrati\b/gi, '^2')
     .replace(/\bkub\b|\bkubi\b/gi, '^3')
     .replace(/\^\s*([+\-])/g, '^2 $1')
@@ -77,7 +88,9 @@ export function normalizeMathString(raw: string): string {
   // Uzbek number words
   const numWords: Record<string, string> = {
     'nol': '0', 'bir': '1', 'ikki': '2', 'uch': '3', 'to\'rt': '4', 'tort': '4',
-    'besh': '5', 'olti': '6', 'yetti': '7', 'sakkiz': '8', 'to\'qqiz': '9', 'toqqiz': '9', 'o\'n': '10', 'on': '10'
+    'besh': '5', 'olti': '6', 'yetti': '7', 'sakkiz': '8', 'to\'qqiz': '9', 'toqqiz': '9',
+    'o\'n': '10', 'on': '10', 'yigirma': '20', 'ottiz': '30', 'qirq': '40', 'ellik': '50',
+    'oltmish': '60', 'yetmish': '70', 'sakson': '80', 'to\'qson': '90', 'toqson': '90', 'yuz': '100'
   };
   for (const [w, n] of Object.entries(numWords)) {
     s = s.replace(new RegExp('\\b' + w + '\\b', 'gi'), n);
@@ -111,8 +124,9 @@ export function normalizeMathString(raw: string): string {
   // Protect log bases: log2( -> log_2(
   s = s.replace(/\blog(\d+)\s*\(/gi, 'log_$1(');
 
-  // Insert implicit multiplication: e.g. 2x -> 2*x, 3( -> 3*(, )x -> )*x (avoid breaking log_2( )
+  // Insert implicit multiplication: e.g. 2x -> 2*x, 2 x -> 2*x, 3( -> 3*(, )x -> )*x (avoid breaking log_2( )
   s = s.replace(/(\d)([a-zA-Z])/g, '$1*$2');
+  s = s.replace(/(\d)\s+([a-zA-Z])(?![a-zA-Z])/g, '$1*$2');
   s = s.replace(/(^|[^a-zA-Z_])(\d)\s*\(/g, '$1$2*(');
   s = s.replace(/(\))([a-zA-Z0-9(])/g, '$1*$2');
 
@@ -1189,7 +1203,7 @@ function trySolveIntegral(raw: string, forceMode = false): LocalSolveResult | nu
   const diagnosis = diagnoseTopic(`integral ${raw}`);
 
   // CASE A: DEFINITE INTEGRAL \int_0^1 x^2 dx or int_0^2 ... or \int_{0}^{1} ... or int 0 to 1 ...
-  const defMatch = raw.match(/(?:\\?int_\{?([+-]?\d+(?:\.\d+)?)\}?\^\{?([+-]?\d+(?:\.\d+)?)\}?|\bint\s+([+-]?\d+)\s+to\s+([+-]?\d+))\s*(.+?)(?:\s*d[a-zA-Z]|$)/i);
+  const defMatch = raw.match(/(?:\\?int_\{?([+-]?\d+(?:\.\d+)?)\}?\^\{?([+-]?\d+(?:\.\d+)?)\}?\*?|\bint\s+([+-]?\d+)\s+to\s+([+-]?\d+))\s*(.+?)(?:\s*d[a-zA-Z]|$)/i);
   if (defMatch) {
     const a = parseFloat(defMatch[1] ?? defMatch[3]);
     const b = parseFloat(defMatch[2] ?? defMatch[4]);
@@ -2895,7 +2909,7 @@ $$\\mathbf{${vFmt}}$$`
 export function solveLocally(input: string, mode: string = 'auto'): LocalSolveResult {
   const rawInput = (input || '').trim();
   const trimmed = normalizeMathString(rawInput);
-  const baseDiagnosis = diagnoseTopic(trimmed);
+  const baseDiagnosis = diagnoseTopic(rawInput);
 
   if (!trimmed) {
     return { solved: false, diagnosis: baseDiagnosis };

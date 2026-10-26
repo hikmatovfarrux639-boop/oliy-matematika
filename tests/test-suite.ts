@@ -10,6 +10,22 @@ const testCases = [
   "x kvadrat minus 5x teng minus 6",
   "x ning kvadrati teng 25",
   "ikki x qo'shilgan uch teng to'qqiz",
+  "ikki x qoshilgan besh teng nol",
+  "uch x ayirilgan to'qqiz teng nol",
+  "uch x ayrilgan toqqiz barobar nol",
+  "tort x kvadrat minus 16 teng nol",
+  "x ning kubi ayrilgan sakkiz teng nol",
+  "intigral 1/(1+x^2) dx",
+  "intigral x^2 dx",
+  "tenglamani yech: 2x + 10 = 0",
+  "differensial tenglama: y'' - 5y' + 6y = 0",
+  "differensial tenglama y' = 3x^2",
+  "kramer sistemasi 3x - 2y = 1, 2x + 3y = 18",
+  "3x3 matrisa [[1, 2, 3], [4, 5, 6], [7, 8, 9]]",
+  "matritsa [[1, 2], [3, 4]] * [[2, 0], [1, 2]]",
+  "vektorlar: (1, 2, 3) * (4, 5, 6)",
+  "hosilasini top: x^3 * sin(x)",
+  "limitni hisobla: lim (x->0) (1 - cos(x))/x^2",
 
   // 2. Cyrillic homoglyphs (Common in Uzbekistan!)
   "х + 1 = 3", // Cyrillic х
