@@ -3,6 +3,8 @@ import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
 import MobileDrawer from '../components/MobileDrawer.astro';
 import BackupModal from '../components/BackupModal.astro';
+import MobileBottomNav from '../components/MobileBottomNav.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
@@ -26,7 +28,7 @@ const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
 <html lang="uz">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover, interactive-widget=resizes-content" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.svg" />
   <link rel="manifest" href="/manifest.json" />
@@ -88,6 +90,15 @@ const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
       });
     })();
   </script>
+
+  <!-- Service Worker registration for PWA offline capability -->
+  <script is:inline>
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').catch(function() {});
+      });
+    }
+  </script>
 </head>
 <body>
   <!-- Telegram In-App Browser Resilience Banner -->
@@ -143,5 +154,8 @@ const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
       </p>
     </div>
   </footer>
+
+  <ScrollToTop />
+  <MobileBottomNav />
 </body>
 </html>

@@ -1,0 +1,218 @@
+---
+// MobileBottomNav.astro - Sticky Bottom Navigation Bar for Mobile
+const currentPath = Astro.url.pathname;
+
+const isDarslarActive = currentPath.startsWith('/dars') || currentPath.startsWith('/modullar');
+const isStrategiyaActive = currentPath.startsWith('/strategiya');
+const isKalkulyatorActive = currentPath.startsWith('/matritsa') || currentPath.startsWith('/vektor') || currentPath.startsWith('/hosila') || currentPath.startsWith('/grafik') || currentPath.startsWith('/laboratoriya');
+const isAiYechuvchiActive = currentPath.startsWith('/ai-yechuvchi');
+const isAsosiyActive = currentPath === '/' || currentPath === '';
+---
+
+<nav id="mobile-bottom-nav" class="mobile-bottom-nav" aria-label="Mobil pastki menyu">
+  <a href="/" class={`bottom-nav-item ${isAsosiyActive ? 'active' : ''}`} data-astro-prefetch="hover">
+    <div class="bottom-nav-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+    </div>
+    <span class="bottom-nav-label">Asosiy</span>
+  </a>
+
+  <button type="button" id="bottom-nav-darslar-btn" class={`bottom-nav-item ${isDarslarActive ? 'active' : ''}`} aria-label="Darslar mundarijasini ko'rish">
+    <div class="bottom-nav-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+    </div>
+    <span class="bottom-nav-label">Darslar</span>
+  </button>
+
+  <a href="/strategiya" class={`bottom-nav-item ${isStrategiyaActive ? 'active' : ''}`} data-astro-prefetch="hover">
+    <div class="bottom-nav-icon nav-sparkle-container">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+      </svg>
+      <span class="bottom-nav-badge">AI</span>
+    </div>
+    <span class="bottom-nav-label">AI Reja</span>
+  </a>
+
+  <a href="/matritsa" class={`bottom-nav-item ${isKalkulyatorActive ? 'active' : ''}`} data-astro-prefetch="hover">
+    <div class="bottom-nav-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+        <line x1="8" y1="6" x2="16" y2="6"></line>
+        <line x1="16" y1="14" x2="16" y2="14.01"></line>
+        <line x1="12" y1="14" x2="12" y2="14.01"></line>
+        <line x1="8" y1="14" x2="8" y2="14.01"></line>
+        <line x1="16" y1="18" x2="16" y2="18.01"></line>
+        <line x1="12" y1="18" x2="12" y2="18.01"></line>
+        <line x1="8" y1="18" x2="8" y2="18.01"></line>
+      </svg>
+    </div>
+    <span class="bottom-nav-label">Hisoblagich</span>
+  </a>
+
+  <a href="/ai-yechuvchi" class={`bottom-nav-item ${isAiYechuvchiActive ? 'active' : ''}`} data-astro-prefetch="hover">
+    <div class="bottom-nav-icon ai-gradient-pulse">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+      </svg>
+    </div>
+    <span class="bottom-nav-label">AI Yechuvchi</span>
+  </a>
+</nav>
+
+<script>
+  function setupBottomNav() {
+    const darslarBtn = document.getElementById('bottom-nav-darslar-btn');
+    if (!darslarBtn || (darslarBtn as any)._hasBottomNavInit) return;
+    (darslarBtn as any)._hasBottomNavInit = true;
+
+    darslarBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const openBtn = document.getElementById('mobile-menu-open-btn');
+      if (openBtn) {
+        openBtn.click();
+      } else {
+        const drawer = document.getElementById('mobile-drawer');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const isOpen = drawer?.classList.contains('open');
+        if (isOpen) {
+          drawer?.classList.remove('open');
+          overlay?.classList.remove('open');
+          document.body.style.overflow = '';
+        } else {
+          drawer?.classList.add('open');
+          overlay?.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+  }
+
+  setupBottomNav();
+  document.addEventListener('astro:page-load', setupBottomNav);
+  document.addEventListener('astro:after-swap', setupBottomNav);
+</script>
+
+<style>
+  .mobile-bottom-nav {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-bottom-nav {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-around;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 995;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-color);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+      padding-top: 5px;
+      padding-bottom: calc(5px + env(safe-area-inset-bottom, 0px));
+      transition: transform 0.25s ease;
+    }
+
+    [data-theme="dark"] .mobile-bottom-nav {
+      background: rgba(15, 23, 42, 0.95);
+      border-top-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 -4px 22px rgba(0, 0, 0, 0.45);
+    }
+
+    .bottom-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 4px 2px;
+      color: var(--text-muted);
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      position: relative;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.15s ease;
+    }
+
+    .bottom-nav-item:active {
+      transform: scale(0.92);
+    }
+
+    .bottom-nav-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .bottom-nav-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .bottom-nav-item.active {
+      color: var(--primary);
+    }
+
+    .bottom-nav-item.active .bottom-nav-icon {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .bottom-nav-item.active .bottom-nav-label {
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .bottom-nav-badge {
+      position: absolute;
+      top: -2px;
+      right: -3px;
+      background: #ea580c;
+      color: white;
+      font-size: 0.55rem;
+      font-weight: 800;
+      padding: 0.05rem 0.25rem;
+      border-radius: 4px;
+      line-height: 1;
+      border: 1px solid var(--bg-surface);
+    }
+
+    .ai-gradient-pulse svg {
+      color: #8b5cf6;
+    }
+
+    .bottom-nav-item.active .ai-gradient-pulse {
+      background: rgba(139, 92, 246, 0.15);
+      color: #8b5cf6;
+    }
+
+    .bottom-nav-item.active .ai-gradient-pulse svg {
+      color: #7c3aed;
+    }
+  }
+</style>

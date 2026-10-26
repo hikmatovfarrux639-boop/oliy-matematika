@@ -678,6 +678,8 @@ a {
   .sidebar-nav, 
   .mobile-drawer, 
   .mobile-menu-overlay,
+  .mobile-bottom-nav,
+  .scroll-to-top-fab,
   .app-footer, 
   .toc-sidebar, 
   .search-trigger-btn,
@@ -704,5 +706,81 @@ a {
   }
   .katex {
     font-size: 1.1em !important;
+  }
+}
+
+/* ========================================================
+   MOBILE FIRST & TOUCH ERGONOMICS (7 MOBILE UPGRADES)
+   ======================================================== */
+
+/* 1. Prevent unwanted horizontal page wobble */
+html, body {
+  overflow-x: clip;
+}
+
+/* 2. KaTeX Mathematical Formulas & Tables Horizontal Swipe */
+.katex-display {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 0.65rem 0.4rem !important;
+  margin: 1rem 0 !important;
+  max-width: 100% !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 99, 235, 0.35) transparent;
+}
+
+.katex-display::-webkit-scrollbar {
+  height: 4px;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.35);
+  border-radius: 9999px;
+}
+
+.prose-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 3. Mobile touch targets, iOS auto-zoom prevention & Bottom Bar clearance */
+@media (max-width: 768px) {
+  /* Prevent iOS Safari 16px auto-zoom */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Reserve bottom space for the Sticky Bottom Nav so nothing is obscured */
+  .layout-container, 
+  .main-content {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Safe tap target heights and fast touch action */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .mobile-drawer a,
+  .module-nav-item a {
+    min-height: 42px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Visual touch feedback */
+  .btn:active,
+  .module-card:active,
+  .quiz-option-btn:active {
+    transform: scale(0.97);
+    transition: transform 0.08s ease;
+  }
+
+  /* Gentle right gradient cue indicating scrollable long formulas */
+  .katex-display {
+    background-image: linear-gradient(to right, transparent calc(100% - 18px), rgba(37, 99, 235, 0.08) 100%);
+    border-radius: var(--radius-sm);
   }
 }
