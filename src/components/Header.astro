@@ -270,7 +270,20 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
     visibility: hidden;
     transform: translateY(8px);
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    transition-delay: 0.1s;
     pointer-events: none;
+  }
+
+  /* Invisible hover bridge to eliminate gap between button and menu */
+  .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -0.65rem;
+    left: -20px;
+    right: -20px;
+    height: 0.75rem;
+    background: transparent;
+    pointer-events: auto;
   }
 
   :global([data-theme="dark"]) .dropdown-menu {
@@ -284,6 +297,7 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
+    transition-delay: 0s;
   }
 
   .dropdown-item {
