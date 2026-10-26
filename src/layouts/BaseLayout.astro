@@ -68,6 +68,10 @@ const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
           const savedTheme = localStorage.getItem('math_theme');
           const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
           target.documentElement.setAttribute('data-theme', theme);
+          const metaTheme = target.querySelector('meta[name="theme-color"]');
+          if (metaTheme) {
+            metaTheme.setAttribute('content', theme === 'dark' ? '#0d1322' : '#2563eb');
+          }
         } catch (e) {
           console.error('Theme apply error:', e);
         }
