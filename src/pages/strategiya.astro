@@ -628,7 +628,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           method: 'POST',
           headers,
           body: JSON.stringify({
-            model: 'gemini-3.5-flash-lite',
+            model: 'gemini-flash-lite-latest',
             systemInstruction: { parts: [{ text: SITE_CURRICULUM_PROMPT_MAP }] },
             contents: [
               {
@@ -713,7 +713,7 @@ Darslarni o'qigach, **[${toolLink.title}](${toolLink.url})** da misollarni hisob
           method: 'POST',
           headers,
           body: JSON.stringify({
-            model: 'gemini-3.5-flash-lite',
+            model: 'gemini-flash-lite-latest',
             systemInstruction: { parts: [{ text: `${SITE_CURRICULUM_PROMPT_MAP}\nSiz repetitorsiz. Mavzu: ${currentPlan?.topicTitle}. Savolga qisqa, tushunarli, formulalar bilan javob bering va dars havolasini ko'rsating.` }] },
             contents: [
               {
