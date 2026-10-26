@@ -53,12 +53,21 @@ export default async function handler(req, res) {
       'gemini-pro-latest'
     ])).filter(Boolean);
 
-    const requestBody = {
-      contents,
-      ...(systemInstruction ? { systemInstruction } : {}),
-      ...(generationConfig ? { generationConfig } : {}),
-      ...(tools ? { tools } : {})
-    };
+    // Normalize contents to ensure multimodal inlineData compatibility
+    const normalizedContents = contents.map(c => ({
+      ...c,
+      parts: (c.parts || []).map(p => {
+        if (p.inline_data) {
+          return {
+            inlineData: {
+              mimeType: p.inline_data.mime_type || p.inline_data.mimeType,
+              data: p.inline_data.data
+            }
+          };
+        }
+        return p;
+      })
+    }));
 
     let lastStatus = 500;
     let lastData = { error: "Gemini modeliga ulanib bo'lmadi." };
@@ -66,7 +75,20 @@ export default async function handler(req, res) {
     for (const candidateModel of candidateModels) {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${candidateModel}:generateContent?key=${apiKey}`;
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 12000);
+      const timeout = setTimeout(() => controller.abort(), 40000);
+
+      // Sanitize generationConfig: flash-lite does not accept thinkingConfig
+      const cleanGenConfig = { ...(generationConfig || {}) };
+      if (candidateModel.includes('flash-lite')) {
+        delete cleanGenConfig.thinkingConfig;
+      }
+
+      const requestBody = {
+        contents: normalizedContents,
+        ...(systemInstruction ? { systemInstruction } : {}),
+        ...(Object.keys(cleanGenConfig).length > 0 ? { generationConfig: cleanGenConfig } : {}),
+        ...(tools ? { tools } : {})
+      };
 
       try {
         const geminiRes = await fetch(endpoint, {

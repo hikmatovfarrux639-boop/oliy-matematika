@@ -1089,7 +1089,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const dataUrl = e.target?.result as string;
         const img = new Image();
         img.onload = () => {
-          const MAX_DIM = 1200;
+          const MAX_DIM = 900;
           let w = img.width;
           let h = img.height;
           if (w > MAX_DIM || h > MAX_DIM) {
@@ -1107,7 +1107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           const ctx = canvas.getContext('2d');
           ctx?.drawImage(img, 0, 0, w, h);
 
-          const compressedUrl = canvas.toDataURL('image/jpeg', 0.82);
+          const compressedUrl = canvas.toDataURL('image/jpeg', 0.75);
           selectedImageBase64 = compressedUrl.split(',')[1];
           selectedImageMime = 'image/jpeg';
 
@@ -1180,7 +1180,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const ctx = webcamCanvas.getContext('2d');
       if (ctx) {
         ctx.drawImage(webcamVideo, 0, 0, webcamCanvas.width, webcamCanvas.height);
-        const dataUrl = webcamCanvas.toDataURL('image/jpeg', 0.82);
+        const dataUrl = webcamCanvas.toDataURL('image/jpeg', 0.75);
         selectedImageBase64 = dataUrl.split(',')[1];
         selectedImageMime = 'image/jpeg';
         if (imagePreview && previewContainer && imageName) {
@@ -1691,8 +1691,8 @@ Qat'iy qoidalar:
         const parts: any[] = [];
         if (selectedImageBase64 && selectedImageMime) {
           parts.push({
-            inline_data: {
-              mime_type: selectedImageMime,
+            inlineData: {
+              mimeType: selectedImageMime,
               data: selectedImageBase64
             }
           });
@@ -1711,7 +1711,7 @@ Qat'iy qoidalar:
           systemInstruction: { parts: [{ text: systemPrompt }] },
           generationConfig: {
             temperature: 0.15,
-            thinkingConfig: { thinkingLevel: 'low' }
+            maxOutputTokens: 1200
           },
           model: 'gemini-flash-lite-latest'
         };
@@ -1722,7 +1722,7 @@ Qat'iy qoidalar:
         // 1. Try secure backend serverless proxy
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 25000);
+          const timeoutId = setTimeout(() => controller.abort(), 45000);
 
           const headers: Record<string, string> = { 'Content-Type': 'application/json' };
           if (userCustomKey) {
