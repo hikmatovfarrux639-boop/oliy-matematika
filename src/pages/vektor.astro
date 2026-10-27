@@ -537,6 +537,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.85rem;
     font-weight: 700;
   }
+
+  :global(.res-card p) {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .results-container {
+      padding: 1rem 0.65rem;
+      border-radius: 14px;
+    }
+
+    .results-title {
+      font-size: 1.2rem;
+    }
+
+    :global(.res-card) {
+      padding: 0.85rem 0.65rem;
+      border-radius: 10px;
+      margin-bottom: 0.85rem;
+    }
+
+    :global(.res-card h3) {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    :global(.res-card p) {
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    :global(.res-val) {
+      font-size: 1.15rem;
+      overflow-x: auto;
+    }
+
+    .calc-btn {
+      flex: 1 1 calc(50% - 0.5rem);
+      padding: 0.75rem 0.6rem;
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+
+    .coord-inputs {
+      gap: 0.4rem;
+    }
+
+    .v-input {
+      padding: 0.5rem 0.25rem;
+      font-size: 1rem;
+    }
+  }
 </style>
 
 <script>

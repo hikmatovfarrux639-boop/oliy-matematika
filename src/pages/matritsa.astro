@@ -690,33 +690,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   :global(.step-box) {
     background: var(--bg-surface, #ffffff);
     border: 1px solid var(--border-color, #e2e8f0);
-    border-radius: var(--radius-md, 10px);
+    border-radius: var(--radius-md, 12px);
     padding: 1.5rem;
     border-left: 4px solid var(--primary, #2563eb);
+    box-shadow: var(--card-shadow, 0 1px 3px rgba(0,0,0,0.05));
   }
 
   :global(.step-box h3) {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 800;
     color: var(--text-main, #0f172a);
     margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    line-height: 1.35;
   }
 
   :global(.step-box p) {
-    color: var(--text-muted, #64748b);
-    line-height: 1.6;
+    color: var(--text-main, #0f172a);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.65;
     margin-bottom: 0.75rem;
   }
 
   :global(.step-latex-display) {
     overflow-x: auto;
-    padding: 0.85rem 0.5rem;
-    margin: 0.75rem 0;
+    padding: 1rem 0.75rem;
+    margin: 0.85rem 0;
     background: var(--bg-muted, #f8fafc);
-    border-radius: var(--radius-sm, 6px);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: var(--radius-sm, 8px);
+    font-size: 1.25rem;
+    line-height: 1.4;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Theory Reference */
@@ -763,6 +771,194 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.85rem;
     color: var(--text-muted, #64748b);
     line-height: 1.5;
+  }
+
+  /* Mobile Responsive & Full-Width View */
+  @media (max-width: 768px) {
+    .matrix-page-wrapper {
+      padding: 0.5rem 0.15rem 3.5rem;
+      width: 100%;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .page-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .mode-tabs {
+      gap: 0.4rem;
+    }
+
+    .mode-tab {
+      flex: 1 1 calc(33.333% - 0.4rem);
+      padding: 0.6rem 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .controls-card {
+      padding: 1rem 0.65rem;
+    }
+
+    .controls-row {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .size-buttons, .presets-list {
+      gap: 0.35rem;
+    }
+
+    .preset-btn {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .matrices-area {
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .matrix-card {
+      min-width: 0;
+      width: 100%;
+      padding: 0.85rem 0.5rem;
+    }
+
+    .matrix-header {
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+    }
+
+    :global(.matrix-cell-input) {
+      width: 52px;
+      height: 44px;
+      font-size: 1.1rem;
+    }
+
+    .matrix-grid {
+      gap: 0.35rem;
+      padding: 0.25rem;
+    }
+
+    .action-toolbar {
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-action-btn {
+      flex: 1 1 calc(50% - 0.4rem);
+      min-width: 130px;
+      padding: 0.7rem 0.6rem;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    .results-section {
+      padding: 1rem 0.65rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero-result-card {
+      padding: 1rem 0.75rem;
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero-result-title {
+      font-size: 1.2rem;
+    }
+
+    .hero-result-desc {
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .hero-result-latex {
+      padding: 0.85rem 0.5rem;
+      font-size: 1.25rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .summary-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    :global(.sum-card) {
+      padding: 0.75rem 0.4rem;
+    }
+
+    :global(.sum-card .sum-title) {
+      font-size: 0.72rem;
+    }
+
+    :global(.sum-card .sum-val) {
+      font-size: 1.15rem;
+      min-height: 32px;
+    }
+
+    :global(.step-box) {
+      padding: 1.1rem 0.75rem;
+      border-radius: 10px;
+      margin: 0.75rem 0;
+      width: 100%;
+      box-sizing: border-box;
+      border-left-width: 4px;
+    }
+
+    :global(.step-box h3) {
+      font-size: 1.15rem;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+
+    :global(.step-box p) {
+      font-size: 1.02rem;
+      line-height: 1.6;
+      margin-bottom: 0.65rem;
+    }
+
+    :global(.step-latex-display) {
+      padding: 0.85rem 0.45rem;
+      margin: 0.65rem 0;
+      font-size: 1.2rem;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .theory-reference-card {
+      padding: 1.15rem 0.75rem;
+    }
+
+    .theory-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    :global(.matrix-cell-input) {
+      width: 44px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .calc-action-btn {
+      flex: 1 1 100%;
+    }
   }
 </style>
 
@@ -848,7 +1044,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (errorBox) errorBox.style.display = 'none';
     }
 
-    // Helper: render KaTeX safely
+    // Helper: render KaTeX safely into an element
     function renderLatex(element: HTMLElement, tex: string, displayMode = true) {
       try {
         katex.render(tex, element, { displayMode, throwOnError: false });
@@ -857,17 +1053,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
-    // Helper: render inline $...$ inside step descriptions
+    // Helper: convert text with $...$ and $$...$$ into rendered KaTeX HTML string
+    function renderMathText(str: string): string {
+      if (!str) return '';
+      // Replace $$...$$ display math
+      let res = str.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => {
+        try {
+          return katex.renderToString(tex, { displayMode: true, throwOnError: false });
+        } catch {
+          return tex;
+        }
+      });
+      // Replace $...$ inline math
+      res = res.replace(/\$([^\$]+?)\$/g, (_, tex) => {
+        try {
+          return katex.renderToString(tex, { displayMode: false, throwOnError: false });
+        } catch {
+          return tex;
+        }
+      });
+      return res;
+    }
+
+    // Helper: render inline $...$ inside all descriptions and headings
     function renderInlineMath(container: HTMLElement) {
-      container.querySelectorAll('p, li').forEach(el => {
+      container.querySelectorAll('p, li, h3, h4, span, strong').forEach(el => {
+        // Skip display containers to avoid replacing pre-rendered block math
+        if (el.classList.contains('step-latex-display') || el.closest('.step-latex-display')) return;
         if (el.innerHTML.includes('$')) {
-          el.innerHTML = el.innerHTML.replace(/\$([^\$]+?)\$/g, (_, tex) => {
-            try {
-              return katex.renderToString(tex, { displayMode: false, throwOnError: false });
-            } catch {
-              return tex;
-            }
-          });
+          el.innerHTML = renderMathText(el.innerHTML);
         }
       });
     }
@@ -1295,7 +1509,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p>Natijaviy teskari matritsa $A^{-1}$:</p>
               <div class="step-latex-display" id="latex-inv-result"></div>
             `;
-            stepsContainer!.appendChild(step2);
 
             const adjLatex = `A^* = C^T = ${matrixToLatex(adj)}`;
             const invLatex = `A^{-1} = \\frac{1}{${formatNum(det)}} ${matrixToLatex(adj)} = ${matrixToLatex(inv)}`;

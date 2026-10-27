@@ -947,11 +947,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   @media (max-width: 640px) {
     .ai-solver-hero, .diagnosis-card, .solution-container {
-      padding: 1.15rem;
+      padding: 1rem 0.65rem;
+      border-radius: 12px;
     }
     .btn-solve {
       width: 100%;
       justify-content: center;
+    }
+    .solution-body {
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .solution-header {
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
   }
 </style>
@@ -1577,6 +1586,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       `;
 
       diagnosisCard.style.display = 'block';
+    }
+
+    /**
+     * Render inline/display math in string safely
+     */
+    function renderMathText(str: string): string {
+      if (!str) return '';
+      return str.replace(/\$([^\$]+?)\$/g, (_, tex) => {
+        try {
+          return katex.renderToString(tex, { displayMode: false, throwOnError: false });
+        } catch {
+          return tex;
+        }
+      });
     }
 
     /**
