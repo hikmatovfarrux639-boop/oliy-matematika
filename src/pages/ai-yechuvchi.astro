@@ -239,54 +239,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Populated dynamically -->
   </div>
 
-  <!-- MODAL: WEBCAM LIVE CAPTURE (Photomath / Sci-Fi Scanner UI) -->
-  <div id="webcam-modal-backdrop" class="modal-backdrop" style="display: none;">
-    <div class="modal-dialog" style="max-width: 600px;">
-      <div class="modal-header">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
-          <span style="color: #38bdf8;">⚡</span> Jonli Matematik Skaner (Photomath)
-        </h3>
-        <button type="button" id="webcam-close-btn" class="btn-close" aria-label="Yopish">✕</button>
-      </div>
-      <div class="modal-body" style="text-align: center;">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-          Daftar yoki kitobdagi misolni ramka markaziga to'g'rilang:
-        </p>
-        <div class="scanner-viewfinder-box">
-          <video id="webcam-video" autoplay playsinline muted></video>
-          <canvas id="webcam-canvas" style="display: none;"></canvas>
-          
-          <!-- Sci-Fi Aiming Frame and Laser -->
-          <div class="scanner-reticle">
-            <div class="reticle-corner tl"></div>
-            <div class="reticle-corner tr"></div>
-            <div class="reticle-corner bl"></div>
-            <div class="reticle-corner br"></div>
-            <div class="scanner-laser-beam"></div>
-            <div class="scanner-aim-label">Misolni ramkaga to'g'rilang</div>
-          </div>
-
-          <div id="webcam-loading-spinner" style="position: absolute; color: white; font-size: 0.9rem;">
-            Kamera ishga tushirilmoqda...
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
-        <button type="button" id="webcam-flip-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
-          🔄 Kamerani almashtirish
-        </button>
-        <div style="display: flex; gap: 0.5rem;">
-          <button type="button" id="webcam-cancel-btn" class="btn btn-secondary" style="font-size: 0.85rem;">
-            Bekor qilish
-          </button>
-          <button type="button" id="webcam-snap-btn" class="btn btn-primary" style="font-size: 0.95rem; font-weight: 700; padding: 0.5rem 1.6rem; background: linear-gradient(135deg, #2563eb, #7c3aed);">
-            📸 Suratga olish
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- MODAL: API KEY CONFIGURATION -->
   <div id="api-modal-backdrop" class="modal-backdrop" style="display: none;">
     <div class="modal-dialog">
@@ -445,80 +397,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
-  }
-
-  /* Sci-Fi Scanner Viewfinder */
-  .scanner-viewfinder-box {
-    position: relative;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: #060913;
-    aspect-ratio: 4/3;
-    max-height: 360px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
-    border: 1.5px solid rgba(56, 189, 248, 0.35);
-  }
-
-  .scanner-viewfinder-box video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .scanner-reticle {
-    position: absolute;
-    inset: 14% 10%;
-    border: 1px dashed rgba(56, 189, 248, 0.45);
-    border-radius: 8px;
-    pointer-events: none;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 8px;
-  }
-
-  .reticle-corner {
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    border-color: #38bdf8;
-    border-style: solid;
-  }
-  .reticle-corner.tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
-  .reticle-corner.tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
-  .reticle-corner.bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
-  .reticle-corner.br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
-
-  .scanner-laser-beam {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #38bdf8;
-    box-shadow: 0 0 12px 3px rgba(56, 189, 248, 0.85);
-    animation: laserScan 2.2s ease-in-out infinite alternate;
-  }
-
-  @keyframes laserScan {
-    0% { top: 4%; opacity: 0.6; }
-    100% { top: 96%; opacity: 1; }
-  }
-
-  .scanner-aim-label {
-    background: rgba(0, 0, 0, 0.7);
-    color: #38bdf8;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.2rem 0.65rem;
-    border-radius: 9999px;
-    letter-spacing: 0.03em;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(56, 189, 248, 0.25);
   }
 
   /* Mode Selector Bar */
@@ -986,14 +864,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const imageName = document.getElementById('image-name');
     const removeImageBtn = document.getElementById('remove-image-btn');
 
-    const webcamModal = document.getElementById('webcam-modal-backdrop');
-    const webcamVideo = document.getElementById('webcam-video') as HTMLVideoElement | null;
-    const webcamCanvas = document.getElementById('webcam-canvas') as HTMLCanvasElement | null;
-    const webcamSnapBtn = document.getElementById('webcam-snap-btn');
-    const webcamCloseBtn = document.getElementById('webcam-close-btn');
-    const webcamCancelBtn = document.getElementById('webcam-cancel-btn');
-    const webcamSpinner = document.getElementById('webcam-loading-spinner');
-
     const errorBox = document.getElementById('ai-error-box');
     const errorText = document.getElementById('ai-error-text');
     const diagnosisCard = document.getElementById('topic-diagnosis-card');
@@ -1024,7 +894,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let currentMode: string = 'auto';
     let lastRawSolutionText = '';
     let lastProblemText = '';
-    let activeStream: MediaStream | null = null;
 
     // Render KaTeX on preset buttons
     document.querySelectorAll('.preset-math').forEach(el => {
@@ -1161,78 +1030,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       reader.readAsDataURL(file);
     }
 
-    function stopWebcam() {
-      if (activeStream) {
-        activeStream.getTracks().forEach(t => t.stop());
-        activeStream = null;
-      }
-      if (webcamModal) webcamModal.style.display = 'none';
-    }
-
-    // WEBCAM & SCANNER HANDLING
-    let currentFacingMode: 'environment' | 'user' = 'environment';
-    const webcamFlipBtn = document.getElementById('webcam-flip-btn');
-
-    async function startCameraStream(facing: 'environment' | 'user') {
-      if (activeStream) {
-        activeStream.getTracks().forEach(t => t.stop());
-        activeStream = null;
-      }
-      try {
-        if (webcamSpinner) webcamSpinner.style.display = 'block';
-        activeStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: facing, width: { ideal: 1280 }, height: { ideal: 720 } },
-          audio: false
-        });
-        if (webcamVideo) {
-          webcamVideo.srcObject = activeStream;
-          webcamVideo.play().catch(() => {});
-          webcamVideo.onloadedmetadata = () => {
-            if (webcamSpinner) webcamSpinner.style.display = 'none';
-          };
-        }
-      } catch (err) {
-        stopWebcam();
-        cameraInput?.click();
-      }
-    }
-
-    cameraBtn?.addEventListener('click', async () => {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && webcamModal && webcamVideo) {
-        webcamModal.style.display = 'flex';
-        await startCameraStream(currentFacingMode);
-      } else {
-        cameraInput?.click();
-      }
+    // Direct Native Camera & File Gallery Triggers
+    cameraBtn?.addEventListener('click', () => {
+      cameraInput?.click();
     });
 
-    webcamFlipBtn?.addEventListener('click', async () => {
-      currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
-      await startCameraStream(currentFacingMode);
+    galleryBtn?.addEventListener('click', () => {
+      galleryInput?.click();
     });
-
-    webcamSnapBtn?.addEventListener('click', () => {
-      if (!webcamVideo || !webcamCanvas) return;
-      webcamCanvas.width = webcamVideo.videoWidth || 800;
-      webcamCanvas.height = webcamVideo.videoHeight || 600;
-      const ctx = webcamCanvas.getContext('2d');
-      if (ctx) {
-        ctx.drawImage(webcamVideo, 0, 0, webcamCanvas.width, webcamCanvas.height);
-        const dataUrl = webcamCanvas.toDataURL('image/jpeg', 0.75);
-        selectedImageBase64 = dataUrl.split(',')[1];
-        selectedImageMime = 'image/jpeg';
-        if (imagePreview && previewContainer && imageName) {
-          imagePreview.src = dataUrl;
-          imageName.textContent = 'kamera_misol.jpg (Skanerlandi)';
-          previewContainer.style.display = 'flex';
-        }
-      }
-      stopWebcam();
-    });
-
-    webcamCloseBtn?.addEventListener('click', stopWebcam);
-    webcamCancelBtn?.addEventListener('click', stopWebcam);
-    galleryBtn?.addEventListener('click', () => galleryInput?.click());
 
     // DRAG AND DROP IMAGE
     const dropCard = document.querySelector('.solver-input-card') as HTMLElement | null;
