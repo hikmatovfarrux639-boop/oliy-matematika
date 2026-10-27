@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://oliy-matematika.vercel.app',
   compressHTML: true,
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   server: {
     host: true,
