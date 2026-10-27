@@ -1,5 +1,5 @@
 // Service Worker for Oliy Matematika PWA
-const CACHE_NAME = 'oliy-matematika-v1.1';
+const CACHE_NAME = 'oliy-matematika-v1.3';
 const PRECACHE_URLS = [
   '/',
   '/favicon.svg',
@@ -7,10 +7,11 @@ const PRECACHE_URLS = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(PRECACHE_URLS);
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -30,45 +31,13 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Only handle GET requests and same-origin or fonts
+  // Only handle GET requests and http/https
   if (request.method !== 'GET') return;
   if (!url.protocol.startsWith('http')) return;
 
-  // Static assets (CSS, JS, Fonts, SVG): Cache-First / Stale-While-Revalidate
-  const isStaticAsset = (
-    url.pathname.startsWith('/_astro/') ||
-    url.pathname.endsWith('.css') ||
-    url.pathname.endsWith('.js') ||
-    url.pathname.endsWith('.woff2') ||
-    url.pathname.endsWith('.svg') ||
-    url.pathname.endsWith('.png')
-  );
-
-  if (isStaticAsset) {
-    event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        if (cachedResponse) {
-          // Revalidate in background
-          fetch(request).then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => cache.put(request, networkResponse));
-            }
-          }).catch(() => {});
-          return cachedResponse;
-        }
-
-        return fetch(request).then((networkResponse) => {
-          if (!networkResponse || networkResponse.status !== 200) {
-            return networkResponse;
-          }
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseToCache);
-          });
-          return networkResponse;
-        });
-      })
-    );
+  // Let browser natively handle hashed _astro assets (CSS, JS, media) with Vercel's immutable cache.
+  // This completely eliminates stale CSS chunk mismatch or blank/unstyled pages during deployments.
+  if (url.pathname.startsWith('/_astro/')) {
     return;
   }
 

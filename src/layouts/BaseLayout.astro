@@ -99,7 +99,9 @@ const ogImageUrl = 'https://oliy-matematika.vercel.app/og-image.svg';
   <script is:inline>
     if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').catch(function() {});
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+          reg.update();
+        }).catch(function() {});
       });
     }
   </script>
