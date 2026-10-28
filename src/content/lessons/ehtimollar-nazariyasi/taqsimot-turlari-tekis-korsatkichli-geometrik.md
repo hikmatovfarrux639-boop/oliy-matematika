@@ -153,7 +153,7 @@ $$
 ## Mustaqil yechish uchun mashqlar
 
 ### 1-mashq
-O'yin soqqasi birinchi marta $6$ ochko tushguncha tashlanadi. Buning uchun roppa-rosa 3 marta tashlash kerak bo'lish ehtimolini toping.
+Standart zar birinchi marta $6$ ochko tushguncha tashlanadi. Buning uchun roppa-rosa 3 marta tashlash kerak bo'lish ehtimolini toping.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

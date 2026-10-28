@@ -23,7 +23,7 @@ Tasodifiy miqdorlar ikki katta toifaga bo'linadi:
 1. **Diskret tasodifiy miqdor (DTM):**
    Faqat sanoqli yoki chekli dona alohida (ajratilgan) qiymatlarni qabul qiladi:
    $$X \in \{x_1, x_2, \dots, x_n\}$$
-   *Misollar:* O'yin suyagidagi ochkolar ($1, 2, 3, 4, 5, 6$), talabaning imtihonda to'g'ri topgan testlari soni.
+   *Misollar:* Standart zardagi ochkolar ($1, 2, 3, 4, 5, 6$), talabaning imtihonda to'g'ri topgan testlari soni.
 
 2. **Uzluksiz tasodifiy miqdor (UTM):**
    Biror sonli oraliqdagi (hatto butun sonlar o'qidagi) har qanday qiymatni qabul qila oladi:

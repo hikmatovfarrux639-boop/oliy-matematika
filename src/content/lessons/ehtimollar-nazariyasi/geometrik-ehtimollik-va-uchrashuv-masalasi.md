@@ -7,7 +7,7 @@ description: "Geometrik ehtimollik ta'rifi, uzunlik, yuza va hajm o'lchovlari, k
 
 ## Kirish: Sinov natijalari soni cheksiz bo'lganda
 
-Klassik ehtimollik ta'rifida ($P(A) = \frac{m}{n}$) barcha teng imkoniyatli natijalar soni $n$chekli bo'lishi shart (masalan, tanga tashlashda$n=2$, o'yin soqqasida $n=6$).
+Klassik ehtimollik ta'rifida ($P(A) = \frac{m}{n}$) barcha teng imkoniyatli natijalar soni $n$ chekli bo'lishi shart (masalan, tanga tashlashda $n=2$, standart zar tashlashda $n=6$).
 
 Lekin tasavvur qiling: siz $1$metrli yog'och tayoqchani ixtiyoriy joyidan sindirdingiz. Siniq nuqtasining koordinatasi aynan$x = 0.5$ metr bo'lish ehtimoli nechaga teng? Natijalar soni cheksiz ko'p bo'lgani uchun klassik formula bu yerda ishlamaydi ($1 / \infty = 0$).
 

@@ -27,7 +27,7 @@ Ushbu g'aroyib fakt qanday yuz berishini bugun ushbu darsda bosqichma-bosqich o'
 $$
 P(A + B) = P(A) + P(B)
 $$
-*(Misol: o'yin suyagi tashlanganda yo 3, yo 4 ochko tushishi: $P = \frac{1}{6} + \frac{1}{6} = \frac{2}{6}$).*
+*(Misol: standart zar tashlanganda yo 3, yo 4 ochko tushishi: $P = \frac{1}{6} + \frac{1}{6} = \frac{2}{6}$).*
 
 ### B) Birgalikda bo'lgan hodisalar (Bir vaqtda ham ro'y berishi mumkin):
 $$

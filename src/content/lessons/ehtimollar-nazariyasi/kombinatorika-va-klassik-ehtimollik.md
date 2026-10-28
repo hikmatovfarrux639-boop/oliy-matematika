@@ -5,9 +5,9 @@ order: 1
 description: "Kombinatorika formulalari (permutatsiya, joylashtirish, kombinatsiya), klassik ehtimollik P(A) = m/n, gipergeometrik model va geometrik ehtimollik."
 ---
 
-## Kirish: Qimor o'yinlaridan sun'iy intellektgacha
+## Kirish: Tasodifiy hodisalardan sun'iy intellektgacha
 
-Ehtimollar nazariyasi XVII asrda qimor o'yinlarida (suyak tashlash, karta tarqatish) yutish imkoniyatlarini hisoblashga qiziqqan fransuz matematiklari Blez Paskal va Pyer Ferma o'rtasidagi yozishmalardan boshlangan.
+Ehtimollar nazariyasi XVII asrda tasodifiy tajribalar va kombinatorik sinovlar (zar tashlash, buyumlarni taqsimlash) qonuniyatlarini matematik tahlil qilishga qiziqqan mashhur fransuz matematiklari Blez Paskal va Pyer Ferma o'rtasidagi ilmiy yozishmalardan boshlangan.
 
 Bugungi kunda esa bu fan butun zamonaviy dunyoning boshqaruv dvigateli hisoblanadi:
 - Moliya va birjalarda risklarni baholash;
@@ -98,8 +98,8 @@ $$
 
 ## 5. Amaliy misollar va batafsil yechimlar
 
-### 1-misol: O'yin suyagi (Zar) tashlanganda
-Bitta o'yin suyagi tashlanganda juft ochko tushishi ehtimolligini toping.
+### 1-misol: Standart 6 yoqli zar tashlanganda
+Bitta standart 6 yoqli zar tashlanganda juft ochko tushishi ehtimolligini toping.
 
 **Yechilishi:**
 - Barcha mumkin bo'lgan natijalar: $\{1, 2, 3, 4, 5, 6\} \implies n = 6$.
@@ -108,12 +108,12 @@ $$
 P(A) = \frac{m}{n} = \frac{3}{6} = \frac{1}{2} = 0.5
 $$
 
-**Javob:** $0.5$(yoki$50\%$)
+**Javob:** $0.5$ (yoki $50\%$)
 
 ---
 
-### 2-misol: Ikkita suyak tashlanganda ochkolar yig'indisi
-Ikkita suyak bir vaqtda tashlanganda ochkolar yig'indisi $8$ bo'lish ehtimolligini toping.
+### 2-misol: Ikkita zar tashlanganda ochkolar yig'indisi
+Ikkita zar bir vaqtda tashlanganda ochkolar yig'indisi $8$ bo'lish ehtimolligini toping.
 
 **Yechilishi:**
 - Barcha variantlar (ko'paytirish qoidasi): $n = 6 \cdot 6 = 36$.
@@ -192,18 +192,16 @@ Bu usul hisoblash hajmini 5 barobar qisqartiradi!
 ## ✍️ Mustaqil yechish uchun mashqlar
 
 1. 5 nafar o'quvchini bitta qatorga necha xil usulda tizish mumkin?
-2. 36 talik karta dastidan tavakkaliga bitta karta tortilganda u "Tuz" (As) bo'lish ehtimolini toping.
+2. 1 dan 36 gacha raqamlangan chiptalar qutisidan tavakkaliga bitta chipta olinganda, uning raqami 9 ga karrali bo'lish ehtimolini toping.
 3. Qutida 10 ta shar bor: 6 ta oq va 4 ta qora. Tavakkaliga 2 ta shar olindi. Ikkalasi ham oq bo'lishi ehtimolligini toping.
-4. $R = 10$sm li nishonga qarata o'q uzildi. O'q markazdan radiusi$r \le 5$ sm bo'lgan markaziy doiraga tushish ehtimolini geometrik ehtimollik orqali toping.
+4. $R = 10$ sm li nishonga qarata o'q uzildi. O'q markazdan radiusi $r \le 5$ sm bo'lgan markaziy doiraga tushish ehtimolini geometrik ehtimollik orqali toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
 <summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>
 
 **1-masala:** $P_5 = 5! = 120$ xil usul.
 
-    
-
-**2-masala:** 36 ta kartada 4 ta tuz bor: $P = \frac{4}{36} = \frac{1}{9}$.
+**2-masala:** 1 dan 36 gacha sonlar ichida 9 ga karrali 4 ta son mavjud ($9, 18, 27, 36$): $P = \frac{4}{36} = \frac{1}{9}$.
 
     
 
