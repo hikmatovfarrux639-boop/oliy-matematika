@@ -72,6 +72,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
 
+      <!-- Pedagogik O'rganish Rejimi (Nega aynan OliyMatematika AI?) -->
+      <div class="pedagogy-selector-bar">
+        <span class="mode-label">Ta'lim uslubi:</span>
+        <div class="pedagogy-pills" id="pedagogy-mode-pills">
+          <button type="button" class="pedagogy-pill active" data-pedagogy="solution" title="Daftarga to'liq va rasmiy ko'chirish formati">
+            📄 Daftarga to'liq yechim
+          </button>
+          <button type="button" class="pedagogy-pill" data-pedagogy="socratic" title="Doskaga va og'zaki imtihonga tayyorlash: tayyor javob bermaydi, savol-javob bilan o'rgatadi">
+            🎓 Sokratik Murabbiy (Doskaga tayyorlov)
+          </button>
+          <button type="button" class="pedagogy-pill" data-pedagogy="check" title="Siz bajargan yechimni tekshiradi va xato bosqichini ko'rsatadi">
+            🔍 Yechimdagi xatoni topish
+          </button>
+        </div>
+      </div>
+
       <!-- Quick Math Symbols Toolbar -->
       <div class="math-quick-bar">
         <span style="font-size: 0.75rem; color: var(--text-subtle); margin-right: 0.25rem;">Tezkor belgilar:</span>
@@ -189,6 +205,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- 1. SOLUTION OUTPUT CONTAINER (Always shown first) -->
   <div id="solution-container" class="solution-container" style="display: none;">
+    <!-- OFFICIAL UNIVERSITY WORKSHEET HEADER (Visible only when Printing / Saving as PDF) -->
+    <div class="print-worksheet-header">
+      <div style="border: 2px solid #0f172a; padding: 14px 18px; margin-bottom: 18px; border-radius: 6px; font-family: 'Times New Roman', serif;">
+        <div style="text-align: center; border-bottom: 1.5px solid #0f172a; padding-bottom: 8px; margin-bottom: 10px;">
+          <h3 style="margin: 0; font-size: 13pt; text-transform: uppercase; letter-spacing: 0.5px;">O'ZBEKISTON RESPUBLIKASI OLIY TA'LIM, FAN VA INNOVATSIYALAR VAZIRLIGI</h3>
+          <h4 style="margin: 4px 0 0; font-size: 12pt; font-weight: 700;">OLIY MATEMATIKA — AMALIY TOPSHIRIQ VA MUSTAQIL ISH DAFTARI</h4>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 10.5pt; margin-top: 6px;">
+          <span><strong>Talaba:</strong> ________________________________</span>
+          <span><strong>Guruh:</strong> ___________</span>
+          <span><strong>Sana:</strong> 202___-yil «___» _________</span>
+        </div>
+      </div>
+    </div>
+
     <div class="solution-header">
       <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
         <span style="font-size: 1.6rem;">📝</span>
@@ -841,6 +872,94 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin-bottom: 1rem;
     }
   }
+
+  /* Pedagogical Mode Bar */
+  .pedagogy-selector-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    border-top: 1px dashed var(--border-color);
+    flex-wrap: wrap;
+  }
+  .pedagogy-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .pedagogy-pill {
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .pedagogy-pill:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .pedagogy-pill.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+  }
+
+  .print-worksheet-header {
+    display: none;
+  }
+
+  @media print {
+    /* Hide everything on page except the clean worksheet */
+    header, footer, nav, aside, .ai-solver-hero, .presets-section, .diagnosis-card,
+    #webcam-modal-backdrop, #api-modal-backdrop, .solution-header, #grounding-sources,
+    .mobile-bottom-nav, .theme-toggle-btn {
+      display: none !important;
+    }
+
+    body {
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-size: 11pt !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .solution-container {
+      display: block !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: #ffffff !important;
+    }
+
+    .print-worksheet-header {
+      display: block !important;
+    }
+
+    .solution-body {
+      color: #000000 !important;
+      font-size: 11pt !important;
+      line-height: 1.6 !important;
+    }
+
+    .solution-body :global(h2),
+    .solution-body :global(h3) {
+      color: #0f172a !important;
+      border-bottom: 1px solid #cbd5e1 !important;
+      padding-bottom: 4px !important;
+      margin-top: 14px !important;
+    }
+
+    .solution-body :global(.katex-display) {
+      margin: 10px 0 !important;
+    }
+  }
 </style>
 
 <script>
@@ -892,6 +1011,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let selectedImageBase64: string | null = null;
     let selectedImageMime: string | null = null;
     let currentMode: string = 'auto';
+    let currentPedagogy: string = 'solution';
     let lastRawSolutionText = '';
     let lastProblemText = '';
 
@@ -915,6 +1035,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
       });
     });
+
+    // Pedagogy Mode Pills (Solution vs Socratic vs Check)
+    document.querySelectorAll('.pedagogy-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.pedagogy-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentPedagogy = (pill as HTMLElement).dataset.pedagogy || 'solution';
+        if (input.value.trim() || selectedImageBase64) {
+          handleSolve(true);
+        }
+      });
+    });
+
+    // Direct URL parameter deep-linking (e.g. from HEMIS Quiz error review or course links)
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('q');
+    const pedagogyParam = urlParams.get('pedagogy') || urlParams.get('mode');
+    if (pedagogyParam && ['solution', 'socratic', 'check'].includes(pedagogyParam)) {
+      currentPedagogy = pedagogyParam;
+      document.querySelectorAll('.pedagogy-pill').forEach(p => {
+        p.classList.toggle('active', (p as HTMLElement).dataset.pedagogy === currentPedagogy);
+      });
+    }
+    if (queryParam) {
+      input.value = queryParam;
+      setTimeout(() => {
+        handleSolve(true);
+      }, 300);
+    }
 
     // API Key status: supports secure serverless proxy or optional custom personal key
     function getUserApiKey(): string {
@@ -1533,16 +1682,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       try {
         const useGoogleSearch = searchToggle?.checked || false;
 
-        const systemPrompt = `Siz OliyMatematika (oliy-matematika.vercel.app) platformasining tezkor professor-repetitorisiz.
-Vazifangiz: Berilgan oliy matematika misolini (matn yoki rasmdagi qo'lyozma) o'zbek tilida (lotin yozuvida) qadamma-qadam yechish va talabaga saytdagi aynan qaysi darsni o'qish kerakligini tavsiya qilish.
+        const titleHeading = document.getElementById('solution-title-heading');
+        if (titleHeading) {
+          if (currentPedagogy === 'socratic') {
+            titleHeading.textContent = "🎓 Sokratik Murabbiy (Doskaga va Imtihonga Tayyorlov)";
+          } else if (currentPedagogy === 'check') {
+            titleHeading.textContent = "🔍 Yechim Xatoliklari va To'g'rilash Tahlili";
+          } else {
+            titleHeading.textContent = "📄 Amaliy Mashg'ulot Daftari uchun Yechim";
+          }
+        }
+
+        let systemPrompt = '';
+        if (currentPedagogy === 'socratic') {
+          systemPrompt = `Siz OliyMatematika (oliy-matematika.vercel.app) platformasining talabani doskaga va og'zaki oraliq/yakuniy imtihonga tayyorlaydigan Sokratik Repetitor-Professorsiz.
+Qat'iy qoidalar:
+1. TALABAGA TAYYOR YAKUNIY JAVOBNI DARHOL BERMANG! Maqsad ko'chirish emas, talabaning o'zi tushunib yetishidir.
+2. Tahlilni qat'iy 4 bo'limda tuzing:
+   - ## 1. 🎯 Masala mohiyati va qaysi teoremaga asoslanishi
+     (Masalaning qaysi modulga tegishliligi va nima uchun bu metod tanlangani).
+   - ## 2. 🧭 Yo'naltiruvchi 1-qadam (Savol-javob)
+     (Talabaga birinchi amaldan boshlab yo'l ko'rsating va savol bering: masalan, "Determinantni qaysi satr bo'yicha yoyish osonroq?", "Bu yerda qaysi almashtirishni qo'llash kerak deb o'ylaysiz?").
+   - ## 3. ⚠️ Domla doskada berishi mumkin bo'lgan 2 ta hiylali savol (va to'g'ri ilmiy javoblari)
+     (Talaba doskaga chiqqanda adashmasligi uchun domlalar tez-tez beradigan nozik nazariy savollar va ularning tayyor yechimi).
+   - ## 4. 📚 Saytdan o'rganish uchun tavsiya etilgan darslar
+3. Barcha matematik ifodalarni KaTeX formatida yozing: $...$ va $$...$$.`;
+        } else if (currentPedagogy === 'check') {
+          systemPrompt = `Siz talabaning mustaqil bajargan yechimini tekshiruvchi professor-ekspertsiz.
+Vazifangiz: Talaba yozgan yoki rasmda ko'rsatgan yechimdagi har bir qadamni sinchkovlik bilan tekshirish va xatolarni ko'rsatish.
+Qat'iy qoidalar:
+1. Yechimni qat'iy 4 bo'limda bering:
+   - ## 1. 📊 Yechim holati (To'g'ri / Xato aniqlandi)
+   - ## 2. 🔍 Xatoliklar tahlili va sababi
+     (Qaysi qatorda nima xato ketgan: ishora adashganmi, qavs ochishdami, formula xatomi yoki arifmetik xatolikmi — aniq ko'rsating).
+   - ## 3. ✅ To'g'rilangan to'liq yechim va yakuniy javob
+   - ## 4. 📚 Mustahkamlash uchun tavsiya etilgan darslar
+2. Barcha matematik formulalarni KaTeX formatida yozing: $...$ va $$...$$.`;
+        } else {
+          systemPrompt = `Siz OliyMatematika (oliy-matematika.vercel.app) platformasining oliy ta'lim talablariga mos akademik professorisiz.
+Vazifangiz: Berilgan oliy matematika misolini (matn yoki rasmdagi qo'lyozma) o'zbek tilida (lotin yozuvida), talaba o'zining amaliy mashg'ulot daftariga to'g'ridan-to'g'ri ko'chirishi mumkin bo'lgan toza, mukammal va tartibli formatda yechish.
 
 Qat'iy qoidalar:
 1. Barcha matematik formulalarni KaTeX formatida yozing: $...$ va $$...$$.
 2. Yechimni qisqa, tushunarli va aniq 4 bo'limda bering:
-   - ## 1. Masala sharti va mavzu tashxisi
-   - ## 2. Qadamma-qadam yechim
-   - ## 3. Yakuniy javob
-   - ## 4. Saytdan o'rganish uchun tavsiya etilgan darslar
+   - ## 1. Berilgan va Masala sharti
+   - ## 2. Nazariy asos va qo'llaniladigan formulalar
+   - ## 3. Qadamma-qadam to'liq yechim va tekshirish
+   - ## 4. Yakuniy javob va saytdan tavsiya etilgan darslar
 3. 4-bo'limda quyidagi mavjud dars havolalaridan eng moslarini markdown link sifatida bering:
    - [Tenglamalar va tengsizliklar](/dars/maktab-kursi/tenglamalar-va-tengsizliklar)
    - [Trigonometriya asoslari](/dars/maktab-kursi/trigonometriya-asoslari)
@@ -1569,6 +1755,7 @@ Qat'iy qoidalar:
    - [O'zgaruvchilari ajraladigan differensial tenglamalar](/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar)
    - [2-tartibli o'zgarmas koeffitsiyentli differensial tenglamalar](/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar)
    - [Kombinatorika va klassik ehtimollik](/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik)`;
+        }
 
         const parts: any[] = [];
         if (selectedImageBase64 && selectedImageMime) {
@@ -1580,9 +1767,20 @@ Qat'iy qoidalar:
           });
         }
 
-        const queryText = problemText
-          ? `Misolni qadamma-qadam yeching va saytdagi mos darsni tavsiya qiling:\n${problemText}`
-          : `Rasmdagi misolni o'qib, qadamma-qadam yeching va saytdagi mos darsni tavsiya qiling.`;
+        let queryText = '';
+        if (currentPedagogy === 'socratic') {
+          queryText = problemText
+            ? `Quyidagi misol bo'yicha meni Sokratik repetitorlik metodi orqali doskaga va og'zaki imtihonga tayyorlang (tayyor javobni darhol aytmang!):\n${problemText}`
+            : `Rasmdagi misol bo'yicha meni Sokratik repetitorlik metodi orqali doskaga va og'zaki imtihonga tayyorlang (tayyor javobni darhol aytmang!).`;
+        } else if (currentPedagogy === 'check') {
+          queryText = problemText
+            ? `Quyida mening bajargan yechimim berilgan. Undagi xatolarni sinchkovlik bilan tekshirib, qaysi bosqichda adashganimni ko'rsatib bering:\n${problemText}`
+            : `Rasmdagi yechimimni tekshirib, qaysi bosqichda xato ketganini aniqlab bering.`;
+        } else {
+          queryText = problemText
+            ? `Misolni daftarga ko'chirishga qulay rasmiy akademik formatda, qadamma-qadam yeching va saytdagi mos darsni tavsiya qiling:\n${problemText}`
+            : `Rasmdagi misolni o'qib, daftarga ko'chirishga qulay rasmiy formatda qadamma-qadam yeching va saytdagi mos darsni tavsiya qiling.`;
+        }
         parts.push({ text: queryText });
 
         let data: any = null;
