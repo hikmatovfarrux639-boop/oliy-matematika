@@ -5,3 +5,12 @@ dist/
 .DS_Store
 Thumbs.db
 scratch/
+.venv/
+venv/
+*.log
+package-lock.json
+screenshots/
+hujjatlar/
+tools/
+*.pyc
+__pycache__/

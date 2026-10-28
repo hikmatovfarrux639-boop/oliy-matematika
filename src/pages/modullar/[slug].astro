@@ -97,7 +97,7 @@ const { moduleData, lessons } = Astro.props;
                 <span style="font-weight: 700; color: var(--primary);">{lesson.data.order}-dars:</span>
                 <span style="font-weight: 700; font-size: 1.05rem; color: var(--text-main);">{lesson.data.title}</span>
               </div>
-              <span class="lesson-status-pill badge" style="display: none; background: var(--accent-light); color: var(--accent);">✅ O'zlashtirildi</span>
+              <span class="lesson-status-pill"></span>
             </div>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.5;">{lesson.data.description}</p>
             <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">Darsni o'qish →</div>
@@ -125,7 +125,11 @@ const { moduleData, lessons } = Astro.props;
       if (lessonSlug && completed.includes(lessonSlug)) {
         completedInThisModule++;
         const pill = card.querySelector('.lesson-status-pill') as HTMLElement | null;
-        if (pill) pill.style.display = 'inline-flex';
+        if (pill) {
+          pill.className = 'lesson-status-pill badge';
+          pill.style.cssText = 'display: inline-flex; background: var(--accent-light); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700;';
+          pill.textContent = "✅ O'zlashtirildi";
+        }
       }
     });
 

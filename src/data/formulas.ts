@@ -76,10 +76,10 @@ export const FORMULAS: FormulaItem[] = [
     id: "alg-8",
     category: "algebra",
     categoryLabel: "Algebra & Matritsa",
-    title: "Kroneker-Kapelli teoremasi (CHATS birgalikda bo'lish sharti)",
+    title: "Kronekker-Kapelli teoremasi (ChTS birgalikda bo'lish sharti)",
     latex: "\\text{rang}(A) = \\text{rang}(A|B) = r",
     note: "r = n bo'lsa yagona yechim, r < n bo'lsa cheksiz ko'p yechim",
-    keywords: "kroneker kapelli rang matritsa rangi birgalikda"
+    keywords: "kronekker kapelli rang matritsa rangi birgalikda"
   },
   {
     id: "alg-9",

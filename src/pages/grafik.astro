@@ -225,7 +225,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="canvas-tip-footer">
-          💡 <strong>Qulaylik:</strong> Sichqoncha g'ildirakchasi (scroll) orqali masshtabni kattalashtirib-kichraytirishingiz, bosib surish orqali ixtiyoriy chorakka o'tishingiz mumkin.
+          💡 <strong>Qulaylik:</strong> Sichqoncha g'ildirakchasi (yoki mobil ekranda ikki barmoq bilan chimchilab/surib) masshtabni kattalashtirib-kichraytirishingiz, bosib surish orqali ixtiyoriy chorakka o'tishingiz mumkin.
         </div>
       </div>
     </div>
@@ -258,7 +258,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="fullscreen-modal-footer">
-        <span>💡 <strong>Qulaylik:</strong> Sichqoncha g'ildirakchasi orqali masshtabni kattalashtiring, surish orqali egri chiziqlarni batafsil ko'ring. Chiqish uchun <strong>Esc</strong> yoki <strong>✕ Yopish</strong> tugmasini bosing.</span>
+        <span>💡 <strong>Qulaylik:</strong> Sichqoncha g'ildirakchasi yoki sensorli ekranda chimchilash orqali masshtabni o'zgartiring, surish orqali egri chiziqlarni batafsil ko'ring. Chiqish uchun <strong>Esc</strong> yoki <strong>✕ Yopish</strong> tugmasini bosing.</span>
       </div>
     </div>
   </div>
@@ -538,6 +538,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               }
             } catch {}
 
+            // 1. Ildizlar va Ekstremumlarni sonli baholash
+            const roots: number[] = [];
+            const extremas: { x: number, y: number, type: string }[] = [];
+            try {
+              let prevY: number | null = null;
+              let prevX: number | null = null;
+              let diffCompiled = diffStr ? (math as any).derivative(parsed, 'x').compile() : null;
+              let prevDy: number | null = null;
+
+              for (let x = -8; x <= 8; x += 0.25) {
+                const roundX = Math.round(x * 100) / 100;
+                try {
+                  const y = compiled.evaluate({ x: roundX });
+                  if (typeof y === 'number' && isFinite(y)) {
+                    if (Math.abs(y) < 1e-3) {
+                      if (!roots.some(r => Math.abs(r - roundX) < 0.3)) roots.push(roundX);
+                    } else if (prevY !== null && prevX !== null && prevY * y < 0 && Math.abs(y - prevY) < 10) {
+                      const rootApprox = Math.round((prevX - prevY * (roundX - prevX) / (y - prevY)) * 100) / 100;
+                      if (!roots.some(r => Math.abs(r - rootApprox) < 0.3)) roots.push(rootApprox);
+                    }
+                    prevY = y;
+                    prevX = roundX;
+
+                    if (diffCompiled) {
+                      try {
+                        const dy = diffCompiled.evaluate({ x: roundX });
+                        if (typeof dy === 'number' && isFinite(dy)) {
+                          if (prevDy !== null && prevDy * dy < 0 && Math.abs(dy - prevDy) < 20) {
+                            const exX = Math.round((roundX - 0.12) * 10) / 10;
+                            const exY = Math.round(compiled.evaluate({ x: exX }) * 100) / 100;
+                            const exType = prevDy > 0 ? 'Lokal Max' : 'Lokal Min';
+                            if (!extremas.some(e => Math.abs(e.x - exX) < 0.4)) extremas.push({ x: exX, y: exY, type: exType });
+                          }
+                          prevDy = dy;
+                        }
+                      } catch {}
+                    }
+                  } else {
+                    prevY = null;
+                  }
+                } catch {
+                  prevY = null;
+                }
+              }
+            } catch {}
+
+            let domainStr = 'D(f) = (-∞; +∞)';
+            let asympStr = "Mavjud emas";
+            if (primaryFn.includes('/') || primaryFn.includes('tan(')) {
+              domainStr = "Maxraj/davriylik bo'yicha uzilishlar mavjud";
+            }
+            if (primaryFn.includes('1/x') || primaryFn.includes('/ (x') || primaryFn.includes('/(x')) {
+              asympStr = 'x = 0 (vertikal), y = 0 (gorizontal)';
+            } else if (primaryFn.includes('exp(-') || primaryFn.includes('1 / (1 + x^2)')) {
+              asympStr = 'y = 0 (gorizontal)';
+            }
+
+            const rootsDisplay = roots.length > 0 ? roots.slice(0, 4).map(r => `x = ${r}`).join(', ') : '[-8; 8] oraliqda aniqlanmadi';
+            const extremaDisplay = extremas.length > 0 ? extremas.slice(0, 3).map(e => `${e.type}: (${e.x}; ${e.y})`).join(', ') : 'Monoton / Silliq';
+
             let texFormula = '';
             try { texFormula = katex.renderToString(`f_1(x) = ${parsed.toTex()}`, { throwOnError: false }); } catch { texFormula = primaryFn; }
             let texDiff = '';
@@ -549,6 +609,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <span class="analysis-val">${texFormula}</span>
               </div>
               <div class="analysis-item">
+                <span class="analysis-label">Ox ildizlari (f(x)=0):</span>
+                <span class="analysis-val" style="color: #2563eb; font-weight: 700;">${rootsDisplay}</span>
+              </div>
+              <div class="analysis-item">
                 <span class="analysis-label">Oy kesishishi (x=0):</span>
                 <span class="analysis-val">${y0Str}</span>
               </div>
@@ -557,6 +621,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <span class="analysis-label">Hosilasi f'(x):</span>
                 <span class="analysis-val" style="color: #dc2626;">${texDiff}</span>
               </div>` : ''}
+              <div class="analysis-item">
+                <span class="analysis-label">Ekstremum nuqtalari:</span>
+                <span class="analysis-val" style="color: #7c3aed;">${extremaDisplay}</span>
+              </div>
+              <div class="analysis-item">
+                <span class="analysis-label">Aniqlanish sohasi:</span>
+                <span class="analysis-val">${domainStr}</span>
+              </div>
+              <div class="analysis-item">
+                <span class="analysis-label">Asimptotalar:</span>
+                <span class="analysis-val">${asympStr}</span>
+              </div>
               <div class="analysis-item">
                 <span class="analysis-label">Simmetriya turi:</span>
                 <span class="analysis-val">${symStr}</span>

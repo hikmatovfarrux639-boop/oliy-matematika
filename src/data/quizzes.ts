@@ -711,7 +711,7 @@ export const QUIZ_DATABASE: QuizQuestion[] = [
     difficulty: "O'rta"
   },
   // ==========================================
-  // QO'SHIMCHA HEMIS IMTIHON SAVOLLARI (56 TA)
+  // QO'SHIMCHA IMTIHON TEST SAVOLLARI (56 TA)
   // ==========================================
   {
     id: 'm1-q4',
@@ -1571,7 +1571,7 @@ export const EXAM_PRESETS: ExamPreset[] = [
     id: 'oraliq-1',
     title: '🎯 Oraliq Nazorat (1-semestr)',
     subtitle: '1–7 modullar bo\'yicha',
-    badge: 'HEMIS Oraliq',
+    badge: 'Oraliq Nazorat',
     badgeColor: '#3b82f6',
     description: 'Chiziqli algebra, vektorlar, kompleks sonlar, limitlar va hosila bo\'yicha 1-semestr oraliq nazorati uchun saralangan testlar.',
     filter: (q) => ['maktab-kursi', 'chiziqli-algebra', 'vektorlar-geometriya', 'kompleks-sonlar', 'limitlar', 'funksiyalar-grafiklar', 'hosila'].includes(q.moduleId),
@@ -1581,7 +1581,7 @@ export const EXAM_PRESETS: ExamPreset[] = [
     id: 'oraliq-2',
     title: '🎯 Oraliq Nazorat (2-semestr)',
     subtitle: '8–14 modullar bo\'yicha',
-    badge: 'HEMIS Oraliq',
+    badge: 'Oraliq Nazorat',
     badgeColor: '#8b5cf6',
     description: 'Integrallar, ko\'p o\'zgaruvchili funksiyalar, qatorlar, differensial tenglamalar va ehtimollar nazariyasi bo\'yicha 2-oraliq testlari.',
     filter: (q) => ['integrallar', 'kop-ozgaruvchili-funksiyalar', 'karrali-integrallar', 'qatorlar', 'differensial-tenglamalar', 'ehtimollar-nazariyasi', 'matematik-statistika'].includes(q.moduleId),
@@ -1591,9 +1591,9 @@ export const EXAM_PRESETS: ExamPreset[] = [
     id: 'yakuniy',
     title: '🏆 Yakuniy Nazorat (To\'liq Kurs)',
     subtitle: 'Barcha 14 ta moduldan',
-    badge: 'HEMIS Yakuniy',
+    badge: 'Yakuniy Nazorat',
     badgeColor: '#10b981',
-    description: 'Barcha modullarni qamrab oluvchi to\'liq yakuniy imtihon simulyatori. 15 ta tasodifiy savol va avtomatik HEMIS 100 ballik baholash shkalasi.',
+    description: 'Barcha modullarni qamrab oluvchi to\'liq yakuniy imtihon simulyatori. 15 ta tasodifiy savol va avtomatik 100 ballik akademik baholash shkalasi.',
     filter: () => true,
     questionCount: 15
   },

@@ -112,10 +112,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </button>
 
-        <!-- Option 3: Exam (HEMIS) -->
+        <!-- Option 3: Exam (Test) -->
         <button type="button" class="clarify-btn" data-mode="exam">
           <div class="clarify-btn-badge" style="background: rgba(37, 99, 235, 0.15); color: #2563eb;">
-            📝 HEMIS IMTIHON REJASI (35–45 daqiqa)
+            📝 IMTIHON VA TEST REJASI (35–45 daqiqa)
           </div>
           <div class="clarify-btn-title">Faqat nazorat va testlar uchun</div>
           <div class="clarify-btn-desc">
@@ -143,7 +143,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             🎓 Chuqur (Poydevor bilan)
           </button>
           <button type="button" class="mode-pill" data-switch="exam">
-            📝 HEMIS Test rejasi
+            📝 Imtihon & Test rejasi
           </button>
         </div>
         <div class="share-actions">
@@ -195,7 +195,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="exam-tip-box">
           <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.05rem; color: #d97706; margin-bottom: 0.6rem;">
             <span>🏆</span>
-            <span>Professorning Imtihon Siri (HEMIS va Oraliq uchun)</span>
+            <span>Professorning Imtihon Siri (Oraliq va Yakuniy uchun)</span>
           </div>
           <p id="strategy-exam-tip" style="margin: 0 0 1.25rem 0; font-size: 0.95rem; line-height: 1.6; color: var(--text-main);"></p>
 
@@ -558,7 +558,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         questions.push(`🎲 Geometrik ehtimollik bilan klassik ehtimollik farqi?`);
         questions.push(`📊 Bayes formulasi qachon ishlatiladi?`);
       } else {
-        questions.push(`🎯 Oraliq yoki HEMIS nazoratida qanday tipik savollar tushadi?`);
+        questions.push(`🎯 Oraliq yoki yakuniy nazoratda qanday tipik savollar tushadi?`);
         questions.push(`⚡ Ushbu mavzuni tez va oson o'zlashtirish siri nima?`);
       }
 
@@ -876,7 +876,7 @@ Talaba savoliga o'zbek tilida, aniq, formulalar ($...$) va do'stona ohangda qisq
         .map((s, i) => `${i + 1}. **[${s.title}](${s.url})** — *(${s.duration})* ${s.whyRead}`)
         .join('\n- ');
       const toolLink = currentPlan.interactiveTools[0] || { title: 'Kalkulyator', url: '/kalkulyator' };
-      const modeTitle = activeMode === 'express' ? 'TEZKOR REJA' : activeMode === 'exam' ? 'HEMIS IMTIHON REJASI' : 'CHUQUR POYDEVOR';
+      const modeTitle = activeMode === 'express' ? 'TEZKOR REJA' : activeMode === 'exam' ? 'IMTIHON REJASI' : 'CHUQUR POYDEVOR';
 
       const baselineAdvice = `## 🎯 «${currentPlan.topicTitle}» bo'yicha Shaxsiy Tayyorgarlik (${modeTitle})
 
@@ -970,7 +970,7 @@ Darslarni o'qib bo'lgach, **[${toolLink.title}](${toolLink.url})** asbobida miso
           activeMode === 'express'
             ? '⚡ Tezkor (Faqat eng asosiysi)'
             : activeMode === 'exam'
-            ? '📝 HEMIS Imtihon Rejasi'
+            ? '📝 Imtihon & Test Rejasi'
             : '🎓 Chuqur (Poydevor bilan)';
 
         diagnosisBanner.innerHTML = `

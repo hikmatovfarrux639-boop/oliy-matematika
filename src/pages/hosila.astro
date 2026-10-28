@@ -603,6 +603,38 @@ const kLatex = katex.renderToString("k = \\operatorname{tg}\\alpha = f'(x_0)", {
           };
         }
 
+        // Update step breakdown banner
+        const ruleBanner = document.getElementById('hosila-rule-banner');
+        if (ruleBanner) {
+          let ruleLatex = "(x^n)' = n x^{n-1}";
+          let ruleName = "Darajali funksiya va yig'indi qoidasi";
+          if (rawExpr.includes('sin') || rawExpr.includes('cos') || rawExpr.includes('tan')) {
+            ruleLatex = "(\\sin x)' = \\cos x, \\; (\\cos x)' = -\\sin x";
+            ruleName = "Trigonometrik funksiyalar hosilasi jadvali";
+          } else if (rawExpr.includes('exp') || rawExpr.includes('e^')) {
+            ruleLatex = "(e^x)' = e^x";
+            ruleName = "Ko'rsatkichli funksiya differensiallash qoidasi";
+          } else if (rawExpr.includes('log') || rawExpr.includes('ln')) {
+            ruleLatex = "(\\ln x)' = \\frac{1}{x}";
+            ruleName = "Logarifmik funksiya differensiallash qoidasi";
+          }
+
+          const renderedRule = katex.renderToString(ruleLatex, { displayMode: false, throwOnError: false });
+          const renderedDfx = katex.renderToString(`f'(x) = ${dfxTex}`, { displayMode: false, throwOnError: false });
+          const renderedFx = katex.renderToString(`f(x) = ${fxTex}`, { displayMode: false, throwOnError: false });
+
+          const descEl = ruleBanner.querySelector('div > div:nth-child(2)');
+          if (descEl) {
+            descEl.innerHTML = `
+              <div style="margin-top: 0.35rem; line-height: 1.6;">
+                <strong>1. Dastlabki funksiya:</strong> ${renderedFx} <br/>
+                <strong>2. Qo'llanilgan qoida (${ruleName}):</strong> ${renderedRule} <br/>
+                <strong>3. Natijaviy hosila:</strong> <span style="color: #dc2626; font-weight: 700;">${renderedDfx}</span>
+              </div>
+            `;
+          }
+        }
+
         // Prepare functions for plotting
         const fn1Str = rawExpr;
         const fn2Str = simplified.toString();

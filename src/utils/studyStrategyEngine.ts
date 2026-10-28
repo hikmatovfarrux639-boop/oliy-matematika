@@ -152,7 +152,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Determinant qanday qilib tekislikdagi yuzani cho'zishi yoki 0 bo'lganda chiziqqa yig'ib qo'yishini 60 FPS animatsiyada ko'ring."
         },
         {
-          title: '📝 Chiziqli Algebra HEMIS Testi',
+          title: '📝 Chiziqli Algebra Testi',
           url: '/testlar?modul=chiziqli-algebra#quiz-section',
           icon: '📝',
           desc: "Mavzuni o'qib bo'lgach, imtihon savollarida o'zingizni sinab ko'ring."
@@ -169,7 +169,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
       topicTitle: 'Chiziqli Tenglamalar Sistemasi (Kramer, Matritsa va Gauss usullari)',
       moduleSlug: 'chiziqli-algebra',
       moduleTitle: '2-Modul: Chiziqli algebra',
-      empathyMessage: "Chiziqli tenglamalar sistemasi (CHTS) — 1-kurs oraliq imtihonining eng asosiy savoli! Uni 3 xil usulda (Kramer, Matritsa, Gauss) yechishni quyidagi aniq reja bilan tezda o'rganib olasiz.",
+      empathyMessage: "Chiziqli tenglamalar sistemasi (ChTS) — 1-kurs oraliq imtihonining eng asosiy savoli! Uni 3 xil usulda (Kramer, Matritsa, Gauss) yechishni quyidagi aniq reja bilan tezda o'rganib olasiz.",
       rootCauseWhyHard: "Talabalar ko'pincha qaysi usulni qachon qo'llashni va Gauss usulida satrlarni nolga aylantirish tartibini adashtirishadi.",
       estimatedTotalTime: '50–70 daqiqa',
       steps: [
@@ -220,19 +220,19 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
       ],
       interactiveTools: [
         {
-          title: '🔢 Matritsa va CHTS Kalkulyatori',
+          title: '🔢 Matritsa va ChTS Kalkulyatori',
           url: '/matritsa',
           icon: '🔢',
           desc: "Kramer, Gauss va Teskari matritsa hisob-kitoblarini qadamma-qadam tekshiring."
         },
         {
-          title: '📝 Chiziqli Algebra HEMIS Testi',
+          title: '📝 Chiziqli Algebra Testi',
           url: '/testlar?modul=chiziqli-algebra#quiz-section',
           icon: '📝',
-          desc: "CHTS va matritsalar bo'yicha imtihon testlarini ishlang."
+          desc: "ChTS va matritsalar bo'yicha imtihon testlarini ishlang."
         }
       ],
-      examTip: "Har qanday CHTS ni yechib bo'lgach, topilgan (x, y, z) sonlarni dastlabki tenglamalarning BARCHASIGA qo'yib tekshiring! Bu 30 soniya vaqt oladi, ammo 100% ballni kafolatlaydi."
+      examTip: "Har qanday ChTS ni yechib bo'lgach, topilgan (x, y, z) sonlarni dastlabki tenglamalarning BARCHASIGA qo'yib tekshiring! Bu 30 soniya vaqt oladi, ammo 100% ballni kafolatlaydi."
     }
   },
   {
@@ -368,7 +368,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Skalyar, vektor, aralash ko'paytma, burchak, uchburchak yuzi va piramida hajmini darhol hisoblab tekshiring!"
         },
         {
-          title: '📝 Vektorlar va Geometriya HEMIS Testi',
+          title: '📝 Vektorlar va Geometriya Testi',
           url: '/testlar?modul=vektorlar-geometriya#quiz-section',
           icon: '📝',
           desc: "Modul bo'yicha bilimingizni testda sinab ko'ring."
@@ -442,7 +442,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Istalgan limit misolini yozing — tizim uning aniqmaslik turini va qadamma-qadam yechimini chiqarib beradi."
         },
         {
-          title: '📝 Limitlar HEMIS Testi',
+          title: '📝 Limitlar Testi',
           url: '/testlar?modul=limitlar#quiz-section',
           icon: '📝',
           desc: "Limitlar bo'yicha imtihon testlarini yechib bilimingizni mustahkamlang."
@@ -516,7 +516,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Istalgan funksiyani kiriting — 1- va 2-tartibli hosilasini, nuqtadagi qiymatini va urinma grafigini chizib beradi!"
         },
         {
-          title: '📝 Hosila va Differensial HEMIS Testi',
+          title: '📝 Hosila va Differensial Testi',
           url: '/testlar?modul=hosila#quiz-section',
           icon: '📝',
           desc: "Hosila bo'yicha imtihon testlarini yechib ko'ring."
@@ -596,7 +596,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Integral misolini yozing — tizim qadamma-qadam yechimini va grafigini chiqarib beradi."
         },
         {
-          title: '📝 Integrallar HEMIS Testi',
+          title: '📝 Integrallar Testi',
           url: '/testlar?modul=integrallar#quiz-section',
           icon: '📝',
           desc: "Integrallar bo'yicha test savollarini ishlang."
@@ -670,7 +670,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Masalan, y'' - 5y' + 6y = 0 deb yozing — darhol xarakteristik ildizlar va umumiy yechimni chiqarib beradi!"
         },
         {
-          title: '📝 Differensial Tenglamalar HEMIS Testi',
+          title: '📝 Differensial Tenglamalar Testi',
           url: '/testlar?modul=differensial-tenglamalar#quiz-section',
           icon: '📝',
           desc: "Modul bo'yicha test savollarini ishlang."
@@ -744,7 +744,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Tasodifiy jarayonlar qanday qilib Gauss qo'ng'iroq egri chizig'ini hosil qilishini jonli ko'ring!"
         },
         {
-          title: '📝 Ehtimollar Nazariyasi HEMIS Testi',
+          title: '📝 Ehtimollar Nazariyasi Testi',
           url: '/testlar?modul=ehtimollar-nazariyasi#quiz-section',
           icon: '📝',
           desc: "Ehtimollar va statistika bo'yicha imtihon testlarini ishlang."
@@ -807,7 +807,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Kompleks sonlar ustida amallarni yozib qadamma-qadam tekshiring."
         },
         {
-          title: '📝 Kompleks Sonlar HEMIS Testi',
+          title: '📝 Kompleks Sonlar Testi',
           url: '/testlar?modul=kompleks-sonlar#quiz-section',
           icon: '📝',
           desc: "Modul bo'yicha imtihon savollarini ishlang."
@@ -870,7 +870,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Oddiy sinus to'lqinlar qo'shilib qanday qilib murakkab signal hosil qilishini jonli ko'ring!"
         },
         {
-          title: '📝 Qatorlar HEMIS Testi',
+          title: '📝 Qatorlar Testi',
           url: '/testlar?modul=qatorlar#quiz-section',
           icon: '📝',
           desc: "Qatorlar bo'yicha imtihon testlarini ishlang."
@@ -933,7 +933,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "3D fazoda z = f(x, y) sirtlarini aylantirib ko'ring va gradient pasayish qanday ishlashini kuzating!"
         },
         {
-          title: '📝 Ko\'p O\'zgaruvchili Funksiyalar HEMIS Testi',
+          title: '📝 Ko\'p O\'zgaruvchili Funksiyalar Testi',
           url: '/testlar?modul=kop-ozgaruvchili-funksiyalar#quiz-section',
           icon: '📝',
           desc: "Modul bo'yicha imtihon testlarini ishlang."
@@ -996,7 +996,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "O'zingiz tekshirayotgan funksiyani yozing va grafigini darhol ekranda ko'rib tekshiring!"
         },
         {
-          title: '📝 Funksiyalar va Grafiklar HEMIS Testi',
+          title: '📝 Funksiyalar va Grafiklar Testi',
           url: '/testlar?modul=funksiyalar-grafiklar#quiz-section',
           icon: '📝',
           desc: "Modul bo'yicha imtihon testlarini ishlang."
@@ -1070,7 +1070,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           desc: "Maktab va 1-kursning eng kerakli jadvallarini 1 sahifada ko'ring yoki chop eting."
         },
         {
-          title: '📝 Maktab Kursi HEMIS Testi',
+          title: '📝 Maktab Kursi Testi',
           url: '/testlar?modul=maktab-kursi#quiz-section',
           icon: '📝',
           desc: "Poydevor bilimingizni 20 ta testda sinab ko'ring."
@@ -1135,12 +1135,12 @@ export function generateStudyStrategy(
     const examSteps = base.steps.map((s, idx) => ({
       ...s,
       stepNumber: idx + 1,
-      whyRead: `[HEMIS Tayyorgarlik] Imtihonda tushadigan tipik savollar va qoidalar: ${s.whyRead}`
+      whyRead: `[Imtihonga Tayyorgarlik] Imtihonda tushadigan tipik savollar va qoidalar: ${s.whyRead}`
     }));
 
     return {
       ...base,
-      topicTitle: `📝 HEMIS Imtihon Rejasi: ${base.topicTitle}`,
+      topicTitle: `📝 Imtihon Rejasi: ${base.topicTitle}`,
       estimatedTotalTime: '35–45 daqiqa',
       empathyMessage: `Oraliq va yakuniy nazoratlarda eng ko'p ball olib keladigan tipik savollar, hisoblashdagi tuzoqlar va test variantlariga yo'naltirilgan tayyorgarlik strategiyasi.`,
       rootCauseWhyHard: `Imtihonda talabalar odatda vaqt yetishmasligidan va shoshilish tufayli oddiy arifmetik ishoralarda adashadilar.`,
@@ -1269,6 +1269,6 @@ SAYTNING INTERAKTIV ASBOBLARI:
 - [Simvolik Hosila Kalkulyatori](/hosila)
 - [2D Funksiya Grafik Yasovchi](/grafik)
 - [Vizual Matematik Laboratoriya](/laboratoriya)
-- [HEMIS Testlar Bazasi](/testlar)
+- [Interaktiv Testlar Bazasi](/testlar)
 - [PDF Shpargalkalar](/shpargalkalar)
 `;

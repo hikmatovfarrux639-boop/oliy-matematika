@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Header Banner -->
     <header class="matrix-hero">
       <div class="hero-top-badge">
-        <span class="badge-pill">🔢 Chiziqli Algebra & TATU Dasturi</span>
+        <span class="badge-pill">🔢 Chiziqli Algebra & Analitik Dvigatel</span>
         <span class="badge-sub">Qadamma-qadam KaTeX Yechimi</span>
       </div>
       <h1 class="page-title">Interaktiv Matritsa Kalkulyatori</h1>
@@ -50,12 +50,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Presets for University Problems -->
         <div class="presets-box">
-          <label class="control-label">TATU & HEMIS namunaviy misollari:</label>
+          <label class="control-label">Namunaviy imtihon misollari:</label>
           <div class="presets-list">
-            <button class="preset-btn" data-preset="tatu-det">TATU: 3×3 Determinant & A⁻¹</button>
-            <button class="preset-btn" data-preset="tatu-sle">HEMIS: 3 noma'lumli ChTS</button>
+            <button class="preset-btn" data-preset="tatu-det">3×3 Determinant & A⁻¹</button>
+            <button class="preset-btn" data-preset="tatu-sle">3 noma'lumli ChTS (Kramer)</button>
             <button class="preset-btn" data-preset="tatu-rank">Gauss: Matritsa rangi</button>
-            <button class="preset-btn" data-preset="tatu-eigen">Xos sonlar (2×2)</button>
+            <button class="preset-btn" data-preset="tatu-eigen">Xos sonlar & Spektr</button>
             <button class="preset-btn reset-btn" data-preset="clear">🗑️ Tozalash</button>
           </div>
         </div>
@@ -211,7 +211,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p>Agar Δ = det(A) ≠ 0 bo'lsa, tizim yagona yechimga ega bo'ladi: x_i = Δ_i / Δ, bu yerda Δ_i — i-ustun ozod sonlar bilan almashtirilgan determinant.</p>
         </div>
         <div class="theory-item">
-          <h3>Kroneker-Kapelli Teoremasi</h3>
+          <h3>Kronekker-Kapelli Teoremasi</h3>
           <p>Chiziqli tenglamalar sistemasi birgalikda bo'lishi uchun asosiy matritsa rangi kengaytirilgan matritsa rangiga teng bo'lishi zarur va yetarli: rang(A) = rang(A|B).</p>
         </div>
       </div>
@@ -1718,7 +1718,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="sum-val" id="sum-delta"></div>
           </div>
           <div class="sum-card">
-            <div class="sum-title">Kroneker-Kapelli Tahlili</div>
+            <div class="sum-title">Kronekker-Kapelli Tahlili</div>
             <div class="sum-val">${isUnique ? 'Yagona Yechim ✅' : (isInfinite ? 'Cheksiz Yechim ♾️' : 'Yechim Yo\'q ❌')}</div>
           </div>
           <div class="sum-card">
@@ -1737,7 +1737,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         kkBox.className = 'step-box';
         kkBox.style.borderLeft = '4px solid #6366f1';
         kkBox.innerHTML = `
-          <h3>⚖️ Kroneker-Kapelli Teoremasi Bo'yicha Tahlil</h3>
+          <h3>⚖️ Kronekker-Kapelli Teoremasi Bo'yicha Tahlil</h3>
           <p>Asosiy matritsa rangi: $\\operatorname{rang}(A) = ${rankA}$, kengaytirilgan matritsa rangi: $\\operatorname{rang}(A|B) = ${rankAug}$.</p>
           <div class="step-latex-display" id="latex-kk-status"></div>
         `;
@@ -1755,7 +1755,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         if (!isCompatible) {
           heroTitleText = "Sistema Birgalikda Emas (Yechim Yo'q)";
-          heroDescText = "Kroneker-Kapelli teoremasi bo'yicha asosiy va kengaytirilgan matritsalar ranglari teng emas:";
+          heroDescText = "Kronekker-Kapelli teoremasi bo'yicha asosiy va kengaytirilgan matritsalar ranglari teng emas:";
           heroLatexText = `\\operatorname{rang}(A) = ${rankA} \\neq \\operatorname{rang}(A|B) = ${rankAug} \\implies \\varnothing`;
           const heroCard = document.getElementById('primary-hero-result');
           const heroTitleEl = document.getElementById('hero-result-title');
@@ -1780,7 +1780,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           heroLatexText = `\\begin{pmatrix} ${A.map((_, i) => `x_${i + 1}`).join(' \\\\ ')} \\end{pmatrix} = \\begin{pmatrix} ${cramerRes.x.map(v => formatNum(v)).join(' \\\\ ')} \\end{pmatrix}`;
         } else if (isInfinite) {
           heroTitleText = "Tenglamalar Sistemasi Cheksiz Ko'p Yechimli";
-          heroDescText = `Kroneker-Kapelli teoremasi: $\\operatorname{rang}(A) = \\operatorname{rang}(A|B) = ${rankA} < ${n}$:`;
+          heroDescText = `Kronekker-Kapelli teoremasi: $\\operatorname{rang}(A) = \\operatorname{rang}(A|B) = ${rankA} < ${n}$:`;
           heroLatexText = `\\operatorname{rang}(A) = ${rankA} < n = ${n} \\implies \\text{Erkin parametrlar soni: } k = ${n - rankA} \\text{ ta}`;
         }
 

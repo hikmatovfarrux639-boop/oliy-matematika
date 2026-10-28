@@ -1,0 +1,45 @@
+# ========================================================
+# AI IGNORE (.aiignore)
+# ========================================================
+
+node_modules/
+.astro/
+dist/
+build/
+.cache/
+.temp/
+.tmp/
+
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+hujjatlar/
+*.pdf
+*.docx
+*.doc
+Mathprofi_Toliq_Mavzular_va_Formulalar_Kitobi.pdf
+
+screenshots/
+public/images/
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+*.gif
+*.ico
+*.mp4
+*.mp3
+
+*.log
+*.sqlite
+*.db
+*.lock
+package-lock.json
+
+scratch/
+tools/
+.system_generated/

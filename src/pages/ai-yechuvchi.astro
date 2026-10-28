@@ -189,7 +189,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </button>
         <button type="button" class="preset-card" data-problem={'[[2, 1, -1], [3, 0, 2], [1, -2, 1]]'}>
           <span class="preset-tag">2-modul: 3x3 Determinant</span>
-          <span class="preset-math">{'\\det A_{3\\times 3}'}</span>
+          <span class="preset-math">{'\\begin{vmatrix} 2 & 1 & -1 \\\\ 3 & 0 & 2 \\\\ 1 & -2 & 1 \\end{vmatrix}'}</span>
         </button>
         <button type="button" class="preset-card" data-problem={'2x + y = 7, x - y = 2'}>
           <span class="preset-tag">2-modul: Kramer sistemasi</span>
@@ -209,8 +209,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="print-worksheet-header">
       <div style="border: 2px solid #0f172a; padding: 14px 18px; margin-bottom: 18px; border-radius: 6px; font-family: 'Times New Roman', serif;">
         <div style="text-align: center; border-bottom: 1.5px solid #0f172a; padding-bottom: 8px; margin-bottom: 10px;">
-          <h3 style="margin: 0; font-size: 13pt; text-transform: uppercase; letter-spacing: 0.5px;">O'ZBEKISTON RESPUBLIKASI OLIY TA'LIM, FAN VA INNOVATSIYALAR VAZIRLIGI</h3>
-          <h4 style="margin: 4px 0 0; font-size: 12pt; font-weight: 700;">OLIY MATEMATIKA — AMALIY TOPSHIRIQ VA MUSTAQIL ISH DAFTARI</h4>
+          <h3 style="margin: 0; font-size: 13pt; text-transform: uppercase; letter-spacing: 0.5px;">OLIY MATEMATIKA — AMALIY ISH VA MUSTAQIL TA'LIM DAFTARI</h3>
+          <h4 style="margin: 4px 0 0; font-size: 11pt; font-weight: 600; color: #475569;">Talabalar va o'rganuvchilar uchun namunaviy yechimlar blankasi</h4>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 10.5pt; margin-top: 6px;">
           <span><strong>Talaba:</strong> ________________________________</span>
@@ -233,7 +233,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </h2>
           </div>
           <span id="solution-engine-badge" style="font-size: 0.8rem; color: #10b981; font-weight: 600;">
-            ⚡ Analitik dvigatel orqali 0.01 soniyada yechildi
+            ⚡ Tizim orqali qadamma-qadam hisoblandi
           </span>
         </div>
       </div>
@@ -1075,13 +1075,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (userKey && userKey.trim()) {
         apiKeyStatus?.classList.remove('not-set');
         apiKeyStatus?.classList.add('set');
-        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🟢 Shaxsiy Gemini AI kaliti faol');
-        if (apiKeyBtnLabel) apiKeyBtnLabel.textContent = '🟢 Shaxsiy Kalit Faol';
+        if (apiKeyStatus) apiKeyStatus.setAttribute('title', '🔑 Shaxsiy Gemini API kaliti kiritilgan');
+        if (apiKeyBtnLabel) apiKeyBtnLabel.textContent = '🔑 Shaxsiy Kalit';
       } else {
         apiKeyStatus?.classList.remove('not-set');
         apiKeyStatus?.classList.add('set');
-        if (apiKeyStatus) apiKeyStatus.setAttribute('title', "🟢 Gemini AI Serveri Faol (O'rnatilgan)");
-        if (apiKeyBtnLabel) apiKeyBtnLabel.textContent = '🟢 Gemini AI Faol';
+        if (apiKeyStatus) apiKeyStatus.setAttribute('title', "⚡ Serverless AI bulutli yechuvchi");
+        if (apiKeyBtnLabel) apiKeyBtnLabel.textContent = '⚡ Serverless AI Rejimi';
       }
     }
     updateKeyStatus();
@@ -1530,7 +1530,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               📈 Grafik chizgich
             </a>
             <a href="/testlar" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
-              📝 HEMIS Testlar
+              📝 Testlar
             </a>
             <a href="/shpargalkalar" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
               📄 Shpargalka (PDF)
@@ -1629,7 +1629,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             solutionBody.innerHTML = renderMathMarkdown(localResult.markdown);
           }
           if (solutionEngineBadge) {
-            solutionEngineBadge.textContent = `⚡ Analitik dvigatel (${localResult.type || 'Avtomatik'}) • 0.01 soniyada yechildi`;
+            solutionEngineBadge.textContent = `⚡ Mahalliy analitik dvigatel (${localResult.type || 'Avtomatik'}) • ~0.01 soniya`;
           }
           if (groundingContainer) groundingContainer.style.display = 'none';
           if (solutionContainer) {
@@ -1953,7 +1953,7 @@ Qat'iy qoidalar:
               : `## 1. Masala sharti va mavzu tashxisi\nBerilgan ifoda: \`${problemText}\`\nUshbu masala **${diag.moduleTitle}** modulining **${diag.topicName}** mavzusiga mansub (${diag.difficulty}).`,
             `\n---\n## 📚 Chuqurlashtirilgan Nazariy Tahlil va Isbot Asosi\n**Nega aynan shu usul qo'llaniladi?**\n${diag.whyThisTopic}`,
             formulasMd ? `\n## 📐 Asosiy Teorema va Formulalar Baza\n${formulasMd}` : '',
-            `\n## 🎯 Professor Maslahati (Imtihon va HEMIS uchun)\n**Eslab qoling:** ${diag.studyAdvice}`,
+            `\n## 🎯 Professor Maslahati (Imtihon uchun)\n**Eslab qoling:** ${diag.studyAdvice}`,
             relatedLinksMd ? `\n## 📖 Chuqur o'rganish uchun tavsiya etilgan darslar\n${relatedLinksMd}` : ''
           ].filter(Boolean).join('\n');
 

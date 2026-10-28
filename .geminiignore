@@ -1,0 +1,53 @@
+# ========================================================
+# ANTIGRAVITY / GEMINI TOKEN OPTIMIZATION (.geminiignore)
+# Ushbu fayl AI agentga keraksiz og'ir fayllarni o'qishni 
+# taqiqlab, token sarfini 70-80% tejaydi.
+# ========================================================
+
+# Og'ir kutubxonalar va keshlar
+node_modules/
+.astro/
+dist/
+build/
+.cache/
+.temp/
+.tmp/
+
+# Python virtual muhitlari
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Katta hajmdagi hujjatlar va kitoblar
+hujjatlar/
+*.pdf
+*.docx
+*.doc
+Mathprofi_Toliq_Mavzular_va_Formulalar_Kitobi.pdf
+
+# Media va tasvirlar (kod tahlilida kerak emas)
+screenshots/
+public/images/
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+*.gif
+*.ico
+*.mp4
+*.mp3
+
+# Loglar va lokal bazalar
+*.log
+*.sqlite
+*.db
+*.lock
+package-lock.json
+
+# Ichki yordamchi skriptlar va scratch fayllar
+scratch/
+tools/
+.system_generated/

@@ -529,14 +529,18 @@ a {
 
 .katex {
   font-size: 1.15em !important;
+  max-width: 100% !important;
 }
 
 .katex-display {
   margin: 1.25rem 0 !important;
-  padding: 1rem !important;
+  padding: 0.85rem 1rem !important;
   background: var(--bg-muted);
   border-radius: var(--radius-md);
-  overflow-x: auto;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  -webkit-overflow-scrolling: touch !important;
   border: 1px solid var(--border-color);
 }
 
@@ -759,13 +763,17 @@ html, body {
     padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
-  /* Safe tap target heights and fast touch action */
+  /* Safe tap target heights (WCAG & Apple 44px minimum) and fast touch action */
   .btn,
   .btn-primary,
   .btn-secondary,
   .mobile-drawer a,
-  .module-nav-item a {
-    min-height: 42px;
+  .module-nav-item a,
+  .calc-action-btn,
+  .v-preset-btn,
+  .preset-btn,
+  .quiz-option-btn {
+    min-height: 44px;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
