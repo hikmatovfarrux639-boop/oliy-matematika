@@ -28,7 +28,7 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
       <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Bosh sahifa</a>
       <a href="/#modullar" class="nav-link">Modullar</a>
       
-      <a href="/testlar" class={`nav-link ${currentPath.startsWith('/testlar') ? 'active' : ''}`} style="font-weight: 700; color: #10b981;">
+      <a href="/testlar" class={`nav-link ${currentPath.startsWith('/testlar') ? 'active' : ''}`}>
         <span>📝 Testlar</span>
       </a>
       
@@ -36,12 +36,12 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
         <span>🤖 AI Yechuvchi</span>
       </a>
 
-      <a href="/strategiya" class={`nav-link ${currentPath.startsWith('/strategiya') ? 'active' : ''}`} style="color: #059669; font-weight: 700;">
+      <a href="/strategiya" class={`nav-link ${currentPath.startsWith('/strategiya') ? 'active' : ''}`}>
         <span>🧭 AI Strategiya</span>
       </a>
 
-      <a href="/laboratoriya" class={`nav-link ${currentPath.startsWith('/laboratoriya') ? 'active' : ''}`} style="font-weight: 700; color: #ec4899;">
-        <span>🔮 Laboratoriya</span>
+      <a href="/laboratoriya" class={`nav-link ${currentPath.startsWith('/laboratoriya') ? 'active' : ''}`}>
+        <span>🔬 Laboratoriya</span>
       </a>
 
       <!-- 1. Dropdown: Kalkulyatorlar & Interaktiv uskunalar -->
@@ -54,27 +54,27 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
         </button>
         <div class="dropdown-menu">
           <a href="/matritsa" class={`dropdown-item ${currentPath.startsWith('/matritsa') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">🔢</div>
+            <div class="dropdown-item-icon">🔢</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Matritsa kalkulyatori</span>
-                <span class="mini-badge" style="background: #8b5cf6; color: white;">TATU</span>
+                <span class="mini-badge-primary">TATU</span>
               </div>
               <div class="dropdown-item-desc">Determinant, teskari matritsa, rang, ChTS</div>
             </div>
           </a>
           <a href="/vektor" class={`dropdown-item ${currentPath.startsWith('/vektor') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;">📐</div>
+            <div class="dropdown-item-icon">📐</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Vektor kalkulyatori</span>
-                <span class="mini-badge" style="background: #06b6d4; color: white;">3D</span>
+                <span class="mini-badge-neutral">3D</span>
               </div>
               <div class="dropdown-item-desc">Skalyar, vektor va aralash ko'paytma</div>
             </div>
           </a>
           <a href="/hosila" class={`dropdown-item ${currentPath.startsWith('/hosila') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(37, 99, 235, 0.15); color: var(--primary);">⚡</div>
+            <div class="dropdown-item-icon">⚡</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Hosila kalkulyatori</span>
@@ -83,7 +83,7 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
             </div>
           </a>
           <a href="/grafik" class={`dropdown-item ${currentPath.startsWith('/grafik') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📈</div>
+            <div class="dropdown-item-icon">📈</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Grafik chizgich</span>
@@ -96,7 +96,7 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
 
       <!-- 2. Formulalar jadvali -->
       <a href="/formulalar" class={`nav-link ${currentPath.startsWith('/formulalar') ? 'active' : ''}`}>
-        <span>📐 Formulalar</span>
+        <span>📑 Formulalar</span>
       </a>
 
       <!-- 3. Dropdown: Resurslar, Lug'at, Kutubxona va Paradokslar -->
@@ -109,27 +109,27 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
         </button>
         <div class="dropdown-menu">
           <a href="/shpargalkalar" class={`dropdown-item ${currentPath.startsWith('/shpargalkalar') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">📄</div>
+            <div class="dropdown-item-icon">📄</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Shpargalkalar</span>
-                <span class="mini-badge" style="background: #f59e0b; color: white;">PDF</span>
+                <span class="mini-badge-neutral">PDF</span>
               </div>
               <div class="dropdown-item-desc">A4 formatdagi imtihon konspektlari</div>
             </div>
           </a>
           <a href="/lugat" class={`dropdown-item ${currentPath.startsWith('/lugat') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">📖</div>
+            <div class="dropdown-item-icon">📖</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Lug'at & Glossariy</span>
-                <span class="mini-badge" style="background: #ec4899; color: white;">A-Z</span>
+                <span class="mini-badge-neutral">A–Z</span>
               </div>
               <div class="dropdown-item-desc">Matematik atamalar izohli lug'ati</div>
             </div>
           </a>
           <a href="/kutubxona" class={`dropdown-item ${currentPath.startsWith('/kutubxona') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📚</div>
+            <div class="dropdown-item-icon">📚</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Kitoblar Kutubxonasi</span>
@@ -138,11 +138,11 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
             </div>
           </a>
           <a href="/paradokslar" class={`dropdown-item ${currentPath.startsWith('/paradokslar') ? 'active' : ''}`}>
-            <div class="dropdown-item-icon" style="background: rgba(234, 88, 12, 0.15); color: #ea580c;">🎭</div>
+            <div class="dropdown-item-icon">🧠</div>
             <div class="dropdown-item-content">
               <div class="dropdown-item-title">
                 <span>Matematik Paradokslar</span>
-                <span class="mini-badge" style="background: #ea580c; color: white;">Mantiq</span>
+                <span class="mini-badge-neutral">Mantiq</span>
               </div>
               <div class="dropdown-item-desc">Mashhur mantiqiy paradokslar va yechimlar</div>
             </div>
@@ -337,6 +337,15 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
     justify-content: center;
     font-size: 1.1rem;
     flex-shrink: 0;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+  }
+
+  :global([data-theme="dark"]) .dropdown-item-icon {
+    background: rgba(59, 130, 246, 0.12);
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.2);
   }
 
   .dropdown-item-content {
@@ -368,12 +377,32 @@ const isResourcesActive = ['/shpargalkalar', '/lugat', '/kutubxona', '/paradoksl
     text-overflow: ellipsis;
   }
 
-  .mini-badge {
+  .mini-badge-primary {
     font-size: 0.65rem;
+    font-weight: 600;
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
-    font-weight: 700;
     line-height: 1;
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.25);
+  }
+
+  :global([data-theme="dark"]) .mini-badge-primary {
+    background: rgba(59, 130, 246, 0.18);
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .mini-badge-neutral {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    line-height: 1;
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
   }
 </style>
 

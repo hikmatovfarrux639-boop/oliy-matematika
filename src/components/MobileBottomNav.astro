@@ -211,36 +211,36 @@ const isAsosiyActive = currentPath === '/' || currentPath === '';
       position: absolute;
       top: -2px;
       right: -3px;
-      background: #ea580c;
+      background: var(--primary);
       color: white;
       font-size: 0.55rem;
-      font-weight: 800;
-      padding: 0.05rem 0.25rem;
+      font-weight: 700;
+      padding: 0.05rem 0.3rem;
       border-radius: 4px;
       line-height: 1;
       border: 1px solid var(--bg-surface);
     }
 
     .ai-gradient-pulse svg {
-      color: #8b5cf6;
+      color: var(--primary);
     }
 
     .bottom-nav-item.active .ai-gradient-pulse {
-      background: rgba(139, 92, 246, 0.15);
-      color: #8b5cf6;
+      background: var(--primary-light);
+      color: var(--primary);
     }
 
     .bottom-nav-item.active .ai-gradient-pulse svg {
-      color: #7c3aed;
+      color: var(--primary);
     }
 
     :global([data-theme="dark"]) .bottom-nav-item.active .ai-gradient-pulse {
-      background: rgba(139, 92, 246, 0.25) !important;
-      color: #a78bfa !important;
+      background: rgba(59, 130, 246, 0.2) !important;
+      color: #60a5fa !important;
     }
 
     :global([data-theme="dark"]) .bottom-nav-item.active .ai-gradient-pulse svg {
-      color: #a78bfa !important;
+      color: #60a5fa !important;
     }
   }
 </style>

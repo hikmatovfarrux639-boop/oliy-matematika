@@ -70,28 +70,28 @@ function isModuleActive(slug: string): boolean {
   <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
     <div class="sidebar-section-title">Interaktiv Uskunalar</div>
     <ul class="module-nav-list">
-      <li class={`module-nav-item ${currentPath.startsWith('/testlar') ? 'active' : ''}`} style="border-left: 3px solid #3b82f6; margin-bottom: 0.25rem;">
-        <a href="/testlar" style="font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+      <li class={`module-nav-item ${currentPath.startsWith('/testlar') ? 'active' : ''}`}>
+        <a href="/testlar">
           <span>📝 Testlar (HEMIS)</span>
-          <span style="font-size: 0.65rem; background: #3b82f6; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Top</span>
+          <span class="nav-badge-primary">Top</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/ai-yechuvchi' ? 'active' : ''}`} style="border-left: 3px solid #10b981; margin-bottom: 0.25rem;">
-        <a href="/ai-yechuvchi" style="color: var(--primary); font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+      <li class={`module-nav-item ${currentPath === '/ai-yechuvchi' ? 'active' : ''}`}>
+        <a href="/ai-yechuvchi">
           <span>🤖 AI Yechuvchi</span>
-          <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Yangi</span>
+          <span class="nav-badge-primary">AI</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath.startsWith('/strategiya') ? 'active' : ''}`} style="border-left: 3px solid #059669; margin-bottom: 0.25rem;">
-        <a href="/strategiya" style="color: #059669; font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+      <li class={`module-nav-item ${currentPath.startsWith('/strategiya') ? 'active' : ''}`}>
+        <a href="/strategiya">
           <span>🧭 AI O'quv Strategiyasi</span>
-          <span style="font-size: 0.65rem; background: #059669; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Mentor</span>
+          <span class="nav-badge-neutral">Tavsiya</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/laboratoriya' ? 'active' : ''}`} style="border-left: 3px solid #ec4899; margin-bottom: 0.25rem;">
-        <a href="/laboratoriya" style="color: #ec4899; font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
-          <span>🔮 Laboratoriya</span>
-          <span style="font-size: 0.65rem; background: #ec4899; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">WOW</span>
+      <li class={`module-nav-item ${currentPath === '/laboratoriya' ? 'active' : ''}`}>
+        <a href="/laboratoriya">
+          <span>🔬 Vizual Laboratoriya</span>
+          <span class="nav-badge-neutral">3D</span>
         </a>
       </li>
       <li class={`module-nav-item ${currentPath === '/grafik' ? 'active' : ''}`}>
@@ -104,51 +104,51 @@ function isModuleActive(slug: string): boolean {
           <span>⚡ Hosila kalkulyatori</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/matritsa' ? 'active' : ''}`} style="border-left: 3px solid #8b5cf6;">
-        <a href="/matritsa" style="font-weight: 700; color: #8b5cf6; display: flex; align-items: center; justify-content: space-between;">
+      <li class={`module-nav-item ${currentPath === '/matritsa' ? 'active' : ''}`}>
+        <a href="/matritsa">
           <span>🔢 Matritsa kalkulyatori</span>
-          <span style="font-size: 0.65rem; background: #8b5cf6; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">TATU</span>
+          <span class="nav-badge-primary">TATU</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/vektor' ? 'active' : ''}`} style="border-left: 3px solid #06b6d4;">
-        <a href="/vektor" style="font-weight: 700; color: #06b6d4; display: flex; align-items: center; justify-content: space-between;">
+      <li class={`module-nav-item ${currentPath === '/vektor' ? 'active' : ''}`}>
+        <a href="/vektor">
           <span>📐 Vektor kalkulyatori</span>
-          <span style="font-size: 0.65rem; background: #06b6d4; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">3D</span>
+          <span class="nav-badge-neutral">3D</span>
         </a>
       </li>
       <li class={`module-nav-item ${currentPath === '/formulalar' ? 'active' : ''}`}>
         <a href="/formulalar">
-          <span>📐 Formulalar jadvali</span>
+          <span>📑 Formulalar jadvali</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/shpargalkalar' ? 'active' : ''}`} style="border-left: 3px solid #f59e0b;">
-        <a href="/shpargalkalar" style="font-weight: 700; color: #f59e0b; display: flex; align-items: center; justify-content: space-between;">
-          <span>📄 Shpargalkalar</span>
-          <span style="font-size: 0.65rem; background: #f59e0b; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">PDF</span>
+      <li class={`module-nav-item ${currentPath === '/shpargalkalar' ? 'active' : ''}`}>
+        <a href="/shpargalkalar">
+          <span>📄 Shpargalkalar (PDF)</span>
+          <span class="nav-badge-neutral">A4</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/lugat' ? 'active' : ''}`} style="border-left: 3px solid #ec4899;">
-        <a href="/lugat" style="font-weight: 700; color: #ec4899; display: flex; align-items: center; justify-content: space-between;">
+      <li class={`module-nav-item ${currentPath === '/lugat' ? 'active' : ''}`}>
+        <a href="/lugat">
           <span>📖 Lug'at & Glossariy</span>
-          <span style="font-size: 0.65rem; background: #ec4899; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">A-Z</span>
+          <span class="nav-badge-neutral">A–Z</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/kutubxona' ? 'active' : ''}`} style="border-left: 3px solid #10b981;">
-        <a href="/kutubxona" style="font-weight: 700; color: #10b981; display: flex; align-items: center; justify-content: space-between;">
-          <span>📚 Kutubxona</span>
-          <span style="font-size: 0.65rem; background: #10b981; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Kitoblar</span>
+      <li class={`module-nav-item ${currentPath === '/kutubxona' ? 'active' : ''}`}>
+        <a href="/kutubxona">
+          <span>📚 Kitoblar Kutubxonasi</span>
+          <span class="nav-badge-neutral">Fondi</span>
         </a>
       </li>
-      <li class={`module-nav-item ${currentPath === '/paradokslar' ? 'active' : ''}`} style="border-left: 3px solid #ea580c;">
-        <a href="/paradokslar" style="font-weight: 700; color: #ea580c; display: flex; align-items: center; justify-content: space-between;">
-          <span>🎭 Paradokslar</span>
-          <span style="font-size: 0.65rem; background: #ea580c; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Mantiq</span>
+      <li class={`module-nav-item ${currentPath === '/paradokslar' ? 'active' : ''}`}>
+        <a href="/paradokslar">
+          <span>🧠 Matematik Paradokslar</span>
+          <span class="nav-badge-neutral">Mantiq</span>
         </a>
       </li>
-      <li class="module-nav-item" style="border-left: 3px solid #0284c7; margin-top: 0.5rem;">
-        <a href="https://t.me/oliy_matematika_1" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700; display: flex; align-items: center; justify-content: space-between;">
+      <li class="module-nav-item">
+        <a href="https://t.me/oliy_matematika_1" target="_blank" rel="noopener noreferrer">
           <span>💬 Telegram Guruh</span>
-          <span style="font-size: 0.65rem; background: #0284c7; color: white; padding: 0.1rem 0.4rem; border-radius: 4px;">Kanal</span>
+          <span class="nav-badge-primary">Kanal</span>
         </a>
       </li>
     </ul>
@@ -179,6 +179,37 @@ function isModuleActive(slug: string): boolean {
 </script>
 
 <style>
+  .nav-badge-primary {
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    margin-left: auto;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-badge-neutral {
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: var(--bg-muted);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    margin-left: auto;
+    line-height: 1.2;
+  }
+
+  :global([data-theme="dark"]) .nav-badge-primary {
+    background: rgba(59, 130, 246, 0.18);
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
   .module-counter-badge {
     font-size: 0.65rem;
     font-weight: 600;
