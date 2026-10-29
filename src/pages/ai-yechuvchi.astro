@@ -1693,6 +1693,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           }
         }
 
+        const availableLessonsMd = `
+Platformadagi mavjud rasmiy darslar ro'yxati (4-bo'limda aynan mos mavzuni markdown link qilib tavsiya qiling):
+- [Chiziqli dasturlash va simpleks usuli](/dars/chiziqli-algebra/chiziqli-dasturlash-va-simpleks-usuli)
+- [Transport masalasi va potensiallar](/dars/chiziqli-algebra/transport-masalasi-va-potensiallar)
+- [Matritsaning xos sonlari va xos vektorlari](/dars/chiziqli-algebra/matritsaning-xos-sonlari-va-xos-vektorlari)
+- [Kvadratik formalar va Silvestr mezoni](/dars/chiziqli-algebra/kvadratik-formalar-va-silvestr-mezoni)
+- [Kvadratik formani ortogonal almashtirish](/dars/chiziqli-algebra/kvadratik-formani-ortogonal-almashtirish)
+- [Gorner sxemasi va ko'phad ildizlari](/dars/chiziqli-algebra/gorner-sxemasi-va-kophad-ildizlari)
+- [Chiziqli operatorlar va o'tish matritsasi](/dars/chiziqli-algebra/chiziqli-operatorlar-va-otish-matritsasi)
+- [Chiziqli fazo va bazis](/dars/chiziqli-algebra/chiziqli-fazo-va-bazis)
+- [Chiziqli tenglamalar sistemasi va Kramer qoidasi](/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasi-va-kronekker-kapelli)
+- [Gauss usuli (Pog'onasimon shakl)](/dars/chiziqli-algebra/gauss-usuli-pogonasimon-va-teskari-yurish)
+- [Gauss-Jordan va matritsali tenglamalar](/dars/chiziqli-algebra/gauss-jordan-va-matritsali-tenglamalar)
+- [Matritsa rangi va pog'onasimon shakl](/dars/chiziqli-algebra/matritsa-rangi-va-pogonasimon-shakl)
+- [Determinantlar va geometrik ma'nosi](/dars/chiziqli-algebra/determinantlar-va-geometrik-manosi)
+- [Determinant xossalari va uchburchak shakl](/dars/chiziqli-algebra/determinant-xossalari-va-uchburchak-shakl)
+- [Teskari matritsa va topish](/dars/chiziqli-algebra/teskari-matritsa-mavjudlik-va-topish)
+- [Matritsalar tushunchasi va amallar](/dars/chiziqli-algebra/matritsalar-tushunchasi-va-chiziqli-amallar)
+- [Bir jinsli tenglamalar va FYS](/dars/chiziqli-algebra/bir-jinsli-tenglamalar-va-fys)
+- [Skalyar ko'paytma](/dars/vektorlar-geometriya/skalyar-kopaytma)
+- [Vektor va aralash ko'paytma](/dars/vektorlar-geometriya/vektor-va-aralash-kopaytma)
+- [Ikkinchi tartibli chiziqlar va sirtlar](/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar)
+- [Fazodagi tekislik va to'g'ri chiziq](/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq)
+- [Muavr formulasi va kompleks sonlar](/dars/kompleks-sonlar/muavr-formulasi-va-ildiz-chiqarish)
+- [Operatsion hisob va Laplas almashtirishi](/dars/kompleks-sonlar/operatsion-hisob-va-laplas-almashtirishi)
+- [Limit nima? Ta'rif va mohiyat](/dars/limitlar/limit-nima)
+- [Aniqmasliklar (0/0 va ∞/∞) va ularni ochish](/dars/limitlar/aniqmasliklar-va-ularni-ochish)
+- [Ajoyib limitlar](/dars/limitlar/ajoyib-limitlar)
+- [Differensiallash qoidalari va hosilalar jadvali](/dars/hosila/differensiallash-qoidalari-va-jadval)
+- [Murakkab funksiya hosilasi](/dars/hosila/murakkab-funksiya-hosilasi)
+- [Lopital qoidasi](/dars/hosila/lopital-qoidasi)
+- [Funksiyani to'liq tekshirish va grafik yasash](/dars/funksiyalar-grafiklar/funksiyani-tekshirish-va-grafik-yasash)
+- [Boshlang'ich funksiya va aniqmas integral](/dars/integrallar/boshlangich-funksiya-va-aniqmas-integral)
+- [O'zgaruvchini almashtirish usuli](/dars/integrallar/integrallash-usullari-almashtirish)
+- [Bo'laklab integrallash usuli](/dars/integrallar/bolaklab-integrallash)
+- [Aniq integral va Nyuton-Leybnits formulasi](/dars/integrallar/aniq-integral-va-nyuton-leybnits)
+- [Ikki karrali integral](/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash)
+- [Uch karrali integral, silindrik va sferik koordinatalar](/dars/karrali-integrallar/uch-karrali-integral-va-silindrik-sferik)
+- [Musbat hadli qatorlar: Dalamber va Koshi alomatlari](/dars/qatorlar/musbat-hadli-qatorlar-alomatlari)
+- [Darajali qatorlar, Teylor va Makloren](/dars/qatorlar/darajali-qatorlar-teylor-makloren)
+- [Fure qatorlari](/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma)
+- [O'zgaruvchilari ajraladigan differensial tenglamalar](/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar)
+- [2-tartibli chiziqli differensial tenglamalar](/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar)
+- [Kombinatorika va klassik ehtimollik](/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik)
+- [Tenglamalar va tengsizliklar](/dars/maktab-kursi/tenglamalar-va-tengsizliklar)
+- [Trigonometriya asoslari](/dars/maktab-kursi/trigonometriya-asoslari)`;
+
         let systemPrompt = '';
         if (currentPedagogy === 'socratic') {
           systemPrompt = `Siz OliyMatematika (oliy-matematika.vercel.app) platformasining talabani doskaga va og'zaki oraliq/yakuniy imtihonga tayyorlaydigan Sokratik Repetitor-Professorsiz.
@@ -1706,7 +1753,8 @@ Qat'iy qoidalar:
    - ## 3. ⚠️ Domla doskada berishi mumkin bo'lgan 2 ta hiylali savol (va to'g'ri ilmiy javoblari)
      (Talaba doskaga chiqqanda adashmasligi uchun domlalar tez-tez beradigan nozik nazariy savollar va ularning tayyor yechimi).
    - ## 4. 📚 Saytdan o'rganish uchun tavsiya etilgan darslar
-3. Barcha matematik ifodalarni KaTeX formatida yozing: $...$ va $$...$$.`;
+3. Barcha matematik ifodalarni KaTeX formatida yozing: $...$ va $$...$$.
+${availableLessonsMd}`;
         } else if (currentPedagogy === 'check') {
           systemPrompt = `Siz talabaning mustaqil bajargan yechimini tekshiruvchi professor-ekspertsiz.
 Vazifangiz: Talaba yozgan yoki rasmda ko'rsatgan yechimdagi har bir qadamni sinchkovlik bilan tekshirish va xatolarni ko'rsatish.
@@ -1717,7 +1765,8 @@ Qat'iy qoidalar:
      (Qaysi qatorda nima xato ketgan: ishora adashganmi, qavs ochishdami, formula xatomi yoki arifmetik xatolikmi — aniq ko'rsating).
    - ## 3. ✅ To'g'rilangan to'liq yechim va yakuniy javob
    - ## 4. 📚 Mustahkamlash uchun tavsiya etilgan darslar
-2. Barcha matematik formulalarni KaTeX formatida yozing: $...$ va $$...$$.`;
+2. Barcha matematik formulalarni KaTeX formatida yozing: $...$ va $$...$$.
+${availableLessonsMd}`;
         } else {
           systemPrompt = `Siz OliyMatematika (oliy-matematika.vercel.app) platformasining oliy ta'lim talablariga mos akademik professorisiz.
 Vazifangiz: Berilgan oliy matematika misolini (matn yoki rasmdagi qo'lyozma) o'zbek tilida (lotin yozuvida), talaba o'zining amaliy mashg'ulot daftariga to'g'ridan-to'g'ri ko'chirishi mumkin bo'lgan toza, mukammal va tartibli formatda yechish.
@@ -1730,31 +1779,7 @@ Qat'iy qoidalar:
    - ## 3. Qadamma-qadam to'liq yechim va tekshirish
    - ## 4. Yakuniy javob va saytdan tavsiya etilgan darslar
 3. 4-bo'limda quyidagi mavjud dars havolalaridan eng moslarini markdown link sifatida bering:
-   - [Tenglamalar va tengsizliklar](/dars/maktab-kursi/tenglamalar-va-tengsizliklar)
-   - [Trigonometriya asoslari](/dars/maktab-kursi/trigonometriya-asoslari)
-   - [Matritsalar va amallar](/dars/chiziqli-algebra/matritsalar-tushunchasi-va-chiziqli-amallar)
-   - [Determinantlar va xossalari](/dars/chiziqli-algebra/determinantlar-va-geometrik-manosi)
-   - [Chiziqli tenglamalar sistemasi va Kramer qoidasi](/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasi-va-kronekker-kapelli)
-   - [Gauss usuli](/dars/chiziqli-algebra/gauss-usuli-pogonasimon-va-teskari-yurish)
-   - [Skalyar ko'paytma](/dars/vektorlar-geometriya/skalyar-kopaytma)
-   - [Vektor va aralash ko'paytma](/dars/vektorlar-geometriya/vektor-va-aralash-kopaytma)
-   - [Muavr formulasi va kompleks sonlar](/dars/kompleks-sonlar/muavr-formulasi-va-ildiz-chiqarish)
-   - [Aniqmasliklar (0/0 va ∞/∞) va ularni ochish](/dars/limitlar/aniqmasliklar-va-ularni-ochish)
-   - [Ajoyib limitlar](/dars/limitlar/ajoyib-limitlar)
-   - [Funksiyani tekshirish va grafik yasash](/dars/funksiyalar-grafiklar/funksiyani-tekshirish-va-grafik-yasash)
-   - [Differensiallash qoidalari va jadvali](/dars/hosila/differensiallash-qoidalari-va-jadval)
-   - [Murakkab funksiya hosilasi](/dars/hosila/murakkab-funksiya-hosilasi)
-   - [Lopital qoidasi](/dars/hosila/lopital-qoidasi)
-   - [Boshlang'ich funksiya va aniqmas integral](/dars/integrallar/boshlangich-funksiya-va-aniqmas-integral)
-   - [O'zgaruvchini almashtirish usuli](/dars/integrallar/integrallash-usullari-almashtirish)
-   - [Bo'laklab integrallash usuli](/dars/integrallar/bolaklab-integrallash)
-   - [Aniq integral va Nyuton-Leybnits formulasi](/dars/integrallar/aniq-integral-va-nyuton-leybnits)
-   - [Xususiy hosilalar](/dars/kop-ozgaruvchili-funksiyalar/xususiy-hosilalar)
-   - [Ikki karrali integral](/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash)
-   - [Musbat hadli qatorlar: Dalamber va Koshi alomatlari](/dars/qatorlar/musbat-hadli-qatorlar-alomatlari)
-   - [O'zgaruvchilari ajraladigan differensial tenglamalar](/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar)
-   - [2-tartibli o'zgarmas koeffitsiyentli differensial tenglamalar](/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar)
-   - [Kombinatorika va klassik ehtimollik](/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik)`;
+${availableLessonsMd}`;
         }
 
         const parts: any[] = [];

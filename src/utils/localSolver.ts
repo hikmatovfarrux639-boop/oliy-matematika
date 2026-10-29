@@ -378,7 +378,179 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 6. Linear Algebra (Module 2)
+  // 6. Specialized Advanced Linear Algebra: Simplex, Transport, Eigenvalues, Sylvester, Horner
+  // 6a. Simplex & Linear Programming
+  if (
+    low.includes('simpleks') ||
+    low.includes('chiziqli dasturlash') ||
+    low.includes('maqsad funksiya') ||
+    low.includes('tayanch yechim') ||
+    low.includes('simplex') ||
+    low.includes('kanonik shakl') ||
+    /f\(x\)\s*->\s*(max|min)/i.test(low) ||
+    /f\s*->\s*(max|min)/i.test(low)
+  ) {
+    return {
+      id: 'simplex',
+      moduleId: 2,
+      moduleTitle: '2-modul: Chiziqli algebra',
+      moduleUrl: '/modullar/chiziqli-algebra',
+      topicName: 'Chiziqli dasturlash va simpleks usuli',
+      difficulty: 'Yuqori (2-kurs / Iqtisod / IT)',
+      whyThisTopic: "Masalada chiziqli cheklovlar ostida maqsad funksiyasini simpleks usuli orqali optimallashtirish (max/min) talab qilingan.",
+      primaryLesson: {
+        title: 'Chiziqli dasturlash va simpleks usuli',
+        url: '/dars/chiziqli-algebra/chiziqli-dasturlash-va-simpleks-usuli',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Transport masalasi va potensiallar usuli', url: '/dars/chiziqli-algebra/transport-masalasi-va-potensiallar' },
+        { title: 'Chiziqli tenglamalar sistemasini turli bazislarda yechish', url: '/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasini-turli-bazislarda-yechish' }
+      ],
+      keyFormulas: [
+        { name: 'Kanonik maqsad funksiya', latex: 'F = c_1 x_1 + c_2 x_2 + \\dots + c_n x_n \\to \\max (\\min)' },
+        { name: 'Simpleks optimallik qoidasi', latex: '\\Delta_j = z_j - c_j \\le 0 \\implies \\text{Reja optimal}' }
+      ],
+      studyAdvice: "Tengsizliklarni tenglamaga keltirish uchun qo'shimcha nomanfiy o'zgaruvchilar qo'shing va bazis ustunlarini hosil qiling."
+    };
+  }
+
+  // 6b. Transport problem & Potential method
+  if (
+    low.includes('transport') ||
+    low.includes('potensiallar') ||
+    low.includes("shimoli-g'arb") ||
+    low.includes('minimal xarajat') ||
+    low.includes('taqsimot jadvali')
+  ) {
+    return {
+      id: 'transport-problem',
+      moduleId: 2,
+      moduleTitle: '2-modul: Chiziqli algebra',
+      moduleUrl: '/modullar/chiziqli-algebra',
+      topicName: 'Transport masalasi va potensiallar usuli',
+      difficulty: 'Yuqori (2-kurs / Iqtisod / IT)',
+      whyThisTopic: "Masalada yuk tashish xarajatlarini minimallashtirish va optimal taqsimot rejasini topish ko'rib chiqilgan.",
+      primaryLesson: {
+        title: 'Transport masalasi va potensiallar usuli',
+        url: '/dars/chiziqli-algebra/transport-masalasi-va-potensiallar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Chiziqli dasturlash va simpleks usuli', url: '/dars/chiziqli-algebra/chiziqli-dasturlash-va-simpleks-usuli' },
+        { title: 'Chiziqli tenglamalar sistemasini turli bazislarda yechish', url: '/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasini-turli-bazislarda-yechish' }
+      ],
+      keyFormulas: [
+        { name: 'Yopiq model balansi', latex: '\\sum_{i=1}^m a_i = \\sum_{j=1}^n b_j' },
+        { name: 'Potensiallar sharti', latex: 'u_i + v_j = c_{ij} \\quad (\\text{band kataklar uchun})' }
+      ],
+      studyAdvice: "Dastlab talab va taklif yig'indisini taqqoslang; agar teng bo'lmasa, soxta ta'minotchi yoki soxta iste'molchi qo'shing."
+    };
+  }
+
+  // 6c. Eigenvalues & Eigenvectors
+  if (
+    low.includes('xos son') ||
+    low.includes('xos vektor') ||
+    low.includes('eigenvalue') ||
+    low.includes('eigenvector') ||
+    low.includes('spektral') ||
+    ((low.includes('lambda') || low.includes('\\lambda')) && (s.includes('[[') || low.includes('matritsa') || low.includes('det')))
+  ) {
+    return {
+      id: 'eigenvalues',
+      moduleId: 2,
+      moduleTitle: '2-modul: Chiziqli algebra',
+      moduleUrl: '/modullar/chiziqli-algebra',
+      topicName: 'Matritsaning xos sonlari va xos vektorlari',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada matritsaning xos qiymatlari (xos sonlari) yoki xos vektorlarini topish talab qilingan.",
+      primaryLesson: {
+        title: 'Matritsaning xos sonlari va xos vektorlari',
+        url: '/dars/chiziqli-algebra/matritsaning-xos-sonlari-va-xos-vektorlari',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Kvadratik formani ortogonal almashtirish', url: '/dars/chiziqli-algebra/kvadratik-formani-ortogonal-almashtirish' },
+        { title: "Chiziqli operatorlar va o'tish matritsasi", url: '/dars/chiziqli-algebra/chiziqli-operatorlar-va-otish-matritsasi' },
+        { title: 'Chiziqli fazo va bazis', url: '/dars/chiziqli-algebra/chiziqli-fazo-va-bazis' }
+      ],
+      keyFormulas: [
+        { name: 'Xarakteristik tenglama', latex: '\\det(A - \\lambda E) = 0' },
+        { name: 'Xos vektor ta\'rifi', latex: '(A - \\lambda_i E)\\vec{v} = \\vec{0}, \\quad \\vec{v} \\neq \\vec{0}' }
+      ],
+      studyAdvice: "Xarakteristik tenglama ildizlari lambda larni topgach, har biri uchun bir jinsli sistemani yechib, xos vektorlar fazosi bazisini aniqlang."
+    };
+  }
+
+  // 6d. Quadratic Forms & Sylvester criterion
+  if (
+    low.includes('kvadratik forma') ||
+    low.includes('silvestr') ||
+    low.includes('musbat aniqlangan') ||
+    low.includes('manfiy aniqlangan') ||
+    low.includes('ortogonal almashtirish') ||
+    low.includes('inersiya qonuni')
+  ) {
+    return {
+      id: 'quadratic-forms',
+      moduleId: 2,
+      moduleTitle: '2-modul: Chiziqli algebra',
+      moduleUrl: '/modullar/chiziqli-algebra',
+      topicName: 'Kvadratik formalar va Silvestr mezoni',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada kvadratik formaning ishorasini Silvestr mezoni bo'yicha tekshirish yoki kanonik shaklga keltirish so'ralgan.",
+      primaryLesson: {
+        title: 'Kvadratik formalar va Silvestr mezoni',
+        url: '/dars/chiziqli-algebra/kvadratik-formalar-va-silvestr-mezoni',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Kvadratik formani ortogonal almashtirish', url: '/dars/chiziqli-algebra/kvadratik-formani-ortogonal-almashtirish' },
+        { title: 'Matritsaning xos sonlari va xos vektorlari', url: '/dars/chiziqli-algebra/matritsaning-xos-sonlari-va-xos-vektorlari' }
+      ],
+      keyFormulas: [
+        { name: 'Silvestr mezoni (Musbat)', latex: '\\Delta_1 > 0, \\; \\Delta_2 > 0, \\; \\dots, \\; \\Delta_n > 0' },
+        { name: 'Silvestr mezoni (Manfiy)', latex: '\\Delta_1 < 0, \\; \\Delta_2 > 0, \\; \\Delta_3 < 0, \\; \\dots' }
+      ],
+      studyAdvice: "Bosh burchak minorlarini tartib bilan hisoblang: birinchisi manfiy, ikkinchisi musbat bo'lsa - manfiy aniqlanganlikka tekshiring."
+    };
+  }
+
+  // 6e. Horner's scheme & Polynomial Roots
+  if (
+    low.includes('gorner') ||
+    low.includes('bezu') ||
+    low.includes('gorner sxemasi') ||
+    low.includes("ko'phad ildiz") ||
+    low.includes('kophad ildiz')
+  ) {
+    return {
+      id: 'horner-scheme',
+      moduleId: 2,
+      moduleTitle: '2-modul: Chiziqli algebra',
+      moduleUrl: '/modullar/chiziqli-algebra',
+      topicName: "Gorner sxemasi va ko'phad ildizlari",
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada yuqori darajali ko'phadni chiziqli ko'paytuvchiga bo'lish yoki ildizlarini ratsional ildizlar teoremasi bo'yicha topish talab qilingan.",
+      primaryLesson: {
+        title: "Gorner sxemasi va ko'phad ildizlari",
+        url: '/dars/chiziqli-algebra/gorner-sxemasi-va-kophad-ildizlari',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Algebraik ayniyatlar va qisqa ko\'paytirish', url: '/dars/maktab-kursi/algebraik-ayniyatlar-va-qisqa-kopaytirish' },
+        { title: 'Tenglamalar va tengsizliklar', url: '/dars/maktab-kursi/tenglamalar-va-tengsizliklar' }
+      ],
+      keyFormulas: [
+        { name: 'Bezu teoremasi', latex: 'P_n(x) = (x - c)Q_{n-1}(x) + R, \\quad R = P_n(c)' },
+        { name: 'Ratsional ildizlar mezoni', latex: 'x = \\pm \\frac{p}{q}, \\quad p \\mid a_0, \\; q \\mid a_n' }
+      ],
+      studyAdvice: "Ko'phadda qatnashmagan oraliq darajalar oldiga Gorner jadvalida 0 qoeffitsiyentini yozishni unutmang."
+    };
+  }
+
+  // 6f. General Linear Algebra (Module 2)
   const hasTwoEqs = s.indexOf('=') !== -1 && s.indexOf('=', s.indexOf('=') + 1) !== -1;
   if (s.includes('[[') || low.includes('det') || low.includes('matritsa') || low.includes('kramer') || hasTwoEqs) {
     return {
@@ -405,7 +577,45 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 7. Complex Numbers (Module 4)
+  // 7a. Operational Calculus & Laplace Transform (Module 4)
+  if (
+    low.includes('laplas') ||
+    low.includes('operatsion hisob') ||
+    low.includes('xevisayd') ||
+    low.includes('hevisayd') ||
+    low.includes('asl nusxa') ||
+    low.includes('tasvir') ||
+    low.includes('\\mathcal{l}') ||
+    /l\{.*\}\s*=/.test(low)
+  ) {
+    return {
+      id: 'laplace-transform',
+      moduleId: 4,
+      moduleTitle: '4-modul: Kompleks sonlar va operatsion hisob',
+      moduleUrl: '/modullar/kompleks-sonlar',
+      topicName: 'Operatsion hisob va Laplas almashtirishi',
+      difficulty: 'Yuqori (2-kurs / Muhandislik)',
+      whyThisTopic: "Masalada Laplas almashtirishi (asl nusxadan tasvirga o'tish yoki teskari almashtirish) va Koshi masalasini operatsion usulda yechish ko'rib chiqilgan.",
+      primaryLesson: {
+        title: 'Operatsion hisob va Laplas almashtirishi',
+        url: '/dars/kompleks-sonlar/operatsion-hisob-va-laplas-almashtirishi',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: '2-tartibli chiziqli differensial tenglamalar', url: '/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar' },
+        { title: 'Kompleks son tushunchasi va algebraik shakl', url: '/dars/kompleks-sonlar/kompleks-son-tushunchasi' },
+        { title: "Trigonometrik va ko'rsatkichli shakl", url: '/dars/kompleks-sonlar/trigonometrik-va-korsatkichli-shakl' }
+      ],
+      keyFormulas: [
+        { name: 'Laplas integrali', latex: 'F(p) = \\int_0^\\infty f(t) e^{-pt}\\,dt' },
+        { name: 'Hosila tasviri', latex: 'L\\{f\'(t)\\} = p F(p) - f(0)' },
+        { name: '2-tartibli hosila', latex: 'L\\{f\'\'(t)\\} = p^2 F(p) - p f(0) - f\'(0)' }
+      ],
+      studyAdvice: "Boshlang'ich shartlarni darhol tasvir tenglamasiga qo'yib, F(p) ni toping va oddiy kasrlarga ajratish orqali asl nusxaga qayting."
+    };
+  }
+
+  // 7b. Complex Numbers (Module 4)
   if (/\b\d*i\b/.test(s) || /i\\sqrt/.test(s) || low.includes('kompleks') || low.includes('muavr')) {
     return {
       id: 'complex-numbers',
@@ -560,7 +770,46 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 12. Vectors & Analytic Geometry (Module 3)
+  // 12a. Second order curves and quadric surfaces
+  const isQuadric =
+    low.includes('ellips') ||
+    low.includes('giperbola') ||
+    (low.includes('parabola') && (low.includes('direktrisa') || low.includes('fokus') || low.includes('kanonik') || low.includes('optik'))) ||
+    low.includes('ellipsoid') ||
+    low.includes('giperboloid') ||
+    low.includes('paraboloid') ||
+    low.includes('ikkinchi tartibli chiziq') ||
+    low.includes('ikkinchi tartibli sirt');
+
+  if (isQuadric) {
+    return {
+      id: 'quadrics',
+      moduleId: 3,
+      moduleTitle: '3-modul: Vektorlar va analitik geometriya',
+      moduleUrl: '/modullar/vektorlar-geometriya',
+      topicName: 'Ikkinchi tartibli chiziqlar va sirtlar',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada ikkinchi tartibli chiziqlar (ellips, giperbola, parabola) yoki fazodagi ikkinchi tartibli sirtlar (ellipsoid, giperboloid) berilgan.",
+      primaryLesson: {
+        title: 'Ikkinchi tartibli chiziqlar va sirtlar',
+        url: '/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Ikkinchi tartibli chiziqni kanonik shaklga keltirish', url: '/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqni-kanonik-shaklga-keltirish' },
+        { title: "Fazodagi tekislik va to'g'ri chiziq", url: '/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq' },
+        { title: 'Vektorlar va ular ustida chiziqli amallar', url: '/dars/vektorlar-geometriya/vektorlar-va-chiziqli-amallar' }
+      ],
+      keyFormulas: [
+        { name: 'Kanonik ellips', latex: '\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1, \\quad c^2 = a^2 - b^2' },
+        { name: 'Kanonik giperbola', latex: '\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1, \\quad c^2 = a^2 + b^2' },
+        { name: 'Kanonik parabola', latex: 'y^2 = 2px' }
+      ],
+      studyAdvice: "Optik xossalar va ekssentrisitet e = c/a qiymatini (e < 1 bo'lsa ellips, e > 1 bo'lsa giperbola, e = 1 bo'lsa parabola) aniqlab oling."
+    };
+  }
+
+  // 12b. Vectors & Analytic Geometry (Module 3)
   const isVector =
     low.includes('vektor') ||
     low.includes('skalyar') ||
