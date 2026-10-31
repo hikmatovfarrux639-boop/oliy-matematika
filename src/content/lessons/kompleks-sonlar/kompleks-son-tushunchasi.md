@@ -17,7 +17,7 @@ Ushbu inqilobiy kashfiyot matematikada yangi va eng qudratli sonlar to'plami —
 
 ## 1. Mavhum birlik $i$ va uning darajalari
 
-> **Ta'rif:** Kvadrati $-1$ga teng bo'lgan maxsus matematik miqdor **mavhum birlik** (inglizcha *imaginary unit*) deyiladi va$i$ harfi bilan belgilanadi:
+> **Ta'rif:** Kvadrati $-1$ ga teng bo'lgan maxsus matematik miqdor **mavhum birlik** (inglizcha *imaginary unit*) deyiladi va $i$ harfi bilan belgilanadi:
 >
 > 
 $$
@@ -27,8 +27,14 @@ $$
 
 ### $i$ ning darajalari davriyligi:
 Mavhum birlik $i$ ning butun darajalari har 4 qadamda aynan takrorlanadi:
-- $i^1 = i$-$i^2 = -1$-$i^3 = i^2 \cdot i = -i$-$i^4 = (i^2)^2 = (-1)^2 = 1$-$i^5 = i, \quad i^6 = -1, \quad i^7 = -i, \quad i^8 = 1 \dots$> **Hisoblash layfhaki:**$i^n$ni hisoblash uchun daraja$n$ni$4$ ga bo'lib, faqat qoldiqqa qaraymiz:
-> $$i^{4k + r} = i^r \quad (r \in \{0, 1, 2, 3\})$$
+- $i^1 = i$
+- $i^2 = -1$
+- $i^3 = i^2 \cdot i = -i$
+- $i^4 = (i^2)^2 = (-1)^2 = 1$
+- $i^5 = i, \quad i^6 = -1, \quad i^7 = -i, \quad i^8 = 1 \dots$
+
+> **Hisoblash layfhaki:** $i^n$ ni hisoblash uchun daraja $n$ ni $4$ ga bo'lib, faqat qoldiqqa qaraymiz:
+> $$ i^{4k + r} = i^r \quad (r \in \{0, 1, 2, 3\})$$
 > *Misol:* $i^{2026} = i^{4 \cdot 506 + 2} = i^2 = -1$.
 
 ---
@@ -49,8 +55,8 @@ $$
 > - $i$ — mavhum birlik.
 
 ### Xususiy hollar:
-1. Agar $b = 0$bo'lsa:$z = a$— oddiy **haqiqiy son**. Demak, barcha haqiqiy sonlar kompleks sonlar oilasiga kiradi:$\mathbb{R} \subset \mathbb{C}$.
-2. Agar $a = 0$va$b \neq 0$bo'lsa:$z = bi$— **sof mavhum son** (masalan,$3i, -\sqrt{5}i$).
+1. Agar $b = 0$ bo'lsa: $z = a$ — oddiy **haqiqiy son**. Demak, barcha haqiqiy sonlar kompleks sonlar oilasiga kiradi: $\mathbb{R} \subset \mathbb{C}$.
+2. Agar $a = 0$ va $b \neq 0$ bo'lsa: $z = bi$ — **sof mavhum son** (masalan, $3i, -\sqrt{5}i$).
 3. **Ikki kompleks sonning tengligi:**
    $$a + bi = c + di \iff a = c \quad \text{va} \quad b = d$$
    *(Haqiqiy qismlar o'zaro, mavhum qismlar o'zaro teng bo'lishi shart!)*
@@ -59,7 +65,7 @@ $$
 
 ## 3. Qo'shma kompleks son ($\bar{z}$)
 
-$z = a + bi$sonining mavhum qismi ishorasi qarama-qarshisiga o'zgartirilgan son uning **qo'shma kompleks soni** deyiladi va$\bar{z}$ bilan belgilanadi:
+$z = a + bi$ sonining mavhum qismi ishorasi qarama-qarshisiga o'zgartirilgan son uning **qo'shma kompleks soni** deyiladi va $\bar{z}$ bilan belgilanadi:
 
 $$
 \bar{z} = a - bi
@@ -79,7 +85,7 @@ Haqiqiy sonlar 1D sonlar o'qida yotsa, kompleks sonlar **2D kompleks tekislikda*
 - Gorizontal o'q ($Ox$) — **haqiqiy o'q** ($\operatorname{Re}$);
 - Vertikal o'q ($Oy$) — **mavhum o'q** ($\operatorname{Im}$).
 
-Har bir $z = a + bi$soniga tekislikdagi$(a; b)$nuqta yoki boshlang'ich nuqtadan chiquvchi$\vec{r} = (a; b)$ vektor mos keladi.
+Har bir $z = a + bi$ soniga tekislikdagi $(a; b)$ nuqta yoki boshlang'ich nuqtadan chiquvchi $\vec{r} = (a; b)$ vektor mos keladi.
 
 > **Modul ta'rifi:** Koordinatalar boshidan $z$ nuqtagacha bo'lgan masofa kompleks sonning **moduli** deyiladi:
 >
@@ -91,9 +97,9 @@ $$
 > Shuningdek: $|z|^2 = z \cdot \bar{z}$.
 
 ### Geometrik sohalar (Imtihon savollari):
-- $|z - z_0| = R$— markazi$z_0$nuqtada, radiusi$R$ bo'lgan **aylana**;
-- $|z - z_0| \le R$— markazi$z_0$ bo'lgan **doira**;
-- $|z - z_1| = |z - z_2|$—$z_1$va$z_2$ nuqtalarni tutashtiruvchi kesmaning **o'rta perpendikulyar to'g'ri chizig'i**.
+- $|z - z_0| = R$ — markazi $z_0$ nuqtada, radiusi $R$ bo'lgan **aylana**;
+- $|z - z_0| \le R$ — markazi $z_0$ bo'lgan **doira**;
+- $|z - z_1| = |z - z_2|$ — $z_1$ va $z_2$ nuqtalarni tutashtiruvchi kesmaning **o'rta perpendikulyar to'g'ri chizig'i**.
 
 ---
 
@@ -124,9 +130,9 @@ i^{2027} - i^{102}
 $$
 
 **Yechilishi:**
-1. $2027$ni$4$ga bo'lamiz:$2027 = 4 \cdot 506 + 3$(qoldiq$3$).
+1. $2027$ ni $4$ ga bo'lamiz: $2027 = 4 \cdot 506 + 3$(qoldiq $3$).
    $$i^{2027} = i^3 = -i$$
-2. $102$ni$4$ga bo'lamiz:$102 = 4 \cdot 25 + 2$(qoldiq$2$).
+2. $102$ ni $4$ ga bo'lamiz: $102 = 4 \cdot 25 + 2$(qoldiq $2$).
    $$i^{102} = i^2 = -1$$
 3. Ayiramiz:
    $$i^{2027} - i^{102} = (-i) - (-1) = 1 - i$$
@@ -136,7 +142,7 @@ $$
 ---
 
 ### 3-misol: Modul va qo'shma son
-$z = -3 + 4i$soni uchun$\bar{z}$, $|z|$va$z \cdot \bar{z}$ ni toping.
+$z = -3 + 4i$ soni uchun $\bar{z}$, $|z|$ va $z \cdot \bar{z}$ ni toping.
 
 **Yechilishi:**
 - Haqiqiy qism: $a = -3$, mavhum qism: $b = 4$.
@@ -149,7 +155,7 @@ $z = -3 + 4i$soni uchun$\bar{z}$, $|z|$va$z \cdot \bar{z}$ ni toping.
 ---
 
 ### 4-misol: Tenglik shartidan noma'lumlarni topish
-Tenglamani qanoatlantiruvchi haqiqiy $x$va$y$ sonlarni toping:
+Tenglamani qanoatlantiruvchi haqiqiy $x$ va $y$ sonlarni toping:
 $$
 (2x + 3y) + (x - 2y)i = 8 - 3i
 $$
@@ -190,29 +196,29 @@ Modul formulasini qo'llaymiz:
 $$
 \sqrt{(x - 2)^2 + (y + 3)^2} = 4 \implies (x - 2)^2 + (y + 3)^2 = 16
 $$
-Bu esa markazi $z_0 = (2; -3)$nuqtada, radiusi$R = 4$ bo'lgan **aylana** tenglamasidir!
+Bu esa markazi $z_0 = (2; -3)$ nuqtada, radiusi $R = 4$ bo'lgan **aylana** tenglamasidir!
 
-**Javob:** Markazi $(2; -3)$da va radiusi$4$ bo'lgan aylana.
+**Javob:** Markazi $(2; -3)$ da va radiusi $4$ bo'lgan aylana.
 
 ---
 
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **Mavhum qismga $i$ ni qo'shib aytish:**
-   > $z = 3 + 4i$da mavhum qism$\operatorname{Im}(z) = 4$dir! Talabalar ko'pincha$\operatorname{Im}(z) = 4i$deb xato aytishadi. Mavhum qism bu haqiqiy son bo'lib,$i$ oldidagi koeffitsiyentdir.
+   > $z = 3 + 4i$ da mavhum qism $\operatorname{Im}(z) = 4$ dir! Talabalar ko'pincha $\operatorname{Im}(z) = 4i$ deb xato aytishadi. Mavhum qism bu haqiqiy son bo'lib, $i$ oldidagi koeffitsiyentdir.
 
 2. **$i^2 = 1$ deb adashtirish:**
    > Doimo esda tuting: $i^2 = -1$! Juft daraja bo'lgani uchun $1$ chiqadi deb o'ylash eng ko'p uchraydigan chalkashlikdir.
 
 3. **Kompleks sonlarni bir-biri bilan taqqoslash ($z_1 > z_2$):**
-   > Kompleks sonlar maydonida **"katta" yoki "kichik" tushunchasi mavjud emas!** Masalan, $3 + 4i > 2 + 5i$deyish ma'noga ega emas. Faqat ularning **modullarini** (masofalarini) taqqoslash mumkin:$|3 + 4i| = 5 \le \sqrt{29} = |2 + 5i|$.
+   > Kompleks sonlar maydonida **"katta" yoki "kichik" tushunchasi mavjud emas!** Masalan, $3 + 4i > 2 + 5i$ deyish ma'noga ega emas. Faqat ularning **modullarini** (masofalarini) taqqoslash mumkin: $|3 + 4i| = 5 \le \sqrt{29} = |2 + 5i|$.
 
 ---
 
 ## 💡 Ustozdan maslahat
 
 Kompleks son qatnashgan har qanday noma'lumli tenglamada agar nima qilishni bilmay qolsangiz, universal usulni qo'llang:
-$z$o'rniga$x + iy$ qo'ying, barcha qavslarni oching va haqiqiy qismlarni alohida, mavhum qismlarni alohida guruhlab ikkita tenglama sistemasiga keltiring!
+$z$ o'rniga $x + iy$ qo'ying, barcha qavslarni oching va haqiqiy qismlarni alohida, mavhum qismlarni alohida guruhlab ikkita tenglama sistemasiga keltiring!
 
 ---
 
@@ -220,7 +226,7 @@ $z$o'rniga$x + iy$ qo'ying, barcha qavslarni oching va haqiqiy qismlarni alohida
 
 1. $x^2 + 2x + 5 = 0$ tenglamaning kompleks ildizlarini toping.
 2. $i^{105}$ nimaga teng?
-3. $z = 5 - 12i$ning moduli$|z|$ ni hisoblang.
+3. $z = 5 - 12i$ ning moduli $|z|$ ni hisoblang.
 4. $|z + 1| \le 2$ tengsizlik kompleks tekislikda nimani ifodalaydi?
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
@@ -238,6 +244,6 @@ $z$o'rniga$x + iy$ qo'ying, barcha qavslarni oching va haqiqiy qismlarni alohida
 
     
 
-**4-masala:** Markazi $(-1; 0)$nuqtada bo'lgan va radiusi$R \le 2$ bo'lgan yopiq doira (chegarasi bilan birga).
+**4-masala:** Markazi $(-1; 0)$ nuqtada bo'lgan va radiusi $R \le 2$ bo'lgan yopiq doira (chegarasi bilan birga).
 
 </details>

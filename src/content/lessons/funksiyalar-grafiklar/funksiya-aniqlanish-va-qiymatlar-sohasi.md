@@ -20,7 +20,7 @@ Ushbu qoidalar majmui funksiyaning **aniqlanish sohasi**ni, unga mos ravishda ho
 
 ## 1. Aniqlanish sohasi ($D(f)$) va cheklovlar tizimi
 
-> **Ta'rif:** Erkli o'zgaruvchi $x$qabul qilishi mumkin bo'lgan barcha haqiqiy sonlar to'plami$f(x)$funksiyaning **aniqlanish sohasi** deyiladi va$D(f)$yoki$\operatorname{dom}(f)$ deb belgilanadi.
+> **Ta'rif:** Erkli o'zgaruvchi $x$ qabul qilishi mumkin bo'lgan barcha haqiqiy sonlar to'plami $f(x)$ funksiyaning **aniqlanish sohasi** deyiladi va $D(f)$ yoki $\operatorname{dom}(f)$ deb belgilanadi.
 
 ### Asosiy elementar cheklovlar jadvali:
 
@@ -38,16 +38,16 @@ Ushbu qoidalar majmui funksiyaning **aniqlanish sohasi**ni, unga mos ravishda ho
 
 ## 2. Qiymatlar sohasini ($E(f)$) topishning 3 ta quroli
 
-> **Ta'rif:** $x$o'zining aniqlanish sohasida o'zgarganda funksiya qabul qiladigan barcha$y$qiymatlar to'plami **qiymatlar sohasi** deyiladi va$E(f)$ deb belgilanadi.
+> **Ta'rif:** $x$ o'zining aniqlanish sohasida o'zgarganda funksiya qabul qiladigan barcha $y$ qiymatlar to'plami **qiymatlar sohasi** deyiladi va $E(f)$ deb belgilanadi.
 
 ### 1-qurol: Teskari funksiya usuli (Algebraik)
-Tenglamada $x$ni$y$ orqali ifodalaymiz ($x = \varphi(y)$). Hosil bo'lgan $\varphi(y)$ ifodaning mavjudlik sohasi berilgan funksiyaning qiymatlar sohasi bo'ladi!
+Tenglamada $x$ ni $y$ orqali ifodalaymiz ($x = \varphi(y)$). Hosil bo'lgan $\varphi(y)$ ifodaning mavjudlik sohasi berilgan funksiyaning qiymatlar sohasi bo'ladi!
 
 ### 2-qurol: Hosila yordamida global ekstremumlarni topish
-Funksiyaning hosilasini olib, statsionar nuqtalarini va o'sish/kamayish oraliqlarini topamiz. Funksiyaning eng kichik qiymati $m$va eng katta qiymati$M$aniqlangach, uzluksiz funksiya uchun$E(f) = [m; M]$ bo'ladi.
+Funksiyaning hosilasini olib, statsionar nuqtalarini va o'sish/kamayish oraliqlarini topamiz. Funksiyaning eng kichik qiymati $m$ va eng katta qiymati $M$ aniqlangach, uzluksiz funksiya uchun $E(f) = [m; M]$ bo'ladi.
 
 ### 3-qurol: Ma'lum chegaralangan funksiyalarni baholash
-Masalan, $-1 \le \sin x \le 1$yoki$a^x > 0$ asosiy xossalaridan foydalanib, qo'sh tengsizlik tuziladi.
+Masalan, $-1 \le \sin x \le 1$ yoki $a^x > 0$ asosiy xossalaridan foydalanib, qo'sh tengsizlik tuziladi.
 
 ---
 
@@ -74,8 +74,8 @@ $$
 3. $\ln(x - 1) \neq 0 \implies x - 1 \neq 1 \implies x \neq 2$.
 
 Uchala oraliqning kesishmasini topamiz:
-- $[-3; 3]$va$(1; +\infty)$kesishmasi:$(1; 3]$.
-- $x \neq 2$nuqtani chiqarib tashlaymiz:$(1; 2) \cup (2; 3]$.
+- $[-3; 3]$ va $(1; +\infty)$ kesishmasi: $(1; 3]$.
+- $x \neq 2$ nuqtani chiqarib tashlaymiz: $(1; 2) \cup (2; 3]$.
 
 **Javob:** $D(f) = (1; 2) \cup (2; 3]$.
 
@@ -98,7 +98,7 @@ $$
 \frac{1 + y}{1 - y} \ge 0 \iff \frac{y + 1}{y - 1} \le 0
 $$
 Intervallar usuliga ko'ra:
-- Surat noli: $y = -1$(kiritiladi, chunki$\ge 0$).
+- Surat noli: $y = -1$(kiritiladi, chunki $\ge 0$).
 - Maxraj noli: $y = 1$ (kiritilmaydi, chunki maxrajda).
 Demak:
 $$
@@ -110,7 +110,9 @@ $$
 y = \frac{(x^2 + 1) - 2}{x^2 + 1} = 1 - \frac{2}{x^2 + 1}
 $$
 $x^2 \ge 0$ bo'lgani uchun:
-- $x^2 + 1 \ge 1 \implies 0 < \frac{2}{x^2 + 1} \le 2$-$(-1)$ga ko'paytiramiz:$-2 \le -\frac{2}{x^2 + 1} < 0$-$1$ni qo'shamiz:$1 - 2 \le 1 - \frac{2}{x^2 + 1} < 1 + 0 \implies -1 \le y < 1$.
+- $x^2 + 1 \ge 1 \implies 0 < \frac{2}{x^2 + 1} \le 2$
+- $(-1)$ ga ko'paytiramiz: $-2 \le -\frac{2}{x^2 + 1} < 0$
+- $1$ ni qo'shamiz: $1 - 2 \le 1 - \frac{2}{x^2 + 1} < 1 + 0 \implies -1 \le y < 1$.
 Javob bir zumda tekshirildi: $E(f) = [-1; 1)$.
 
 ---
@@ -119,11 +121,11 @@ Javob bir zumda tekshirildi: $E(f) = [-1; 1)$.
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Toq darajali ildiz ostiga cheklov qo'yish:**
->    Talabalar ko'pincha $\sqrt[3]{x - 5}$funksiyani ko'rib,$x - 5 \ge 0$ deb yozishadi. Bu qo'pol xatodir! Toq darajali ildizlar ($3, 5, 7, \dots$) manfiy sonlardan ham bemalol chiqariladi ($\sqrt[3]{-8} = -2$). Toq ildizning aniqlanish sohasi barcha haqiqiy sonlar: $(-\infty; +\infty)$.
+>    Talabalar ko'pincha $\sqrt[3]{x - 5}$ funksiyani ko'rib, $x - 5 \ge 0$ deb yozishadi. Bu qo'pol xatodir! Toq darajali ildizlar ($3, 5, 7, \dots$) manfiy sonlardan ham bemalol chiqariladi ($\sqrt[3]{-8} = -2$). Toq ildizning aniqlanish sohasi barcha haqiqiy sonlar: $(-\infty; +\infty)$.
 > 2. **Maxrajdagi juft ildizda tenglik belgisini qo'yish:**
->    Agar ifoda $y = \frac{1}{\sqrt{x - 3}}$bo'lsa, shart$x - 3 > 0$ bo'ladi ($x - 3 \ge 0$ emas!). Chunki ildiz osti manfiy bo'lmasligi bilan birga, maxrajda bo'lgani uchun nolga ham teng bo'lishi mumkin emas.
+>    Agar ifoda $y = \frac{1}{\sqrt{x - 3}}$ bo'lsa, shart $x - 3 > 0$ bo'ladi ($x - 3 \ge 0$ emas!). Chunki ildiz osti manfiy bo'lmasligi bilan birga, maxrajda bo'lgani uchun nolga ham teng bo'lishi mumkin emas.
 > 3. **Kasrni qisqartirib, uzilish nuqtasini yo'qotish:**
->    Masalan, $f(x) = \frac{x^2 - 4}{x - 2}$funksiyani darhol$x + 2$deb soddalashtirib, uning aniqlanish sohasini$(-\infty; +\infty)$deb belgilash xatodir! Boshlang'ich ifodada$x \neq 2$sharti doimo saqlanib qolishi shart:$D(f) = (-\infty; 2) \cup (2; +\infty)$.
+>    Masalan, $f(x) = \frac{x^2 - 4}{x - 2}$ funksiyani darhol $x + 2$ deb soddalashtirib, uning aniqlanish sohasini $(-\infty; +\infty)$ deb belgilash xatodir! Boshlang'ich ifodada $x \neq 2$ sharti doimo saqlanib qolishi shart: $D(f) = (-\infty; 2) \cup (2; +\infty)$.
 
 ---
 
@@ -138,8 +140,8 @@ $$
 <details>
 <summary>👉 Yechimni tekshirish</summary>
 
-Shart: $\frac{x - 2}{x + 3} \ge 0$va$x + 3 \neq 0$.
-Intervallar usuli: nollar $x = 2$(yopiq) va$x = -3$ (ochiq).
+Shart: $\frac{x - 2}{x + 3} \ge 0$ va $x + 3 \neq 0$.
+Intervallar usuli: nollar $x = 2$(yopiq) va $x = -3$ (ochiq).
 Chetki oraliqlar musbat:
 $$
 x \in (-\infty; -3) \cup [2; +\infty)

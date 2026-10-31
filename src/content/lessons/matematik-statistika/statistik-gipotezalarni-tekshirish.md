@@ -7,7 +7,7 @@ description: "Nol va muqobil gipotezalar (H0, H1), 1- va 2-tur xatolar, Styudent
 
 ## Kirish: Qanday qilib ilmiy xulosaga kelinadi?
 
-Tibbiyotda yangi vaksina sinovdan o'tkazilganda, u nazorat guruhiga nisbatan bemorlarni $8\%$tezroq davoladi. Bu$8\%$ lik natija haqiqatan ham preparatning shifobaxsh xususiyati natijasimi yoki shunchaki tasodifiy omadmi?
+Tibbiyotda yangi vaksina sinovdan o'tkazilganda, u nazorat guruhiga nisbatan bemorlarni $8\%$ tezroq davoladi. Bu $8\%$ lik natija haqiqatan ham preparatning shifobaxsh xususiyati natijasimi yoki shunchaki tasodifiy omadmi?
 
 Axborot texnologiyalarida (IT) veb-saytning buyurtma berish tugmasi ko'k rangdan yashil rangga o'zgartirildi (A/B test) va xaridlar soni $3\%$ ga oshdi. Bu o'sish tasodifiy tebranish emas, balki foydalanuvchilar xatti-harakatining qonuniy o'zgarishi ekanligini qanday isbotlash mumkin?
 
@@ -21,7 +21,7 @@ Bunday masalalarni yechish uchun matematik statistikada **statistik gipotezalarn
 
 1. **Nol gipoteza ($H_0$):**
    "Hech qanday yangilik, effekt yoki farq yo'q, kuzatilgan og'ishlar faqat tasodifiy xatolik natijasidir" deb taxmin qiluvchi asosiy gipoteza.
-   *Misollar:* $H_0: \mu = a_0$(bosh o'rtacha me'yorga teng),$H_0: \mu_1 = \mu_2$ (ikki guruh o'rtasida farq yo'q).
+   *Misollar:* $H_0: \mu = a_0$(bosh o'rtacha me'yorga teng), $H_0: \mu_1 = \mu_2$ (ikki guruh o'rtasida farq yo'q).
 
 2. **Muqobil (raqib) gipoteza ($H_1$):**
    Nol gipotezaga qarama-qarshi bo'lgan, tadqiqotchi isbotlashga intilayotgan gipoteza.
@@ -36,13 +36,13 @@ Bunday masalalarni yechish uchun matematik statistikada **statistik gipotezalarn
 
 Biz chekli tanlanma ma'lumotlariga tayanib xulosa chiqarganimiz sababli, ikki xil xatoga yo'l qo'yish xavfi mavjud:
 
-| Qaror \ Haqiqat | $H_0$haqiqatda to'g'ri bo'lsa |$H_0$ haqiqatda noto'g'ri bo'lsa |
+| Qaror \ Haqiqat | $H_0$ haqiqatda to'g'ri bo'lsa |$H_0$ haqiqatda noto'g'ri bo'lsa |
 |---|---|---|
-| **$H_0$rad etilmadi (qabul qilindi)** | To'g'ri qaror (Ishonchlilik:$1 - \alpha$) | **2-tur xato ($\beta$ — False Negative)** |
-| **$H_0$ rad etildi** | **1-tur xato ($\alpha$— False Positive)** | To'g'ri qaror (Kriteriy quvvati:$1 - \beta$) |
+| **$H_0$ rad etilmadi (qabul qilindi)** | To'g'ri qaror (Ishonchlilik: $1 - \alpha$) | **2-tur xato ($\beta$ — False Negative)** |
+| **$H_0$ rad etildi** | **1-tur xato ($\alpha$ — False Positive)** | To'g'ri qaror (Kriteriy quvvati: $1 - \beta$) |
 
-- **1-tur xato ($\alpha$— Soxta signal):** Aslida to'g'ri bo'lgan$H_0$gipotezani rad etish ehtimoli. Bu ehtimol **ahamiyatlilik darajasi** deyiladi va tadqiqotchi tomonidan oldindan belgilanadi (odatda$\alpha = 0.05$ya'ni$5\%$, yoki qat'iy tekshiruvlarda $\alpha = 0.01$).
-- **2-tur xato ($\beta$— O'tkazib yuborish):** Aslida noto'g'ri bo'lgan$H_0$ gipotezani rad etmaslik.
+- **1-tur xato ($\alpha$ — Soxta signal):** Aslida to'g'ri bo'lgan $H_0$ gipotezani rad etish ehtimoli. Bu ehtimol **ahamiyatlilik darajasi** deyiladi va tadqiqotchi tomonidan oldindan belgilanadi (odatda $\alpha = 0.05$ ya'ni $5\%$, yoki qat'iy tekshiruvlarda $\alpha = 0.01$).
+- **2-tur xato ($\beta$ — O'tkazib yuborish):** Aslida noto'g'ri bo'lgan $H_0$ gipotezani rad etmaslik.
 - **Kriteriy quvvati ($1 - \beta$):** Haqiqiy effekt mavjud bo'lganda uni aniqlash qobiliyati (odatda kamida $80\%$ bo'lishi maqsad qilinadi).
 
 ---
@@ -80,7 +80,7 @@ Bugungi kunda ilmiy maqolalarda va ma'lumotlar tahlilida (Python, R, SPSS) jadva
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** Universitetda yangi intensiv o'qitish metodikasi sinab ko'rildi. Tasodifiy tanlangan $n = 25$nafar talabaning yakuniy nazoratdagi o'rtacha bali$\bar{x} = 82$ball, tuzatilgan standart og'ishi$s = 10$ball chiqdi. Avvalgi yillardagi an'anaviy o'rtacha ball$a_0 = 78$ball bo'lgan.$\alpha = 0.05$ ahamiyatlilik darajasida yangi metodika o'zlashtirishni oshirdi deb aytish mumkinmi ($H_1: \mu > 78$)?
+> **Masala:** Universitetda yangi intensiv o'qitish metodikasi sinab ko'rildi. Tasodifiy tanlangan $n = 25$ nafar talabaning yakuniy nazoratdagi o'rtacha bali $\bar{x} = 82$ ball, tuzatilgan standart og'ishi $s = 10$ ball chiqdi. Avvalgi yillardagi an'anaviy o'rtacha ball $a_0 = 78$ ball bo'lgan.$\alpha = 0.05$ ahamiyatlilik darajasida yangi metodika o'zlashtirishni oshirdi deb aytish mumkinmi ($H_1: \mu > 78$)?
 
 ### 1-usul: Kritik nuqtalar va Statistik mezon usuli
 1. Gipotezalar:
@@ -94,18 +94,18 @@ Bugungi kunda ilmiy maqolalarda va ma'lumotlar tahlilida (Python, R, SPSS) jadva
    $$t_{krit}(0.05; 24) = 1.711$$
 4. Solishtiramiz:
    $$t_{kuz} = 2.0 > 1.711 = t_{krit}$$
-5. **Xulosa:** Kuzatilgan $t$ko'rsatkich kritik sohada yotadi. Demak,$H_0$gipoteza$95\%$ ishonchlilik bilan **rad etiladi**. Yangi metodika talabalar o'zlashtirishini statistik jihatdan ishonchli oshirgan!
+5. **Xulosa:** Kuzatilgan $t$ ko'rsatkich kritik sohada yotadi. Demak, $H_0$ gipoteza $95\%$ ishonchlilik bilan **rad etiladi**. Yangi metodika talabalar o'zlashtirishini statistik jihatdan ishonchli oshirgan!
 
 ### 2-usul: Ishonchlilik oralig'i (Confidence Interval) usuli
-Bosh to'plam o'rtacha qiymati $\mu$uchun$95\%$ lik bir tomonlama pastki ishonchlilik chegarasini quramiz:
+Bosh to'plam o'rtacha qiymati $\mu$ uchun $95\%$ lik bir tomonlama pastki ishonchlilik chegarasini quramiz:
 $$
 \mu > \bar{x} - t_{krit} \cdot S_e
 $$
 $$
 \mu > 82 - 1.711 \cdot 2.0 = 82 - 3.422 = \mathbf{78.58}
 $$
-Ko'rib turganingizdek, metodika beradigan haqiqiy o'rtacha ball kamida $78.58$ballni tashkil qiladi. Bu ko'rsatkich an'anaviy me'yor$a_0 = 78$ dan qat'iy yuqori ($78.58 > 78$).
-Shu sababli, $a_0 = 78$qiymat$95\%$lik ishonchlilik sohasidan tashqarida qoladi va$H_0$ rad etiladi.
+Ko'rib turganingizdek, metodika beradigan haqiqiy o'rtacha ball kamida $78.58$ ballni tashkil qiladi. Bu ko'rsatkich an'anaviy me'yor $a_0 = 78$ dan qat'iy yuqori ($78.58 > 78$).
+Shu sababli, $a_0 = 78$ qiymat $95\%$ lik ishonchlilik sohasidan tashqarida qoladi va $H_0$ rad etiladi.
 
 Har ikkala usul bir xil ilmiy xulosani berdi!
 
@@ -113,18 +113,18 @@ Har ikkala usul bir xil ilmiy xulosani berdi!
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **"Gipoteza isbotlandi" degan yanglish xulosa:**
->    Statistikada hech qachon "Nol gipoteza $100\%$isbotlandi" deb yozilmaydi. Faqat "Mavjud ma'lumotlar$H_0$ ni rad etishga yetarli emas" deb xulosa qilinadi.
+>    Statistikada hech qachon "Nol gipoteza $100\%$ isbotlandi" deb yozilmaydi. Faqat "Mavjud ma'lumotlar $H_0$ ni rad etishga yetarli emas" deb xulosa qilinadi.
 > 2. **Bir tomonlama va Ikki tomonlama testlar kritik nuqtasi:**
->    Agar $H_1: \mu \neq a_0$bo'lsa,$\alpha$ ikkiga bo'linadi ($\alpha/2 = 0.025$). Agar $H_1: \mu > a_0$bo'lsa, butun$\alpha = 0.05$bitta tomonga beriladi. Masalan,$k=24$da ikki tomonlama$t_{0.05} = 2.064$, bir tomonlama esa $t_{0.05} = 1.711$. Buni adashtirish xulosani teskari qilib qo'yishi mumkin!
+>    Agar $H_1: \mu \neq a_0$ bo'lsa, $\alpha$ ikkiga bo'linadi ($\alpha/2 = 0.025$). Agar $H_1: \mu > a_0$ bo'lsa, butun $\alpha = 0.05$ bitta tomonga beriladi. Masalan, $k=24$ da ikki tomonlama $t_{0.05} = 2.064$, bir tomonlama esa $t_{0.05} = 1.711$. Buni adashtirish xulosani teskari qilib qo'yishi mumkin!
 > 3. **$p$-value va effekt kattaligi (Effect size):**
->    Katta tanlanmalarda ($n = 100\,000$) hatto $0.001\%$lik arzimas farq ham$p < 0.001$berishi mumkin. Shuning uchun faqat$p$-value ga emas, balki amaliy ahamiyatga (effekt kattaligiga) ham qarash shart.
+>    Katta tanlanmalarda ($n = 100\,000$) hatto $0.001\%$ lik arzimas farq ham $p < 0.001$ berishi mumkin. Shuning uchun faqat $p$-value ga emas, balki amaliy ahamiyatga (effekt kattaligiga) ham qarash shart.
 
 ---
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $n = 16$ta detal o'lchanganda o'rtacha og'ish$t_{kuz} = -2.5$chiqdi. Ikki tomonlama muqobil gipoteza$H_1: a \neq a_0$va$\alpha = 0.05$uchun$t_{krit}(0.05; 15) = 2.13$. $H_0$ rad etiladimi?
-2. A/B test natijasida $p\text{-value} = 0.032$chiqdi. Agar tadqiqotchi ahamiyatlilik darajasini$\alpha = 0.01$ qilib belgilagan bo'lsa, qanday qaror qabul qilinadi?
+1. $n = 16$ ta detal o'lchanganda o'rtacha og'ish $t_{kuz} = -2.5$ chiqdi. Ikki tomonlama muqobil gipoteza $H_1: a \neq a_0$ va $\alpha = 0.05$ uchun $t_{krit}(0.05; 15) = 2.13$. $H_0$ rad etiladimi?
+2. A/B test natijasida $p\text{-value} = 0.032$ chiqdi. Agar tadqiqotchi ahamiyatlilik darajasini $\alpha = 0.01$ qilib belgilagan bo'lsa, qanday qaror qabul qilinadi?
 3. O'yin suyagi 120 marta tashlanganda har bir ochko nazariy jihatdan 20 marta tushishi kutilgan edi ($n_i' = 20$). Kuzatilgan chastotalar: $15, 22, 18, 25, 17, 23$. Pirson $\chi^2_{kuz}$ statistikasini hisoblang.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
@@ -138,7 +138,7 @@ Moduli: $|t_{kuz}| = |-2.5| = 2.5$.
 
     
 
-$|t_{kuz}| = 2.5 > 2.13 = t_{krit}$bo'lgani sababli$H_0$ **rad etiladi** (farq statistik jihatdan ishonchli).
+$|t_{kuz}| = 2.5 > 2.13 = t_{krit}$ bo'lgani sababli $H_0$ **rad etiladi** (farq statistik jihatdan ishonchli).
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
@@ -152,7 +152,7 @@ $p\text{-value} = 0.032 > 0.01 = \alpha$.
 
     
 
-Ahamiyatlilik darajasi $1\%$deb qat'iy belgilangani sababli,$0.032$yetarli emas. Demak,$\mathbf{H_0}$**rad etilmaydi** (o'zgarish$1\%$ darajada ishonchli deb topilmaydi).
+Ahamiyatlilik darajasi $1\%$ deb qat'iy belgilangani sababli, $0.032$ yetarli emas. Demak, $\mathbf{H_0}$**rad etilmaydi** (o'zgarish $1\%$ darajada ishonchli deb topilmaydi).
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
@@ -167,6 +167,6 @@ $\chi^2_{kuz} = \sum \frac{(n_i - 20)^2}{20}$:
     
 
       
-- $(15 - 20)^2 / 20 = 25 / 20 = 1.25$-$(22 - 20)^2 / 20 = 4 / 20 = 0.20$-$(18 - 20)^2 / 20 = 4 / 20 = 0.20$-$(25 - 20)^2 / 20 = 25 / 20 = 1.25$-$(17 - 20)^2 / 20 = 9 / 20 = 0.45$-$(23 - 20)^2 / 20 = 9 / 20 = 0.45$Yig'indi:$\chi^2_{kuz} = 1.25 + 0.20 + 0.20 + 1.25 + 0.45 + 0.45 = \mathbf{3.80}$.
+- $(15 - 20)^2 / 20 = 25 / 20 = 1.25$-$(22 - 20)^2 / 20 = 4 / 20 = 0.20$-$(18 - 20)^2 / 20 = 4 / 20 = 0.20$-$(25 - 20)^2 / 20 = 25 / 20 = 1.25$-$(17 - 20)^2 / 20 = 9 / 20 = 0.45$-$(23 - 20)^2 / 20 = 9 / 20 = 0.45$ Yig'indi: $\chi^2_{kuz} = 1.25 + 0.20 + 0.20 + 1.25 + 0.45 + 0.45 = \mathbf{3.80}$.
 
 </details>

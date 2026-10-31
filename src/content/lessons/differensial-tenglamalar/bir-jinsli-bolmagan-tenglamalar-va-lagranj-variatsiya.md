@@ -21,15 +21,13 @@ Bunday tenglamalar **bir jinsli bo'lmagan chiziqli differensial tenglamalar** de
 
 ## 1. Yechimning umumiy strukturasi
 
-> **Asosiy teorema:** Bir jinsli bo'lmagan chiziqli tenglamaning umumiy yechimi $y(x)$— unga mos bir jinsli tenglamaning umumiy yechimi$y_0(x)$hamda bir jinsli bo'lmagan tenglamaning biror xususiy yechimi$y^*(x)$ ning yig'indisiga teng:
+> **Asosiy teorema:** Bir jinsli bo'lmagan chiziqli tenglamaning umumiy yechimi $y(x)$ — unga mos bir jinsli tenglamaning umumiy yechimi $y_0(x)$ hamda bir jinsli bo'lmagan tenglamaning biror xususiy yechimi $y^*(x)$ ning yig'indisiga teng:
 >
-> 
-$$
+> $$
 > y(x) = y_0(x) + y^*(x)
-> 
-$$
+> $$
 
-Bir jinsli tenglamaning umumiy yechimi $y_0(x) = C_1 y_1(x) + C_2 y_2(x)$xarakteristik tenglama$k^2 + pk + q = 0$yordamida oson topiladi. Asosiy vazifa — xususiy yechim$y^*(x)$ ni aniqlashdir.
+Bir jinsli tenglamaning umumiy yechimi $y_0(x) = C_1 y_1(x) + C_2 y_2(x)$ xarakteristik tenglama $k^2 + pk + q = 0$ yordamida oson topiladi. Asosiy vazifa — xususiy yechim $y^*(x)$ ni aniqlashdir.
 
 ---
 
@@ -46,11 +44,11 @@ $$
 y^*(x) = x^r Q_m(x) e^{\alpha x}
 $$
 Bu yerda:
-- $Q_m(x)$— darajasi$m$ ga teng bo'lgan noma'lum koeffitsiyentli umumiy ko'phad;
-- $r$—$\alpha$ sonining xarakteristik tenglama ildizlari orasidagi uchrashlar soni (karraligi):
-  - Agar $\alpha$xarakteristik tenglamaning ildizi bo'lmasa:$r = 0$;
-  - Agar $\alpha$bitta oddiy ildiz bo'lsa:$r = 1$ (**rezonans!**);
-  - Agar $\alpha$ikkita karrali ildiz bo'lsa:$r = 2$.
+- $Q_m(x)$ — darajasi $m$ ga teng bo'lgan noma'lum koeffitsiyentli umumiy ko'phad;
+- $r$ — $\alpha$ sonining xarakteristik tenglama ildizlari orasidagi uchrashlar soni (karraligi):
+  - Agar $\alpha$ xarakteristik tenglamaning ildizi bo'lmasa: $r = 0$;
+  - Agar $\alpha$ bitta oddiy ildiz bo'lsa: $r = 1$ (**rezonans!**);
+  - Agar $\alpha$ ikkita karrali ildiz bo'lsa: $r = 2$.
 
 ### 2-holat: Trigonometrik o'ng tomon
 $$
@@ -60,15 +58,15 @@ Xususiy yechim ko'rinishi:
 $$
 y^*(x) = x^r e^{\alpha x} \big(M_k(x)\cos\beta x + N_k(x)\sin\beta x\big), \quad k = \max(m, n)
 $$
-Bu yerda $r$soni$\alpha \pm i\beta$ sonining xarakteristik ildizlar orasidagi karraligidir ($r = 1$ bo'lsa rezonans).
+Bu yerda $r$ soni $\alpha \pm i\beta$ sonining xarakteristik ildizlar orasidagi karraligidir ($r = 1$ bo'lsa rezonans).
 
 ---
 
 ## 3. 2-usul: Lagranjning o'zgarmaslarni variatsiyalash usuli (Universal)
 
-Agar o'ng tomon $f(x)$maxsus ko'rinishda bo'lmasa (masalan$f(x) = \frac{1}{\cos x}$, $\text{tg } x$, $\frac{1}{x}$yoki$\frac{1}{1 + e^x}$), rezonans usuli ishlamaydi. Bunday hollarda Lagranj kashf etgan **o'zgarmaslarni variatsiyalash usuli** qo'llaniladi.
+Agar o'ng tomon $f(x)$ maxsus ko'rinishda bo'lmasa (masalan $f(x) = \frac{1}{\cos x}$, $\text{tg } x$, $\frac{1}{x}$ yoki $\frac{1}{1 + e^x}$), rezonans usuli ishlamaydi. Bunday hollarda Lagranj kashf etgan **o'zgarmaslarni variatsiyalash usuli** qo'llaniladi.
 
-Bir jinsli tenglama yechimi $y_0 = C_1 y_1(x) + C_2 y_2(x)$bo'lsin. O'zgarmas$C_1, C_2$sonlarni$x$ ga bog'liq funksiyalar deb qaraymiz:
+Bir jinsli tenglama yechimi $y_0 = C_1 y_1(x) + C_2 y_2(x)$ bo'lsin. O'zgarmas $C_1, C_2$ sonlarni $x$ ga bog'liq funksiyalar deb qaraymiz:
 $$
 y(x) = C_1(x) y_1(x) + C_2(x) y_2(x)
 $$
@@ -81,7 +79,7 @@ C_1'(x) y_1'(x) + C_2'(x) y_2'(x) = f(x)
 \end{cases}
 $$
 
-Sistemaning determinanti $y_1$va$y_2$ yechimlarning **Vronskiy determinanti (Vronskian)** deyiladi:
+Sistemaning determinanti $y_1$ va $y_2$ yechimlarning **Vronskiy determinanti (Vronskian)** deyiladi:
 $$
 W(x) = \begin{vmatrix} y_1 & y_2 \\ y_1' & y_2' \end{vmatrix} = y_1 y_2' - y_2 y_1' \neq 0
 $$
@@ -131,7 +129,8 @@ $$
    
 $$
    Hosilalarni olamiz:
-   - $(y^*)' = A e^{3x} + 3A x e^{3x} = A(1 + 3x)e^{3x}$-$(y^*)'' = 3A e^{3x} + 3A e^{3x} + 9A x e^{3x} = A(6 + 9x)e^{3x}$
+   - $(y^*)' = A e^{3x} + 3A x e^{3x} = A(1 + 3x)e^{3x}$
+   - $(y^*)'' = 3A e^{3x} + 3A e^{3x} + 9A x e^{3x} = A(6 + 9x)e^{3x}$
 
 4. Boshlang'ich tenglamaga qo'yamiz:
    
@@ -219,9 +218,9 @@ $$
 ## 5. Imtihondagi asosiy tuzoqlar
 
 > [!WARNING] Imtihondagi tuzoqlar
-> 1. **Rezonans $x^r$ko'paytuvchisini unutish:** Eng keng tarqalgan xato —$y'' - 4y' + 3y = e^{3x}$tenglamani ko'rib, xususiy yechimni to'g'ridan-to'g'ri$y^* = A e^{3x}$deb qidirish. Qo'yganingizda barcha hadlar qisqarib ketib$0 = 1$ziddiyati chiqadi va talaba qayerda xato qilganini tushunolmay qoladi.$\alpha = 3$ xarakteristik ildiz ekanligini doim tekshiring!
-> 2. **Trigonometriyada juftlik sharti:** Agar $f(x) = \sin 2x$bo'lsa, xususiy yechimni faqat$A\sin 2x$deb qidirish xatodir. Uning hosilasida$\cos 2x$paydo bo'lgani sababli, har doim **ikkala hadni birgalikda** yozish shart:$y^* = A\cos 2x + B\sin 2x$.
-> 3. **Lagranj usulida yuqori hosila koeffitsiyenti:** Agar tenglama $2y'' + 4y' + \dots = f(x)$ko'rinishida berilgan bo'lsa, Lagranj formulasiga qo'yishdan oldin tenglamaning ikkala tomonini$2$ga bo'lib,$y''$ oldidagi koeffitsiyentni 1 ga keltirib olish shart! Aks holda o'ng tomon 2 barobar xato bo'ladi.
+> 1. **Rezonans $x^r$ ko'paytuvchisini unutish:** Eng keng tarqalgan xato — $y'' - 4y' + 3y = e^{3x}$ tenglamani ko'rib, xususiy yechimni to'g'ridan-to'g'ri $y^* = A e^{3x}$ deb qidirish. Qo'yganingizda barcha hadlar qisqarib ketib $0 = 1$ ziddiyati chiqadi va talaba qayerda xato qilganini tushunolmay qoladi.$\alpha = 3$ xarakteristik ildiz ekanligini doim tekshiring!
+> 2. **Trigonometriyada juftlik sharti:** Agar $f(x) = \sin 2x$ bo'lsa, xususiy yechimni faqat $A\sin 2x$ deb qidirish xatodir. Uning hosilasida $\cos 2x$ paydo bo'lgani sababli, har doim **ikkala hadni birgalikda** yozish shart: $y^* = A\cos 2x + B\sin 2x$.
+> 3. **Lagranj usulida yuqori hosila koeffitsiyenti:** Agar tenglama $2y'' + 4y' + \dots = f(x)$ ko'rinishida berilgan bo'lsa, Lagranj formulasiga qo'yishdan oldin tenglamaning ikkala tomonini $2$ ga bo'lib, $y''$ oldidagi koeffitsiyentni 1 ga keltirib olish shart! Aks holda o'ng tomon 2 barobar xato bo'ladi.
 
 ---
 
@@ -237,7 +236,7 @@ $$
 <summary>👉 Yechimni tekshirish</summary>
 
 1. $k^2 - 2k + 1 = 0 \implies (k - 1)^2 = 0 \implies k_{1,2} = 1$(2-karrali ildiz).$y_0 = (C_1 + C_2 x)e^x$.
-2. $\alpha = 1$ikki karrali ildiz bo'lgani uchun$r = 2$ (**kuchli rezonans**).
+2. $\alpha = 1$ ikki karrali ildiz bo'lgani uchun $r = 2$ (**kuchli rezonans**).
 3. $P_1(x) = 6x$ 1-darajali ko'phad bo'lgani uchun:
    
 $$
@@ -251,7 +250,7 @@ $$
 </details>
 
 ### 2-mashq
-$y'' + 4y = 4$tenglamaning$y(0) = 0, y'(0) = 0$ shartlarni qanoatlantiruvchi yechimini toping.
+$y'' + 4y = 4$ tenglamaning $y(0) = 0, y'(0) = 0$ shartlarni qanoatlantiruvchi yechimini toping.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

@@ -23,7 +23,7 @@ x_{(1)} \le x_{(2)} \le x_{(3)} \le \dots \le x_{(n)}
 $$
 bu yerda $n$ — **tanlanma hajmi**.
 
-Agar qiymatlar takrorlansa, bir xil qiymatlar bitta **varianta** $x_i$ga birlashtirilib, ularning uchrash soni **chastota$n_i$** va ulushi **nisbiy chastota $w_i$** hisoblanadi:
+Agar qiymatlar takrorlansa, bir xil qiymatlar bitta **varianta** $x_i$ ga birlashtirilib, ularning uchrash soni **chastota $n_i$** va ulushi **nisbiy chastota $w_i$** hisoblanadi:
 $$
 w_i = \frac{n_i}{n}
 $$
@@ -46,7 +46,7 @@ $$
    k \approx 1 + 3.322 \lg n \quad \text{yoki} \quad k \approx 1 + \log_2 n
    
 $$
-   *(Masalan, $n = 100$ta kuzatish uchun:$k \approx 1 + 3.322 \lg 100 = 1 + 3.322(2) \approx 7.6 \implies 7$yoki$8$ ta interval olinadi).*
+   *(Masalan, $n = 100$ ta kuzatish uchun: $k \approx 1 + 3.322 \lg 100 = 1 + 3.322(2) \approx 7.6 \implies 7$ yoki $8$ ta interval olinadi).*
 
 2. **Interval qadami (kengligi) $h$:**
    
@@ -60,11 +60,11 @@ $$
 ## 3. Statistik ma'lumotlarni grafik tasvirlash
 
 ### A. Chastotalar poligoni (Siniq chiziq)
-Koordinata tekisligida $(x_i, n_i)$yoki$(x_i, w_i)$ nuqtalar belgilanib, to'g'ri kesmalar bilan tutashtiriladi. U asosan **diskret** variatsion qatorlar uchun qo'llaniladi.
+Koordinata tekisligida $(x_i, n_i)$ yoki $(x_i, w_i)$ nuqtalar belgilanib, to'g'ri kesmalar bilan tutashtiriladi. U asosan **diskret** variatsion qatorlar uchun qo'llaniladi.
 
 ### B. Chastotalar gistogrammasi (Ustunli diagramma)
 Interval variatsion qatorlar uchun eng asosiy grafik usul.
-Gorizontal o'qda har bir $[x_i; x_{i+1}]$interval asos qilib olinadi, vertikal o'qda esa to'g'ri to'rtburchak balandligi **chastotalar zichligi**$\frac{n_i}{h}$(yoki nisbiy chastotalar zichligi$\frac{w_i}{h}$) ga teng qilib quriladi:
+Gorizontal o'qda har bir $[x_i; x_{i+1}]$ interval asos qilib olinadi, vertikal o'qda esa to'g'ri to'rtburchak balandligi **chastotalar zichligi**$\frac{n_i}{h}$(yoki nisbiy chastotalar zichligi $\frac{w_i}{h}$) ga teng qilib quriladi:
 
 ```
         w_i / h ^
@@ -83,17 +83,17 @@ $$
 > S = \sum_{i=1}^k h \cdot \frac{w_i}{h} = \sum_{i=1}^k w_i = 1
 > 
 $$
-> Tanlanma hajmi $n \to \infty$va$h \to 0$bo'lganda, gistogrammaning yuqori qirrasi ehtimollar nazariyasidagi **nazariy zichlik egri chizig'i$f(x)$ ga intiladi**!
+> Tanlanma hajmi $n \to \infty$ va $h \to 0$ bo'lganda, gistogrammaning yuqori qirrasi ehtimollar nazariyasidagi **nazariy zichlik egri chizig'i $f(x)$ ga intiladi**!
 
 ---
 
-## 4. Empirik taqsimot funksiyasi $F^*(x)$Nazariy taqsimot funksiyasi$F(x) = P(X < x)$ ning statistik analogi **empirik taqsimot funksiyasi** deyiladi:
+## 4. Empirik taqsimot funksiyasi $F^*(x)$ Nazariy taqsimot funksiyasi $F(x) = P(X < x)$ ning statistik analogi **empirik taqsimot funksiyasi** deyiladi:
 $$
 F^*(x) = \frac{n_x}{n}
 $$
-bu yerda $n_x$— qiymati berilgan$x$ dan kichik bo'lgan kuzatishlar soni.
+bu yerda $n_x$ — qiymati berilgan $x$ dan kichik bo'lgan kuzatishlar soni.
 
-- **Glyivenko-Kantelli bosh statistik teoremasi:** Tanlanma hajmi cheksiz oshganda ($n \to \infty$), empirik funksiya $F^*(x)$haqiqiy nazariy$F(x)$ funksiyaga butun sonlar o'qida tekis yaqinlashadi:
+- **Glyivenko-Kantelli bosh statistik teoremasi:** Tanlanma hajmi cheksiz oshganda ($n \to \infty$), empirik funksiya $F^*(x)$ haqiqiy nazariy $F(x)$ funksiyaga butun sonlar o'qida tekis yaqinlashadi:
 $$
 P\left( \lim_{n\to\infty} \sup_{x} |F^*(x) - F(x)| = 0 \right) = 1
 $$
@@ -109,7 +109,7 @@ $$
 $$
 1) Ranjirlangan qatorni tuzing;
 2) Diskret variatsion qator jadvalini quring;
-3) Tanlanma o'rtacha qiymati $\bar{x}_t$va tanlanma dispersiyasi$D_t$ ni toping.
+3) Tanlanma o'rtacha qiymati $\bar{x}_t$ va tanlanma dispersiyasi $D_t$ ni toping.
 
 #### 1-qadam: Ranjirlash
 Sonlarni o'sish tartibida yozamiz:
@@ -150,8 +150,8 @@ O'rtacha kvadratik og'ish: $\sigma_t = \sqrt{1.6475} \approx 1.28$ g.
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Gistogramma balandligida adashish:** Gistogrammada ustun balandligi shunchaki chastota $n_i$emas, balki **chastotalar zichligi$\frac{n_i}{h}$** bo'lishi shart! Agar oraliqlar turli kenglikda bo'lsa va siz faqat $n_i$ ni olsangiz, grafik butunlay noto'g'ri taassurot uyg'otadi.
-> 2. **Empirik funksiyada qat'iy tengsizlik:** $F^*(x) = \frac{n_x}{n}$formulada$X < x$qat'iy tengsizlik olinadi. Demak,$x = x_1$nuqtada funksiya$0$ga teng bo'lib,$x_1$ dan o'tgandagina sakrash hosil qiladi.
+> 1. **Gistogramma balandligida adashish:** Gistogrammada ustun balandligi shunchaki chastota $n_i$ emas, balki **chastotalar zichligi $\frac{n_i}{h}$** bo'lishi shart! Agar oraliqlar turli kenglikda bo'lsa va siz faqat $n_i$ ni olsangiz, grafik butunlay noto'g'ri taassurot uyg'otadi.
+> 2. **Empirik funksiyada qat'iy tengsizlik:** $F^*(x) = \frac{n_x}{n}$ formulada $X < x$ qat'iy tengsizlik olinadi. Demak, $x = x_1$ nuqtada funksiya $0$ ga teng bo'lib, $x_1$ dan o'tgandagina sakrash hosil qiladi.
 
 ---
 
@@ -170,7 +170,7 @@ Moda ($M_o$) va mediana ($M_e$) ni toping.
 **Yechish:**
 Ranjirlangan qator: $3, 3, 4, 4, 4, 4, 4, 5, 5, 5$.
 - **Moda ($M_o$):** Eng ko'p takrorlangan qiymat — $4$ (5 marta uchrashgan).
-- **Mediana ($M_e$):** $n = 10$juft bo'lgani uchun o'rtadagi 5- va 6-hadlar o'rtachasi:$\frac{4 + 4}{2} = 4$.
+- **Mediana ($M_e$):** $n = 10$ juft bo'lgani uchun o'rtadagi 5- va 6-hadlar o'rtachasi: $\frac{4 + 4}{2} = 4$.
 
 **Javob:** $M_o = 4, \quad M_e = 4$.
 

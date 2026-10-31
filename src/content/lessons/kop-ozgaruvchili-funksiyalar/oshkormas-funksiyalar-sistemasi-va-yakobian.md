@@ -158,7 +158,7 @@ $$
    v'_x = \frac{y(x-y)^2 - xy \cdot 2(x-y)}{(x-y)^4} = \frac{y(x-y) - 2xy}{(x-y)^3} = \frac{-y(x+y)}{(x-y)^3}
    $$
    $$
-   v'_y = \frac{x(x-y)^2 - xy \cdot 2(x-y)(-1)}{(x-y)^4} = \frac{x(x-y) + 2xy}{(x-y)^3} = \frac{x(3y - y + x)}{(x-y)^3} = \frac{x(x+y)}{(x-y)^3}
+   v'_y = \frac{x(x-y)^2 - xy \cdot 2(x-y)(-1)}{(x-y)^4} = \frac{x(x-y) + 2xy}{(x-y)^3} = \frac{x(x - y + 2y)}{(x-y)^3} = \frac{x(x+y)}{(x-y)^3}
    $$
 2. Yakobianni hisoblaymiz:
    $$

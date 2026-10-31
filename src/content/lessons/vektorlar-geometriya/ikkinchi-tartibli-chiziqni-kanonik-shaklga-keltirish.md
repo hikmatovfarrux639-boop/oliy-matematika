@@ -10,7 +10,7 @@ description: "Umumiy 2-tartibli chiziq tenglamasi (Ax^2 + 2Bxy + Cy^2 + 2Dx + 2E
 
 ## Kirish: Qiyshaygan konus kesimlari muammosi
 
-Maktab geometriyasi va analitik geometriya asoslaridan biz ellips ($\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$), giperbola ($\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$) va parabola ($y^2 = 2px$) tenglamalari bilan yaxshi tanishmiz. Ushbu tenglamalar **kanonik (eng sodda)** shaklda yozilgan, chunki ularning simmetriya o'qlari to'g'ridan-to'g'ri koordinata o'qlari ($Ox$va$Oy$) bilan ustma-ust tushadi, markazlari esa koordinata boshida joylashgan.
+Maktab geometriyasi va analitik geometriya asoslaridan biz ellips ($\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$), giperbola ($\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$) va parabola ($y^2 = 2px$) tenglamalari bilan yaxshi tanishmiz. Ushbu tenglamalar **kanonik (eng sodda)** shaklda yozilgan, chunki ularning simmetriya o'qlari to'g'ridan-to'g'ri koordinata o'qlari ($Ox$ va $Oy$) bilan ustma-ust tushadi, markazlari esa koordinata boshida joylashgan.
 
 Ammo amaliyotda, fizikada yoki astronomik hisoblarda ellips yoki giperbola koordinata o'qlariga nisbatan **ixtiyoriy burchakka burilgan** va tekislikning **boshqa bir nuqtasiga ko'chirilgan** holda uchraydi. Natijada tenglamada $xy$ ko'paytmasi paydo bo'ladi va barcha hadlar aralashib ketadi.
 
@@ -28,7 +28,7 @@ $$
 
 bu yerda:
 - $A, B, C$ koeffitsiyentlar bir vaqtda nolga teng emas ($A^2 + B^2 + C^2 \neq 0$);
-- $2B$—$xy$aralash ko'paytmasi oldidagi koeffitsiyent (qulaylik uchun$2B$ deb belgilanadi);
+- $2B$ — $xy$ aralash ko'paytmasi oldidagi koeffitsiyent (qulaylik uchun $2B$ deb belgilanadi);
 - $2D, 2E$ — chiziqli hadlar koeffitsiyentlari;
 - $F$ — ozod had.
 
@@ -52,7 +52,7 @@ $$
 $$
 
 **Yechish:**
-1. $x$va$y$ bo'yicha hadlarni guruhlaymiz:
+1. $x$ va $y$ bo'yicha hadlarni guruhlaymiz:
    
 $$
    4(x^2 - 4x) + 9(y^2 + 6y) + 61 = 0
@@ -101,17 +101,17 @@ $$
 \frac{X^2}{3^2} + \frac{Y^2}{2^2} = 1
 $$
 
-**Xulosa:** Bu markazi $C(2, -3)$nuqtada, yarim o'qlari$a = 3$va$b = 2$ bo'lgan **ellips**dir.
+**Xulosa:** Bu markazi $C(2, -3)$ nuqtada, yarim o'qlari $a = 3$ va $b = 2$ bo'lgan **ellips**dir.
 
 ---
 
-## 3. 2-holat: $B \neq 0$ ($xy$had qatnashgan holat — o'qlarni$\alpha$ burchakka burish)
+## 3. 2-holat: $B \neq 0$ ($xy$ had qatnashgan holat — o'qlarni $\alpha$ burchakka burish)
 
-Agar $B \neq 0$bo'lsa, chiziq tekislikda ma'lum bir$\alpha$burchakka **burilgan** bo'ladi. Uni kanonik holatga keltirish uchun avval koordinata sistemasini$\alpha$ burchakka burish, so'ngra markazga parallel ko'chirish lozim.
+Agar $B \neq 0$ bo'lsa, chiziq tekislikda ma'lum bir $\alpha$ burchakka **burilgan** bo'ladi. Uni kanonik holatga keltirish uchun avval koordinata sistemasini $\alpha$ burchakka burish, so'ngra markazga parallel ko'chirish lozim.
 
 ### Koordinata o'qlarini burish formulalari
 
-Koordinata o'qlari $\alpha$burchakka burilganda, eski$(x, y)$va yangi$(x', y')$ koordinatalar quyidagi munosabatda bo'ladi:
+Koordinata o'qlari $\alpha$ burchakka burilganda, eski $(x, y)$ va yangi $(x', y')$ koordinatalar quyidagi munosabatda bo'ladi:
 
 $$
 \begin{cases}
@@ -126,7 +126,7 @@ $$
 2B' = 2B(\cos^2\alpha - \sin^2\alpha) - 2(A - C)\sin\alpha\cos\alpha = 2B\cos 2\alpha - (A - C)\sin 2\alpha
 $$
 
-Yangi sistemada $x'y'$hadi yo'qolishi uchun$2B' = 0$ bo'lishi shart:
+Yangi sistemada $x'y'$ hadi yo'qolishi uchun $2B' = 0$ bo'lishi shart:
 
 $$
 2B\cos 2\alpha - (A - C)\sin 2\alpha = 0 \implies \operatorname{ctg} 2\alpha = \frac{A - C}{2B}
@@ -139,7 +139,7 @@ $$
 $$
 
 > **Muhim xususiy holat:**
-> Agar $A = C$bo'lsa,$\operatorname{ctg} 2\alpha = 0 \implies 2\alpha = 90^\circ \implies \alpha = 45^\circ$. Ya'ni o'qlarni doimo $45^\circ$ga burish kifoya!$\operatorname{ctg} 2\alpha$ma'lum bo'lgach, trigonometrik ayniyatlar yordamida$\cos 2\alpha$, so'ngra $\cos\alpha$va$\sin\alpha$ topiladi:
+> Agar $A = C$ bo'lsa, $\operatorname{ctg} 2\alpha = 0 \implies 2\alpha = 90^\circ \implies \alpha = 45^\circ$. Ya'ni o'qlarni doimo $45^\circ$ ga burish kifoya!$\operatorname{ctg} 2\alpha$ ma'lum bo'lgach, trigonometrik ayniyatlar yordamida $\cos 2\alpha$, so'ngra $\cos\alpha$ va $\sin\alpha$ topiladi:
 
 $$
 \cos 2\alpha = \frac{\operatorname{ctg} 2\alpha}{\pm \sqrt{1 + \operatorname{ctg}^2 2\alpha}}
@@ -184,7 +184,7 @@ $$
 
 ### Invariantlar bo'yicha chiziq turini aniqlash jadvali
 
-| $I_2$ishorasi | Chiziq tipi |$I_3$va$I_1$ sharti | Geometrik shakl |
+| $I_2$ ishorasi | Chiziq tipi |$I_3$ va $I_1$ sharti | Geometrik shakl |
 |---|---|---|---|
 | **$I_2 > 0$** | **Elliptik** | $I_1 \cdot I_3 < 0$ | **Haqiqiy ellips** (aylana) |
 | | | $I_1 \cdot I_3 > 0$ | **Mavhum ellips** (nuqtalar to'plami bo'sh) |
@@ -205,7 +205,7 @@ $$
 \lambda_1 X^2 + \lambda_2 Y^2 + \frac{I_3}{I_2} = 0
 $$
 
-bu yerda $\lambda_1$va$\lambda_2$ sonlari quyidagi **xarakteristik tenglamaning** ildizlaridir:
+bu yerda $\lambda_1$ va $\lambda_2$ sonlari quyidagi **xarakteristik tenglamaning** ildizlaridir:
 
 $$
 \lambda^2 - I_1 \lambda + I_2 = 0
@@ -317,7 +317,7 @@ $$
 \frac{9X^2}{36} + \frac{4Y^2}{36} = 1 \implies \frac{X^2}{4} + \frac{Y^2}{9} = 1 \quad \text{yoki} \quad \frac{X^2}{2^2} + \frac{Y^2}{3^2} = 1
 $$
 
-Bu yarim o'qlari $a = 2$va$b = 3$ bo'lgan **ellips**dir!
+Bu yarim o'qlari $a = 2$ va $b = 3$ bo'lgan **ellips**dir!
 
 #### 5-qadam: Ellips markazini topish
 Markaz koordinatalari $(x_0, y_0)$ quyidagi sistemadan aniqlanadi:
@@ -334,7 +334,7 @@ Bx + Cy + E = 0
 \end{cases}
 $$
 
-Ikkinchi tenglamani $2$ga qisqartiramiz:$x + 4y - 14 = 0 \implies x = 14 - 4y$.
+Ikkinchi tenglamani $2$ ga qisqartiramiz: $x + 4y - 14 = 0 \implies x = 14 - 4y$.
 Birinchi tenglamaga qo'yamiz:
 
 $$
@@ -387,7 +387,7 @@ $$
 \operatorname{tg}\alpha = \frac{\sin\alpha}{\cos\alpha} = \frac{\frac{2}{\sqrt{5}}}{\frac{1}{\sqrt{5}}} = 2 \implies \alpha = \operatorname{arctg}(2) \approx 63^\circ 26'
 $$
 
-Demak, berilgan ellips markazi $(2, 3)$nuqtada bo'lib, uning katta o'qi gorizontalga nisbatan$\alpha \approx 63.43^\circ$ burchakka burilgan ekan!
+Demak, berilgan ellips markazi $(2, 3)$ nuqtada bo'lib, uning katta o'qi gorizontalga nisbatan $\alpha \approx 63.43^\circ$ burchakka burilgan ekan!
 
 ---
 
@@ -395,7 +395,7 @@ Demak, berilgan ellips markazi $(2, 3)$nuqtada bo'lib, uning katta o'qi gorizont
 
 ### 1-masala
 Quyidagi ikkinchi tartibli chiziqlarning invariantlarini hisoblang, turini aniqlang va kanonik shaklga keltiring:
-1. $x^2 - 4xy + 4y^2 - 2x + 4y - 3 = 0$2.$5x^2 + 6xy + 5y^2 - 32 = 0$3.$7x^2 + 60xy + 32y^2 - 14x - 60y + 7 = 0$
+1. $x^2 - 4xy + 4y^2 - 2x + 4y - 3 = 0$ 2.$5x^2 + 6xy + 5y^2 - 32 = 0$ 3.$7x^2 + 60xy + 32y^2 - 14x - 60y + 7 = 0$
 
 ---
 
@@ -406,15 +406,15 @@ Quyidagi ikkinchi tartibli chiziqlarning invariantlarini hisoblang, turini aniql
 - $I_1 = 1 + 4 = 5$.
 - $I_2 = AC - B^2 = 1 \cdot 4 - (-2)^2 = 4 - 4 = 0$ (Parabolik tip).
 - $I_3 = \begin{vmatrix} 1 & -2 & -1 \\ -2 & 4 & 2 \\ -1 & 2 & -3 \end{vmatrix}$.
-  E'tibor bering: 2-satr 1-satrning $-2$ga ko'paytirilgani! Demak$I_3 = 0$.
-- $I_2 = 0$va$I_3 = 0$ bo'lganligi sababli, bu **ikkita parallel to'g'ri chiziq**dir!
+  E'tibor bering: 2-satr 1-satrning $-2$ ga ko'paytirilgani! Demak $I_3 = 0$.
+- $I_2 = 0$ va $I_3 = 0$ bo'lganligi sababli, bu **ikkita parallel to'g'ri chiziq**dir!
 - Haqiqatan ham: $(x - 2y)^2 - 2(x - 2y) - 3 = 0 \implies (x - 2y - 3)(x - 2y + 1) = 0$.
-  Ikkita parallel to'g'ri chiziq: $x - 2y - 3 = 0$va$x - 2y + 1 = 0$.
+  Ikkita parallel to'g'ri chiziq: $x - 2y - 3 = 0$ va $x - 2y + 1 = 0$.
 
 #### 1-masala (2):
 - $A = 5, B = 3, C = 5, D = 0, E = 0, F = -32$.
-- $I_1 = 10, I_2 = 25 - 9 = 16 > 0$(Elliptik tip, markaz$(0, 0)$).
-- $A = C$bo'lgani uchun burish burchagi$\alpha = 45^\circ$.
+- $I_1 = 10, I_2 = 25 - 9 = 16 > 0$(Elliptik tip, markaz $(0, 0)$).
+- $A = C$ bo'lgani uchun burish burchagi $\alpha = 45^\circ$.
 - Xarakteristik tenglama: $\lambda^2 - 10\lambda + 16 = 0 \implies \lambda_1 = 8, \lambda_2 = 2$.
 - Kanonik tenglama:
   

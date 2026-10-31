@@ -10,7 +10,7 @@ difficulty: "Qiyin"
 
 ## Kirish: Noaniq integrallashning cho'qqisi
 
-Ko'pgina talabalar integrallash jadvalini va oddiy bo'laklab integrallashni o'zlashtirgach, har qanday integralni elementar funksiyalar orqali hisoblash mumkin degan yanglish fikrga boradilar. Aslida esa matematik analizda hatto ko'rinishidan sodda tuyulgan ko'plab integrallar (masalan, $\int e^{-x^2} dx$, $\int \frac{\sin x}{x} dx$yoki$\int \sqrt{1 - x^4} dx$) elementar funksiyalarda "olinmaydigan" (ifodalanmaydigan) integrallar hisoblanadi.
+Ko'pgina talabalar integrallash jadvalini va oddiy bo'laklab integrallashni o'zlashtirgach, har qanday integralni elementar funksiyalar orqali hisoblash mumkin degan yanglish fikrga boradilar. Aslida esa matematik analizda hatto ko'rinishidan sodda tuyulgan ko'plab integrallar (masalan, $\int e^{-x^2} dx$, $\int \frac{\sin x}{x} dx$ yoki $\int \sqrt{1 - x^4} dx$) elementar funksiyalarda "olinmaydigan" (ifodalanmaydigan) integrallar hisoblanadi.
 
 Xo'sh, qaysi murakkab irratsional va algebraik ifodalar aniq integrallanadi va ularni qanday usullar bilan oson yechish mumkin?
 
@@ -33,11 +33,11 @@ $$
 Mx + N = \frac{M}{2a}(2ax + b) + \left(N - \frac{Mb}{2a}\right)
 $$
 3. **Integralni ikkiga ajratish:**
-   - Birinchi integral o'zgaruvchini differensial ostiga kiritish orqali darhol jadval integraliga ($\ln|u|$yoki$2\sqrt{u}$) aylanadi:
+   - Birinchi integral o'zgaruvchini differensial ostiga kiritish orqali darhol jadval integraliga ($\ln|u|$ yoki $2\sqrt{u}$) aylanadi:
    $$
    \int \frac{2ax + b}{ax^2 + bx + c} \, dx = \ln|ax^2 + bx + c| + C
    $$
-   - Ikkinchi integralda suratda faqat o'zgarmas son qoladi va maxrajda **to'la kvadrat ajratiladi** ($a[(x + \frac{b}{2a})^2 \pm k^2]$). Bu esa $\arctan$(arktangens),$\arcsin$ yoki uzoq logarifmga olib keladi.
+   - Ikkinchi integralda suratda faqat o'zgarmas son qoladi va maxrajda **to'la kvadrat ajratiladi** ($a[(x + \frac{b}{2a})^2 \pm k^2]$). Bu esa $\arctan$(arktangens), $\arcsin$ yoki uzoq logarifmga olib keladi.
 
 ---
 
@@ -74,7 +74,7 @@ $$
 
 ## 2. Maxrajda karrali ildizlar bo'lganda Ostrogradskiy usuli
 
-Agar to'g'ri ratsional kasr $\frac{P(x)}{Q(x)}$ning maxraji karrali ildizlarga (masalan,$(x^2 + 1)^2, (x^2 + 2x + 5)^3$) ega bo'lsa, uni oddiy kasrlarga ajratish juda ko'p qavatli rekurrent formulalarni talab qiladi.
+Agar to'g'ri ratsional kasr $\frac{P(x)}{Q(x)}$ ning maxraji karrali ildizlarga (masalan, $(x^2 + 1)^2, (x^2 + 2x + 5)^3$) ega bo'lsa, uni oddiy kasrlarga ajratish juda ko'p qavatli rekurrent formulalarni talab qiladi.
 
 Aynan shu muammoni hal qilish uchun M. V. Ostrogradskiy ajoyib teoremani taklif etgan:
 
@@ -83,9 +83,9 @@ $$
 \int \frac{P(x)}{Q(x)} \, dx = \frac{P_1(x)}{Q_1(x)} + \int \frac{P_2(x)}{Q_2(x)} \, dx
 $$
 bu yerda:
-- $Q_1(x) = \text{EKUB}(Q(x), Q'(x))$— maxraj va uning hosilasining eng katta umumiy bo'luvchisi (u$Q(x)$ ning barcha karrali ko'paytuvchilarini darajasini bittaga kamaytirib o'z ichiga oladi);
+- $Q_1(x) = \text{EKUB}(Q(x), Q'(x))$ — maxraj va uning hosilasining eng katta umumiy bo'luvchisi (u $Q(x)$ ning barcha karrali ko'paytuvchilarini darajasini bittaga kamaytirib o'z ichiga oladi);
 - $Q_2(x) = \frac{Q(x)}{Q_1(x)}$ — maxrajning barcha sodda (oddiy) ko'paytuvchilaridan iborat ko'phad;
-- $P_1(x)$va$P_2(x)$— darajalari mos ravishda$Q_1(x)$va$Q_2(x)$ dan kamida 1 ga kichik bo'lgan **noma'lum koeffitsiyentli ko'phadlar**.
+- $P_1(x)$ va $P_2(x)$ — darajalari mos ravishda $Q_1(x)$ va $Q_2(x)$ dan kamida 1 ga kichik bo'lgan **noma'lum koeffitsiyentli ko'phadlar**.
 
 ### Koeffitsiyentlarni topish qoidasi:
 Ostrogradskiy formulasining ikkala tomonini differensiallaymiz:
@@ -105,8 +105,8 @@ $$
 **Yechish:**
 1. $Q(x) = (x^2 + 1)^2$. U holda $Q'(x) = 2(x^2 + 1) \cdot 2x = 4x(x^2 + 1)$.
 2. $\text{EKUB}(Q, Q') = x^2 + 1$.
-   Demak: $Q_1(x) = x^2 + 1$va$Q_2(x) = \frac{(x^2 + 1)^2}{x^2 + 1} = x^2 + 1$.
-3. $Q_1$va$Q_2$ning darajasi 2 ga teng. Demak,$P_1(x)$va$P_2(x)$1-darajali ko'phadlar bo'ladi:$P_1(x) = Ax + B$, $P_2(x) = Cx + D$.
+   Demak: $Q_1(x) = x^2 + 1$ va $Q_2(x) = \frac{(x^2 + 1)^2}{x^2 + 1} = x^2 + 1$.
+3. $Q_1$ va $Q_2$ ning darajasi 2 ga teng. Demak, $P_1(x)$ va $P_2(x)$ 1-darajali ko'phadlar bo'ladi: $P_1(x) = Ax + B$, $P_2(x) = Cx + D$.
 4. Ostrogradskiy formulasini yozamiz:
 $$
 \int \frac{dx}{(x^2 + 1)^2} = \frac{Ax + B}{x^2 + 1} + \int \frac{Cx + D}{x^2 + 1} \, dx
@@ -126,7 +126,10 @@ $$
 1 = C x^3 + (D - A) x^2 + (C - 2B) x + (A + D)
 $$
 7. Mos koeffitsiyentlarni tenglashtiramiz:
-   - $x^3$oldida:$C = 0$-$x^2$oldida:$D - A = 0 \implies D = A$-$x^1$oldida:$C - 2B = 0 \implies 0 - 2B = 0 \implies B = 0$- Ozod had:$A + D = 1 \implies A + A = 1 \implies A = \frac{1}{2}, \quad D = \frac{1}{2}$
+   - $x^3$ oldida: $C = 0$
+   - $x^2$ oldida: $D - A = 0 \implies D = A$
+   - $x^1$ oldida: $C - 2B = 0 \implies 0 - 2B = 0 \implies B = 0$
+   - Ozod had: $A + D = 1 \implies A + A = 1 \implies A = \frac{1}{2}, \quad D = \frac{1}{2}$
 8. Topilgan koeffitsiyentlarni qo'yamiz:
 $$
 I = \frac{\frac{1}{2}x}{x^2 + 1} + \int \frac{\frac{1}{2}}{x^2 + 1} \, dx = \mathbf{\frac{x}{2(x^2 + 1)} + \frac{1}{2} \arctan x + C}
@@ -162,12 +165,12 @@ flowchart TD
 
 | Klass | Integral ko'rinishi | Optimal usul | Formulalar |
 |---|---|---|---|
-| **1** | $\int \sin^m x \cos^n x \, dx$ ($n$toq) |$t = \sin x$|$\cos x \, dx = dt, \quad \cos^2 x = 1 - t^2$ |
+| **1** | $\int \sin^m x \cos^n x \, dx$ ($n$ toq) |$t = \sin x$|$\cos x \, dx = dt, \quad \cos^2 x = 1 - t^2$ |
 | **2** | $\int \tan^n x \, dx$|$\tan^2 x = \frac{1}{\cos^2 x} - 1$|$\int \tan^{n-2} x (\tan^2 x) dx$ darajani pasaytirish |
 | **3** | $\int \sin(ax)\cos(bx) \, dx$| Ko'paytmani yig'indiga aylantirish |$\sin\alpha\cos\beta = \frac{1}{2}[\sin(\alpha-\beta) + \sin(\alpha+\beta)]$ |
 | **4** | $\int \frac{dx}{a\sin^2 x + b\cos^2 x}$|$t = \tan x$|$\sin^2 x = \frac{t^2}{1+t^2}, \cos^2 x = \frac{1}{1+t^2}, dx = \frac{dt}{1+t^2}$ |
 | **5** | $\int \frac{a_1 \sin x + b_1 \cos x}{a_2 \sin x + b_2 \cos x} dx$|$\text{Surat} = A \cdot M + B \cdot M'$|$A x + B \ln\|a_2 \sin x + b_2 \cos x\| + C$ |
-| **6** | $\int \frac{dx}{a + b\cos x + c\sin x}$| Universal$t = \tan(x/2)$|$\sin x = \frac{2t}{1+t^2}, \cos x = \frac{1-t^2}{1+t^2}, dx = \frac{2dt}{1+t^2}$ |
+| **6** | $\int \frac{dx}{a + b\cos x + c\sin x}$| Universal $t = \tan(x/2)$|$\sin x = \frac{2t}{1+t^2}, \cos x = \frac{1-t^2}{1+t^2}, dx = \frac{2dt}{1+t^2}$ |
 
 ---
 
@@ -177,20 +180,20 @@ Quyidagi ko'rinishdagi integral **binomial differensial** deb ataladi:
 $$
 I = \int x^m (a + b x^n)^p \, dx
 $$
-bu yerda $a, b$— haqiqiy sonlar,$m, n, p$ esa **ratsional sonlar** (kasrlar)dir.
+bu yerda $a, b$ — haqiqiy sonlar, $m, n, p$ esa **ratsional sonlar** (kasrlar)dir.
 
 > [!IMPORTANT]
 > **Chebishev Teoremasi (1853-yil):**
 > Binomial differensial elementar funksiyalarda ifodalanishi uchun quyidagi **3 ta holatdan faqat bittasi** bajarilishi shart va yetarlidir:
 >
 > 1. **1-holat: $p$ — butun son ($p \in \mathbb{Z}$).**
->    *Almashtirish:* $x = t^s$, bu yerda $s$—$m$va$n$ kasr darajalar maxrajlarining EKUKi.
+>    *Almashtirish:* $x = t^s$, bu yerda $s$ — $m$ va $n$ kasr darajalar maxrajlarining EKUKi.
 >
 > 2. **2-holat: $\frac{m + 1}{n}$ — butun son ($\frac{m + 1}{n} \in \mathbb{Z}$).**
->    *Almashtirish:* $a + b x^n = t^s$, bu yerda $s$—$p$ kasr ko'rsatkichining maxraji.
+>    *Almashtirish:* $a + b x^n = t^s$, bu yerda $s$ — $p$ kasr ko'rsatkichining maxraji.
 >
 > 3. **3-holat: $\frac{m + 1}{n} + p$ — butun son ($\frac{m + 1}{n} + p \in \mathbb{Z}$).**
->    *Almashtirish:* Qavsdan $x^n$chiqariladi va$a x^{-n} + b = t^s$(yoki$a + b x^n = x^n t^s$) almashtirishi kiritiladi, bu yerda $s$—$p$ kasrining maxraji.
+>    *Almashtirish:* Qavsdan $x^n$ chiqariladi va $a x^{-n} + b = t^s$(yoki $a + b x^n = x^n t^s$) almashtirishi kiritiladi, bu yerda $s$ — $p$ kasrining maxraji.
 >
 > Agar bu 3 ta shartdan hech biri bajarilmasa, integral **elementar funksiyalarda olinmaydi**!
 
@@ -215,7 +218,7 @@ $$
    $$
    \frac{m + 1}{n} = \frac{-2/3 + 1}{1/3} = \frac{1/3}{1/3} = \mathbf{1} \in \mathbb{Z} \quad \text{(Butun son!)}
    $$
-   Demak, 2-holat bajarildi! $p = 1/2$ning maxraji$s = 2$.
+   Demak, 2-holat bajarildi! $p = 1/2$ ning maxraji $s = 2$.
 4. Almashtirish kiritamiz:
 $$
 1 + x^{1/3} = t^2 \implies x^{1/3} = t^2 - 1 \implies x = (t^2 - 1)^3
@@ -251,12 +254,13 @@ $$
 **Yechish:**
 1. Parametrlar: $m = -4, \quad n = 2, \quad p = -\frac{1}{2}$.
 2. Shartlarni tekshiramiz:
-   - 1-holat: $p = -1/2 \notin \mathbb{Z}$- 2-holat:$\frac{m+1}{n} = \frac{-4+1}{2} = -\frac{3}{2} \notin \mathbb{Z}$
+   - 1-holat: $p = -1/2 \notin \mathbb{Z}$
+   - 2-holat: $\frac{m+1}{n} = \frac{-4+1}{2} = -\frac{3}{2} \notin \mathbb{Z}$
    - 3-holat:
    $$
    \frac{m+1}{n} + p = -\frac{3}{2} + \left(-\frac{1}{2}\right) = -\frac{4}{2} = \mathbf{-2} \in \mathbb{Z} \quad \text{(Butun son!)}
    $$
-3. 3-holat bajarildi! $p = -1/2$ning maxraji$s = 2$.
+3. 3-holat bajarildi! $p = -1/2$ ning maxraji $s = 2$.
    Qavsdan $x^2$ ni chiqaramiz:
    $$
    (1 + x^2)^{-1/2} = (x^2(x^{-2} + 1))^{-1/2} = x^{-1}(x^{-2} + 1)^{-1/2}
@@ -284,12 +288,12 @@ $$
 Aniq integrallarni hisoblashda Nyuton-Leybnits formulasiga boshlang'ich funksiyani qo'yish ba'zan imkonsizdek tuyuladi. Bunday vaqtda xalqaro olimpiadalarda keng qo'llaniladigan **King xossasi (Ko'zgu formulasi)** yordamga keladi.
 
 ### King Teoremasi:
-Ixtiyoriy $[a, b]$kesmada uzluksiz$f(x)$ funksiya uchun:
+Ixtiyoriy $[a, b]$ kesmada uzluksiz $f(x)$ funksiya uchun:
 $$
 \int_a^b f(x) \, dx = \int_a^b f(a + b - x) \, dx
 $$
 
-**Isboti:** $x = a + b - t$almashtirishini bajaramiz.$dx = -dt$. Chegaralar: $x = a \implies t = b$; $x = b \implies t = a$.
+**Isboti:** $x = a + b - t$ almashtirishini bajaramiz. $dx = -dt$. Chegaralar: $x = a \implies t = b$; $x = b \implies t = a$.
 $$
 \int_a^b f(x) \, dx = \int_b^a f(a + b - t)(-dt) = \int_a^b f(a + b - t) \, dt = \int_a^b f(a + b - x) \, dx
 $$
@@ -305,7 +309,7 @@ $$
 **Yechish:**
 1. Bu yerda $a = 0, b = \pi/2 \implies a + b - x = \frac{\pi}{2} - x$.
 2. Keltirish formulalariga ko'ra:
-   $\sin(\pi/2 - x) = \cos x$va$\cos(\pi/2 - x) = \sin x$.
+   $\sin(\pi/2 - x) = \cos x$ va $\cos(\pi/2 - x) = \sin x$.
 3. King formulasiga ko'ra berilgan integral quyidagiga teng:
 $$
 I = \int_0^{\pi/2} \frac{\sqrt{\cos x}}{\sqrt{\cos x} + \sqrt{\sin x}} \, dx
@@ -383,7 +387,7 @@ $$
 $$
 \int \frac{dx}{\sqrt{x} (1 + \sqrt[3]{x})}
 $$
-*Ko'rsatma:* $x^{-1/2}(1 + x^{1/3})^{-1} dx$. $p = -1 \in \mathbb{Z}$(1-holat).$x = t^6$ almashtirishini bajaring.
+*Ko'rsatma:* $x^{-1/2}(1 + x^{1/3})^{-1} dx$. $p = -1 \in \mathbb{Z}$ (1-holat). $x = t^6$ almashtirishini bajaring.
 *Javob:* $6\sqrt[6]{x} - 6\arctan(\sqrt[6]{x}) + C$
 
 4. **Mashq (King xossasi):**

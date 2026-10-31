@@ -7,7 +7,7 @@ description: "Hosilani limit orqali qat'iy ta'rif bo'yicha hisoblash, differensi
 
 ## Kirish: Formulalar qayerdan paydo bo'lgan?
 
-Har bir talaba $(\sin x)' = \cos x$yoki$(x^2)' = 2x$ kabi hosilalar jadvalini yoddan biladi. Ammo bu formulalar osmondan tushmagan — ularning barchasi bitta fundamental matematik chegaraviy ta'rifdan keltirib chiqariladi: **funksiya orttirmasining argument orttirmasiga nisbatining limiti**.
+Har bir talaba $(\sin x)' = \cos x$ yoki $(x^2)' = 2x$ kabi hosilalar jadvalini yoddan biladi. Ammo bu formulalar osmondan tushmagan — ularning barchasi bitta fundamental matematik chegaraviy ta'rifdan keltirib chiqariladi: **funksiya orttirmasining argument orttirmasiga nisbatining limiti**.
 
 Oliy o'quv yurtlari dasturlarida birinchi nazorat ishida doimo beriladigan savol: *"Berilgan funksiyaning hosilasini jadvaldan emas, balki qat'iy ta'rif bo'yicha limit orqali hisoblang"*.
 
@@ -17,7 +17,7 @@ Bundan tashqari, hosilaning eng muhim zamonaviy amaliy tatbiqlaridan biri — bu
 
 ## 1. Hosilaning qat'iy ta'rifi (Limitlar orqali)
 
-Faraz qilaylik, $y = f(x)$funksiya$x_0$ nuqtaning atrofida aniqlangan bo'lsin.
+Faraz qilaylik, $y = f(x)$ funksiya $x_0$ nuqtaning atrofida aniqlangan bo'lsin.
 1. Argument orttirmasi: $\Delta x$;
 2. Funksiyaning to'liq orttirmasi:
    
@@ -27,7 +27,7 @@ $$
 $$
 
 > **Hosila ta'rifi:**
-> Agar argument orttirmasi $\Delta x$nolga intilganda funksiya orttirmasi$\Delta y$ning$\Delta x$ga nisbatining chekli limiti mavjud bo'lsa, bu limit$f(x)$funksiyaning$x_0$ nuqtadagi **hosilasi** deb ataladi:
+> Agar argument orttirmasi $\Delta x$ nolga intilganda funksiya orttirmasi $\Delta y$ ning $\Delta x$ ga nisbatining chekli limiti mavjud bo'lsa, bu limit $f(x)$ funksiyaning $x_0$ nuqtadagi **hosilasi** deb ataladi:
 >
 > 
 $$
@@ -36,7 +36,7 @@ $$
 $$
 
 ### Geometrik ma'nosi:
-$\frac{\Delta y}{\Delta x}$nisbat kesuvchi to'g'ri chiziqning og'ish burchagi tangensidir.$\Delta x \to 0$ da kesuvchi urinmaga aylanadi:
+$\frac{\Delta y}{\Delta x}$ nisbat kesuvchi to'g'ri chiziqning og'ish burchagi tangensidir.$\Delta x \to 0$ da kesuvchi urinmaga aylanadi:
 $$
 f'(x_0) = \tan\alpha = k_{\text{urinma}}
 $$
@@ -45,7 +45,7 @@ $$
 
 ## 2. Nyuton-Rafson urinmalar usuli (Tenglamalarni sonli yechish)
 
-Har qanday $f(x) = 0$murakkab tenglamani (masalan,$x^3 - x - 1 = 0$yoki$x - \cos x = 0$) analitik formula bilan yechib bo'lmaydi.
+Har qanday $f(x) = 0$ murakkab tenglamani (masalan, $x^3 - x - 1 = 0$ yoki $x - \cos x = 0$) analitik formula bilan yechib bo'lmaydi.
 
 Isaak Nyuton funksiyaning grafigiga urinma o'tkazib, urinmaning $Ox$ o'qi bilan kesishish nuqtasi haqiqiy ildizga qarab juda tez yaqinlashishini kashf qildi:
 
@@ -57,7 +57,7 @@ $$
 $$
 >
 > **Yaqinlashish sharti (Fure qoidasi):**
-> Boshlang'ich $x_0$nuqta qilib$[a; b]$ kesmaning shunday uchi tanlanadiki, unda funksiya va uning ikkinchi hosilasi bir xil ishoraga ega bo'lishi kerak:
+> Boshlang'ich $x_0$ nuqta qilib $[a; b]$ kesmaning shunday uchi tanlanadiki, unda funksiya va uning ikkinchi hosilasi bir xil ishoraga ega bo'lishi kerak:
 > 
 $$
 > f(x_0) \cdot f''(x_0) > 0
@@ -68,7 +68,7 @@ $$
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **1-masala:** $f(x) = \sqrt{x}$funksiyaning$x > 0$ da hosilasini:
+> **1-masala:** $f(x) = \sqrt{x}$ funksiyaning $x > 0$ da hosilasini:
 > 1) Hosila ta'rifi bo'yicha limit orqali toping;
 > 2) Darajali funksiya qoidasi bilan hisoblab solishtiring.
 
@@ -96,7 +96,7 @@ Ikkala usul ham mutlaqo bir xil natija berdi!
 
 ## 2-masala: Nyuton usulida ildizni hisoblash
 
-> **Masala:** $f(x) = x^3 - 2 = 0$ tenglama ildizini ($\sqrt[3]{2}$ning son qiymatini)$x_0 = 1.5$ dan boshlab 2 ta qadamda hisoblang.
+> **Masala:** $f(x) = x^3 - 2 = 0$ tenglama ildizini ($\sqrt[3]{2}$ ning son qiymatini)$x_0 = 1.5$ dan boshlab 2 ta qadamda hisoblang.
 
 **Yechilishi:**
 1. Hosila: $f'(x) = 3x^2$.
@@ -112,12 +112,12 @@ Haqiqiy qiymat: $\sqrt[3]{2} \approx 1.25992$. Atigi 2 ta qadamda xatolik $0.001
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **$\Delta x$ni$x$ bilan chalkashtirish:**
+> 1. **$\Delta x$ ni $x$ bilan chalkashtirish:**
 >    Hosilani ta'rif bo'yicha hisoblayotganda $\Delta x$ — bu mustaqil o'zgaruvchi! U nolga intiladi ($\Delta x \to 0$). $x$ esa bu yerda o'zgarmas parametr sifatida qatnashadi.
 > 2. **Nyuton usulida $f'(x_0) = 0$ bo'lish xavfi:**
 >    Agar boshlang'ich nuqtada hosila nolga teng bo'lsa ($f'(x_0) = 0$), urinma gorizontal bo'lib $Ox$ o'qi bilan kesishmaydi va formulada nolga bo'lish yuz beradi. Shuning uchun ekstremum nuqtalarini boshlang'ich yaqinlashish qilib tanlab bo'lmaydi!
 > 3. **Uzluksizlik differensiallanuvchanlikni kafolatlamaydi:**
->    $f(x) = |x|$funksiya$x = 0$da uzluksiz, lekin bu nuqtada hosilaga ega emas (chunki chap hosila$-1$, o'ng hosila esa $+1$ bo'lib, ular teng emas).
+>    $f(x) = |x|$ funksiya $x = 0$ da uzluksiz, lekin bu nuqtada hosilaga ega emas (chunki chap hosila $-1$, o'ng hosila esa $+1$ bo'lib, ular teng emas).
 
 ---
 
@@ -125,7 +125,7 @@ Haqiqiy qiymat: $\sqrt[3]{2} \approx 1.25992$. Atigi 2 ta qadamda xatolik $0.001
 
 1. $f(x) = x^2 - 3x$ funksiyaning hosilasini ta'rif bo'yicha limit orqali toping.
 2. $f(x) = \frac{1}{x}$ funksiyaning hosilasini ta'rif bo'yicha limit orqali hisoblang.
-3. Nyuton-Rafson usuli yordamida $x^2 - 5 = 0$ tenglama uchun ($\sqrt{5}$ni topish formulasi) iteratsion formulani tuzing va$x_0 = 2$dan boshlab$x_1$ ni toping.
+3. Nyuton-Rafson usuli yordamida $x^2 - 5 = 0$ tenglama uchun ($\sqrt{5}$ ni topish formulasi) iteratsion formulani tuzing va $x_0 = 2$ dan boshlab $x_1$ ni toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
 <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>

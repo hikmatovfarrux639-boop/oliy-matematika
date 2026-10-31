@@ -5,11 +5,13 @@ order: 9
 description: "u = f(x,y,z) funksiyalar, sath chiziqlari va sath sirtlari, yuqori tartibli differensiallar hamda ko'p o'zgaruvchili funksiyani Teylor qatoriga yoyish."
 ---
 
-Ko'p o'zgaruvchili funksiyalar nazariyasi faqat ikki o'zgaruvchili $z = f(x, y)$funksiyalar bilan cheklanib qolmaydi. Fizika, mexanika va muhandislik masalalarida fazodagi skalyar maydonlar uch o'zgaruvchili$u = f(x, y, z)$ funksiyalar orqali tavsiflanadi. Shuningdek, murakkab ko'p o'zgaruvchili funksiyalarni nuqta atrofida ko'phadlar yordamida yaqinlashtirish uchun **Teylor formulasi** asosiy vosita bo'lib xizmat qiladi.
+Ko'p o'zgaruvchili funksiyalar nazariyasi faqat ikki o'zgaruvchili $z = f(x, y)$ funksiyalar bilan cheklanib qolmaydi. Fizika, mexanika va muhandislik masalalarida fazodagi skalyar maydonlar uch o'zgaruvchili $u = f(x, y, z)$ funksiyalar orqali tavsiflanadi. Shuningdek, murakkab ko'p o'zgaruvchili funksiyalarni nuqta atrofida ko'phadlar yordamida yaqinlashtirish uchun **Teylor formulasi** asosiy vosita bo'lib xizmat qiladi.
 
 ---
 
-## 1. Uch o'zgaruvchili funksiyalar: $u = f(x, y, z)$Fazodagi biror$V \subset \mathbb{R}^3$sohada yotuvchi har bir$M(x, y, z)$nuqtaga ma'lum qonuniyat bo'yicha yagona$u \in \mathbb{R}$haqiqiy son mos qo'yilsa,$V$sohada **uch o'zgaruvchili funksiya**$u = f(x, y, z)$ berilgan deyiladi.
+## 1. Uch o'zgaruvchili funksiyalar: $u = f(x, y, z)$
+
+Fazodagi biror $V \subset \mathbb{R}^3$ sohada yotuvchi har bir $M(x, y, z)$ nuqtaga ma'lum qonuniyat bo'yicha yagona $u \in \mathbb{R}$ haqiqiy son mos qo'yilsa, $V$ sohada **uch o'zgaruvchili funksiya** $u = f(x, y, z)$ berilgan deyiladi.
 
 ### 1.1. Xususiy hosilalar va to'liq differensial
 
@@ -29,9 +31,9 @@ $$
 
 ## 2. Sath chiziqlari va sath sirtlari
 
-Ikki o'zgaruvchili $z = f(x, y)$funksiyaning grafigini$\mathbb{R}^3$fazoda sirt sifatida tasvirlash mumkin, biroq uch o'zgaruvchili$u = f(x, y, z)$funksiyaning grafigi 4 o'lchovli$\mathbb{R}^4$ fazoda joylashgani uchun uni bevosita chizib bo'lmaydi. Shu sababli funksiyaning geometrik xossalarini o'rganishda **sath chiziqlari** va **sath sirtlari**dan foydalaniladi.
+Ikki o'zgaruvchili $z = f(x, y)$ funksiyaning grafigini $\mathbb{R}^3$ fazoda sirt sifatida tasvirlash mumkin, biroq uch o'zgaruvchili $u = f(x, y, z)$ funksiyaning grafigi 4 o'lchovli $\mathbb{R}^4$ fazoda joylashgani uchun uni bevosita chizib bo'lmaydi. Shu sababli funksiyaning geometrik xossalarini o'rganishda **sath chiziqlari** va **sath sirtlari**dan foydalaniladi.
 
-- **Sath chizig'i (ikki o'zgaruvchili funksiya uchun):** $Oxy$tekisligidagi shunday$(x, y)$nuqtalar to'plamiki, ularda$z = f(x, y)$funksiya aynan bir xil$C = \text{const}$ qiymatni qabul qiladi:
+- **Sath chizig'i (ikki o'zgaruvchili funksiya uchun):** $Oxy$ tekisligidagi shunday $(x, y)$ nuqtalar to'plamiki, ularda $z = f(x, y)$ funksiya aynan bir xil $C = \text{const}$ qiymatni qabul qiladi:
 
 $$
 f(x, y) = C
@@ -39,7 +41,7 @@ $$
 
 Topografik xaritalardagi bir xil balandlikni tutashtiruvchi chiziqlar (**gorizontallar**), ob-havo xaritalaridagi **izobaralar** (bir xil bosim) va **izotermalar** (bir xil harorat) sath chiziqlariga yaqqol misoldir.
 
-- **Sath sirti (uch o'zgaruvchili funksiya uchun):** Uch o'lchovli $Oxyz$fazodagi shunday$(x, y, z)$nuqtalar geometrik o'rniki, ularda$u = f(x, y, z)$skalyar maydon o'zgarmas$C = \text{const}$ qiymatni saqlaydi:
+- **Sath sirti (uch o'zgaruvchili funksiya uchun):** Uch o'lchovli $Oxyz$ fazodagi shunday $(x, y, z)$ nuqtalar geometrik o'rniki, ularda $u = f(x, y, z)$ skalyar maydon o'zgarmas $C = \text{const}$ qiymatni saqlaydi:
 
 $$
 f(x, y, z) = C
@@ -59,7 +61,7 @@ $$
 
 ## 3. Yuqori tartibli to'liq differensiallar
 
-Faraz qilaylik, $z = f(x, y)$funksiya$n$-tartibli uzluksiz xususiy hosilalarga ega bo'lsin hamda $x$va$y$ erkli o'zgaruvchilar bo'lsin ($dx = \text{const}, \, dy = \text{const}$). U holda differensial operatoridan foydalanib, $k$-tartibli to'liq differensialni ($k = 1, 2, \dots, n$) simvolik binom formulasi ko'rinishida yozish mumkin:
+Faraz qilaylik, $z = f(x, y)$ funksiya $n$-tartibli uzluksiz xususiy hosilalarga ega bo'lsin hamda $x$ va $y$ erkli o'zgaruvchilar bo'lsin ($dx = \text{const}, \, dy = \text{const}$). U holda differensial operatoridan foydalanib, $k$-tartibli to'liq differensialni ($k = 1, 2, \dots, n$) simvolik binom formulasi ko'rinishida yozish mumkin:
 
 $$
 d^k z = \left( \frac{\partial}{\partial x}dx + \frac{\partial}{\partial y}dy \right)^k z = \sum_{m=0}^{k} C_k^m \frac{\partial^k z}{\partial x^{k-m} \partial y^m} dx^{k-m} dy^m
@@ -82,7 +84,7 @@ $$
 
 ## 4. Ikki o'zgaruvchili funksiya uchun Teylor va Makloren formulalari
 
-Faraz qilaylik, $z = f(x, y)$funksiya$M_0(x_0, y_0)$nuqtaning biror atrofida$(n+1)$-tartibigacha bo'lgan barcha uzluksiz xususiy hosilalarga ega bo'lsin. $\Delta x = dx = x - x_0$va$\Delta y = dy = y - y_0$ deb belgilasak, **ikki o'zgaruvchili funksiya uchun Teylor formulasi** to'liq differensiallar orqali quyidagi ixcham ko'rinishda yoziladi:
+Faraz qilaylik, $z = f(x, y)$ funksiya $M_0(x_0, y_0)$ nuqtaning biror atrofida $(n+1)$-tartibigacha bo'lgan barcha uzluksiz xususiy hosilalarga ega bo'lsin. $\Delta x = dx = x - x_0$ va $\Delta y = dy = y - y_0$ deb belgilasak, **ikki o'zgaruvchili funksiya uchun Teylor formulasi** to'liq differensiallar orqali quyidagi ixcham ko'rinishda yoziladi:
 
 $$
 f(x, y) = f(x_0, y_0) + \frac{df(x_0, y_0)}{1!} + \frac{d^2 f(x_0, y_0)}{2!} + \dots + \frac{d^n f(x_0, y_0)}{n!} + R_n(x, y)
@@ -125,13 +127,13 @@ $$
 \frac{z}{x^2 + y^2} = C \implies z = C(x^2 + y^2), \quad (x^2 + y^2 \neq 0)
 $$
 
-- Agar $C = 0$bo'lsa, sath sirti koordinatalar boshi$(0, 0, 0)$olib tashlangan$z = 0$ ($Oxy$) tekisligidan iborat;
-- Agar $C \neq 0$ bo'lsa, sath sirtlari uchi koordinatalar boshida ($O(0, 0, 0)$nuqta chiqarib tashlangan) va simmetriya o'qi$Oz$ o'qi bo'lgan **aylanma paraboloidlar** oilasidan iborat bo'ladi.
+- Agar $C = 0$ bo'lsa, sath sirti koordinatalar boshi $(0, 0, 0)$ olib tashlangan $z = 0$ ($Oxy$) tekisligidan iborat;
+- Agar $C \neq 0$ bo'lsa, sath sirtlari uchi koordinatalar boshida ($O(0, 0, 0)$ nuqta chiqarib tashlangan) va simmetriya o'qi $Oz$ o'qi bo'lgan **aylanma paraboloidlar** oilasidan iborat bo'ladi.
 
 ---
 
 ### 2-misol. Ko'phadni nuqta atrofida Teylor formulasiga yoyish
-$f(x, y) = x^2 - xy + 2y^2 - 3x + 4y + 1$funksiyani$M_0(1, -1)$nuqta atrofida$(x - 1)$va$(y + 1)$ ning darajalari bo'yicha Teylor qatoriga yoying.
+$f(x, y) = x^2 - xy + 2y^2 - 3x + 4y + 1$ funksiyani $M_0(1, -1)$ nuqta atrofida $(x - 1)$ va $(y + 1)$ ning darajalari bo'yicha Teylor qatoriga yoying.
 
 **Yechish:**
 Funksiya 2-darajali ko'phad bo'lgani uchun uning 3- va undan yuqori tartibli barcha xususiy hosilalari nolga teng ($R_2 \equiv 0$).
@@ -169,10 +171,14 @@ $$
 ---
 
 ### 3-misol. Transsendent funksiyani Makloren formulasiga yoyish
-$f(x, y) = e^x \cos y$funksiyani$(0, 0)$ nuqta atrofida 2-tartibli hadlargacha Makloren formulasiga yoying.
+$f(x, y) = e^x \cos y$ funksiyani $(0, 0)$ nuqta atrofida 2-tartibli hadlargacha Makloren formulasiga yoying.
 
 **Yechish (1-usul — Xususiy hosilalar orqali):**
-- $f(0, 0) = e^0 \cos 0 = 1$-$f'_x = e^x \cos y \implies f'_x(0, 0) = 1$; $\quad f'_y = -e^x \sin y \implies f'_y(0, 0) = 0$-$f''_{xx} = e^x \cos y \implies f''_{xx}(0, 0) = 1$-$f''_{xy} = -e^x \sin y \implies f''_{xy}(0, 0) = 0$-$f''_{yy} = -e^x \cos y \implies f''_{yy}(0, 0) = -1$
+- $f(0, 0) = e^0 \cos 0 = 1$
+- $f'_x = e^x \cos y \implies f'_x(0, 0) = 1$; $\quad f'_y = -e^x \sin y \implies f'_y(0, 0) = 0$
+- $f''_{xx} = e^x \cos y \implies f''_{xx}(0, 0) = 1$
+- $f''_{xy} = -e^x \sin y \implies f''_{xy}(0, 0) = 0$
+- $f''_{yy} = -e^x \cos y \implies f''_{yy}(0, 0) = -1$
 
 Demak:
 
@@ -181,7 +187,7 @@ e^x \cos y = 1 + x + \frac{1}{2!}(x^2 - y^2) + o(x^2 + y^2) = 1 + x + \frac{x^2}
 $$
 
 **Yechish (2-usul — Standart bir o'zgaruvchili Makloren yoyilmalarini ko'paytirish):**
-$e^x = 1 + x + \frac{x^2}{2} + \dots$va$\cos y = 1 - \frac{y^2}{2} + \dots$ yoyilmalarini ko'paytirib, 2-darajadan yuqori hadlarni tashlab yuborsak:
+$e^x = 1 + x + \frac{x^2}{2} + \dots$ va $\cos y = 1 - \frac{y^2}{2} + \dots$ yoyilmalarini ko'paytirib, 2-darajadan yuqori hadlarni tashlab yuborsak:
 
 $$
 e^x \cos y = \left(1 + x + \frac{x^2}{2} + \dots\right)\left(1 - \frac{y^2}{2} + \dots\right) = 1 + x + \frac{x^2}{2} - \frac{y^2}{2} + \dots
@@ -199,11 +205,11 @@ $$
 
 ## 7. Mustaqil yechish uchun masalalar
 
-1. **Masala:** $u = x^2 + y^2 - z^2$funksiyaning$C > 0$, $C = 0$va$C < 0$ hollaridagi sath sirtlari qanday ikkinchi tartibli sirtlar ekanligini aniqlang.
-   - *Javob:* $C > 0$da bir pallali giperboloidlar;$C = 0$da ikkinchi tartibli konus;$C < 0$ da ikki pallali giperboloidlar.
-2. **Masala:** $z = x^3 y^2$funksiyaning$d^2 z$va$d^3 z$ yuqori tartibli to'liq differensiallarini toping.
+1. **Masala:** $u = x^2 + y^2 - z^2$ funksiyaning $C > 0$, $C = 0$ va $C < 0$ hollaridagi sath sirtlari qanday ikkinchi tartibli sirtlar ekanligini aniqlang.
+   - *Javob:* $C > 0$ da bir pallali giperboloidlar; $C = 0$ da ikkinchi tartibli konus; $C < 0$ da ikki pallali giperboloidlar.
+2. **Masala:** $z = x^3 y^2$ funksiyaning $d^2 z$ va $d^3 z$ yuqori tartibli to'liq differensiallarini toping.
    - *Javob:* $d^2 z = 6xy^2 dx^2 + 12x^2 y\,dx\,dy + 2x^3 dy^2$; $\quad d^3 z = 6y^2 dx^3 + 36xy\,dx^2 dy + 18x^2 dx\,dy^2$.
-3. **Masala:** $f(x, y) = \ln(1 + x + y)$funksiyani$(0, 0)$ nuqta atrofida 2-tartibli hadlargacha Makloren formulasiga yoying.
+3. **Masala:** $f(x, y) = \ln(1 + x + y)$ funksiyani $(0, 0)$ nuqta atrofida 2-tartibli hadlargacha Makloren formulasiga yoying.
    - *Javob:* $\ln(1 + x + y) \approx x + y - \frac{1}{2}(x^2 + 2xy + y^2)$.
-4. **Masala:** $f(x, y) = x^y$funksiyani$M_0(1, 1)$ nuqta atrofida 2-tartibli hadlargacha Teylor formulasiga yoying.
+4. **Masala:** $f(x, y) = x^y$ funksiyani $M_0(1, 1)$ nuqta atrofida 2-tartibli hadlargacha Teylor formulasiga yoying.
    - *Javob:* $x^y \approx 1 + (x - 1) + (x - 1)(y - 1)$.

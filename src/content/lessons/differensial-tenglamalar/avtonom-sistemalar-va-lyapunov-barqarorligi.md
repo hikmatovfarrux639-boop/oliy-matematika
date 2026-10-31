@@ -25,7 +25,7 @@ $$\frac{dy}{dx} = \frac{Q(x, y)}{P(x, y)}$$
 
 > **Ta'rif (Muvozanat nuqtasi):**
 > Agar biror $(x_0, y_0)$ nuqtada harakat tezligi nolga teng bo'lsa, ya'ni:
-> $$P(x_0, y_0) = 0 \quad \text{va} \quad Q(x_0, y_0) = 0$$
+> $$ P(x_0, y_0) = 0 \quad \text{va} \quad Q(x_0, y_0) = 0 $$
 > u holda $(x_0, y_0)$ nuqta sistemaning **muvozanat (tinchlik yoki statsionar) nuqtasi** deyiladi.
 
 ---

@@ -13,10 +13,10 @@ Ko'rsatkichli ($e^x$) va logarifmik ($\ln x$) funksiyalar butun oliy matematikan
 
 ## 1. Ko'rsatkichli ifodalar va ularning xossalari
 
-Ko'rsatkichli ifoda $a^x$ko'rinishida bo'lib, bu yerda$a > 0, \, a \neq 1$.
+Ko'rsatkichli ifoda $a^x$ ko'rinishida bo'lib, bu yerda $a > 0, \, a \neq 1$.
 - **Agar $a > 1$ bo'lsa:** funksiya butun sonlar o'qida qat'iy o'suvchi;
 - **Agar $0 < a < 1$ bo'lsa:** funksiya qat'iy kamayuvchi bo'ladi;
-- Ixtiyoriy haqiqiy $x$uchun daraja doimo qat'iy musbat:$a^x > 0$.
+- Ixtiyoriy haqiqiy $x$ uchun daraja doimo qat'iy musbat: $a^x > 0$.
 
 ### Eyler soni ($e$):
 Matematik analizdagi eng mashhur o'zgarmas asos:
@@ -28,7 +28,7 @@ $$
 
 ## 2. Logarifm ta'rifi va cheklovlari
 
-> **Ta'rif:** $b$sonining$a$asosga ko'ra **logarifmi** deb,$b$sonini hosil qilish uchun$a$ asosni ko'tarish lozim bo'lgan daraja ko'rsatkichiga aytiladi:
+> **Ta'rif:** $b$ sonining $a$ asosga ko'ra **logarifmi** deb, $b$ sonini hosil qilish uchun $a$ asosni ko'tarish lozim bo'lgan daraja ko'rsatkichiga aytiladi:
 >
 > 
 $$
@@ -42,7 +42,8 @@ $$
 3. Logarifm ostidagi ifoda qat'iy musbat bo'lishi shart: $b > 0$.
 
 ### Maxsus logarifmlar:
-- **O'nli logarifm:** $\lg x = \log_{10} x$- **Natural logarifm:**$\ln x = \log_e x$
+- **O'nli logarifm:** $\lg x = \log_{10} x$
+- **Natural logarifm:** $\ln x = \log_e x$
 
 ---
 
@@ -108,7 +109,7 @@ $$
 Viyet teoremasi bo'yicha:
 $$(t - 4)(t + 1) = 0 \implies t_1 = 4, \quad t_2 = -1$$
 - $t_1 = 4 \implies 2^x = 4 = 2^2 \implies x = 2$.
-- $t_2 = -1 \implies 2^x = -1$— yechim yo'q (chunki$2^x > 0$ har doim musbat).
+- $t_2 = -1 \implies 2^x = -1$ — yechim yo'q (chunki $2^x > 0$ har doim musbat).
 
 **Javob:** $x = 2$
 
@@ -130,7 +131,7 @@ $$
 4. Ildizlarni topamiz:
    $$(x - 1)(x - 5) = 0 \implies x_1 = 1, \quad x_2 = 5$$
 5. Aniqlanish sohasini tekshiramiz ($x > 4$):
-   - $x = 1$chet ildiz (chunki$1 - 2 = -1 < 0$ logarifm ostiga manfiy son tushadi);
+   - $x = 1$ chet ildiz (chunki $1 - 2 = -1 < 0$ logarifm ostiga manfiy son tushadi);
    - $x = 5 > 4$ yaroqli yagona yechim.
 
 **Javob:** $x = 5$
@@ -164,9 +165,9 @@ $$
    > Logarifmik tenglamani yechgandan keyin chiqqan ildizlarni albatta dastlabki ifodaga qo'yib tekshirish shart! Ko'pincha chet ildizlar chiqadi va ularni tashlab yubormaslik butun misolni nolga tenglashtiradi.
 
 2. **Asos 1 dan kichik bo'lganda ishorani o'zgartirishni unutish:**
-   > $\log_{0.2} x > 2$da$x > 0.04$deb yozish xato. To'g'risi:$0 < x < 0.04$.
+   > $\log_{0.2} x > 2$ da $x > 0.04$ deb yozish xato. To'g'risi: $0 < x < 0.04$.
 
-3. **$\log_a(x + y)$ni$\log_a x + \log_a y$ deb o'ylash:**
+3. **$\log_a(x + y)$ ni $\log_a x + \log_a y$ deb o'ylash:**
    > Logarifmlar yig'indisi ko'paytmaning logarifmiga teng: $\log_a(xy) = \log_a x + \log_a y$. Ammo qavs ichidagi yig'indini $\log_a(x + y)$ alohida qilib yoyib bo'lmaydi!
 
 ---

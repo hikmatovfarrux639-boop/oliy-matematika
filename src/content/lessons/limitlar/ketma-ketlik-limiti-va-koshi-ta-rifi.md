@@ -33,7 +33,7 @@ XIX asrgacha matematiklar "hadlar cheksizlikda songa tenglashadi" kabi noaniq ju
 
 > **Ta'rif (Koshi):** Agar ixtiyoriy $\varepsilon > 0$ musbat soni uchun shunday natural $N = N(\varepsilon)$ nomer mavjud bo'lsaki, barcha $n > N$ nomerlar uchun
 > 
-> $$|x_n - a| < \varepsilon$$
+> $$|x_n - a| < \varepsilon $$
 > 
 > tengsizlik bajarilsa, $a$ soni $\{x_n\}$ ketma-ketlikning **limiti** deyiladi va quyidagicha yoziladi:
 > 
@@ -66,11 +66,11 @@ ketma-ketlik o'suvchi va yuqoridan $3$ bilan chegaralangan, demak uning chekli l
 
 > **Teorema:** Agar barcha $n$ nomerlar uchun (yoki biror nomerdan boshlab)
 > 
-> $$y_n \le x_n \le z_n$$
+> $$ y_n \le x_n \le z_n $$
 > 
 > tengsizlik bajarilsa va $\lim_{n \to \infty} y_n = \lim_{n \to \infty} z_n = a$ bo'lsa, u holda o'rtadagi ketma-ketlik ham yaqinlashadi va:
 > 
-> $$\lim_{n \to \infty} x_n = a$$
+> $$\lim_{n \to \infty} x_n = a $$
 
 ### 6. Yaqinlashishning Koshi mezoni (Ichki mezon)
 
@@ -79,7 +79,7 @@ Ba'zan ketma-ketlikning limiti qanday songa teng ekanini oldindan bilmaymiz. Bun
 > **Koshi mezoni:** $\{x_n\}$ ketma-ketlik chekli limitga ega bo'lishi uchun quyidagi shartning bajarilishi zarur va yetarlidir:
 > ixtiyoriy $\varepsilon > 0$ uchun shunday $N \in \mathbb{N}$ nomer topilsaki, barcha $n > N$ va $m > N$ nomerlar uchun
 > 
-> $$|x_n - x_m| < \varepsilon$$
+> $$|x_n - x_m| < \varepsilon $$
 > 
 > tengsizlik bajarilishi shart.
 
@@ -98,7 +98,7 @@ Ba'zan ketma-ketlikning limiti qanday songa teng ekanini oldindan bilmaymiz. Bun
 2. Kasrlar ayirmasini umumiy maxrajga keltirib soddalashtiramiz:
    $$\frac{2(3n + 1) - 3(2n + 5)}{2(2n + 5)} = \frac{6n + 2 - 6n - 15}{4n + 10} = \frac{-13}{4n + 10}$$
 
-3. Modulni ochamiz ($n \in \mathbb{N}$ bo'lgani uchun mahraj har doim musbat):
+3. Modulni ochamiz ($n \in \mathbb{N}$ bo'lgani uchun maxraj har doim musbat):
    $$\left| \frac{-13}{4n + 10} \right| = \frac{13}{4n + 10}$$
 
 4. Endi tengsizlikni yechamiz:
@@ -280,11 +280,11 @@ Rekurrent ketma-ketlik $x_1 = 3$ va $x_{n+1} = \frac{1}{2}\left(x_n + \frac{5}{x
 1. **Cheksizlikda o'sish tezligi ierarxiyasi (Oltin Narvon):**
    Ketma-ketliklar limitini yechishda quyidagi ierarxiyani yodda tuting (chapdan o'ngga qarab o'sish tezligi keskin oshadi):
    $$\ln n \ll \sqrt[k]{n} \ll n \ll n^2 \ll n^k \ll a^n \ll n! \ll n^n \quad (a > 1)$$
-   Agar kasrning mahrajidagi funksiya suratdagidan o'ngroqda tursa — limit darhol **$0$** bo'ladi! Masalan:
+   Agar kasrning maxrajidagi funksiya suratdagidan o'ngroqda tursa — limit darhol **$0$** bo'ladi! Masalan:
    $$\lim_{n \to \infty} \frac{n^{100} + 2^n}{n!} = 0$$
 
 2. **Ko'phadlar nisbatida bosh hadlar qoidasi:**
-   Agar surat va mahraj $n$ ga nisbatan ko'phad bo'lsa, faqat eng yuqori darajali hadlarni qoldiring:
+   Agar surat va maxraj $n$ ga nisbatan ko'phad bo'lsa, faqat eng yuqori darajali hadlarni qoldiring:
    $$\lim_{n \to \infty} \frac{5n^3 - 2n + 7}{2n^3 + 100n^2} = \lim_{n \to \infty} \frac{5n^3}{2n^3} = \frac{5}{2}$$
 
 3. **Rekurrent formulalar yechimini oldindan bilish:**

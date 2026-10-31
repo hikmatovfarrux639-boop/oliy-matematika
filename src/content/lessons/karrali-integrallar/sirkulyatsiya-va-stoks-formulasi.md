@@ -18,13 +18,13 @@ Bu tushunchalar Maksvell tenglamalari, elektromagnit induksiya (Faradey qonuni) 
 
 ## 1. Vektor maydon sirkulyatsiyasi
 
-$\vec{a} = P\vec{i} + Q\vec{j} + R\vec{k}$vektor maydoni va yo'naltirilgan yopiq$L$fazoviy kontur berilgan bo'lsin.$\vec{a}$vektorining$L$ yopiq kontur bo'yicha **sirkulyatsiyasi ($C$)** deb quyidagi 2-tur egri chiziqli integralga aytiladi:
+$\vec{a} = P\vec{i} + Q\vec{j} + R\vec{k}$ vektor maydoni va yo'naltirilgan yopiq $L$ fazoviy kontur berilgan bo'lsin. $\vec{a}$ vektorining $L$ yopiq kontur bo'yicha **sirkulyatsiyasi ($C$)** deb quyidagi 2-tur egri chiziqli integralga aytiladi:
 
 $$
 C = \oint_L \vec{a} \cdot d\vec{r} = \oint_L P \, dx + Q \, dy + R \, dz
 $$
 
-Fizik ma'nosi: Agar $\vec{F}$kuch maydoni bo'lsa,$C$ — zarrachaning yopiq traektoriya bo'ylab to'liq bir marta aylanib chiqishida bajarilgan **jami ishdir**.
+Fizik ma'nosi: Agar $\vec{F}$ kuch maydoni bo'lsa, $C$ — zarrachaning yopiq traektoriya bo'ylab to'liq bir marta aylanib chiqishida bajarilgan **jami ishdir**.
 
 ---
 
@@ -52,7 +52,7 @@ $$
 
 ## 3. Stoks formulasi (Konturdan sirtga o'tish)
 
-Agar $L$kontur biror$\Omega$sirtning chegarasi bo'lsa,$L$bo'yicha sirkulyatsiya$\Omega$ sirt orqali olingan **rotor oqimiga** teng bo'ladi!
+Agar $L$ kontur biror $\Omega$ sirtning chegarasi bo'lsa, $L$ bo'yicha sirkulyatsiya $\Omega$ sirt orqali olingan **rotor oqimiga** teng bo'ladi!
 
 $$
 \oint_L P \, dx + Q \, dy + R \, dz = \iint_{\Omega} (\operatorname{rot} \vec{a} \cdot \vec{n}) \, d\sigma
@@ -77,8 +77,8 @@ $$
 Agar fazoning biror sohasida $\operatorname{rot} \vec{a} = \vec{0}$ bo'lsa, quyidagi 4 ta tasdiq bir-biriga teng kuchlidir:
 1. Maydon **potensial** hisoblanadi: $\vec{a} = \operatorname{grad} u$.
 2. Har qanday yopiq kontur bo'yicha sirkulyatsiya nolga teng: $\oint_L \vec{a} \cdot d\vec{r} = 0$.
-3. $A$nuqtadan$B$nuqtaga harakatda bajarilgan ish yo'l shakliga bog'liq emas:$\int_{AB} \vec{a} \cdot d\vec{r} = u(B) - u(A)$.
-4. $P\,dx + Q\,dy + R\,dz = du$ifoda$u(x, y, z)$ skalyar potensialning to'liq differensiali bo'ladi.
+3. $A$ nuqtadan $B$ nuqtaga harakatda bajarilgan ish yo'l shakliga bog'liq emas: $\int_{AB} \vec{a} \cdot d\vec{r} = u(B) - u(A)$.
+4. $P\,dx + Q\,dy + R\,dz = du$ ifoda $u(x, y, z)$ skalyar potensialning to'liq differensiali bo'ladi.
 
 ---
 
@@ -99,7 +99,9 @@ $$
    
 $$
 2. Koordinatalarni hisoblaymiz:
-   * $\vec{i}$oldidagi:$\frac{\partial(z^2)}{\partial y} - \frac{\partial(-x^2)}{\partial z} = 0 - 0 = 0$*$\vec{j}$oldidagi:$\frac{\partial(y^2)}{\partial z} - \frac{\partial(z^2)}{\partial x} = 0 - 0 = 0$*$\vec{k}$oldidagi:$\frac{\partial(-x^2)}{\partial x} - \frac{\partial(y^2)}{\partial y} = -2x - 2y = -2(x + y)$
+   * $\vec{i}$ oldidagi: $\frac{\partial(z^2)}{\partial y} - \frac{\partial(-x^2)}{\partial z} = 0 - 0 = 0$
+   * $\vec{j}$ oldidagi: $\frac{\partial(y^2)}{\partial z} - \frac{\partial(z^2)}{\partial x} = 0 - 0 = 0$
+   * $\vec{k}$ oldidagi: $\frac{\partial(-x^2)}{\partial x} - \frac{\partial(y^2)}{\partial y} = -2x - 2y = -2(x + y)$
 3. Demak:
    
 $$
@@ -111,11 +113,11 @@ $$
 ---
 
 ### 2-misol: Stoks formulasi bo'yicha sirkulyatsiyani topish
-**Shart:** $\vec{a} = y\vec{i} + z\vec{j} + x\vec{k}$maydonning$x^2 + y^2 = 1, z = 0$ aylanasi bo'yicha sirkulyatsiyasini Stoks formulasi bilan hisoblang (aylana musbat yo'nalishda).
+**Shart:** $\vec{a} = y\vec{i} + z\vec{j} + x\vec{k}$ maydonning $x^2 + y^2 = 1, z = 0$ aylanasi bo'yicha sirkulyatsiyasini Stoks formulasi bilan hisoblang (aylana musbat yo'nalishda).
 
 **Yechish:**
 1. Stoks formulasi: $C = \iint_{\Omega} (\operatorname{rot} \vec{a} \cdot \vec{n}) \, d\sigma$.
-2. $\Omega$sirt sifatida$z = 0$tekisligidagi$x^2 + y^2 \le 1$ doirani olamiz.
+2. $\Omega$ sirt sifatida $z = 0$ tekisligidagi $x^2 + y^2 \le 1$ doirani olamiz.
    Uning normali yuqoriga qaragan: $\vec{n} = (0, 0, 1) = \vec{k}$.
 3. Rotorni topamiz:
    
@@ -127,7 +129,9 @@ $$
    \end{vmatrix}
    
 $$
-   * $\vec{i}$bo'yicha:$\frac{\partial x}{\partial y} - \frac{\partial z}{\partial z} = 0 - 1 = -1$*$\vec{j}$bo'yicha:$\frac{\partial y}{\partial z} - \frac{\partial x}{\partial x} = 0 - 1 = -1$*$\vec{k}$bo'yicha:$\frac{\partial z}{\partial x} - \frac{\partial y}{\partial y} = 0 - 1 = -1$
+   * $\vec{i}$ bo'yicha: $\frac{\partial x}{\partial y} - \frac{\partial z}{\partial z} = 0 - 1 = -1$
+   * $\vec{j}$ bo'yicha: $\frac{\partial y}{\partial z} - \frac{\partial x}{\partial x} = 0 - 1 = -1$
+   * $\vec{k}$ bo'yicha: $\frac{\partial z}{\partial x} - \frac{\partial y}{\partial y} = 0 - 1 = -1$
    
 $$
    \operatorname{rot} \vec{a} = -\vec{i} - \vec{j} - \vec{k}
@@ -178,7 +182,10 @@ $$
    
 $$
 2. Xususiy hosilalarni tekshiramiz:
-   * $\vec{i}$: $\frac{\partial(3z^2)}{\partial y} - \frac{\partial(2y-x)}{\partial z} = 0 - 0 = 0$*$\vec{j}$: $\frac{\partial(2x-y)}{\partial z} - \frac{\partial(3z^2)}{\partial x} = 0 - 0 = 0$*$\vec{k}$: $\frac{\partial(2y-x)}{\partial x} - \frac{\partial(2x-y)}{\partial y} = (-1) - (-1) = 0$3. Demak,$\operatorname{rot} \vec{a} = \vec{0}$. Maydon potensialdir.
+   * $\vec{i}$: $\frac{\partial(3z^2)}{\partial y} - \frac{\partial(2y-x)}{\partial z} = 0 - 0 = 0$
+   * $\vec{j}$: $\frac{\partial(2x-y)}{\partial z} - \frac{\partial(3z^2)}{\partial x} = 0 - 0 = 0$
+   * $\vec{k}$: $\frac{\partial(2y-x)}{\partial x} - \frac{\partial(2x-y)}{\partial y} = (-1) - (-1) = 0$
+3. Demak, $\operatorname{rot} \vec{a} = \vec{0}$. Maydon potensialdir.
 4. Potensial maydonda har qanday yopiq kontur bo'yicha sirkulyatsiya nolga teng:
    
 $$

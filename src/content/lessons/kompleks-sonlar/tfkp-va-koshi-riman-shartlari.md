@@ -7,7 +7,7 @@ description: "Kompleks o'zgaruvchili funksiyalar nazariyasi (TFKP), analitik fun
 
 ## Kirish: Haqiqiy sonlar torlik qilganda
 
-Haqiqiy sonlar to'plamida $\sqrt{-1}$mavjud emas,$e^x = -2$tenglama yechimga ega emas,$\sin x$ning qiymati esa hech qachon$1$ dan oshmaydi.
+Haqiqiy sonlar to'plamida $\sqrt{-1}$ mavjud emas, $e^x = -2$ tenglama yechimga ega emas, $\sin x$ ning qiymati esa hech qachon $1$ dan oshmaydi.
 Lekin kompleks o'zgaruvchilar olamiga o'tganimizda matematikaning eng ajoyib, simmetrik va chiroyli dunyosi ochiladi!
 
 Kompleks o'zgaruvchili funksiyalar nazariyasi (**TFKP**) elektrodinamika, aerodinamika (samolyot qanotlarini hisoblash — Jukovskiy funksiyasi), kvant fizikasi va murakkab hisoblash algoritmlarining poydevoridir.
@@ -16,7 +16,7 @@ Kompleks o'zgaruvchili funksiyalar nazariyasi (**TFKP**) elektrodinamika, aerodi
 
 ## 1. Kompleks o'zgaruvchili funksiya nima?
 
-Agar $z = x + iy$kompleks son bo'lsa, kompleks funksiya$w = f(z)$ ham ikki qismdan — haqiqiy va mavhum qismdan iborat bo'ladi:
+Agar $z = x + iy$ kompleks son bo'lsa, kompleks funksiya $w = f(z)$ ham ikki qismdan — haqiqiy va mavhum qismdan iborat bo'ladi:
 
 $$
 w = f(z) = u(x, y) + i \cdot v(x, y)
@@ -40,7 +40,7 @@ Haqiqiy analizda funksiya hosilaga ega bo'lishi oddiy hol. Lekin kompleks analiz
 
 > [!IMPORTANT]
 > **Koshi–Riman (D'Alamber–Eyler) teoremasi:**
-> $w = f(z) = u(x, y) + iv(x, y)$funksiya biror sohada kompleks hosilaga ega bo'lishi (ya'ni **analitik** bo'lishi) uchun uning$u$va$v$ qismlari uzluksiz xususiy hosilalarga ega bo'lishi va quyidagi **Koshi–Riman shartlari** bajarilishi zarur va yetarli:
+> $w = f(z) = u(x, y) + iv(x, y)$ funksiya biror sohada kompleks hosilaga ega bo'lishi (ya'ni **analitik** bo'lishi) uchun uning $u$ va $v$ qismlari uzluksiz xususiy hosilalarga ega bo'lishi va quyidagi **Koshi–Riman shartlari** bajarilishi zarur va yetarli:
 > 
 $$
 > \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}
@@ -74,7 +74,7 @@ $$
 $$
 
 ### Koshining asosiy integral teoremasi:
-Agar $f(z)$bir bog'lamli$D$sohada **analitik** bo'lsa, har qanday yopiq$L$ kontur bo'yicha integral **nolga teng** bo'ladi:
+Agar $f(z)$ bir bog'lamli $D$ sohada **analitik** bo'lsa, har qanday yopiq $L$ kontur bo'yicha integral **nolga teng** bo'ladi:
 $$
 \oint_L f(z) \, dz = 0
 $$
@@ -93,7 +93,7 @@ $$
 
 ## 4. Qoldiqlar (Vichetlar) nazariyasi
 
-Agar $f(z)$funksiya kontur ichida chekli sondagi$z_k$ maxsus (uzilish) nuqtalariga ega bo'lsa:
+Agar $f(z)$ funksiya kontur ichida chekli sondagi $z_k$ maxsus (uzilish) nuqtalariga ega bo'lsa:
 $$
 \oint_L f(z) \, dz = 2\pi i \sum_{k=1}^n \operatorname{Res} [f(z), z_k]
 $$
@@ -131,18 +131,14 @@ $$
 
 **Yechish:**
 1. Maxsus nuqta: $z_0 = 1$.
-2. Ushbu $z_0 = 1$nuqta$|z| = 2$aylananing ichida yotadimi? Ha, chunki$|1| = 1 < 2$.
+2. Ushbu $z_0 = 1$ nuqta $|z| = 2$ aylananing ichida yotadimi? Ha, chunki $|1| = 1 < 2$.
 3. $f(z) = e^z$ funksiya esa kontur ichida hamma joyda analitik.
 4. Koshining integral formulasiga ko'ra:
-   
 $$
-   \oint_L \frac{f(z)}{z - z_0} \, dz = 2\pi i \cdot f(z_0)
-   
+\oint_L \frac{f(z)}{z - z_0} \, dz = 2\pi i \cdot f(z_0)
 $$
-   
 $$
-   \oint_{|z|=2} \frac{e^z}{z - 1} \, dz = 2\pi i \cdot e^1 = 2\pi e i
-   
+\oint_{|z|=2} \frac{e^z}{z - 1} \, dz = 2\pi i \cdot e^1 = 2\pi e i
 $$
 **Javob:** $\mathbf{2\pi e i}$
 
@@ -167,7 +163,8 @@ $$
 1. Haqiqiy va mavhum qismlar:
    $u(x, y) = x$, $v(x, y) = -y$.
 2. Hosilalarni olamiz:
-   * $\frac{\partial u}{\partial x} = 1$*$\frac{\partial v}{\partial y} = -1$
+   * $\frac{\partial u}{\partial x} = 1$
+   * $\frac{\partial v}{\partial y} = -1$
 3. Koshi-Riman 1-shartini tekshiramiz:
    
 $$

@@ -15,12 +15,14 @@ Ushbu darsda biz talabalar eng ko'p qiynaladigan, lekin mohiyatini tushungach ju
 
 ---
 
-## 1. Qator yig'indisi nima? ($S_n$tushunchasi)$\sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \dots$ sonli qator berilgan bo'lsin.
+## 1. Qator yig'indisi nima? ($S_n$ tushunchasi)
+
+$\sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \dots$ sonli qator berilgan bo'lsin.
 Uning dastlabki $n$ ta hadi yig'indisi **$n$-xususiy yig'indi** deyiladi:
 $$
 S_n = a_1 + a_2 + \dots + a_n
 $$
-Agar $n \to \infty$da$S_n$ning chekli limiti mavjud bo'lsa, bu limit qatorning **yig'indisi$S$** deb ataladi:
+Agar $n \to \infty$ da $S_n$ ning chekli limiti mavjud bo'lsa, bu limit qatorning **yig'indisi $S$** deb ataladi:
 $$
 S = \lim_{n \to \infty} S_n
 $$
@@ -55,7 +57,7 @@ $$
 
 ## 3. Darajali qatorlarni differensiallash va integrallash orqali yig'indi topish
 
-Ko'plab murakkab sonli qatorlarni bevosita $S_n$orqali hisoblab bo'lmaydi. Masalan,$\sum_{n=1}^\infty \frac{n}{2^n}$.
+Ko'plab murakkab sonli qatorlarni bevosita $S_n$ orqali hisoblab bo'lmaydi. Masalan, $\sum_{n=1}^\infty \frac{n}{2^n}$.
 Bunday hollarda mashhur geometrik progressiya darajali qatoridan foydalaniladi:
 $$
 \sum_{n=0}^{\infty} x^n = \frac{1}{1-x} \quad (|x| < 1)
@@ -161,8 +163,8 @@ $$
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Teleskopik qisqarishda qoladigan hadlar soni:** Agar maxrajda $n(n+k)$bo'lsa, qator boshida$k$ta musbat had va oxirida$k$ta manfiy had qoladi. Talabalar doim faqat bitta 1-had qoladi deb o'ylab (masalan,$k=2$bo'lganda$\frac{1}{2}$ ni unutib) xato qilishadi.
-> 2. **Darajali qatorda $n=0$va$n=1$indekslari:** Formulalarda yig'indi$n=0$dan boshlanadimi yoki$n=1$danmi, qat'iy nazorat qiling. Aks holda ozod had hisobga kirmay qolib, natija$1$ ga farq qiladi.
+> 1. **Teleskopik qisqarishda qoladigan hadlar soni:** Agar maxrajda $n(n+k)$ bo'lsa, qator boshida $k$ ta musbat had va oxirida $k$ ta manfiy had qoladi. Talabalar doim faqat bitta 1-had qoladi deb o'ylab (masalan, $k=2$ bo'lganda $\frac{1}{2}$ ni unutib) xato qilishadi.
+> 2. **Darajali qatorda $n=0$ va $n=1$ indekslari:** Formulalarda yig'indi $n=0$ dan boshlanadimi yoki $n=1$ danmi, qat'iy nazorat qiling. Aks holda ozod had hisobga kirmay qolib, natija $1$ ga farq qiladi.
 
 ---
 
@@ -183,7 +185,7 @@ $$
 \frac{1}{(2n-1)(2n+1)} = \frac{1}{2}\left(\frac{1}{2n-1} - \frac{1}{2n+1}\right)
 $$
 $S_n = \frac{1}{2}\left[ (1 - \frac{1}{3}) + (\frac{1}{3} - \frac{1}{5}) + \dots + (\frac{1}{2n-1} - \frac{1}{2n+1}) \right] = \frac{1}{2}\left(1 - \frac{1}{2n+1}\right)$.
-$n \to \infty$da:$S = \frac{1}{2}(1 - 0) = \frac{1}{2}$.
+$n \to \infty$ da: $S = \frac{1}{2}(1 - 0) = \frac{1}{2}$.
 
 **Javob:** $S = \frac{1}{2}$.
 

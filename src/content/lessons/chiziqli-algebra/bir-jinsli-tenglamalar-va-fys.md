@@ -211,4 +211,4 @@ Quyidagi bir jinsli sistemalarning FYS va umumiy yechimini toping:
    - *Javob:* $\operatorname{rank} = 1, n = 3 \implies k = 2$ ta FYS. $x_3 = 2x_1 + x_2 \implies E_1 = (1, 0, 2)^T, \; E_2 = (0, 1, 1)^T \implies X = C_1 E_1 + C_2 E_2$.
 
 2. $\begin{cases} 3x_1 + 2x_2 + x_3 = 0 \\ 2x_1 + 5x_2 + 3x_3 = 0 \\ 3x_1 + 4x_2 + 2x_3 = 0 \end{cases}$
-   - *Javob:* $\det A = -5 \neq 0 \implies \operatorname{rank} = 3 = n \implies$ Faqat trivial yechim: $x_1 = x_2 = x_3 = 0$. FYS mavjud emas (o'lchami 0).
+   - *Javob:* $\det A = -3 \neq 0 \implies \operatorname{rank} = 3 = n \implies$ Faqat trivial yechim: $x_1 = x_2 = x_3 = 0$. FYS mavjud emas (o'lchami 0).

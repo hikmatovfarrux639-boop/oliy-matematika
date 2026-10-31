@@ -145,13 +145,13 @@ $f(x, y) = x^3 + y^3 - 3xy$ funksiyaning statsionar nuqtalarini toping va tasnif
 ---
 
 ### 3-misol (Uch o'zgaruvchili funksiya va Silvestr mezoni):
-$u(x, y, z) = x^2 + 2y^2 + 3z^2 - 2xy + 2xz - 4x - 6y$ funksiyaning ekstremumini tekshiring.
+$u(x, y, z) = x^2 + 2y^2 + 3z^2 - 2xy + 2xz + 2x - 6y$ funksiyaning ekstremumini tekshiring.
 
 **Yechilishi:**
 1. Gradientni hisoblaymiz:
    $$
    \begin{cases}
-   u'_x = 2x - 2y + 2z - 4 = 0 \\
+   u'_x = 2x - 2y + 2z + 2 = 0 \\
    u'_y = 4y - 2x - 6 = 0 \\
    u'_z = 6z + 2x = 0 \implies x = -3z
    \end{cases}

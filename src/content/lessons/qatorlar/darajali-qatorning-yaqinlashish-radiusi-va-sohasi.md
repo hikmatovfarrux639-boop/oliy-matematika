@@ -17,16 +17,16 @@ $$
 \sum_{n=0}^{\infty} a_n (x - x_0)^n = a_0 + a_1(x - x_0) + a_2(x - x_0)^2 + \dots + a_n(x - x_0)^n + \dots
 $$
 
-Bu yerda $a_0, a_1, a_2, \dots, a_n, \dots$— o'zgarmas haqiqiy sonlar bo'lib, **darajali qatorning koeffitsiyentlari** deyiladi,$x_0$ esa qatorning **markazi**dir.
+Bu yerda $a_0, a_1, a_2, \dots, a_n, \dots$ — o'zgarmas haqiqiy sonlar bo'lib, **darajali qatorning koeffitsiyentlari** deyiladi, $x_0$ esa qatorning **markazi**dir.
 
-Xususan, agar $x_0 = 0$bo'lsa (yoki$X = x - x_0$almashtirish bajarilsa),$x$ ning darajalari bo'yicha darajali qator hosil bo'ladi:
+Xususan, agar $x_0 = 0$ bo'lsa (yoki $X = x - x_0$ almashtirish bajarilsa), $x$ ning darajalari bo'yicha darajali qator hosil bo'ladi:
 
 $$
 \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n + \dots
 $$
 
 > [!NOTE]
-> Har qanday $\sum_{n=0}^{\infty} a_n (x - x_0)^n$darajali qator kamida bitta$x = x_0$nuqtada albatta yaqinlashadi va bu nuqtada uning yig'indisi$S(x_0) = a_0$ ga teng bo'ladi.
+> Har qanday $\sum_{n=0}^{\infty} a_n (x - x_0)^n$ darajali qator kamida bitta $x = x_0$ nuqtada albatta yaqinlashadi va bu nuqtada uning yig'indisi $S(x_0) = a_0$ ga teng bo'ladi.
 
 ---
 
@@ -36,16 +36,16 @@ Darajali qatorning yaqinlashish sohasi qanday tuzilganligini quyidagi fundamenta
 
 > [!IMPORTANT]
 > **Abel teoremasi:**
-> 1. Agar $\sum_{n=0}^{\infty} a_n x^n$darajali qator noldan farqli biror$x = x_1 \neq 0$nuqtada yaqinlashsa, u holda$|x| < |x_1|$tengsizlikni qanoatlantiruvchi barcha$x$ nuqtalarda bu qator **absolyut yaqinlashadi**.
-> 2. Agar darajali qator biror $x = x_2$nuqtada uzoqlashsa, u holda$|x| > |x_2|$tengsizlikni qanoatlantiruvchi barcha$x$ nuqtalarda ham u **uzoqlashadi**.
+> 1. Agar $\sum_{n=0}^{\infty} a_n x^n$ darajali qator noldan farqli biror $x = x_1 \neq 0$ nuqtada yaqinlashsa, u holda $|x| < |x_1|$ tengsizlikni qanoatlantiruvchi barcha $x$ nuqtalarda bu qator **absolyut yaqinlashadi**.
+> 2. Agar darajali qator biror $x = x_2$ nuqtada uzoqlashsa, u holda $|x| > |x_2|$ tengsizlikni qanoatlantiruvchi barcha $x$ nuqtalarda ham u **uzoqlashadi**.
 
 **Abel teoremasidan kelib chiqadigan xulosa:**
-Har qanday $\sum_{n=0}^{\infty} a_n (x - x_0)^n$darajali qator uchun shunday manfiy bo'lmagan$R$ soni ($0 \le R \le +\infty$) mavjudki:
+Har qanday $\sum_{n=0}^{\infty} a_n (x - x_0)^n$ darajali qator uchun shunday manfiy bo'lmagan $R$ soni ($0 \le R \le +\infty$) mavjudki:
 - $|x - x_0| < R$, ya'ni $x \in (x_0 - R, \, x_0 + R)$ ochiq intervalda qator **absolyut yaqinlashadi**;
 - $|x - x_0| > R$, ya'ni $x \in (-\infty, x_0 - R) \cup (x_0 + R, +\infty)$ da qator **uzoqlashadi**;
-- $|x - x_0| = R$, ya'ni intervalning chekka nuqtalari $x = x_0 - R$va$x = x_0 + R$ da qator yaqinlashishi ham (absolyut yoki shartli), uzoqlashishi ham mumkin.
+- $|x - x_0| = R$, ya'ni intervalning chekka nuqtalari $x = x_0 - R$ va $x = x_0 + R$ da qator yaqinlashishi ham (absolyut yoki shartli), uzoqlashishi ham mumkin.
 
-Bu $R$soni darajali qatorning **yaqinlashish radiusi**,$(x_0 - R, \, x_0 + R)$ ochiq oraliq esa **yaqinlashish intervali** deyiladi. Chekka nuqtalar tekshirilgandan so'ng hosil bo'lgan to'plam qatorning **yaqinlashish sohasi** deyiladi.
+Bu $R$ soni darajali qatorning **yaqinlashish radiusi**, $(x_0 - R, \, x_0 + R)$ ochiq oraliq esa **yaqinlashish intervali** deyiladi. Chekka nuqtalar tekshirilgandan so'ng hosil bo'lgan to'plam qatorning **yaqinlashish sohasi** deyiladi.
 
 ---
 
@@ -69,24 +69,24 @@ $$
 
 > [!TIP]
 > Xususiy chegaraviy hollar:
-> - Agar $R = 0$bo'lsa, darajali qator faqat bitta$x = x_0$ nuqtada yaqinlashadi.
-> - Agar $R = +\infty$bo'lsa, darajali qator butun sonlar o'qida$x \in (-\infty, +\infty)$ absolyut yaqinlashadi.
+> - Agar $R = 0$ bo'lsa, darajali qator faqat bitta $x = x_0$ nuqtada yaqinlashadi.
+> - Agar $R = +\infty$ bo'lsa, darajali qator butun sonlar o'qida $x \in (-\infty, +\infty)$ absolyut yaqinlashadi.
 
 > [!WARNING]
-> Agar darajali qatorda $x$ning darajasi$n$emas, balki$2n$, $3n$yoki$(x - x_0)^k$ko'rinishda bo'lsa (masalan,$\sum a_n (x - x_0)^{2n}$), standart $R = \lim |a_n / a_{n+1}|$formulasini to'g'ridan-to'g'ri$x$ga nisbatan qo'llab bo'lmaydi! Bunday hollarda qatorning umumiy hadi moduliga bevosita Dalamber$\lim_{n\to\infty} \left|\frac{u_{n+1}(x)}{u_n(x)}\right| < 1$yoki Koshi$\lim_{n\to\infty} \sqrt[n]{|u_n(x)|} < 1$ alomatini qo'llash eng xatosiz yo'ldir.
+> Agar darajali qatorda $x$ ning darajasi $n$ emas, balki $2n$, $3n$ yoki $(x - x_0)^k$ ko'rinishda bo'lsa (masalan, $\sum a_n (x - x_0)^{2n}$), standart $R = \lim |a_n / a_{n+1}|$ formulasini to'g'ridan-to'g'ri $x$ ga nisbatan qo'llab bo'lmaydi! Bunday hollarda qatorning umumiy hadi moduliga bevosita Dalamber $\lim_{n\to\infty} \left|\frac{u_{n+1}(x)}{u_n(x)}\right| < 1$ yoki Koshi $\lim_{n\to\infty} \sqrt[n]{|u_n(x)|} < 1$ alomatini qo'llash eng xatosiz yo'ldir.
 
 ---
 
 ## 4. Yaqinlashish sohasini topish algoritmi
 
 1. **Yaqinlashish radiusi $R$ va yaqinlashish intervalini topish:**
-   Dalamber yoki Koshi–Adamar formulasidan (yoki bevosita $\lim |u_{n+1}/u_n| < 1$tengsizligidan)$(x_0 - R, \, x_0 + R)$ yaqinlashish intervali topiladi.
+   Dalamber yoki Koshi–Adamar formulasidan (yoki bevosita $\lim |u_{n+1}/u_n| < 1$ tengsizligidan)$(x_0 - R, \, x_0 + R)$ yaqinlashish intervali topiladi.
 2. **Chap chekka nuqta $x = x_0 - R$ ni tekshirish:**
-   Qatordagi $x$o'rniga$x_0 - R$ ni qo'yib, hosil bo'lgan sonli qatorning yaqinlashishi (zaruriy shart, taqqoslash, integral yoki Leybnits alomati orqali) tekshiriladi.
+   Qatordagi $x$ o'rniga $x_0 - R$ ni qo'yib, hosil bo'lgan sonli qatorning yaqinlashishi (zaruriy shart, taqqoslash, integral yoki Leybnits alomati orqali) tekshiriladi.
 3. **O'ng chekka nuqta $x = x_0 + R$ ni tekshirish:**
-   Qatordagi $x$o'rniga$x_0 + R$ ni qo'yib, hosil bo'lgan sonli qatorning yaqinlashishi tekshiriladi.
+   Qatordagi $x$ o'rniga $x_0 + R$ ni qo'yib, hosil bo'lgan sonli qatorning yaqinlashishi tekshiriladi.
 4. **Yaqinlashish sohasini yozish:**
-   Chekka nuqtalardagi natijalarga qarab $(x_0 - R, x_0 + R)$, $[x_0 - R, x_0 + R)$, $(x_0 - R, x_0 + R]$yoki$[x_0 - R, x_0 + R]$ ko'rinishda javob yoziladi.
+   Chekka nuqtalardagi natijalarga qarab $(x_0 - R, x_0 + R)$, $[x_0 - R, x_0 + R)$, $(x_0 - R, x_0 + R]$ yoki $[x_0 - R, x_0 + R]$ ko'rinishda javob yoziladi.
 
 ---
 
@@ -113,7 +113,7 @@ $$
      
 $$
 
-     Bu o'zgaruvchan ishorali qator Leybnits alomatiga ko'ra ($b_n = \frac{1}{n}$monoton kamayadi va$\lim_{n\to\infty} \frac{1}{n} = 0$) **shartli yaqinlashadi**. Demak, $x = 1$ nuqta sohaga kiradi.
+     Bu o'zgaruvchan ishorali qator Leybnits alomatiga ko'ra ($b_n = \frac{1}{n}$ monoton kamayadi va $\lim_{n\to\infty} \frac{1}{n} = 0$) **shartli yaqinlashadi**. Demak, $x = 1$ nuqta sohaga kiradi.
 
    - **$x = 5$ bo'lganda:**
 
@@ -126,7 +126,9 @@ $$
      Bu garmonik qator bo'lib, u **uzoqlashadi**. Demak, $x = 5$ nuqta sohaga kirmaydi.
 
 3. **Javob:**
-   - Yaqinlashish radiusi: $R = 2$- Yaqinlashish intervali:$(1, 5)$- Yaqinlashish sohasi:$[1, 5)$
+   - Yaqinlashish radiusi: $R = 2$
+   - Yaqinlashish intervali: $(1, 5)$
+   - Yaqinlashish sohasi: $[1, 5)$
 
 ---
 
@@ -173,7 +175,7 @@ $$
 \frac{x^2}{9} < 1 \implies x^2 < 9 \implies |x| < 3 \implies x \in (-3, 3), \quad (R = 3)
 $$
 
-2. **Chekka nuqtalar $x = \pm 3$da:**$x^2 = 9$ bo'lgani uchun ikkala chekka nuqtada ham bir xil sonli qator hosil bo'ladi:
+2. **Chekka nuqtalar $x = \pm 3$ da:** $x^2 = 9$ bo'lgani uchun ikkala chekka nuqtada ham bir xil sonli qator hosil bo'ladi:
 
    
 $$
@@ -189,7 +191,7 @@ $$
 
 ## 6. O'z-o'zini tekshirish savollari
 
-1. $\sum_{n=0}^{\infty} a_n x^n$darajali qator$x = -4$nuqtada yaqinlashishi va$x = 6$nuqtada uzoqlashishi ma'lum bo'lsa, qatorning$x = 3$, $x = -5$va$x = 7$ nuqtalardagi xulqi haqida Abel teoremasiga tayanib nima deyish mumkin?
+1. $\sum_{n=0}^{\infty} a_n x^n$ darajali qator $x = -4$ nuqtada yaqinlashishi va $x = 6$ nuqtada uzoqlashishi ma'lum bo'lsa, qatorning $x = 3$, $x = -5$ va $x = 7$ nuqtalardagi xulqi haqida Abel teoremasiga tayanib nima deyish mumkin?
 2. Darajali qatorning yaqinlashish intervali va yaqinlashish sohasi tushunchalari bir-biridan nimasi bilan farq qiladi?
 3. Qanday hollarda yaqinlashish radiusini topish uchun Dalamber formulasidan ko'ra Koshi–Adamar formulasidan foydalanish qulayroq?
 
@@ -201,9 +203,9 @@ $$
    - *Javob:* $R = 5$, yaqinlashish sohasi $[-5, 5)$.
 2. **Masala:** $\sum_{n=1}^{\infty} \frac{(-1)^{n-1}(x + 1)^n}{\sqrt{n} \cdot 3^n}$ qatorning yaqinlashish sohasini toping.
    - *Javob:* $R = 3$, yaqinlashish sohasi $(-4, 2]$.
-3. **Masala:** $\sum_{n=1}^{\infty} n! (x - 4)^n$va$\sum_{n=1}^{\infty} \frac{x^n}{n!}$ qatorlarning yaqinlashish radiuslarini toping.
-   - *Javob:* Birinchi qator uchun $R = 0$(faqat$x = 4$nuqtada yaqinlashadi); ikkinchi qator uchun$R = +\infty$, soha $(-\infty, +\infty)$.
+3. **Masala:** $\sum_{n=1}^{\infty} n! (x - 4)^n$ va $\sum_{n=1}^{\infty} \frac{x^n}{n!}$ qatorlarning yaqinlashish radiuslarini toping.
+   - *Javob:* Birinchi qator uchun $R = 0$ (faqat $x = 4$ nuqtada yaqinlashadi); ikkinchi qator uchun $R = +\infty$, soha $(-\infty, +\infty)$.
 4. **Masala:** $\sum_{n=1}^{\infty} \left(\frac{2n + 1}{3n + 4}\right)^n (x - 1)^n$ qatorning yaqinlashish sohasini toping.
    - *Javob:* $R = \frac{3}{2}$, yaqinlashish sohasi $\left(-\frac{1}{2}, \frac{5}{2}\right)$.
 5. **Masala:** $\sum_{n=1}^{\infty} \frac{(x - 2)^{2n}}{(2n - 1) \cdot 4^n}$ qatorning yaqinlashish sohasini toping.
-   - *Javob:* $R = 2$, yaqinlashish intervali $(0, 4)$(chunki$|x - 2| < 2$ va chekkalarda uzoqlashadi).
+   - *Javob:* $R = 2$, yaqinlashish intervali $(0, 4)$ (chunki $|x - 2| < 2$ va chekkalarda uzoqlashadi).

@@ -36,7 +36,7 @@ Chunki agar $P = 0$ ga yaqinlashish deb ruxsat berilsa, ixtiyoriy $p_1 = 0$ bo'l
 
 > **Zaruriy shart:**
 > Cheksiz ko'paytma yaqinlashishi uchun uning umumiy hadi $1$ ga intilishi shart:
-> $$\lim_{n \to \infty} p_n = 1$$
+> $$\lim_{n \to \infty} p_n = 1 $$
 
 Shu sababli cheksiz ko'paytmaning hadlari doimo $p_n = 1 + a_n$ ko'rinishida yoziladi, bu yerda $a_n \to 0$:
 $$\prod_{n=1}^{\infty} (1 + a_n)$$
@@ -55,16 +55,16 @@ $\sin x$ funksiyasi $x = 0, \pm \pi, \pm 2\pi, \pm 3\pi, \dots$ nuqtalarda nolga
 
 > **Eyler teoremasi ($\sin x$ ning ko'paytmaga yoyilmasi):**
 > Har qanday kompleks va haqiqiy $x$ uchun:
-> $$\sin x = x \prod_{n=1}^{\infty} \left( 1 - \frac{x^2}{n^2 \pi^2} \right) = x \left(1 - \frac{x^2}{\pi^2}\right)\left(1 - \frac{x^2}{4\pi^2}\right)\left(1 - \frac{x^2}{9\pi^2}\right)\cdots$$
+> $$\sin x = x \prod_{n=1}^{\infty} \left( 1 - \frac{x^2}{n^2 \pi^2} \right) = x \left(1 - \frac{x^2}{\pi^2}\right)\left(1 - \frac{x^2}{4\pi^2}\right)\left(1 - \frac{x^2}{9\pi^2}\right)\cdots $$
 
 Xuddi shuningdek, $\cos x$ funksiyasining nollari $x = \pm \frac{\pi}{2}, \pm \frac{3\pi}{2}, \dots$ bo'lganligi sababli:
 $$\cos x = \prod_{n=1}^{\infty} \left( 1 - \frac{4x^2}{(2n - 1)^2 \pi^2} \right) = \left(1 - \frac{4x^2}{\pi^2}\right)\left(1 - \frac{4x^2}{9\pi^2}\right)\cdots$$
 
 > **Jon Vallis formulasi (1655):**
 > Eyler formulasida $x = \frac{\pi}{2}$ deb olsak, $\sin(\pi/2) = 1$ bo'ladi:
-> $$1 = \frac{\pi}{2} \prod_{n=1}^{\infty} \left( 1 - \frac{1}{4n^2} \right) = \frac{\pi}{2} \prod_{n=1}^{\infty} \frac{4n^2 - 1}{4n^2}$$
+> $$ 1 = \frac{\pi}{2} \prod_{n=1}^{\infty} \left( 1 - \frac{1}{4n^2} \right) = \frac{\pi}{2} \prod_{n=1}^{\infty} \frac{4n^2 - 1}{4n^2}$$
 > Bundan $\frac{\pi}{2}$ soni uchun mashhur cheksiz ko'paytma kelib chiqadi:
-> $$\frac{\pi}{2} = \prod_{n=1}^{\infty} \frac{4n^2}{4n^2 - 1} = \frac{2}{1} \cdot \frac{2}{3} \cdot \frac{4}{3} \cdot \frac{4}{5} \cdot \frac{6}{5} \cdot \frac{6}{7} \cdots$$
+> $$\frac{\pi}{2} = \prod_{n=1}^{\infty} \frac{4n^2}{4n^2 - 1} = \frac{2}{1} \cdot \frac{2}{3} \cdot \frac{4}{3} \cdot \frac{4}{5} \cdot \frac{6}{5} \cdot \frac{6}{7} \cdots $$
 
 ---
 
@@ -146,7 +146,7 @@ $$P = \prod_{n=2}^{\infty} \frac{n^3 - 1}{n^3 + 1}$$
 4. Birinchi qism:
    $$A_N = \left(\frac{1}{3} \cdot \frac{2}{4} \cdot \frac{3}{5} \cdots \frac{N - 2}{N} \cdot \frac{N - 1}{N + 1}\right) = \frac{1 \cdot 2}{N(N + 1)} = \frac{2}{N(N + 1)}$$
 5. Ikkinchi qism:
-   $$n^2 - n + 1$ ning $n=2$ dagi qiymati $2^2 - 2 + 1 = 3$.
+   $n^2 - n + 1$ ning $n=2$ dagi qiymati $2^2 - 2 + 1 = 3$.
    Barcha oraliq hadlar qisqarib, oxirgi hadning surati qoladi:
    $$B_N = \frac{N^2 + N + 1}{3}$$
 6. Ko'paytiramiz va limitni hisoblaymiz:

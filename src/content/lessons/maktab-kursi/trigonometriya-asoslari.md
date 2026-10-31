@@ -9,7 +9,7 @@ description: "Birlik aylana, radian va gradus, asosiy trigonometrik ayniyatlar, 
 
 Oliy matematikada burchaklar deyarli har doim **radianlarda** o'lchanadi. Trigonometrik ayniyatlar va almashtirishlar:
 - **1-ajoyib limitda:** $\lim_{x \to 0} \frac{\sin x}{x} = 1$;
-- **Trigonometrik integrallarda:** $\int \sin^m x \cos^n x \, dx$va$\int \frac{dx}{a\cos x + b\sin x + c}$;
+- **Trigonometrik integrallarda:** $\int \sin^m x \cos^n x \, dx$ va $\int \frac{dx}{a\cos x + b\sin x + c}$;
 - **Kompleks sonlarda:** $z = r(\cos \varphi + i\sin \varphi) = r e^{i\varphi}$;
 - **Qatorlar va maydonlar nazariyasida:** Furye qatorlari, to'lqin tenglamalari va aylanma koordinatalarda
 eng asosiy poydevor hisoblanadi.
@@ -78,7 +78,7 @@ $$
 $$
 \sin^2 \alpha = \frac{1 - \cos(2\alpha)}{2}, \qquad \cos^2 \alpha = \frac{1 + \cos(2\alpha)}{2}
 $$
-> **Muhim:** $\int \sin^2 x \, dx$yoki$\int \cos^2(3x) \, dx$ integrallarini hisoblashda darajani pasaytirish formulasisiz yechish imkonsizdir!
+> **Muhim:** $\int \sin^2 x \, dx$ yoki $\int \cos^2(3x) \, dx$ integrallarini hisoblashda darajani pasaytirish formulasisiz yechish imkonsizdir!
 
 ---
 
@@ -99,7 +99,7 @@ $$
 ## 5. Yordamchi burchak va Universal Veyershtrass almashtirishi
 
 ### 1. Yordamchi burchak kiritish usuli:
-$a\sin x + b\cos x$ifodani bitta sinusoidaga aylantirish uchun$\sqrt{a^2 + b^2}$ qavsdan tashqariga chiqariladi:
+$a\sin x + b\cos x$ ifodani bitta sinusoidaga aylantirish uchun $\sqrt{a^2 + b^2}$ qavsdan tashqariga chiqariladi:
 $$
 a\sin x + b\cos x = \sqrt{a^2 + b^2} \sin(x + \varphi), \quad \text{bu yerda } \cos\varphi = \frac{a}{\sqrt{a^2+b^2}}, \; \sin\varphi = \frac{b}{\sqrt{a^2+b^2}}
 $$
@@ -114,14 +114,14 @@ $$
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** $\sin x + \sqrt{3}\cos x = 1$tenglamani$[0; 2\pi]$ oraliqda yeching.
+> **Masala:** $\sin x + \sqrt{3}\cos x = 1$ tenglamani $[0; 2\pi]$ oraliqda yeching.
 
 ### 1-usul: Yordamchi burchak kiritish usuli
 Tenglamaning har ikkala tomonini $\sqrt{a^2 + b^2} = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{4} = 2$ ga bo'lamiz:
 $$
 \frac{1}{2}\sin x + \frac{\sqrt{3}}{2}\cos x = \frac{1}{2}
 $$
-$\cos\frac{\pi}{3} = \frac{1}{2}$va$\sin\frac{\pi}{3} = \frac{\sqrt{3}}{2}$ bo'lgani uchun:
+$\cos\frac{\pi}{3} = \frac{1}{2}$ va $\sin\frac{\pi}{3} = \frac{\sqrt{3}}{2}$ bo'lgani uchun:
 $$
 \sin x \cos\frac{\pi}{3} + \cos x \sin\frac{\pi}{3} = \frac{1}{2} \implies \sin\left(x + \frac{\pi}{3}\right) = \frac{1}{2}
 $$
@@ -161,18 +161,18 @@ Har ikkala usul bir xil yechim berdi! Ammo ko'rinib turibdiki, 1-usul (yordamchi
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **$\cos x$ ga bo'lishda ildizlarni yo'qotish:**
->    $\sin x \cos x = \cos x$tenglamani yechishda ikkala tomonni$\cos x$ga bo'lib yuborib$\sin x = 1$deyish xatodir!$\cos x = 0$bo'lgan nuqtalar yo'qolib ketadi. To'g'ri yo'l: hamma hadni chapga o'tkazib qavsdan tashqariga chiqarish:$\cos x(\sin x - 1) = 0$.
+>    $\sin x \cos x = \cos x$ tenglamani yechishda ikkala tomonni $\cos x$ ga bo'lib yuborib $\sin x = 1$ deyish xatodir!$\cos x = 0$ bo'lgan nuqtalar yo'qolib ketadi. To'g'ri yo'l: hamma hadni chapga o'tkazib qavsdan tashqariga chiqarish: $\cos x(\sin x - 1) = 0$.
 > 2. **Universal almashtirishda $x = \pi + 2\pi k$ nuqtalar yo'qolishi:**
->    $t = \tan(x/2)$almashtirishida$x = \pi$bo'lganda tangens aniqlanmagan. Shuning uchun universal almashtirish qo'llashdan oldin$x = \pi$ boshlang'ich tenglamani qanoatlantiradimi-yo'qmi, alohida tekshirib qo'yish shart!
+>    $t = \tan(x/2)$ almashtirishida $x = \pi$ bo'lganda tangens aniqlanmagan. Shuning uchun universal almashtirish qo'llashdan oldin $x = \pi$ boshlang'ich tenglamani qanoatlantiradimi-yo'qmi, alohida tekshirib qo'yish shart!
 > 3. **Teskari trigonometrik funksiyalar qiymatlar chegarasi:**
->    $\arcsin(\sin x) = x$ayniyati faqat$-\frac{\pi}{2} \le x \le \frac{\pi}{2}$oraliqdagina to'g'ri. Masalan,$\arcsin\left(\sin\frac{5\pi}{6}\right) = \arcsin\left(\frac{1}{2}\right) = \frac{\pi}{6} \neq \frac{5\pi}{6}$!
+>    $\arcsin(\sin x) = x$ ayniyati faqat $-\frac{\pi}{2} \le x \le \frac{\pi}{2}$ oraliqdagina to'g'ri. Masalan, $\arcsin\left(\sin\frac{5\pi}{6}\right) = \arcsin\left(\frac{1}{2}\right) = \frac{\pi}{6} \neq \frac{5\pi}{6}$!
 
 ---
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $\sin^4 x + \cos^4 x$ifodani darajani pasaytirish formulalari orqali faqat$\cos(4x)$ ga bog'liq ko'rinishga keltiring.
-2. $\cos(3x) + \cos x = 0$tenglamaning$[0; \pi]$ oraliqdagi barcha yechimlarini toping.
+1. $\sin^4 x + \cos^4 x$ ifodani darajani pasaytirish formulalari orqali faqat $\cos(4x)$ ga bog'liq ko'rinishga keltiring.
+2. $\cos(3x) + \cos x = 0$ tenglamaning $[0; \pi]$ oraliqdagi barcha yechimlarini toping.
 3. $\int \sin(5x)\cos(3x)\,dx$ integralini ko'paytmani yig'indiga aylantirish formulasi yordamida hisoblang.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
@@ -209,7 +209,10 @@ Kosinuslar yig'indisi: $\cos(3x) + \cos x = 2\cos\frac{3x+x}{2}\cos\frac{3x-x}{2
     
 
       
-- $\cos(2x) = 0 \implies 2x = \frac{\pi}{2} + \pi k \implies x = \frac{\pi}{4} + \frac{\pi k}{2}$-$\cos x = 0 \implies x = \frac{\pi}{2} + \pi k$ $[0; \pi]$oraliqdagi ildizlar:$\mathbf{x_1 = \frac{\pi}{4}, \quad x_2 = \frac{\pi}{2}, \quad x_3 = \frac{3\pi}{4}}$.
+- $\cos(2x) = 0 \implies 2x = \frac{\pi}{2} + \pi k \implies x = \frac{\pi}{4} + \frac{\pi k}{2}$
+- $\cos x = 0 \implies x = \frac{\pi}{2} + \pi k$
+
+$[0; \pi]$ oraliqdagi ildizlar: $\mathbf{x_1 = \frac{\pi}{4}, \quad x_2 = \frac{\pi}{2}, \quad x_3 = \frac{3\pi}{4}}$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 

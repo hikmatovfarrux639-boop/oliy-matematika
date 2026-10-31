@@ -227,7 +227,7 @@ Barcha 3 ta kvadrat oldidagi koeffitsiyentlar musbat. Musbat inersiya indeksi $p
    - *Javob:* $\Delta_1 = -3 < 0$, $\Delta_2 = (-3)(-2) - 4 = 6 - 4 = 2 > 0$. Ishoralar almashindi $(-; +) \implies$ **Qat'iy manfiy aniqlangan**.
 
 2. $Q(x_1, x_2, x_3) = x_1^2 + 2x_2^2 + 3x_3^2 + 2x_1 x_2 - 2x_1 x_3$ formani Silvestr mezoni bilan tekshiring.
-   - *Javob:* $\Delta_1 = 1 > 0$, $\Delta_2 = 1 > 0$, $\Delta_3 = 2 > 0 \implies$ **Qat'iy musbat aniqlangan**.
+   - *Javob:* $\Delta_1 = 1 > 0$, $\Delta_2 = 1 > 0$, $\Delta_3 = 1 > 0 \implies$ **Qat'iy musbat aniqlangan**.
 
 3. $Q(x_1, x_2) = x_1^2 + 4x_1 x_2 + 2x_2^2$ formani tekshiring.
    - *Javob:* $\Delta_1 = 1 > 0$, $\Delta_2 = 2 - 4 = -2 < 0 \implies$ **Ishorasi o'zgaruvchan (noaniq)**.

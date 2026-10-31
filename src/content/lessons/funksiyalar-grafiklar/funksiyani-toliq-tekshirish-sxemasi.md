@@ -24,8 +24,8 @@ Har qanday $y = f(x)$ funksiyani tekshirishda quyidagi qat'iy ketma-ketlikka ama
    - $f(-x) = -f(x)$ bo'lsa — toq (koordinata boshiga simmetrik);
    - $f(x + T) = f(x)$ bo'lsa — davriy (faqat bitta davrda tekshirish yetarli).
 3. **Koordinata o'qlari bilan kesishish nuqtalari va ishoralar:**
-   - $Ox$o'qi bilan:$y = 0 \implies f(x) = 0$ (funksiya nollari);
-   - $Oy$o'qi bilan:$x = 0 \implies y = f(0)$.
+   - $Ox$ o'qi bilan: $y = 0 \implies f(x) = 0$ (funksiya nollari);
+   - $Oy$ o'qi bilan: $x = 0 \implies y = f(0)$.
 4. **Grafikning asimptotalari:**
    - Vertikal: uzilish nuqtalarida $\lim_{x \to x_0^\pm} f(x) = \pm\infty \implies x = x_0$;
    - Og'ma/Gorizontal: $y = kx + b$, bu yerda:
@@ -34,7 +34,7 @@ Har qanday $y = f(x)$ funksiyani tekshirishda quyidagi qat'iy ketma-ketlikka ama
    $f'(x) = 0$ kritik nuqtalar topiladi va oraliqlar usulida hosila ishorasi tekshiriladi:
    - $f'(x) > 0 \implies$ funksiya o'sadi ($\nearrow$);
    - $f'(x) < 0 \implies$ funksiya kamayadi ($\searrow$);
-   - ishora $(+)$dan$(-)$ga o'zgarsa — maksimum,$(-)$dan$(+)$ ga o'zgarsa — minimum.
+   - ishora $(+)$ dan $(-)$ ga o'zgarsa — maksimum, $(-)$ dan $(+)$ ga o'zgarsa — minimum.
 6. **2-tartibli hosila, botiqlik/qavariqlik va burilish nuqtalari:**
    $f''(x) = 0$ nuqtalar topiladi:
    - $f''(x) > 0 \implies$ botiq ($\cup$, "suv to'kilmaydi");
@@ -59,8 +59,8 @@ $$f(-x) = \frac{(-x)^2}{-x - 1} = \frac{x^2}{-(x + 1)} = -\frac{x^2}{x + 1} \neq
 Funksiya na juft, na toq (umumiy ko'rinishdagi funksiya). Davriy emas.
 
 ### 3-bosqich: O'qlar bilan kesishish
-- $Ox$bilan:$y = 0 \implies x^2 = 0 \implies x = 0$;
-- $Oy$bilan:$x = 0 \implies y = 0$.
+- $Ox$ bilan: $y = 0 \implies x^2 = 0 \implies x = 0$;
+- $Oy$ bilan: $x = 0 \implies y = 0$.
 Grafik koordinata boshidan $(0; 0)$ o'tadi.
 
 ### 4-bosqich: Asimptotalar
@@ -77,14 +77,14 @@ $$f'(x) = \left(\frac{x^2}{x - 1}\right)' = \frac{2x(x - 1) - x^2(1)}{(x - 1)^2}
 Kritik nuqtalar: $f'(x) = 0 \implies x(x - 2) = 0 \implies x_1 = 0, \quad x_2 = 2$.
 Maxraj nolga aylanadigan nuqta: $x = 1$.
 Oraliqlar usuli:
-- $(-\infty; 0)$da:$f'(x) > 0 \implies \nearrow$ (o'sadi);
-- $(0; 1)$da:$f'(x) < 0 \implies \searrow$ (kamayadi);
-- $(1; 2)$da:$f'(x) < 0 \implies \searrow$ (kamayadi);
-- $(2; +\infty)$da:$f'(x) > 0 \implies \nearrow$ (o'sadi).
+- $(-\infty; 0)$ da: $f'(x) > 0 \implies \nearrow$ (o'sadi);
+- $(0; 1)$ da: $f'(x) < 0 \implies \searrow$ (kamayadi);
+- $(1; 2)$ da: $f'(x) < 0 \implies \searrow$ (kamayadi);
+- $(2; +\infty)$ da: $f'(x) > 0 \implies \nearrow$ (o'sadi).
 
 Ekstremumlar:
-- $x = 0$nuqtada hosila$(+)$dan$(-)$ga o'tdi$\implies$**Lokal maksimum**:$y_{\max} = f(0) = \mathbf{0}$;
-- $x = 2$nuqtada hosila$(-)$dan$(+)$ga o'tdi$\implies$**Lokal minimum**:$y_{\min} = f(2) = \frac{4}{2-1} = \mathbf{4}$.
+- $x = 0$ nuqtada hosila $(+)$ dan $(-)$ ga o'tdi $\implies$**Lokal maksimum**: $y_{\max} = f(0) = \mathbf{0}$;
+- $x = 2$ nuqtada hosila $(-)$ dan $(+)$ ga o'tdi $\implies$**Lokal minimum**: $y_{\min} = f(2) = \frac{4}{2-1} = \mathbf{4}$.
 
 *(E'tibor bering: lokal minimum qiymati 4 lokal maksimum qiymati 0 dan katta! Bu uzilishli funksiyalarda mutlaqo tabiiy holdir).*
 
@@ -92,8 +92,8 @@ Ekstremumlar:
 $$f''(x) = \left[\frac{x^2 - 2x}{(x - 1)^2}\right]' = \frac{(2x - 2)(x - 1)^2 - (x^2 - 2x) \cdot 2(x - 1)}{(x - 1)^4} = \frac{2(x - 1)^2 - 2x(x - 2)}{(x - 1)^3}$$
 $$= \frac{2(x^2 - 2x + 1) - 2x^2 + 4x}{(x - 1)^3} = \frac{2}{(x - 1)^3}$$
 $f''(x) \neq 0$, demak burilish nuqtasi yo'q!
-- $x > 1$da:$f''(x) > 0 \implies \cup$ (botiq);
-- $x < 1$da:$f''(x) < 0 \implies \cap$ (qavariq).
+- $x > 1$ da: $f''(x) > 0 \implies \cup$ (botiq);
+- $x < 1$ da: $f''(x) < 0 \implies \cap$ (qavariq).
 
 ### 7-bosqich: Xulosa jadvali
 | $x$|$(-\infty; 0)$|$0$|$(0; 1)$|$1$|$(1; 2)$|$2$|$(2; +\infty)$ |
@@ -108,7 +108,7 @@ $f''(x) \neq 0$, demak burilish nuqtasi yo'q!
 > 1. **"Maksimum har doim minimumdan katta bo'lishi kerak" degan noto'g'ri tushuncha:**
 >    Yuqoridagi misolda ko'rganimizdek, $y_{\max} = 0$, $y_{\min} = 4$. Talabalar buni ko'rib "xato qildim" deb o'ylashadi. Lokal ekstremumlar faqat o'z kichik atrofida eng katta yoki kichikdir, butun sohada emas!
 > 2. **Og'ma asimptotani hisoblashda $b$ ni unutish:**
->    Faqat $k = \lim \frac{f(x)}{x}$ni topib,$y = kx$deb qo'yish xato.$b = \lim [f(x) - kx]$ ni albatta hisoblash shart.
+>    Faqat $k = \lim \frac{f(x)}{x}$ ni topib, $y = kx$ deb qo'yish xato.$b = \lim [f(x) - kx]$ ni albatta hisoblash shart.
 > 3. **2-hosila maxrajidagi daraja:**
 >    Kasr hosilasini olayotganda $(x-1)$ umumiy ko'paytuvchini qisqartirmasdan qavslarni ochib ketish darajani 4-ga ko'tarib yuboradi va hisoblashni juda qiyinlashtiradi.
 
@@ -141,7 +141,7 @@ $y'' = 6x - 6 = 0 \implies x = 1$. Burilish nuqtasi: $(1; -2)$.
 
     
 
-Vertikal asimptotalar maxraj nolga aylanganda: $x^2 - 4 = 0 \implies \mathbf{x = 2}$va$\mathbf{x = -2}$.
+Vertikal asimptotalar maxraj nolga aylanganda: $x^2 - 4 = 0 \implies \mathbf{x = 2}$ va $\mathbf{x = -2}$.
 
     
 
@@ -159,6 +159,6 @@ $y' = 1 \cdot e^{-x} + x(-e^{-x}) = e^{-x}(1 - x) = 0 \implies x = 1$.
 
     
 
-$x < 1$da$y' > 0 \implies (-\infty; 1)$da **o'suvchi**;$x > 1$da$y' < 0 \implies (1; +\infty)$da **kamayuvchi**. Maksimum nuqta:$(1; 1/e)$.
+$x < 1$ da $y' > 0 \implies (-\infty; 1)$ da **o'suvchi**; $x > 1$ da $y' < 0 \implies (1; +\infty)$ da **kamayuvchi**. Maksimum nuqta: $(1; 1/e)$.
 
 </details>

@@ -145,7 +145,7 @@ $$
 
 ### 4-misol: Xatolik chegarasi bo'yicha zarur tanlanma hajmini hisoblash
 
-**Masala:** Bank mijozlarning o'rtacha oylik daromadini 95% ishonchlilik bilan aniqlamoqchi. Oldingi tadqiqotlardan bosh standart chetlanish $\sigma = 400\$$ ekani ma'lum. O'rtacha daromad xatoligi $\varepsilon = 50\$$ dan oshmasligi uchun kamida nechta mijoz so'rovda qatnashishi kerak? ($Z_{0.975} = 1.96$).
+**Masala:** Bank mijozlarning o'rtacha oylik daromadini 95% ishonchlilik bilan aniqlamoqchi. Oldingi tadqiqotlardan bosh standart chetlanish $\sigma = 400\text{ dollar}$ ekani ma'lum. O'rtacha daromad xatoligi $\varepsilon = 50\text{ dollar}$ dan oshmasligi uchun kamida nechta mijoz so'rovda qatnashishi kerak? ($Z_{0.975} = 1.96$).
 
 **Yechish:**
 1. Hajm formulasini qo'llaymiz:

@@ -7,7 +7,7 @@ description: "Differensiallashga teskari jarayon, boshlang'ich funksiyalar oilas
 
 ## Kirish: Hosilaning teskari masalasi
 
-Differensial hisobda bizga ma'lum bir $F(x)$funksiya berilar edi va biz uning hosilasi$f(x) = F'(x)$ ni topishni o'rgandik. Masalan:
+Differensial hisobda bizga ma'lum bir $F(x)$ funksiya berilar edi va biz uning hosilasi $f(x) = F'(x)$ ni topishni o'rgandik. Masalan:
 - Yo'l formulasi ma'lum bo'lsa, oniy tezlikni topdik: $v(t) = s'(t)$.
 - Foyda funksiyasi ma'lum bo'lsa, marjinal foydani topdik.
 
@@ -30,17 +30,20 @@ $$
 > 
 $$
 >
-> tenglik bajarilsa, $F(x)$funksiya$f(x)$ ning **boshlang'ich funksiyasi** deyiladi.
+> tenglik bajarilsa, $F(x)$ funksiya $f(x)$ ning **boshlang'ich funksiyasi** deyiladi.
 
-Masalan, $f(x) = 2x$bo'lsa, uning boshlang'ich funksiyasi$F(x) = x^2$bo'ladi, chunki$(x^2)' = 2x$.
+Masalan, $f(x) = 2x$ bo'lsa, uning boshlang'ich funksiyasi $F(x) = x^2$ bo'ladi, chunki $(x^2)' = 2x$.
 
 Ammo quyidagilarga e'tibor bering:
-- $(x^2 + 5)' = 2x + 0 = 2x$-$(x^2 - 17)' = 2x - 0 = 2x$-$(x^2 + 1000)' = 2x$-$(x^2 + C)' = 2x$(bu yerda$C$ — ixtiyoriy o'zgarmas son).
+- $(x^2 + 5)' = 2x + 0 = 2x$
+- $(x^2 - 17)' = 2x - 0 = 2x$
+- $(x^2 + 1000)' = 2x$
+- $(x^2 + C)' = 2x$ (bu yerda $C$ — ixtiyoriy o'zgarmas son).
 
 Har qanday o'zgarmas sonning hosilasi nolga teng bo'lgani sababli, berilgan bitta $f(x)$ funksiya uchun boshlang'ich funksiya bitta emas, balki **cheksiz ko'p** bo'ladi!
 
 ### Geometrik ma'nosi:
-$y = F(x) + C$— bu$Oy$o'qi bo'ylab yuqoriga yoki pastga siljitilgan parallel egri chiziqlar oilasidir. Bu egri chiziqlarning bir xil$x$ nuqtadagi urinmalarining og'ish burchagi bir xil (ya'ni hosilalari teng) bo'ladi.
+$y = F(x) + C$ — bu $Oy$ o'qi bo'ylab yuqoriga yoki pastga siljitilgan parallel egri chiziqlar oilasidir. Bu egri chiziqlarning bir xil $x$ nuqtadagi urinmalarining og'ish burchagi bir xil (ya'ni hosilalari teng) bo'ladi.
 
 ---
 
@@ -55,7 +58,7 @@ $$
 $$
 >
 > bu yerda:
-> - $\int$— integral belgisi (lotincha *Summa* so'zining cho'zilgan$S$ harfi);
+> - $\int$ — integral belgisi (lotincha *Summa* so'zining cho'zilgan $S$ harfi);
 > - $f(x)$ — integral ostidagi funksiya;
 > - $f(x) \, dx$ — integral ostidagi ifoda;
 > - $dx$ — integrallash o'zgaruvchisi (differensial);
@@ -91,7 +94,7 @@ $$
 $$
 
 > ⚠️ **Qat'iy ogohlantirish:** Ko'paytma va bo'linma uchun bunday sodda qoida mavjud emas!
-> $$\int f(x) g(x) \, dx \neq \int f(x) \, dx \cdot \int g(x) \, dx$$
+> $$\int f(x) g(x) \, dx \neq \int f(x) \, dx \cdot \int g(x) \, dx $$
 > Ko'paytmalarni integrallash uchun maxsus o'zgaruvchini almashtirish yoki bo'laklab integrallash usullari qo'llaniladi.
 
 ---
@@ -104,7 +107,7 @@ Universitet kursida talabalar bilishi shart bo'lgan to'liq jadval:
 | Funksiya | Aniqmas integral | Izoh |
 |---|---|---|
 | $0$|$\int 0 \, dx = C$ | O'zgarmas son |
-| $1$(yoki$dx$) | $\int dx = x + C$ | |
+| $1$(yoki $dx$) | $\int dx = x + C$ | |
 | $x^n$|$\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ | **$n \neq -1$** sharti bilan |
 | $\frac{1}{x}$|$\int \frac{1}{x} \, dx = \ln\lvert x\rvert + C$ | Modul muhim! ($x \neq 0$) |
 | $e^x$|$\int e^x \, dx = e^x + C$ | O'zgarmas funksiya |
@@ -187,7 +190,9 @@ $$
 
 **Yechilishi:**
 Barcha ifodalarni $x^n$ daraja ko'rinishiga keltirib olamiz:
-- $\frac{3}{x^4} = 3x^{-4}$-$\frac{2}{\sqrt[3]{x}} = 2x^{-1/3}$-$\frac{5}{x}$— buni$5x^{-1}$deb yozmaymiz, chunki darajali qoida$n = -1$da ishlamaydi! Uning integrali$\ln|x|$ bo'ladi.
+- $\frac{3}{x^4} = 3x^{-4}$
+- $\frac{2}{\sqrt[3]{x}} = 2x^{-1/3}$
+- $\frac{5}{x}$ — buni $5x^{-1}$ deb yozmaymiz, chunki darajali qoida $n = -1$ da ishlamaydi! Uning integrali $5\ln|x|$ bo'ladi.
 
 $$
 \int (3x^{-4} - 2x^{-1/3} + \frac{5}{x}) \, dx = 3 \cdot \frac{x^{-4+1}}{-4+1} - 2 \cdot \frac{x^{-1/3+1}}{-\frac{1}{3} + 1} + 5\ln|x| + C
@@ -238,7 +243,7 @@ Integralga qo'yamiz:
 $$
 \int \frac{1 - \cos 2x}{2} \, dx = \frac{1}{2} \int 1 \, dx - \frac{1}{2} \int \cos 2x \, dx
 $$
-$\cos 2x$ning integrali$\frac{1}{2}\sin 2x$ bo'ladi:
+$\cos 2x$ ning integrali $\frac{1}{2}\sin 2x$ bo'ladi:
 $$
 = \frac{1}{2}x - \frac{1}{2} \left(\frac{1}{2}\sin 2x\right) + C = \frac{1}{2}x - \frac{1}{4}\sin 2x + C
 $$
@@ -254,7 +259,7 @@ I_1 = \int \frac{dx}{x^2 + 9}, \quad I_2 = \int \frac{dx}{\sqrt{x^2 + 5}}
 $$
 
 **Yechilishi:**
-1. $I_1$uchun jadvaldagi$\frac{1}{x^2 + a^2}$ formulasini qo'llaymiz ($a^2 = 9 \implies a = 3$):
+1. $I_1$ uchun jadvaldagi $\frac{1}{x^2 + a^2}$ formulasini qo'llaymiz ($a^2 = 9 \implies a = 3$):
    
 $$
    \int \frac{dx}{x^2 + 3^2} = \frac{1}{3} \operatorname{arctg}\frac{x}{3} + C
@@ -275,7 +280,7 @@ $$
    > Aniqmas integral bitta funksiya emas, balki funksiyalar to'plamidir. Har qanday aniqmas integral oxirida $+ C$ qo'yilishi shart, aks holda imtihonda o'qituvchi ballni kesadi.
 
 2. **$\int \frac{1}{x} \, dx$ da modulni tushirib qoldirish:**
-   > $\int \frac{1}{x} \, dx = \ln(x) + C$deb yozish to'liq to'g'ri emas, chunki$x$manfiy bo'lishi ham mumkin. To'g'ri yozilishi:$\ln|x| + C$.
+   > $\int \frac{1}{x} \, dx = \ln(x) + C$ deb yozish to'liq to'g'ri emas, chunki $x$ manfiy bo'lishi ham mumkin. To'g'ri yozilishi: $\ln|x| + C$.
 
 3. **Ko'paytma va bo'linmani hadma-had integrallash:**
    > $\int (x \cdot \sin x) \, dx = \frac{x^2}{2} \cdot (-\cos x)$ deb yozish mutlaqo xato! Ko'paytmali integrallarni yechish uchun bo'laklab integrallash usuli kerak.

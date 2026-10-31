@@ -32,7 +32,7 @@ Faqat va faqat ikkita joyda:
 > **Veyershtrassning ikkinchi teoremasi:**
 > Agar $f(x)$ funksiya chekli va yopiq $[a, b]$ kesmada uzluksiz bo'lsa, u holda ushbu kesmada o'zining **eng katta** ($M$) va **eng kichik** ($m$) qiymatlariga albatta erishadi:
 > 
-> $$M = \max_{x \in [a, b]} f(x), \qquad m = \min_{x \in [a, b]} f(x)$$
+> $$ M = \max_{x \in [a, b]} f(x), \qquad m = \min_{x \in [a, b]} f(x)$$
 
 Ushbu teoremada ikkita shart hal qiluvchi ahamiyatga ega:
 1. Kesma **yopiq** bo'lishi shart ($[a, b]$). Ochiq intervalda funksiya eng katta yoki eng kichik qiymatga erishmasligi mumkin. Masalan, $f(x) = x$ funksiya $(0, 1)$ intervalda o'zining aniq eng katta yoki eng kichik qiymatiga ega emas (chunki $0$ va $1$ oraliqqa kirmaydi).
@@ -163,7 +163,7 @@ $$\max_{[0, \pi]} f(x) = \frac{3}{2}, \qquad \min_{[0, \pi]} f(x) = 1$$
    $$f'(x) = -\frac{2}{3}(x - 2)^{-1/3} = -\frac{2}{3\sqrt[3]{x - 2}}$$
 3. **Kritik nuqtalarni tahlil qilamiz:**
    - $f'(x) = 0$ bo'ladigan nuqta yo'q, chunki kasrning surati $-2 \neq 0$.
-   - Hosila **mavjud bo'lmagan** nuqta: mahraj nolga teng bo'lganda, ya'ni $x - 2 = 0 \implies x = 2$.
+   - Hosila **mavjud bo'lmagan** nuqta: maxraj nolga teng bo'lganda, ya'ni $x - 2 = 0 \implies x = 2$.
    Ushbu $x = 2$ nuqta berilgan $[1, 10]$ kesmaning ichida yotadi va unda funksiyaning o'zi aniqlangan! Demak, $x = 2$ — muhim kritik nuqta.
 
 4. **Funksiya qiymatlarini hisoblaymiz:**
@@ -210,7 +210,7 @@ $$\max_{[0, \pi]} f(x) = \frac{3}{2}, \qquad \min_{[0, \pi]} f(x) = 1$$
 
 5. Taqqoslash: $\{2; \approx -0.081; 0.2\}$.
    - Eng katta: $2$
-   - Eng kichik: $\frac{1 - \sqrt{10}}{2} \approx -0.081$
+   - Eng kichik: $\frac{3 - \sqrt{10}}{2} \approx -0.081$
 
 **Javob:** $\max_{[0, 3]} f(x) = f(0) = 2$, $\min_{[0, 3]} f(x) \approx -0.081$.
 

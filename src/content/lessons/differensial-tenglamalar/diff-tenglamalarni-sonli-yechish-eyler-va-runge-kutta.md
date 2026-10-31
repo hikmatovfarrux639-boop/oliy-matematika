@@ -19,12 +19,12 @@ Bizga 1-tartibli differensial tenglama va boshlang'ich shart berilgan bo'lsin:
 $$
 y' = f(x, y), \quad y(x_0) = y_0
 $$
-$[x_0; X]$oraliqda yechimni topish talab etilsin. Oraliqni$n$ ta teng bo'lakka bo'lamiz:
+$[x_0; X]$ oraliqda yechimni topish talab etilsin. Oraliqni $n$ ta teng bo'lakka bo'lamiz:
 $$
 h = \frac{X - x_0}{n} \quad (\text{integrallash qadami})
 $$
 Tugun nuqtalar: $x_i = x_0 + i \cdot h, \quad (i = 0, 1, 2, \dots, n)$.
-Har bir $x_i$nuqtada noma'lum funksiyaning taqribiy qiymatini$y_i \approx y(x_i)$ deb belgilaymiz.
+Har bir $x_i$ nuqtada noma'lum funksiyaning taqribiy qiymatini $y_i \approx y(x_i)$ deb belgilaymiz.
 
 ---
 
@@ -53,7 +53,8 @@ $$
                                          <- h ->
 ```
 
-- **Lokal xatolik:** $O(h^2)$- **Global xatolik:**$O(h)$ (ya'ni qadamni 2 marta kichraytirsak, aniqlik atigi 2 marta oshadi).
+- **Lokal xatolik:** $O(h^2)$
+- **Global xatolik:** $O(h)$ (ya'ni qadamni 2 marta kichraytirsak, aniqlik atigi 2 marta oshadi).
 
 ---
 
@@ -104,7 +105,7 @@ $$
 ## 5. Masalani sonli va analitik taqqoslash
 
 ### Masala:
-Koshi masalasini $[0; 0.2]$oraliqda$h = 0.1$ qadam bilan yeching:
+Koshi masalasini $[0; 0.2]$ oraliqda $h = 0.1$ qadam bilan yeching:
 $$
 y' = x + y, \quad y(0) = 1
 $$
@@ -137,7 +138,10 @@ $$
 
 #### 2-usul: Runge-Kutta (RK4) usuli bilan hisoblash
 1-qadam ($x_0 = 0, y_0 = 1, h = 0.1$):
-- $k_1 = f(0, 1) = 1$-$k_2 = f(0 + 0.05, 1 + 0.05 \cdot 1) = f(0.05, 1.05) = 0.05 + 1.05 = 1.1$-$k_3 = f(0 + 0.05, 1 + 0.05 \cdot 1.1) = f(0.05, 1.055) = 0.05 + 1.055 = 1.105$-$k_4 = f(0 + 0.1, 1 + 0.1 \cdot 1.105) = f(0.1, 1.1105) = 0.1 + 1.1105 = 1.2105$
+- $k_1 = f(0, 1) = 1$
+- $k_2 = f(0 + 0.05, 1 + 0.05 \cdot 1) = f(0.05, 1.05) = 0.05 + 1.05 = 1.1$
+- $k_3 = f(0 + 0.05, 1 + 0.05 \cdot 1.1) = f(0.05, 1.055) = 0.05 + 1.055 = 1.105$
+- $k_4 = f(0 + 0.1, 1 + 0.1 \cdot 1.105) = f(0.1, 1.1105) = 0.1 + 1.1105 = 1.2105$
 O'rtacha orttirma:
 $$
 \Delta y_0 = \frac{0.1}{6} (1 + 2(1.1) + 2(1.105) + 1.2105) = \frac{0.1}{6} (6.6205) \approx 0.110342
@@ -148,7 +152,7 @@ $$
 
 #### Natijalarni aniq qiymat bilan solishtirish jadvali:
 
-| $x$| Eyler$y$| RK4$y$| Aniq yechim$y(x) = 2e^x - x - 1$ | Eyler xatosi | RK4 xatosi |
+| $x$| Eyler $y$| RK4 $y$| Aniq yechim $y(x) = 2e^x - x - 1$ | Eyler xatosi | RK4 xatosi |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **0.0** | 1.000000 | 1.000000 | 1.000000 | 0 | 0 |
 | **0.1** | 1.100000 | 1.110342 | **1.110342** | 0.010342 | **< 0.000001** |
@@ -173,14 +177,14 @@ $$
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Qadam kattaligi va turg'unlik:** Agar $h$ qadami juda katta tanlansa, usul "portlashi" (uzoqlashishi) mumkin (noturg'unlik hodisasi). Ayniqsa tez so'nuvchi jarayonlarda qadam yetarlicha kichik bo'lishi shart.
-> 2. **Runge-Kuttada $k_2, k_3, k_4$hisoblashda adashish:** Har bir keyingi koeffitsiyentda argumentlar o'zgaradi:$k_2$da$x + h/2, y + hk_1/2$, $k_3$da$y + hk_2/2$, ammo $k_4$da esa butun qadam$x + h, y + hk_3$ olinadi!
+> 2. **Runge-Kuttada $k_2, k_3, k_4$ hisoblashda adashish:** Har bir keyingi koeffitsiyentda argumentlar o'zgaradi: $k_2$ da $x + h/2, y + hk_1/2$, $k_3$ da $y + hk_2/2$, ammo $k_4$ da esa butun qadam $x + h, y + hk_3$ olinadi!
 
 ---
 
 ## Mustaqil yechish uchun mashqlar
 
 ### 1-mashq
-Koshi masalasini $y' = y - x, y(0) = 2$oddiy Eyler usuli bilan$h = 0.1$qadamda$x = 0.1$ nuqta uchun hisoblang.
+Koshi masalasini $y' = y - x, y(0) = 2$ oddiy Eyler usuli bilan $h = 0.1$ qadamda $x = 0.1$ nuqta uchun hisoblang.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

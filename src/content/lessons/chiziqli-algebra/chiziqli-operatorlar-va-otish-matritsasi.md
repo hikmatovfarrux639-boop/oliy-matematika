@@ -188,7 +188,7 @@ $$
 ## 7. Mustaqil yechish uchun amaliy mashqlar
 
 1. $A = \begin{pmatrix} 2 & 1 \\ 0 & 3 \end{pmatrix}$ operator matritsasining $\vec{e}_1' = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \vec{e}_2' = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ bazisdagi ko'rinishini toping.
-   - *Javob:* $T = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, T^{-1} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \implies A' = \begin{pmatrix} 3 & 0 \\ -1 & 2 \end{pmatrix}$.
+   - *Javob:* $T = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, T^{-1} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \implies A' = \begin{pmatrix} 3 & -1 \\ 0 & 2 \end{pmatrix}$.
 
 2. Operator $\mathcal{A}\vec{x} = (x_1 + 2x_2, \; 2x_1 + 4x_2)^T$ formula bilan berilgan. Uning yadrosi $\ker \mathcal{A}$ bazisini va tasviri o'lchamini toping.
    - *Javob:* Matritsa $A = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}, \operatorname{rank}(A) = 1 \implies \dim(\operatorname{Im} \mathcal{A}) = 1$. Yadro $x_1 + 2x_2 = 0 \implies \vec{v} = \begin{pmatrix} -2 \\ 1 \end{pmatrix}, \dim(\ker \mathcal{A}) = 1$.

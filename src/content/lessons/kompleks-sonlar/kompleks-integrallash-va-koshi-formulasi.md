@@ -33,7 +33,7 @@ $$\oint_{|z - z_0| = R} (z - z_0)^n dz = \begin{cases} 2\pi i, & n = -1 \\ 0, & 
 
 > **Koshi teoremasi (bir bog'lamli soha uchun):**
 > Agar $f(z)$ funksiya bir bog'lamli $D$ sohada golomorf (analitik) bo'lsa, u holda ushbu sohada yotuvchi har qanday yopiq $\Gamma$ kontur bo'yicha integral nolga teng:
-> $$\oint_{\Gamma} f(z) dz = 0$$
+> $$\oint_{\Gamma} f(z) dz = 0 $$
 
 *Isbot g'oyasi:* Haqiqiy analizdagi Grin formulasi $\oint (P dx + Q dy) = \iint (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}) dx dy$ va Koshi-Riman shartlari ($u_x = v_y, u_y = -v_x$) bo'yicha:
 $$\iint (-v_x - u_y) dx dy = 0 \quad \text{va} \quad \iint (u_x - v_y) dx dy = 0$$
@@ -44,7 +44,7 @@ $$\iint (-v_x - u_y) dx dy = 0 \quad \text{va} \quad \iint (u_x - v_y) dx dy = 0
 
 > **Fundamental Teorema:**
 > Agar $f(z)$ funksiya chegarasi $\Gamma$ bo'lgan bir bog'lamli $D$ sohada golomorf bo'lsa va $z_0 \in D$ uning ixtiyoriy ichki nuqtasi bo'lsa, quyidagi tenglik o'rinli:
-> $$f(z_0) = \frac{1}{2\pi i} \oint_{\Gamma} \frac{f(z)}{z - z_0} dz$$
+> $$ f(z_0) = \frac{1}{2\pi i} \oint_{\Gamma} \frac{f(z)}{z - z_0} dz $$
 >
 > Integrallarni hisoblash uchun amaliy shakli:
 > $$\oint_{\Gamma} \frac{f(z)}{z - z_0} dz = 2\pi i \cdot f(z_0)$$
@@ -57,7 +57,7 @@ Koshi formulasini $z_0$ parametri bo'yicha $n$ marta differensiallash natijasida
 
 > **Hosilalar uchun Koshi formulasi:**
 > Golomorf funksiya cheksiz marta differensiallanuvchidir va uning $n$-tartibli hosilasi quyidagi integral orqali ifodalanadi:
-> $$f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_{\Gamma} \frac{f(z)}{(z - z_0)^{n+1}} dz$$
+> $$ f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_{\Gamma} \frac{f(z)}{(z - z_0)^{n+1}} dz $$
 >
 > Amaliy integrallash formulasi:
 > $$\oint_{\Gamma} \frac{f(z)}{(z - z_0)^{n+1}} dz = \frac{2\pi i}{n!} \cdot f^{(n)}(z_0)$$

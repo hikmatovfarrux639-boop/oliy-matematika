@@ -126,7 +126,7 @@ Amaliy masalalarni yechish quruq formulalarni yodlashdan iborat emas. Bu yerda r
 
 > **Oltin muhandislik xulosasi:**
 > Konserva idishiga eng kam metall sarflanishi uchun uning balandligi asos diametriga teng bo'lishi shart:
-> $$h = 2r = d$$
+> $$ h = 2r = d $$
 > Aynan shuning uchun do'konlardagi standart konserva bankalarining bo'yi va eni deyarli teng yasaladi!
 
 **Javob:** $h = 2r$ (balandlik asos diametriga teng bo'lishi kerak).

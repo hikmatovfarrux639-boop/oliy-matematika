@@ -19,7 +19,7 @@ Bunday nuqtalar atrofida jarayonni o'rganish uchun Teylor qatorining manfiy dara
 
 > **Loran teoremasi:**
 > Agar $f(z)$ funksiya $V = \{z \in \mathbb{C} : r < |z - z_0| < R\}$ halqada bir qiymatli va analitik (golomorf) bo'lsa, u holda ushbu halqada $f(z)$ yagona usul bilan musbat va manfiy darajali qatorga yoyiladi:
-> $$f(z) = \sum_{n=-\infty}^{+\infty} c_n (z - z_0)^n$$
+> $$ f(z) = \sum_{n=-\infty}^{+\infty} c_n (z - z_0)^n $$
 
 Bu qator ikki qism yig'indisidan iborat:
 $$f(z) = \underbrace{\sum_{n=0}^{+\infty} c_n (z - z_0)^n}_{\text{To'g'ri qism (Teylor qismi)}} + \underbrace{\sum_{n=1}^{+\infty} \frac{c_{-n}}{(z - z_0)^n}}_{\text{Bosh qism (Asosiy qism)}}$$

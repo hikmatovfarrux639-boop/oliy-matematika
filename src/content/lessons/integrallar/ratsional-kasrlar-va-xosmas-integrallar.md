@@ -29,11 +29,13 @@ $$
 - Agar $\deg P(x) < \deg Q(x)$ bo'lsa, kasr **to'g'ri** deyiladi.
 
 ### 2-qadam: Maxrajni chiziqli va kvadratik ko'paytuvchilarga ajratish
-Maxraj $Q(x)$haqiqiy sonlar maydonida$(x - a)^k$va$(x^2 + px + q)^m$ ko'rinishidagi ko'paytuvchilarga ajratiladi ($p^2 - 4q < 0$).
+Maxraj $Q(x)$ haqiqiy sonlar maydonida $(x - a)^k$ va $(x^2 + px + q)^m$ ko'rinishidagi ko'paytuvchilarga ajratiladi ($p^2 - 4q < 0$).
 
 ### 3-qadam: Sodda kasrlar yig'indisiga yoyish
 Har bir ko'paytuvchiga mos sodda kasrlar mos qo'yiladi:
-- $(x - a) \implies \frac{A}{x - a}$-$(x - a)^2 \implies \frac{A_1}{x - a} + \frac{A_2}{(x - a)^2}$-$(x^2 + px + q) \implies \frac{Mx + N}{x^2 + px + q}$
+- $(x - a) \implies \frac{A}{x - a}$
+- $(x - a)^2 \implies \frac{A_1}{x - a} + \frac{A_2}{(x - a)^2}$
+- $(x^2 + px + q) \implies \frac{Mx + N}{x^2 + px + q}$
 
 ---
 
@@ -53,19 +55,19 @@ Qavslarni ochib, $x^2$, $x^1$, $x^0$ oldidagi koeffitsiyentlarni tenglashtiramiz
 
 ### 2-usul: Xususiy qiymatlar (Xevisayd — "Qo'l bilan yopish" cover-up) usuli
 Maxraj ildizlarini birma-bir qo'yib chiqamiz:
-1. $x = 1$qo'yamiz (chunki$B$va$C$ qatnashgan hadlar nolga aylanadi):
+1. $x = 1$ qo'yamiz (chunki $B$ va $C$ qatnashgan hadlar nolga aylanadi):
    
 $$
    2(1)^2 + 5(1) - 1 = A(1 + 2)(1 - 3) \implies 6 = -6A \implies A = -1
    
 $$
-2. $x = -2$ qo'yamiz ($A$va$C$ qatnashgan hadlar nolga aylanadi):
+2. $x = -2$ qo'yamiz ($A$ va $C$ qatnashgan hadlar nolga aylanadi):
    
 $$
    2(-2)^2 + 5(-2) - 1 = B(-2 - 1)(-2 - 3) \implies -3 = 15B \implies B = -\frac{1}{5}
    
 $$
-3. $x = 3$ qo'yamiz ($A$va$B$ hadlar yo'qoladi):
+3. $x = 3$ qo'yamiz ($A$ va $B$ hadlar yo'qoladi):
    
 $$
    2(9) + 15 - 1 = C(3 - 1)(3 + 2) \implies 32 = 10C \implies C = \frac{16}{5}
@@ -91,7 +93,7 @@ $$
 $$
 
 ### 2-tur xosmas integrallar (uzilish nuqtasiga ega oraliq):
-Agar $f(x)$funksiya$x = b$ nuqtada cheksizlikka intilsa ($\lim_{x \to b-0} f(x) = \infty$):
+Agar $f(x)$ funksiya $x = b$ nuqtada cheksizlikka intilsa ($\lim_{x \to b-0} f(x) = \infty$):
 $$
 \int_a^b f(x) dx = \lim_{\varepsilon \to 0^+} \int_a^{b - \varepsilon} f(x) dx
 $$
@@ -132,7 +134,9 @@ $$
    
 $$
    Heaviside cover-up usulini qo'llaymiz:
-   - $x = 0$da:$A = \frac{0^2 + 1}{(0 - 1)(0 + 1)} = \frac{1}{-1} = -1$-$x = 1$da:$B = \frac{1^2 + 1}{1(1 + 1)} = \frac{2}{2} = 1$-$x = -1$da:$C = \frac{(-1)^2 + 1}{(-1)(-1 - 1)} = \frac{2}{2} = 1$
+   - $x = 0$ da: $A = \frac{0^2 + 1}{(0 - 1)(0 + 1)} = \frac{1}{-1} = -1$
+   - $x = 1$ da: $B = \frac{1^2 + 1}{1(1 + 1)} = \frac{2}{2} = 1$
+   - $x = -1$ da: $C = \frac{(-1)^2 + 1}{(-1)(-1 - 1)} = \frac{2}{2} = 1$
 3. Integrallaymiz:
    
 $$
@@ -170,7 +174,7 @@ $$
 
 #### 2-usul: Eyler Gamma-funksiyasi orqali tezkor hisoblash
 Ma'lumki, $\int_0^\infty x^n e^{-\lambda x} dx = \frac{n!}{\lambda^{n+1}}$.
-Bu yerda $n = 1$va$\lambda = 2$:
+Bu yerda $n = 1$ va $\lambda = 2$:
 $$
 J = \frac{1!}{2^{1+1}} = \frac{1}{2^2} = \frac{1}{4}
 $$
@@ -182,7 +186,7 @@ Integral bir zumda tekshirildi!
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Noto'g'ri kasrni darhol yoyish:** Agar surat darajasi maxrajnikidan kichik bo'lmasa, darhol $\frac{A}{x-1} + \dots$ deb yoyish qo'pol xatodir. Oldin albatta ko'phadni bo'lib, butun qismini ajratish shart!
-> 2. **2-tur xosmas integralda oraliq ichidagi uzilishni sezmaslik:** Talabalar ko'pincha $\int_{-1}^1 \frac{dx}{x^2}$integralini ko'rib, odatiy Nyuton-Leybnits formulasi bilan$\left[-\frac{1}{x}\right]_{-1}^1 = -1 - (1) = -2$deb yechishadi. Lekin$f(x) = \frac{1}{x^2} > 0$funksiyaning integrali manfiy bo'lishi mutlaqo mumkin emas! Gap shundaki,$x = 0$nuqta oraliq ichidagi uzilish nuqtasidir va integral ikkiga bo'linadi:$\int_{-1}^0 \frac{dx}{x^2} + \int_0^1 \frac{dx}{x^2} = +\infty + \infty = +\infty$ (uzoqlashuvchi).
+> 2. **2-tur xosmas integralda oraliq ichidagi uzilishni sezmaslik:** Talabalar ko'pincha $\int_{-1}^1 \frac{dx}{x^2}$ integralini ko'rib, odatiy Nyuton-Leybnits formulasi bilan $\left[-\frac{1}{x}\right]_{-1}^1 = -1 - (1) = -2$ deb yechishadi. Lekin $f(x) = \frac{1}{x^2} > 0$ funksiyaning integrali manfiy bo'lishi mutlaqo mumkin emas! Gap shundaki, $x = 0$ nuqta oraliq ichidagi uzilish nuqtasidir va integral ikkiga bo'linadi: $\int_{-1}^0 \frac{dx}{x^2} + \int_0^1 \frac{dx}{x^2} = +\infty + \infty = +\infty$ (uzoqlashuvchi).
 > 3. **Heaviside usulining chegarasi:** Xevisayd usuli faqat takrorlanmaydigan chiziqli ko'paytuvchilar uchun qulay. Kvadratik qismlar ($x^2 + px + q$) yoki karrali ko'paytuvchilar $(x-a)^2$ bo'lganda, ularni klassik tenglashtirish usuli bilan aralash qo'llash maqsadga muvofiqdir.
 
 ---
@@ -203,7 +207,8 @@ $$
 \frac{5x - 2}{(x - 2)(x + 2)} = \frac{A}{x - 2} + \frac{B}{x + 2}
 $$
 Heaviside usuli:
-- $x = 2 \implies A = \frac{5(2) - 2}{2 + 2} = \frac{8}{4} = 2$-$x = -2 \implies B = \frac{5(-2) - 2}{-2 - 2} = \frac{-12}{-4} = 3$
+- $x = 2 \implies A = \frac{5(2) - 2}{2 + 2} = \frac{8}{4} = 2$
+- $x = -2 \implies B = \frac{5(-2) - 2}{-2 - 2} = \frac{-12}{-4} = 3$
 
 Integrallaymiz:
 $$

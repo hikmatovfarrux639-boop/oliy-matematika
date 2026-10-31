@@ -28,17 +28,17 @@ $(X, Y)$ diskret tasodifiy miqdorning birgalikdagi taqsimoti **jadval** shaklida
 | $x_n$|$p_{n1}$|$p_{n2}$|$\dots$|$p_{nm}$|$p_{n\cdot}$ |
 | **$P(Y = y_j)$** | $p_{\cdot 1}$|$p_{\cdot 2}$|$\dots$|$p_{\cdot m}$ | **$\sum = 1$** |
 
-- **Normalash sharti:** Barcha katakchalardagi ehtimollar yig'indisi $1$ga teng:$\sum_{i=1}^n \sum_{j=1}^m p_{ij} = 1$.
+- **Normalash sharti:** Barcha katakchalardagi ehtimollar yig'indisi $1$ ga teng: $\sum_{i=1}^n \sum_{j=1}^m p_{ij} = 1$.
 - **Chetki (marginal) taqsimotlar:**
-  - $X$ning qator bo'yicha ehtimoli:$p_{i\cdot} = \sum_{j=1}^m p_{ij}$;
-  - $Y$ning ustun bo'yicha ehtimoli:$p_{\cdot j} = \sum_{i=1}^n p_{ij}$.
-- **Mustaqillik sharti:** $X$va$Y$erkli (mustaqil) bo'lishi uchun barcha katakchalarda$p_{ij} = p_{i\cdot} \cdot p_{\cdot j}$ bajarilishi shart.
+  - $X$ ning qator bo'yicha ehtimoli: $p_{i\cdot} = \sum_{j=1}^m p_{ij}$;
+  - $Y$ ning ustun bo'yicha ehtimoli: $p_{\cdot j} = \sum_{i=1}^n p_{ij}$.
+- **Mustaqillik sharti:** $X$ va $Y$ erkli (mustaqil) bo'lishi uchun barcha katakchalarda $p_{ij} = p_{i\cdot} \cdot p_{\cdot j}$ bajarilishi shart.
 
 ---
 
 ## 2. Uzluksiz ikki o'lchovli miqdorlar
 
-Uzluksiz $(X, Y)$tasodifiy vektor uchun **birgalikdagi ehtimollik zichligi**$f(x, y)$ kiritiladi:
+Uzluksiz $(X, Y)$ tasodifiy vektor uchun **birgalikdagi ehtimollik zichligi**$f(x, y)$ kiritiladi:
 - $f(x, y) \ge 0$;
 - **Normalash sharti:** $\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f(x, y) dx dy = 1$;
 - **Chetki zichliklar:**
@@ -47,7 +47,7 @@ $$
   f_X(x) = \int_{-\infty}^{+\infty} f(x, y) dy, \qquad f_Y(y) = \int_{-\infty}^{+\infty} f(x, y) dx
   
 $$
-- Agar barcha $(x, y)$larda$f(x, y) = f_X(x) \cdot f_Y(y)$bo'lsa,$X$va$Y$ **mustaqil** deyiladi.
+- Agar barcha $(x, y)$ larda $f(x, y) = f_X(x) \cdot f_Y(y)$ bo'lsa, $X$ va $Y$ **mustaqil** deyiladi.
 
 ---
 
@@ -63,7 +63,7 @@ Hisoblash uchun qulay amaliy formula:
 $$
 \operatorname{cov}(X, Y) = M(XY) - M(X) \cdot M(Y)
 $$
-- Agar $X$va$Y$mustaqil bo'lsa,$M(XY) = M(X)M(Y)$bo'lib,$\operatorname{cov}(X, Y) = 0$ bo'ladi.
+- Agar $X$ va $Y$ mustaqil bo'lsa, $M(XY) = M(X)M(Y)$ bo'lib, $\operatorname{cov}(X, Y) = 0$ bo'ladi.
 
 ### Pirson korrelyatsiya koeffitsiyenti $r_{xy}$:
 Kovariatsiya o'lchov birliklariga (masalan, metr $\times$ kg) bog'liq bo'lgani sababli, uni o'lchovsiz ko'rinishga keltirish uchun standart og'ishlarga bo'linadi:
@@ -82,10 +82,10 @@ $$
 
 ### Korrelyatsiya koeffitsiyentining asosiy xossalari:
 1. **Chegaralanganlik:** Har doim $-1 \le r_{xy} \le 1$.
-2. **Qat'iy chiziqli bog'liqlik:** $|r_{xy}| = 1$faqat va faqat$Y = aX + b$ chiziqli funksional bog'liqlik bo'lgandagina o'rinli ($a > 0$da$r = +1$, $a < 0$da$r = -1$).
+2. **Qat'iy chiziqli bog'liqlik:** $|r_{xy}| = 1$ faqat va faqat $Y = aX + b$ chiziqli funksional bog'liqlik bo'lgandagina o'rinli ($a > 0$ da $r = +1$, $a < 0$ da $r = -1$).
 3. **Korrelyatsiyalanmaganlik:** Agar $r_{xy} = 0$ bo'lsa, miqdorlar **korrelyatsiyalanmagan** deyiladi.
 > [!IMPORTANT] Eslab qoling
-> Mustaqillikdan doim korrelyatsiyalanmaganlik kelib chiqadi ($r = 0$). Ammo **teskarisi har doim ham to'g'ri emas!** Ya'ni $r = 0$bo'lsa ham miqdorlar o'rtasida nochiziqli (masalan, kvadratik$Y = X^2$) bog'liqlik bo'lishi mumkin.
+> Mustaqillikdan doim korrelyatsiyalanmaganlik kelib chiqadi ($r = 0$). Ammo **teskarisi har doim ham to'g'ri emas!** Ya'ni $r = 0$ bo'lsa ham miqdorlar o'rtasida nochiziqli (masalan, kvadratik $Y = X^2$) bog'liqlik bo'lishi mumkin.
 
 ---
 
@@ -100,7 +100,7 @@ $(X, Y)$ ikki o'lchovli diskret tasodifiy miqdorning taqsimot jadvali berilgan:
 | **$1$** | $0.4$|$0.1$ |
 
 1) Chetki taqsimotlarni toping;
-2) Kovariatsiya $\operatorname{cov}(X, Y)$va korrelyatsiya koeffitsiyenti$r_{xy}$ ni hisoblang.
+2) Kovariatsiya $\operatorname{cov}(X, Y)$ va korrelyatsiya koeffitsiyenti $r_{xy}$ ni hisoblang.
 
 #### 1-qadam: Chetki taqsimotlar va kutilmalarni topish
 - $X$ ning qator bo'yicha ehtimollari:
@@ -142,20 +142,20 @@ Yig'indisi:
 $$
 \operatorname{cov}(X, Y) = 0.04 - 0.09 - 0.08 + 0.03 = -0.10
 $$
-Ikkala usul ham aynan $\operatorname{cov}(X, Y) = -0.1$natijasini berdi!$r_{xy} \approx -0.408$manfiy bo'lgani sababli,$X$va$Y$ o'rtasida o'rtacha kuchga ega **teskari chiziqli bog'liqlik** mavjud.
+Ikkala usul ham aynan $\operatorname{cov}(X, Y) = -0.1$ natijasini berdi!$r_{xy} \approx -0.408$ manfiy bo'lgani sababli, $X$ va $Y$ o'rtasida o'rtacha kuchga ega **teskari chiziqli bog'liqlik** mavjud.
 
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Mustaqillikni bitta katakcha bilan tekshirish:** $X$va$Y$ning mustaqilligini tekshirish uchun bitta katakchada$p_{ij} = p_{i\cdot} p_{\cdot j}$ bajarilishi yetarli emas; u **barcha kataklar uchun istisnosiz** bajarilishi shart! Agar hatto bitta katakda tenglik buzilsa, miqdorlar bog'liq bo'ladi.
-> 2. **Korrelyatsiya koeffitsiyenti modulining 1 dan oshib ketishi:** Agar hisob-kitobingizda $|r_{xy}| > 1$(masalan,$1.15$yoki$-1.4$) chiqsa, qayerdadir arifmetik xato qilgansiz. $r_{xy}$doim$[-1; 1]$ oraliqda yotishi shart.
+> 1. **Mustaqillikni bitta katakcha bilan tekshirish:** $X$ va $Y$ ning mustaqilligini tekshirish uchun bitta katakchada $p_{ij} = p_{i\cdot} p_{\cdot j}$ bajarilishi yetarli emas; u **barcha kataklar uchun istisnosiz** bajarilishi shart! Agar hatto bitta katakda tenglik buzilsa, miqdorlar bog'liq bo'ladi.
+> 2. **Korrelyatsiya koeffitsiyenti modulining 1 dan oshib ketishi:** Agar hisob-kitobingizda $|r_{xy}| > 1$(masalan, $1.15$ yoki $-1.4$) chiqsa, qayerdadir arifmetik xato qilgansiz. $r_{xy}$ doim $[-1; 1]$ oraliqda yotishi shart.
 
 ---
 
 ## Mustaqil yechish uchun mashqlar
 
 ### 1-mashq
-Agar $X$va$Y$mustaqil tasodifiy miqdorlar bo'lsa, ularning kovariatsiyasi$\operatorname{cov}(X, Y)$va korrelyatsiya koeffitsiyenti$r_{xy}$ nimaga teng?
+Agar $X$ va $Y$ mustaqil tasodifiy miqdorlar bo'lsa, ularning kovariatsiyasi $\operatorname{cov}(X, Y)$ va korrelyatsiya koeffitsiyenti $r_{xy}$ nimaga teng?
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>
@@ -175,13 +175,13 @@ $$
 </details>
 
 ### 2-mashq
-Agar $Y = 3 - 2X$bo'lsa,$X$va$Y$o'rtasidagi korrelyatsiya koeffitsiyenti$r_{xy}$ nimaga teng?
+Agar $Y = 3 - 2X$ bo'lsa, $X$ va $Y$ o'rtasidagi korrelyatsiya koeffitsiyenti $r_{xy}$ nimaga teng?
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>
 
 **Yechish:**
-$Y = aX + b$chiziqli funksional bog'liqlikda$a = -2 < 0$.
+$Y = aX + b$ chiziqli funksional bog'liqlikda $a = -2 < 0$.
 Bunday holda korrelyatsiya koeffitsiyenti qat'iy ravishda $-1$ ga teng bo'ladi.
 
 **Javob:** $r_{xy} = -1$.

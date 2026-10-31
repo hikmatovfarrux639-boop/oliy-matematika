@@ -479,15 +479,19 @@ Koshi masalasini yeching yoki tushuntiring: $y = x y' + \sqrt{1 - (y')^2}$ tengl
    $$
    y = -p \left( -\frac{p}{\sqrt{1 - p^2}} \right) + \sqrt{1 - p^2} = \frac{p^2 + 1 - p^2}{\sqrt{1 - p^2}} = \frac{1}{\sqrt{1 - p^2}}
    $$
-   Kvadratga ko'tarsak: $y^2 - x^2 = 1 \implies x^2 + y^2 = 1$ (aylana).
+   Kvadratga ko'tarsak:
+   $$
+   y^2 - x^2 = \frac{1}{1 - p^2} - \frac{p^2}{1 - p^2} = 1 \implies y^2 - x^2 = 1 \quad (y \ge 1)
+   $$
+   Bu teng tomonli giperbolaning yuqori tarmog'idir ($y = \sqrt{1 + x^2}$).
 3. **$(0, 1)$ nuqtani tahlil qilish:**
-   - Nuqta maxsus yechimda yotadi: $0^2 + 1^2 = 1$.
+   - Nuqta maxsus yechimda yotadi: $1^2 - 0^2 = 1$.
    - Umumiy yechimga qo'yamiz: $1 = C \cdot 0 + \sqrt{1 - C^2} \implies 1 = \sqrt{1 - C^2} \implies C = 0$.
      To'g'ri chiziq: $y = 1$.
-   Demak, $(0, 1)$ nuqtada $y = 1$ to'g'ri chizig'i $x^2 + y^2 = 1$ aylanaga urinadi. Bu nuqtada Koshi masalasi yechimining yagonaligi buziladi: aylananing o'zi ham, $y = 1$ gorizontal to'g'ri chiziq ham yechimdir!
+   Demak, $(0, 1)$ nuqtada $y = 1$ to'g'ri chizig'i $y^2 - x^2 = 1$ giperbolaga urinadi. Bu nuqtada Koshi masalasi yechimining yagonaligi buziladi: giperbolaning o'zi ham ($y = \sqrt{1 + x^2}$), $y = 1$ gorizontal to'g'ri chiziq ham yechimdir!
 
 **Javob:**
-Umumiy yechim: $y = C x + \sqrt{1 - C^2}$. Maxsus yechim: $x^2 + y^2 = 1$. $(0, 1)$ nuqtadan ikkita yechim o'tadi (yagonalik buzilgan).
+Umumiy yechim: $y = C x + \sqrt{1 - C^2}$ ($|C| \le 1$). Maxsus yechim: $y^2 - x^2 = 1$ ($y \ge 1$). $(0, 1)$ nuqtadan ikkita yechim o'tadi (yagonalik buzilgan).
 </details>
 
 ---

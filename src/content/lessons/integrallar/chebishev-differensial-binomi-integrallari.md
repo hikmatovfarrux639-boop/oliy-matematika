@@ -185,8 +185,8 @@ $$
 **1-masala:** $m=3, n=2, p=-1/2 \implies \frac{m+1}{n} = 2 \in \mathbb{Z}$ (2-hol). $1-x^2 = t^2 \implies x^2 = 1-t^2$.
 Javob: $-\frac{1}{3}(x^2 + 2)\sqrt{1-x^2} + C$.
 
-**2-masala:** $m=-1/2, n=1/4, p=1/3$. $\frac{m+1}{n} = \frac{1/2}{1/4} = 2 \in \mathbb{Z}$ (2-hol). $1 + x^{1/4} = t^3$.
-Javob: $\frac{3}{7}(1+\sqrt[4]{x})^{7/3} - \frac{3}{4}(1+\sqrt[4]{x})^{4/3} + C$.
+**2-masala:** $m=-1/2, n=1/4, p=1/3$. $\frac{m+1}{n} = \frac{1/2}{1/4} = 2 \in \mathbb{Z}$ (2-hol). $1 + x^{1/4} = t^3 \implies x = (t^3 - 1)^4 \implies dx = 12t^2(t^3 - 1)^3 dt$.
+Javob: $\frac{12}{7}(1+\sqrt[4]{x})^{7/3} - 3(1+\sqrt[4]{x})^{4/3} + C$.
 
 **3-masala:** $m=-4, n=2, p=-1/2$. $\frac{m+1}{n} + p = -\frac{3}{2} - \frac{1}{2} = -2 \in \mathbb{Z}$ (3-hol). $x^{-2}+1 = t^2$.
 Javob: $\frac{(2x^2-1)\sqrt{1+x^2}}{3x^3} + C$.

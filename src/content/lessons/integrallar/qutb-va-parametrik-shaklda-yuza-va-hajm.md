@@ -17,7 +17,7 @@ Ushbu darsda biz yuza, yoy uzunligi va aylanma jism hajmini ushbu zamonaviy koor
 
 ## 1. Qutb koordinatalarida soha yuzi va yoy uzunligi
 
-Qutb koordinatalarida nuqta qutb radiusi $r$va qutb burchagi$\varphi$orqali beriladi:$r = r(\varphi)$, bu yerda $\alpha \le \varphi \le \beta$.
+Qutb koordinatalarida nuqta qutb radiusi $r$ va qutb burchagi $\varphi$ orqali beriladi: $r = r(\varphi)$, bu yerda $\alpha \le \varphi \le \beta$.
 
 ```
                        Qutb sektori yuzi
@@ -33,7 +33,7 @@ Qutb koordinatalarida nuqta qutb radiusi $r$va qutb burchagi$\varphi$orqali beri
 ```
 
 ### Soha yuzi formulasi:
-Egri chiziq $r = r(\varphi)$va ikkita qutb nuri$\varphi = \alpha, \varphi = \beta$ bilan chegaralangan **qutb sektori yuzi**:
+Egri chiziq $r = r(\varphi)$ va ikkita qutb nuri $\varphi = \alpha, \varphi = \beta$ bilan chegaralangan **qutb sektori yuzi**:
 $$
 S = \frac{1}{2} \int_{\alpha}^{\beta} r^2(\varphi) \, d\varphi
 $$
@@ -53,7 +53,7 @@ $$
 $$
 
 ### 1. Yuza formulasi:
-Egri chiziq, $Ox$o'qi va$x(t_1)=a, x(t_2)=b$ to'g'ri chiziqlar bilan chegaralangan figura yuzi:
+Egri chiziq, $Ox$ o'qi va $x(t_1)=a, x(t_2)=b$ to'g'ri chiziqlar bilan chegaralangan figura yuzi:
 $$
 S = \int_{t_1}^{t_2} y(t) \cdot x'(t) \, dt \quad \left(\text{yoki yopiq kontur uchun } S = \frac{1}{2}\oint (x y' - y x') dt\right)
 $$
@@ -77,7 +77,7 @@ $$
 ## 3. Masalalarni 2 xil usulda tahlil qilish
 
 ### 1-masala: Ellips yuzini 2 xil usulda hisoblash
-Yarim o'qlari $a$va$b$bo'lgan$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ ellips yuzini toping.
+Yarim o'qlari $a$ va $b$ bo'lgan $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ ellips yuzini toping.
 
 #### 1-usul: Dekart koordinatalari orqali (Murakkab usul)
 Simmetriya tufayli 1-chorakdagi yuzani 4 ga ko'paytiramiz:
@@ -97,7 +97,7 @@ $$
 #### 2-usul: Parametrik koordinatalar orqali (Elegant va tezkor usul)
 Ellipsning parametrik tenglamasi: $x = a\cos t, y = b\sin t$, bu yerda $t \in [0; 2\pi]$.
 Hosilalar: $x'(t) = -a\sin t$.
-1-chorakda $x$o'zgarishi$a$dan$0$gacha bo'lganda parametr$t$esa$0$dan$\frac{\pi}{2}$ gacha o'zgaradi:
+1-chorakda $x$ o'zgarishi $a$ dan $0$ gacha bo'lganda parametr $t$ esa $0$ dan $\frac{\pi}{2}$ gacha o'zgaradi:
 $$
 S = 4 \int_{\pi/2}^0 y(t) x'(t) dt = 4 \int_{\pi/2}^0 (b\sin t)(-a\sin t) dt = 4ab \int_0^{\pi/2} \sin^2 t \, dt
 $$
@@ -113,7 +113,7 @@ Ko'rib turganingizdek, parametrik shakl orqali hech qanday murakkab ildizlarsiz 
 Qutb koordinatalarida $r = a(1 + \cos\varphi)$ kardioidasi berilgan bo'lsin ($a > 0$).
 
 **Yechish:**
-Kardioida qutb o'qiga nisbatan simmetrik bo'lib, $\varphi$burchak$-\pi$dan$\pi$gacha (yoki simmetriya bo'yicha$0$dan$\pi$ gacha 2 barobar) o'zgaradi.
+Kardioida qutb o'qiga nisbatan simmetrik bo'lib, $\varphi$ burchak $-\pi$ dan $\pi$ gacha (yoki simmetriya bo'yicha $0$ dan $\pi$ gacha 2 barobar) o'zgaradi.
 $$
 S = 2 \cdot \frac{1}{2} \int_0^\pi r^2(\varphi) d\varphi = \int_0^\pi a^2(1 + \cos\varphi)^2 d\varphi
 $$
@@ -135,8 +135,8 @@ $$
 ---
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
-> 1. **Parametrik yuzada integrallash yo'nalishi:** Agar $t$o'sganda$x(t)$kamayib borsa,$x'(t) < 0$bo'ladi va integral manfiy chiqib qolishi mumkin. Shuning uchun yuzani hisoblashda har doim$x(t)$ chapdan o'ngga o'sayotganiga yoki modul olinganiga ishonch hosil qiling.
-> 2. **Qutb burchagi oraliqlari:** Bernulli lemniskatasi ($r^2 = a^2\cos 2\varphi$) yoki atirgullarda ($r = a\sin 3\varphi$) radius musbat bo'lishi kerak ($r \ge 0$). Talabalar burchakni ko'r-ko'rona $0$dan$2\pi$gacha olib xato qilishadi; har doim$r(\varphi) \ge 0$ shartidan burchak chegaralarini aniqlab olish shart.
+> 1. **Parametrik yuzada integrallash yo'nalishi:** Agar $t$ o'sganda $x(t)$ kamayib borsa, $x'(t) < 0$ bo'ladi va integral manfiy chiqib qolishi mumkin. Shuning uchun yuzani hisoblashda har doim $x(t)$ chapdan o'ngga o'sayotganiga yoki modul olinganiga ishonch hosil qiling.
+> 2. **Qutb burchagi oraliqlari:** Bernulli lemniskatasi ($r^2 = a^2\cos 2\varphi$) yoki atirgullarda ($r = a\sin 3\varphi$) radius musbat bo'lishi kerak ($r \ge 0$). Talabalar burchakni ko'r-ko'rona $0$ dan $2\pi$ gacha olib xato qilishadi; har doim $r(\varphi) \ge 0$ shartidan burchak chegaralarini aniqlab olish shart.
 
 ---
 
@@ -161,7 +161,7 @@ Kvadratlar yig'indisi:
 $$
 (x')^2 + (y')^2 = 9a^2 \cos^4 t \sin^2 t + 9a^2 \sin^4 t \cos^2 t = 9a^2 \cos^2 t \sin^2 t (\cos^2 t + \sin^2 t) = 9a^2 \sin^2 t \cos^2 t
 $$
-Ildizdan chiqaramiz ($0 \le t \le \pi/2$da$\sin t \cos t > 0$):
+Ildizdan chiqaramiz ($0 \le t \le \pi/2$ da $\sin t \cos t > 0$):
 $$
 \sqrt{(x')^2 + (y')^2} = 3a \sin t \cos t = \frac{3a}{2}\sin 2t
 $$

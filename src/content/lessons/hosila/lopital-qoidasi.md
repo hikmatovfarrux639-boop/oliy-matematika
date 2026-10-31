@@ -15,8 +15,8 @@ XVIII asrda fransuz matematigi Giyom Lopital (shveytsariyalik buyuk matematik Io
 
 ## 1. Lopital teoremasining qat'iy bayoni
 
-> **Koshi-Lopital teoremasi:** Faraz qilaylik, $f(x)$va$g(x)$funksiyalar$x = a$nuqtaning biror atrofida differensiallanuvchi va$g'(x) \neq 0$ bo'lsin.
-> Agar $\lim_{x \to a} f(x) = 0$va$\lim_{x \to a} g(x) = 0$(ya'ni$\left[\frac{0}{0}\right]$) yoki $\lim_{x \to a} f(x) = \infty$va$\lim_{x \to a} g(x) = \infty$(ya'ni$\left[\frac{\infty}{\infty}\right]$) bo'lsa hamda ularning hosilalari nisbatining $\lim_{x \to a} \frac{f'(x)}{g'(x)}$ limiti mavjud (chekli yoki cheksiz) bo'lsa, u holda funksiyalar nisbatining limiti ham mavjud bo'lib, quyidagi tenglik o'rinli bo'ladi:
+> **Koshi-Lopital teoremasi:** Faraz qilaylik, $f(x)$ va $g(x)$ funksiyalar $x = a$ nuqtaning biror atrofida differensiallanuvchi va $g'(x) \neq 0$ bo'lsin.
+> Agar $\lim_{x \to a} f(x) = 0$ va $\lim_{x \to a} g(x) = 0$(ya'ni $\left[\frac{0}{0}\right]$) yoki $\lim_{x \to a} f(x) = \infty$ va $\lim_{x \to a} g(x) = \infty$(ya'ni $\left[\frac{\infty}{\infty}\right]$) bo'lsa hamda ularning hosilalari nisbatining $\lim_{x \to a} \frac{f'(x)}{g'(x)}$ limiti mavjud (chekli yoki cheksiz) bo'lsa, u holda funksiyalar nisbatining limiti ham mavjud bo'lib, quyidagi tenglik o'rinli bo'ladi:
 >
 > 
 $$
@@ -31,7 +31,7 @@ $$
 
 ## 2. Qoidani takroran qo'llash
 
-Agar bir marta differensiallagandan keyin ham yana $\left[\frac{0}{0}\right]$yoki$\left[\frac{\infty}{\infty}\right]$aniqmaslik saqlanib qolsa, qoidani ikkinchi, uchinchi va kerak bo'lsa$n$ bor ketma-ket qo'llash mumkin:
+Agar bir marta differensiallagandan keyin ham yana $\left[\frac{0}{0}\right]$ yoki $\left[\frac{\infty}{\infty}\right]$ aniqmaslik saqlanib qolsa, qoidani ikkinchi, uchinchi va kerak bo'lsa $n$ bor ketma-ket qo'llash mumkin:
 
 $$
 \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)} = \lim_{x \to a} \frac{f''(x)}{g''(x)} = \dots = \lim_{x \to a} \frac{f^{(n)}(x)}{g^{(n)}(x)}
@@ -39,13 +39,13 @@ $$
 
 ---
 
-## 3. Boshqa noaniqliklarni $\left[\frac{0}{0}\right]$va$\left[\frac{\infty}{\infty}\right]$ ga keltirish
+## 3. Boshqa noaniqliklarni $\left[\frac{0}{0}\right]$ va $\left[\frac{\infty}{\infty}\right]$ ga keltirish
 
 | Dastlabki aniqmaslik | Shakl almashtirish usuli | Keltiriladigan ko'rinish |
 |---|---|---|
-| $[0 \cdot \infty]$|$f \cdot g = \frac{f}{1/g}$yoki$f \cdot g = \frac{g}{1/f}$|$\left[\frac{0}{0}\right]$yoki$\left[\frac{\infty}{\infty}\right]$ |
-| $[\infty - \infty]$| Umumiy maxrajga keltirish yoki$\frac{1}{g} - \frac{1}{f}$|$\left[\frac{0}{0}\right]$ |
-| $[1^\infty], [0^0], [\infty^0]$| Logarifmlash:$y = f^g \implies \ln y = g \cdot \ln f$|$[0 \cdot \infty] \implies \left[\frac{0}{0}\right]$ |
+| $[0 \cdot \infty]$|$f \cdot g = \frac{f}{1/g}$ yoki $f \cdot g = \frac{g}{1/f}$|$\left[\frac{0}{0}\right]$ yoki $\left[\frac{\infty}{\infty}\right]$ |
+| $[\infty - \infty]$| Umumiy maxrajga keltirish yoki $\frac{1}{g} - \frac{1}{f}$|$\left[\frac{0}{0}\right]$ |
+| $[1^\infty], [0^0], [\infty^0]$| Logarifmlash: $y = f^g \implies \ln y = g \cdot \ln f$|$[0 \cdot \infty] \implies \left[\frac{0}{0}\right]$ |
 
 ---
 
@@ -59,14 +59,14 @@ L = \lim_{x \to 0} \frac{e^x - x - 1}{x^2}
 $$
 
 #### 1-usul: Lopital qoidasi bo'yicha ketma-ket differensiallash
-$x = 0$da$\frac{e^0 - 0 - 1}{0^2} = \left[\frac{0}{0}\right]$.
+$x = 0$ da $\frac{e^0 - 0 - 1}{0^2} = \left[\frac{0}{0}\right]$.
 1. Surat va maxrajdan alohida birinchi tartibli hosila olamiz:
    
 $$
    L = \lim_{x \to 0} \frac{(e^x - x - 1)'}{(x^2)'} = \lim_{x \to 0} \frac{e^x - 1}{2x}
    
 $$
-2. Tekshiramiz: $x = 0$da$\frac{e^0 - 1}{2(0)} = \left[\frac{0}{0}\right]$. Yana noaniqlik!
+2. Tekshiramiz: $x = 0$ da $\frac{e^0 - 1}{2(0)} = \left[\frac{0}{0}\right]$. Yana noaniqlik!
 3. Ikkinchi marta Lopital qoidasini qo'llaymiz:
    
 $$
@@ -75,7 +75,7 @@ $$
 $$
 
 #### 2-usul: Teylor (Makloren) qatori orqali bir zumda yechish
-$e^x$funksiyasining$x = 0$atrofidagi yoyilmasi:$e^x = 1 + x + \frac{x^2}{2!} + o(x^2)$.
+$e^x$ funksiyasining $x = 0$ atrofidagi yoyilmasi: $e^x = 1 + x + \frac{x^2}{2!} + o(x^2)$.
 Limitga qo'yamiz:
 $$
 L = \lim_{x \to 0} \frac{\left(1 + x + \frac{x^2}{2} + o(x^2)\right) - x - 1}{x^2} = \lim_{x \to 0} \frac{\frac{x^2}{2} + o(x^2)}{x^2} = \frac{1}{2}
@@ -83,7 +83,7 @@ $$
 Ko'rib turganingizdek, Makloren yoyilmasi orqali limit bir qatorda yechildi!
 
 #### 3-usul: Aniq integral ta'rifi orqali tekshirish
-Ma'lumki, $e^x - 1 - x = \int_0^x (e^t - 1) dt$. O'rta qiymat haqidagi teoremaga ko'ra bu ifoda $\frac{x^2}{2}$ga ekvivalentdir. Javob:$\frac{1}{2}$.
+Ma'lumki, $e^x - 1 - x = \int_0^x (e^t - 1) dt$. O'rta qiymat haqidagi teoremaga ko'ra bu ifoda $\frac{x^2}{2}$ ga ekvivalentdir. Javob: $\frac{1}{2}$.
 
 ---
 
@@ -95,7 +95,7 @@ $$
 $$
 
 #### Yechish:
-$x \to 0^+$da$x^2 \to 0$va$\ln x \to -\infty$, ya'ni $[0 \cdot \infty]$ noaniqlik.
+$x \to 0^+$ da $x^2 \to 0$ va $\ln x \to -\infty$, ya'ni $[0 \cdot \infty]$ noaniqlik.
 1. Kasr ko'rinishiga o'tkazamiz:
    
 $$
@@ -117,7 +117,7 @@ $$
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Lopital qoidasi ojiz qoladigan holatlar (Cheksiz aylanma limitlar):**
 >    Ushbu limitni qaraylik: $\lim_{x \to \infty} \frac{x + \sin x}{x}$.
->    Agar bunga ko'r-ko'rona Lopital qo'llansa: $\lim_{x \to \infty} \frac{1 + \cos x}{1}$hosil bo'ladi. Biroq$x \to \infty$da$\cos x$ ning limiti **mavjud emas**!
+>    Agar bunga ko'r-ko'rona Lopital qo'llansa: $\lim_{x \to \infty} \frac{1 + \cos x}{1}$ hosil bo'ladi. Biroq $x \to \infty$ da $\cos x$ ning limiti **mavjud emas**!
 >    Lopital qoidasi hosilalar limiti mavjud bo'lgandagina ishlaydi. To'g'ri usul — hadma-had bo'lish:
 >    
 $$
@@ -142,7 +142,7 @@ $$
 <details>
 <summary>👉 Yechimni tekshirish</summary>
 
-$x = 0$da$\left[\frac{0}{0}\right]$.
+$x = 0$ da $\left[\frac{0}{0}\right]$.
 1. 1-hosila: $\lim_{x \to 0} \frac{5\cos 5x - 5}{3x^2} = \left[\frac{0}{0}\right]$.
 2. 2-hosila: $\lim_{x \to 0} \frac{-25\sin 5x}{6x} = \left[\frac{0}{0}\right]$.
 3. 3-hosila: $\lim_{x \to 0} \frac{-125\cos 5x}{6} = -\frac{125 \cdot 1}{6} = -\frac{125}{6}$.

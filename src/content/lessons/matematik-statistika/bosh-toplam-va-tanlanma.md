@@ -61,7 +61,7 @@ $$
 $$
 
 > **Glivenko-Kantelli teoremasi (Statistikaning bosh teoremasi):**
-> Tanlanma hajmi cheksiz oshganda ($n \to \infty$), empirik funksiya $F^*(x)$nazariy funksiya$F(x)$ ga tekis yaqinlashadi:
+> Tanlanma hajmi cheksiz oshganda ($n \to \infty$), empirik funksiya $F^*(x)$ nazariy funksiya $F(x)$ ga tekis yaqinlashadi:
 > 
 $$
 > \lim_{n \to \infty} P\left( \sup_x |F^*(x) - F(x)| = 0 \right) = 1
@@ -91,8 +91,8 @@ $$
 1. **Chastotalar poligoni (Diskret miqdorlar uchun):**
    Tekislikda $(x_i, n_i)$ nuqtalar belgilanib, ular to'g'ri chiziq kesmalari bilan tutashtiriladi (siniq chiziq).
 2. **Gistogramma (Uzluksiz intervalli miqdorlar uchun):**
-   Har bir $[a_k; a_{k+1}]$interval ustiga eni$h$, balandligi esa **chastota zichligi** $\frac{n_i}{h}$(yoki$\frac{w_i}{h}$) bo'lgan to'g'ri to'rtburchaklar quriladi.
-   *(Nisbiy chastotalar gistogrammasining umumiy yuzi doimo $1$ga teng bo'lib, u ehtimollik zichlik egri chizig'ining$f(x)$ amaliy ko'rinishidir).*
+   Har bir $[a_k; a_{k+1}]$ interval ustiga eni $h$, balandligi esa **chastota zichligi** $\frac{n_i}{h}$(yoki $\frac{w_i}{h}$) bo'lgan to'g'ri to'rtburchaklar quriladi.
+   *(Nisbiy chastotalar gistogrammasining umumiy yuzi doimo $1$ ga teng bo'lib, u ehtimollik zichlik egri chizig'ining $f(x)$ amaliy ko'rinishidir).*
 
 ---
 
@@ -107,11 +107,11 @@ Berilgan tanlanma:
 Tanlanma hajmi $n = 1 + 3 + 2 + 4 = 10$. Empirik taqsimot funksiyasi $F^*(x)$ ni yozing.
 
 **Yechilishi:**
-- $x \le 2$da:$2$dan kichik sonlar yo'q$\implies F^*(x) = 0$;
-- $2 < x \le 5$da: faqat bitta$2$ soni bor ($n_x = 1$) $\implies F^*(x) = \frac{1}{10} = 0.1$;
-- $5 < x \le 7$da:$2$va uchta$5$ soni bor ($n_x = 1 + 3 = 4$) $\implies F^*(x) = \frac{4}{10} = 0.4$;
-- $7 < x \le 8$da:$n_x = 4 + 2 = 6 \implies F^*(x) = \frac{6}{10} = 0.6$;
-- $x > 8$da: barcha$10$ta son kiradi$\implies F^*(x) = \frac{10}{10} = 1.0$.
+- $x \le 2$ da: $2$ dan kichik sonlar yo'q $\implies F^*(x) = 0$;
+- $2 < x \le 5$ da: faqat bitta $2$ soni bor ($n_x = 1$) $\implies F^*(x) = \frac{1}{10} = 0.1$;
+- $5 < x \le 7$ da: $2$ va uchta $5$ soni bor ($n_x = 1 + 3 = 4$) $\implies F^*(x) = \frac{4}{10} = 0.4$;
+- $7 < x \le 8$ da: $n_x = 4 + 2 = 6 \implies F^*(x) = \frac{6}{10} = 0.6$;
+- $x > 8$ da: barcha $10$ ta son kiradi $\implies F^*(x) = \frac{10}{10} = 1.0$.
 
 $$
 F^*(x) = \begin{cases}
@@ -126,7 +126,7 @@ $$
 ---
 
 ### 2-misol: Sterdjes formulasi bilan intervallarga ajratish
-$100$ ta xodimning oylik maoshi o'rganildi ($n = 100$). Eng kam oylik $x_{\min} = 2.5$mln so'm, eng ko'p oylik$x_{\max} = 18.5$ mln so'm. Intervallar soni va qadamini aniqlang.
+$100$ ta xodimning oylik maoshi o'rganildi ($n = 100$). Eng kam oylik $x_{\min} = 2.5$ mln so'm, eng ko'p oylik $x_{\max} = 18.5$ mln so'm. Intervallar soni va qadamini aniqlang.
 
 **Yechilishi:**
 1. $\lg 100 = 2$.
@@ -136,20 +136,20 @@ $100$ ta xodimning oylik maoshi o'rganildi ($n = 100$). Eng kam oylik $x_{\min} 
    $$h = \frac{x_{\max} - x_{\min}}{k} = \frac{18.5 - 2.5}{8} = \frac{16}{8} = 2 \text{ mln so'm}$$
 Demak, intervallar: $[2.5; 4.5), [4.5; 6.5), \dots, [16.5; 18.5]$ ko'rinishida bo'ladi.
 
-**Javob:** $k = 8$ta interval, qadam$h = 2$ mln so'm.
+**Javob:** $k = 8$ ta interval, qadam $h = 2$ mln so'm.
 
 ---
 
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **Nisbiy chastotalar yig'indisi 1 ga teng chiqmasligi:**
-   > Doimo tekshiring: $\sum w_i = 1.0$. Agar yaxlitlashda $0.98$yoki$1.02$ chiqib qolsa, qayerdadir yaxlitlash xatosi bo'lgan, oxirgi raqamni to'g'irlash shart.
+   > Doimo tekshiring: $\sum w_i = 1.0$. Agar yaxlitlashda $0.98$ yoki $1.02$ chiqib qolsa, qayerdadir yaxlitlash xatosi bo'lgan, oxirgi raqamni to'g'irlash shart.
 
 2. **Gistogramma balandligiga to'g'ridan-to'g'ri $n_i$ chastotani qo'yish:**
-   > Gistogramma to'g'ri to'rtburchaklarining balandligi $n_i$emas, balki **chastota zichligi$\frac{n_i}{h}$** (chastotaning oraliq eniga nisbati) bo'lishi shart! Aks holda har xil enli intervallarda maydon mutanosibligi buziladi.
+   > Gistogramma to'g'ri to'rtburchaklarining balandligi $n_i$ emas, balki **chastota zichligi $\frac{n_i}{h}$** (chastotaning oraliq eniga nisbati) bo'lishi shart! Aks holda har xil enli intervallarda maydon mutanosibligi buziladi.
 
 3. **Empirik funksiya qiymatlarini chapdan va o'ngdan adashtirish:**
-   > $F^*(x)$— uzluksiz emas, balki pog'onasimon funksiya bo'lib, har bir varianta nuqtasida$\frac{n_i}{n}$ ga teng sakrash qiladi.
+   > $F^*(x)$ — uzluksiz emas, balki pog'onasimon funksiya bo'lib, har bir varianta nuqtasida $\frac{n_i}{n}$ ga teng sakrash qiladi.
 
 ---
 

@@ -25,15 +25,15 @@ $$
 \int u \, dv = u \cdot v - \int v \, du
 $$
 
-Bu formula berilgan murakkab $\int u \, dv$integralni hisoblashni ancha oson bo'lgan yangi$\int v \, du$ integralga keltiradi.
+Bu formula berilgan murakkab $\int u \, dv$ integralni hisoblashni ancha oson bo'lgan yangi $\int v \, du$ integralga keltiradi.
 
 ---
 
-## 2. Nima $u$va nima$dv$ bo'lishi kerak? (LIATE qoidasi)
+## 2. Nima $u$ va nima $dv$ bo'lishi kerak? (LIATE qoidasi)
 
 Bo'laklab integrallashdagi 90% muvaffaqiyat — **$u$ funksiyani to'g'ri tanlash**ga bog'liq. Agar tanlovda adashsangiz, yangi hosil bo'lgan integral dastlabkisidan ham battar murakkablashib ketadi!
 
-Matematikada $u$ni tanlash uchun mashhur **LIATE** iyerarxiyasi ishlatiladi (yuqorida turgani birinchi navbatda$u$ qilib olinadi):
+Matematikada $u$ ni tanlash uchun mashhur **LIATE** iyerarxiyasi ishlatiladi (yuqorida turgani birinchi navbatda $u$ qilib olinadi):
 
 1. **L — Logarithmic** (Logarifmik funksiyalar: $\ln x, \log_a x$) — *doimo eng birinchi $u$ qilib olinadi!*
 2. **I — Inverse trigonometric** (Teskari trigonometriya: $\arcsin x, \operatorname{arctg} x$)
@@ -42,7 +42,7 @@ Matematikada $u$ni tanlash uchun mashhur **LIATE** iyerarxiyasi ishlatiladi (yuq
 5. **E — Exponential** (Ko'rsatkichli funksiyalar: $e^x, 2^x$) — *bular odatda $dv$ qismga qoldiriladi.*
 
 ### Eng ko'p uchraydigan 3 ta asosiy guruh:
-| Guruh | Ko'rinishi | Nima $u$bo'ladi? | Nima$dv$ bo'ladi? |
+| Guruh | Ko'rinishi | Nima $u$ bo'ladi? | Nima $dv$ bo'ladi? |
 |---|---|---|---|
 | **1-guruh** | $\int P(x) e^{kx} dx, \; \int P(x)\sin(kx) dx, \; \int P(x)\cos(kx) dx$|$u = P(x)$(ko'phad) |$dv = \text{qolgan qism}$ |
 | **2-guruh** | $\int P(x) \ln x \, dx, \; \int P(x)\operatorname{arctg} x \, dx, \; \int P(x)\arcsin x \, dx$|$u = \ln x, \operatorname{arctg} x$|$dv = P(x) dx$ |
@@ -55,8 +55,8 @@ Matematikada $u$ni tanlash uchun mashhur **LIATE** iyerarxiyasi ishlatiladi (yuq
 Agar ko'phadning darajasi 2 yoki undan katta bo'lsa (masalan $\int x^3 e^{2x} \, dx$), formulani 3 marta ketma-ket qo'llash juda ko'p vaqt oladi va ishoralarda adashish ehtimoli ortadi. 
 
 Buning o'rniga **D (Differensiallash)** va **I (Integrallash)** ustunlaridan iborat tezkor jadval usuli qo'llaniladi:
-1. $D$ustuniga$u$(ko'phad) yoziladi va u$0$ bo'lguncha hosila olinadi.
-2. $I$ustuniga$dv$ yoziladi va shuncha marta integrallanadi.
+1. $D$ ustuniga $u$(ko'phad) yoziladi va u $0$ bo'lguncha hosila olinadi.
+2. $I$ ustuniga $dv$ yoziladi va shuncha marta integrallanadi.
 3. Ishoralar navbatma-navbat $+ , -, +, -$ qilib qo'yiladi va diagonal bo'yicha ko'paytirib chiqiladi!
 
 ---
@@ -65,9 +65,9 @@ Buning o'rniga **D (Differensiallash)** va **I (Integrallash)** ustunlaridan ibo
 
 Ayrim integrallarda (masalan, $\int e^x \cos x \, dx$) bo'laklab integrallash 2 marta ketma-ket qo'llanilganda, dastlabki berilgan integral yana qaytib keladi!
 Bunday holda:
-1. Dastlabki integralni $I$deb belgilaymiz:$I = \int e^x \cos x \, dx$.
+1. Dastlabki integralni $I$ deb belgilaymiz: $I = \int e^x \cos x \, dx$.
 2. Ikki marta bo'laklab integrallashdan so'ng: $I = f(x) - I$ ko'rinishidagi algebraik tenglama hosil bo'ladi.
-3. $I$ni chap tomonga o'tkazamiz:$2I = f(x) \implies I = \frac{f(x)}{2} + C$.
+3. $I$ ni chap tomonga o'tkazamiz: $2I = f(x) \implies I = \frac{f(x)}{2} + C$.
 
 ---
 
@@ -81,7 +81,8 @@ $$
 
 **Yechilishi:**
 LIATE bo'yicha algebraik ko'phad $u$ bo'ladi:
-- $u = 3x - 2 \implies du = (3x - 2)' \, dx = 3 \, dx$-$dv = \sin x \, dx \implies v = \int \sin x \, dx = -\cos x$
+- $u = 3x - 2 \implies du = (3x - 2)' \, dx = 3 \, dx$
+- $dv = \sin x \, dx \implies v = \int \sin x \, dx = -\cos x$
 
 Formulaga qo'yamiz ($\int u \, dv = u \cdot v - \int v \, du$):
 $$
@@ -104,7 +105,8 @@ $$
 
 **Yechilishi:**
 LIATE bo'yicha logarifm 1-o'rinda turadi, demak $u = \ln x$:
-- $u = \ln x \implies du = \frac{1}{x} \, dx$-$dv = x^2 \, dx \implies v = \int x^2 \, dx = \frac{x^3}{3}$
+- $u = \ln x \implies du = \frac{1}{x} \, dx$
+- $dv = x^2 \, dx \implies v = \int x^2 \, dx = \frac{x^3}{3}$
 
 Formulaga qo'yamiz:
 $$
@@ -127,7 +129,8 @@ $$
 
 **Yechilishi:**
 Integral ostida faqat bitta funksiya bo'lsa, uni $\operatorname{arctg} x \cdot 1 \, dx$ deb qaraymiz:
-- $u = \operatorname{arctg} x \implies du = \frac{1}{1 + x^2} \, dx$-$dv = dx \implies v = x$
+- $u = \operatorname{arctg} x \implies du = \frac{1}{1 + x^2} \, dx$
+- $dv = dx \implies v = x$
 
 Formulaga qo'yamiz:
 $$
@@ -153,7 +156,7 @@ $$
 $$
 
 **Yechilishi:**
-$D$ustunida differensiallaymiz,$I$ ustunida integrallaymiz:
+$D$ ustunida differensiallaymiz, $I$ ustunida integrallaymiz:
 
 | Ishora | Differensiallash ($D$) | Integrallash ($I$) |
 |---|---|---|
@@ -163,7 +166,11 @@ $D$ustunida differensiallaymiz,$I$ ustunida integrallaymiz:
 | $-$|$0$(to'xtaymiz) |$-e^{-x}$ |
 
 Diagonallar bo'yicha ko'paytirib, yig'indisini olamiz:
-1. $+(x^2 + 2x)(-e^{-x}) = -(x^2 + 2x)e^{-x}$2.$-(2x + 2)(e^{-x}) = -(2x + 2)e^{-x}$3.$+(2)(-e^{-x}) = -2e^{-x}$Umumiy qavsdan$-e^{-x}$ ni chiqaramiz:
+1. $+(x^2 + 2x)(-e^{-x}) = -(x^2 + 2x)e^{-x}$
+2. $-(2x + 2)(e^{-x}) = -(2x + 2)e^{-x}$
+3. $+(2)(-e^{-x}) = -2e^{-x}$
+
+Umumiy qavsdan $-e^{-x}$ ni chiqaramiz:
 $$
 = -e^{-x} [(x^2 + 2x) + (2x + 2) + 2] + C = -e^{-x}(x^2 + 4x + 4) + C = -(x + 2)^2 e^{-x} + C
 $$
@@ -180,12 +187,14 @@ $$
 
 **Yechilishi:**
 1-marta bo'laklaymiz:
-- $u = e^x \implies du = e^x \, dx$-$dv = \cos x \, dx \implies v = \sin x$
+- $u = e^x \implies du = e^x \, dx$
+- $dv = \cos x \, dx \implies v = \sin x$
 $$
 I = e^x \sin x - \int e^x \sin x \, dx
 $$
 Yangi hosil bo'lgan $\int e^x \sin x \, dx$ ni 2-marta bo'laklaymiz:
-- $u = e^x \implies du = e^x \, dx$-$dv = \sin x \, dx \implies v = -\cos x$
+- $u = e^x \implies du = e^x \, dx$
+- $dv = \sin x \, dx \implies v = -\cos x$
 $$
 \int e^x \sin x \, dx = -e^x \cos x - \int (-\cos x) e^x \, dx = -e^x \cos x + \int e^x \cos x \, dx
 $$
@@ -208,14 +217,14 @@ $$
 
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
-1. **2-guruhda (logarifm yoki arktangensda) $u$va$dv$ ni teskari tanlash:**
-   > $\int x \ln x \, dx$misolida$u = x$va$dv = \ln x \, dx$deb tanlasangiz, siz$v = \int \ln x \, dx$ni hisoblashingiz kerak bo'ladi va vaziyat yanada chigallashadi. Doimo$\ln x$yoki$\operatorname{arctg} x$ni$u$ deb tanlang!
+1. **2-guruhda (logarifm yoki arktangensda) $u$ va $dv$ ni teskari tanlash:**
+   > $\int x \ln x \, dx$ misolida $u = x$ va $dv = \ln x \, dx$ deb tanlasangiz, siz $v = \int \ln x \, dx$ ni hisoblashingiz kerak bo'ladi va vaziyat yanada chigallashadi. Doimo $\ln x$ yoki $\operatorname{arctg} x$ ni $u$ deb tanlang!
 
 2. **Formuladagi o'rta minus ishorasini qavssiz ochish:**
-   > $\int u \, dv = uv - \int v \, du$. Agar $v$manfiy bo'lsa (masalan$v = -\cos x$), minus bilan minus **musbat ($+$)** ga aylanadi. Talabalar ko'pincha bu ishorani unutib, manfiy qoldirishadi.
+   > $\int u \, dv = uv - \int v \, du$. Agar $v$ manfiy bo'lsa (masalan $v = -\cos x$), minus bilan minus **musbat ($+$)** ga aylanadi. Talabalar ko'pincha bu ishorani unutib, manfiy qoldirishadi.
 
 3. **2 marta bo'laklashda $u$ tanlovini almashtirib qo'yish:**
-   > Siklik integralda 1-qadamda $u = e^x$deb olgan bo'lsangiz, 2-qadamda ham albatta$u = e^x$deb oling! Agar 2-qadamda trigonometriyani$u$qilib qo'ysangiz, amallar bir-birini bekor qilib, oxirida ma'nosiz$0 = 0$ ayniyati chiqib qoladi.
+   > Siklik integralda 1-qadamda $u = e^x$ deb olgan bo'lsangiz, 2-qadamda ham albatta $u = e^x$ deb oling! Agar 2-qadamda trigonometriyani $u$ qilib qo'ysangiz, amallar bir-birini bekor qilib, oxirida ma'nosiz $0 = 0$ ayniyati chiqib qoladi.
 
 ---
 

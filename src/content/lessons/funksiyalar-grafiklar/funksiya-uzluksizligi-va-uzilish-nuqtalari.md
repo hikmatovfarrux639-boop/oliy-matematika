@@ -49,7 +49,7 @@ Argumentga $\Delta x$ orttirma bersak, funksiya ham $\Delta y = f(x_0 + \Delta x
 
 > **Ta'rif:** Agar argumentning cheksiz kichik orttirmasiga funksiyaning ham cheksiz kichik orttirmasi mos kelsa, ya'ni
 > 
-> $$\lim_{\Delta x \to 0} \Delta y = 0$$
+> $$\lim_{\Delta x \to 0} \Delta y = 0 $$
 > 
 > bo'lsa, funksiya $x_0$ nuqtada uzluksiz deb ataladi.
 
@@ -86,7 +86,7 @@ Agar bir tomonlama limitlarning **kamida bittasi cheksizlikka ($\pm \infty$) ten
 > **Koshining oraliq qiymat haqidagi teoremasi (Boltsano-Koshi):**
 > Agar $f(x)$ funksiya $[a, b]$ kesmada uzluksiz bo'lib, uning uchlarida har xil ishorali qiymatlarni qabul qilsa ($f(a) \cdot f(b) < 0$), u holda kesmaning ichida kamida bitta shunday $c \in (a, b)$ nuqta topiladiki, unda
 > 
-> $$f(c) = 0$$
+> $$ f(c) = 0 $$
 > 
 > bo'ladi (ya'ni funksiya grafigi $Ox$ o'qini kamida bir marta kesib o'tadi).
 
@@ -99,7 +99,7 @@ Agar bir tomonlama limitlarning **kamida bittasi cheksizlikka ($\pm \infty$) ten
 **Shart:** $f(x) = \frac{x^2 - x - 2}{x - 2}$ funksiyaning uzilish nuqtalarini toping, turini aniqlang va uni uzluksiz funksiyaga aylantiring.
 
 **Yechish:**
-1. **Aniqlanish sohasi:** Kasr mahraji nolga teng bo'lmasligi kerak: $x - 2 \neq 0 \implies x \neq 2$.
+1. **Aniqlanish sohasi:** Kasr maxraji nolga teng bo'lmasligi kerak: $x - 2 \neq 0 \implies x \neq 2$.
    Demak, $x_0 = 2$ nuqtada funksiya aniqlanmagan, shuning uchun $x_0 = 2$ — uzilish nuqtasi.
 
 2. **Bir tomonlama limitlarni hisoblaymiz:**
@@ -171,7 +171,7 @@ Bo'laklar tutashgan chegara nuqtalarni alohida tahlil qilamiz.
 $$f(x) = \frac{1}{1 + 2^{1/(x - 1)}}$$
 
 **Yechish:**
-1. $x = 1$ nuqtada daraja ko'rsatkichining mahraji nolga aylanadi, demak funksiya aniqlanmagan.
+1. $x = 1$ nuqtada daraja ko'rsatkichining maxraji nolga aylanadi, demak funksiya aniqlanmagan.
 2. Bir tomonlama limitlarni qaraymiz:
    - **O'ng limit ($x \to 1^+$):**
      $$x - 1 \to +0 \implies \frac{1}{x - 1} \to +\infty$$
@@ -253,7 +253,7 @@ $f(x) = \frac{1}{x^2 - 4}$ funksiyaning barcha uzilish nuqtalarini toping va tas
 <summary>Yechimni ko'rish</summary>
 
 **Bosqichma-bosqich yechim:**
-1. Mahraj nolga teng bo'ladigan nuqtalar:
+1. Maxraj nolga teng bo'ladigan nuqtalar:
    $$x^2 - 4 = 0 \implies x_1 = 2, \quad x_2 = -2$$
 2. $x = 2$ nuqtada:
    $$\lim_{x \to 2^+} \frac{1}{(x - 2)(x + 2)} = \frac{1}{+0 \cdot 4} = +\infty$$

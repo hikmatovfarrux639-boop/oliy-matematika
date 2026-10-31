@@ -35,7 +35,7 @@ $$
 
 > **Egrilik radiusi ($R$):** Egrilikka teskari miqdor:
 > 
-> $$R = \frac{1}{K} = \frac{(1 + y'^2)^{3/2}}{|y''|}$$
+> $$ R = \frac{1}{K} = \frac{(1 + y'^2)^{3/2}}{|y''|}$$
 
 ### 3. Parametrik ko'rinishdagi egri chiziq egriligi
 Agar egri chiziq $x = x(t), y = y(t)$ parametrik tenglamalar bilan berilgan bo'lsa:

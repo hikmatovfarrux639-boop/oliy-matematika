@@ -220,14 +220,14 @@ $Z = 3X_1 - 2X_2$ tasodifiy miqdorning dispersiyasi $\text{Var}(Z)$ ni toping.
 
 ### 4-misol: To'liq matematik kutilma teoremasini qo'llash
 
-**Masala:** $N$ — mijozlar soni bo'lib, puasson taqsimotiga ega: $\mathbb{E}[N] = 10, \text{Var}(N) = 10$. Har bir mijoz tasodifiy $X_i$ miqdorda pul sarflaydi, bunda $\mathbb{E}[X_i] = 50\$, \text{Var}(X_i) = 100\$$. Jami tushum $S = \sum_{i=1}^N X_i$ ning kutilayotgan qiymatini va dispersiyasini toping.
+**Masala:** $N$ — mijozlar soni bo'lib, puasson taqsimotiga ega: $\mathbb{E}[N] = 10, \text{Var}(N) = 10$. Har bir mijoz tasodifiy $X_i$ miqdorda pul sarflaydi, bunda $\mathbb{E}[X_i] = 50, \text{Var}(X_i) = 100$. Jami tushum $S = \sum_{i=1}^N X_i$ ning kutilayotgan qiymatini va dispersiyasini toping.
 
 **Yechish:**
 1. Shartli kutilma bo'yicha: $\mathbb{E}[S | N = n] = \mathbb{E}\left[\sum_{i=1}^n X_i\right] = n \cdot \mathbb{E}[X] = 50n$.
    Demak, $\mathbb{E}[S | N] = 50N$.
 2. To'liq kutilma qonuni:
    $$
-   \mathbb{E}[S] = \mathbb{E}[\mathbb{E}[S | N]] = \mathbb{E}[50N] = 50 \mathbb{E}[N] = 50 \times 10 = 500\$
+   \mathbb{E}[S] = \mathbb{E}[\mathbb{E}[S | N]] = \mathbb{E}[50N] = 50 \mathbb{E}[N] = 50 \times 10 = 500
    $$
 3. To'liq dispersiya qonuni (Eve's law): $\text{Var}(S) = \mathbb{E}[\text{Var}(S|N)] + \text{Var}(\mathbb{E}[S|N])$.
    - $\text{Var}(S | N = n) = n \cdot \text{Var}(X) = 100n \implies \text{Var}(S | N) = 100N$.
@@ -237,7 +237,7 @@ $Z = 3X_1 - 2X_2$ tasodifiy miqdorning dispersiyasi $\text{Var}(Z)$ ni toping.
    \text{Var}(S) = 1000 + 25000 = 26000
    $$
 
-**Javob:** $\mathbb{E}[S] = 500\$, \; \text{Var}(S) = 26000$.
+**Javob:** $\mathbb{E}[S] = 500, \; \text{Var}(S) = 26000$.
 
 ---
 

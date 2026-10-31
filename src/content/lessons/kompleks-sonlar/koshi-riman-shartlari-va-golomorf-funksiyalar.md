@@ -22,7 +22,7 @@ $$f(z) = u(x, y) + i v(x, y)$$
 
 > **Ta'rif:**
 > Agar quyidagi limit mavjud va $\Delta z \to 0$ intilish yo'nalishiga bog'liq bo'lmasa:
-> $$f'(z) = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}$$
+> $$ f'(z) = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}$$
 > u holda $f(z)$ funksiya $z$ nuqtada **differensiallanuvchi** deyiladi.
 > Biror $D$ sohaning har bir nuqtasida differensiallanuvchi funksiya ushbu sohada **golomorf (analitik)** funksiya deyiladi.
 

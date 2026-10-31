@@ -242,7 +242,7 @@ $y = x^{\sqrt{x}}$ ($x > 0$) funksiyaning hosilasini toping.
    $$\ln y = \ln(x^{\sqrt{x}}) = \sqrt{x} \ln x$$
 2. $x$ bo'yicha hosila olamiz:
    $$\frac{y'}{y} = (\sqrt{x})' \ln x + \sqrt{x} (\ln x)' = \frac{1}{2\sqrt{x}} \ln x + \sqrt{x} \cdot \frac{1}{x}$$
-3. $\sqrt{x} \cdot \frac{1}{x} = \frac{1}{\sqrt{x}}$ ekanini hisobga olib, umumiy mahrajga keltiramiz:
+3. $\sqrt{x} \cdot \frac{1}{x} = \frac{1}{\sqrt{x}}$ ekanini hisobga olib, umumiy maxrajga keltiramiz:
    $$\frac{y'}{y} = \frac{\ln x}{2\sqrt{x}} + \frac{1}{\sqrt{x}} = \frac{\ln x + 2}{2\sqrt{x}}$$
 4. $y = x^{\sqrt{x}}$ ga ko'paytiramiz:
    $$y' = x^{\sqrt{x}} \cdot \frac{\ln x + 2}{2\sqrt{x}}$$

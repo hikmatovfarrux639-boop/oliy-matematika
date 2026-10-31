@@ -201,4 +201,4 @@ Gorner sxemasidan foydalanib quyidagi tenglamalarni yeching va ko'paytuvchilarga
    - *Javob:* $x_1 = 1, x_2 = -1, x_3 = 3, x_4 = -2$.
 
 3. $3x^3 + 2x^2 - 7x + 2 = 0$
-   - *Javob:* $x_1 = 1, x_2 = 2, x_3 = -\frac{1}{3}$.
+   - *Javob:* $x_1 = 1, x_2 = -2, x_3 = \frac{1}{3}$. Ko'paytuvchilar: $(x - 1)(x + 2)(3x - 1) = 0$.

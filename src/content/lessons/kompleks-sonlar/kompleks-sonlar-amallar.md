@@ -7,13 +7,13 @@ description: "Kompleks sonlarni qo'shish, ayirish, ko'paytirish, bo'lish, qo'shm
 
 ## Kirish: Kompleks sonlar arifmetikasi
 
-Kompleks sonlar ustidagi amallar maktab algebrasidagi ko'phadlar ustidagi amallarga juda o'xshaydi. Yagona fundamental farq va asosiy oltin qoida: **qayerda $i^2$paydo bo'lsa, uning o'rniga darhol$-1$ qo'yiladi!**
+Kompleks sonlar ustidagi amallar maktab algebrasidagi ko'phadlar ustidagi amallarga juda o'xshaydi. Yagona fundamental farq va asosiy oltin qoida: **qayerda $i^2$ paydo bo'lsa, uning o'rniga darhol $-1$ qo'yiladi!**
 
 Har qanday kompleks son algebraik ko'rinishda beriladi:
 $$
 z = a + bi \quad (a, b \in \mathbb{R}, \quad i^2 = -1)
 $$
-bu yerda $a = \operatorname{Re}(z)$— haqiqiy qism,$b = \operatorname{Im}(z)$ — mavhum qism koeffitsiyenti.
+bu yerda $a = \operatorname{Re}(z)$ — haqiqiy qism, $b = \operatorname{Im}(z)$ — mavhum qism koeffitsiyenti.
 
 Faraz qilaylik, ikkita kompleks son berilgan bo'lsin:
 $$
@@ -35,7 +35,7 @@ z_1 - z_2 = (a - c) + (b - d)i
 $$
 
 ### Geometrik ma'nosi:
-Kompleks tekislikda (Argand diagrammasida) har bir $z = a + bi$soniga koordinatalari$(a; b)$ bo'lgan radius-vektor mos keladi. Kompleks sonlarni qo'shish xuddi tekislikdagi ikki vektorni **parallelogramm qoidasi** yoki uchburchak qoidasi bo'yicha qo'shish bilan aynan bir xildir.
+Kompleks tekislikda (Argand diagrammasida) har bir $z = a + bi$ soniga koordinatalari $(a; b)$ bo'lgan radius-vektor mos keladi. Kompleks sonlarni qo'shish xuddi tekislikdagi ikki vektorni **parallelogramm qoidasi** yoki uchburchak qoidasi bo'yicha qo'shish bilan aynan bir xildir.
 
 ---
 
@@ -47,7 +47,7 @@ $$
 z_1 \cdot z_2 = (a + bi)(c + di) = ac + adi + bci + bdi^2
 $$
 
-$i^2 = -1$bo'lganligi sababli oxirgi had$-bd$ ga aylanadi:
+$i^2 = -1$ bo'lganligi sababli oxirgi had $-bd$ ga aylanadi:
 
 $$
 z_1 \cdot z_2 = (ac - bd) + (ad + bc)i
@@ -64,7 +64,7 @@ Masalan: $i^{102} = i^{4 \cdot 25 + 2} = i^2 = -1$.
 
 ## 3. Qo'shma kompleks son ($\bar{z}$) va Modul ($|z|$)
 
-> **Ta'rif:** Agar ikkita kompleks son faqat mavhum qismining ishorasi bilan farq qilsa, ular **o'zaro qo'shma kompleks sonlar** deyiladi. $z = a + bi$sonining qo'shmasi$\bar{z}$ kabi belgilanadi:
+> **Ta'rif:** Agar ikkita kompleks son faqat mavhum qismining ishorasi bilan farq qilsa, ular **o'zaro qo'shma kompleks sonlar** deyiladi. $z = a + bi$ sonining qo'shmasi $\bar{z}$ kabi belgilanadi:
 >
 > 
 $$
@@ -79,14 +79,18 @@ $$
    z \cdot \bar{z} = (a + bi)(a - bi) = a^2 - b^2 i^2 = a^2 + b^2
    
 $$
-2. $\overline{z_1 \pm z_2} = \bar{z}_1 \pm \bar{z}_2$3.$\overline{z_1 \cdot z_2} = \bar{z}_1 \cdot \bar{z}_2$4.$\overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar{z}_1}{\bar{z}_2}$
+2. $\overline{z_1 \pm z_2} = \bar{z}_1 \pm \bar{z}_2$
+3. $\overline{z_1 \cdot z_2} = \bar{z}_1 \cdot \bar{z}_2$
+4. $\overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar{z}_1}{\bar{z}_2}$
 
 ### Kompleks son moduli:
 Kompleks tekislikda koordinata boshidan $(0; 0)$ $z(a; b)$ nuqtagacha bo'lgan masofa modul deyiladi:
 $$
 |z| = r = \sqrt{a^2 + b^2} \implies z \cdot \bar{z} = |z|^2
 $$
-- $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$-$\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|} \quad (z_2 \neq 0)$- **Uchburchak tengsizligi:**$|z_1 + z_2| \le |z_1| + |z_2|$
+- $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$
+- $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|} \quad (z_2 \neq 0)$
+- **Uchburchak tengsizligi:** $|z_1 + z_2| \le |z_1| + |z_2|$
 
 ---
 
@@ -134,7 +138,7 @@ Surat va maxrajni alohida trigonometrik ko'rinishga keltiramiz:
    $$z = \frac{z_1}{z_2} = \frac{2}{\sqrt{2}} e^{i\left(\frac{\pi}{3} - \left(-\frac{\pi}{4}\right)\right)} = \sqrt{2} e^{i\left(\frac{\pi}{3} + \frac{\pi}{4}\right)} = \sqrt{2} e^{i \frac{7\pi}{12}}$$
    Eyler formulasiga ko'ra:
    $$z = \sqrt{2} \left[ \cos\left(\frac{7\pi}{12}\right) + i\sin\left(\frac{7\pi}{12}\right) \right]$$
-   $\cos\left(\frac{7\pi}{12}\right) = \frac{\sqrt{2} - \sqrt{6}}{4}$va$\sin\left(\frac{7\pi}{12}\right) = \frac{\sqrt{2} + \sqrt{6}}{4}$ ekanligini hisobga olsak:
+   $\cos\left(\frac{7\pi}{12}\right) = \frac{\sqrt{2} - \sqrt{6}}{4}$ va $\sin\left(\frac{7\pi}{12}\right) = \frac{\sqrt{2} + \sqrt{6}}{4}$ ekanligini hisobga olsak:
    $$z = \sqrt{2}\frac{\sqrt{2}-\sqrt{6}}{4} + i\sqrt{2}\frac{\sqrt{2}+\sqrt{6}}{4} = \frac{2 - 2\sqrt{3}}{4} + i\frac{2 + 2\sqrt{3}}{4} = \frac{1 - \sqrt{3}}{2} + \frac{1 + \sqrt{3}}{2}i$$
 
 Ikkala usul ham mutlaqo bir xil natijani berdi!
@@ -145,10 +149,10 @@ Ikkala usul ham mutlaqo bir xil natijani berdi!
 > 1. **Ildizlar ko'paytmasi xatosi:**
 >    Ko'p talabalar quyidagi xatoga yo'l qo'yishadi:
 >    $$\sqrt{-1} \cdot \sqrt{-1} \stackrel{?}{=} \sqrt{(-1) \cdot (-1)} = \sqrt{1} = 1 \quad \text{(XATO!)}$$
->    Qoida: $\sqrt{a} \cdot \sqrt{b} = \sqrt{ab}$formulasi faqat$a \ge 0, b \ge 0$bo'lgandagina o'rinli! Ta'rif bo'yicha:$i \cdot i = i^2 = -1$.
+>    Qoida: $\sqrt{a} \cdot \sqrt{b} = \sqrt{ab}$ formulasi faqat $a \ge 0, b \ge 0$ bo'lgandagina o'rinli! Ta'rif bo'yicha: $i \cdot i = i^2 = -1$.
 > 2. **Kompleks sonlarni solishtirish mumkin emas:**
 >    Kompleks tekislikda tartib munosabati mavjud emas: $2 + 3i > 1 + 5i$ deyish mutlaqo ma'nosizdir. Faqatgina ularning modullarini solishtirish mumkin ($|z_1| > |z_2|$ haqiqiy sonlar bo'lgani sababli).
-> 3. **Modul kvadratini modul bilan adashtirish:** $|z|^2 = a^2 + b^2$(ildizsiz!). Masalan,$|3 + 4i|^2 = 3^2 + 4^2 = 25$.
+> 3. **Modul kvadratini modul bilan adashtirish:** $|z|^2 = a^2 + b^2$(ildizsiz!). Masalan, $|3 + 4i|^2 = 3^2 + 4^2 = 25$.
 
 ---
 
@@ -156,7 +160,7 @@ Ikkala usul ham mutlaqo bir xil natijani berdi!
 
 1. $z = (2 - 3i)(1 + 4i) + \frac{5}{i}$ ifodaning qiymatini algebraik shaklga keltiring.
 2. $\left| \frac{(3 + 4i)(1 - i\sqrt{3})}{(2 - 2i)} \right|$ ifodaning modulini toping (bunda qavslarni ochmasdan modul xossasidan foydalaning).
-3. $z^2 = 3 + 4i$tenglamani qanoatlantiruvchi barcha kompleks$z = x + iy$ sonlarni toping.
+3. $z^2 = 3 + 4i$ tenglamani qanoatlantiruvchi barcha kompleks $z = x + iy$ sonlarni toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
 <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>
@@ -188,7 +192,11 @@ Modul xossasi: $\left|\frac{z_1 \cdot z_2}{z_3}\right| = \frac{|z_1| \cdot |z_2|
     
 
       
-- $|3 + 4i| = \sqrt{9 + 16} = 5$-$|1 - i\sqrt{3}| = \sqrt{1 + 3} = 2$-$|2 - 2i| = \sqrt{4 + 4} = \sqrt{8} = 2\sqrt{2}$Natija:$|z| = \frac{5 \cdot 2}{2\sqrt{2}} = \frac{5}{\sqrt{2}} = \mathbf{\frac{5\sqrt{2}}{2} = 2.5\sqrt{2}}$.
+- $|3 + 4i| = \sqrt{9 + 16} = 5$
+- $|1 - i\sqrt{3}| = \sqrt{1 + 3} = 2$
+- $|2 - 2i| = \sqrt{4 + 4} = \sqrt{8} = 2\sqrt{2}$
+
+Natija: $|z| = \frac{5 \cdot 2}{2\sqrt{2}} = \frac{5}{\sqrt{2}} = \mathbf{\frac{5\sqrt{2}}{2} = 2.5\sqrt{2}}$.
 
     <hr style="margin: 0.75rem 0; border: none; border-top: 1px dashed var(--border-color);" />
 
@@ -207,18 +215,21 @@ Tizim tuzamiz:
     
 
       
-- $x^2 - y^2 = 3$-$2xy = 4 \implies xy = 2 \implies y = 2/x$ $x^2 - \frac{4}{x^2} = 3 \implies x^4 - 3x^2 - 4 = 0 \implies (x^2 - 4)(x^2 + 1) = 0$.
+- $x^2 - y^2 = 3$
+- $2xy = 4 \implies xy = 2 \implies y = 2/x$
+
+$x^2 - \frac{4}{x^2} = 3 \implies x^4 - 3x^2 - 4 = 0 \implies (x^2 - 4)(x^2 + 1) = 0$.
 
     
 
-$x$haqiqiy bo'lgani uchun$x^2 = 4 \implies x_1 = 2, x_2 = -2$.
+$x$ haqiqiy bo'lgani uchun $x^2 = 4 \implies x_1 = 2, x_2 = -2$.
 
     
 
-Mos $y$lar:$y_1 = 2/2 = 1, \quad y_2 = 2/(-2) = -1$.
+Mos $y$ lar: $y_1 = 2/2 = 1, \quad y_2 = 2/(-2) = -1$.
 
     
 
-**Javob:** $\mathbf{z_1 = 2 + i}$va$\mathbf{z_2 = -2 - i}$.
+**Javob:** $\mathbf{z_1 = 2 + i}$ va $\mathbf{z_2 = -2 - i}$.
 
 </details>

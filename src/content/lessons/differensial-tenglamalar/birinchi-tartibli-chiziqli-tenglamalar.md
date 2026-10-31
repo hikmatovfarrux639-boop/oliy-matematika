@@ -7,7 +7,7 @@ description: "1-tartibli chiziqli differensial tenglamalar, Bernulli almashtiris
 
 ## Kirish: Eng ko'p uchraydigan chiziqli modellar
 
-Fizika, elektrotexnika (RL zanjirlari: $L \frac{dI}{dt} + R I = E(t)$), iqtisodiy o'sish modellarida doimo noma'lum funksiya $y$va uning hosilasi$y'$ faqat **birinchi darajada** qatnashadi.
+Fizika, elektrotexnika (RL zanjirlari: $L \frac{dI}{dt} + R I = E(t)$), iqtisodiy o'sish modellarida doimo noma'lum funksiya $y$ va uning hosilasi $y'$ faqat **birinchi darajada** qatnashadi.
 
 Bunday tenglamalar **1-tartibli chiziqli differensial tenglamalar** deb ataladi va ularni yechish uchun matematikada uchta ajoyib va universal usul mavjud:
 1. **Bernulli usuli ($y = uv$)** — hisoblash uchun eng qulay va sevimli usul;
@@ -20,18 +20,16 @@ Bunday tenglamalar **1-tartibli chiziqli differensial tenglamalar** deb ataladi 
 
 > **Ta'rif:** Quyidagi ko'rinishdagi tenglama **birinchi tartibli chiziqli differensial tenglama** deyiladi:
 >
-> 
-$$
+> $$
 > y' + P(x) \cdot y = Q(x)
-> 
-$$
+> $$
 >
-> bu yerda $P(x)$va$Q(x)$—$x$ ga bog'liq uzluksiz funksiyalar (yoki o'zgarmas sonlar).
-> - Agar $Q(x) = 0$bo'lsa:$y' + P(x)y = 0$ — **bir jinsli chiziqli tenglama** (o'zgaruvchilari oson ajraladi);
+> bu yerda $P(x)$ va $Q(x)$ — $x$ ga bog'liq uzluksiz funksiyalar (yoki o'zgarmas sonlar).
+> - Agar $Q(x) = 0$ bo'lsa: $y' + P(x)y = 0$ — **bir jinsli chiziqli tenglama** (o'zgaruvchilari oson ajraladi);
 > - Agar $Q(x) \neq 0$ bo'lsa: **bir jinsli bo'lmagan chiziqli tenglama** deyiladi.
 
 > 💡 **Standart shaklga keltirish:**
-> Agar $y'$oldida biror koeffitsiyent turgan bo'lsa (masalan,$x y' + 2y = x^3$), avval butun tenglamani shu $x$ga bo'lib,$y'$oldini bo'shatib olish shart:$y' + \frac{2}{x}y = x^2$.
+> Agar $y'$ oldida biror koeffitsiyent turgan bo'lsa (masalan, $x y' + 2y = x^3$), avval butun tenglamani shu $x$ ga bo'lib, $y'$ oldini bo'shatib olish shart: $y' + \frac{2}{x}y = x^2$.
 
 ---
 
@@ -58,7 +56,7 @@ Endi $v(x)$ funksiyani shunday erkin tanlaymizki, qavs ichi nolga teng bo'lsin:
 $$
 v' + P(x)v = 0 \implies \frac{dv}{dx} = -P(x)v \implies \frac{dv}{v} = -P(x)dx
 $$
-Integrallaymiz (bu yerda bitta xususiy $v$yetarli, shuning uchun$+C$ shart emas):
+Integrallaymiz (bu yerda bitta xususiy $v$ yetarli, shuning uchun $+C$ shart emas):
 $$
 v(x) = e^{-\int P(x)dx}
 $$
@@ -68,13 +66,13 @@ Qavs nol bo'lgani sababli tenglama soddalashadi:
 $$
 u' \cdot v(x) = Q(x) \implies u' = \frac{Q(x)}{v(x)}
 $$
-Endi $u$ni integrallaymiz (bu yerda$+C$ albatta qo'shiladi!):
+Endi $u$ ni integrallaymiz (bu yerda $+C$ albatta qo'shiladi!):
 $$
 u(x) = \int \frac{Q(x)}{v(x)} \, dx + C
 $$
 
 ### 3-qadam:
-Topilgan $u$va$v$ ni ko'paytirib, umumiy yechimni yozamiz:
+Topilgan $u$ va $v$ ni ko'paytirib, umumiy yechimni yozamiz:
 $$
 y = u(x) \cdot v(x)
 $$
@@ -138,7 +136,7 @@ $P(x) = 2x, Q(x) = 4x$.
    $$u = \int 4x e^{x^2} \, dx = 2 \int e^{x^2} \, d(x^2) = 2e^{x^2} + C$$
 4. Umumiy yechim:
    $$y = u \cdot v = (2e^{x^2} + C) \cdot e^{-x^2} = 2 + C e^{-x^2}$$
-5. Boshlang'ich shartni qo'yamiz ($x = 0$da$y = 4$):
+5. Boshlang'ich shartni qo'yamiz ($x = 0$ da $y = 4$):
    $$4 = 2 + C e^0 \implies 4 = 2 + C \implies C = 2$$
 6. Xususiy yechim:
    $$y = 2 + 2e^{-x^2}$$
@@ -176,13 +174,13 @@ $$
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **$y'$ oldidagi koeffitsiyentga bo'lishni unutish:**
-   > Masalan, $(x^2 + 1)y' + 2xy = x$tenglamasida$P(x) = 2x$deb olish juda katta xato! Standart shaklga keltirish uchun avval butun tenglama$(x^2 + 1)$ga bo'linishi kerak:$P(x) = \frac{2x}{x^2 + 1}$.
+   > Masalan, $(x^2 + 1)y' + 2xy = x$ tenglamasida $P(x) = 2x$ deb olish juda katta xato! Standart shaklga keltirish uchun avval butun tenglama $(x^2 + 1)$ ga bo'linishi kerak: $P(x) = \frac{2x}{x^2 + 1}$.
 
-2. **$v$ni topishda$+C$ qo'shib hisob-kitobni behuda murakkablashtirish:**
-   > $v' + P(x)v = 0$tenglamasini yechayotganda$+C$yozish shart emas. Bizga shartni qanoatlantiruvchi **ixtiyoriy bitta xususiy$v$** yetarli. $+C$faqat 2-bosqichda$u$ ni topayotganda qo'shiladi.
+2. **$v$ ni topishda $+C$ qo'shib hisob-kitobni behuda murakkablashtirish:**
+   > $v' + P(x)v = 0$ tenglamasini yechayotganda $+C$ yozish shart emas. Bizga shartni qanoatlantiruvchi **ixtiyoriy bitta xususiy $v$** yetarli. $+C$ faqat 2-bosqichda $u$ ni topayotganda qo'shiladi.
 
 3. **$P(x)$ ning ishorasini adashtirish:**
-   > Standart formula $y' + P(x)y = Q(x)$dir. Agar tenglamada$y' - 3y = e^x$bo'lsa,$P(x) = 3$ emas, balki **$P(x) = -3$** bo'ladi!
+   > Standart formula $y' + P(x)y = Q(x)$ dir. Agar tenglamada $y' - 3y = e^x$ bo'lsa, $P(x) = 3$ emas, balki **$P(x) = -3$** bo'ladi!
 
 ---
 
@@ -214,6 +212,6 @@ Chiziqli tenglamani yechishda doimo birinchi navbatda **Bernulli usulidan ($y = 
 
     
 
-**4-masala:** $x$ga bo'lamiz:$y' - \frac{2}{x}y = 2x^3$. $v = x^2, u' x^2 = 2x^3 \implies u' = 2x \implies u = x^2 + C$. Javob: $y = x^4 + C x^2$.
+**4-masala:** $x$ ga bo'lamiz: $y' - \frac{2}{x}y = 2x^3$. $v = x^2, u' x^2 = 2x^3 \implies u' = 2x \implies u = x^2 + C$. Javob: $y = x^4 + C x^2$.
 
 </details>

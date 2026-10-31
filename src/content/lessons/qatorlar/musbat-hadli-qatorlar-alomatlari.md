@@ -22,15 +22,15 @@ $$
 $$
 
 > **Oltin Qoida:**
-> - Agar $p > 1$bo'lsa$\implies$qator **YAQINLASHADI** (masalan,$\sum \frac{1}{n^2}$, $\sum \frac{1}{n^3}$, $\sum \frac{1}{n^{1.5}}$);
-> - Agar $p \le 1$bo'lsa$\implies$qator **UZOQLASHADI** (masalan,$p=1$da garmonik qator$\sum \frac{1}{n}$, $p=\frac{1}{2}$da$\sum \frac{1}{\sqrt{n}}$).
+> - Agar $p > 1$ bo'lsa $\implies$ qator **YAQINLASHADI** (masalan, $\sum \frac{1}{n^2}$, $\sum \frac{1}{n^3}$, $\sum \frac{1}{n^{1.5}}$);
+> - Agar $p \le 1$ bo'lsa $\implies$ qator **UZOQLASHADI** (masalan, $p=1$ da garmonik qator $\sum \frac{1}{n}$, $p=\frac{1}{2}$ da $\sum \frac{1}{\sqrt{n}}$).
 
 ---
 
 ## 2. 1-qurol: Taqqoslash alomatlari
 
 ### A. Chekli limit ko'rinishidagi taqqoslash alomati (Eng qulayi!)
-Ikkita musbat hadli $\sum a_n$va$\sum b_n$ qatorlar uchun umumiy hadlar nisbatining limitini hisoblaymiz:
+Ikkita musbat hadli $\sum a_n$ va $\sum b_n$ qatorlar uchun umumiy hadlar nisbatining limitini hisoblaymiz:
 
 $$
 \lim_{n \to \infty} \frac{a_n}{b_n} = k \quad (0 < k < \infty)
@@ -39,7 +39,7 @@ $$
 Agar $k$ chekli va noldan farqli son chiqsa, ikkala qator **bir vaqtda yaqinlashadi yoki bir vaqtda uzoqlashadi**!
 
 ### Amaliy layfhak ($b_n$ ni qanday tanlash kerak?):
-Agar $a_n$algebraik kasr yoki ildizli ifoda bo'lsa, surat va maxrajdagi eng katta darajalarni qoldirib, qolgan barcha kichik hadlarni tashlab yuboramiz. Hosil bo'lgan$\frac{1}{n^p}$qatori bizning$b_n$ etalonimiz bo'ladi!
+Agar $a_n$ algebraik kasr yoki ildizli ifoda bo'lsa, surat va maxrajdagi eng katta darajalarni qoldirib, qolgan barcha kichik hadlarni tashlab yuboramiz. Hosil bo'lgan $\frac{1}{n^p}$ qatori bizning $b_n$ etalonimiz bo'ladi!
 
 ---
 
@@ -51,9 +51,9 @@ $$
 D = \lim_{n \to \infty} \frac{a_{n+1}}{a_n}
 $$
 
-- Agar $D < 1$bo'lsa$\implies$ qator **YAQINLASHADI**;
-- Agar $D > 1$bo'lsa$\implies$ qator **UZOQLASHADI**;
-- Agar $D = 1$bo'lsa$\implies$ **noaniq holat** (Dalamber javob bera olmaydi! Boshqa alomat, masalan taqqoslash yoki integral alomat ishlatiladi).
+- Agar $D < 1$ bo'lsa $\implies$ qator **YAQINLASHADI**;
+- Agar $D > 1$ bo'lsa $\implies$ qator **UZOQLASHADI**;
+- Agar $D = 1$ bo'lsa $\implies$ **noaniq holat** (Dalamber javob bera olmaydi! Boshqa alomat, masalan taqqoslash yoki integral alomat ishlatiladi).
 
 > 💡 **Faktoriallar bilan ishlash siri:**
 > $\frac{(n+1)!}{n!} = \frac{n! \cdot (n+1)}{n!} = n+1$.
@@ -68,15 +68,15 @@ $$
 C = \lim_{n \to \infty} \sqrt[n]{a_n}
 $$
 
-- Agar $C < 1$bo'lsa$\implies$ qator **YAQINLASHADI**;
-- Agar $C > 1$bo'lsa$\implies$ qator **UZOQLASHADI**;
-- Agar $C = 1$bo'lsa$\implies$ **noaniq holat**.
+- Agar $C < 1$ bo'lsa $\implies$ qator **YAQINLASHADI**;
+- Agar $C > 1$ bo'lsa $\implies$ qator **UZOQLASHADI**;
+- Agar $C = 1$ bo'lsa $\implies$ **noaniq holat**.
 
 ---
 
 ## 5. 4-qurol: Koshi integral alomati
 
-Agar $a_n = f(n)$bo'lib,$f(x)$funksiya$[1; +\infty)$ oraliqda uzluksiz, musbat va monoton kamayuvchi bo'lsa:
+Agar $a_n = f(n)$ bo'lib, $f(x)$ funksiya $[1; +\infty)$ oraliqda uzluksiz, musbat va monoton kamayuvchi bo'lsa:
 
 $$
 \sum_{n=1}^\infty a_n \quad \text{va} \quad \int_1^\infty f(x) \, dx
@@ -111,7 +111,7 @@ $$
 
 **Yechilishi:**
 1. Umumiy had: $a_n = \frac{2^n}{n!}$.
-2. Keyingi had ($n$o'rniga$n+1$qo'yamiz):$a_{n+1} = \frac{2^{n+1}}{(n+1)!}$.
+2. Keyingi had ($n$ o'rniga $n+1$ qo'yamiz): $a_{n+1} = \frac{2^{n+1}}{(n+1)!}$.
 3. Nisbatning limitini hisoblaymiz:
    
 $$
@@ -160,7 +160,7 @@ $$
    k = \lim_{n \to \infty} \frac{a_n}{b_n} = \lim_{n \to \infty} \left( \frac{n + 5}{2n^3 - n + 1} \cdot n^2 \right) = \lim_{n \to \infty} \frac{n^3 + 5n^2}{2n^3 - n + 1} = \frac{1}{2}
    
 $$
-4. $k = \frac{1}{2}$(chekli va noldan farqli musbat son). Demak, berilgan qator etalon$b_n$ kabi **yaqinlashadi**!
+4. $k = \frac{1}{2}$(chekli va noldan farqli musbat son). Demak, berilgan qator etalon $b_n$ kabi **yaqinlashadi**!
 
 **Javob:** Qator yaqinlashuvchi.
 
@@ -190,13 +190,13 @@ Integral uzoqlashadi, demak berilgan qator ham **uzoqlashadi**!
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **Dalamberda $D = 1$ chiqqanda "qator yaqinlashadi" yoki "uzoqlashadi" deb xulosa qilish:**
-   > $D = 1$holatida Dalamber alomati javob bera olmaydi! Masalan,$\sum \frac{1}{n}$da ham$D = 1$(uzoqlashadi),$\sum \frac{1}{n^2}$da ham$D = 1$ (yaqinlashadi). Bunday holda zudlik bilan boshqa alomatga o'tish kerak.
+   > $D = 1$ holatida Dalamber alomati javob bera olmaydi! Masalan, $\sum \frac{1}{n}$ da ham $D = 1$(uzoqlashadi), $\sum \frac{1}{n^2}$ da ham $D = 1$ (yaqinlashadi). Bunday holda zudlik bilan boshqa alomatga o'tish kerak.
 
 2. **Ratsional kasrlarga Dalamber alomatini qo'llash:**
    > Agar qatorda faqat ko'phadlar bo'lsa (masalan $\frac{n^2+1}{n^4+3}$), Dalamber alomati DOIMO $D = 1$ beradi va vaqtingiz behuda ketadi! Ko'phadli qatorlar uchun faqat **taqqoslash alomati** ishlatiladi.
 
 3. **Faktorialni qisqartirishda xato qilish:**
-   > $\frac{(n+1)!}{n!} = n+1$bo'ladi. Talabalar ko'pincha buni shunchaki$1$yoki$n$ deb xato qisqartirishadi.
+   > $\frac{(n+1)!}{n!} = n+1$ bo'ladi. Talabalar ko'pincha buni shunchaki $1$ yoki $n$ deb xato qisqartirishadi.
 
 ---
 
@@ -230,6 +230,6 @@ Bu qoida misollarning 80 foizida vaqtingizni va asabingizni tejaydi.
 
     
 
-**4-masala:** $b_n = \frac{1}{n^2}$bilan taqqoslanadi.$p = 2 > 1 \implies$ yaqinlashadi.
+**4-masala:** $b_n = \frac{1}{n^2}$ bilan taqqoslanadi.$p = 2 > 1 \implies$ yaqinlashadi.
 
 </details>

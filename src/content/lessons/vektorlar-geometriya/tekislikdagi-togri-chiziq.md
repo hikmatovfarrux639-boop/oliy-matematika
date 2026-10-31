@@ -17,7 +17,7 @@ Algebra darslarida chiziqli tenglama deb atalgan $Ax + By + C = 0$ ifoda geometr
 $$
 Ax + By + C = 0
 $$
-bu yerda $A$va$B$ bir vaqtda nolga teng bo'lmagan koeffitsiyentlar.
+bu yerda $A$ va $B$ bir vaqtda nolga teng bo'lmagan koeffitsiyentlar.
 - Ushbu to'g'ri chiziqqa **perpendikulyar bo'lgan normal vektor**:
   
 $$
@@ -29,18 +29,18 @@ $$
 $$
 y = kx + b
 $$
-- $k = \operatorname{tg} \alpha$— **burchak koeffitsiyenti** (to'g'ri chiziqning$Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchagi tangensi);
-- $b$— to'g'ri chiziqning$Oy$ o'qidan kesib olgan kesmasi ($x = 0 \implies y = b$).
+- $k = \operatorname{tg} \alpha$ — **burchak koeffitsiyenti** (to'g'ri chiziqning $Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchagi tangensi);
+- $b$ — to'g'ri chiziqning $Oy$ o'qidan kesib olgan kesmasi ($x = 0 \implies y = b$).
 - Umumiy tenglamadan: $k = -\frac{A}{B}, \quad b = -\frac{C}{B} \quad (B \neq 0)$.
 
 ### 3. Berilgan nuqtadan berilgan yo'nalishda o'tuvchi to'g'ri chiziq
-Agar to'g'ri chiziq $M_0(x_0, y_0)$nuqtadan o'tsa va burchak koeffitsiyenti$k$ bo'lsa:
+Agar to'g'ri chiziq $M_0(x_0, y_0)$ nuqtadan o'tsa va burchak koeffitsiyenti $k$ bo'lsa:
 $$
 y - y_0 = k(x - x_0)
 $$
 
 ### 4. Kanonik tenglama
-Agar to'g'ri chiziq $M_0(x_0, y_0)$nuqtadan o'tsa va unga parallel bo'lgan **yo'naltiruvchi vektor**$\vec{s} = (p, q)$ ma'lum bo'lsa:
+Agar to'g'ri chiziq $M_0(x_0, y_0)$ nuqtadan o'tsa va unga parallel bo'lgan **yo'naltiruvchi vektor**$\vec{s} = (p, q)$ ma'lum bo'lsa:
 $$
 \frac{x - x_0}{p} = \frac{y - y_0}{q}
 $$
@@ -49,7 +49,7 @@ $$
 $$
 \frac{x}{a} + \frac{y}{b} = 1
 $$
-Bu to'g'ri chiziq $Ox$o'qini$(a; 0)$, $Oy$o'qini esa$(0; b)$nuqtada kesib o'tadi. Koordinata o'qlari bilan chegaralangan to'g'ri burchakli uchburchak yuzi bir zumda topiladi:$S = \frac{1}{2}|a b|$!
+Bu to'g'ri chiziq $Ox$ o'qini $(a; 0)$, $Oy$ o'qini esa $(0; b)$ nuqtada kesib o'tadi. Koordinata o'qlari bilan chegaralangan to'g'ri burchakli uchburchak yuzi bir zumda topiladi: $S = \frac{1}{2}|a b|$!
 
 ---
 
@@ -79,13 +79,13 @@ $$
 ## 3. Masofa formulalari
 
 ### Nuqtadan to'g'ri chiziqqacha masofa:
-$M_0(x_0, y_0)$nuqtadan$Ax + By + C = 0$to'g'ri chiziqqacha bo'lgan masofa$d$:
+$M_0(x_0, y_0)$ nuqtadan $Ax + By + C = 0$ to'g'ri chiziqqacha bo'lgan masofa $d$:
 $$
 d = \frac{|A x_0 + B y_0 + C|}{\sqrt{A^2 + B^2}}
 $$
 
 ### Ikki parallel to'g'ri chiziq orasidagi masofa:
-Agar chiziqlar $Ax + By + C_1 = 0$va$Ax + By + C_2 = 0$ bo'lsa:
+Agar chiziqlar $Ax + By + C_1 = 0$ va $Ax + By + C_2 = 0$ bo'lsa:
 $$
 d = \frac{|C_1 - C_2|}{\sqrt{A^2 + B^2}}
 $$
@@ -96,7 +96,7 @@ $$
 
 ### 1-masala: Perpendikulyar to'g'ri chiziq tenglamasini 2 xil usulda tuzish
 
-$M_0(2, -1)$nuqtadan o'tuvchi va$3x - 4y + 5 = 0$ to'g'ri chiziqqa perpendikulyar bo'lgan to'g'ri chiziq tenglamasini toping.
+$M_0(2, -1)$ nuqtadan o'tuvchi va $3x - 4y + 5 = 0$ to'g'ri chiziqqa perpendikulyar bo'lgan to'g'ri chiziq tenglamasini toping.
 
 #### 1-usul: Burchak koeffitsiyenti orqali
 1. Berilgan chiziqdan $y$ ni ajratamiz:
@@ -125,7 +125,7 @@ $$
 
 #### 2-usul: Normal va yo'naltiruvchi vektorlar usuli (Tezkor vektorli usul)
 Berilgan to'g'ri chiziqning normal vektori: $\vec{n} = (3, -4)$.
-Unga perpendikulyar bo'lgan to'g'ri chiziq uchun ushbu $\vec{n}$vektori **yo'naltiruvchi vektor**$\vec{s} = (p, q) = (3, -4)$ vazifasini bajaradi!
+Unga perpendikulyar bo'lgan to'g'ri chiziq uchun ushbu $\vec{n}$ vektori **yo'naltiruvchi vektor**$\vec{s} = (p, q) = (3, -4)$ vazifasini bajaradi!
 Kanonik tenglamani yozamiz:
 $$
 \frac{x - 2}{3} = \frac{y - (-1)}{-4} \implies -4(x - 2) = 3(y + 1) \implies 4x + 3y - 5 = 0
@@ -136,7 +136,7 @@ Ikki qatorda javob topildi!
 
 ### 2-masala: Nuqtadan to'g'ri chiziqqacha bo'lgan masofa
 
-$M_0(3, 1)$nuqtadan$3x + 4y - 8 = 0$ to'g'ri chiziqqacha bo'lgan masofani hisoblang.
+$M_0(3, 1)$ nuqtadan $3x + 4y - 8 = 0$ to'g'ri chiziqqacha bo'lgan masofani hisoblang.
 
 #### Yechish:
 Formulaga qo'yamiz ($A = 3, B = 4, C = -8, x_0 = 3, y_0 = 1$):
@@ -152,7 +152,7 @@ $$
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Masofa formulasida modulni unutish:** Masofa hech qachon manfiy son bo'lishi mumkin emas. Suratdagi ifoda manfiy chiqsa ham, modul tufayli natija doim musbat olinadi.
 > 2. **Ikki parallel to'g'ri chiziq orasidagi masofani hisoblashda koeffitsiyentlarni tenglashtirmaslik:**
->    Masalan, $2x + 3y - 1 = 0$va$4x + 6y + 8 = 0$berilgan bo'lsa, ikkinchi tenglamani avval$2$ga bo'lib,$2x + 3y + 4 = 0$ko'rinishiga keltirib, so'ngra formulani qo'llash shart:$d = \frac{|-1 - 4|}{\sqrt{2^2 + 3^2}} = \frac{5}{\sqrt{13}}$.
+>    Masalan, $2x + 3y - 1 = 0$ va $4x + 6y + 8 = 0$ berilgan bo'lsa, ikkinchi tenglamani avval $2$ ga bo'lib, $2x + 3y + 4 = 0$ ko'rinishiga keltirib, so'ngra formulani qo'llash shart: $d = \frac{|-1 - 4|}{\sqrt{2^2 + 3^2}} = \frac{5}{\sqrt{13}}$.
 > 3. **Vertikal to'g'ri chiziqda burchak koeffitsiyenti:**
 >    $x = c$ ko'rinishidagi vertikal to'g'ri chiziqlarning burchak koeffitsiyenti **mavjud emas** ($k = \infty$, chunki $\operatorname{tg} 90^\circ$ aniqlanmagan). Bunday hollarda burchak koeffitsiyentli emas, faqat umumiy yoki kanonik tenglama ishlatiladi.
 
@@ -161,7 +161,7 @@ $$
 ## 6. Mustaqil yechish uchun amaliy mashqlar
 
 ### 1-mashq
-$A(1, 2)$va$B(4, 8)$ nuqtalardan o'tuvchi to'g'ri chiziq tenglamasini tuzing.
+$A(1, 2)$ va $B(4, 8)$ nuqtalardan o'tuvchi to'g'ri chiziq tenglamasini tuzing.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>
@@ -174,7 +174,7 @@ $$
 </details>
 
 ### 2-mashq
-$L_1: 2x - y + 3 = 0$va$L_2: x + 2y - 5 = 0$ to'g'ri chiziqlarning o'zaro joylashuvini aniqlang.
+$L_1: 2x - y + 3 = 0$ va $L_2: x + 2y - 5 = 0$ to'g'ri chiziqlarning o'zaro joylashuvini aniqlang.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

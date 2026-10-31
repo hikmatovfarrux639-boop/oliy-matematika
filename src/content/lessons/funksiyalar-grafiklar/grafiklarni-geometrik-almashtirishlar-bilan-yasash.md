@@ -140,7 +140,7 @@ Demak, parabola $(1, 0)$ va $(5, 0)$ nuqtalardan o'tadi va uchi $(3, 8)$ da bo'l
 **Yechish:**
 > [!CAUTION]
 > **Katta tuzoq:** Ko'pchilik $x$ dan $\frac{\pi}{3}$ ayrilgan deb o'ylab, grafikni $\frac{\pi}{3}$ birlik o'ngga siljitadi. Bu qat'iyan xato! Dastlab $x$ oldidagi koeffitsiyentni qavsdan chiqarish shart:
-> $$y = 2\sin\left[ 2 \left( x - \frac{\pi}{6} \right) \right] + 1$$
+> $$ y = 2\sin\left[ 2 \left( x - \frac{\pi}{6} \right) \right] + 1 $$
 
 Almashtirishlar ketma-ketligi:
 1. $y_0 = \sin x$ — davri $T = 2\pi$, amplitudasi $1$.
@@ -171,13 +171,13 @@ Almashtirishlar ketma-ketligi:
 4. **$y = a$ to'g'ri chiziq bilan kesishishlar soni tahlili:**
    - $a < 0$: $0$ ta yechim (grafik $Ox$ dan pastga tushmaydi);
    - $a = 0$: $4$ ta yechim ($\{-3, -1, 1, 3\}$);
-   - $0 < a < 1$: Gorizontal chiziq 4 ta yonbosh va 2 ta o'rtadagi buklangan sohani kesib o'tadi $\implies$ **aynan 6 ta umumiy nuqta**!
-   - $a = 1$: Ular cho'qqilarga teginadi $\implies 7$ ta yechim;
+   - $0 < a < 1$: Gorizontal chiziq 2 ta tashqi qanotni, 2 ta buklangan sohani (har birini 2 martadan $\implies 4$ ta) va markaziy sohani 2 marta kesib o'tadi $\implies$ **8 ta umumiy nuqta**;
+   - $a = 1$: Chiziq ikkita buklangan cho'qqiga urinadi ($x = \pm 2$), markaziy sohani ($x = \pm(2 - \sqrt{2})$) va tashqi qanotlarni ($x = \pm(2 + \sqrt{2})$) kesib o'tadi $\implies$ **aynan 6 ta umumiy nuqta**;
    - $1 < a < 3$: $4$ ta yechim;
-   - $a = 3$: $3$ ta yechim;
+   - $a = 3$: $3$ ta yechim ($x = 0$ va $x = \pm 4$);
    - $a > 3$: $2$ ta yechim.
 
-**Javob:** $y = a$ to'g'ri chiziq grafik bilan aynan 6 ta umumiy nuqtaga ega bo'lishi uchun $a \in (0, 1)$ bo'lishi zarur va yetarli.
+**Javob:** $y = a$ to'g'ri chiziq grafik bilan aynan 6 ta umumiy nuqtaga ega bo'lishi uchun $a = 1$ bo'lishi kerak (agar aynan 8 ta yechim so'ralsa, $a \in (0, 1)$ bo'lar edi).
 
 ---
 

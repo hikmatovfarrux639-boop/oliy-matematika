@@ -11,7 +11,7 @@ Ikki o'lchamli tekislikda bitta chiziqli tenglama $Ax + By + C = 0$ to'g'ri chiz
 $$
 Ax + By + Cz + D = 0
 $$
-butun bir **tekislikni** ifodalaydi. Fazoda to'g'ri chiziqni ifodalash uchun esa yoki ikkita tekislikning kesishmasi ($Ax+By+Cz+D=0$va$A_1x+B_1y+C_1z+D_1=0$), yoki bitta nuqta va yo'naltiruvchi vektor orqali kanonik va parametrik tenglamalar tizimi talab etiladi.
+butun bir **tekislikni** ifodalaydi. Fazoda to'g'ri chiziqni ifodalash uchun esa yoki ikkita tekislikning kesishmasi ($Ax+By+Cz+D=0$ va $A_1x+B_1y+C_1z+D_1=0$), yoki bitta nuqta va yo'naltiruvchi vektor orqali kanonik va parametrik tenglamalar tizimi talab etiladi.
 
 3D grafika, o'yin dvigatellari (Unity, Unreal Engine), robototexnika kinematikasi va me'moriy loyihalashda fazoviy analitik geometriya asosiy apparat hisoblanadi.
 
@@ -20,7 +20,7 @@ butun bir **tekislikni** ifodalaydi. Fazoda to'g'ri chiziqni ifodalash uchun esa
 ## 1. Fazoda tekislik tenglamalari
 
 ### 1. Nuqta va normal vektor orqali tekislik
-Tekislik $M_0(x_0, y_0, z_0)$nuqtadan o'tib, unga perpendikulyar bo'lgan **normal vektor**$\vec{n} = (A, B, C)$ berilgan bo'lsa:
+Tekislik $M_0(x_0, y_0, z_0)$ nuqtadan o'tib, unga perpendikulyar bo'lgan **normal vektor**$\vec{n} = (A, B, C)$ berilgan bo'lsa:
 
 $$
 A(x - x_0) + B(y - y_0) + C(z - z_0) = 0
@@ -51,7 +51,7 @@ $$
 
 ## 2. Fazoda to'g'ri chiziq tenglamalari
 
-Fazoda to'g'ri chiziq $M_0(x_0, y_0, z_0)$nuqta va unga parallel bo'lgan **yo'naltiruvchi vektor**$\vec{s} = (m, n, p)$ orqali aniqlanadi:
+Fazoda to'g'ri chiziq $M_0(x_0, y_0, z_0)$ nuqta va unga parallel bo'lgan **yo'naltiruvchi vektor**$\vec{s} = (m, n, p)$ orqali aniqlanadi:
 
 ### 1. Kanonik tenglamalar:
 $$
@@ -72,7 +72,7 @@ $$
 
 ## 3. Fazodagi asosiy burchaklar va o'zaro joylashuvlar
 
-1. **Ikki tekislik orasidagi burchak ($\vec{n}_1$va$\vec{n}_2$):**
+1. **Ikki tekislik orasidagi burchak ($\vec{n}_1$ va $\vec{n}_2$):**
    
 $$
    \cos\varphi = \frac{|A_1 A_2 + B_1 B_2 + C_1 C_2|}{\sqrt{A_1^2+B_1^2+C_1^2}\sqrt{A_2^2+B_2^2+C_2^2}}
@@ -81,7 +81,7 @@ $$
    - Perpendikulyarlik sharti: $A_1 A_2 + B_1 B_2 + C_1 C_2 = 0$.
    - Parallellik sharti: $\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}$.
 
-2. **Ikki to'g'ri chiziq orasidagi burchak ($\vec{s}_1$va$\vec{s}_2$):**
+2. **Ikki to'g'ri chiziq orasidagi burchak ($\vec{s}_1$ va $\vec{s}_2$):**
    
 $$
    \cos\varphi = \frac{|m_1 m_2 + n_1 n_2 + p_1 p_2|}{\|\vec{s}_1\| \cdot \|\vec{s}_2\|}
@@ -100,7 +100,7 @@ $$
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** $M_0(1, 2, -1)$nuqtadan$L: \frac{x - 2}{1} = \frac{y - 1}{2} = \frac{z + 3}{-2}$ to'g'ri chiziqqacha bo'lgan masofani toping.
+> **Masala:** $M_0(1, 2, -1)$ nuqtadan $L: \frac{x - 2}{1} = \frac{y - 1}{2} = \frac{z + 3}{-2}$ to'g'ri chiziqqacha bo'lgan masofani toping.
 
 ### 1-usul: Vektor ko'paytma formulasidan foydalanish
 To'g'ri chiziq ustidagi nuqta: $M_1(2, 1, -3)$, yo'naltiruvchi vektor: $\vec{s} = (1, 2, -2)$.
@@ -131,7 +131,7 @@ $M_0(1, 2, -1)$ nuqtadan o'tuvchi va to'g'ri chiziqqa perpendikulyar bo'lgan tek
    $$2 + t + 2 + 4t + 6 + 4t - 7 = 0 \implies 9t + 3 = 0 \implies 9t = -3 \implies t = -\frac{1}{3}$$
 3. Kesishish nuqtasi $H$ koordinatalari:
    $$x_H = 2 - \frac{1}{3} = \frac{5}{3}, \quad y_H = 1 - \frac{2}{3} = \frac{1}{3}, \quad z_H = -3 + \frac{2}{3} = -\frac{7}{3}$$
-4. $M_0(1, 2, -1)$va$H(5/3, 1/3, -7/3)$ nuqtalar orasidagi masofa:
+4. $M_0(1, 2, -1)$ va $H(5/3, 1/3, -7/3)$ nuqtalar orasidagi masofa:
    $$d = \sqrt{\left(\frac{5}{3} - 1\right)^2 + \left(\frac{1}{3} - 2\right)^2 + \left(-\frac{7}{3} - (-1)\right)^2}$$
    $$= \sqrt{\left(\frac{2}{3}\right)^2 + \left(-\frac{5}{3}\right)^2 + \left(-\frac{4}{3}\right)^2} = \sqrt{\frac{4 + 25 + 16}{9}} = \sqrt{\frac{45}{9}} = \sqrt{5}$$
 
@@ -141,23 +141,23 @@ Ikkala usul ham mutlaqo bir xil $d = \sqrt{5}$ natijasini berdi!
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **To'g'ri chiziq va Tekislik burchagida Kosinus yozish xatosi:**
->    To'g'ri chiziq $\vec{s}$va tekislik$\vec{n}$ orasidagi formulada **sinus** turadi:
+>    To'g'ri chiziq $\vec{s}$ va tekislik $\vec{n}$ orasidagi formulada **sinus** turadi:
 >    $$\sin\theta = \frac{|\vec{s} \cdot \vec{n}|}{|\vec{s}| |\vec{n}|}$$
 >    Agar bu yerga kosinus deb yozilsa, tekislik bilan to'g'ri chiziq emas, balki normal bilan to'g'ri chiziq orasidagi burchak topilib qoladi.
 > 2. **To'g'ri chiziq tekislikka parallel bo'lish sharti:**
->    To'g'ri chiziq tekislikka parallel bo'lsa, uning yo'naltiruvchi vektori $\vec{s}$normal vektor$\vec{n}$ ga **perpendikulyar** bo'ladi! Shuning uchun parallellik sharti:
->    $$\vec{s} \cdot \vec{n} = A m + B n + C p = 0$$
+>    To'g'ri chiziq tekislikka parallel bo'lsa, uning yo'naltiruvchi vektori $\vec{s}$ normal vektor $\vec{n}$ ga **perpendikulyar** bo'ladi! Shuning uchun parallellik sharti:
+>    $$\vec{s} \cdot \vec{n} = A m + B n + C p = 0 $$
 >    Bu formulani tekisliklarning parallellik sharti bilan adashtirmang!
 > 3. **Kanonik maxrajda nol uchrashi:**
->    $\frac{x - 1}{2} = \frac{y + 3}{0} = \frac{z - 4}{5}$ko'rinishida maxrajda nol bo'lsa, bu "nolga bo'lish" emas, balki$y = -3$tekislikda yotuvchi vektor koordinatasi$n = 0$ ekanligini bildiradi.
+>    $\frac{x - 1}{2} = \frac{y + 3}{0} = \frac{z - 4}{5}$ ko'rinishida maxrajda nol bo'lsa, bu "nolga bo'lish" emas, balki $y = -3$ tekislikda yotuvchi vektor koordinatasi $n = 0$ ekanligini bildiradi.
 
 ---
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $M_0(2, -1, 3)$nuqtadan$2x - y + 2z + 4 = 0$ tekislikkacha bo'lgan masofani toping.
-2. $\frac{x - 1}{3} = \frac{y + 2}{2} = \frac{z - 1}{-1}$to'g'ri chiziq va$x + 2y - z + 5 = 0$ tekislik orasidagi burchak sinusini hisoblang.
-3. Fazoda $M_1(1, 0, 2)$va$M_2(3, 4, -2)$ nuqtalardan o'tuvchi to'g'ri chiziqning kanonik tenglamasini tuzing.
+1. $M_0(2, -1, 3)$ nuqtadan $2x - y + 2z + 4 = 0$ tekislikkacha bo'lgan masofani toping.
+2. $\frac{x - 1}{3} = \frac{y + 2}{2} = \frac{z - 1}{-1}$ to'g'ri chiziq va $x + 2y - z + 5 = 0$ tekislik orasidagi burchak sinusini hisoblang.
+3. Fazoda $M_1(1, 0, 2)$ va $M_2(3, 4, -2)$ nuqtalardan o'tuvchi to'g'ri chiziqning kanonik tenglamasini tuzing.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
 <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>

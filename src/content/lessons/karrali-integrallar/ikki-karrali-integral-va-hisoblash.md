@@ -9,17 +9,17 @@ description: "Ikki karrali integral, geometrik ma'nosi (jism hajmi), takroriy in
 
 Bir o'zgaruvchili oddiy aniq integral $\int_a^b f(x) \, dx$ tekislikdagi egri chiziqli trapetsiyaning **yuzini** hisoblar edi.
 
-Agar bizga $Oxy$tekisligidagi biror$D$soha ustida ko'tarilgan$z = f(x, y)$sirt berilgan bo'lsa, ushbu sirt ostida va$D$ soha ustida joylashgan fazoviy **silindrik jismning hajmini** qanday hisoblaymiz?
+Agar bizga $Oxy$ tekisligidagi biror $D$ soha ustida ko'tarilgan $z = f(x, y)$ sirt berilgan bo'lsa, ushbu sirt ostida va $D$ soha ustida joylashgan fazoviy **silindrik jismning hajmini** qanday hisoblaymiz?
 
-Buning uchun integrallash amalini ikki yo'nalish ($x$va$y$) bo'ylab ketma-ket bajarish — ya'ni **ikki karrali integral** talab etiladi!
+Buning uchun integrallash amalini ikki yo'nalish ($x$ va $y$) bo'ylab ketma-ket bajarish — ya'ni **ikki karrali integral** talab etiladi!
 
 ---
 
 ## 1. Ikki karrali integral ta'rifi va ma'nosi
 
-$Oxy$tekisligidagi chegaralangan yopiq$D$soha va unda aniqlangan$z = f(x, y)$ uzluksiz funksiya berilgan bo'lsin.
-1. $D$sohani$n$ta mayda$\Delta D_i$bo'lakchalarga bo'lamiz (ularning yuzalari$\Delta S_i$).
-2. Har bir bo'lakchadan ixtiyoriy $M_i(\xi_i, \eta_i)$nuqta tanlab, balandligi$f(\xi_i, \eta_i)$ bo'lgan ustunchalar hajmlari yig'indisini tuzamiz:
+$Oxy$ tekisligidagi chegaralangan yopiq $D$ soha va unda aniqlangan $z = f(x, y)$ uzluksiz funksiya berilgan bo'lsin.
+1. $D$ sohani $n$ ta mayda $\Delta D_i$ bo'lakchalarga bo'lamiz (ularning yuzalari $\Delta S_i$).
+2. Har bir bo'lakchadan ixtiyoriy $M_i(\xi_i, \eta_i)$ nuqta tanlab, balandligi $f(\xi_i, \eta_i)$ bo'lgan ustunchalar hajmlari yig'indisini tuzamiz:
    
 $$
    V_n = \sum_{i=1}^n f(\xi_i, \eta_i) \cdot \Delta S_i
@@ -61,15 +61,15 @@ $$
 $$
 
 ### 2-holat: Soha egri chiziqlar bilan chegaralangan bo'lsa:
-Agar soha quyidan $y = \varphi_1(x)$va yuqoridan$y = \varphi_2(x)$ bilan chegaralangan bo'lsa:
+Agar soha quyidan $y = \varphi_1(x)$ va yuqoridan $y = \varphi_2(x)$ bilan chegaralangan bo'lsa:
 
 $$
 \iint_D f(x, y) \, dx dy = \int_a^b dx \int_{\varphi_1(x)}^{\varphi_2(x)} f(x, y) \, dy
 $$
 
 > ⚠️ **Qat'iy hisoblash tartibi:**
-> 1. **Ichki integral:** Avval ichki integral $y$bo'yicha hisoblanadi (bunda$x$doimiy son deb qaraladi). Chegaralar$\varphi_1(x)$va$\varphi_2(x)$qo'yilib,$y$ butunlay yo'qotiladi!
-> 2. **Tashqi integral:** Qolgan faqat $x$ga bog'liq funksiya sonli chegaralar$[a; b]$ bo'yicha integrallanadi. Natijada yagona son hosil bo'ladi!
+> 1. **Ichki integral:** Avval ichki integral $y$ bo'yicha hisoblanadi (bunda $x$ doimiy son deb qaraladi). Chegaralar $\varphi_1(x)$ va $\varphi_2(x)$ qo'yilib, $y$ butunlay yo'qotiladi!
+> 2. **Tashqi integral:** Qolgan faqat $x$ ga bog'liq funksiya sonli chegaralar $[a; b]$ bo'yicha integrallanadi. Natijada yagona son hosil bo'ladi!
 > *(Tashqi integral chegaralarida hech qachon o'zgaruvchi qatnashishi mumkin emas!)*
 
 ---
@@ -80,7 +80,7 @@ Ba'zi integrallarni berilgan tartibda hisoblashning mutlaqo iloji bo'lmaydi (mas
 
 ### Tartibni o'zgartirish algoritmi:
 1. Berilgan integraldan soha chegaralarini tengsizliklar ko'rinishida yozib oling.
-2. Ushbu $D$sohani$Oxy$ tekisligida aniq chizing.
+2. Ushbu $D$ sohani $Oxy$ tekisligida aniq chizing.
 3. Sohani endi $y$ o'qi bo'yicha proyeksiyalab, yangi chegaralarni aniqlang.
 
 ---
@@ -98,7 +98,7 @@ Takroriy integralga keltiramiz:
 $$
 \int_0^2 dx \int_1^3 (x^2 + 2y) \, dy
 $$
-1. Ichki integralni hisoblaymiz ($y$bo'yicha integrallaymiz,$x = \text{const}$):
+1. Ichki integralni hisoblaymiz ($y$ bo'yicha integrallaymiz, $x = \text{const}$):
    
 $$
    \int_1^3 (x^2 + 2y) \, dy = \left. (x^2 y + y^2) \right|_1^3 = (3x^2 + 9) - (x^2 + 1) = 2x^2 + 8
@@ -120,12 +120,12 @@ Integralni hisoblang:
 $$
 \iint_D xy \, dx dy
 $$
-bu yerda $D$—$x = 0, y = 0$va$x + y = 2$ to'g'ri chiziqlari bilan chegaralangan uchburchak.
+bu yerda $D$ — $x = 0, y = 0$ va $x + y = 2$ to'g'ri chiziqlari bilan chegaralangan uchburchak.
 
 **Yechilishi:**
 1. Soha chegaralarini aniqlaymiz:
-   - $x$o'zgarishi:$0$dan$2$ gacha ($0 \le x \le 2$).
-   - $y$o'zgarishi: pastdan$y = 0$, yuqoridan to'g'ri chiziq $y = 2 - x$.
+   - $x$ o'zgarishi: $0$ dan $2$ gacha ($0 \le x \le 2$).
+   - $y$ o'zgarishi: pastdan $y = 0$, yuqoridan to'g'ri chiziq $y = 2 - x$.
 2. Takroriy integralni tuzamiz:
    
 $$
@@ -158,10 +158,10 @@ $$
 **Yechilishi:**
 Ichki integral $\int e^{y^2} dy$ ni hisoblab bo'lmaydi! Shuning uchun integrallash tartibini o'zgartiramiz:
 1. Dastlabki soha: $0 \le x \le 1, \; x \le y \le 1$.
-   Bu soha $y = x$chizig'idan yuqorida,$y = 1$ to'g'ri chizig'idan pastda joylashgan uchburchakdir.
+   Bu soha $y = x$ chizig'idan yuqorida, $y = 1$ to'g'ri chizig'idan pastda joylashgan uchburchakdir.
 2. Endi sohani $y$ o'qi bo'yicha qaraymiz:
-   - $y$o'zgarishi:$0 \le y \le 1$;
-   - Har bir gorizontal kesmada $x$chapdan$x = 0$dan o'ngga to'g'ri chiziq$x = y$ gacha o'zgaradi ($0 \le x \le y$).
+   - $y$ o'zgarishi: $0 \le y \le 1$;
+   - Har bir gorizontal kesmada $x$ chapdan $x = 0$ dan o'ngga to'g'ri chiziq $x = y$ gacha o'zgaradi ($0 \le x \le y$).
 3. Yangi tartibdagi integral:
    
 $$
@@ -194,7 +194,7 @@ $$
    > Vertikal yo'nalishda doimo **"pastki chiziqdan yuqorigi chiziqqa"** qarab integrallanadi ($\int_{y_{\text{quyi}}}^{y_{\text{yuqori}}}$).
 
 3. **Ichki integrallash paytida ikkinchi o'zgaruvchini yo'qotib yuborish:**
-   > $y$bo'yicha integrallaganda$x$nol bo'lib ketmaydi, balki o'zgarmas ko'paytuvchi sifatida saqlanib qoladi:$\int x \, dy = x \int 1 \, dy = xy$.
+   > $y$ bo'yicha integrallaganda $x$ nol bo'lib ketmaydi, balki o'zgarmas ko'paytuvchi sifatida saqlanib qoladi: $\int x \, dy = x \int 1 \, dy = xy$.
 
 ---
 
@@ -207,7 +207,7 @@ Ikki karrali integralni yechishga kirishishdan oldin, albatta qoralama varag'ing
 ## ✍️ Mustaqil yechish uchun mashqlar
 
 1. $\int_0^1 dx \int_0^2 (x + y) \, dy$ integralini hisoblang.
-2. $D: \; 0 \le x \le 1, \; 0 \le y \le x^2$sohada$\iint_D (x + 2y) \, dx dy$ ni hisoblang.
+2. $D: \; 0 \le x \le 1, \; 0 \le y \le x^2$ sohada $\iint_D (x + 2y) \, dx dy$ ni hisoblang.
 3. $\int_0^1 dy \int_y^1 \cos(x^2) \, dx$ integralida integrallash tartibini o'zgartirib yeching.
 4. $y = 0, y = x^2, x = 2$ chiziqlar bilan chegaralangan tekis shakl yuzini ikki karrali integral orqali toping.
 

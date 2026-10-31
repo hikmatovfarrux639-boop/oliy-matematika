@@ -7,9 +7,9 @@ description: "Darajali qatorlar, Abel teoremasi, yaqinlashish radiusi va sohasi,
 
 ## Kirish: Murakkab funksiyalarni ko'phadga aylantirish
 
-Zamonaviy protsessorlar va ilmiy kalkulyatorlar $\sin(0.42)$yoki$e^{1.2}$ qiymatini hisoblashda burchaklarni chizib o'lchab o'tirmaydi. Protsessor arifmetik mantiqiy qurilmasi apparat darajasida faqat oddiy arifmetik amallarni (qo'shish, ayirish, ko'paytirish, bo'lish) bajaradi.
+Zamonaviy protsessorlar va ilmiy kalkulyatorlar $\sin(0.42)$ yoki $e^{1.2}$ qiymatini hisoblashda burchaklarni chizib o'lchab o'tirmaydi. Protsessor arifmetik mantiqiy qurilmasi apparat darajasida faqat oddiy arifmetik amallarni (qo'shish, ayirish, ko'paytirish, bo'lish) bajaradi.
 
-U holda $\sin(x)$, $\ln(x)$yoki$\operatorname{arctg}(x)$ qanday hisoblanadi? Bunga javob — **darajali qatorlar (Teylor va Makloren qatorlari)**! Ular har qanday silliq funksiyani cheksiz darajali ko'phadga aylantirib beradi.
+U holda $\sin(x)$, $\ln(x)$ yoki $\operatorname{arctg}(x)$ qanday hisoblanadi? Bunga javob — **darajali qatorlar (Teylor va Makloren qatorlari)**! Ular har qanday silliq funksiyani cheksiz darajali ko'phadga aylantirib beradi.
 
 ---
 
@@ -23,11 +23,11 @@ $$
 > 
 $$
 >
-> Agar markaz $x_0 = 0$bo'lsa:$\sum c_n x^n = c_0 + c_1 x + c_2 x^2 + \dots$ ko'rinishini oladi.
+> Agar markaz $x_0 = 0$ bo'lsa: $\sum c_n x^n = c_0 + c_1 x + c_2 x^2 + \dots$ ko'rinishini oladi.
 
 ### Abel teoremasi:
-Agar $\sum c_n x^n$qator biror$x = x_1 \neq 0$nuqtada yaqinlashsa, u$|x| < |x_1|$ bo'lgan barcha nuqtalarda **mutlaq yaqinlashadi**.
-Aksincha, agar qator $x = x_2$nuqtada uzoqlashsa,$|x| > |x_2|$ barcha nuqtalarda uzoqlashadi.
+Agar $\sum c_n x^n$ qator biror $x = x_1 \neq 0$ nuqtada yaqinlashsa, u $|x| < |x_1|$ bo'lgan barcha nuqtalarda **mutlaq yaqinlashadi**.
+Aksincha, agar qator $x = x_2$ nuqtada uzoqlashsa, $|x| > |x_2|$ barcha nuqtalarda uzoqlashadi.
 
 ---
 
@@ -36,7 +36,7 @@ Aksincha, agar qator $x = x_2$nuqtada uzoqlashsa,$|x| > |x_2|$ barcha nuqtalarda
 Har bir darajali qator uchun shunday $R \ge 0$ soni (**yaqinlashish radiusi**) mavjudki:
 - $|x - x_0| < R$ bo'lganda qator **mutlaq yaqinlashadi**;
 - $|x - x_0| > R$ bo'lganda qator **uzoqlashadi**;
-- $|x - x_0| = R$ chegara nuqtalarida ($x = x_0 - R$va$x = x_0 + R$) qatorning xarakteri alohida tekshiriladi.
+- $|x - x_0| = R$ chegara nuqtalarida ($x = x_0 - R$ va $x = x_0 + R$) qatorning xarakteri alohida tekshiriladi.
 
 ### Yaqinlashish radiusini topish formulalari:
 $$
@@ -47,7 +47,7 @@ $$
 
 ## 3. Teylor va Makloren qatorlari
 
-Agar $f(x)$funksiya$x_0$ nuqtaning atrofida cheksiz differensiallanuvchi bo'lsa:
+Agar $f(x)$ funksiya $x_0$ nuqtaning atrofida cheksiz differensiallanuvchi bo'lsa:
 
 $$
 f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n = f(x_0) + \frac{f'(x_0)}{1!} (x - x_0) + \frac{f''(x_0)}{2!} (x - x_0)^2 + \dots
@@ -60,7 +60,11 @@ f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n = f(0) + \frac{f'(0)}{1!} x +
 $$
 
 ### Asosiy Makloren yoyilmalari jadvali:
-1. $e^x = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots \quad (-\infty < x < +\infty, \, R = \infty)$2.$\sin x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots \quad (R = \infty)$3.$\cos x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots \quad (R = \infty)$4.$\ln(1 + x) = \sum_{n=1}^\infty \frac{(-1)^{n-1} x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots \quad (-1 < x \le 1)$5.$\frac{1}{1 - x} = \sum_{n=0}^\infty x^n = 1 + x + x^2 + x^3 + \dots \quad (|x| < 1)$
+1. $e^x = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots \quad (-\infty < x < +\infty, \, R = \infty)$
+2. $\sin x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots \quad (R = \infty)$
+3. $\cos x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots \quad (R = \infty)$
+4. $\ln(1 + x) = \sum_{n=1}^\infty \frac{(-1)^{n-1} x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots \quad (-1 < x \le 1)$
+5. $\frac{1}{1 - x} = \sum_{n=0}^\infty x^n = 1 + x + x^2 + x^3 + \dots \quad (|x| < 1)$
 
 ---
 
@@ -95,7 +99,7 @@ $$
      \sum_{n=1}^\infty \frac{(5 - 2)^n}{n \cdot 3^n} = \sum_{n=1}^\infty \frac{3^n}{n \cdot 3^n} = \sum_{n=1}^\infty \frac{1}{n}
      
 $$
-     Bu uzoqlashuvchi garmonik qatordir. Demak, $x = 5$nuqtada qator **uzoqlashadi** (dumaloq qavs:$x < 5$).
+     Bu uzoqlashuvchi garmonik qatordir. Demak, $x = 5$ nuqtada qator **uzoqlashadi** (dumaloq qavs: $x < 5$).
    - **$x = -1$ nuqtada:**
      
 $$
@@ -116,7 +120,7 @@ I = \int_0^{0.5} e^{-x^2} dx
 $$
 
 #### Yechish:
-$e^t = 1 + t + \frac{t^2}{2!} + \dots$Makloren yoyilmasida$t = -x^2$ deb olamiz:
+$e^t = 1 + t + \frac{t^2}{2!} + \dots$ Makloren yoyilmasida $t = -x^2$ deb olamiz:
 $$
 e^{-x^2} = 1 - x^2 + \frac{x^4}{2} - \frac{x^6}{6} + \dots
 $$
@@ -125,7 +129,12 @@ $$
 I = \int_0^{0.5} \left(1 - x^2 + \frac{x^4}{2} - \frac{x^6}{6} + \dots\right) dx = \left[ x - \frac{x^3}{3} + \frac{x^5}{10} - \frac{x^7}{42} + \dots \right]_0^{0.5}
 $$
 $x = 0.5 = \frac{1}{2}$ qiymatlarini qo'yamiz:
-- 1-had: $0.5$- 2-had:$-\frac{(0.5)^3}{3} = -\frac{0.125}{3} \approx -0.04167$- 3-had:$\frac{(0.5)^5}{10} = \frac{0.03125}{10} = 0.003125$- 4-had:$-\frac{(0.5)^7}{42} = -\frac{0.0078125}{42} \approx -0.000186 < 0.001$Leybnits qoidasiga ko'ra 4-had$0.001$ dan kichik bo'lgani uchun uni tashlab yuboramiz:
+- 1-had: $0.5$
+- 2-had: $-\frac{(0.5)^3}{3} = -\frac{0.125}{3} \approx -0.04167$
+- 3-had: $\frac{(0.5)^5}{10} = \frac{0.03125}{10} = 0.003125$
+- 4-had: $-\frac{(0.5)^7}{42} = -\frac{0.0078125}{42} \approx -0.000186 < 0.001$
+
+Leybnits qoidasiga ko'ra 4-had $0.001$ dan kichik bo'lgani uchun uni tashlab yuboramiz:
 $$
 I \approx 0.5 - 0.04167 + 0.003125 \approx 0.461
 $$
@@ -137,11 +146,11 @@ Elementar integrallanmaydigan Gauss integrali bir zumda yuqori aniqlikda hisobla
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **Chegara nuqtalarini tekshirishni unutish:**
->    Radius $R = 3$topilgach, shunchaki$(-1; 5)$deb javob yozib ketish imtihonda ball yo'qotilishiga sabab bo'ladi. Chegara nuqtalar$x = -1$va$x = 5$ ni har doim alohida qatorga qo'yib tekshirish shart!
+>    Radius $R = 3$ topilgach, shunchaki $(-1; 5)$ deb javob yozib ketish imtihonda ball yo'qotilishiga sabab bo'ladi. Chegara nuqtalar $x = -1$ va $x = 5$ ni har doim alohida qatorga qo'yib tekshirish shart!
 > 2. **Juft darajali qatorlar (masalan $\sum c_n x^{2n}$):**
->    Agar qatorda $x$ning faqat juft darajalari qatnashsa, Dalamber alomatidan chiqqan limit$|x^2| < R$bo'ladi, ya'ni haqiqiy radius$\sqrt{R}$ ga teng bo'ladi!
+>    Agar qatorda $x$ ning faqat juft darajalari qatnashsa, Dalamber alomatidan chiqqan limit $|x^2| < R$ bo'ladi, ya'ni haqiqiy radius $\sqrt{R}$ ga teng bo'ladi!
 > 3. **Yaqinlashish markazi $x_0$ ni inobatga olmaslik:**
->    Agar qator $(x - 4)^n$shaklida bo'lsa va$R = 2$chiqsa, yaqinlashish oralig'i$(-2; 2)$emas, balki$(4-2; 4+2) = (2; 6)$ bo'ladi.
+>    Agar qator $(x - 4)^n$ shaklida bo'lsa va $R = 2$ chiqsa, yaqinlashish oralig'i $(-2; 2)$ emas, balki $(4-2; 4+2) = (2; 6)$ bo'ladi.
 
 ---
 
@@ -171,7 +180,7 @@ Demak, yaqinlashish sohasi: $x \in [-1; 1]$.
 </details>
 
 ### 2-mashq
-$f(x) = \cos(2x)$funksiyasining$x = 0$ atrofidagi Makloren qatorini yozing.
+$f(x) = \cos(2x)$ funksiyasining $x = 0$ atrofidagi Makloren qatorini yozing.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

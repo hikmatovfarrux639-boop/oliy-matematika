@@ -49,10 +49,10 @@ Eyler formulasi ($e^{i\alpha} = \cos\alpha + i\sin\alpha$) orqali trigonometrik 
 
 > **Ta'rif (To'g'ri va Teskari Fure almashtirishi):**
 > Integrallanuvchi $f(t)$ ($\int_{-\infty}^\infty |f(t)| dt < \infty$) funksiyaning **Fure almashtirishi (spektri)** deb quyidagi funksiyaga aytiladi:
-> $$\hat{f}(\omega) = \mathcal{F}\{f(t)\} = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$$
+> $$\hat{f}(\omega) = \mathcal{F}\{f(t)\} = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt $$
 >
 > Spektrdan asl signalni tiklash — **teskari Fure almashtirishi**:
-> $$f(t) = \mathcal{F}^{-1}\{\hat{f}(\omega)\} = \frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} d\omega$$
+> $$ f(t) = \mathcal{F}^{-1}\{\hat{f}(\omega)\} = \frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} d\omega $$
 
 ---
 

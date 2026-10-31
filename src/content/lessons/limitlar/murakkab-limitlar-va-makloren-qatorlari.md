@@ -20,7 +20,7 @@ Ushbu amaliy darsda biz **mathprofi.ru** tizimlashtirgan barcha 5 ta ajoyib limi
 
 Klassik darsliklarda faqat ikkita ajoyib limit (trigonometrik va $e$ soni) o'rgatilsa-da, zamonaviy amaliyotda hisoblashlarni 5-10 barobar tezlashtiruvchi **5 ta ajoyib limit** oilasi qo'llaniladi.
 
-### 5 ta ajoyib limit formulalari ($x \to 0$yoki$x \to \infty$)
+### 5 ta ajoyib limit formulalari ($x \to 0$ yoki $x \to \infty$)
 
 1. **Birinchi ajoyib limit (Trigonometrik):**
 $$
@@ -75,13 +75,13 @@ Agar $\alpha(x) \to 0$ bo'lsa, quyidagi ekvivalentliklar ($\alpha \sim \beta \if
 
 > [!WARNING]
 > **Ekvivalentlikning Oltin Qoidasi:** Ekvivalent cheksiz kichiklarni faqat va faqat **ko'paytuvchi** va **bo'luvchi** o'rniga qo'yish mumkin!
-> Ifodalar **ayirilayotgan** yoki **qo'shilayotgan** bo'lsa (masalan, $\lim_{x \to 0} \frac{x - \sin x}{x^3}$), ularni shunchaki $\sin x \sim x$deb almashtirib$x - x = 0$ deyish **QO'POL XATO** hisoblanadi. Bunday nozik ayirmalarni yechish uchun 4-bo'limdagi Makloren qatori talab qilinadi.
+> Ifodalar **ayirilayotgan** yoki **qo'shilayotgan** bo'lsa (masalan, $\lim_{x \to 0} \frac{x - \sin x}{x^3}$), ularni shunchaki $\sin x \sim x$ deb almashtirib $x - x = 0$ deyish **QO'POL XATO** hisoblanadi. Bunday nozik ayirmalarni yechish uchun 4-bo'limdagi Makloren qatori talab qilinadi.
 
 ---
 
 ## 2. $x \to a$ ($a \neq 0$) da o'zgaruvchini siljitish usuli ($t = x - a$)
 
-Barcha ajoyib limitlar va ekvivalentliklar $x \to 0$bo'lgandagina ishlaydi. Agar limitda$x \to a$ ($a \neq 0$, masalan $x \to 1, x \to \pi, x \to \pi/2$) berilgan bo'lsa, **siljitish almashtirishi** kiritiladi:
+Barcha ajoyib limitlar va ekvivalentliklar $x \to 0$ bo'lgandagina ishlaydi. Agar limitda $x \to a$ ($a \neq 0$, masalan $x \to 1, x \to \pi, x \to \pi/2$) berilgan bo'lsa, **siljitish almashtirishi** kiritiladi:
 $$
 t = x - a \implies x = a + t, \quad \text{bunda agar } x \to a \text{ bo'lsa, } t \to 0
 $$
@@ -93,8 +93,8 @@ L = \lim_{x \to \pi} \frac{\sin x}{\pi^2 - x^2}
 $$
 
 **Yechish:**
-1. $x = \pi$ni qo'yganda$\left[\frac{0}{0}\right]$ noaniqligi hosil bo'ladi.
-2. Siljitish kiritamiz: $t = x - \pi \implies x = \pi + t$. $x \to \pi$da$t \to 0$.
+1. $x = \pi$ ni qo'yganda $\left[\frac{0}{0}\right]$ noaniqligi hosil bo'ladi.
+2. Siljitish kiritamiz: $t = x - \pi \implies x = \pi + t$. $x \to \pi$ da $t \to 0$.
 3. Surat va maxrajni almashtiramiz:
 $$
 \sin x = \sin(\pi + t) = -\sin t
@@ -120,7 +120,7 @@ $$
 **Yechish:**
 $x = 1 + t$ ($t \to 0$) almashtirishini bajaramiz.
 1. Surat: $x^x - 1 = e^{x \ln x} - 1$.
-2. $t \to 0$da$x \to 1$, shuning uchun $x \ln x \to 1 \cdot \ln 1 = 0$.
+2. $t \to 0$ da $x \to 1$, shuning uchun $x \ln x \to 1 \cdot \ln 1 = 0$.
 3. 6-ekvivalentlikka ko'ra: $e^{u} - 1 \sim u$, demak $e^{x \ln x} - 1 \sim x \ln x$.
 4. Shunday qilib:
 $$
@@ -136,7 +136,7 @@ Lopital qoidasi ($\lim \frac{f}{g} = \lim \frac{f'}{g'}$) juda mashhur bo'lsa-da
 1. **Ko'paytmali hosilalarning qor ko'chkisi kabi kengayishi:**
    Agar surat yoki maxrajda ko'paytmalar qatnashsa, har bir hosila olishda hadlar soni eksponentsial oshadi: $(uv)' = u'v + uv'$, ikkinchi hosilada 4 ta had, uchinchi hosilada 8 ta had hosil bo'ladi.
 2. **Siklik aylanma hosilalar:**
-   Masalan, $\sqrt{x^2+1}$yoki$\sin(\ln x)$ kabi funksiyalarda hosila olgani sari ifoda soddalashmaydi, aksincha yanada murakkablashadi.
+   Masalan, $\sqrt{x^2+1}$ yoki $\sin(\ln x)$ kabi funksiyalarda hosila olgani sari ifoda soddalashmaydi, aksincha yanada murakkablashadi.
 3. **Hisoblash xatolarining ko'pligi:**
    4-5 marta ketma-ket hosila olish talab qilinganda, hatto tajribali repetitor yoki talaba ham bitta manfiy ishora yoki koeffitsiyentda adashib, butun misolni barbod qilishi ehtimoli 80% dan yuqori.
 
@@ -150,7 +150,7 @@ Matematik analizning eng qudratli kashfiyotlaridan biri shuki, $x \to 0$ atrofid
 $$
 f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \dots + \frac{f^{(n)}(0)}{n!}x^n + o(x^n)
 $$
-bu yerda $o(x^n)$—$x^n$ ga nisbatan yuqori tartibli cheksiz kichik miqdor.
+bu yerda $o(x^n)$ — $x^n$ ga nisbatan yuqori tartibli cheksiz kichik miqdor.
 
 ### Asosiy 6 ta funksiyaning Makloren yoyilmalari jadvali ($x \to 0$ da):
 
@@ -188,7 +188,7 @@ $$
 
 > [!TIP]
 > **Qaysi tartibgacha yoyish kerak? (Oltin Qoida):**
-> 1. Avval **maxrajning** bosh (eng kichik) darajasini aniqlang. Masalan, maxraj $x^3$bo'lsa, suratdagi barcha funksiyalarni aynan$x^3$ gacha yoyish kifoya!
+> 1. Avval **maxrajning** bosh (eng kichik) darajasini aniqlang. Masalan, maxraj $x^3$ bo'lsa, suratdagi barcha funksiyalarni aynan $x^3$ gacha yoyish kifoya!
 > 2. Undan yuqori barcha darajalarni ($x^4, x^5, \dots$) umumlashtirib bitta qilib $+ o(x^3)$ deb yozish mumkin va ular hisoblashda darhol yo'qoladi.
 
 ---
@@ -203,15 +203,17 @@ $$
 
 **Lopital usuli bo'yicha tahlil:**
 Maxraj $x - \sin x$ bo'lib, uning hosilalari:
-1-hosila: $1 - \cos x \to 0$2-hosila:$\sin x \to 0$3-hosila:$\cos x \to 1 \neq 0$
+- 1-hosila: $1 - \cos x \to 0$
+- 2-hosila: $\sin x \to 0$
+- 3-hosila: $\cos x \to 1 \neq 0$
 Demak, Lopital qoidasini ketma-ket **3 marta** qo'llash kerak! Suratda esa manfiy ishoralar tufayli adashish ehtimoli juda yuqori.
 
 **Makloren usulida yechish (atigi 2 qatorda!):**
-Maxrajda $x - \sin x$borligini ko'rib, yoyilmani$x^3$ gacha olamiz:
+Maxrajda $x - \sin x$ borligini ko'rib, yoyilmani $x^3$ gacha olamiz:
 $$
 x - \sin x = x - \left(x - \frac{x^3}{6} + o(x^3)\right) = \frac{x^3}{6} + o(x^3)
 $$
-Maxrajning bosh hadi darajasi $x^3$ekan. Endi suratni ham$x^3$ gacha yoyamiz:
+Maxrajning bosh hadi darajasi $x^3$ ekan. Endi suratni ham $x^3$ gacha yoyamiz:
 $$
 e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + o(x^3)
 $$
@@ -253,7 +255,7 @@ $$
 $$
 \cos x - e^{-\frac{x^2}{2}} = \left(1 - \frac{x^2}{2} + \frac{x^4}{24}\right) - \left(1 - \frac{x^2}{2} + \frac{x^4}{8}\right) + o(x^4)
 $$
-$1$va$-\frac{x^2}{2}$ hadlari o'zaro qisqarib ketadi:
+$1$ va $-\frac{x^2}{2}$ hadlari o'zaro qisqarib ketadi:
 $$
 = \left(\frac{1}{24} - \frac{1}{8}\right)x^4 + o(x^4) = \left(\frac{1 - 3}{24}\right)x^4 + o(x^4) = -\frac{2}{24}x^4 + o(x^4) = -\frac{x^4}{12} + o(x^4)
 $$
@@ -274,7 +276,7 @@ $$
 1. Maxrajda ko'paytma bor. 5-ekvivalentlikka ko'ra $1 - \cos x \sim \frac{x^2}{2}$.
 Maxraj: $x \cdot \frac{x^2}{2} = \frac{x^3}{2}$.
 Demak, maxrajning darajasi $x^3$ ga teng!
-2. Suratdagi $\arctan x$ni$x^3$ gacha yoyamiz:
+2. Suratdagi $\arctan x$ ni $x^3$ gacha yoyamiz:
 $$
 \arctan x = x - \frac{x^3}{3} + o(x^3)
 $$
@@ -295,14 +297,14 @@ $$
 
 > [!CAUTION]
 > **1-Tuzoq: Ayirmada ekvivalentlikni ko'r-ko'rona qo'llash.**
-> Masalan, $\lim_{x \to 0} \frac{\tan x - \sin x}{x^3}$da$\tan x \sim x$va$\sin x \sim x$deb yozib, suratni$x - x = 0$ qilish mutlaqo noto'g'ri! To'g'ri yo'l:
+> Masalan, $\lim_{x \to 0} \frac{\tan x - \sin x}{x^3}$ da $\tan x \sim x$ va $\sin x \sim x$ deb yozib, suratni $x - x = 0$ qilish mutlaqo noto'g'ri! To'g'ri yo'l:
 > $\tan x - \sin x = \tan x (1 - \cos x) \sim x \cdot \frac{x^2}{2} = \frac{x^3}{2} \implies L = \frac{1}{2}$.
 >
 > **2-Tuzoq: Yoyilmani erta to'xtatish.**
-> Agar maxraj $x^4$bo'lsa-yu, siz suratni$x^2$ gacha yoyib to'xtatsangiz, yuqori darajadagi hal qiluvchi koeffitsiyentlarni yo'qotasiz va natija xato chiqadi.
+> Agar maxraj $x^4$ bo'lsa-yu, siz suratni $x^2$ gacha yoyib to'xtatsangiz, yuqori darajadagi hal qiluvchi koeffitsiyentlarni yo'qotasiz va natija xato chiqadi.
 >
 > **3-Tuzoq: Siljitishda ishoralarni adashtirish.**
-> Agar $x \to -2$bo'lsa, yangi o'zgaruvchi$t = x - (-2) = x + 2$bo'ladi, shunda$x = t - 2$. Minus ishoralarni doimo qavs ichida ehtiyotkorlik bilan oching.
+> Agar $x \to -2$ bo'lsa, yangi o'zgaruvchi $t = x - (-2) = x + 2$ bo'ladi, shunda $x = t - 2$. Minus ishoralarni doimo qavs ichida ehtiyotkorlik bilan oching.
 
 ---
 
@@ -314,14 +316,14 @@ Quyidagi limitlarni hisoblang va o'z javoblaringizni tekshiring:
 $$
 \lim_{x \to 0} \frac{\ln(1 + 2x) - 2\sin x + 2x^2}{x^3}
 $$
-*Ko'rsatma:* $\ln(1+2x) = 2x - \frac{(2x)^2}{2} + \frac{(2x)^3}{3} + o(x^3)$va$\sin x = x - \frac{x^3}{6} + o(x^3)$ yoyilmalaridan foydalaning.
+*Ko'rsatma:* $\ln(1+2x) = 2x - \frac{(2x)^2}{2} + \frac{(2x)^3}{3} + o(x^3)$ va $\sin x = x - \frac{x^3}{6} + o(x^3)$ yoyilmalaridan foydalaning.
 *Javob:* $\mathbf{3}$
 
 2. **Mashq:**
 $$
 \lim_{x \to 0} \frac{e^{x^2} - \cos x}{x^2}
 $$
-*Ko'rsatma:* $e^{x^2} = 1 + x^2 + o(x^2)$va$\cos x = 1 - \frac{x^2}{2} + o(x^2)$.
+*Ko'rsatma:* $e^{x^2} = 1 + x^2 + o(x^2)$ va $\cos x = 1 - \frac{x^2}{2} + o(x^2)$.
 *Javob:* $\mathbf{\frac{3}{2}}$
 
 3. **Mashq (Siljitish usuli):**
@@ -341,5 +343,5 @@ $$
 $$
 \lim_{x \to 0} \frac{\sqrt{1 + 2x} - \sqrt[3]{1 + 3x}}{x^2}
 $$
-*Ko'rsatma:* $(1 + u)^\alpha = 1 + \alpha u + \frac{\alpha(\alpha-1)}{2}u^2$formulasini$\alpha = 1/2$va$\alpha = 1/3$uchun$x^2$ gacha yoying.
-*Javob:* $\mathbf{-\frac{1}{2}}$
+*Ko'rsatma:* $(1 + u)^\alpha = 1 + \alpha u + \frac{\alpha(\alpha-1)}{2}u^2$ formulasini $\alpha = 1/2$ va $\alpha = 1/3$ uchun $x^2$ gacha yoying.
+*Javob:* $\mathbf{\frac{1}{2}}$

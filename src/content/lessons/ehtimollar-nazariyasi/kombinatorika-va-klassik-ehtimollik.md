@@ -22,8 +22,8 @@ Bugungi kunda esa bu fan butun zamonaviy dunyoning boshqaruv dvigateli hisoblana
 Ehtimollikni hisoblash uchun ko'pincha barcha mumkin bo'lgan variantlar sonini to'g'ri sanash talab etiladi.
 
 ### A) Ko'paytirish va Qo'shish qoidalari:
-- **Ko'paytirish qoidasi ("VA"):** Agar $A$amalni$m$xil usulda, shundan so'ng$B$amalni$n$xil usulda bajarish mumkin bo'lsa, ikkala amalni ketma-ket bajarish$m \cdot n$ xil usulda bo'ladi.
-- **Qo'shish qoidasi ("YOKI"):** Agar $A$yoki$B$amallardan birini tanlash kerak bo'lsa:$m + n$ usul.
+- **Ko'paytirish qoidasi ("VA"):** Agar $A$ amalni $m$ xil usulda, shundan so'ng $B$ amalni $n$ xil usulda bajarish mumkin bo'lsa, ikkala amalni ketma-ket bajarish $m \cdot n$ xil usulda bo'ladi.
+- **Qo'shish qoidasi ("YOKI"):** Agar $A$ yoki $B$ amallardan birini tanlash kerak bo'lsa: $m + n$ usul.
 
 ### B) O'rin almashtirish (Permutatsiya — $P_n$):
 $n$ ta turli elementning tartibini almashtirish usullari soni:
@@ -32,14 +32,14 @@ P_n = n! = 1 \cdot 2 \cdot 3 \dots n \quad (0! = 1)
 $$
 
 ### C) O'rinlashtirish (Joylashtirish — $A_n^k$):
-$n$ta elementdan$k$ tasini tanlab, ularni **tartib bilan (o'rni muhim bo'lgan holda)** joylashtirish usullari soni:
+$n$ ta elementdan $k$ tasini tanlab, ularni **tartib bilan (o'rni muhim bo'lgan holda)** joylashtirish usullari soni:
 $$
 A_n^k = \frac{n!}{(n - k)!} = n(n - 1)\dots(n - k + 1)
 $$
 *(Masalan: 10 ta yuguruvchidan 1-, 2-, 3-o'rin egalarini aniqlash).*
 
 ### D) Kombinatsiya (Guruhlash — $C_n^k$):
-$n$ta elementdan$k$ tasini **tartibiga qaramasdan (faqat tarkibi muhim)** tanlab olish usullari soni:
+$n$ ta elementdan $k$ tasini **tartibiga qaramasdan (faqat tarkibi muhim)** tanlab olish usullari soni:
 $$
 C_n^k = \binom{n}{k} = \frac{n!}{k!(n - k)!}
 $$
@@ -55,7 +55,7 @@ Xossasi: $C_n^k = C_n^{n - k}, \quad C_n^0 = C_n^n = 1, \quad C_n^1 = n$.
 - **Tasodifiy hodisa ($A$):** ro'y berishi ham, bermasligi ham mumkin bo'lgan hodisa.
 
 > **Klassik ta'rif:**
-> Agar sinovning barcha mumkin bo'lgan oqibatlari soni $n$ta teng imkoniyatli va o'zaro birgalikda bo'lmagan elementar hodisalardan iborat bo'lib, ulardan$m$tasi$A$ hodisaning ro'y berishiga qulaylik tug'dirsa:
+> Agar sinovning barcha mumkin bo'lgan oqibatlari soni $n$ ta teng imkoniyatli va o'zaro birgalikda bo'lmagan elementar hodisalardan iborat bo'lib, ulardan $m$ tasi $A$ hodisaning ro'y berishiga qulaylik tug'dirsa:
 >
 > 
 $$
@@ -73,7 +73,7 @@ $$
 ## 3. Quti va sharlar modeli (Gipergeometrik sxema)
 
 Imtihonlarda eng ko'p uchraydigan klassik masala:
-> Qutida jami $N$ta buyum bor, ulardan$M$tasi yaroqli (yoki oq shar). Qutidan tavakkaliga$n$ta buyum olindi. Olinganlar ichida aynan$k$ tasi yaroqli (oq shar) bo'lishi ehtimolligi:
+> Qutida jami $N$ ta buyum bor, ulardan $M$ tasi yaroqli (yoki oq shar). Qutidan tavakkaliga $n$ ta buyum olindi. Olinganlar ichida aynan $k$ tasi yaroqli (oq shar) bo'lishi ehtimolligi:
 >
 > 
 $$
@@ -117,7 +117,7 @@ Ikkita zar bir vaqtda tashlanganda ochkolar yig'indisi $8$ bo'lish ehtimolligini
 
 **Yechilishi:**
 - Barcha variantlar (ko'paytirish qoidasi): $n = 6 \cdot 6 = 36$.
-- Yig'indisi $8$bo'ladigan qulay juftliklar:$(2, 6), (3, 5), (4, 4), (5, 3), (6, 2) \implies m = 5$ ta.
+- Yig'indisi $8$ bo'ladigan qulay juftliklar: $(2, 6), (3, 5), (4, 4), (5, 3), (6, 2) \implies m = 5$ ta.
 $$
 P(A) = \frac{5}{36} \approx 0.139
 $$
@@ -131,7 +131,7 @@ Qutida 12 ta detal bo'lib, ulardan 4 tasi bo'yalgan. Tavakkaliga 3 ta detal olin
 
 **Yechilishi:**
 - Jami detallar: $N = 12$, bo'yalgan: $M = 4$, bo'yalmagan: $12 - 4 = 8$ ta.
-- Olinyapti: $n = 3$ta detal. Ulardan$k = 2$tasi bo'yalgan bo'lishi kerak (demak,$3 - 2 = 1$ tasi bo'yalmagan).
+- Olinyapti: $n = 3$ ta detal. Ulardan $k = 2$ tasi bo'yalgan bo'lishi kerak (demak, $3 - 2 = 1$ tasi bo'yalmagan).
 1. Barcha mumkin bo'lgan variantlar:
    $$n = C_{12}^3 = \frac{12 \cdot 11 \cdot 10}{3 \cdot 2 \cdot 1} = 220$$
 2. Qulay variantlar:
@@ -147,7 +147,7 @@ Qutida 12 ta detal bo'lib, ulardan 4 tasi bo'yalgan. Tavakkaliga 3 ta detal olin
 Ikki do'st soat 12:00 va 13:00 oralig'ida uchrashishga kelishib oldilar. Har biri kelgach, ikkinchisini 15 daqiqa kutadi va ketadi. Ularning uchrashish ehtimolligi qanday?
 
 **Yechilishi:**
-Vaqtni daqiqalarda hisoblaymiz ($0$dan$60$ gacha).
+Vaqtni daqiqalarda hisoblaymiz ($0$ dan $60$ gacha).
 1-do'stning kelish vaqti $x$, 2-do'stniki $y$ bo'lsin.
 - Barcha mumkin bo'lgan holatlar sohasi: $0 \le x \le 60, 0 \le y \le 60$ kvadrat.
   Maydoni: $S_G = 60 \cdot 60 = 3600$.
@@ -161,18 +161,18 @@ Vaqtni daqiqalarda hisoblaymiz ($0$dan$60$ gacha).
 - Ehtimollik:
   $$P = \frac{S_g}{S_G} = \frac{1575}{3600} = \frac{7}{16} = 0.4375$$
 
-**Javob:** $0.4375$(yoki$43.75\%$)
+**Javob:** $0.4375$(yoki $43.75\%$)
 
 ---
 
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
-1. **$C_n^k$va$A_n^k$ ni adashtirish:**
+1. **$C_n^k$ va $A_n^k$ ni adashtirish:**
    > Agar tanlanayotgan elementlarning o'rni/vazifasi muhim bo'lsa (masalan: Prezident, kotib, xazinachi) $\implies A_n^k$ ishlatiladi.
    > Agar faqat tarkibi muhim bo'lib, o'rni rol o'ynamasa (masalan: komandaga 3 kishi tanlash) $\implies C_n^k$ ishlatiladi.
 
 2. **Ehtimollik 1 dan katta yoki manfiy chiqishi:**
-   > Agar hisob-kitobingizda ehtimollik $P(A) = 1.3$yoki$P(A) < 0$chiqsa, qayerdadir jiddiy xato qilgansiz! Ehtimollik faqat$[0; 1]$ oralig'ida bo'ladi.
+   > Agar hisob-kitobingizda ehtimollik $P(A) = 1.3$ yoki $P(A) < 0$ chiqsa, qayerdadir jiddiy xato qilgansiz! Ehtimollik faqat $[0; 1]$ oralig'ida bo'ladi.
 
 3. **Klassik formulani teng imkoniyatli bo'lmagan hodisalarga qo'llash:**
    > "Ko'chaga chiqqanimda dinozavrni uchratishim yoki uchratmasligim mumkin, demak ehtimollik $\frac{1}{2}$" — bu mashhur xatodir. Klassik formula faqat barcha natijalar ro'y berish imkoniyati teng bo'lgandagina o'rinli!

@@ -345,7 +345,7 @@ $$
 ---
 
 ### 3-mashq
-Quyidagi qator yaqinlashuvchi ekanligini isbotlang:
+Quyidagi qatorning yaqinlashishini tekshiring:
 $$
 \sum_{n=1}^\infty \frac{n! \cdot e^n}{n^{n + 3/2}}
 $$

@@ -38,7 +38,7 @@ $$u(x, 0) = \varphi(x) \quad (\text{boshlang'ich shakl}), \quad \frac{\partial u
 
 > **D'Alamber formulasi:**
 > Ushbu Koshi masalasining yagona yechimi quyidagi formula orqali beriladi:
-> $$u(x, t) = \frac{\varphi(x - at) + \varphi(x + at)}{2} + \frac{1}{2a} \int_{x - at}^{x + at} \psi(s) ds$$
+> $$ u(x, t) = \frac{\varphi(x - at) + \varphi(x + at)}{2} + \frac{1}{2a} \int_{x - at}^{x + at} \psi(s) ds $$
 > Bu formula boshlang'ich profilning $a$ tezlik bilan o'ngga va chapga tarqaluvchi ikkita yuguruvchi to'lqin yig'indisi ekanligini ifodalaydi.
 
 ---

@@ -171,15 +171,19 @@ $$
    $$
    1 = (3Ax^2 + 2Bx + C)(x^4-1) - (Ax^3 + Bx^2 + Cx + D)(4x^3) + P_2(x)(x^4-1)
    $$
-5. Toq va juftlik xossalaridan foydalansak, $B=D=F=H=0$ bo'ladi.
-   Hisoblashlar natijasida: $A = -\frac{1}{4}, C = 0, E = 0, G = \frac{3}{4}$ chiqadi.
+5. Ayniyatda mos darajalar oldidagi koeffitsiyentlarni tenglashtirib:
+   $A = 0, B = 0, C = -\frac{1}{4}, D = 0$ hamda $E = 0, F = 0, G = 0, H = -\frac{3}{4}$ ni topamiz. Demak, $P_1(x) = -\frac{1}{4}x$ va $P_2(x) = -\frac{3}{4}$.
 6. Natijada algebraik qism darhol ajraladi:
    $$
-   I_3 = -\frac{x}{4(x^4-1)} + \frac{3}{4} \int \frac{dx}{x^4 - 1}
+   I_3 = -\frac{x}{4(x^4-1)} - \frac{3}{4} \int \frac{dx}{x^4 - 1}
    $$
    Ikkinchi integral esa bir karrali bo'lib, standart logarifmik va arktangens qismlarga oson ajraladi:
    $$
    \int \frac{dx}{x^4-1} = \frac{1}{4}\ln\left|\frac{x-1}{x+1}\right| - \frac{1}{2}\operatorname{arctg} x
+   $$
+   Shunday qilib, to'liq javob:
+   $$
+   I_3 = -\frac{x}{4(x^4-1)} - \frac{3}{16}\ln\left|\frac{x-1}{x+1}\right| + \frac{3}{8}\operatorname{arctg} x + C
    $$
 
 ---

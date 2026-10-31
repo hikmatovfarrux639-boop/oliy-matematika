@@ -44,7 +44,7 @@ Absolyut hosila o'lchov birliklariga (so'm, dollar, kilogramm) bog'liq. Har xil 
 
 > **Ta'rif:** $y = f(x)$ funksiyaning $x$ bo'yicha elastikligi deb, argument $x$ bir foizga o'zgarganda funksiya $y$ necha foizga o'zgarishini ko'rsatuvchi miqdorga aytiladi:
 > 
-> $$E_x(y) = \lim_{\Delta x \to 0} \frac{\Delta y / y}{\Delta x / x} = \frac{x}{y} \cdot y'$$
+> $$ E_x(y) = \lim_{\Delta x \to 0} \frac{\Delta y / y}{\Delta x / x} = \frac{x}{y} \cdot y'$$
 
 - **Talabning narx bo'yicha elastikligi ($E_p(D)$):**
   Narx oshganda talab kamaygani sababli $D'(p) \le 0$, shu sababli modul bo'yicha qaraladi:

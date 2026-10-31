@@ -63,11 +63,11 @@ Intuitiv tushuncha qanchalik sodda tuyulmasin, fanda qat'iy matematik apparat za
 
 > **Ta'rif (Koshi):** Agar ixtiyoriy $\varepsilon > 0$ soni uchun shunday $\delta = \delta(\varepsilon) > 0$ soni mavjud bo'lsaki, argumentning $0 < |x - a| < \delta$ tengsizlikni qanoatlantiruvchi barcha $x$ qiymatlarida
 > 
-> $$|f(x) - L| < \varepsilon$$
+> $$|f(x) - L| < \varepsilon $$
 > 
 > tengsizlik bajarilsa, u holda $L$ soni $f(x)$ funksiyaning $x \to a$ dagi **limiti** deyiladi va quyidagicha belgilanadi:
 > 
-> $$\lim_{x \to a} f(x) = L$$
+> $$\lim_{x \to a} f(x) = L $$
 
 **Geometrik ma'nosi:** Siz $y = L$ to'g'ri chiziq atrofida qanchalik tor $\varepsilon$-yo'lakcha (oraliq $(L - \varepsilon, L + \varepsilon)$) tanlamang, doimo $x = a$ nuqta atrofida shunday $\delta$-oraliq topiladiki, grafigimizning shu oraliqqa mos barcha nuqtalari to'liq siz tanlagan gorizontal yo'lakcha ichiga tushadi.
 
@@ -86,7 +86,7 @@ Ko'pincha funksiya nuqtaga chapdan va o'ngdan har xil yaqinlashadi:
 > **Limit mavjudligining fundamental mezoni:**
 > $\lim_{x \to a} f(x) = L$ limit mavjud bo'lishi uchun funksiyaning chap va o'ng limitlari mavjud hamda o'zaro teng bo'lishi zarur va yetarlidir:
 > 
-> $$\lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L$$
+> $$\lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L $$
 
 ### 5. Chekli limitlar haqidagi arifmetik teoremalar
 
@@ -126,13 +126,13 @@ $$\lim_{x \to 2} \frac{x^3 - 2x^2 - 4x + 8}{x^2 - 5x + 6}$$
 **Yechish:**
 1. **Tekshirish:** $x = 2$ qiymatini qo'yamiz:
    - Surat: $2^3 - 2(2^2) - 4(2) + 8 = 8 - 8 - 8 + 8 = 0$
-   - Mahraj: $2^2 - 5(2) + 6 = 4 - 10 + 6 = 0$
-   Biz $\left[ \frac{0}{0} \right]$ noaniqligiga duch keldik. Bezu teoremasiga binoan, surat ham, mahraj ham $(x - 2)$ ko'paytuvchiga qoldiqsiz bo'linadi.
+   - Maxraj: $2^2 - 5(2) + 6 = 4 - 10 + 6 = 0$
+   Biz $\left[ \frac{0}{0} \right]$ noaniqligiga duch keldik. Bezu teoremasiga binoan, surat ham, maxraj ham $(x - 2)$ ko'paytuvchiga qoldiqsiz bo'linadi.
 
 2. **Ko'paytuvchilarga ajratish:**
    - Suratni guruhlaymiz:
      $$x^3 - 2x^2 - 4x + 8 = x^2(x - 2) - 4(x - 2) = (x - 2)(x^2 - 4) = (x - 2)(x - 2)(x + 2) = (x - 2)^2(x + 2)$$
-   - Mahrajni Viyet teoremasi bo'yicha ajratamiz:
+   - Maxrajni Viyet teoremasi bo'yicha ajratamiz:
      $$x^2 - 5x + 6 = (x - 2)(x - 3)$$
 
 3. **Qisqartirish:** $x \to 2$ bo'lgani uchun $x \neq 2$, demak $(x - 2)$ ga qisqartirish to'liq qonuniy:
@@ -151,12 +151,12 @@ $$\lim_{x \to 2} \frac{x^3 - 2x^2 - 4x + 8}{x^2 - 5x + 6}$$
 $$\lim_{x \to 0} \frac{\sqrt{1 + 3x} - \sqrt{1 - 2x}}{x^2 + 2x}$$
 
 **Yechish:**
-1. **Tekshirish:** $x = 0$ da surat $\sqrt{1} - \sqrt{1} = 0$, mahraj $0 + 0 = 0$. Ya'ni $\left[ \frac{0}{0} \right]$.
-2. **Qo'shmasiga ko'paytirish:** Suratdagi ildizlardan qutulish uchun kasrning surati va mahrajini $(\sqrt{1 + 3x} + \sqrt{1 - 2x})$ ga ko'paytiramiz:
+1. **Tekshirish:** $x = 0$ da surat $\sqrt{1} - \sqrt{1} = 0$, maxraj $0 + 0 = 0$. Ya'ni $\left[ \frac{0}{0} \right]$.
+2. **Qo'shmasiga ko'paytirish:** Suratdagi ildizlardan qutulish uchun kasrning surati va maxrajini $(\sqrt{1 + 3x} + \sqrt{1 - 2x})$ ga ko'paytiramiz:
    $$\lim_{x \to 0} \frac{(\sqrt{1 + 3x} - \sqrt{1 - 2x})(\sqrt{1 + 3x} + \sqrt{1 - 2x})}{(x^2 + 2x)(\sqrt{1 + 3x} + \sqrt{1 - 2x})}$$
 3. $(a - b)(a + b) = a^2 - b^2$ formulasini qo'llaymiz:
    $$(\sqrt{1 + 3x})^2 - (\sqrt{1 - 2x})^2 = (1 + 3x) - (1 - 2x) = 1 + 3x - 1 + 2x = 5x$$
-4. Mahrajdan $x$ ni qavsdan tashqariga chiqaramiz:
+4. Maxrajdan $x$ ni qavsdan tashqariga chiqaramiz:
    $$x^2 + 2x = x(x + 2)$$
 5. Ifodani birlashtiramiz va $x \neq 0$ bo'lgani uchun $x$ ga qisqartiramiz:
    $$\lim_{x \to 0} \frac{5x}{x(x + 2)(\sqrt{1 + 3x} + \sqrt{1 - 2x})} = \lim_{x \to 0} \frac{5}{(x + 2)(\sqrt{1 + 3x} + \sqrt{1 - 2x})}$$
@@ -239,11 +239,11 @@ $$\lim_{x \to 1} \frac{x^3 - 3x + 2}{x^4 - 4x + 3}$$
 **Bosqichma-bosqich yechim:**
 1. $x = 1$ ni qo'yib ko'ramiz:
    - Surat: $1 - 3 + 2 = 0$
-   - Mahraj: $1 - 4 + 3 = 0$
+   - Maxraj: $1 - 4 + 3 = 0$
    Bu $\left[ \frac{0}{0} \right]$ noaniqligi.
-2. Surat va mahrajni $(x - 1)$ ga burchakli bo'lish yoki Gorner sxemasi orqali ajratamiz:
+2. Surat va maxrajni $(x - 1)$ ga burchakli bo'lish yoki Gorner sxemasi orqali ajratamiz:
    - Surat: $x^3 - 3x + 2 = (x - 1)(x^2 + x - 2) = (x - 1)(x - 1)(x + 2) = (x - 1)^2 (x + 2)$
-   - Mahraj: $x^4 - 4x + 3 = (x - 1)(x^3 + x^2 + x - 3) = (x - 1)(x - 1)(x^2 + 2x + 3) = (x - 1)^2 (x^2 + 2x + 3)$
+   - Maxraj: $x^4 - 4x + 3 = (x - 1)(x^3 + x^2 + x - 3) = (x - 1)(x - 1)(x^2 + 2x + 3) = (x - 1)^2 (x^2 + 2x + 3)$
 3. Kasrni $(x - 1)^2$ ga qisqartiramiz:
    $$\lim_{x \to 1} \frac{(x - 1)^2 (x + 2)}{(x - 1)^2 (x^2 + 2x + 3)} = \lim_{x \to 1} \frac{x + 2}{x^2 + 2x + 3}$$
 4. $x = 1$ ni qo'yamiz:
@@ -262,15 +262,15 @@ $$\lim_{x \to 7} \frac{\sqrt{x + 2} - 3}{\sqrt{x - 3} - 2}$$
 <summary>Yechimni ko'rish</summary>
 
 **Bosqichma-bosqich yechim:**
-1. $x = 7$ da: surat $\sqrt{9} - 3 = 0$, mahraj $\sqrt{4} - 2 = 0$. $\left[ \frac{0}{0} \right]$ noaniqligi.
-2. Suratni ham, mahrajni ham o'z qo'shmasiga ko'paytiramiz:
+1. $x = 7$ da: surat $\sqrt{9} - 3 = 0$, maxraj $\sqrt{4} - 2 = 0$. $\left[ \frac{0}{0} \right]$ noaniqligi.
+2. Suratni ham, maxrajni ham o'z qo'shmasiga ko'paytiramiz:
    - Suratning qo'shmasi: $\sqrt{x + 2} + 3$
-   - Mahrajning qo'shmasi: $\sqrt{x - 3} + 2$
+   - maxrajning qo'shmasi: $\sqrt{x - 3} + 2$
 3. Ifoda quyidagi ko'rinishga keladi:
    $$\lim_{x \to 7} \frac{[(\sqrt{x + 2} - 3)(\sqrt{x + 2} + 3)] \cdot (\sqrt{x - 3} + 2)}{[(\sqrt{x - 3} - 2)(\sqrt{x - 3} + 2)] \cdot (\sqrt{x + 2} + 3)}$$
 4. Kvadratlar ayirmasini hisoblaymiz:
    - Suratdagi qavs: $(x + 2) - 9 = x - 7$
-   - Mahrajdagi qavs: $(x - 3) - 4 = x - 7$
+   - Maxrajdagi qavs: $(x - 3) - 4 = x - 7$
 5. $(x - 7)$ ko'paytuvchilar qisqaradi:
    $$\lim_{x \to 7} \frac{\sqrt{x - 3} + 2}{\sqrt{x + 2} + 3}$$
 6. $x = 7$ ni qo'yamiz:
@@ -291,11 +291,11 @@ $$\lim_{x \to 1} \frac{x^n - 1}{x^m - 1}$$
 **Bosqichma-bosqich yechim:**
 1. Umumiy algebraik formulani eslaymiz:
    $$a^k - 1 = (a - 1)(a^{k-1} + a^{k-2} + \dots + a + 1)$$
-2. Surat va mahrajni ushbu formula bo'yicha yoyamiz:
+2. Surat va maxrajni ushbu formula bo'yicha yoyamiz:
    $$\frac{x^n - 1}{x^m - 1} = \frac{(x - 1)(x^{n-1} + x^{n-2} + \dots + x + 1)}{(x - 1)(x^{m-1} + x^{m-2} + \dots + x + 1)}$$
 3. $(x - 1)$ ga qisqartirib, $x \to 1$ da limitga o'tamiz:
    - Suratda jami $n$ ta $1$ soni yig'indisi: $1 + 1 + \dots + 1 = n$
-   - Mahrajda jami $m$ ta $1$ soni yig'indisi: $1 + 1 + \dots + 1 = m$
+   - maxrajda jami $m$ ta $1$ soni yig'indisi: $1 + 1 + \dots + 1 = m$
 4. Natija: $\frac{n}{m}$.
 
 **Javob:** $\frac{n}{m}$
@@ -311,7 +311,7 @@ $$\lim_{x \to 1} \frac{x^n - 1}{x^m - 1}$$
 2. **Irratsional ifodalarni tezkor baholash (Nyuton binomi / hosila orqali):**
    Kichik $\alpha$ lar uchun $\sqrt{1 + \alpha} \approx 1 + \frac{1}{2}\alpha$. Masalan, 3-misolimizdagi $\sqrt{1 + 3x} \approx 1 + \frac{3}{2}x$ va $\sqrt{1 - 2x} \approx 1 - x$. 
    Surat: $(1 + 1.5x) - (1 - x) = 2.5x$.
-   Mahraj: $x(x + 2) \approx 2x$.
+   Maxraj: $x(x + 2) \approx 2x$.
    Nisbat: $\frac{2.5x}{2x} = 1.25 = \frac{5}{4}$. Bir necha soniyada qoralama tekshiruvi tayyor!
 
 3. **Epsilon-delta isbotlarida qolip:**

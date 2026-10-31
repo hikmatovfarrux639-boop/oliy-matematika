@@ -9,8 +9,8 @@ description: "To'liq orttirma, to'liq differensial, differensial shaklining inva
 
 Bir o'zgaruvchili funksiyalarda faqat bitta argument o'zgarishi mumkin edi ($dy = f'(x) dx$). Ammo ko'p o'lchamli dunyoda barcha parametrlar bir vaqtning o'zida o'zgarishi odatiy holdir:
 - To'g'ri to'rtburchakli yer maydonining yuzi $S = x \cdot y$: eni ham ($\Delta x$), bo'yi ham ($\Delta y$) o'zgarganda umumiy maydon qanchaga o'zgaradi?
-- Elektr zanjirida Om qonuni: $I = \frac{U}{R}$— ham kuchlanish$U$, ham qarshilik $R$ bir vaqtda o'zgarganda tok kuchi qanchaga o'zgaradi?
-- Jismning kinetik energiyasi: $E = \frac{1}{2} m v^2$— ham massa$m$, ham tezlik $v$ o'zgarganda energiya tebranishi qanday bo'ladi?
+- Elektr zanjirida Om qonuni: $I = \frac{U}{R}$ — ham kuchlanish $U$, ham qarshilik $R$ bir vaqtda o'zgarganda tok kuchi qanchaga o'zgaradi?
+- Jismning kinetik energiyasi: $E = \frac{1}{2} m v^2$ — ham massa $m$, ham tezlik $v$ o'zgarganda energiya tebranishi qanday bo'ladi?
 
 Bunday ko'p omilli o'zgarishlarning bosh chiziqli qismini aniqlash uchun **to'liq differensial** apparati qo'llaniladi.
 
@@ -18,7 +18,7 @@ Bunday ko'p omilli o'zgarishlarning bosh chiziqli qismini aniqlash uchun **to'li
 
 ## 1. To'liq orttirma va Differensiallanuvchanlik
 
-Faraz qilaylik, $z = f(x, y)$funksiya biror sohada aniqlangan bo'lsin. Argumentlar mos ravishda$\Delta x$va$\Delta y$ orttirmalar olganda, funksiyaning **to'liq orttirmasi**:
+Faraz qilaylik, $z = f(x, y)$ funksiya biror sohada aniqlangan bo'lsin. Argumentlar mos ravishda $\Delta x$ va $\Delta y$ orttirmalar olganda, funksiyaning **to'liq orttirmasi**:
 
 $$
 \Delta z = f(x + \Delta x, \, y + \Delta y) - f(x, y)
@@ -33,9 +33,9 @@ $$
 > 
 $$
 >
-> bu yerda $\Delta x \to 0, \Delta y \to 0$da$\alpha, \beta \to 0$, u holda $f(x, y)$ funksiya berilgan nuqtada **differensiallanuvchi** deyiladi.
+> bu yerda $\Delta x \to 0, \Delta y \to 0$ da $\alpha, \beta \to 0$, u holda $f(x, y)$ funksiya berilgan nuqtada **differensiallanuvchi** deyiladi.
 >
-> Bu orttirmaning $\Delta x$va$\Delta y$larga nisbatan bosh chiziqli qismi$A \Delta x + B \Delta y$funksiyaning **to'liq differensiali**$dz$ deb ataladi.
+> Bu orttirmaning $\Delta x$ va $\Delta y$ larga nisbatan bosh chiziqli qismi $A \Delta x + B \Delta y$ funksiyaning **to'liq differensiali**$dz$ deb ataladi.
 
 ### Asosiy teorema:
 Agar $z = f(x, y)$ funksiya nuqtada differensiallanuvchi bo'lsa, uning xususiy hosilalari mavjud bo'lib:
@@ -48,7 +48,7 @@ tengliklar o'rinli bo'ladi.
 
 ## 2. To'liq differensial formulasi
 
-Erkli o'zgaruvchilar uchun $dx = \Delta x$va$dy = \Delta y$ deb qabul qilingani sababli, ikki o'zgaruvchili funksiyaning **to'liq differensiali**:
+Erkli o'zgaruvchilar uchun $dx = \Delta x$ va $dy = \Delta y$ deb qabul qilingani sababli, ikki o'zgaruvchili funksiyaning **to'liq differensiali**:
 
 $$
 dz = \frac{\partial z}{\partial x} dx + \frac{\partial z}{\partial y} dy
@@ -60,7 +60,7 @@ du = \frac{\partial u}{\partial x} dx + \frac{\partial u}{\partial y} dy + \frac
 $$
 
 ### Differensial shaklining invariantligi:
-To'liq differensialning ajoyib xossasi: agar $x$va$y$erkli o'zgaruvchilar bo'lmay, o'zlari ham biror boshqa$u, v$ parametrlarga bog'liq bo'lsa ham ($x = x(u, v), y = y(u, v)$), to'liq differensial shakli o'zgarmaydi:
+To'liq differensialning ajoyib xossasi: agar $x$ va $y$ erkli o'zgaruvchilar bo'lmay, o'zlari ham biror boshqa $u, v$ parametrlarga bog'liq bo'lsa ham ($x = x(u, v), y = y(u, v)$), to'liq differensial shakli o'zgarmaydi:
 $$
 dz = z'_x dx + z'_y dy
 $$
@@ -70,7 +70,7 @@ Bu differensial shaklining **birinchi tartibli invariantlik xossasi** deyiladi.
 
 ## 3. Taqribiy hisoblash formulasi
 
-$\Delta x$va$\Delta y$ nolga intilganda, funksiyaning to'liq orttirmasi uning to'liq differensialiga juda yaqin bo'ladi:
+$\Delta x$ va $\Delta y$ nolga intilganda, funksiyaning to'liq orttirmasi uning to'liq differensialiga juda yaqin bo'ladi:
 $$
 \Delta z \approx dz
 $$
@@ -89,7 +89,7 @@ $$
 
 ## 4. O'lchovlardagi xatoliklarni baholash
 
-Laboratoriya va muhandislik amaliyotida $x, y$kattaliklar o'lchanganda ularning chetki xatoliklari$\Delta x, \Delta y$ ma'lum bo'ladi:
+Laboratoriya va muhandislik amaliyotida $x, y$ kattaliklar o'lchanganda ularning chetki xatoliklari $\Delta x, \Delta y$ ma'lum bo'ladi:
 - **Absolyut xatolik bahosi:**
   
 $$
@@ -107,7 +107,7 @@ $$
 
 ## Bitta masalani 2 xil usulda yechish va solishtirish
 
-> **Masala:** To'g'ri to'rtburchakli metall qutining o'lchamlari $x = 10$sm,$y = 20$sm,$z = 30$sm. Harorat o'zgarishi natijasida o'lchamlar mos ravishda$x = 10.1$sm,$y = 19.8$sm,$z = 30.2$sm ga o'zgardi. Quti hajmining o'zgarishi$\Delta V$ ni taqribiy hisoblang va nisbiy o'zgarishini aniqlang.
+> **Masala:** To'g'ri to'rtburchakli metall qutining o'lchamlari $x = 10$ sm, $y = 20$ sm, $z = 30$ sm. Harorat o'zgarishi natijasida o'lchamlar mos ravishda $x = 10.1$ sm, $y = 19.8$ sm, $z = 30.2$ sm ga o'zgardi. Quti hajmining o'zgarishi $\Delta V$ ni taqribiy hisoblang va nisbiy o'zgarishini aniqlang.
 
 ### 1-usul: To'liq differensial formulasini to'g'ridan-to'g'ri qo'llash
 Hajm formulasi: $V(x, y, z) = x \cdot y \cdot z$.
@@ -151,20 +151,20 @@ $$
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Trigonometrik burchak orttirmalari faqat RADIANda bo'lishi shart:**
->    Agar masalada $z = \sin(x) \cos(y)$berilib,$x$burchak$1^\circ$ga oshdi deyilsa,$\Delta x = 1$ deb qo'yish halokatli xatodir! Radian o'lchoviga o'tish shart:
+>    Agar masalada $z = \sin(x) \cos(y)$ berilib, $x$ burchak $1^\circ$ ga oshdi deyilsa, $\Delta x = 1$ deb qo'yish halokatli xatodir! Radian o'lchoviga o'tish shart:
 >    $$\Delta x = 1^\circ = \frac{\pi}{180} \approx 0.01745 \text{ rad}$$
 >    Aks holda natija deyarli 57 barobar xato chiqadi!
 > 2. **Orttirma ishorasi:** Agar o'lcham kamaysa, uning orttirmasi manfiy bo'ladi ($\Delta y = -0.2$). Manfiy ishorani yo'qotib qo'yish butun hisob-kitobni xato qiladi.
 > 3. **Xususiy differensial bilan to'liq differensialni chalkashtirish:**
->    $d_x z = \frac{\partial z}{\partial x} dx$— faqat$x$bo'yicha xususiy differensial. To'liq differensial$dz$ esa barcha o'zgaruvchilar bo'yicha differensiallarning yig'indisidir.
+>    $d_x z = \frac{\partial z}{\partial x} dx$ — faqat $x$ bo'yicha xususiy differensial. To'liq differensial $dz$ esa barcha o'zgaruvchilar bo'yicha differensiallarning yig'indisidir.
 
 ---
 
 ## Mustaqil yechish uchun amaliy mashqlar
 
-1. $z = \arctan\left(\frac{y}{x}\right)$funksiyaning to'liq differensiali$dz$ ni toping va soddalashtiring.
+1. $z = \arctan\left(\frac{y}{x}\right)$ funksiyaning to'liq differensiali $dz$ ni toping va soddalashtiring.
 2. $\sqrt{(1.04)^2 + (1.97)^3}$ ifodaning taqribiy qiymatini to'liq differensial yordamida hisoblang ($x_0 = 1, y_0 = 2$).
-3. Silindrning radiusi $R = 2$m, balandligi$H = 5$m. Agar o'lchashdagi absolyut xatoliklar$\Delta R = 0.02$m va$\Delta H = 0.05$m bo'lsa, silindr hajmi$V = \pi R^2 H$ ning chetki absolyut va nisbiy xatoligini toping.
+3. Silindrning radiusi $R = 2$ m, balandligi $H = 5$ m. Agar o'lchashdagi absolyut xatoliklar $\Delta R = 0.02$ m va $\Delta H = 0.05$ m bo'lsa, silindr hajmi $V = \pi R^2 H$ ning chetki absolyut va nisbiy xatoligini toping.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
 <summary style="font-weight: 700; color: var(--primary);">👉 Yechimni tekshirish</summary>

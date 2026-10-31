@@ -19,7 +19,7 @@ Bunga sabab buyuk fransuz matematigi Ogyusten Lui Koshi (1789–1857) tomonidan 
 
 > **Ta'rif:**
 > Bir qiymatli analitik $f(z)$ funksiyaning yakkalangan maxsus $z_0$ nuqtadagi **chegirmasi** (belgilanishi: $\operatorname{Res}[f(z), z_0]$) deb, $z_0$ nuqtani o'z ichiga olgan va boshqa maxsus nuqtalarni o'z ichiga olmagan yetarlicha kichik $\gamma$ yopiq kontur bo'yicha olingan integralning $\frac{1}{2\pi i}$ ga ko'paytmasiga aytiladi:
-> $$\operatorname{Res}[f(z), z_0] = \frac{1}{2\pi i} \oint_{\gamma} f(z) dz$$
+> $$\operatorname{Res}[f(z), z_0] = \frac{1}{2\pi i} \oint_{\gamma} f(z) dz $$
 
 Loran qatori bilan bog'liqligi:
 Funksiyaning $z_0$ atrofidagi Loran qatori $f(z) = \sum_{n=-\infty}^\infty c_n (z - z_0)^n$ bo'lsa, $\oint_\gamma (z - z_0)^n dz$ faqat $n = -1$ bo'lganda $2\pi i$ ga teng, qolgan barcha butun $n$ larda esa 0 ga teng. Shuning uchun:

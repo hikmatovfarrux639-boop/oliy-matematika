@@ -199,8 +199,8 @@ $$y' + y^2 - 2 e^x y + e^{2x} - e^x = 0, \quad y(0) = 2$$
    *Javob:* $y(x) = \frac{1}{x} + \frac{1}{C x^3 - x/2}$.
 
 3. Tenglamani xususiy yechim $y_1 = \sin x$ yordamida yeching:
-   $$y' - y^2 \cos x + y \cos x \sin x - \cos x = 0$$
-   *Javob:* $y(x) = \sin x + \frac{1}{1 + C e^{\sin x}}$.
+   $$y' + y^2 - 2y \sin x + \sin^2 x - \cos x = 0$$
+   *Javob:* $y(x) = \sin x + \frac{1}{x + C}$.
 
 4. Koshi masalasini yeching:
    $$y' - y^2 + 2y - 1 = 0, \quad y(0) = 2$$

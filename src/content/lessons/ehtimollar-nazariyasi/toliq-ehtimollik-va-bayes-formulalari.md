@@ -29,13 +29,13 @@ $$
 
 ## 2. To'liq ehtimollik formulasi
 
-Agar $A$hodisasi faqat$H_1, H_2, \dots, H_n$ gipotezalardan birortasi bilan birgalikda ro'y berishi mumkin bo'lsa, uning ro'y berishining **to'liq ehtimoli**:
+Agar $A$ hodisasi faqat $H_1, H_2, \dots, H_n$ gipotezalardan birortasi bilan birgalikda ro'y berishi mumkin bo'lsa, uning ro'y berishining **to'liq ehtimoli**:
 
 $$
 P(A) = \sum_{i=1}^n P(H_i) \cdot P(A | H_i)
 $$
 
-bu yerda $P(A | H_i)$—$H_i$gipoteza ro'y bergan paytdagi$A$ hodisasining shartli ehtimolidir.
+bu yerda $P(A | H_i)$ — $H_i$ gipoteza ro'y bergan paytdagi $A$ hodisasining shartli ehtimolidir.
 
 ```
                          Gipotezalar orqali A hodisa
@@ -60,7 +60,7 @@ bu yerda $P(A | H_i)$—$H_i$gipoteza ro'y bergan paytdagi$A$ hodisasining shart
 
 Tomas Bayes kashf etgan ushbu formula tajriba natijasi ma'lum bo'lgandan so'ng, dastlabki taxminlarni (gipotezalarni) **qayta baholash** imkonini beradi:
 - **Aprior ehtimollik:** $P(H_k)$ — tajriba o'tkazilishidan oldingi dastlabki ehtimollik.
-- **Aposterior ehtimollik:** $P(H_k | A)$—$A$hodisasi ro'y bergani ma'lum bo'lgach, aynan$H_k$ sabab bo'lganligining yangilangan ehtimoli:
+- **Aposterior ehtimollik:** $P(H_k | A)$ — $A$ hodisasi ro'y bergani ma'lum bo'lgach, aynan $H_k$ sabab bo'lganligining yangilangan ehtimoli:
 
 $$
 P(H_k | A) = \frac{P(H_k) \cdot P(A | H_k)}{P(A)} = \frac{P(H_k) \cdot P(A | H_k)}{\sum_{i=1}^n P(H_i) \cdot P(A | H_i)}
@@ -70,7 +70,7 @@ $$
 
 ## 4. Hayotiy paradoks: Tibbiy test testi
 
-> **Masala:** Kam uchraydigan kasallik bilan aholining $1\%$ qismi og'rigan ($0.01$). Kasallikni aniqlovchi laboratoriya testi $95\%$aniqlikka ega (ya'ni kasal odamda$95\%$holatda musbat chiqadi, sog'lom odamda esa$5\%$ holatda soxta musbat chiqadi). 
+> **Masala:** Kam uchraydigan kasallik bilan aholining $1\%$ qismi og'rigan ($0.01$). Kasallikni aniqlovchi laboratoriya testi $95\%$ aniqlikka ega (ya'ni kasal odamda $95\%$ holatda musbat chiqadi, sog'lom odamda esa $5\%$ holatda soxta musbat chiqadi). 
 > Tasodifiy tanlangan fuqaroning testi **musbat** chiqdi. Uning haqiqatan kasal bo'lish ehtimoli qanday?
 
 ### Yechish:
@@ -149,7 +149,7 @@ Ko'rib turganingizdek, mantiqiy chastotalar usuli formulalarsiz ham aynan bir xi
 
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Gipotezalar yig'indisi 1 ga teng emasligi:** Eng ko'p uchraydigan xato — gipotezalar to'liq guruhni tashkil qilmasligi ($\sum P(H_i) \ne 1$). Har doim masalani boshlashdan oldin gipotezalar ehtimollari yig'indisini tekshirib oling.
-> 2. **Shartli ehtimollarni almashtirib qo'yish:** $P(A | H_k)$bilan$P(H_k | A)$mutlaqo boshqa-boshqa tushunchalar!$P(A | H_k)$berilgan shartdagi natija ehtimoli bo'lsa,$P(H_k | A)$ natija ro'y bergandan keyingi sabab ehtimolidir.
+> 2. **Shartli ehtimollarni almashtirib qo'yish:** $P(A | H_k)$ bilan $P(H_k | A)$ mutlaqo boshqa-boshqa tushunchalar!$P(A | H_k)$ berilgan shartdagi natija ehtimoli bo'lsa, $P(H_k | A)$ natija ro'y bergandan keyingi sabab ehtimolidir.
 
 ---
 

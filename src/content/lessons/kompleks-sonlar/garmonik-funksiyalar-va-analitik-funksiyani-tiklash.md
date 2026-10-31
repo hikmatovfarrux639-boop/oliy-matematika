@@ -7,11 +7,11 @@ description: "Laplas tenglamasi, garmonik funksiyalar, Koshi-Riman shartlari orq
 
 ## Kirish: Matematika va fizika uyg'unligi
 
-Haqiqiy analizda ikkita o'zgaruvchili funksiyalar $u(x, y)$va$v(x, y)$ bir-biridan butunlay mustaqil bo'lishi mumkin. Ammo kompleks o'zgaruvchilar olamida ($f(z) = u + iv$) ular bir vujudning ikki bo'lagi kabi chambarchas bog'langan!
+Haqiqiy analizda ikkita o'zgaruvchili funksiyalar $u(x, y)$ va $v(x, y)$ bir-biridan butunlay mustaqil bo'lishi mumkin. Ammo kompleks o'zgaruvchilar olamida ($f(z) = u + iv$) ular bir vujudning ikki bo'lagi kabi chambarchas bog'langan!
 
 Agar $f(z)$ funksiya biror sohada analitik (ya'ni kompleks ma'noda differensiallanuvchi) bo'lsa:
-1. Uning haqiqiy qismi $u(x, y)$va mavhum qismi$v(x, y)$ **Laplas tenglamasi**ni qanoatlantirishi shart;
-2. Faqat bitta qismi (masalan, $u(x, y)$) ma'lum bo'lsa, ikkinchi qismi $v(x, y)$va butun boshli$f(z)$ funksiya **yagona aniqlikda to'liq tiklanadi**!
+1. Uning haqiqiy qismi $u(x, y)$ va mavhum qismi $v(x, y)$ **Laplas tenglamasi**ni qanoatlantirishi shart;
+2. Faqat bitta qismi (masalan, $u(x, y)$) ma'lum bo'lsa, ikkinchi qismi $v(x, y)$ va butun boshli $f(z)$ funksiya **yagona aniqlikda to'liq tiklanadi**!
 
 Bu xususiyat gidrodinamika (oqim potensiali va oqim funksiyasi), aerodinamika va elektrostatikada maydonlarni hisoblashning bosh kalitidir.
 
@@ -30,11 +30,11 @@ Biz bilamizki, analitiklikning zaruriy va yetarli sharti Koshi-Riman tengliklari
 $$
 \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
 $$
-1-tenglikdan $x$bo'yicha, 2-tenglikdan$y$ bo'yicha hosila olib qo'shsak:
+1-tenglikdan $x$ bo'yicha, 2-tenglikdan $y$ bo'yicha hosila olib qo'shsak:
 $$
 \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = \frac{\partial^2 v}{\partial x \partial y} - \frac{\partial^2 v}{\partial y \partial x} = 0
 $$
-Xuddi shunday $v(x, y)$uchun ham$\Delta v = 0$ kelib chiqadi.
+Xuddi shunday $v(x, y)$ uchun ham $\Delta v = 0$ kelib chiqadi.
 > [!IMPORTANT] Teorema
 > Har qanday analitik funksiyaning haqiqiy va mavhum qismlari albatta garmonik funksiyalar bo'ladi. Ular **o'zaro qo'shma garmonik funksiyalar** deyiladi.
 
@@ -42,7 +42,7 @@ Xuddi shunday $v(x, y)$uchun ham$\Delta v = 0$ kelib chiqadi.
 
 ## 2. Analitik funksiyani tiklashning 2 ta qudratli usuli
 
-Faraz qilaylik, bizga analitik $f(z) = u(x, y) + i v(x, y)$funksiyaning haqiqiy qismi$u(x, y)$va$f(0) = z_0$ boshlang'ich qiymati berilgan bo'lsin.
+Faraz qilaylik, bizga analitik $f(z) = u(x, y) + i v(x, y)$ funksiyaning haqiqiy qismi $u(x, y)$ va $f(0) = z_0$ boshlang'ich qiymati berilgan bo'lsin.
 
 ### 1-usul: Koshi-Riman tengliklari orqali ketma-ket tiklash (Klassik usul)
 1. Koshi-Rimanning 1-shartidan: $\frac{\partial v}{\partial y} = \frac{\partial u}{\partial x}$. O'ng tomon ma'lum bo'lgani uchun uni $y$ bo'yicha integrallaymiz:
@@ -57,19 +57,19 @@ $$
    \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}
    
 $$
-   Bu tenglamadan noma'lum $\varphi'(x)$topiladi va oddiy integrallash bilan$\varphi(x)$ aniqlanadi.
-3. Topilgan $u(x, y)$va$v(x, y)$larni birlashtirib,$x = \frac{z+\bar{z}}{2}, y = \frac{z-\bar{z}}{2i}$orqali$f(z)$ yoziladi.
+   Bu tenglamadan noma'lum $\varphi'(x)$ topiladi va oddiy integrallash bilan $\varphi(x)$ aniqlanadi.
+3. Topilgan $u(x, y)$ va $v(x, y)$ larni birlashtirib, $x = \frac{z+\bar{z}}{2}, y = \frac{z-\bar{z}}{2i}$ orqali $f(z)$ yoziladi.
 
 ---
 
 ### 2-usul: Koshi almashtirish usuli ($y = 0, x = z$) (Haqiqiy super-usul!)
 Bu usul imtihonda vaqtni 5 barobar tejaydi!
-Biz bilamizki, $f(z)$faqat$z = x + iy$ga bog'liq. U holda$y = 0$deb olsak,$z = x$ bo'ladi!
+Biz bilamizki, $f(z)$ faqat $z = x + iy$ ga bog'liq. U holda $y = 0$ deb olsak, $z = x$ bo'ladi!
 Chunki funksiya analitik bo'lgani sababli, hosila yo'nalishga bog'liq emas:
 $$
 f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial u}{\partial x} - i \frac{\partial u}{\partial y}
 $$
-Ushbu tenglikka shunchaki $x = z$va$y = 0$ qo'yib integrallasak kifoya:
+Ushbu tenglikka shunchaki $x = z$ va $y = 0$ qo'yib integrallasak kifoya:
 $$
 f(z) = \int \left[ \frac{\partial u}{\partial x}(z, 0) - i \frac{\partial u}{\partial y}(z, 0) \right] dz + C
 $$
@@ -79,7 +79,7 @@ $$
 ## 3. Masalalarni 2 xil usulda tahlil qilish
 
 ### Masala:
-Haqiqiy qismi $u(x, y) = x^3 - 3xy^2 + 2x$bo'lgan analitik$f(z)$ funksiyani toping ($f(0) = 0$).
+Haqiqiy qismi $u(x, y) = x^3 - 3xy^2 + 2x$ bo'lgan analitik $f(z)$ funksiyani toping ($f(0) = 0$).
 
 #### 1-qadam: Garmoniklikni tekshirish
 $$
@@ -132,7 +132,7 @@ Hosilalarni eslaymiz:
 $$
 \frac{\partial u}{\partial x} = 3x^2 - 3y^2 + 2, \qquad \frac{\partial u}{\partial y} = -6xy
 $$
-Bularga to'g'ridan-to'g'ri $x = z$va$y = 0$ qo'yamiz:
+Bularga to'g'ridan-to'g'ri $x = z$ va $y = 0$ qo'yamiz:
 $$
 \frac{\partial u}{\partial x}(z, 0) = 3z^2 - 0 + 2 = 3z^2 + 2
 $$
@@ -156,7 +156,7 @@ Hech qanday murakkab algebraik guruhlashlarsiz 3 qatorda yechim topildi!
 > [!WARNING] Imtihondagi tuzoqlar va ko'p uchraydigan xatoliklar
 > 1. **Garmoniklikni tekshirmasdan yechish:** Agar berilgan funksiya Laplas tenglamasini qanoatlantirmasa ($\Delta u \ne 0$), bunday analitik funksiya **umuman mavjud emas**! Imtihonda garmoniklikni tekshirish alohida ball beradi.
 > 2. **Koshi-Rimanda minus ishorasini yo'qotish:** $\frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}$ dagi minus ishora eng ko'p unutiladigan joydir.
-> 3. **Mavhum qism $v(x, y)$berilganda:** Agar$u$emas, balki$v(x, y)$berilgan bo'lsa:$f'(z) = \frac{\partial v}{\partial y}(z, 0) + i \frac{\partial v}{\partial x}(z, 0)$ bo'ladi.
+> 3. **Mavhum qism $v(x, y)$ berilganda:** Agar $u$ emas, balki $v(x, y)$ berilgan bo'lsa: $f'(z) = \frac{\partial v}{\partial y}(z, 0) + i \frac{\partial v}{\partial x}(z, 0)$ bo'ladi.
 
 ---
 
@@ -182,7 +182,7 @@ Funksiya garmonikdir.
 </details>
 
 ### 2-mashq
-$u(x, y) = e^x \cos y$bo'yicha$f(0) = 1$shartni qanoatlantiruvchi analitik$f(z)$ funksiyani 2-usul yordamida toping.
+$u(x, y) = e^x \cos y$ bo'yicha $f(0) = 1$ shartni qanoatlantiruvchi analitik $f(z)$ funksiyani 2-usul yordamida toping.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

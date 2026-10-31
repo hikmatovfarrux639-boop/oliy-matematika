@@ -25,7 +25,7 @@ $t \ge 0$ da aniqlangan $f(t)$ funksiya quyidagi shartlarni qanoatlantirsa, u **
 
 > **Ta'rif (Laplas almashtirishi):**
 > $f(t)$ asl funksiyaning **Laplas tasviri** deb kompleks $p = s + i\sigma$ parametrga bog'liq quyidagi xosmas integralga aytiladi:
-> $$F(p) = \mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-pt} dt$$
+> $$ F(p) = \mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-pt} dt $$
 > Bu integral $\text{Re}(p) > s_0$ yarim tekislikda yaqinlashadi va analitik funksiya bo'ladi.
 
 Teskari o'tish esa **teskari Laplas almashtirishi** orqali amalga oshiriladi:

@@ -206,4 +206,4 @@ Matritsa usuli bilan yeching:
    - *Javob:* $\det A = 1 \implies A^{-1} = \begin{pmatrix} 7 & -4 \\ -5 & 3 \end{pmatrix} \implies x_1 = 1, x_2 = 2$.
 
 2. $\begin{cases} 2x_1 - x_2 + x_3 = 2 \\ 3x_1 + 2x_2 + 2x_3 = -2 \\ x_1 - 2x_2 + x_3 = 1 \end{cases}$
-   - *Javob:* $x_1 = -1, x_2 = -1, x_3 = 3$.
+   - *Javob:* $x_1 = 2, x_2 = -1, x_3 = -3$.

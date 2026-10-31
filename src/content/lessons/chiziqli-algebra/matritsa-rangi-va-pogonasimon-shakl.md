@@ -207,5 +207,5 @@ $\lambda^2 - 1 = 0 \implies (\lambda - 1)(\lambda + 1) = 0 \implies \lambda = 1$
 1. $A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 6 & 9 \end{pmatrix}$ matritsaning rangini toping.
    - *Javob:* 2- va 3-satrlar 1-satrga proporsional $\implies \operatorname{rank}(A) = 1$.
 
-2. $A = \begin{pmatrix} 1 & 3 & 5 & -1 \\ 2 & -1 & -3 & 4 \\ 5 & 1 & -1 & 7 \\ 7 & 7 & 9 & 1 \end{pmatrix}$ matritsaning rangini Gauss usuli bilan toping.
-   - *Javob:* $\operatorname{rank}(A) = 2$.
+2. $A = \begin{pmatrix} 1 & 3 & 5 & -1 \\ 2 & -1 & -3 & 4 \\ 5 & 1 & -1 & 7 \\ 7 & 7 & 9 & 5 \end{pmatrix}$ matritsaning rangini Gauss usuli bilan toping.
+   - *Javob:* $\operatorname{rank}(A) = 2$ (chunki $S_3 = S_1 + 2S_2$ va $S_4 = 3S_1 + 2S_2$ bo'lib, ikkita satr nollashadi).

@@ -25,16 +25,14 @@ Ushbu tenglama yordamida nafaqat mexanik tebranishlar, balki radiotexnikadagi te
 
 > **Standart ko'rinish:**
 >
-> 
-$$
+> $$
 > y'' + p y' + q y = 0
-> 
-$$
+> $$
 >
-> bu yerda $p$va$q$ — haqiqiy o'zgarmas sonlar.
+> bu yerda $p$ va $q$ — haqiqiy o'zgarmas sonlar.
 
 ### Yechimlar strukturasi (FYS):
-Agar $y_1(x)$va$y_2(x)$ tenglamaning chiziqli erkli ikkita xususiy yechimi (Fundamental Yechimlar Sistemasi) bo'lsa, umumiy yechim ularning chiziqli kombinatsiyasi bo'ladi:
+Agar $y_1(x)$ va $y_2(x)$ tenglamaning chiziqli erkli ikkita xususiy yechimi (Fundamental Yechimlar Sistemasi) bo'lsa, umumiy yechim ularning chiziqli kombinatsiyasi bo'ladi:
 
 $$
 y = C_1 y_1(x) + C_2 y_2(x)
@@ -49,7 +47,7 @@ $$
 
 ## 2. Xarakteristik tenglama usuli (Eyler usuli)
 
-Yechimni $y = e^{kx}$ko'rinishida qidiramiz. Hosilalari:$y' = k e^{kx}, y'' = k^2 e^{kx}$.
+Yechimni $y = e^{kx}$ ko'rinishida qidiramiz. Hosilalari: $y' = k e^{kx}, y'' = k^2 e^{kx}$.
 Tenglamaga qo'ysak, $e^{kx} \neq 0$ bo'lgani sababli oddiy algebraik kvadrat tenglama hosil bo'ladi:
 
 $$
@@ -80,11 +78,11 @@ $$
 - $y^*$ — bir jinsli bo'lmagan tenglamaning biror **xususiy yechimi**.
 
 ### Noma'lum koeffitsiyentlar usuli (Maxsus o'ng tomonlar uchun):
-| O'ng tomon $f(x)$| Xususiy yechim$y^*$ ko'rinishi |
+| O'ng tomon $f(x)$| Xususiy yechim $y^*$ ko'rinishi |
 |---|---|
-| $P_n(x)$ko'phad |$y^* = x^r \cdot Q_n(x)$ ($q \neq 0$bo'lsa$r = 0$, $q = 0$bo'lsa$r = 1$) |
-| $P_n(x) e^{ax}$|$y^* = x^r \cdot Q_n(x) e^{ax}$ ($a$xarakteristik ildiz bo'lmasa$r=0$, 1 karrali ildiz bo'lsa $r=1$) |
-| $A\cos(\omega x) + B\sin(\omega x)$|$y^* = x^r (M\cos\omega x + N\sin\omega x)$ ($\pm i\omega$ildiz bo'lsa$r=1$ — **Rezonans!**) |
+| $P_n(x)$ ko'phad |$y^* = x^r \cdot Q_n(x)$ ($q \neq 0$ bo'lsa $r = 0$, $q = 0$ bo'lsa $r = 1$) |
+| $P_n(x) e^{ax}$|$y^* = x^r \cdot Q_n(x) e^{ax}$ ($a$ xarakteristik ildiz bo'lmasa $r=0$, 1 karrali ildiz bo'lsa $r=1$) |
+| $A\cos(\omega x) + B\sin(\omega x)$|$y^* = x^r (M\cos\omega x + N\sin\omega x)$ ($\pm i\omega$ ildiz bo'lsa $r=1$ — **Rezonans!**) |
 
 ---
 
@@ -159,7 +157,8 @@ $$
 3. Birinchi hosilasini hisoblaymiz:
    $$y'(x) = -3C_1 \sin 3x + 3C_2 \cos 3x$$
 4. Boshlang'ich shartlarni qo'yamiz ($x = 0$):
-   - $y(0) = C_1 \cos(0) + C_2 \sin(0) = C_1 = 1$-$y'(0) = -3C_1 \sin(0) + 3C_2 \cos(0) = 3C_2 = 0 \implies C_2 = 0$
+   - $y(0) = C_1 \cos(0) + C_2 \sin(0) = C_1 = 1$
+   - $y'(0) = -3C_1 \sin(0) + 3C_2 \cos(0) = 3C_2 = 0 \implies C_2 = 0$
 5. Xususiy yechim:
    $$y(x) = \cos 3x$$
 
@@ -176,12 +175,15 @@ $$
 **Yechilishi:**
 1. Mos bir jinsli tenglama: $y'' - 4y = 0 \implies k^2 - 4 = 0 \implies k = \pm 2$.
    $$y_0 = C_1 e^{2x} + C_2 e^{-2x}$$
-2. O'ng tomon $f(x) = 8x$— birinchi darajali ko'phad. Shuning uchun xususiy yechimni$y^* = Ax + B$ ko'rinishida qidiramiz:
-   - $(y^*)' = A$-$(y^*)'' = 0$
+2. O'ng tomon $f(x) = 8x$ — birinchi darajali ko'phad. Shuning uchun xususiy yechimni $y^* = Ax + B$ ko'rinishida qidiramiz:
+   - $(y^*)' = A$
+   - $(y^*)'' = 0$
 3. Tenglamaga qo'yamiz:
    $$0 - 4(Ax + B) = 8x \implies -4Ax - 4B = 8x$$
    Koeffitsiyentlarni tenglashtiramiz:
-   - $x$oldida:$-4A = 8 \implies A = -2$- Ozod had:$-4B = 0 \implies B = 0$Demak,$y^* = -2x$.
+   - $x$ oldida: $-4A = 8 \implies A = -2$
+   - Ozod had: $-4B = 0 \implies B = 0$
+   Demak, $y^* = -2x$.
 4. To'liq umumiy yechim ($y = y_0 + y^*$):
    $$y = C_1 e^{2x} + C_2 e^{-2x} - 2x$$
 
@@ -192,19 +194,19 @@ $$
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **Karrali ildizda $x$ ko'paytuvchisini unutish:**
-   > Agar $k_1 = k_2 = 3$bo'lsa,$y = C_1 e^{3x} + C_2 e^{3x} = (C_1 + C_2) e^{3x} = C e^{3x}$ bitta doimiyga aylanib qoladi! 2-tartibli tenglamada albatta 2 ta erkli o'zgarmas ($C_1$va$C_2$) bo'lishi shart. To'g'risi: $(C_1 + C_2 x) e^{3x}$.
+   > Agar $k_1 = k_2 = 3$ bo'lsa, $y = C_1 e^{3x} + C_2 e^{3x} = (C_1 + C_2) e^{3x} = C e^{3x}$ bitta doimiyga aylanib qoladi! 2-tartibli tenglamada albatta 2 ta erkli o'zgarmas ($C_1$ va $C_2$) bo'lishi shart. To'g'risi: $(C_1 + C_2 x) e^{3x}$.
 
-2. **Kompleks ildizda $\alpha$va$\beta$ ni adashtirish:**
+2. **Kompleks ildizda $\alpha$ va $\beta$ ni adashtirish:**
    > Formulada $\alpha$ (haqiqiy qism) eksponenta ko'rsatkichiga chiqadi ($e^{\alpha x}$), $\beta$ (mavhum qism) esa kosinus va sinus burchagiga kiradi ($\cos\beta x$).
 
-3. **Bir jinsli bo'lmagan tenglamada $y_0$ni tashlab faqat$y^*$ ni yozish:**
-   > Bir jinsli bo'lmagan tenglamaning to'liq umumiy yechimi har doim bir jinsli yechim $y_0$va xususiy yechim$y^*$ ning **yig'indisidan** iborat bo'ladi.
+3. **Bir jinsli bo'lmagan tenglamada $y_0$ ni tashlab faqat $y^*$ ni yozish:**
+   > Bir jinsli bo'lmagan tenglamaning to'liq umumiy yechimi har doim bir jinsli yechim $y_0$ va xususiy yechim $y^*$ ning **yig'indisidan** iborat bo'ladi.
 
 ---
 
 ## 💡 Ustozdan maslahat
 
-Agar xarakteristik tenglama ildizlari $k_{1,2} = \pm i\omega$(sof mavhum sonlar) bo'lsa,$\alpha = 0$bo'lgani uchun$e^{0x} = 1$ bo'ladi va natijada **so'nmas garmonik tebranish** hosil bo'ladi:
+Agar xarakteristik tenglama ildizlari $k_{1,2} = \pm i\omega$(sof mavhum sonlar) bo'lsa, $\alpha = 0$ bo'lgani uchun $e^{0x} = 1$ bo'ladi va natijada **so'nmas garmonik tebranish** hosil bo'ladi:
 $$
 y = C_1 \cos\omega x + C_2 \sin\omega x
 $$
@@ -226,7 +228,7 @@ Bu tabiatdagi ideal mayatnik harakatining matematik ifodasidir!
 
     
 
-**2-masala:** $(k + 2)^2 = 0 \implies k = -2$(karrali). Javob:$y = (C_1 + C_2 x) e^{-2x}$.
+**2-masala:** $(k + 2)^2 = 0 \implies k = -2$(karrali). Javob: $y = (C_1 + C_2 x) e^{-2x}$.
 
     
 

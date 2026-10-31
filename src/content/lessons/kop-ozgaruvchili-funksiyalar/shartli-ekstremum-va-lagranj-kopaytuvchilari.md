@@ -167,7 +167,7 @@ Yig'indisi o'zgarmas $x + y + z = a$ ($x > 0, y > 0, z > 0$) bo'lgan uchta musba
    $$
    u_{\max} = \left(\frac{a}{3}\right)^3 = \frac{a^3}{27}
    $$
-*Geometrik xulosa: Berilgan to'la sirti o'zgarmas bo'lgan to'g'ri burchakli parallelepipedlar ichida kub eng katta hajmga ega bo'ladi.*
+*Geometrik xulosa: Qirralari yig'indisi o'zgarmas bo'lgan to'g'ri burchakli parallelepipedlar ichida kub eng katta hajmga ega bo'ladi.*
 
 ---
 

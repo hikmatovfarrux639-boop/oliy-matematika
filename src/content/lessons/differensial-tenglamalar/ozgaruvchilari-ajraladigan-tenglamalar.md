@@ -9,7 +9,7 @@ description: "O'zgaruvchilari ajraladigan differensial tenglamalar, integrallash
 
 Differensial tenglamalarni yechishning eng sodda, ammo eng ko'p uchraydigan sinfi — **o'zgaruvchilari ajraladigan tenglamalardir**. 
 
-Ularning asosiy g'oyasi juda sodda: algebraik shakl almashtirishlar yordamida $y$o'zgaruvchi va uning differensiali$dy$ni tenglikning bir tomoniga (chapga),$x$o'zgaruvchi va uning differensiali$dx$ ni esa ikkinchi tomoniga (o'ngga) to'liq ajratib olish mumkin bo'ladi. Shundan so'ng tenglamani yechish oddiy ikkita integralni hisoblashga aylanadi!
+Ularning asosiy g'oyasi juda sodda: algebraik shakl almashtirishlar yordamida $y$ o'zgaruvchi va uning differensiali $dy$ ni tenglikning bir tomoniga (chapga), $x$ o'zgaruvchi va uning differensiali $dx$ ni esa ikkinchi tomoniga (o'ngga) to'liq ajratib olish mumkin bo'ladi. Shundan so'ng tenglamani yechish oddiy ikkita integralni hisoblashga aylanadi!
 
 ---
 
@@ -17,11 +17,9 @@ Ularning asosiy g'oyasi juda sodda: algebraik shakl almashtirishlar yordamida $y
 
 > **Ta'rif:** Quyidagi ko'rinishlarning biriga keltirish mumkin bo'lgan tenglama **o'zgaruvchilari ajraladigan differensial tenglama** deyiladi:
 >
-> 
-$$
+> $$
 > y' = f(x) \cdot g(y) \qquad \text{yoki} \qquad M_1(x)N_1(y) \, dx + M_2(x)N_2(y) \, dy = 0
-> 
-$$
+> $$
 
 ---
 
@@ -29,14 +27,14 @@ $$
 
 1. **Hosilani differensiallar nisbati bilan almashtiring:**
    $$y' = \frac{dy}{dx} \implies \frac{dy}{dx} = f(x) \cdot g(y)$$
-2. **O'zgaruvchilarni ajrating:** Ikkala tomonni $dx$ga ko'paytiring va$g(y)$ ga bo'ling:
+2. **O'zgaruvchilarni ajrating:** Ikkala tomonni $dx$ ga ko'paytiring va $g(y)$ ga bo'ling:
    $$\frac{dy}{g(y)} = f(x) \, dx \quad (g(y) \neq 0)$$
 3. **Ikkala tomonni mustaqil integrallang:**
    $$\int \frac{dy}{g(y)} = \int f(x) \, dx + C$$
-4. **Umumiy yechimni toping:** Agar algebraik imkoniyat bo'lsa, $y$ni$x$ orqali ochiq holda ($y = \varphi(x, C)$) ifodalang.
+4. **Umumiy yechimni toping:** Agar algebraik imkoniyat bo'lsa, $y$ ni $x$ orqali ochiq holda ($y = \varphi(x, C)$) ifodalang.
 
 > ⚠️ **Tuzoq — Maxsus yechimlar va ildiz yo'qotish:**
-> $g(y)$ga bo'layotganda$g(y) = 0$bo'lgan holatlarni alohida tekshiring! Agar$y = b$soni uchun$g(b) = 0$bo'lsa, u ham tenglamaning yechimi bo'lishi mumkin. Agar u umumiy yechim formulasidan$C$ ning hech bir qiymatida kelib chiqmasa, u **maxsus yechim** deb ataladi.
+> $g(y)$ ga bo'layotganda $g(y) = 0$ bo'lgan holatlarni alohida tekshiring! Agar $y = b$ soni uchun $g(b) = 0$ bo'lsa, u ham tenglamaning yechimi bo'lishi mumkin. Agar u umumiy yechim formulasidan $C$ ning hech bir qiymatida kelib chiqmasa, u **maxsus yechim** deb ataladi.
 
 ---
 
@@ -46,7 +44,7 @@ Integrallash natijasida ko'pincha logarifmlar hosil bo'ladi:
 $$
 \ln|y| = \ln|x| + C
 $$
-Bunday holatda ixtiyoriy o'zgarmas sonni $C$emas, balki$\ln|C|$ deb yozish hisob-kitobni bir necha barobar osonlashtiradi:
+Bunday holatda ixtiyoriy o'zgarmas sonni $C$ emas, balki $\ln|C|$ deb yozish hisob-kitobni bir necha barobar osonlashtiradi:
 $$
 \ln|y| = \ln|x| + \ln|C| = \ln|C \cdot x| \implies y = C \cdot x
 $$
@@ -104,15 +102,15 @@ $$
 **Yechilishi:**
 1. $y' = \frac{dy}{dx}$ deb yozamiz:
    $$\frac{dy}{dx} = 2xy$$
-2. O'zgaruvchilarni ajratamiz ($y$larni chapga,$x$ larni o'ngga):
+2. O'zgaruvchilarni ajratamiz ($y$ larni chapga, $x$ larni o'ngga):
    $$\frac{dy}{y} = 2x \, dx \quad (y \neq 0)$$
 3. Integrallaymiz:
    $$\int \frac{dy}{y} = \int 2x \, dx \implies \ln|y| = x^2 + C_1$$
 4. Potensirlaymiz:
    $$|y| = e^{x^2 + C_1} = e^{C_1} \cdot e^{x^2}$$
-   $\pm e^{C_1}$ni ixtiyoriy$C \neq 0$ bilan almashtiramiz:
+   $\pm e^{C_1}$ ni ixtiyoriy $C \neq 0$ bilan almashtiramiz:
    $$y = C e^{x^2}$$
-5. $y = 0$ni tekshiramiz:$y=0$da$(0)' = 2x(0) = 0 \checkmark$. Bu yechim $C = 0$ bo'lganda umumiy formuladan kelib chiqadi.
+5. $y = 0$ ni tekshiramiz: $y=0$ da $(0)' = 2x(0) = 0 \checkmark$. Bu yechim $C = 0$ bo'lganda umumiy formuladan kelib chiqadi.
 
 **Javob:** $y = C e^{x^2}, \quad C \in \mathbb{R}$
 
@@ -130,7 +128,7 @@ $$
 2. Integrallaymiz:
    $$\int \frac{dy}{y} = \int \frac{2x}{1 + x^2} \, dx$$
    $$\ln|y| = \ln(1 + x^2) + \ln|C| \implies y = C(1 + x^2)$$
-3. Boshlang'ich shartni qo'llaymiz ($x = 0$bo'lganda$y = 2$):
+3. Boshlang'ich shartni qo'llaymiz ($x = 0$ bo'lganda $y = 2$):
    $$2 = C(1 + 0^2) \implies C = 2$$
 4. Xususiy yechim:
    $$y = 2(1 + x^2) = 2 + 2x^2$$
@@ -175,11 +173,11 @@ Haroratning vaqt bo'yicha bog'lanish qonunini toping.
    $$\frac{dT}{T - 20} = -k \, dt$$
 2. Integrallaymiz:
    $$\ln(T - 20) = -kt + \ln C \implies T - 20 = C e^{-kt} \implies T(t) = 20 + C e^{-kt}$$
-3. Dastlabki paytda ($t = 0$da$T = 100$):
+3. Dastlabki paytda ($t = 0$ da $T = 100$):
    $$100 = 20 + C e^0 \implies C = 80$$
 4. Harorat qonuni:
    $$T(t) = 20 + 80 e^{-kt}$$
-*(Vaqt o'tishi bilan $t \to \infty$da$e^{-kt} \to 0$bo'ladi va choynak harorati xona harorati$20^\circ\text{C}$ ga tenglashadi!)*
+*(Vaqt o'tishi bilan $t \to \infty$ da $e^{-kt} \to 0$ bo'ladi va choynak harorati xona harorati $20^\circ\text{C}$ ga tenglashadi!)*
 
 **Javob:** $T(t) = 20 + 80 e^{-kt}$
 
@@ -188,13 +186,13 @@ Haroratning vaqt bo'yicha bog'lanish qonunini toping.
 ## ⚠️ Talabalar ko'p yo'l qo'yadigan 3 ta jiddiy xato
 
 1. **Differensiallarni maxrajda qoldirib integrallash:**
-   > $\frac{1}{dy} = \frac{x}{dx}$kabi yozuv mutlaqo ma'noga ega emas! Integrallash uchun$dy$va$dx$ doimo **suratda** turishi shart.
+   > $\frac{1}{dy} = \frac{x}{dx}$ kabi yozuv mutlaqo ma'noga ega emas! Integrallash uchun $dy$ va $dx$ doimo **suratda** turishi shart.
 
 2. **Integrallash doimiysi $+ C$ ni oxirida shunchaki qo'shib qo'yish:**
-   > $\ln y = x \implies y = e^x + C$deb yozish qo'pol xatodir! To'g'risi:$\ln y = x + C \implies y = e^{x + C} = e^C \cdot e^x = C_1 e^x$. Doimiy son integrallash amali bajarilgan aynan o'sha qadamda qo'shiladi.
+   > $\ln y = x \implies y = e^x + C$ deb yozish qo'pol xatodir! To'g'risi: $\ln y = x + C \implies y = e^{x + C} = e^C \cdot e^x = C_1 e^x$. Doimiy son integrallash amali bajarilgan aynan o'sha qadamda qo'shiladi.
 
-3. **Bir jinsli tenglamada $y'$o'rniga faqat$u'$ deb yozish:**
-   > $y = ux$bo'lsa,$(ux)' = u'x + u$bo'ladi (ko'paytmaning hosilasi!). Ikkinchi$+u$ hadini unutish butun yechimni buzadi.
+3. **Bir jinsli tenglamada $y'$ o'rniga faqat $u'$ deb yozish:**
+   > $y = ux$ bo'lsa, $(ux)' = u'x + u$ bo'ladi (ko'paytmaning hosilasi!). Ikkinchi $+u$ hadini unutish butun yechimni buzadi.
 
 ---
 
@@ -202,7 +200,7 @@ Haroratning vaqt bo'yicha bog'lanish qonunini toping.
 
 Tenglamaning bir jinsli ekanligini ko'z bilan tez aniqlash usuli:
 Surat va maxrajdagi barcha hadlarning **darajalar yig'indisini tekshiring**.
-Masalan: $\frac{x^2 + y^2}{2xy}$kasrida:$x^2$darajasi 2,$y^2$darajasi 2, maxrajda$x^1 y^1$darajasi$1+1=2$. Barcha hadlarning umumiy darajasi teng (2) bo'lgani uchun, u **aniq bir jinsli tenglama** hisoblanadi!
+Masalan: $\frac{x^2 + y^2}{2xy}$ kasrida: $x^2$ darajasi 2, $y^2$ darajasi 2, maxrajda $x^1 y^1$ darajasi $1+1=2$. Barcha hadlarning umumiy darajasi teng (2) bo'lgani uchun, u **aniq bir jinsli tenglama** hisoblanadi!
 
 ---
 
@@ -211,7 +209,7 @@ Masalan: $\frac{x^2 + y^2}{2xy}$kasrida:$x^2$darajasi 2,$y^2$darajasi 2, maxrajd
 1. $y' = 3x^2 y$ tenglamaning umumiy yechimini toping.
 2. $y' = \frac{y}{x} + 2$ tenglamani almashtirish orqali yeching.
 3. $x \, dy - y \, dx = 0, \quad y(1) = 3$ Koshi masalasini yeching.
-4. $y' = (x + y)^2$tenglamani$z = x + y$ almashtirish orqali yeching.
+4. $y' = (x + y)^2$ tenglamani $z = x + y$ almashtirish orqali yeching.
 
 <details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
 <summary style="font-weight: 700; color: var(--primary);">To'liq yechimlar va javoblar</summary>

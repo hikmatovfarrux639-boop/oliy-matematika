@@ -25,7 +25,7 @@ Bundan tashqari, funksiyaning berilgan butun bir oraliqda qanchalik "turg'un" uz
 
 > **Limit mavjudligining zaruriy va yetarli sharti:**
 > Funksiyaning $x \to x_0$ da ikki tomonlama umumiy limiti mavjud va $L$ ga teng bo'lishi uchun uning chap va o'ng limitlari mavjud hamda bir-biriga teng bo'lishi shart:
-> $$\lim_{x \to x_0^-} f(x) = \lim_{x \to x_0^+} f(x) = L \iff \lim_{x \to x_0} f(x) = L$$
+> $$\lim_{x \to x_0^-} f(x) = \lim_{x \to x_0^+} f(x) = L \iff \lim_{x \to x_0} f(x) = L $$
 
 ### 2. Funksiyaning nuqtada uzluksizligi
 $f(x)$ funksiya $x_0$ nuqtada uzluksiz bo'lishi uchun quyidagi uchta shart bajarilishi zarur:

@@ -15,7 +15,7 @@ Bu tanlanmaning o'rtacha ko'rsatkichi butun bosh to'plam haqiqatidan qanchalik f
 
 ## 1. Statistik baholar va ularga qo'yiladigan 3 ta talab
 
-Tanlanma ma'lumotlari asosida noma'lum parametr $\theta$ni baholash uchun hisoblangan$\theta^*(x_1, \dots, x_n)$ funksiya **statistik baho** deyiladi.
+Tanlanma ma'lumotlari asosida noma'lum parametr $\theta$ ni baholash uchun hisoblangan $\theta^*(x_1, \dots, x_n)$ funksiya **statistik baho** deyiladi.
 
 Sifatli baho quyidagi 3 ta xossaga ega bo'lishi shart:
 1. **Siljimaganlik (Unbiasedness):** Bahoning matematik kutilmasi haqiqiy parametrga teng bo'lishi kerak:
@@ -43,12 +43,12 @@ $$
 D_v = \frac{1}{n} \sum_{i=1}^k (x_i - \bar{x}_v)^2 n_i = \overline{x^2} - (\bar{x}_v)^2
 $$
 
-### 3. Bessel tuzatmasi: Nega $n$ga emas,$n - 1$ ga bo'linadi?
+### 3. Bessel tuzatmasi: Nega $n$ ga emas, $n - 1$ ga bo'linadi?
 Teorema isbotlaydiki, tanlanma dispersiyaning matematik kutilmasi haqiqiy dispersiyadan biroz kichik bo'ladi:
 $$
 M(D_v) = \frac{n - 1}{n} D(X)
 $$
-Ya'ni $D_v$**siljigan (kamaytirilgan)** bahodir! Siljishni bartaraf etish uchun uni$\frac{n}{n-1}$ ga ko'paytiriladi. Bu **tuzatilgan dispersiya ($s^2$)** deb ataladi:
+Ya'ni $D_v$**siljigan (kamaytirilgan)** bahodir! Siljishni bartaraf etish uchun uni $\frac{n}{n-1}$ ga ko'paytiriladi. Bu **tuzatilgan dispersiya ($s^2$)** deb ataladi:
 
 $$
 s^2 = \frac{n}{n - 1} D_v = \frac{1}{n - 1} \sum_{i=1}^k (x_i - \bar{x}_v)^2 n_i
@@ -65,13 +65,13 @@ $$
 
 ## 3. Ishonchlilik oralig'i (Interval baholash)
 
-> **Ta'rif:** Berilgan $\gamma = 1 - \alpha$ishonchlilik ehtimoli bilan (odatda$\gamma = 0.95$yoki$95\%$) noma'lum haqiqiy parametrni o'z ichiga oluvchi $(\bar{x}_v - \varepsilon; \; \bar{x}_v + \varepsilon)$ oraliq **ishonchlilik oralig'i** deyiladi.
+> **Ta'rif:** Berilgan $\gamma = 1 - \alpha$ ishonchlilik ehtimoli bilan (odatda $\gamma = 0.95$ yoki $95\%$) noma'lum haqiqiy parametrni o'z ichiga oluvchi $(\bar{x}_v - \varepsilon; \; \bar{x}_v + \varepsilon)$ oraliq **ishonchlilik oralig'i** deyiladi.
 
 ### 1. Katta tanlanmalar ($n \ge 30$) uchun:
 $$
 \varepsilon = t \cdot \frac{s}{\sqrt{n}}
 $$
-bu yerda $t$— Laplas jadvalidan$2\Phi(t) = \gamma$ shartdan topiladi ($95\%$uchun$t \approx 1.96$, $99\%$uchun$t \approx 2.58$).
+bu yerda $t$ — Laplas jadvalidan $2\Phi(t) = \gamma$ shartdan topiladi ($95\%$ uchun $t \approx 1.96$, $99\%$ uchun $t \approx 2.58$).
 
 ### 2. Kichik tanlanmalar ($n < 30$) uchun:
 Bunda Styudent taqsimoti jadvaliga murojaat qilinadi:
@@ -88,7 +88,7 @@ bu yerda $k = n - 1$ — ozodlik darajasi.
 
 Tanlanma berilgan ($n = 5$):
 $10, \; 12, \; 10, \; 14, \; 14$.
-Tanlanma o'rtacha $\bar{x}_v$, tanlanma dispersiya $D_v$va tuzatilgan dispersiya$s^2$ ni toping.
+Tanlanma o'rtacha $\bar{x}_v$, tanlanma dispersiya $D_v$ va tuzatilgan dispersiya $s^2$ ni toping.
 
 #### 1-usul: Ta'rif bo'yicha (O'rtachadan chetlanishlar kvadrati)
 1. Tanlanma o'rtacha:
@@ -98,7 +98,7 @@ $$
    
 $$
 2. Har bir elementning chetlanishlari:
-   - $(10 - 12)^2 = (-2)^2 = 4$-$(12 - 12)^2 = 0$-$(10 - 12)^2 = 4$-$(14 - 12)^2 = 2^2 = 4$-$(14 - 12)^2 = 4$3. Kvadratlar yig'indisi:$4 + 0 + 4 + 4 + 4 = 16$.
+   - $(10 - 12)^2 = (-2)^2 = 4$-$(12 - 12)^2 = 0$-$(10 - 12)^2 = 4$-$(14 - 12)^2 = 2^2 = 4$-$(14 - 12)^2 = 4$ 3. Kvadratlar yig'indisi: $4 + 0 + 4 + 4 + 4 = 16$.
 4. Tanlanma dispersiya:
    
 $$
@@ -139,7 +139,7 @@ Bu usul kasrli sonlar bilan ishlaganda ayirishlarni kamaytirib, vaqtni ancha tej
 
 ### 2-masala: $95\%$ lik ishonchlilik oralig'ini topish
 
-Avtomobil ehtiyot qismining diametri $n = 100$ta detalda o'lchandi.$\bar{x} = 50 \text{ mm}$, $s = 2 \text{ mm}$.
+Avtomobil ehtiyot qismining diametri $n = 100$ ta detalda o'lchandi.$\bar{x} = 50 \text{ mm}$, $s = 2 \text{ mm}$.
 Haqiqiy o'rtacha diametr uchun $\gamma = 0.95$ ishonchlilik oralig'ini toping ($t = 1.96$).
 
 #### Yechish:
@@ -155,14 +155,14 @@ $$
    (\bar{x} - \varepsilon; \; \bar{x} + \varepsilon) = (50 - 0.392; \; 50 + 0.392) = (49.608; \; 50.392) \text{ mm}
    
 $$
-**Xulosa:** $95\%$ishonch bilan ayta olamizki, zavod ishlab chiqarayotgan barcha detallarning haqiqiy o'rtacha diametri$49.608 \text{ mm}$va$50.392 \text{ mm}$ oralig'ida yotadi.
+**Xulosa:** $95\%$ ishonch bilan ayta olamizki, zavod ishlab chiqarayotgan barcha detallarning haqiqiy o'rtacha diametri $49.608 \text{ mm}$ va $50.392 \text{ mm}$ oralig'ida yotadi.
 
 ---
 
 ## 5. Imtihondagi asosiy tuzoqlar
 
 > [!WARNING] Imtihondagi tuzoqlar
-> 1. **$s^2$ni hisoblashda$n$ ga bo'lish:**
+> 1. **$s^2$ ni hisoblashda $n$ ga bo'lish:**
 >    Agar masalada "tuzatilgan dispersiya" so'ralsa, albatta **$n - 1$** ga bo'linadi! $n$ ga bo'lish siljigan tanlanma dispersiyani beradi.
 > 2. **Dispersiya bilan standart og'ishni adashtirish:**
 >    Dispersiya kvadratik kattalik ($D_v = 4 \text{ mm}^2$), standart og'ish esa oddiy chiziqli kattalik ($s = 2 \text{ mm}$) bo'ladi. Ishonchlilik oralig'i formulasida doimo $s$ (ildiz chiqarilgani) qatnashadi!
@@ -175,7 +175,7 @@ $$
 
 ### 1-mashq
 Tanlanma berilgan: $2, 4, 6, 8$.
-Tanlanma o'rtacha $\bar{x}_v$va tuzatilgan dispersiya$s^2$ ni hisoblang.
+Tanlanma o'rtacha $\bar{x}_v$ va tuzatilgan dispersiya $s^2$ ni hisoblang.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>
@@ -195,7 +195,7 @@ $$
 </details>
 
 ### 2-mashq
-Agar $n = 64$, $s = 4$va$\gamma = 0.95$ ($t = 1.96$) bo'lsa, xatolik chegarasi $\varepsilon$ ni toping.
+Agar $n = 64$, $s = 4$ va $\gamma = 0.95$ ($t = 1.96$) bo'lsa, xatolik chegarasi $\varepsilon$ ni toping.
 
 <details>
 <summary>👉 Yechimni tekshirish</summary>

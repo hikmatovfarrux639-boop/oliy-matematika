@@ -106,10 +106,10 @@ $$
    $$
    \frac{t^2 + t + 1}{t(2t+1)^2} = \frac{A}{t} + \frac{B}{2t+1} + \frac{C}{(2t+1)^2}
    $$
-   $t=0 \implies A = 1$. Koeffitsiyentlarni tenglashtirib: $B = -1/2$, $C = -3/2$ ni topamiz.
+   $t=0 \implies A = 1$. Koeffitsiyentlarni tenglashtirib: $B = -3/2$, $C = -3/2$ ni topamiz.
 8. Integrallab, eski $t = x + \sqrt{x^2+x+1}$ o'zgaruvchisiga qaytamiz:
    $$
-   I_1 = 2 \ln|t| - \frac{1}{2} \ln|2t+1| + \frac{3}{2(2t+1)} + C
+   I_1 = 2 \ln|t| - \frac{3}{2} \ln|2t+1| + \frac{3}{2(2t+1)} + C
    $$
 
 ---

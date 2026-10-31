@@ -17,18 +17,16 @@ Bernulli tenglamasi aerodinamikada qarshilik kuchiga ega jism harakati, elektr z
 
 > **Ta'rif:** Quyidagi ko'rinishdagi 1-tartibli differensial tenglama **Bernulli tenglamasi** deyiladi:
 >
-> 
-$$
+> $$
 > y' + P(x)y = Q(x) \cdot y^n
-> 
-$$
+> $$
 >
-> Bu yerda $P(x)$va$Q(x)$—$x$ga bog'liq uzluksiz funksiyalar,$n$ esa ixtiyoriy o'zgarmas haqiqiy son.
+> Bu yerda $P(x)$ va $Q(x)$ — $x$ ga bog'liq uzluksiz funksiyalar, $n$ esa ixtiyoriy o'zgarmas haqiqiy son.
 
 ### Maxsus holatlar tahlili:
-- Agar $n = 0$bo'lsa:$y' + P(x)y = Q(x)$ — odatiy **chiziqli bir jinsli bo'lmagan** tenglama bo'ladi.
-- Agar $n = 1$bo'lsa:$y' + [P(x) - Q(x)]y = 0$ — **o'zgaruvchilari ajraladigan** bir jinsli tenglamaga aylanadi.
-- Shu sababli, Bernulli tenglamasi mustaqil nochiziqli sinf sifatida faqat **$n \neq 0$va$n \neq 1$** bo'lganda o'rganiladi!
+- Agar $n = 0$ bo'lsa: $y' + P(x)y = Q(x)$ — odatiy **chiziqli bir jinsli bo'lmagan** tenglama bo'ladi.
+- Agar $n = 1$ bo'lsa: $y' + [P(x) - Q(x)]y = 0$ — **o'zgaruvchilari ajraladigan** bir jinsli tenglamaga aylanadi.
+- Shu sababli, Bernulli tenglamasi mustaqil nochiziqli sinf sifatida faqat **$n \neq 0$ va $n \neq 1$** bo'lganda o'rganiladi!
 
 ---
 
@@ -53,7 +51,7 @@ $$
    \frac{z'}{1 - n} + P(x) z = Q(x) \implies z' + (1 - n)P(x) z = (1 - n)Q(x)
    
 $$
-Bu $z(x)$ga nisbatan **oddiy 1-tartibli chiziqli differensial tenglamadir**! Uni yechib$z$topiladi va$y = z^{\frac{1}{1-n}}$orqali$y$ ga qaytiladi.
+Bu $z(x)$ ga nisbatan **oddiy 1-tartibli chiziqli differensial tenglamadir**! Uni yechib $z$ topiladi va $y = z^{\frac{1}{1-n}}$ orqali $y$ ga qaytiladi.
 
 ---
 
@@ -71,7 +69,7 @@ $$
    u'v + uv' + P(x)uv = Q(x) u^n v^n \implies u'v + u\big(v' + P(x)v\big) = Q(x) u^n v^n
    
 $$
-3. $v' + P(x)v = 0$shartdan xususiy$v(x)$ funksiya topiladi.
+3. $v' + P(x)v = 0$ shartdan xususiy $v(x)$ funksiya topiladi.
 4. Natijada $u$ funksiya uchun o'zgaruvchilari ajraladigan tenglama hosil bo'ladi.
 
 ---
@@ -142,11 +140,11 @@ Ikkala usul ham aynan bir xil natijaga olib keldi!
 
 > [!WARNING] Imtihondagi tuzoqlar
 > 1. **$y = 0$ maxsus yechimini javobga yozishni unutish:**
->    Tenglamani $y^n$ga bo'lishda$y \neq 0$sharti qo'yiladi. Agar$n > 0$bo'lsa,$y = 0$funksiya har doim boshlang'ich tenglamani$0 = 0$ ga aylantiradi. Uni javobda alohida ko'rsatmaslik imtihonda ball yo'qotilishiga sabab bo'ladi!
+>    Tenglamani $y^n$ ga bo'lishda $y \neq 0$ sharti qo'yiladi. Agar $n > 0$ bo'lsa, $y = 0$ funksiya har doim boshlang'ich tenglamani $0 = 0$ ga aylantiradi. Uni javobda alohida ko'rsatmaslik imtihonda ball yo'qotilishiga sabab bo'ladi!
 > 2. **$z = y^{1-n}$ dagi ishora xatosi:**
->    Agar $n = 3$bo'lsa,$z = y^{-2} = \frac{1}{y^2}$. Uning hosilasi $z' = -2 y^{-3} y'$. Talabalar ko'pincha oldidagi $(-2)$ koeffitsiyentni tenglamaning o'ng tomoniga ko'paytirishni unutib qo'yishadi.
+>    Agar $n = 3$ bo'lsa, $z = y^{-2} = \frac{1}{y^2}$. Uning hosilasi $z' = -2 y^{-3} y'$. Talabalar ko'pincha oldidagi $(-2)$ koeffitsiyentni tenglamaning o'ng tomoniga ko'paytirishni unutib qo'yishadi.
 > 3. **$x$ ga nisbatan Bernulli tenglamasi:**
->    Ba'zida tenglama $y$ga nisbatan murakkab bo'lib,$x$ga nisbatan Bernulli tenglamasi shaklida keladi:$\frac{dx}{dy} + P(y)x = Q(y)x^n$. Agar $y'$ni ajratganda maxraj murakkab bo'lsa, teskari hosila$\frac{dx}{dy} = \frac{1}{y'}$ orqali tekshirishni unutmang!
+>    Ba'zida tenglama $y$ ga nisbatan murakkab bo'lib, $x$ ga nisbatan Bernulli tenglamasi shaklida keladi: $\frac{dx}{dy} + P(y)x = Q(y)x^n$. Agar $y'$ ni ajratganda maxraj murakkab bo'lsa, teskari hosila $\frac{dx}{dy} = \frac{1}{y'}$ orqali tekshirishni unutmang!
 
 ---
 
@@ -162,7 +160,7 @@ $$
 <summary>👉 Yechimni tekshirish</summary>
 
 $n = 3$. $y = 0$ — xususiy yechim.
-1. $y^3$ga bo'lamiz:$y^{-3}y' + 2x y^{-2} = 2x$.
+1. $y^3$ ga bo'lamiz: $y^{-3}y' + 2x y^{-2} = 2x$.
 2. $z = y^{-2} \implies z' = -2y^{-3}y' \implies y^{-3}y' = -\frac{1}{2}z'$.
 3. $-\frac{1}{2}z' + 2xz = 2x \implies z' - 4xz = -4x$.
 4. Chiziqli tenglamani yechamiz:
@@ -180,7 +178,7 @@ $$
 <details>
 <summary>👉 Yechimni tekshirish</summary>
 
-1. $x$ga bo'lamiz:$y' + \frac{1}{x}y = \frac{\ln x}{x} y^2$ ($n = 2$).
+1. $x$ ga bo'lamiz: $y' + \frac{1}{x}y = \frac{\ln x}{x} y^2$ ($n = 2$).
 2. $z = y^{-1} \implies z' - \frac{1}{x}z = -\frac{\ln x}{x}$.
 3. Integrallovchi ko'paytuvchi: $\frac{1}{x}$.
    $\left(\frac{z}{x}\right)' = -\frac{\ln x}{x^2}$.
