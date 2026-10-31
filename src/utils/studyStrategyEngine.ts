@@ -305,15 +305,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'vektor',
-    keywords: ['vektor', 'skalyar', 'aralash kopaytma', 'piramida', 'tetraedr', 'kollinear', 'ortogonal', 'komplanar', 'togri chiziq', 'tekislik', 'uchburchak', 'ellips', 'giperbola', 'parabola'],
+    keywords: ['vektor', 'skalyar', 'aralash kopaytma', 'piramida', 'tetraedr', 'kollinear', 'ortogonal', 'komplanar', 'togri chiziq', 'tekislik', 'uchburchak', 'ellips', 'giperbola', 'parabola', 'masofa', 'ayqash', 'metrik masalalar'],
     plan: {
       id: 'vektor',
       topicTitle: 'Vektorlar Algebrasi va Analitik Geometriya',
       moduleSlug: 'vektorlar-geometriya',
       moduleTitle: '3-Modul: Vektorlar va analitik geometriya',
-      empathyMessage: "Vektorlar va analitik geometriya — formulalari eng mantiqiy va tasavvur qilish oson bo'lgan bo'lim! Quyidagi 4 qadamda barcha tipik masalalarni yechishni o'rganasiz.",
+      empathyMessage: "Vektorlar va analitik geometriya — formulalari eng mantiqiy va tasavvur qilish oson bo'lgan bo'lim! Quyidagi ketma-ket qadamlarda barcha tipik masalalarni yechishni o'rganasiz.",
       rootCauseWhyHard: "Talabalar ko'pincha skalyar ko'paytma (natijasi son), vektor ko'paytma (natijasi vektor, moduli yuza) va aralash ko'paytma (moduli hajm) formulalarini bir-biri bilan aralashtirib yuborishadi.",
-      estimatedTotalTime: '50 daqiqa',
+      estimatedTotalTime: '60 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -358,6 +358,17 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "Imtihonlarda tushadigan kompleks geometrik masalalarni (balandlik, mediana, bissektrisa, nuqtadan tekislikkacha masofa) yechish.",
           focusPoints: ['Normal va yo\'naltiruvchi vektorlar', 'Fazodagi tekislik va to\'g\'ri chiziq (/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq)']
+        },
+        {
+          stepNumber: 5,
+          phase: 'Amaliyot',
+          badgeColor: '#3b82f6',
+          title: 'Fazoda va tekislikda masofalar (ayqash to\'g\'ri chiziqlar, nuqtadan tekislikkacha)',
+          url: '/dars/vektorlar-geometriya/fazoda-va-tekislikda-masofalar-metrik-masalalar',
+          slug: 'vektorlar-geometriya/fazoda-va-tekislikda-masofalar-metrik-masalalar',
+          duration: '15 daqiqa',
+          whyRead: "Nuqtadan to'g'ri chiziq va tekislikkacha masofa d = |Ax₀+By₀+Cz₀+D|/√(A²+B²+C²) hamda fazoda ayqash to'g'ri chiziqlar orasidagi masofa formulalarini o'rganasiz.",
+          focusPoints: ['Nuqtadan tekislikkacha masofa formulasi', 'Ayqash to\'g\'ri chiziqlar orasidagi eng qisqa masofa: d = |(s₁ × s₂) · M₁M₂| / |s₁ × s₂|']
         }
       ],
       interactiveTools: [
@@ -527,15 +538,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'integral',
-    keywords: ['integral', 'boshlangich funksiya', 'bolaklab', 'almashtirish', 'nyuton-leybnits', 'aniq integral', 'xosmas', 'ratsional kasr', 'yuza', 'simpson'],
+    keywords: ['integral', 'boshlangich funksiya', 'bolaklab', 'almashtirish', 'nyuton-leybnits', 'aniq integral', 'xosmas', 'ratsional kasr', 'yuza', 'simpson', 'trigonometrik integral', 'universal almashtirish', 'yoy uzunligi', 'aylanish sirti', 'fizik tatbiq'],
     plan: {
       id: 'integral',
       topicTitle: 'Aniqmas va Aniq Integrallarni Yechish Strategiyasi',
       moduleSlug: 'integrallar',
       moduleTitle: '8-Modul: Aniqmas va aniq integrallar',
-      empathyMessage: "Integral — hosilaning teskarisi! Hosilada aniq qoida bo'lsa, integralda «usullar kaliti» bor. Quyidagi 4 qadamni o'qisangiz, misolga qarab darhol qaysi usulni tanlashni bilib olasiz.",
+      empathyMessage: "Integral — hosilaning teskarisi! Hosilada aniq qoida bo'lsa, integralda «usullar kaliti» bor. Quyidagi ketma-ket qadamlarni o'qisangiz, misolga qarab darhol qaysi usulni tanlashni bilib olasiz.",
       rootCauseWhyHard: "Talabalar ko'pincha qachon «o'zgaruvchini almashtirish» (differensial ostiga kiritish), qachon esa «bo'laklab integrallash» (∫u dv = uv - ∫v du) kerakligini ajrata olishmaydi.",
-      estimatedTotalTime: '60 daqiqa',
+      estimatedTotalTime: '75 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -580,6 +591,28 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "Chegaralarni qo'yib F(b) - F(a) ni hisoblash va egri chiziqli trapetsiya yuzasini topish.",
           focusPoints: ['Nyuton-Leybnits formulasi', 'Almashtirishda integrallash chegaralarini ham yangilash']
+        },
+        {
+          stepNumber: 5,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Trigonometrik funksiyalarni integrallash (Universal va maxsus almashtirishlar)',
+          url: '/dars/integrallar/trigonometrik-funksiyalarni-integrallash',
+          slug: 'integrallar/trigonometrik-funksiyalarni-integrallash',
+          duration: '15 daqiqa',
+          whyRead: "Universal trigonometrik almashtirish t = tg(x/2), darajalarni pasaytirish formulalari va differensial ostiga kiritish qoidalarini to'liq egallash.",
+          focusPoints: ['Universal almashtirish: t = tg(x/2), dx = 2dt/(1+t²)', 'Juft darajalarda pasaytirish: cos²x = (1+cos 2x)/2', 'Toq darajalarda differensial ostiga kiritish']
+        },
+        {
+          stepNumber: 6,
+          phase: 'Amaliyot',
+          badgeColor: '#3b82f6',
+          title: 'Aniq integralning geometrik va fizik tatbiqlari (Yoy uzunligi, sirt, mexanik ish)',
+          url: '/dars/integrallar/aniq-integralning-geometrik-va-fizik-tatbiqlari',
+          slug: 'integrallar/aniq-integralning-geometrik-va-fizik-tatbiqlari',
+          duration: '15 daqiqa',
+          whyRead: "Egri chiziq yoyi uzunligi L, aylanish sirti S_Ox, o'zgaruvchan kuch bajargan ish W = ∫ F(x)dx va og'irlik markazini hisoblash.",
+          focusPoints: ['Yoy uzunligi formulasi L = ∫ √(1 + (f\')²) dx', 'Aylanish sirti yuzi S_Ox = 2π ∫ y √(1 + (y\')²) dx', 'Guk qonuni bo\'yicha prujina ishi W = kx²/2']
         }
       ],
       interactiveTools: [
@@ -607,15 +640,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'differensial-tenglamalar',
-    keywords: ['differensial tenglama', 'koshi masalasi', 'ajraladigan', 'bernulli', 'lagranj variatsiya', 'eyler', 'runge-kutta', 'xarakteristik'],
+    keywords: ['differensial tenglama', 'koshi masalasi', 'ajraladigan', 'bernulli', 'lagranj variatsiya', 'eyler', 'runge-kutta', 'xarakteristik', 'klero', 'lagranj', 'ogibayushchaya', 'oralma', 'eyler differensial'],
     plan: {
       id: 'differensial-tenglamalar',
       topicTitle: 'Differensial Tenglamalarni Turlarga Ajratish va Yechish',
       moduleSlug: 'differensial-tenglamalar',
       moduleTitle: '12-Modul: Differensial tenglamalar',
-      empathyMessage: "Differensial tenglamalarda muvaffaqiyatning 80% i — tenglamaning turini to'g'ri tanib olishda! Quyidagi 4 qadamda har bir turni qanday tanish va yechishni o'rganasiz.",
-      rootCauseWhyHard: "Talabalar o'zgaruvchilari ajraladigan, bir jinsli (y/x), chiziqli (y' + P(x)y = Q(x)) va 2-tartibli o'zgarmas koeffitsiyentli tenglamalarni bir-biridan ajratishda adashishadi.",
-      estimatedTotalTime: '55 daqiqa',
+      empathyMessage: "Differensial tenglamalarda muvaffaqiyatning 80% i — tenglamaning turini to'g'ri tanib olishda! Quyidagi ketma-ket qadamlarda har bir turni qanday tanish va yechishni o'rganasiz.",
+      rootCauseWhyHard: "Talabalar o'zgaruvchilari ajraladigan, bir jinsli (y/x), chiziqli (y' + P(x)y = Q(x)), Eyler va 2-tartibli o'zgarmas koeffitsiyentli tenglamalarni bir-biridan ajratishda adashishadi.",
+      estimatedTotalTime: '70 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -660,6 +693,17 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "ay'' + by' + cy = 0 tenglamani ak² + bk + c = 0 kvadrat tenglamaga keltirib 1 daqiqada yechish!",
           focusPoints: ['Xarakteristik tenglama ildizlari (D > 0, D = 0, D < 0)', 'Xususiy yechim tanlash (/dars/differensial-tenglamalar/xususiy-yechim-tanlash-va-amaliy-masalalar)']
+        },
+        {
+          stepNumber: 5,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Eyler va Klero-Lagranj tenglamalari: Maxsus yechimlar va xos usullar',
+          url: '/dars/differensial-tenglamalar/eyler-differensial-tenglamasi',
+          slug: 'differensial-tenglamalar/eyler-differensial-tenglamasi',
+          duration: '15 daqiqa',
+          whyRead: "O'zgaruvchan koeffitsiyentli Eyler tenglamasi ax²y'' + bxy' + cy = f(x) hamda Klero va Lagranj tenglamalari (/dars/differensial-tenglamalar/klero-va-lagranj-tenglamalari) yordamida o'ralma (maxsus) yechimlarni topish.",
+          focusPoints: ['Eyler tenglamasida x = e^t almashtirishi yoki to\'g\'ridan-to\'g\'ri ak(k-1)+bk+c = 0', 'Klero tenglamasida umumiy yechim y = Cx + ψ(C) va diskriminantli o\'ralma chiziq']
         }
       ],
       interactiveTools: [
@@ -681,7 +725,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'ehtimollar-statistika',
-    keywords: ['ehtimol', 'kombinatorika', 'bayes', 'bernulli sxemasi', 'puasson', 'muavr-laplas', 'tasodifiy miqdor', 'dispersiya', 'statistika', 'tanlanma', 'regressiya', 'pirson', 'styudent'],
+    keywords: ['ehtimol', 'kombinatorika', 'bayes', 'bernulli sxemasi', 'puasson', 'muavr-laplas', 'tasodifiy miqdor', 'dispersiya', 'statistika', 'tanlanma', 'regressiya', 'pirson', 'styudent', 'zichlik funksiyasi', 'uzluksiz tasodifiy', 'chebishev', 'markaziy limit', 'mann uitni', 'vilkokson'],
     plan: {
       id: 'ehtimollar-statistika',
       topicTitle: 'Ehtimollar Nazariyasi va Matematik Statistika Yo\'l Xaritasi',
@@ -689,7 +733,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
       moduleTitle: '13–14-Modullar: Ehtimollar nazariyasi va Statistika',
       empathyMessage: "Ehtimollar nazariyasi — hayotiy mantiqqa eng yaqin fan! Masal shartidagi kalit so'zlarni («yoki» = qo'shish, «va» = ko'paytirish, «agar ma'lum bo'lsa» = Bayes) ajratib olsangiz, barcha masalalar oson yechiladi.",
       rootCauseWhyHard: "Talabalar kombinatorikada o'rin tartibi muhimmi (A_n^k) yoki muhim emasmi (C_n^k) ekanini hamda to'la ehtimol bilan Bayes formulasini farqlashda qiynalishadi.",
-      estimatedTotalTime: '50 daqiqa',
+      estimatedTotalTime: '75 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -734,6 +778,28 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "Tanlanma o'rtacha, dispersiya, ishonchlilik oraliqlari va Pirson χ² mezoni (/dars/matematik-statistika/pirson-xi-kvadrat-va-moslik-kriteriylari).",
           focusPoints: ['Tanlanma xarakteristikalari', 'Chiziqli regressiya va korrelyatsiya (/dars/matematik-statistika/chiziqli-regressiya-va-spirmen-korrelyatsiyasi)']
+        },
+        {
+          stepNumber: 5,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Uzluksiz tasodifiy miqdorlar, Zichlik f(x) va Markaziy limit teorema',
+          url: '/dars/ehtimollar-nazariyasi/uzluksiz-tasodifiy-miqdorlar-zichlik-va-taqsimot',
+          slug: 'ehtimollar-nazariyasi/uzluksiz-tasodifiy-miqdorlar-zichlik-va-taqsimot',
+          duration: '15 daqiqa',
+          whyRead: "Ehtimollik zichligi f(x), integral funksiya F(x), Chebishev tengsizligi va Katta sonlar qonuni / Markaziy limit teorema (/dars/ehtimollar-nazariyasi/katta-sonlar-qonuni-va-markaziy-limit-teorema).",
+          focusPoints: ['Zichlik xossasi: ∫ f(x)dx = 1 va P(a ≤ X ≤ b) = ∫ f(x)dx', 'Chebishev tengsizligi va Lyapunov markaziy limit teoremasi']
+        },
+        {
+          stepNumber: 6,
+          phase: 'Amaliyot',
+          badgeColor: '#3b82f6',
+          title: 'Parametrik bo\'lmagan statistik gipotezalar (Mann-Uitni va Vilkokson testlari)',
+          url: '/dars/matematik-statistika/parametrik-bolmagan-gipotezalar-mann-uitni-vilkokson',
+          slug: 'matematik-statistika/parametrik-bolmagan-gipotezalar-mann-uitni-vilkokson',
+          duration: '15 daqiqa',
+          whyRead: "Normallik sharti buzilganda ikki guruhni taqqoslash uchun ranglar bo'yicha Mann-Uitni U-testi va bog'liq tanlanmalar uchun Vilkokson T-testini qo'llash.",
+          focusPoints: ['Elementlarni tartiblab rang (rank) berish', 'Mann-Uitni U statistikasi va kritik qiymat bilan solishtirish']
         }
       ],
       interactiveTools: [
@@ -755,7 +821,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'kompleks-sonlar',
-    keywords: ['kompleks', 'mavhum', 'trigonometrik shakl', 'eyler shakli', 'muavr', 'koshi-riman', 'laplas almashtirishi', 'loran', 'chegirma'],
+    keywords: ['kompleks', 'mavhum', 'trigonometrik shakl', 'eyler shakli', 'muavr', 'koshi-riman', 'laplas almashtirishi', 'loran', 'chegirma', 'koshi teoremasi', 'kontur integral', 'koshi integral formulasi'],
     plan: {
       id: 'kompleks-sonlar',
       topicTitle: 'Kompleks Sonlar, Muavr Formulasi va TFKP',
@@ -763,7 +829,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
       moduleTitle: '4-Modul: Kompleks sonlar va TFKP',
       empathyMessage: "Kompleks sonlar (z = a + bi) oddiy algebraik ifodalarga juda o'xshaydi — faqat i² = -1 ekanini yodda tutsangiz bas!",
       rootCauseWhyHard: "Talabalar kompleks sonning argumenti φ ni topishda nuqta qaysi chorakda (II yoki III chorakda ±π qo'shish kerakligi) joylashganiga e'tibor bermaydilar.",
-      estimatedTotalTime: '40 daqiqa',
+      estimatedTotalTime: '55 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -797,6 +863,17 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "z^n va n-darajali ildizning barcha n ta qiymatini topish.",
           focusPoints: ['z^n = r^n (cos nφ + i sin nφ)', 'Ildiz chiqarishda k = 0, 1, ..., n-1 qiymatlarni qo\'yish']
+        },
+        {
+          stepNumber: 4,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Kompleks o\'zgaruvchili funksiyalar integrallari va Koshi integral formulasi',
+          url: '/dars/kompleks-sonlar/kompleks-ozgaruvchili-funksiyalar-integrallari-va-koshi-teoremasi',
+          slug: 'kompleks-sonlar/kompleks-ozgaruvchili-funksiyalar-integrallari-va-koshi-teoremasi',
+          duration: '15 daqiqa',
+          whyRead: "Kontur bo'yicha integrallash, Koshi fundamental teoremasi ∮ f(z)dz = 0 va Koshi integral formulasi orqali ichki nuqtadagi f(z₀) va hosilalarni hisoblash.",
+          focusPoints: ['Koshi integral teoremasi: analitik funksiyaning yopiq kontur integrali 0 ga teng', 'Koshi formulasi: f(z₀) = 1/(2πi) ∮ f(z)/(z - z₀) dz']
         }
       ],
       interactiveTools: [
@@ -818,15 +895,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'qatorlar',
-    keywords: ['qator', 'dalamber', 'koshi alomati', 'leybnits', 'yaqinlashish radiusi', 'makloren', 'fure'],
+    keywords: ['qator', 'dalamber', 'koshi alomati', 'leybnits', 'yaqinlashish radiusi', 'makloren', 'fure', 'raabe', 'gauss alomati', 'nozik yaqinlashish', 'qosh faktorial'],
     plan: {
       id: 'qatorlar',
       topicTitle: 'Sonli, Darajali va Fure Qatorlari Strategiyasi',
       moduleSlug: 'qatorlar',
       moduleTitle: '11-Modul: Qatorlar va Fure tahlili',
-      empathyMessage: "Qatorlar mavzusida asosiy savol bitta: «Cheksiz yig'indi chekli songa yaqinlashadimi yoki cheksizlikka uzoqlashadimi?» Buning uchun 3 ta asosiy alomatni bilsangiz yetarli!",
-      rootCauseWhyHard: "Talabalar faktorial (n!) qatnashganda D'Alamber, n-daraja qatnashganda esa Koshi radikal alomatini tanlash kerakligini adashtirishadi.",
-      estimatedTotalTime: '45 daqiqa',
+      empathyMessage: "Qatorlar mavzusida asosiy savol bitta: «Cheksiz yig'indi chekli songa yaqinlashadimi yoki cheksizlikka uzoqlashadimi?» Buning uchun asosiy va nozik alomatlarni bilsangiz yetarli!",
+      rootCauseWhyHard: "Talabalar faktorial (n!) qatnashganda D'Alamber, n-daraja qatnashganda Koshi, D'Alamber D = 1 bergan noaniqlikda esa Raabe va Gauss mezonlarini tanlashda ikkilanishadi.",
+      estimatedTotalTime: '60 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -860,6 +937,17 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "Yaqinlashish intervali (-R, R) va chegaraviy nuqtalarni tekshirish hamda Fure qatorlari (/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma).",
           focusPoints: ['R radiusni topish', 'Chegara nuqtalarida Leybnits alomatini (/dars/qatorlar/ishorasi-almashinuvchi-qatorlar-leybnits) tekshirish']
+        },
+        {
+          stepNumber: 4,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Qatorlarning nozik yaqinlashish alomatlari (Raabe va Gauss)',
+          url: '/dars/qatorlar/qatorlarning-nozik-yaqinlashish-alomatlari-raabe-va-gauss',
+          slug: 'qatorlar/qatorlarning-nozik-yaqinlashish-alomatlari-raabe-va-gauss',
+          duration: '15 daqiqa',
+          whyRead: "D'Alamber alomati D = 1 noaniqlik bergan murakkab hollarda (faktoriallar, qo'sh faktoriallar) Raabe va Gauss mezonlari yordamida qat'iy xulosa chiqarish.",
+          focusPoints: ['Raabe alomati: R = lim n(a_n/a_{n+1} - 1)', 'Gauss alomati yoyilmasi a_n/a_{n+1} = λ + μ/n + O(1/n^{1+ε})']
         }
       ],
       interactiveTools: [
@@ -881,15 +969,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'kop-ozgaruvchili-karrali',
-    keywords: ['xususiy hosila', 'gradient', 'ekstremum ikki', 'karrali integral', 'ikki karrali', 'uch karrali', 'grin', 'stoks', 'divergensiya', 'rotor', 'urinma tekislik'],
+    keywords: ['xususiy hosila', 'gradient', 'ekstremum ikki', 'karrali integral', 'ikki karrali', 'uch karrali', 'grin', 'stoks', 'divergensiya', 'rotor', 'urinma tekislik', 'sirt integrali', 'mhk', 'eng kichik kvadratlar', 'oqim', 'gauss ostrogradskiy'],
     plan: {
       id: 'kop-ozgaruvchili-karrali',
       topicTitle: 'Ko\'p O\'zgaruvchili Funksiyalar va Karrali Integrallar',
       moduleSlug: 'kop-ozgaruvchili-funksiyalar',
       moduleTitle: '9–10-Modullar: Ko\'p o\'zgaruvchili funksiyalar va Karrali integrallar',
       empathyMessage: "Ko'p o'zgaruvchili funksiyalar z = f(x, y) da xususiy hosila olish oddiy hosila bilan bir xil — faqat bitta o'zgaruvchidan hosila olayotganda ikkinchisini oddiy son (const) deb tasavvur qilasiz!",
-      rootCauseWhyHard: "Talabalar AC - B² ekstremum diskriminantida ikkinchi tartibli aralash hosila B = z''_xy ni hisoblashda va ikki karrali integralda integrallash chegaralarini chizmaga qarab qo'yishda qiynalishadi.",
-      estimatedTotalTime: '50 daqiqa',
+      rootCauseWhyHard: "Talabalar AC - B² ekstremum diskriminantida ikkinchi tartibli aralash hosila B = z''_xy ni hisoblashda, ikki karrali integralda integrallash chegaralarini chizmaga qarab qo'yishda hamda sirt integrallarini sirt proyeksiyasiga keltirishda qiynalishadi.",
+      estimatedTotalTime: '75 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -923,6 +1011,28 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '18 daqiqa',
           whyRead: "D sohani chizib, ikki karrali integralni ichma-ich ikkita oddiy integralga keltirish.",
           focusPoints: ['Tashqi chegaralar doimo o\'zgarmas son bo\'lishi shart!', 'Doiraviy sohalarda qutb koordinatalariga o\'tish (/dars/karrali-integrallar/qutb-koordinatalarida-ikki-karrali-integral)']
+        },
+        {
+          stepNumber: 4,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Birinchi va ikkinchi tur sirt integrallari (Skalyar va Vektor maydon oqimi)',
+          url: '/dars/karrali-integrallar/birinchi-va-ikkinchi-tur-sirt-integrallari',
+          slug: 'karrali-integrallar/birinchi-va-ikkinchi-tur-sirt-integrallari',
+          duration: '18 daqiqa',
+          whyRead: "Sirt maydoni dσ = √(1 + (z'_x)² + (z'_y)²) dxdy, 1-tur sirt integrali (massa, yuza) va 2-tur sirt integrali (vektor oqimi, Gauss-Ostrogradskiy va Stoks teoremalari).",
+          focusPoints: ['1-tur sirt integralini ikki karrali integralga keltirish', '2-tur sirt integrali va sirt orientatsiyasi (normal yo\'nalishi)', 'Gauss-Ostrogradskiy formulasi bilan bog\'liqlik']
+        },
+        {
+          stepNumber: 5,
+          phase: 'Amaliyot',
+          badgeColor: '#3b82f6',
+          title: 'Eng kichik kvadratlar usuli (MHK) va Ma\'lumotlarni approksimatsiya qilish',
+          url: '/dars/kop-ozgaruvchili-funksiyalar/eng-kichik-kvadratlar-usuli-mhk',
+          slug: 'kop-ozgaruvchili-funksiyalar/eng-kichik-kvadratlar-usuli-mhk',
+          duration: '15 daqiqa',
+          whyRead: "Eksperimental nuqtalar to'plamiga eng yaqin o'tuvchi to'g'ri chiziq y = ax + b tenglamasini xususiy hosilalar ∂S/∂a = 0, ∂S/∂b = 0 orqali normal sistema tuzib topish.",
+          focusPoints: ['Kvadratik xatolik S(a, b) = ∑ (y_i - (ax_i + b))² ni minimallashtirish', 'MHK normal tenglamalar sistemasini tuzish jadvali', 'Parabolik approksimatsiyaga kengaytirish']
         }
       ],
       interactiveTools: [
@@ -944,15 +1054,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'funksiyalar-grafiklar',
-    keywords: ['funksiya', 'aniqlanish sohasi', 'asimptota', 'qavariq', 'egilish nuqtasi', 'grafik yasash', 'juft', 'toq', 'giperbolik'],
+    keywords: ['funksiya', 'aniqlanish sohasi', 'asimptota', 'qavariq', 'egilish nuqtasi', 'grafik yasash', 'juft', 'toq', 'giperbolik', 'uzluksizlik', 'uzilish nuqtasi', 'sakrash', 'eng katta qiymat', 'eng kichik qiymat', 'weierstrass'],
     plan: {
       id: 'funksiyalar-grafiklar',
       topicTitle: 'Funksiyani To\'liq Tekshirish va Grafik Yasash',
       moduleSlug: 'funksiyalar-grafiklar',
       moduleTitle: '6-Modul: Funksiyalar va grafiklar',
       empathyMessage: "Funksiyani tekshirish va grafigini chizish — barcha analiz bilimlarini bitta chiroyli chizmada birlashtiruvchi mavzu!",
-      rootCauseWhyHard: "Talabalar vertikal va og'ma (y = kx + b) asimptotalarni topishda hamda 1- va 2-tartibli hosila ishoralar jadvalini tuzishda adashishadi.",
-      estimatedTotalTime: '45 daqiqa',
+      rootCauseWhyHard: "Talabalar vertikal va og'ma (y = kx + b) asimptotalarni topishda, uzilish nuqtalarining turini ajratishda hamda 1- va 2-tartibli hosila ishoralar jadvalini tuzishda adashishadi.",
+      estimatedTotalTime: '60 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -986,6 +1096,17 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '18 daqiqa',
           whyRead: "Ekstremumlar (f'(x) = 0) va qavariqlik/egilish nuqtalari (f''(x) = 0) orqali to'liq grafik chizish.",
           focusPoints: ['O\'sish-kamayish oraliqlari', 'Qavariqlik va egilish nuqtalari (/dars/funksiyalar-grafiklar/qavariqlik-botiqlik-va-egilish-nuqtalari)']
+        },
+        {
+          stepNumber: 4,
+          phase: 'Chuqurlashtirilgan',
+          badgeColor: '#f59e0b',
+          title: 'Funksiya uzluksizligi, uzilish nuqtalari va Kesmada eng katta/eng kichik qiymat',
+          url: '/dars/funksiyalar-grafiklar/funksiya-uzluksizligi-va-uzilish-nuqtalari',
+          slug: 'funksiyalar-grafiklar/funksiya-uzluksizligi-va-uzilish-nuqtalari',
+          duration: '15 daqiqa',
+          whyRead: "1-tur (sakrash) va 2-tur (cheksiz) uzilish nuqtalarini tasniflash hamda Veyershtrass teoremasi bo'yicha kesmada global ekstremumni (/dars/funksiyalar-grafiklar/kesmada-eng-katta-va-eng-kichik-qiymat) topish.",
+          focusPoints: ['Bir tomonlama limitlar: f(x₀ - 0) va f(x₀ + 0)', 'Uzilish turlari: bartaraf qilinadigan, 1-tur sakrash, 2-tur cheksiz', 'Kesmada eng katta va eng kichik qiymatni 4 qadamda topish']
         }
       ],
       interactiveTools: [
@@ -1007,15 +1128,15 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'maktab-noldan',
-    keywords: ['noldan', 'boshidan', 'maktab', 'bazam bosh', 'nimadan boshlay', 'kvadrat tenglama', 'trigonometriya', 'logarifm', 'modul', 'progressiya', 'kasr'],
+    keywords: ['noldan', 'boshidan', 'maktab', 'bazam bosh', 'nimadan boshlay', 'kvadrat tenglama', 'trigonometriya', 'logarifm', 'modul', 'progressiya', 'kasr', 'kombinatorika', 'faktorial', 'orinlashtirish', 'guruhlash'],
     plan: {
       id: 'maktab-noldan',
       topicTitle: 'Oliy Matematikani Noldan Boshlash (Maktab Poydevori + 1-Kurs)',
       moduleSlug: 'maktab-kursi',
       moduleTitle: '1-Modul: Maktab kursini takrorlash',
-      empathyMessage: "Eng to'g'ri qaror! Oliy matematikada qiynalishning 90% sababi — maktabdagi kasrlar, darajalar, logarifm va trigonometriya qoidalarining yoddan chiqqanidir. Quyidagi 4 qadamda poydevoringizni mustahkamlab olasiz!",
+      empathyMessage: "Eng to'g'ri qaror! Oliy matematikada qiynalishning 90% sababi — maktabdagi kasrlar, darajalar, logarifm, trigonometriya va kombinatorika qoidalarining yoddan chiqqanidir. Quyidagi ketma-ket qadamlarda poydevoringizni mustahkamlab olasiz!",
       rootCauseWhyHard: "Maktab bazasidagi qisqa ko'paytirish formulalari, manfiy va kasr darajalar hamda trigonometrik burchaklar jadvali esdan chiqsa, limit, hosila va integral misollarida har qadamda to'xtab qolish kuzatiladi.",
-      estimatedTotalTime: '60 daqiqa',
+      estimatedTotalTime: '75 daqiqa',
       steps: [
         {
           stepNumber: 1,
@@ -1060,6 +1181,17 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
           duration: '15 daqiqa',
           whyRead: "sin²x + cos²x = 1 va asosiy burchaklar (30°, 45°, 60°, 90°) qiymatlari.",
           focusPoints: ['Asosiy trigonometrik ayniyatlar', 'Ikkilangan burchak va darajani pasaytirish formulalari']
+        },
+        {
+          stepNumber: 5,
+          phase: 'Asosiy',
+          badgeColor: '#10b981',
+          title: 'Kombinatorika asoslari: O\'rinlashtirish, O\'rin almashtirish va Guruhlashi',
+          url: '/dars/maktab-kursi/kombinatorika-orinlashtirish-orin-almashtirish-va-guruhlash',
+          slug: 'maktab-kursi/kombinatorika-orinlashtirish-orin-almashtirish-va-guruhlash',
+          duration: '15 daqiqa',
+          whyRead: "Qo'shish va ko'paytirish qoidalari, P_n = n!, A_n^k = n!/(n-k)!, C_n^k = n!/(k!(n-k)!) hamda takrorli kombinatsiyalar formulalarini bexato tanlash algoritmi.",
+          focusPoints: ['O\'rin tartibi muhimmi (A_n^k) yoki muhim emasmi (C_n^k)?', 'Takrorli guruhlash va o\'rinlashtirish formulalari', 'Masala shartiga ko\'ra to\'g\'ri formulani tanlash daraxti']
         }
       ],
       interactiveTools: [
@@ -1182,6 +1314,7 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Ko'rsatkichli va logarifmik ifodalar](/dars/maktab-kursi/korsatkichli-va-logarifmik-ifodalar)
 - [Trigonometriya asoslari](/dars/maktab-kursi/trigonometriya-asoslari)
 - [Ko'p qavatli kasrlar va jadvallar](/dars/maktab-kursi/kop-qavatli-kasrlar-va-trigonometrik-jadvallar)
+- [Kombinatorika: O'rinlashtirish, O'rin almashtirish va Guruhlash](/dars/maktab-kursi/kombinatorika-orinlashtirish-orin-almashtirish-va-guruhlash)
 
 2-Modul (Chiziqli algebra):
 - [Matritsalar tushunchasi va amallar](/dars/chiziqli-algebra/matritsalar-tushunchasi-va-chiziqli-amallar)
@@ -1203,6 +1336,7 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Vektor va aralash ko'paytma (Yuza va Piramida hajmi)](/dars/vektorlar-geometriya/vektor-va-aralash-kopaytma)
 - [Tekislikdagi to'g'ri chiziq](/dars/vektorlar-geometriya/tekislikdagi-togri-chiziq)
 - [Fazodagi tekislik va to'g'ri chiziq](/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq)
+- [Fazoda va tekislikda masofalar (ayqash to'g'ri chiziqlar, nuqtadan tekislikkacha)](/dars/vektorlar-geometriya/fazoda-va-tekislikda-masofalar-metrik-masalalar)
 - [Uchburchakning 12 ta elementi](/dars/vektorlar-geometriya/tekislikda-uchburchak-va-chiziqli-tengsizliklar)
 - [Ikkinchi tartibli chiziqlar va sirtlar](/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar)
 
@@ -1210,6 +1344,7 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Kompleks sonlar va amallar](/dars/kompleks-sonlar/kompleks-sonlar-amallar)
 - [Trigonometrik va Eyler shakli](/dars/kompleks-sonlar/trigonometrik-va-korsatkichli-shakl)
 - [Muavr formulasi va ildiz chiqarish](/dars/kompleks-sonlar/muavr-formulasi-va-ildiz-chiqarish)
+- [Kompleks o'zgaruvchili funksiyalar integrallari va Koshi formulasi](/dars/kompleks-sonlar/kompleks-ozgaruvchili-funksiyalar-integrallari-va-koshi-teoremasi)
 - [TFKP va Koshi-Riman shartlari](/dars/kompleks-sonlar/tfkp-va-koshi-riman-shartlari)
 - [Operatsion hisob va Laplas almashtirishi](/dars/kompleks-sonlar/operatsion-hisob-va-laplas-almashtirishi)
 
@@ -1222,6 +1357,8 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 
 6-Modul (Funksiyalar va grafiklar):
 - [Aniqlanish va qiymatlar sohasi](/dars/funksiyalar-grafiklar/funksiya-aniqlanish-va-qiymatlar-sohasi)
+- [Funksiya uzluksizligi va uzilish nuqtalari](/dars/funksiyalar-grafiklar/funksiya-uzluksizligi-va-uzilish-nuqtalari)
+- [Kesmada eng katta va eng kichik qiymat](/dars/funksiyalar-grafiklar/kesmada-eng-katta-va-eng-kichik-qiymat)
 - [Egri chiziq asimptotalari](/dars/funksiyalar-grafiklar/egri-chiziq-asimptotalari-vertikal-gorizontal-ogma)
 - [Funksiyani 7 bosqichda to'liq tekshirish](/dars/funksiyalar-grafiklar/funksiyani-toliq-tekshirish-sxemasi)
 
@@ -1236,19 +1373,24 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Boshlang'ich funksiya va integral jadvali](/dars/integrallar/boshlangich-funksiya-va-aniqmas-integral)
 - [O'zgaruvchini almashtirish usuli](/dars/integrallar/integrallash-usullari-almashtirish)
 - [Bo'laklab integrallash](/dars/integrallar/bolaklab-integrallash)
+- [Trigonometrik funksiyalarni integrallash](/dars/integrallar/trigonometrik-funksiyalarni-integrallash)
 - [Ratsional kasrlar integrali](/dars/integrallar/ratsional-kasrlar-va-xosmas-integrallar)
 - [Aniq integral va Nyuton-Leybnits](/dars/integrallar/aniq-integral-va-nyuton-leybnits)
+- [Aniq integralning geometrik va fizik tatbiqlari](/dars/integrallar/aniq-integralning-geometrik-va-fizik-tatbiqlari)
 
 9-10-Modullar (Ko'p o'zgaruvchili funksiyalar va Karrali integrallar):
 - [Xususiy hosilalar](/dars/kop-ozgaruvchili-funksiyalar/xususiy-hosilalar)
 - [Ikki o'zgaruvchili funksiya ekstremumi](/dars/kop-ozgaruvchili-funksiyalar/ikki-ozgaruvchili-funksiya-ekstremumi)
 - [Gradient va yo'nalish bo'yicha hosila](/dars/kop-ozgaruvchili-funksiyalar/yonalish-boyicha-hosila-gradient-va-shartli-ekstremum)
+- [Eng kichik kvadratlar usuli (MHK)](/dars/kop-ozgaruvchili-funksiyalar/eng-kichik-kvadratlar-usuli-mhk)
 - [Ikki karrali integral](/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash)
+- [Birinchi va ikkinchi tur sirt integrallari](/dars/karrali-integrallar/birinchi-va-ikkinchi-tur-sirt-integrallari)
 - [Egri chiziqli integral va Grin formulasi](/dars/karrali-integrallar/egri-chiziqli-integrallar-va-grin-formulasi)
 
 11-Modul (Qatorlar):
 - [Sonli qatorlar](/dars/qatorlar/sonli-qatorlar-va-yaqinlashish)
 - [Musbat hadli qatorlar (D'Alamber va Koshi)](/dars/qatorlar/musbat-hadli-qatorlar-alomatlari)
+- [Qatorlarning nozik yaqinlashish alomatlari (Raabe va Gauss)](/dars/qatorlar/qatorlarning-nozik-yaqinlashish-alomatlari-raabe-va-gauss)
 - [Darajali qatorning yaqinlashish radiusi](/dars/qatorlar/darajali-qatorning-yaqinlashish-radiusi-va-sohasi)
 - [Fure qatorlari](/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma)
 
@@ -1256,12 +1398,17 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [O'zgaruvchilari ajraladigan tenglamalar](/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar)
 - [1-tartibli chiziqli va Bernulli tenglamalari](/dars/differensial-tenglamalar/birinchi-tartibli-chiziqli-tenglamalar)
 - [2-tartibli o'zgarmas koeffitsiyentli tenglamalar](/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar)
+- [Eyler differensial tenglamasi](/dars/differensial-tenglamalar/eyler-differensial-tenglamasi)
+- [Klero va Lagranj tenglamalari](/dars/differensial-tenglamalar/klero-va-lagranj-tenglamalari)
 
 13-14-Modullar (Ehtimollar va Statistika):
 - [Kombinatorika va klassik ehtimollik](/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik)
 - [To'la ehtimol va Bayes formulalari](/dars/ehtimollar-nazariyasi/toliq-ehtimollik-va-bayes-formulalari)
 - [Tasodifiy miqdorlar (M(X), D(X))](/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari)
+- [Uzluksiz tasodifiy miqdorlar, zichlik va taqsimot](/dars/ehtimollar-nazariyasi/uzluksiz-tasodifiy-miqdorlar-zichlik-va-taqsimot)
+- [Katta sonlar qonuni va markaziy limit teorema](/dars/ehtimollar-nazariyasi/katta-sonlar-qonuni-va-markaziy-limit-teorema)
 - [Statistik baholash va tanlanma](/dars/matematik-statistika/statistik-baholash-va-tavsiflar)
+- [Parametrik bo'lmagan gipotezalar (Mann-Uitni, Vilkokson)](/dars/matematik-statistika/parametrik-bolmagan-gipotezalar-mann-uitni-vilkokson)
 
 SAYTNING INTERAKTIV ASBOBLARI:
 - [Matritsa va Determinant Kalkulyatori](/matritsa)

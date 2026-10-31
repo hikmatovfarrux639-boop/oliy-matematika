@@ -204,7 +204,73 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
   const s = (rawInput || '').trim();
   const low = s.toLowerCase();
 
-  // 1. Differential Equations (Module 12)
+  // 1a. Euler Differential Equation
+  if (
+    (low.includes('eyler') && (low.includes('tenglama') || low.includes('differensial') || s.includes("y'"))) ||
+    /x\^2\s*\*?\s*y''/i.test(s) ||
+    /x\^2y''/i.test(s) ||
+    (s.includes("x^2") && s.includes("y''") && s.includes("xy'"))
+  ) {
+    return {
+      id: 'euler-diff-eq',
+      moduleId: 12,
+      moduleTitle: '12-modul: Differensial tenglamalar',
+      moduleUrl: '/modullar/differensial-tenglamalar',
+      topicName: 'Eyler differensial tenglamasi va o\'zgaruvchan koeffitsiyentli tenglamalar',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada hosila tartibiga mos darajali x koeffitsiyentlari qatnashgan Eyler differensial tenglamasi (a·x²·y'' + b·x·y' + c·y = f(x)) berilgan.",
+      primaryLesson: {
+        title: 'Eyler differensial tenglamasi',
+        url: '/dars/differensial-tenglamalar/eyler-differensial-tenglamasi',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Ikkinchi tartibli o\'zgarmas koeffitsiyentli chiziqli tenglamalar', url: '/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar' },
+        { title: 'Tartibini pasaytirish mumkin bo\'lgan tenglamalar', url: '/dars/differensial-tenglamalar/tartibini-pasaytirish-mumkin-bolgan-tenglamalar' }
+      ],
+      keyFormulas: [
+        { name: 'Eyler almashtirishi', latex: 'x = e^t \\iff t = \\ln x, \\quad x y\'_x = y\'_t, \\quad x^2 y\'\'_{xx} = y\'\'_{tt} - y\'_t' },
+        { name: 'Eyler xarakteristik tenglamasi', latex: 'a k(k-1) + b k + c = 0 \\iff a k^2 + (b-a)k + c = 0' }
+      ],
+      studyAdvice: "x = e^t almashtirishi bilan o'zgarmas koeffitsiyentli tenglamaga keltiring yoki to'g'ridan-to'g'ri y = x^k deb olib xarakteristik tenglama ildizlarini toping."
+    };
+  }
+
+  // 1b. Clairaut & Lagrange Differential Equations
+  if (
+    low.includes('klero') ||
+    low.includes('lagranj tenglama') ||
+    low.includes("o'rab oluvchi") ||
+    low.includes('ogibayushchaya') ||
+    low.includes('maxsus yechim') ||
+    /y\s*=\s*x\s*\*?\s*y'\s*\+/i.test(s)
+  ) {
+    return {
+      id: 'clairaut-lagrange',
+      moduleId: 12,
+      moduleTitle: '12-modul: Differensial tenglamalar',
+      moduleUrl: '/modullar/differensial-tenglamalar',
+      topicName: 'Klero va Lagranj differensial tenglamalari: Maxsus yechimlar',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada y = x·φ(y') + ψ(y') ko'rinishidagi Lagranj yoki y = x·y' + ψ(y') ko'rinishidagi Klero differensial tenglamasi berilgan.",
+      primaryLesson: {
+        title: 'Klero va Lagranj differensial tenglamalari',
+        url: '/dars/differensial-tenglamalar/klero-va-lagranj-tenglamalari',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Birinchi tartibli chiziqli tenglamalar', url: '/dars/differensial-tenglamalar/birinchi-tartibli-chiziqli-tenglamalar' },
+        { title: 'O\'zgaruvchilari ajraladigan tenglamalar', url: '/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar' }
+      ],
+      keyFormulas: [
+        { name: 'Klero tenglamasi yechimi', latex: 'y = x y\' + \\psi(y\') \\implies y = C x + \\psi(C) \\quad (\\text{Umumiy yechim})' },
+        { name: 'Klero maxsus yechimi', latex: 'x + \\psi\'(p) = 0 \\implies \\text{O\'rab oluvchi egri chiziq}' }
+      ],
+      studyAdvice: "p = y' belgilash kiriting va differensiallang: Kleroda umumiy yechim to'g'ri chiziqlar oilasi y = Cx + ψ(C) bo'ladi, x + ψ'(p) = 0 dan esa maxsus yechim chiqadi."
+    };
+  }
+
+  // 1c. General Differential Equations (Module 12)
   if (
     s.includes("y''") ||
     s.includes("y'") ||
@@ -251,7 +317,43 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 2. Multiple Integrals (Module 10)
+  // 2a. Surface Integrals (1st and 2nd kind)
+  if (
+    low.includes('sirt integral') ||
+    low.includes('dsigma') ||
+    low.includes('\\iint_s') ||
+    low.includes('\\iint_{s') ||
+    low.includes('dydz') ||
+    low.includes('dzdx') ||
+    low.includes('sirt massasi') ||
+    low.includes('maydon oqimi')
+  ) {
+    return {
+      id: 'surface-integrals',
+      moduleId: 10,
+      moduleTitle: '10-modul: Karrali va egri chiziqli integrallar',
+      moduleUrl: '/modullar/karrali-integrallar',
+      topicName: '1- va 2-tur sirt integrallari (Sirt massasi va Oqim)',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada fazoviy sirt bo'yicha integrallash (skalyar dσ yoki koordinatalar bo'yicha oqim) talab qilingan.",
+      primaryLesson: {
+        title: '1- va 2-tur sirt integrallari',
+        url: '/dars/karrali-integrallar/birinchi-va-ikkinchi-tur-sirt-integrallari',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Vektor maydon oqimi va Gauss-Ostrogradskiy', url: '/dars/karrali-integrallar/vektor-maydon-oqimi-va-gauss-ostrogradskiy' },
+        { title: 'Ikki karrali integral va uni hisoblash', url: '/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash' }
+      ],
+      keyFormulas: [
+        { name: '1-tur sirt differensiali', latex: 'd\\sigma = \\sqrt{1 + (z\'_x)^2 + (z\'_y)^2}\\,dxdy' },
+        { name: '2-tur sirt integrali (Oqim)', latex: '\\iint_S P dydz + Q dzdx + R dxdy = \\iint_S (\\vec{F} \\cdot \\vec{n})\\,d\\sigma' }
+      ],
+      studyAdvice: "Sirtni xOy tekisligiga proyeksiyalab, z(x,y) ning xususiy hosilalari orqali oddiy ikki karrali integralga keltiring."
+    };
+  }
+
+  // 2b. Multiple Integrals (Module 10)
   if (
     low.includes('\\iint') ||
     low.includes('\\iiint') ||
@@ -285,7 +387,76 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 3. Single Integrals (Module 8)
+  // 3a. Geometric & Physical Applications of Definite Integrals
+  if (
+    low.includes('yoy uzunligi') ||
+    low.includes('sirt yuzi') ||
+    low.includes('bajarilgan ish') ||
+    low.includes('aylanma jism sirti') ||
+    low.includes('katena') ||
+    low.includes("og'irlik markazi") ||
+    low.includes('ogirlik markazi')
+  ) {
+    return {
+      id: 'integral-applications',
+      moduleId: 8,
+      moduleTitle: '8-modul: Integrallar',
+      moduleUrl: '/modullar/integrallar',
+      topicName: 'Aniq integralning geometrik va fizik tatbiqlari',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada aniq integral yordamida yoy uzunligi, aylanma sirt yuzi yoki o'zgaruvchan kuchning bajargan ishini hisoblash talab qilingan.",
+      primaryLesson: {
+        title: 'Aniq integralning geometrik va fizik tatbiqlari',
+        url: '/dars/integrallar/aniq-integralning-geometrik-va-fizik-tatbiqlari',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Aniq integral va Nyuton-Leybnits formulasi', url: '/dars/integrallar/aniq-integral-va-nyuton-leybnits' },
+        { title: 'Qutb va parametrik shaklda yuza va hajm', url: '/dars/integrallar/qutb-va-parametrik-shaklda-yuza-va-hajm' }
+      ],
+      keyFormulas: [
+        { name: 'Yoy uzunligi (Dekart)', latex: 'L = \\int_a^b \\sqrt{1 + (f\'(x))^2}\\,dx' },
+        { name: 'Aylanma sirt yuzi (Ox o\'qi)', latex: 'S_{Ox} = 2\\pi \\int_a^b y \\sqrt{1 + (y\')^2}\\,dx' },
+        { name: 'Mexanik ish', latex: 'A = \\int_a^b F(x)\\,dx' }
+      ],
+      studyAdvice: "Yoy differensiali dl = sqrt(1 + (y')^2)dx ni hisoblab oling va chegaralar bo'yicha integrallang."
+    };
+  }
+
+  // 3b. Trigonometric Integrals
+  if (
+    (low.includes('integral') || low.includes('\\int')) &&
+    (low.includes('universal') || low.includes('tg(x/2)') || low.includes('darajani pasaytirish') ||
+     /sin\^[2-9]|cos\^[2-9]|sin\^2|cos\^2|sin\^3|cos\^3/i.test(s) ||
+     /\\int\s*\\frac\{dx\}\{\d+\s*[+-]\s*\d+\s*(cos|sin)/i.test(s) ||
+     /\/(?:\d+\s*[+-]\s*\d*\s*(?:cos|sin))/i.test(s))
+  ) {
+    return {
+      id: 'trig-integrals',
+      moduleId: 8,
+      moduleTitle: '8-modul: Integrallar',
+      moduleUrl: '/modullar/integrallar',
+      topicName: 'Trigonometrik funksiyalarni integrallash',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada trigonometrik funksiyalar (darajalar, kasrlar yoki ko'paytmalar) integrali berilgan.",
+      primaryLesson: {
+        title: 'Trigonometrik funksiyalarni integrallash',
+        url: '/dars/integrallar/trigonometrik-funksiyalarni-integrallash',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: "Integrallash usullari: O'zgaruvchini almashtirish", url: '/dars/integrallar/integrallash-usullari-almashtirish' },
+        { title: 'Boshlang\'ich funksiya va aniqmas integral jadvali', url: '/dars/integrallar/boshlangich-funksiya-va-aniqmas-integral' }
+      ],
+      keyFormulas: [
+        { name: 'Universal almashtirish', latex: 't = \\operatorname{tg}\\frac{x}{2}, \\quad dx = \\frac{2dt}{1+t^2}, \\quad \\cos x = \\frac{1-t^2}{1+t^2}, \\quad \\sin x = \\frac{2t}{1+t^2}' },
+        { name: 'Darajani pasaytirish', latex: '\\cos^2 x = \\frac{1+\\cos 2x}{2}, \\quad \\sin^2 x = \\frac{1-\\cos 2x}{2}' }
+      ],
+      studyAdvice: "Toq darajada bitta hadni ajratib differensial ostiga kiriting; juft darajada darajani pasaytiring; maxrajda chiziqli bo'lsa universal almashtirish qo'llang."
+    };
+  }
+
+  // 3c. Single Integrals (Module 8)
   if (
     low.includes('\\int') ||
     /\bint\b/.test(low) ||
@@ -615,7 +786,41 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 7b. Complex Numbers (Module 4)
+  // 7b. Complex Integrals & Cauchy Formula (Module 4)
+  if (
+    low.includes('\\oint') ||
+    low.includes('koshi formulasi') ||
+    low.includes('koshi integral') ||
+    low.includes('kontur integrali') ||
+    (low.includes('integral') && (low.includes('|z|') || low.includes('dz') || low.includes('tfkp')))
+  ) {
+    return {
+      id: 'cauchy-integral',
+      moduleId: 4,
+      moduleTitle: '4-modul: Kompleks sonlar va TFKP',
+      moduleUrl: '/modullar/kompleks-sonlar',
+      topicName: 'Kompleks integrallar va Koshi integral formulasi',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada yopiq kontur bo'yicha kompleks funksiya integrali yoki Koshi integral formulasi so'ralgan.",
+      primaryLesson: {
+        title: 'Kompleks integrallar, Koshi integral teoremasi va Koshi integral formulasi',
+        url: '/dars/kompleks-sonlar/kompleks-ozgaruvchili-funksiyalar-integrallari-va-koshi-teoremasi',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'TFKP: Koshi-Riman shartlari va kompleks integrallar', url: '/dars/kompleks-sonlar/tfkp-va-koshi-riman-shartlari' },
+        { title: 'Loran qatori, Maxsus nuqtalar va Chegirmalar nazariyasi', url: '/dars/kompleks-sonlar/loran-qatori-va-chegirmalar-nazariyasi' }
+      ],
+      keyFormulas: [
+        { name: 'Koshi teoremasi', latex: '\\oint_\\Gamma f(z)\\,dz = 0 \\quad (\\text{analitik sohada})' },
+        { name: 'Koshi integral formulasi', latex: '\\oint_\\Gamma \\frac{f(z)}{z - z_0}\\,dz = 2\\pi i \\cdot f(z_0)' },
+        { name: 'Hosilalar uchun Koshi', latex: '\\oint_\\Gamma \\frac{f(z)}{(z - z_0)^{n+1}}\\,dz = \\frac{2\\pi i}{n!} f^{(n)}(z_0)' }
+      ],
+      studyAdvice: "Maxsus nuqta z0 kontur ichida yotadimi yoki tashqarisidami — birinchi navbatda shuni tekshiring: tashqarida bo'lsa integral darhol 0 ga teng!"
+    };
+  }
+
+  // 7c. General Complex Numbers (Module 4)
   if (/\b\d*i\b/.test(s) || /i\\sqrt/.test(s) || low.includes('kompleks') || low.includes('muavr')) {
     return {
       id: 'complex-numbers',
@@ -639,7 +844,41 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 8. Series (Module 11)
+  // 8a. Advanced Convergence Tests: Raabe & Gauss (Module 11)
+  if (
+    low.includes('raabe') ||
+    low.includes('gauss alomati') ||
+    low.includes('!!') ||
+    low.includes('ikki karrali faktorial') ||
+    (low.includes('dalamber') && low.includes('d = 1')) ||
+    (low.includes('qator') && low.includes('nozik'))
+  ) {
+    return {
+      id: 'raabe-gauss-series',
+      moduleId: 11,
+      moduleTitle: '11-modul: Qatorlar nazariyasi',
+      moduleUrl: '/modullar/qatorlar',
+      topicName: 'Musbat qatorlarning nozik yaqinlashish alomatlari: Raabe va Gauss',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada Dalamber alomati D = 1 bergan yoki faktorialli murakkab hadlar qatnashgan sonli qator berilgan.",
+      primaryLesson: {
+        title: 'Musbat qatorlarning nozik yaqinlashish alomatlari: Raabe, Gauss va Logarifmik alomatlar',
+        url: '/dars/qatorlar/qatorlarning-nozik-yaqinlashish-alomatlari-raabe-va-gauss',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Musbat hadli qatorlarning yaqinlashish alomatlari', url: '/dars/qatorlar/musbat-hadli-qatorlar-alomatlari' },
+        { title: 'Sonli qatorlar va yaqinlashish tushunchasi', url: '/dars/qatorlar/sonli-qatorlar-va-yaqinlashish' }
+      ],
+      keyFormulas: [
+        { name: 'Raabe alomati', latex: 'R = \\lim_{n \\to \\infty} n \\left(\\frac{a_n}{a_{n+1}} - 1\\right) > 1 \\implies \\text{Yaqinlashadi}' },
+        { name: 'Gauss alomati', latex: '\\frac{a_n}{a_{n+1}} = \\lambda + \\frac{\\mu}{n} + O\\left(\\frac{1}{n^{1+\\varepsilon}}\\right) \\implies (\\lambda=1, \\mu>1 \\implies \\text{Yaqinlashadi})' }
+      ],
+      studyAdvice: "Nisbatda suratga a_n, maxrajga a_{n+1} qo'yib, n ga ko'paytiring (Raabe). Agar limit 1 chiqsa, Gauss yoyilmasiga o'ting."
+    };
+  }
+
+  // 8b. General Series (Module 11)
   if (low.includes('\\sum') || low.includes('sum') || low.includes('qator') || low.includes('dalamber')) {
     return {
       id: 'series',
@@ -662,7 +901,75 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 9. Probability (Module 13 & 14)
+  // 9a. Continuous Random Variables & Density (Module 13)
+  if (
+    low.includes('zichlik funksiya') ||
+    low.includes('ehtimollik zichligi') ||
+    low.includes('normallash sharti') ||
+    low.includes('uzluksiz tasodifiy') ||
+    (low.includes('f(x)') && low.includes('taqsimot') && (low.includes('m[x]') || low.includes('dispersiya')))
+  ) {
+    return {
+      id: 'continuous-rv',
+      moduleId: 13,
+      moduleTitle: '13-modul: Ehtimollar nazariyasi',
+      moduleUrl: '/modullar/ehtimollar-nazariyasi',
+      topicName: 'Uzluksiz tasodifiy miqdorlar: Taqsimot funksiyasi F(x) va zichlik f(x)',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada uzluksiz tasodifiy miqdorning ehtimollik zichligi f(x), taqsimot funksiyasi F(x) yoki uning sonli xarakteristikalari berilgan.",
+      primaryLesson: {
+        title: 'Uzluksiz tasodifiy miqdorlar: Taqsimot funksiyasi F(x), ehtimollik zichligi f(x) va sonli xarakteristikalari',
+        url: '/dars/ehtimollar-nazariyasi/uzluksiz-tasodifiy-miqdorlar-zichlik-va-taqsimot',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Tasodifiy miqdorlar, matematik kutilma va normal taqsimot', url: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari' },
+        { title: 'Asosiy taqsimot turlari: Tekis, Ko\'rsatkichli, Geometrik', url: '/dars/ehtimollar-nazariyasi/taqsimot-turlari-tekis-korsatkichli-geometrik' }
+      ],
+      keyFormulas: [
+        { name: 'Normallash sharti', latex: '\\int_{-\\infty}^{+\\infty} f(x)\\,dx = 1' },
+        { name: 'Matematik kutilma', latex: 'M[X] = \\int_{-\\infty}^{+\\infty} x f(x)\\,dx' },
+        { name: 'Dispersiya', latex: 'D[X] = M[X^2] - (M[X])^2 = \\int_{-\\infty}^{+\\infty} x^2 f(x)\\,dx - (M[X])^2' }
+      ],
+      studyAdvice: "Dastlab integral ostidagi umumiy yuza 1 ga tengligidan noma'lum koeffitsiyentni toping, so'ngra M[X] va D[X] integrallarini hisoblang."
+    };
+  }
+
+  // 9b. Law of Large Numbers & Central Limit Theorem (Module 13)
+  if (
+    low.includes('chebishev tengsizligi') ||
+    low.includes('katta sonlar qonuni') ||
+    low.includes('markaziy limit') ||
+    low.includes('mlt') ||
+    low.includes('uch sigma') ||
+    low.includes('lyapunov')
+  ) {
+    return {
+      id: 'lln-clt',
+      moduleId: 13,
+      moduleTitle: '13-modul: Ehtimollar nazariyasi',
+      moduleUrl: '/modullar/ehtimollar-nazariyasi',
+      topicName: 'Katta sonlar qonuni, Chebishev tengsizligi va Markaziy limit teorema',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada tasodifiy miqdorning o'rtacha qiymatdan chetlanishini Chebishev tengsizligi bilan baholash yoki ko'p miqdorlar yig'indisini MLT orqali hisoblash so'ralgan.",
+      primaryLesson: {
+        title: 'Katta sonlar qonuni, Chebishev tengsizligi va Markaziy limit teorema',
+        url: '/dars/ehtimollar-nazariyasi/katta-sonlar-qonuni-va-markaziy-limit-teorema',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Bernulli sxemasi, Laplas va Puasson teoremalari', url: '/dars/ehtimollar-nazariyasi/bernulli-sxemasi-va-puasson' },
+        { title: 'Tasodifiy miqdorlar, matematik kutilma va normal taqsimot', url: '/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari' }
+      ],
+      keyFormulas: [
+        { name: 'Chebishev tengsizligi', latex: 'P(|X - M[X]| \\ge \\varepsilon) \\le \\frac{D[X]}{\\varepsilon^2}' },
+        { name: 'Normallangan yig\'indi (MLT)', latex: 'Z_n = \\frac{\\sum X_i - n\\mu}{\\sigma\\sqrt{n}} \\xrightarrow{d} \\mathcal{N}(0, 1)' }
+      ],
+      studyAdvice: "Chebishev tengsizligida oraliq kengligi epsilonni toping; MLT masalalarida esa standart normal taqsimot Laplas jadvaliga o'ting."
+    };
+  }
+
+  // 9c. General Probability (Module 13 & 14)
   if (low.includes('ehtimol') || low.includes('kombinatorika') || low.includes('p(a)') || low.includes('bernulli')) {
     return {
       id: 'probability',
@@ -809,7 +1116,40 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 12b. Vectors & Analytic Geometry (Module 3)
+  // 12b. Distances & Metric Problems (Module 3)
+  if (
+    low.includes('ayqash') ||
+    low.includes('nuqtadan tekislik') ||
+    low.includes('nuqtadan togri chiziq') ||
+    low.includes("nuqtadan to'g'ri chiziq") ||
+    (low.includes('masofa') && (low.includes('tekislik') || low.includes('fazoda') || low.includes('chiziq')))
+  ) {
+    return {
+      id: 'metric-distances',
+      moduleId: 3,
+      moduleTitle: '3-modul: Vektorlar va analitik geometriya',
+      moduleUrl: '/modullar/vektorlar-geometriya',
+      topicName: 'Fazoda va tekislikda masofalar (Metrik masalalar)',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada nuqtadan to'g'ri chiziqqacha, tekislikkacha yoki ayqash to'g'ri chiziqlar orasidagi eng qisqa masofani topish so'ralgan.",
+      primaryLesson: {
+        title: 'Fazoda va tekislikda masofalar',
+        url: '/dars/vektorlar-geometriya/fazoda-va-tekislikda-masofalar-metrik-masalalar',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Fazodagi tekislik va to\'g\'ri chiziq', url: '/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq' },
+        { title: 'Vektor va aralash ko\'paytma', url: '/dars/vektorlar-geometriya/vektor-va-aralash-kopaytma' }
+      ],
+      keyFormulas: [
+        { name: 'Nuqtadan tekislikkacha', latex: 'd = \\frac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}' },
+        { name: 'Ayqash to\'g\'ri chiziqlar orasida', latex: 'd = \\frac{|(\\vec{s}_1 \\times \\vec{s}_2) \\cdot \\vec{M_1 M_2}|}{|\\vec{s}_1 \\times \\vec{s}_2|}' }
+      ],
+      studyAdvice: "Ayqash chiziqlarda aralash ko'paytma modulini vektor ko'paytma uzunligiga bo'ling; tekislikda esa koordinatalarni tekislik tenglamasiga qo'yib modulini oling."
+    };
+  }
+
+  // 12c. Vectors & Analytic Geometry (Module 3)
   const isVector =
     low.includes('vektor') ||
     low.includes('skalyar') ||
@@ -850,7 +1190,40 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 13. Multivariable & Partial Derivatives (Module 9)
+  // 13a. Method of Least Squares (MHK) (Module 9)
+  if (
+    low.includes('eng kichik kvadrat') ||
+    low.includes('mhk') ||
+    low.includes('approksimatsiya') ||
+    low.includes('regressiya to\'g\'ri chizig\'i') ||
+    low.includes('regressiya togri chizigi')
+  ) {
+    return {
+      id: 'least-squares-mhk',
+      moduleId: 9,
+      moduleTitle: "9-modul: Ko'p o'zgaruvchili funksiyalar",
+      moduleUrl: '/modullar/kop-ozgaruvchili-funksiyalar',
+      topicName: 'Eng kichik kvadratlar usuli (MHK)',
+      difficulty: "O'rta (1-kurs)",
+      whyThisTopic: "Masalada eksperimental nuqtalar to'plamini eng kichik kvadratlar usuli bilan y = ax + b chizig'iga approksimatsiya qilish talab qilingan.",
+      primaryLesson: {
+        title: 'Eng kichik kvadratlar usuli (MHK)',
+        url: '/dars/kop-ozgaruvchili-funksiyalar/eng-kichik-kvadratlar-usuli-mhk',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Chiziqli regressiya va Spirmen korrelyatsiyasi', url: '/dars/matematik-statistika/chiziqli-regressiya-va-spirmen-korrelyatsiyasi' },
+        { title: 'Xususiy hosilalar va Shvars teoremasi', url: '/dars/kop-ozgaruvchili-funksiyalar/xususiy-hosilalar' }
+      ],
+      keyFormulas: [
+        { name: 'Normal tenglamalar sistemasi', latex: '\\begin{cases} a \\sum x_i^2 + b \\sum x_i = \\sum x_i y_i \\\\ a \\sum x_i + b \\cdot n = \\sum y_i \\end{cases}' },
+        { name: 'Optimal og\'ish', latex: 'S(a, b) = \\sum [y_i - (ax_i + b)]^2 \\to \\min' }
+      ],
+      studyAdvice: "Jadval tuzib sum(x), sum(y), sum(x^2), sum(xy) qiymatlarini hisoblang va 2x2 Kramer sistemasi orqali a va b koeffitsiyentlarni toping."
+    };
+  }
+
+  // 13b. Multivariable & Partial Derivatives (Module 9)
   const isMultivar =
     low.includes('\\partial') ||
     low.includes('partial') ||
@@ -886,7 +1259,42 @@ export function diagnoseTopic(rawInput: string): TopicDiagnosis {
     };
   }
 
-  // 14. Mathematical Statistics (Module 14)
+  // 14a. Non-parametric Statistical Tests (Module 14)
+  if (
+    low.includes('mann-uitni') ||
+    low.includes('mann uitni') ||
+    low.includes('vilkokson') ||
+    low.includes('kolmogorov') ||
+    low.includes('parametrik bolmagan') ||
+    low.includes("parametrik bo'lmagan") ||
+    low.includes('ranglar')
+  ) {
+    return {
+      id: 'non-parametric-tests',
+      moduleId: 14,
+      moduleTitle: '14-modul: Matematik statistika',
+      moduleUrl: '/modullar/matematik-statistika',
+      topicName: 'Parametrik bo\'lmagan statistik mezonlar: Mann-Uitni va Vilkokson',
+      difficulty: 'Yuqori (Imtihon)',
+      whyThisTopic: "Masalada normal bo'lmagan yoki kichik hajmdagi tanlanmalarni parametrik bo'lmagan mezonlar (Mann-Uitni, Vilkokson) orqali taqqoslash berilgan.",
+      primaryLesson: {
+        title: 'Parametrik bo\'lmagan statistik mezonlar: Mann-Uitni (U), Vilkokson va Kolmogorov-Smirnov mezonlari',
+        url: '/dars/matematik-statistika/parametrik-bolmagan-gipotezalar-mann-uitni-vilkokson',
+        badge: 'Asosiy dars'
+      },
+      relatedLessons: [
+        { title: 'Statistik gipotezalarni tekshirish, Styudent va xi-kvadrat mezonlari', url: '/dars/matematik-statistika/statistik-gipotezalarni-tekshirish' },
+        { title: 'Pirson χ² (xi-kvadrat) moslik mezoni', url: '/dars/matematik-statistika/pirson-xi-kvadrat-va-moslik-kriteriylari' }
+      ],
+      keyFormulas: [
+        { name: 'Mann-Uitni statistikasi', latex: 'U_1 = n_1 n_2 + \\frac{n_1(n_1+1)}{2} - R_1, \\quad U = \\min(U_1, U_2)' },
+        { name: 'Qaror qabul qilish', latex: 'U_{\\text{hisob}} \\le U_{\\text{krit}} \\implies H_0 \\text{ rad etiladi}' }
+      ],
+      studyAdvice: "Barcha ma'lumotlarni bitta qatorga tizib rang bering, so'ngra R1 va R2 ranglar yig'indisi orqali U statistikasini toping."
+    };
+  }
+
+  // 14b. Mathematical Statistics (Module 14)
   const isStats =
     low.includes('statistika') ||
     low.includes('tanlanma') ||
