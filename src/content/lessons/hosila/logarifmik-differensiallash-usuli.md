@@ -5,161 +5,303 @@ order: 8
 description: "y = u(x)^v(x) ko'rinishidagi funksiyalar, ko'p ko'paytuvchili kasrlar va ildizli ifodalarni dastlab natural logarifmlash orqali oson differensiallash."
 ---
 
-Matematik analizda ba'zi funksiyalarni standart hosila olish qoidalari (ko'paytma, bo'linma yoki murakkab funksiya qoidasi) bilan to'g'ridan-to'g'ri differensiallash yo imkonsiz, yo juda uzun va murakkab hisob-kitoblarga olib keladi. Bunday hollarda dastlab tenglikning ikkala tomonini natural logarifmlab, so'ngra hosila olish usuli — **logarifmik differensiallash usuli** qo'llaniladi.
+## 📌 Kirish va Geometrik/Fizik Mohiyat
+
+Differensial hisob kursini o'rganish jarayonida talabalar ikkita mashhur hosila formulasini yaxshi o'zlashtiradilar:
+1. **Darajali funksiya hosilasi:** $(x^n)' = n x^{n-1}$ yoki umumiy holda $(u^n)' = n u^{n-1} \cdot u'$ (bu yerda asos — o'zgaruvchi, daraja ko'rsatkichi esa — o'zgarmas son).
+2. **Ko'rsatkichli funksiya hosilasi:** $(a^x)' = a^x \ln a$ yoki umumiy holda $(a^u)' = a^u \ln a \cdot u'$ (bu yerda asos — o'zgarmas son, daraja ko'rsatkichi esa — o'zgaruvchi).
+
+Ammo amaliyotda, termodinamikada, iqtisodiy tahlilda va kvant mexanikasida ko'pincha **asos ham, daraja ham bir vaqtda $x$ ga bog'liq bo'lgan** holatlar uchraydi:
+
+$$
+y = [u(x)]^{v(x)}
+$$
+
+Masalan, $y = x^x$, $y = (\sin x)^x$, $y = x^{\ln x}$ yoki $y = (\cos x)^{\sqrt{x}}$. Bunday funksiyalar matematikada **darajali-ko'rsatkichli funksiyalar** deb ataladi.
+
+Bu funksiyalarga na darajali funksiya qoidasini, na ko'rsatkichli funksiya qoidasini alohida qo'llab bo'lmaydi! Agar siz $(x^x)' = x \cdot x^{x-1} = x^x$ desangiz — qo'pol xato qilasiz. Agar $(x^x)' = x^x \ln x$ desangiz — yana qo'pol xato qilasiz!
+
+Xo'sh, chiqish yo'li qayerda? 
+
+Bu muammoni hal qilishda buyuk shotland matematigi Jon Neper kashf etgan **logarifm funksiyasi** mo''jizaviy vosita bo'lib xizmat qiladi. Logarifm oliy matematikadagi eng qudratli "algebraik transformator"dir: u murakkab darajani ko'paytmaga, ko'paytmani yig'indiga, bo'linmani esa oddiy ayirmaga aylantirib beradi.
+
+Differensiallashdan oldin funksiyaning ikkala tomonini natural logarifmlash va hosil bo'lgan ifodadan hosila olish usuli matematik analizda **logarifmik differensiallash usuli** deb ataladi.
 
 ---
 
-## 1. Logarifmik hosila tushunchasi
+## 📐 Asosiy Nazariya, Qoidalar va Teoremalar
 
-Aytaylik, $y = f(x)$differensiallanuvchi va$f(x) \neq 0$ bo'lgan funksiya berilgan bo'lsin. Tenglikning ikkala qismini modul bo'yicha natural logarifmlaymiz:
+### 1. Logarifmik hosila tushunchasi
 
-$$\ln |y| = \ln |f(x)|$$
+Faraz qilaylik, $y = f(x)$ funksiya differensiallanuvchi va $f(x) \neq 0$ bo'lsin. Tenglikning ikkala qismini modul bo'yicha natural logarifmlaymiz:
 
-Endi $y$ni$x$ning funksiyasi deb hisoblab, murakkab funksiya hosilasi qoidasiga binoan ikkala tomondan$x$ bo'yicha hosila olamiz ($(\ln |x|)' = \frac{1}{x}$ ekanini esga oling):
+$$
+\ln |y| = \ln |f(x)|
+$$
 
-$$\frac{y'}{y} = (\ln |f(x)|)'$$
+Endi ikkala qismdan argument $x$ bo'yicha hosila olamiz. Chap qismda $y$ o'zgaruvchi $x$ ning funksiyasi bo'lgani sababli, murakkab funksiya hosilasi qoidasiga ko'ra:
 
-Bu yerdan izlanayotgan hosila $y'$ ni topamiz:
+$$
+(\ln |y|)' = \frac{1}{y} \cdot y' = \frac{y'}{y}
+$$
 
-$$y' = y \cdot (\ln |f(x)|)' = f(x) \cdot (\ln |f(x)|)'$$
+> **Ta'rif:** $\frac{y'}{y}$ nisbat $y = f(x)$ funksiyaning **logarifmik hosilasi** deb ataladi. U funksiyaning nisbiy o'zgarish tezligini (iqtisodiyotda elastiklik, fizikada esa o'sish sur'atini) ifodalaydi.
 
-> [!IMPORTANT]
-> **Ta'rif:** $\frac{y'}{y} = (\ln |y|)'$ifoda$y = f(x)$ funksiyaning **logarifmik hosilasi** deb ataladi. Funksiya hosilasini avval uning logarifmik hosilasini topib, so'ngra funksiyaning o'ziga ko'paytirish orqali hisoblash jarayoni **logarifmik differensiallash** deyiladi.
+Ushbu tenglikdan biz qidirayotgan hosila $y'$ bevosita topiladi:
 
-Logarifmning quyidagi fundamental xossalari murakkab amallarni bir pog'ona soddalashtiradi:
-- **Darajani ko'paytmaga** aylantiradi: $\ln(u^v) = v \ln u$;
-- **Ko'paytmani yig'indiga** aylantiradi: $\ln(u \cdot v) = \ln u + \ln v$;
-- **Bo'linmani ayirmaga** aylantiradi: $\ln\left(\frac{u}{v}\right) = \ln u - \ln v$;
-- **Ildizni kasr koeffitsiyentga** aylantiradi: $\ln\left(\sqrt[n]{u}\right) = \frac{1}{n} \ln u$.
-
----
-
-## 2. Darajali-ko'rsatkichli funksiyalar hosilasi: $y = u(x)^{v(x)}$
-
-Boshlang'ich kursdan bizga ikki xil funksiya ma'lum:
-1. **Darajali funksiya:** $y = u(x)^a$ ($a = \text{const}$) $\implies y' = a \cdot u(x)^{a-1} \cdot u'(x)$.
-2. **Ko'rsatkichli funksiya:** $y = a^{v(x)}$ ($a = \text{const} > 0$) $\implies y' = a^{v(x)} \ln a \cdot v'(x)$.
-
-Ammo asos ham, daraja ko'rsatkichi ham $x$ ga bog'liq o'zgaruvchi bo'lsa:
-$$y = [u(x)]^{v(x)}, \qquad u(x) > 0$$
-bu funksiya **darajali-ko'rsatkichli funksiya** deyiladi.
-
-> [!WARNING]
-> **Qo'pol xato:** $y = x^x$funksiyadan hosila olayotganda uni darajali funksiya kabi$y' = x \cdot x^{x-1} = x^x$deb yoki ko'rsatkichli funksiya kabi$y' = x^x \ln x$ deb hisoblash **mutlaqo xato**! Chunki asos ham, ko'rsatkich ham o'zgaruvchidir.
-
-### Formulasi va keltirib chiqarilishi (2 xil usulda)
-
-**1-usul (Logarifmik differensiallash):**
-$y = u(x)^{v(x)}$ ning ikkala tomonini natural logarifmlaymiz:
-$$\ln y = \ln\left(u(x)^{v(x)}\right) \implies \ln y = v(x) \cdot \ln u(x)$$
-Ikkala tomonidan $x$bo'yicha hosila olamiz (o'ng tomonda ko'paytma qoidasi$(v \cdot \ln u)' = v' \ln u + v \cdot (\ln u)'$ ishlatiladi):
-$$\frac{y'}{y} = v'(x) \cdot \ln u(x) + v(x) \cdot \frac{u'(x)}{u(x)}$$
-Ikkala tomonni $y = u(x)^{v(x)}$ ga ko'paytiramiz:
-
-$$y' = u(x)^{v(x)} \left[ v'(x) \ln u(x) + \frac{v(x) \cdot u'(x)}{u(x)} \right]$$
-
-Qavsni ochib yozsak:
-$$\left(u^v\right)' = \underbrace{v \cdot u^{v-1} \cdot u'}_{\text{darajali funksiya kabi}} + \underbrace{u^v \ln u \cdot v'}_{\text{ko'rsatkichli funksiya kabi}}$$
-
-**2-usul (Asosiy logarifmik ayniyat orqali):**
-Har qanday $u > 0$uchun$u = e^{\ln u}$ bo'lgani sababli:
-$$y = u(x)^{v(x)} = e^{v(x) \ln u(x)}$$
-Endi oddiy murakkab eksponensial funksiya $(e^w)' = e^w \cdot w'$ qoidasini qo'llaymiz:
-$$y' = e^{v(x) \ln u(x)} \cdot [v(x) \ln u(x)]' = u(x)^{v(x)} \left[ v'(x) \ln u(x) + \frac{v(x) u'(x)}{u(x)} \right]$$
-
-> [!TIP]
-> **Eslab qolish qoidasi:** Darajali-ko'rsatkichli funksiya hosilasi ikki qo'shiluvchining yig'indisiga teng: birinchi qo'shiluvchida ko'rsatkich $v$o'zgarmas deb qaralib darajali funksiya hosilasi olinadi, ikkinchi qo'shiluvchida esa asos$u$ o'zgarmas deb qaralib ko'rsatkichli funksiya hosilasi olinadi!
+$$
+y' = y \cdot (\ln |y|)'
+$$
 
 ---
 
-## 3. Ko'p ko'paytuvchili, kasrli va ildizli funksiyalarni differensiallash
+### 2. Darajali-ko'rsatkichli funksiyani differensiallash qoidasi
 
-Agar funksiya bir nechta ko'paytuvchilarning ko'paytmasi, bo'linmasi va ildizlaridan iborat bo'lsa:
-$$y = \frac{[f_1(x)]^{\alpha_1} \cdot [f_2(x)]^{\alpha_2} \cdots [f_n(x)]^{\alpha_n}}{[g_1(x)]^{\beta_1} \cdot [g_2(x)]^{\beta_2} \cdots [g_m(x)]^{\beta_m}}$$
-logarifmlash natijasida u oddiy algebraik yig'indiga aylanadi:
-$$\ln |y| = \alpha_1 \ln |f_1(x)| + \dots + \alpha_n \ln |f_n(x)| - \beta_1 \ln |g_1(x)| - \dots - \beta_m \ln |g_m(x)|$$
-Undan hosila olish juda oson:
-$$y' = y \cdot \left( \alpha_1 \frac{f_1'(x)}{f_1(x)} + \dots + \alpha_n \frac{f_n'(x)}{f_n(x)} - \beta_1 \frac{g_1'(x)}{g_1(x)} - \dots - \beta_m \frac{g_m'(x)}{g_m(x)} \right)$$
+Aytaylik, $y = [u(x)]^{v(x)}$ funksiya berilgan bo'lsin, bu yerda $u(x) > 0$ va $u(x), v(x)$ funksiyalar differensiallanuvchi.
+
+1. Ikkala tomonni natural logarifmlaymiz:
+   $$\ln y = \ln \left( [u(x)]^{v(x)} \right) = v(x) \cdot \ln u(x)$$
+
+2. Ikkala tomonni $x$ bo'yicha differensiallaymiz (o'ng tomonga ko'paytma qoidasi $(uv)' = u'v + uv'$ ni qo'llaymiz):
+   $$\frac{y'}{y} = [v(x)]' \cdot \ln u(x) + v(x) \cdot [\ln u(x)]'$$
+   $$\frac{y'}{y} = v'(x) \cdot \ln u(x) + v(x) \cdot \frac{u'(x)}{u(x)}$$
+
+3. Ikkala tomonni $y$ ga ko'paytiramiz va $y = [u(x)]^{v(x)}$ ekanini hisobga olamiz:
+
+$$
+y' = [u(x)]^{v(x)} \left[ v'(x) \ln u(x) + \frac{v(x) \cdot u'(x)}{u(x)} \right]
+$$
+
+Qavslarni ochib chiqsak, ajoyib qonuniyat kelib chiqadi:
+
+$$
+y' = v(x) \cdot [u(x)]^{v(x) - 1} \cdot u'(x) + [u(x)]^{v(x)} \cdot \ln u(x) \cdot v'(x)
+$$
+
+> **Muhim Falsafiy Qoida (Ikki xususiyat yig'indisi):**
+> Darajali-ko'rsatkichli funksiyaning hosilasi ikkita qismning yig'indisiga teng:
+> 1. Funksiyaga xuddi **darajali funksiyadek** qarab olingan hosila (daraja $v$ o'zgarmas deb qaraladi);
+> 2. Funksiyaga xuddi **ko'rsatkichli funksiyadek** qarab olingan hosila (asos $u$ o'zgarmas deb qaraladi)!
 
 ---
 
-## 4. Namunaviy misollar yechimi
+### 3. Asosiy ko'rsatkichli almashtirish usuli
 
-### 1-misol. Klassik darajali-ko'rsatkichli funksiya
-$y = (\sin x)^{\cos x}$ funksiyaning hosilasini toping ($\sin x > 0$).
+Logarifmik differensiallashga muqobil yana bir qulay usul mavjud: asosiy logarifmik ayniyat $A = e^{\ln A}$ dan foydalanish:
 
-**Yechim:**
-1. Tenglikning ikkala tomonini natural logarifmlaymiz:
-   $$\ln y = \ln\left((\sin x)^{\cos x}\right) = \cos x \cdot \ln(\sin x)$$
-2. Ikkala tomondan $x$ bo'yicha hosila olamiz:
-   $$\frac{y'}{y} = (\cos x)' \cdot \ln(\sin x) + \cos x \cdot (\ln(\sin x))'$$
-   $$\frac{y'}{y} = -\sin x \cdot \ln(\sin x) + \cos x \cdot \frac{\cos x}{\sin x} = \frac{\cos^2 x}{\sin x} - \sin x \ln(\sin x)$$
-3. $y = (\sin x)^{\cos x}$ ni o'ng tomonga ko'paytiramiz:
-   $$y' = (\sin x)^{\cos x} \left( \cos x \cot x - \sin x \ln(\sin x) \right)$$
+$$
+y = [u(x)]^{v(x)} = e^{\ln \left( [u(x)]^{v(x)} \right)} = e^{v(x) \cdot \ln u(x)}
+$$
+
+Endi oddiy ko'rsatkichli murakkab funksiya sifatida hosila olinadi:
+$$y' = \left( e^{v \ln u} \right)' = e^{v \ln u} \cdot (v \ln u)' = u^v \cdot \left( v' \ln u + v \frac{u'}{u} \right)$$
+Bu usul logarifmik differensiallash bilan bir xil natija beradi.
 
 ---
 
-### 2-misol. Ko'p qavatli darajali-ko'rsatkichli funksiya
-$y = x^{x^2}$ funksiyaning hosilasini toping ($x > 0$).
+### 4. Ko'p ko'paytuvchili kasr-ratsional va irratsional funksiyalarni differensiallash
 
-**Yechim:**
-> [!NOTE]
-> E'tibor bering: $x^{x^2}$bu$x^{(x^2)}$degani,$(x^x)^2 = x^{2x}$ emas!
+Agar funksiya quyidagi ko'rinishda bo'lsa:
 
+$$
+y = \frac{f_1(x)^{a_1} \cdot f_2(x)^{a_2} \cdots f_n(x)^{a_n}}{g_1(x)^{b_1} \cdot g_2(x)^{b_2} \cdots g_m(x)^{b_m}}
+$$
+
+Standart bo'linma qoidasini qo'llash ulkan hisob-kitoblarga sabab bo'ladi. Logarifmlash esa buni elementar yig'indiga aylantiradi:
+
+$$
+\ln |y| = \sum_{i=1}^n a_i \ln |f_i(x)| - \sum_{j=1}^m b_j \ln |g_j(x)|
+$$
+
+Hosilaga o'tsak:
+
+$$
+\frac{y'}{y} = \sum_{i=1}^n a_i \frac{f_i'(x)}{f_i(x)} - \sum_{j=1}^m b_j \frac{g_j'(x)}{g_j(x)}
+$$
+
+Ushbu formula orqali bir necha sahifalik hisoblashlar 2-3 qatorda hal etiladi!
+
+---
+
+## 📝 Qadamma-qadam Yechilgan Universitet Misollari
+
+### 1-misol: Klassik $y = x^x$ funksiya hosilasi
+
+**Shart:** $y = x^x$ ($x > 0$) funksiyaning hosilasini toping va grafigining minimum nuqtasini aniqlang.
+
+**Yechish:**
+1. Tenglikning ikkala qismini natural logarifmlaymiz:
+   $$\ln y = \ln (x^x) = x \ln x$$
+2. Ikkala qismdan $x$ bo'yicha hosila olamiz:
+   $$(\ln y)' = (x \ln x)'$$
+   $$\frac{y'}{y} = (x)' \cdot \ln x + x \cdot (\ln x)' = 1 \cdot \ln x + x \cdot \frac{1}{x} = \ln x + 1$$
+3. $y'$ ni topish uchun ikkala tomonni $y$ ga ko'paytiramiz:
+   $$y' = y \cdot (\ln x + 1)$$
+4. $y = x^x$ ekanini hisobga olib o'rniga qo'yamiz:
+   $$y' = x^x (\ln x + 1)$$
+5. **Ekstremumni topish:** Hosilani nolga tenglashtiramiz:
+   $$y' = 0 \iff x^x (\ln x + 1) = 0$$
+   $x > 0$ da $x^x > 0$, demak:
+   $$\ln x + 1 = 0 \iff \ln x = -1 \iff x = \frac{1}{e}$$
+   Demak, $x = \frac{1}{e}$ nuqtada funksiya o'zining minimumiga erishadi va uning minimum qiymati $y_{\min} = \left(\frac{1}{e}\right)^{1/e} \approx 0.6922$ ga teng.
+
+**Javob:** $y' = x^x (\ln x + 1)$; minimum nuqtasi: $x = \frac{1}{e}$.
+
+---
+
+### 2-misol: Murakkab darajali-ko'rsatkichli funksiya
+
+**Shart:** $y = (\sin x)^{\cos x}$ ($0 < x < \pi$) funksiyaning hosilasini toping.
+
+**Yechish:**
+1. Ikkala tomonni natural logarifmlaymiz:
+   $$\ln y = \ln \left( (\sin x)^{\cos x} \right) = \cos x \cdot \ln(\sin x)$$
+2. Hosila olamiz (ko'paytma va murakkab funksiya qoidasi):
+   $$\frac{y'}{y} = (\cos x)' \cdot \ln(\sin x) + \cos x \cdot [\ln(\sin x)]'$$
+3. Alohida hosilalarni hisoblaymiz:
+   - $(\cos x)' = -\sin x$
+   - $[\ln(\sin x)]' = \frac{1}{\sin x} \cdot (\sin x)' = \frac{\cos x}{\sin x} = \operatorname{ctg} x$
+4. Ifodaga qo'yamiz:
+   $$\frac{y'}{y} = -\sin x \cdot \ln(\sin x) + \cos x \cdot \frac{\cos x}{\sin x} = \frac{\cos^2 x}{\sin x} - \sin x \cdot \ln(\sin x)$$
+5. Boshlang'ich $y$ ga ko'paytiramiz:
+   $$y' = (\sin x)^{\cos x} \left( \frac{\cos^2 x}{\sin x} - \sin x \cdot \ln(\sin x) \right)$$
+
+**Javob:** $y' = (\sin x)^{\cos x} \left[ \frac{\cos^2 x}{\sin x} - \sin x \ln(\sin x) \right]$
+
+---
+
+### 3-misol: Ko'p ko'paytuvchili kasr-irratsional ifodani qisqa yo'l bilan differensiallash
+
+**Shart:** Ushbu murakkab funksiyaning hosilasini toping:
+$$y = \frac{(x - 2)^3 \cdot \sqrt{x + 1}}{(x + 3)^5}$$
+
+**Yechish:**
+Agar bu misolni odatiy $\left(\frac{u}{v}\right)'$ qoidasi bilan ishlasak, hisob-kitoblar juda cho'zilib ketadi. Logarifmik usulni qo'llaymiz.
+
+1. Ikkala tomonni modul bo'yicha logarifmlaymiz:
+   $$\ln |y| = \ln \left| \frac{(x - 2)^3 (x + 1)^{1/2}}{(x + 3)^5} \right|$$
+2. Logarifm xossalariga ko'ra yoyamiz:
+   $$\ln |y| = 3 \ln |x - 2| + \frac{1}{2} \ln |x + 1| - 5 \ln |x + 3|$$
+3. Ikkala tomondan hosila olamiz:
+   $$\frac{y'}{y} = 3 \cdot \frac{1}{x - 2} + \frac{1}{2} \cdot \frac{1}{x + 1} - 5 \cdot \frac{1}{x + 3}$$
+4. $y$ ni o'ng tomonga ko'paytiramiz:
+   $$y' = \frac{(x - 2)^3 \sqrt{x + 1}}{(x + 3)^5} \left[ \frac{3}{x - 2} + \frac{1}{2(x + 1)} - \frac{5}{x + 3} \right]$$
+
+Hisoblash atigi 4 qatorda to'liq va xatosiz bajarildi!
+
+---
+
+### 4-misol: Urinma tenglamasini tuzish masalasi
+
+**Shart:** $y = (x + 1)^x$ funksiya grafigiga $x_0 = 1$ nuqtada o'tkazilgan urinma tenglamasini toping.
+
+**Yechish:**
+1. Urinish nuqtasi ordinatasi:
+   $$y_0 = y(1) = (1 + 1)^1 = 2^1 = 2 \implies M_0(1, 2)$$
+2. Funksiyaning hosilasini topish uchun logarifmlaymiz:
+   $$\ln y = x \ln(x + 1)$$
+3. Hosila olamiz:
+   $$\frac{y'}{y} = (x)' \ln(x + 1) + x [\ln(x + 1)]' = 1 \cdot \ln(x + 1) + \frac{x}{x + 1}$$
+   $$y' = (x + 1)^x \left[ \ln(x + 1) + \frac{x}{x + 1} \right]$$
+4. $x_0 = 1$ nuqtadagi hosila qiymatini (urinmaning burchak koeffitsiyentini) topamiz:
+   $$k = y'(1) = (1 + 1)^1 \left[ \ln(1 + 1) + \frac{1}{1 + 1} \right] = 2 \left( \ln 2 + \frac{1}{2} \right) = 2 \ln 2 + 1$$
+5. Urinma tenglamasini yozamiz:
+   $$y - y_0 = k(x - x_0) \implies y - 2 = (2 \ln 2 + 1)(x - 1)$$
+   $$y = (2 \ln 2 + 1)x - (2 \ln 2 + 1) + 2 = (2 \ln 2 + 1)x + (1 - 2 \ln 2)$$
+
+**Javob:** $y = (2 \ln 2 + 1)x + (1 - 2 \ln 2)$
+
+---
+
+## ⚠️ Talabalar Eng Ko'p Yo'l Qo'yadigan Xatolar va Tuzoqlar
+
+1. **Chap tomonda $y'$ hosilani unutish:**
+   Logarifmlab bo'lgach, chap tomondan hosila olinganda talabalar ko'pincha $(\ln y)' = \frac{1}{y}$ deb yozib qo'yishadi. Unutmang: $y$ bu o'zgarmas emas, u $x$ ning funksiyasidir! Shuning uchun murakkab funksiya qoidasiga ko'ra doimo **$\frac{y'}{y}$** bo'ladi.
+
+2. **Yechim oxirida $y$ ni $x$ orqali ifodalashni unutish:**
+   Natijada $y' = y \cdot (\dots)$ ko'rinishida qoldirib ketishadi. Yakuniy javobda faqat argument $x$ qatnashishi shart, shuning uchun $y$ o'rniga uning dastlabki formulasi qo'yilishi shart.
+
+3. **Darajali va ko'rsatkichli qoidalarni aralashtirib yuborish:**
+   $(x^{\cos x})'$ hosilasini $\cos x \cdot x^{\cos x - 1}$ deb hisoblash eng qo'pol xatodir. Agar asosda ham, darajada ham $x$ bo'lsa — faqat va faqat logarifmik differensiallash qo'llaniladi!
+
+4. **Nol va manfiy qiymatlarni nazardan qochirish:**
+   Logarifm faqat musbat sonlar uchun aniqlangan. Agar funksiya manfiy qiymatlar qabul qilishi mumkin bo'lsa, albatta modul qo'yish kerak: $\ln |y|$ va $(\ln |y|)' = \frac{y'}{y}$ (chunki $(\ln |x|)' = \frac{1}{x}$).
+
+---
+
+## 🎯 Mustaqil Yechish Uchun Amaliy Mashqlar va Yechimlar
+
+### 1-mashq
+$y = x^{\sqrt{x}}$ ($x > 0$) funksiyaning hosilasini toping.
+
+<details>
+<summary>Yechimni ko'rish</summary>
+
+**Bosqichma-bosqich yechim:**
+1. Natural logarifmlaymiz:
+   $$\ln y = \ln(x^{\sqrt{x}}) = \sqrt{x} \ln x$$
+2. $x$ bo'yicha hosila olamiz:
+   $$\frac{y'}{y} = (\sqrt{x})' \ln x + \sqrt{x} (\ln x)' = \frac{1}{2\sqrt{x}} \ln x + \sqrt{x} \cdot \frac{1}{x}$$
+3. $\sqrt{x} \cdot \frac{1}{x} = \frac{1}{\sqrt{x}}$ ekanini hisobga olib, umumiy mahrajga keltiramiz:
+   $$\frac{y'}{y} = \frac{\ln x}{2\sqrt{x}} + \frac{1}{\sqrt{x}} = \frac{\ln x + 2}{2\sqrt{x}}$$
+4. $y = x^{\sqrt{x}}$ ga ko'paytiramiz:
+   $$y' = x^{\sqrt{x}} \cdot \frac{\ln x + 2}{2\sqrt{x}}$$
+
+**Javob:** $y' = x^{\sqrt{x}} \cdot \frac{\ln x + 2}{2\sqrt{x}}$
+</details>
+
+---
+
+### 2-mashq
+$y = (\ln x)^x$ ($x > 1$) funksiyaning hosilasini hisoblang.
+
+<details>
+<summary>Yechimni ko'rish</summary>
+
+**Bosqichma-bosqich yechim:**
 1. Logarifmlaymiz:
-   $$\ln y = \ln\left(x^{x^2}\right) = x^2 \ln x$$
-2. Differensiallaymiz:
-   $$\frac{y'}{y} = (x^2)' \ln x + x^2 (\ln x)' = 2x \ln x + x^2 \cdot \frac{1}{x} = 2x \ln x + x = x(2\ln x + 1)$$
+   $$\ln y = \ln \left( (\ln x)^x \right) = x \ln(\ln x)$$
+2. Hosila olamiz:
+   $$\frac{y'}{y} = (x)' \ln(\ln x) + x [\ln(\ln x)]' = 1 \cdot \ln(\ln x) + x \cdot \frac{1}{\ln x} \cdot (\ln x)'$$
+3. $(\ln x)' = \frac{1}{x}$ bo'lgani uchun:
+   $$\frac{y'}{y} = \ln(\ln x) + x \cdot \frac{1}{\ln x} \cdot \frac{1}{x} = \ln(\ln x) + \frac{1}{\ln x}$$
+4. $y$ ga ko'paytiramiz:
+   $$y' = (\ln x)^x \left[ \ln(\ln x) + \frac{1}{\ln x} \right]$$
+
+**Javob:** $y' = (\ln x)^x \left[ \ln(\ln x) + \frac{1}{\ln x} \right]$
+</details>
+
+---
+
+### 3-mashq
+Logarifmik usuldan foydalanib, ushbu funksiya hosilasini toping:
+$$y = \sqrt{\frac{(x + 1)(x - 2)}{(x - 3)(x + 4)}}$$
+
+<details>
+<summary>Yechimni ko'rish</summary>
+
+**Bosqichma-bosqich yechim:**
+1. Ildizni daraja ko'rinishida yozib, modul bilan logarifmlaymiz:
+   $$\ln |y| = \frac{1}{2} [\ln |x + 1| + \ln |x - 2| - \ln |x - 3| - \ln |x + 4|]$$
+2. Ikkala tomondan hosila olamiz:
+   $$\frac{y'}{y} = \frac{1}{2} \left[ \frac{1}{x + 1} + \frac{1}{x - 2} - \frac{1}{x - 3} - \frac{1}{x + 4} \right]$$
 3. $y$ ga ko'paytiramiz:
-   $$y' = x^{x^2} \cdot x(2\ln x + 1) = x^{x^2 + 1}(2\ln x + 1)$$
+   $$y' = \frac{1}{2} \sqrt{\frac{(x + 1)(x - 2)}{(x - 3)(x + 4)}} \left[ \frac{1}{x + 1} + \frac{1}{x - 2} - \frac{1}{x - 3} - \frac{1}{x + 4} \right]$$
+
+**Javob:** $y' = \frac{1}{2} \sqrt{\frac{(x + 1)(x - 2)}{(x - 3)(x + 4)}} \left[ \frac{1}{x + 1} + \frac{1}{x - 2} - \frac{1}{x - 3} - \frac{1}{x + 4} \right]$
+</details>
 
 ---
 
-### 3-misol. Murakkab kasr va ildizli funksiya
-$y = \frac{(x + 2)^3 \cdot \sqrt[4]{3x - 1}}{(x^2 + 5)^4 \cdot e^{2x}}$ funksiyaning hosilasini toping.
+## 💡 Imtihon Layfhaklari va Tezkor Maslahatlar
 
-**Yechim:**
-1. Modul bo'yicha natural logarifmlab, logarifm xossalariga ko'ra yoyib yozamiz:
-   $$\ln |y| = 3\ln |x + 2| + \frac{1}{4}\ln |3x - 1| - 4\ln(x^2 + 5) - \ln(e^{2x})$$
-   $\ln(e^{2x}) = 2x$ ekanini hisobga olsak:
-   $$\ln |y| = 3\ln |x + 2| + \frac{1}{4}\ln |3x - 1| - 4\ln(x^2 + 5) - 2x$$
-2. Har bir haddan alohida hosila olamiz:
-   $$\frac{y'}{y} = \frac{3}{x + 2} + \frac{1}{4} \cdot \frac{3}{3x - 1} - 4 \cdot \frac{2x}{x^2 + 5} - 2 = \frac{3}{x + 2} + \frac{3}{4(3x - 1)} - \frac{8x}{x^2 + 5} - 2$$
-3. Natijani $y$ ga ko'paytirib yozamiz:
-   $$y' = \frac{(x + 2)^3 \cdot \sqrt[4]{3x - 1}}{(x^2 + 5)^4 \cdot e^{2x}} \left( \frac{3}{x + 2} + \frac{3}{12x - 4} - \frac{8x}{x^2 + 5} - 2 \right)$$
+1. **"Ikkala hosila yig'indisi" qoralamasi:**
+   Imtihonda darajali-ko'rsatkichli funksiya $u^v$ berilsa, qoralamada quyidagi qisqa qoidadan foydalanib javobni 15 soniyada yozishingiz mumkin:
+   $$(u^v)' = \underbrace{v \cdot u^{v-1} \cdot u'}_{\text{darajali kabi}} + \underbrace{u^v \cdot \ln u \cdot v'}_{\text{ko'rsatkichli kabi}}$$
+   Masalan, $(x^x)' = x \cdot x^{x-1} \cdot (1) + x^x \cdot \ln x \cdot (1) = x^x + x^x \ln x = x^x(1 + \ln x)$!
 
----
+2. **Murakkab kasrlarda burchakli hisoblashdan qochish:**
+   Agar ko'paytuvchilar soni 3 tadan oshsa yoki ildizlar qatnashsa, hech ikkilanmasdan logarifmik differensiallashni qo'llang. Bu sizni umumiy maxraj keltirish va qavslarni ochishdagi qo'pol arifmetik xatolardan 100% asraydi.
 
-### 4-misol. Yig'indidan iborat darajali-ko'rsatkichli ifoda
-$y = x^{\sin x} + (\sin x)^x$ funksiyaning hosilasini toping.
-
-**Yechim:**
-> [!WARNING]
-> **Muhim ogohlantirish:** Tenglikning o'ng tomoni yig'indidan iborat bo'lganda ($y = u + v$), to'g'ridan-to'g'ri $\ln y = \ln u + \ln v$deb yozish **mumkin emas**, chunki$\ln(u + v) \neq \ln u + \ln v$!
-
-Bunday misollarda har bir qo'shiluvchini alohida funksiya deb belgilab ($y = u + v \implies y' = u' + v'$), har birini alohida logarifmik differensiallash yoki $e^{\ln(\dots)}$ shaklga keltirish kerak:
-$$y = e^{\sin x \ln x} + e^{x \ln(\sin x)}$$
-Hosilani olamiz:
-$$y' = e^{\sin x \ln x} \cdot (\sin x \ln x)' + e^{x \ln(\sin x)} \cdot (x \ln(\sin x))'$$
-$$y' = x^{\sin x}\left(\cos x \ln x + \frac{\sin x}{x}\right) + (\sin x)^x\left(\ln(\sin x) + x \cot x\right)$$
-
----
-
-## 5. O'z-o'zini tekshirish savollari
-
-1. **Nima uchun ko'p ko'paytuvchili kasrlarni logarifmlaganda $\ln |y|$ (modul ishorasi bilan) yoziladi?**
-   - *Javob:* Chunki haqiqiy sonlar sohasida logarifm faqat musbat sonlar uchun aniqlangan, berilgan funksiya $y = f(x)$va uning qatnashuvchilari esa manfiy qiymatlar ham qabul qilishi mumkin. Biroq$x \neq 0$da$(\ln |x|)' = \frac{1}{x}$formula$x > 0$da ham,$x < 0$ da ham bir xil o'rinli bo'lgani uchun modul hosila olish natijasiga ta'sir qilmaydi.
-2. **$y = x^x$funksiyaning$x = 1$ nuqtadagi hosilasi nechaga teng?**
-   - *Javob:* $y' = x^x(\ln x + 1)$. $x = 1$da$y'(1) = 1^1(\ln 1 + 1) = 1 \cdot (0 + 1) = 1$.
-
----
-
-## 6. Mustaqil yechish uchun masalalar
-
-Logarifmik differensiallash usuli yordamida quyidagi funksiyalarning hosilalarini toping:
-
-1. $y = (x^2 + 1)^{3x}$2.$y = x^{\ln x}$3.$y = (\cos x)^{\sin x}$4.$y = \sqrt[3]{\frac{x(x - 1)}{x + 2}}$5.$y = (2x + 1)^5 \cdot \sqrt{x^2 + 1} \cdot e^{-3x}$
-
-> [!TIP]
-> **Javoblar:**
-> 1. $y' = (x^2 + 1)^{3x}\left(3\ln(x^2 + 1) + \frac{6x^2}{x^2 + 1}\right)$> 2.$y' = \frac{2\ln x}{x} \cdot x^{\ln x} = 2 x^{\ln x - 1} \ln x$> 3.$y' = (\cos x)^{\sin x}\left(\cos x \ln(\cos x) - \sin x \tan x\right)$> 4.$y' = \frac{1}{3}\sqrt[3]{\frac{x(x - 1)}{x + 2}}\left(\frac{1}{x} + \frac{1}{x - 1} - \frac{1}{x + 2}\right)$> 5.$y' = (2x + 1)^5 \sqrt{x^2 + 1} e^{-3x}\left(\frac{10}{2x + 1} + \frac{x}{x^2 + 1} - 3\right)$
+3. **Limitlarda $1^\infty$ noaniqligini yechishdagi bog'liqlik:**
+   $\lim [u(x)]^{v(x)}$ ko'rinishidagi $1^\infty$ noaniqliklarni ochishda aynan $e^{\lim v(x)(u(x) - 1)}$ formulasiga o'tilishi ham mana shu logarifmlash printsipiga asoslangan.

@@ -6,55 +6,37 @@ description: "Hosilaning vujudga kelishi, o'zgarish tezligi, egri chiziqqa o'tka
 ---
 import Graph from '../../../components/Graph.astro';
 
-## Kirish: O'zgarish qanday tezlikda sodir bo'lmoqda?
+## 📌 Kirish va Geometrik/Fizik Mohiyat
 
-Hayotda har bir narsa o'zgaradi: mashina tezligi oshadi yoki kamayadi, havo harorati ko'tariladi, suv idishga quyiladi. Ammo matematika oldidagi asosiy savol shuki: **jarayon ayni shu lahzada (oniy lahzada) qanday tezlikda o'zgarmoqda?**
-
-Masalan, avtomobil $100\text{ km}$ masofani $2\text{ soatda}$ bosib o'tsa, uning o'rtacha tezligi:
+Koinotdagi barcha hodisalar uzluksiz harakat va o'zgarishdadir: sayyoralarning quyosh atrofida aylanishi, reaktiv samolyotning parvozi, iqtisodiyotdagi inflyatsiya sur'ati yoki elektr zanjiridagi tok kuchi. Maktab matematikasida biz o'rtacha tezlikni hisoblashga o'rganganmiz:
 
 $$
-v_{\text{o'rt}} = \frac{\Delta s}{\Delta t} = \frac{100}{2} = 50 \text{ km/soat}
+v_{\text{o'rt}} = \frac{\Delta s}{\Delta t}
 $$
 
-Ammo bu haydovchi yo'l davomida doim $50 \text{ km/soat}$ bilan yurganini anglatmaydi. U svetoforda to'xtagan, trassada esa $90 \text{ km/soat}$ bilan harakatlangan bo'lishi mumkin. 
+Agar avtomobil $120\text{ km}$ masofani $2\text{ soatda}$ bosib o'tsa, uning o'rtacha tezligi $60\text{ km/soat}$ bo'ladi. Ammo bu ko'rsatkich avtomobil har soniyada aynan $60\text{ km/soat}$ bilan yurganini bildirmaydi — u qizil chiroqda to'xtagan, trassada esa $110\text{ km/soat}$ tezlikda harakatlangan bo'lishi mumkin. 
 
-Mashina spidometri ko'rsatayotgan ko'rsatkich — bu **oniy tezlik**dir. Oniy tezlikni topish uchun vaqt oralig'i $\Delta t$ ni cheksiz kichik qilib nolga intiltirish kerak:
+Tabiiy savol tug'iladi: **harakatning ayni bir lahzadagi (oniy paytdagi) haqiqiy tezligi qanday aniqlanadi?**
+
+Buning uchun vaqt oralig'i $\Delta t$ ni cheksiz kichraytirib, uni nolga intiltirishimiz kerak ($\Delta t \to 0$):
 
 $$
-v_{\text{oniy}} = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t}
+v(t) = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t} = \lim_{\Delta t \to 0} \frac{s(t + \Delta t) - s(t)}{\Delta t}
 $$
 
-Mana shu tushuncha fanda **funksiya hosilasi** deyiladi!
+Mana shu jarayon — ya'ni argument cheksiz kichik o'zgarganda funksiyaning o'zgarish sur'atini o'lchash — insoniyat tarixidagi eng buyuk ilmiy kashfiyotlardan biri bo'lgan **differensial hisob** va **hosila** tushunchasining asosidir. Ushbu nazariya XVII asr oxirida bir-biridan mustaqil ravishda Isaak Nyuton (mexanika va harakat orqali) va Gotfrid Vilgelm Leybnits (geometriya va urinmalar masalasi orqali) tomonidan kashf etilgan.
 
----
+### Geometrik ma'no: Kesuvchidan urinmaga qarab
 
-## Hosilaning qat'iy ta'rifi
+Faraz qilaylik, silliq $y = f(x)$ egri chiziq berilgan. Uning ustida ikkita nuqtani olaylik: qo'zg'almas $M_0(x_0, f(x_0))$ va qo'zg'aluvchi $M(x_0 + \Delta x, f(x_0 + \Delta x))$. 
 
-Faraz qilaylik, $y = f(x)$ funksiya biror oraliqda aniqlangan bo'lsin. Argumentga $\Delta x$ cheksiz kichik orttirma beramiz. Natijada funksiya ham $\Delta y = f(x + \Delta x) - f(x)$ orttirma oladi.
+Ushbu ikki nuqta orqali $M_0 M$ kesuvchi to'g'ri chiziq (sekanta) o'tkazamiz. Ushbu to'g'ri chiziqning $Ox$ o'qi musbat yo'nalishi bilan hosil qilgan burchagi $\varphi$ bo'lsin. To'g'ri burchakli uchburchakdan uning burchak koeffitsiyenti:
 
-> **Hosilaning ta'rifi:** Funksiya orttirmasi $\Delta y$ ning argument orttirmasi $\Delta x$ ga nisbatining $\Delta x \to 0$ dagi limiti mavjud bo'lsa, bu limit $f(x)$ funksiyaning $x$ nuqtadagi **hosilasi** deyiladi va $f'(x)$ deb belgilanadi:
->
-> $$
-> f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
-> $$
+$$
+\tan \varphi = \frac{\Delta y}{\Delta x} = \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+$$
 
-Hosilani hisoblash jarayoni esa **differensiallash** deb ataladi.
-
----
-
-## Hosilaning geometrik ma'nosi: Urinma to'g'ri chiziq
-
-Hosilaning geometrik ma'nosi juda ko'rgazmali:
-
-> **Teorema:** $f'(x_0)$ hosila — $y = f(x)$ funksiya grafigiga $M_0(x_0; y_0)$ nuqtada o'tkazilgan **urinma to'g'ri chiziqning burchak koeffitsiyenti** $k$ ga tengdir:
->
-> $$
-> k = \tan \alpha = f'(x_0)
-> $$
-
-Bunda $\alpha$ — urinmaning $Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchagidir.
-
-Quyidagi interaktiv grafikda $y = x^2$ parabolaga o'tkazilgan urinmani ko'rishingiz mumkin:
+Endi $M$ nuqtani egri chiziq bo'ylab $M_0$ nuqtaga cheksiz yaqinlashtiraylik ($\Delta x \to 0$). Bu paytda $M_0 M$ kesuvchi to'g'ri chiziq o'zining chegaraviy holatiga — ya'ni egri chiziqqa $M_0$ nuqtada o'tkazilgan **urinma to'g'ri chiziqqa** aylanadi!
 
 <Graph 
   fn="x^2" 
@@ -64,97 +46,267 @@ Quyidagi interaktiv grafikda $y = x^2$ parabolaga o'tkazilgan urinmani ko'rishin
   yDomain={[-2, 8]}
 />
 
-*(Maslahat: Sichqoncha kursorini egri chiziq ustida harakatlantiring — urinma chizig'i egri chiziq bo'ylab qanday burilishini ko'rasiz!)*
+*(Maslahat: Sichqoncha kursorini egri chiziq ustida harakatlantiring — urinma chizig'i egri chiziq bo'ylab qanday burilishini va uning og'ish burchagi o'zgarishini ko'rasiz!)*
 
 ---
 
-## Urinma to'g'ri chiziq tenglamasi
+## 📐 Asosiy Nazariya, Qoidalar va Teoremalar
 
-$y = f(x)$ funksiya grafigiga $(x_0, y_0)$ nuqtada o'tkazilgan urinmaning tenglamasi quyidagicha yoziladi:
+### 1. Argument va funksiya orttirmasi
 
-$$
-y - y_0 = f'(x_0)(x - x_0)
-$$
+- **Argument orttirmasi:** $\Delta x = x - x_0 \implies x = x_0 + \Delta x$
+- **Funksiya orttirmasi:** $\Delta y = \Delta f(x_0) = f(x_0 + \Delta x) - f(x_0)$
 
-yoki:
+### 2. Hosilaning qat'iy matematik ta'rifi
 
-$$
-y = f'(x_0)(x - x_0) + f(x_0)
-$$
+> **Ta'rif:** Funksiya orttirmasi $\Delta y$ ning argument orttirmasi $\Delta x$ ga nisbatining $\Delta x \to 0$ dagi chekli limiti mavjud bo'lsa, bu limit $f(x)$ funksiyaning $x_0$ nuqtadagi **hosilasi** deyiladi va $f'(x_0)$ ko'rinishida belgilanadi:
+> 
+> $$f'(x_0) = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}$$
+
+**Boshqa matematik belgilashlar:**
+- Leybnits belgilashi: $\frac{df}{dx}$ yoki $\left. \frac{df}{dx} \right|_{x = x_0}$
+- Koshi belgilashi: $Df(x_0)$
+- Lagranj belgilashi: $f'(x_0)$
+- Nyuton belgilashi (fizikada vaqt bo'yicha): $\dot{x}(t)$
+
+### 3. Hosilaning geometrik talqini
+
+> **Teorema:** $f'(x_0)$ hosila — $y = f(x)$ egri chizig'iga $(x_0, y_0)$ nuqtada o'tkazilgan urinmaning burchak koeffitsiyenti $k$ ga teng:
+> 
+> $$k = \tan \alpha = f'(x_0)$$
+> 
+> Bunda $\alpha$ — urinmaning $Ox$ o'qining musbat yo'nalishi bilan hosil qilgan burchagidir.
+
+### 4. Urinma va normal to'g'ri chiziq tenglamalari
+
+Egri chiziqqa $(x_0, y_0)$ nuqtada (bu yerda $y_0 = f(x_0)$):
+1. **Urinma tenglamasi:**
+   $$y - y_0 = f'(x_0)(x - x_0)$$
+2. **Normal tenglamasi** (urinmaga urinish nuqtasida perpendikulyar to'g'ri chiziq):
+   Agar $f'(x_0) \neq 0$ bo'lsa, perpendikulyarlik shartiga ($k_1 \cdot k_2 = -1 \implies k_{\text{norm}} = -\frac{1}{f'(x_0)}$) ko'ra:
+   $$y - y_0 = -\frac{1}{f'(x_0)}(x - x_0)$$
+
+### 5. Differensiallanuvchanlik va uzluksizlik bog'liqligi
+
+> **Fundamental teorema:**
+> Agar $f(x)$ funksiya $x_0$ nuqtada differensiallanuvchi bo'lsa (ya'ni chekli $f'(x_0)$ mavjud bo'lsa), u holda u shu nuqtada **albatta uzluksizdir**.
+
+**Isboti:**
+Hosilaning ta'rifiga ko'ra:
+$$\frac{\Delta y}{\Delta x} = f'(x_0) + \alpha(\Delta x)$$
+bu yerda $\Delta x \to 0$ da $\alpha(\Delta x) \to 0$ (cheksiz kichik miqdor).
+Tenglikning ikkala qismini $\Delta x$ ga ko'paytiramiz:
+$$\Delta y = f'(x_0) \cdot \Delta x + \alpha(\Delta x) \cdot \Delta x$$
+Endi $\Delta x \to 0$ da limitga o'tsak:
+$$\lim_{\Delta x \to 0} \Delta y = f'(x_0) \cdot 0 + 0 = 0$$
+Funksiya orttirmasi nolga intilishi ($\lim_{\Delta x \to 0} \Delta y = 0$) aynan funksiyaning $x_0$ nuqtada uzluksizligi ta'rifidir! $\blacksquare$
+
+> [!CAUTION]
+> **Teskari tasdiq har doim ham to'g'ri emas!**
+> Funksiya nuqtada uzluksiz bo'lishi mumkin, ammo unda hosila mavjud bo'lmasligi mumkin. Masalan, $f(x) = |x|$ funksiya $x = 0$ nuqtada uzluksiz, ammo uning grafigida "sinish" (o'tkir burchak) bo'lgani sababli $x = 0$ da hosilasi mavjud emas.
+
+### 6. Bir tomonlama hosilalar (Chap va O'ng hosila)
+
+- **Chap hosila:** $f'_-(x_0) = \lim_{\Delta x \to 0^-} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}$
+- **O'ng hosila:** $f'_+(x_0) = \lim_{\Delta x \to 0^+} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}$
+
+Funksiya $x_0$ nuqtada differensiallanuvchi bo'lishi uchun $f'_-(x_0) = f'_+(x_0)$ tenglik bajarilishi zarur va yetarlidir.
 
 ---
 
-## Amaliy misollar va to'liq yechimlar
+## 📝 Qadamma-qadam Yechilgan Universitet Misollari
 
-### 1-misol: Ta'rif bo'yicha hosila topish
-$f(x) = x^2$ funksiyaning hosilasini limit ta'rifi orqali keltirib chiqaring.
+### 1-misol: Hosilani ta'rif bo'yicha keltirib chiqarish
 
-**Yechilishi:**
-1. Orttirmalar nisbatini tuzamiz:
-   $$\frac{\Delta y}{\Delta x} = \frac{(x + \Delta x)^2 - x^2}{\Delta x} = \frac{x^2 + 2x\Delta x + (\Delta x)^2 - x^2}{\Delta x} = \frac{2x\Delta x + (\Delta x)^2}{\Delta x}$$
-2. $\Delta x$ ga qisqartiramiz ($\Delta x \neq 0$):
-   $$\frac{\Delta y}{\Delta x} = 2x + \Delta x$$
+**Shart:** $f(x) = \sqrt{x}$ ($x > 0$) funksiyaning hosilasini ta'rif orqali keltirib chiqaring.
+
+**Yechish:**
+1. Argumentga $\Delta x$ orttirma berib, mos funksiya orttirmasini yozamiz:
+   $$\Delta y = f(x + \Delta x) - f(x) = \sqrt{x + \Delta x} - \sqrt{x}$$
+2. Orttirmalar nisbatini tuzamiz:
+   $$\frac{\Delta y}{\Delta x} = \frac{\sqrt{x + \Delta x} - \sqrt{x}}{\Delta x}$$
+3. Kasrning surati va mahrajini suratning qo'shmasiga, ya'ni $(\sqrt{x + \Delta x} + \sqrt{x})$ ga ko'paytiramiz:
+   $$\frac{\Delta y}{\Delta x} = \frac{(\sqrt{x + \Delta x} - \sqrt{x})(\sqrt{x + \Delta x} + \sqrt{x})}{\Delta x (\sqrt{x + \Delta x} + \sqrt{x})} = \frac{(x + \Delta x) - x}{\Delta x (\sqrt{x + \Delta x} + \sqrt{x})} = \frac{\Delta x}{\Delta x (\sqrt{x + \Delta x} + \sqrt{x})}$$
+4. $\Delta x \neq 0$ bo'lgani uchun qisqartiramiz:
+   $$\frac{\Delta y}{\Delta x} = \frac{1}{\sqrt{x + \Delta x} + \sqrt{x}}$$
+5. $\Delta x \to 0$ da limitga o'tamiz:
+   $$f'(x) = \lim_{\Delta x \to 0} \frac{1}{\sqrt{x + \Delta x} + \sqrt{x}} = \frac{1}{\sqrt{x + 0} + \sqrt{x}} = \frac{1}{2\sqrt{x}}$$
+
+**Javob:** $(\sqrt{x})' = \frac{1}{2\sqrt{x}}$ formulasi to'liq isbotlandi.
+
+---
+
+### 2-misol: Urinma va normal tenglamalarini to'liq tuzish
+
+**Shart:** $f(x) = x^3 - 3x^2 + 2x + 1$ egri chizig'iga $x_0 = 1$ nuqtada o'tkazilgan urinma va normal to'g'ri chiziqlar tenglamalarini tuzing.
+
+**Yechish:**
+1. Urinish nuqtasining ordinatasini hisoblaymiz:
+   $$y_0 = f(1) = 1^3 - 3(1^2) + 2(1) + 1 = 1 - 3 + 2 + 1 = 1$$
+   Demak, urinish nuqtasi: $M_0(1, 1)$.
+
+2. Funksiyaning hosilasini topamiz:
+   $$f'(x) = (x^3 - 3x^2 + 2x + 1)' = 3x^2 - 6x + 2$$
+
+3. Urinmaning burchak koeffitsiyentini hisoblaymiz:
+   $$k_{\text{ur}} = f'(1) = 3(1^2) - 6(1) + 2 = 3 - 6 + 2 = -1$$
+
+4. **Urinma tenglamasini** tuzamiz:
+   $$y - y_0 = k_{\text{ur}}(x - x_0) \implies y - 1 = -1 \cdot (x - 1) \implies y - 1 = -x + 1 \implies y = -x + 2$$
+
+5. **Normal tenglamasini** tuzamiz:
+   Normalning burchak koeffitsiyenti:
+   $$k_{\text{norm}} = -\frac{1}{k_{\text{ur}}} = -\frac{1}{-1} = 1$$
+   U holda normal tenglamasi:
+   $$y - y_0 = k_{\text{norm}}(x - x_0) \implies y - 1 = 1 \cdot (x - 1) \implies y = x$$
+
+**Javob:** Urinma tenglamasi: $y = -x + 2$; Normal tenglamasi: $y = x$.
+
+---
+
+### 3-misol: Nuqtada differensiallanuvchanlikni tekshirish
+
+**Shart:** Ushbu funksiyaning $x = 0$ nuqtadagi hosilasini tekshiring:
+$$f(x) = \begin{cases} x^2 \sin\left(\frac{1}{x}\right), & x \neq 0 \\ 0, & x = 0 \end{cases}$$
+
+**Yechish:**
+1. Standart hosila formulalarini to'g'ridan-to'g'ri qo'llash $x = 0$ da noaniqlik beradi, chunki $\frac{1}{0}$ mavjud emas. Shuning uchun qat'iy ta'rif bo'yicha limitni hisoblaymiz.
+2. Ta'rifga ko'ra:
+   $$f'(0) = \lim_{\Delta x \to 0} \frac{f(0 + \Delta x) - f(0)}{\Delta x}$$
+3. Qiymatlarni qo'yamiz: $f(0) = 0$ va $f(\Delta x) = (\Delta x)^2 \sin\left(\frac{1}{\Delta x}\right)$:
+   $$\frac{f(\Delta x) - f(0)}{\Delta x} = \frac{(\Delta x)^2 \sin\left(\frac{1}{\Delta x}\right) - 0}{\Delta x} = \Delta x \cdot \sin\left(\frac{1}{\Delta x}\right)$$
+4. $\Delta x \to 0$ da limitga o'tamiz:
+   Biz bilamizki, $\sin\left(\frac{1}{\Delta x}\right)$ chegaralangan funksiya ($-1 \le \sin \le 1$), $\Delta x$ esa cheksiz kichik miqdor.
+   Cheksiz kichik miqdorning chegaralangan miqdorga ko'paytmasi doimo cheksiz kichik miqdordir:
+   $$\lim_{\Delta x \to 0} \left[ \Delta x \cdot \sin\left(\frac{1}{\Delta x}\right) \right] = 0$$
+5. Limit chekli va nolga teng bo'lib chiqdi.
+
+**Javob:** Funksiya $x = 0$ nuqtada differensiallanuvchi va $f'(0) = 0$.
+
+---
+
+### 4-misol: Fizik kinematik masala (Tezlik va Tezlanish)
+
+**Shart:** Moddiy nuqta to'g'ri chiziq bo'ylab $s(t) = t^3 - 6t^2 + 9t + 2$ qonuniyat bilan harakatlanmoqda ($s$ — metrda, $t$ — sekundda). 
+a) Qaysi vaqt lahzalarida jism to'xtagan (oniy tezlik $0$ bo'lgan)?
+b) Harakat boshlangandan to'xtash paytlarigacha bo'lgan lahzalardagi tezlanishlarni toping.
+
+**Yechish:**
+1. **Oniy tezlik** masofaning vaqt bo'yicha birinchi hosilasidir:
+   $$v(t) = s'(t) = (t^3 - 6t^2 + 9t + 2)' = 3t^2 - 12t + 9$$
+2. Jism to'xtagan paytda tezlik nolga teng:
+   $$v(t) = 0 \iff 3t^2 - 12t + 9 = 0 \iff t^2 - 4t + 3 = 0$$
+   Viyet teoremasiga ko'ra:
+   $$(t - 1)(t - 3) = 0 \implies t_1 = 1\text{ s}, \quad t_2 = 3\text{ s}$$
+   Demak, jism $1$-sekund va $3$-sekund lahzalarida to'xtagan (yo'nalishini o'zgartirgan).
+
+3. **Oniy tezlanish** tezlikning birinchi (yoki masofaning ikkinchi) hosilasidir:
+   $$a(t) = v'(t) = s''(t) = (3t^2 - 12t + 9)' = 6t - 12$$
+
+4. To'xtash paytlaridagi tezlanishlarni hisoblaymiz:
+   - $t_1 = 1\text{ s}$ da: $a(1) = 6(1) - 12 = -6\text{ m/s}^2$ (harakat sekinlanuvchan bo'lgan)
+   - $t_2 = 3\text{ s}$ da: $a(3) = 6(3) - 12 = 18 - 12 = +6\text{ m/s}^2$ (harakat tezlanuvchan)
+
+**Javob:** a) $t_1 = 1\text{ s}$ va $t_2 = 3\text{ s}$; b) $a(1) = -6\text{ m/s}^2$, $a(3) = 6\text{ m/s}^2$.
+
+---
+
+## ⚠️ Talabalar Eng Ko'p Yo'l Qo'yadigan Xatolar va Tuzoqlar
+
+1. **Hosilani hisoblashdan oldin nuqtani qo'yib yuborish:**
+   Eng keng tarqalgan xato! Talaba $f(x) = x^3$ funksiyaning $x = 2$ dagi hosilasini hisoblashda avval $f(2) = 8$ deb oladi, so'ngra $(8)' = 0$ deb yozadi. 
+   **Qat'iy qoida:** Avval umumiy $f'(x)$ hosila funksiyasi topiladi ($3x^2$), undan keyingina $x_0 = 2$ nuqta qo'yiladi ($3 \cdot 2^2 = 12$)!
+
+2. **"Uzluksiz bo'lsa, demak hosilasi bor" deb o'ylash:**
+   $f(x) = |x|$ funksiya $x = 0$ da uzluksiz, ammo chap hosilasi $f'_-(0) = -1$, o'ng hosilasi $f'_+(0) = +1$. Ular teng emas, binobarin $x = 0$ da hosila **mavjud emas**. Grafigi sinish burchagiga ega nuqtalarda hosila bo'lmaydi!
+
+3. **Normal tenglamasida burchak koeffitsiyentini noto'g'ri olish:**
+   Talabalar ko'pincha normal uchun $k_{\text{norm}} = -f'(x_0)$ deb yozib qo'yishadi. To'g'ri formula: $k_{\text{norm}} = -\frac{1}{f'(x_0)}$. Faqat teskari va qarama-qarshi ishorali songina perpendikulyarlik shartini beradi.
+
+4. **Hosilani urinmaning to'liq tenglamasi bilan tenglashtirish:**
+   $f'(x_0)$ — bu to'g'ri chiziq emas, bu faqat urinmaning qiyaligi (son). To'liq urinma tenglamasi esa $y = kx + b$ ko'rinishidagi to'g'ri chiziqdir.
+
+---
+
+## 🎯 Mustaqil Yechish Uchun Amaliy Mashqlar va Yechimlar
+
+### 1-mashq
+$f(x) = \frac{1}{x}$ ($x \neq 0$) funksiya hosilasini qat'iy limit ta'rifi orqali keltirib chiqaring.
+
+<details>
+<summary>Yechimni ko'rish</summary>
+
+**Bosqichma-bosqich yechim:**
+1. Funksiya orttirmasini tuzamiz:
+   $$\Delta y = f(x + \Delta x) - f(x) = \frac{1}{x + \Delta x} - \frac{1}{x} = \frac{x - (x + \Delta x)}{x(x + \Delta x)} = \frac{-\Delta x}{x(x + \Delta x)}$$
+2. Orttirmalar nisbatini olamiz:
+   $$\frac{\Delta y}{\Delta x} = \frac{-\Delta x}{\Delta x \cdot x(x + \Delta x)} = \frac{-1}{x(x + \Delta x)}$$
 3. $\Delta x \to 0$ da limitga o'tamiz:
-   $$f'(x) = \lim_{\Delta x \to 0} (2x + \Delta x) = 2x + 0 = 2x$$
+   $$f'(x) = \lim_{\Delta x \to 0} \frac{-1}{x(x + \Delta x)} = \frac{-1}{x(x + 0)} = -\frac{1}{x^2}$$
 
-Demak, $(x^2)' = 2x$ formulasi shunday kelib chiqqan!
-
----
-
-### 2-misol: Urinma tenglamasini tuzish
-$f(x) = x^2 - 3x + 2$ funksiya grafigiga $x_0 = 2$ nuqtada o'tkazilgan urinma tenglamasini toping.
-
-**Yechilishi:**
-1. Nuqtadagi funksiya qiymatini topamiz:
-   $$y_0 = f(2) = 2^2 - 3(2) + 2 = 4 - 6 + 2 = 0$$
-2. Hosilani hisoblaymiz:
-   $$f'(x) = 2x - 3$$
-3. Nuqtadagi hosila qiymati (burchak koeffitsiyenti):
-   $$k = f'(2) = 2(2) - 3 = 1$$
-4. Urinma tenglamasiga qo'yamiz:
-   $$y - 0 = 1 \cdot (x - 2) \implies y = x - 2$$
-
-**Javob:** $y = x - 2$
-
----
-
-### 3-misol: Fizik masala (Oniy tezlik)
-Moddiy nuqta to'g'ri chiziq bo'ylab $s(t) = t^3 - 2t + 5$ qonuniyat bo'yicha harakatlanmoqda ($s$ — metrda, $t$ — sekundda). $t = 3$ sekund lahzasidagi oniy tezlikni toping.
-
-**Yechilishi:**
-Mexanikada tezlik masofaning vaqt bo'yicha birinchi tartibli hosilasidir: $v(t) = s'(t)$.
-$$v(t) = s'(t) = (t^3 - 2t + 5)' = 3t^2 - 2$$
-$t = 3$ da:
-$$v(3) = 3(3)^2 - 2 = 3(9) - 2 = 27 - 2 = 25 \text{ m/s}$$
-
-**Javob:** $25\text{ m/s}$
-
----
-
-<div style="background: rgba(239, 68, 68, 0.07); border-left: 4px solid #ef4444; padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 2rem 0;">
-  <h4 style="margin: 0 0 0.75rem 0; color: #ef4444; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700;">
-    <span>⚠️</span> <span>Talabalar eng ko'p yo'l qo'yadigan 3 ta xato:</span>
-  </h4>
-  <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.7; font-size: 0.95rem;">
-    <li><strong>Nuqtani formuladan oldin qo'yib yuborish:</strong> Avval $f'(x)$ umumiy hosila formulasini topish, undan keyingina $x_0$ sonini qo'yish kerak! Agar sonni avval qo'ysangiz, o'zgarmas son hosil bo'lib, uning hosilasi har doim $0$ chiqib qoladi.</li>
-    <li><strong>Murakkab funksiya ichki hosilasini unutish:</strong> Masalan, $( (2x+1)^3 )'$ hisoblanayotganda faqat $3(2x+1)^2$ yozib, qavs ichidagi $2x$ ning hosilasi bo'lgan $2$ ga ko'paytirishni unutib qoldirish eng keng tarqalgan xatodir.</li>
-    <li><strong>Hosilani urinmaning o'zi deb o'ylash:</strong> $f'(x_0)$ bu urinmaning o'zi emas, balki urinmaning <em>burchak koeffitsiyenti</em> ($k$). Urinmaning to'liq tenglamasi $y - y_0 = k(x - x_0)$ formulasi orqali topiladi.</li>
-  </ol>
-</div>
-
----
-
-## Mustaqil yechish uchun mashqlar
-
-1. $f(x) = x^3$ funksiyaning $x = 2$ nuqtadagi hosilasi nimaga teng?
-2. $f(x) = 2x^2 + 1$ grafigiga $x_0 = 1$ nuqtada o'tkazilgan urinmaning burchak koeffitsiyenti $k$ ni toping.
-3. Agar jism harakati $s(t) = 5t^2$ bo'lsa, $t = 4$ soniyadagi tezligi qancha bo'ladi?
-
-<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-  <summary style="font-weight: 700; color: var(--primary);">Javoblarni ko'rish</summary>
-  <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
-    <p><strong>1-masala:</strong> $f'(x) = 3x^2 \implies f'(2) = 3(2^2) = 12$.</p>
-    <p><strong>2-masala:</strong> $f'(x) = 4x \implies k = f'(1) = 4(1) = 4$.</p>
-    <p><strong>3-masala:</strong> $v(t) = s'(t) = 10t \implies v(4) = 10(4) = 40\text{ m/s}$.</p>
-  </div>
+**Javob:** $\left( \frac{1}{x} \right)' = -\frac{1}{x^2}$
 </details>
+
+---
+
+### 2-mashq
+$y = \frac{x + 2}{x - 1}$ giperbolasiga $x_0 = 2$ nuqtada o'tkazilgan urinma va normal tenglamalarini toping.
+
+<details>
+<summary>Yechimni ko'rish</summary>
+
+**Bosqichma-bosqich yechim:**
+1. Urinish nuqtasi koordinatasi:
+   $$y_0 = y(2) = \frac{2 + 2}{2 - 1} = \frac{4}{1} = 4 \implies (2, 4)$$
+2. Bo'linma hosilasi qoidasi bo'yicha hosila olamiz:
+   $$y' = \frac{(x + 2)'(x - 1) - (x + 2)(x - 1)'}{(x - 1)^2} = \frac{1(x - 1) - (x + 2) \cdot 1}{(x - 1)^2} = \frac{x - 1 - x - 2}{(x - 1)^2} = \frac{-3}{(x - 1)^2}$$
+3. $x_0 = 2$ nuqtadagi hosila (urinmaning burchak koeffitsiyenti):
+   $$k_{\text{ur}} = y'(2) = \frac{-3}{(2 - 1)^2} = -3$$
+4. Urinma tenglamasi:
+   $$y - 4 = -3(x - 2) \implies y - 4 = -3x + 6 \implies y = -3x + 10$$
+5. Normalning burchak koeffitsiyenti:
+   $$k_{\text{norm}} = -\frac{1}{-3} = \frac{1}{3}$$
+   Normal tenglamasi:
+   $$y - 4 = \frac{1}{3}(x - 2) \implies y = \frac{1}{3}x - \frac{2}{3} + 4 \implies y = \frac{1}{3}x + \frac{10}{3}$$
+
+**Javob:** Urinma: $y = -3x + 10$; Normal: $y = \frac{1}{3}x + \frac{10}{3}$.
+</details>
+
+---
+
+### 3-mashq
+$f(x) = |x - 3| + 2x$ funksiyaning $x = 3$ nuqtadagi chap va o'ng hosilalarini hisoblang. Funksiya $x = 3$ nuqtada differensiallanuvchimi?
+
+<details>
+<summary>Yechimni ko'rish</summary>
+
+**Bosqichma-bosqich yechim:**
+1. Funksiyaning $x = 3$ atrofidagi ko'rinishini ochamiz:
+   - Agar $x > 3$ bo'lsa: $f(x) = (x - 3) + 2x = 3x - 3$
+   - Agar $x < 3$ bo'lsa: $f(x) = -(x - 3) + 2x = -x + 3 + 2x = x + 3$
+   - $f(3) = |3 - 3| + 2(3) = 6$
+2. O'ng hosila ($x \to 3^+$):
+   $$f'_+(3) = \lim_{x \to 3^+} \frac{f(x) - f(3)}{x - 3} = \lim_{x \to 3^+} \frac{(3x - 3) - 6}{x - 3} = \lim_{x \to 3^+} \frac{3x - 9}{x - 3} = \lim_{x \to 3^+} \frac{3(x - 3)}{x - 3} = 3$$
+3. Chap hosila ($x \to 3^-$):
+   $$f'_-(3) = \lim_{x \to 3^-} \frac{f(x) - f(3)}{x - 3} = \lim_{x \to 3^-} \frac{(x + 3) - 6}{x - 3} = \lim_{x \to 3^-} \frac{x - 3}{x - 3} = 1$$
+4. Xulosa: $f'_+(3) = 3 \neq f'_-(3) = 1$. Bir tomonlama hosilalar o'zaro teng emas.
+
+**Javob:** Chap hosila $1$, o'ng hosila $3$. Funksiya $x = 3$ nuqtada differensiallanuvchi emas (grafikda sinish nuqtasi mavjud).
+</details>
+
+---
+
+## 💡 Imtihon Layfhaklari va Tezkor Maslahatlar
+
+1. **Gorizontal urinma layfhaki:**
+   Agar masalada "urinma $Ox$ o'qiga parallel bo'lgan nuqtani toping" deyilsa, hech ikkilanmasdan hosilani nolga tenglashtiring:
+   $$f'(x) = 0$$
+   Chunki gorizontal to'g'ri chiziqning burchak koeffitsiyenti $k = \tan(0^\circ) = 0$.
+
+2. **Berilgan to'g'ri chiziqqa parallel urinma topish:**
+   Agar masala $y = f(x)$ grafigiga o'tkazilgan urinma $y = 5x - 3$ to'g'ri chizig'iga parallel bo'lishini talab qilsa, ularning burchak koeffitsiyentlari teng bo'lishi kerak. Darhol quyidagi tenglamani yechasiz:
+   $$f'(x_0) = 5$$
+   Hosil bo'lgan $x_0$ qiymat urinish nuqtasining abssissasi bo'ladi!
+
+3. **Differensial formulasi:**
+   Kichik o'zgarishlar uchun $\Delta y \approx dy = f'(x_0) \Delta x$. Bu formula orqali murakkab sonlarning taqribiy qiymatini (masalan, $\sqrt{4.02} \approx 2 + \frac{1}{4} \cdot 0.02 = 2.005$) oson topish mumkin.

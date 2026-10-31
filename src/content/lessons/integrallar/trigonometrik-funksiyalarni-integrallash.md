@@ -5,159 +5,258 @@ order: 11
 description: "Trigonometrik ifodalarni integrallashning barcha klassik usullari: universal trigonometrik almashtirish, darajalarni pasaytirish, toq darajalarda differensial ostiga kiritish va tg(x) almashtirishi."
 ---
 
-## Kirish va mavzuning ahamiyati
+## 📌 Kirish va Geometrik/Fizik Mohiyat
 
-Oliy matematika kursida talabalar eng ko'p to'qnash keladigan va ko'pincha murakkab deb hisoblaydigan mavzulardan biri bu trigonometrik funksiyalar qatnashgan integrallardir:
-$$\int R(\sin x, \cos x)\, dx$$
-Bu yerda $R$ belgisi $\sin x$ va $\cos x$ larga nisbatan ratsional ifodani (ya'ni faqat to'rtta arifmetik amal — qo'shish, ayirish, ko'paytirish va bo'lish amallari qatnashgan ifodani) bildiradi.
+Trigonometrik funksiyalar qatnashgan integrallar matematik analiz, to'lqinlar mexanikasi, elektrotexnika (o'zgaruvchan tok zanjirlari), Furye tahlili va kvant fizikasida markaziy o'rin egallaydi. Tabiatdagi barcha davriy va tebranma jarayonlar — mayatnik harakatidan tortib, elektromagnit to'lqinlarining tarqalishigacha — sinus va kosinus funksiyalari orqali tavsiflanadi.
 
-Ko'pchilik talabalar trigonometrik integralni ko'rganda qaysi usulni qo'llashni bilmay chalkashadilar: qachon universal almashtirish kerak, qachon darajani pasaytirish lozim, qachon esa shunchaki differensial ostiga kiritish kifoya? 
+Matematik jihatdan, biz quyidagi umumiy ko'rinishdagi integrallarni o'rganamiz:
+$$\int R(\sin x, \cos x) \, dx$$
+bu yerda $R(u, v)$ — o'zining argumentlariga nisbatan ratsional funksiya (ya'ni faqat qo'shish, ayirish, ko'paytirish, bo'lish va butun darajaga oshirish amallaridan tashkil topgan ifoda).
 
-Ushbu darsda biz **Mathprofi** uslubida barcha trigonometrik integrallarni 5 ta asosiy sinfga ajratib, har biri uchun aniq algoritm va to'liq yechilgan namunaviy misollarni ko'rib chiqamiz.
-
----
-
-## 1. Trigonometrik integrallarning 5 ta asosiy toifasi va algoritmlar xaritasi
-
-Trigonometrik integralni yechishdan oldin uning turini aniqlash zarur:
-
-| Integral ko'rinishi | Qo'llaniladigan almashtirish yoki qoida | Qachon ishlatiladi? |
-| :--- | :--- | :--- |
-| **1. Universal almashtirish** | $t = \operatorname{tg}\frac{x}{2}, \quad dx = \frac{2dt}{1+t^2}$ | $\sin x, \cos x$ 1-darajada kasr maxrajida bo'lganda |
-| **2. Toq darajalar:** $\int \sin^m x \cos^n x dx$ | Bitta darajani ajratib, differensial ostiga kiritish | $m$ yoki $n$ lardan kamida biri toq musbat son bo'lsa |
-| **3. Juft darajalar:** $\int \sin^m x \cos^n x dx$ | Darajani pasaytirish: $\cos^2 x = \frac{1+\cos 2x}{2}$ | Har ikkala $m$ va $n$ juft nomanfiy son bo'lsa |
-| **4. $\operatorname{tg} x = t$ almashtirishi** | $t = \operatorname{tg} x, \quad dx = \frac{dt}{1+t^2}$ | Integral $\sin x$ va $\cos x$ ga nisbatan juft bo'lsa |
-| **5. Turli argumentlar ko'paytmasi** | Ko'paytmani yig'indiga aylantirish formulalari | $\sin(\alpha x) \cos(\beta x)$ kabi ko'paytmalarda |
+Talabalar orasida eng keng tarqalgan xato — har qanday trigonometrik integralni ko'rganda darhol universal almashtirishga murojaat qilishdir. Biroq universal almashtirish aksariyat hollarda 4- yoki 6-darajali juda murakkab ratsional kasrlarni vujudga keltiradi ("chumchuqni to'pdan otish"). Shu bois, Fichtenholz va Piskunov kabi klassik matematiklar har bir trigonometrik integral turi uchun eng ixcham, chiroyli va tezkor yechim beruvchi maxsus algoritmlarni ishlab chiqqanlar.
 
 ---
 
-## 2. Universal trigonometrik almashtirish ($t = \operatorname{tg}\frac{x}{2}$)
+## 📐 Asosiy Nazariya, Qoidalar va Teoremalar
 
-Universal almashtirish har qanday $\int R(\sin x, \cos x) dx$ integralini algebraik ratsional kasr integraliga aylantirib beradi.
+Trigonometrik integrallarni yechish ularning ichki simmetriyasi va darajalariga qarab **beshta asosiy toifaga** bo'linadi.
 
-### Asosiy formulalar:
-Agar $t = \operatorname{tg}\frac{x}{2}$ deb olsak, $x = 2\operatorname{arctg} t$ bo'lib, quyidagi almashtirishlar o'rinli bo'ladi:
-$$dx = \frac{2\,dt}{1 + t^2}$$
-$$\sin x = \frac{2\operatorname{tg}\frac{x}{2}}{1 + \operatorname{tg}^2\frac{x}{2}} = \frac{2t}{1 + t^2}$$
-$$\cos x = \frac{1 - \operatorname{tg}^2\frac{x}{2}}{1 + \operatorname{tg}^2\frac{x}{2}} = \frac{1 - t^2}{1 + t^2}$$
-$$\operatorname{tg} x = \frac{2t}{1 - t^2}$$
+### 1. Toq darajali ko'paytmalar: $\int \sin^m x \cos^n x \, dx$ ($m$ yoki $n$ toq musbat son)
 
-### 1-Misol (Universal almashtirishga klassik imtihon savoli):
-Quyidagi integralni hisoblang:
-$$I = \int \frac{dx}{3 + 5\cos x}$$
+Bu toifada differensial ostiga kiritish usuli qo'llaniladi:
+- **Agar $\sin x$ ning darajasi $m = 2k + 1$ toq bo'lsa:**
+  Bitta $\sin x$ ajratib olinadi va differensial ostiga kiritiladi: $\sin x \, dx = -d(\cos x)$. Qolgan juft darajali $\sin^{2k} x$ esa asosiy trigonometrik ayniyat $\sin^2 x = 1 - \cos^2 x$ orqali almashtiriladi:
+  $$\int \sin^{2k+1} x \cos^n x \, dx = -\int (1 - \cos^2 x)^k \cos^n x \, d(\cos x)$$
+  Almashtirish: $t = \cos x$.
 
-**Yechish:**
-1. Integralda $\cos x$ birinchi darajada maxrajda turibdi. Universal almashtirish qilamiz:
-   $$t = \operatorname{tg}\frac{x}{2}, \quad dx = \frac{2dt}{1+t^2}, \quad \cos x = \frac{1-t^2}{1+t^2}$$
-
-2. Ifodani integralga qo'yamiz:
-   $$I = \int \frac{\frac{2dt}{1+t^2}}{3 + 5\cdot \frac{1-t^2}{1+t^2}} = \int \frac{\frac{2dt}{1+t^2}}{\frac{3(1+t^2) + 5(1-t^2)}{1+t^2}}$$
-
-3. Umumiy maxrajdagi $1+t^2$ qisqarib ketadi:
-   $$I = \int \frac{2dt}{3 + 3t^2 + 5 - 5t^2} = \int \frac{2dt}{8 - 2t^2} = \int \frac{dt}{4 - t^2}$$
-
-4. Bu jadval integralidir (yuqori logarifm formulasi: $\int \frac{dt}{a^2 - t^2} = \frac{1}{2a}\ln\left|\frac{a+t}{a-t}\right| + C$, bu yerda $a = 2$):
-   $$I = \frac{1}{2 \cdot 2} \ln \left| \frac{2 + t}{2 - t} \right| + C = \frac{1}{4} \ln \left| \frac{2 + \operatorname{tg}\frac{x}{2}}{2 - \operatorname{tg}\frac{x}{2}} \right| + C$$
+- **Agar $\cos x$ ning darajasi $n = 2k + 1$ toq bo'lsa:**
+  Bitta $\cos x$ ajratiladi: $\cos x \, dx = d(\sin x)$, qolgan $\cos^{2k} x = (1 - \sin^2 x)^k$:
+  $$\int \sin^m x \cos^{2k+1} x \, dx = \int \sin^m x (1 - \sin^2 x)^k \, d(\sin x)$$
+  Almashtirish: $t = \sin x$.
 
 ---
 
-## 3. Toq va juft darajali trigonometrik integrallar: $\int \sin^m x \cos^n x \, dx$
+### 2. Juft darajali ko'paytmalar: $\int \sin^m x \cos^n x \, dx$ ($m$ va $n$ ikkalasi ham juft nomanfiy son)
 
-### Qoida A: Kamida bitta daraja toq bo'lganda (Differensial ostiga kiritish)
-Agar biror daraja toq bo'lsa (masalan, $\sin x$ ning darajasi toq: $m = 2k + 1$), bitta $\sin x$ ni ajratib, $dx$ yoniga olib o'tamiz:
-$$\sin^{2k+1} x \, dx = \sin^{2k} x \cdot (\sin x \, dx) = (1 - \cos^2 x)^k (-d(\cos x))$$
-So'ngra $u = \cos x$ almashtirishi orqali oddiy ko'phad integraliga keltiriladi.
+Bunday integrallarda differensial ostiga kiritib bo'lmaydi. Yagona yo'l — **darajani pasaytirish formulalaridan** foydalanishdir:
+$$\sin^2 x = \frac{1 - \cos 2x}{2}, \qquad \cos^2 x = \frac{1 + \cos 2x}{2}$$
+$$\sin x \cos x = \frac{1}{2}\sin 2x$$
 
-### 2-Misol (Toq daraja):
-Quyidagi integralni hisoblang:
-$$I = \int \sin^3 x \cos^4 x \, dx$$
-
-**Yechish:**
-1. Sinusning darajasi toq ($3$). Bitta $\sin x$ ni ajratamiz:
-   $$\sin^3 x = \sin^2 x \cdot \sin x = (1 - \cos^2 x)\sin x$$
-2. $\sin x \, dx = -d(\cos x)$ ekanini inobatga olib, integralni yozamiz:
-   $$I = \int (1 - \cos^2 x) \cos^4 x \cdot \sin x \, dx = -\int (1 - \cos^2 x) \cos^4 x \, d(\cos x)$$
-3. $u = \cos x$ desak:
-   $$I = -\int (u^4 - u^6) \, du = \int (u^6 - u^4) \, du = \frac{u^7}{7} - \frac{u^5}{5} + C$$
-4. Dastlabki o'zgaruvchiga qaytamiz:
-   $$I = \frac{\cos^7 x}{7} - \frac{\cos^5 x}{5} + C$$
+Agar darajalar $4$ yoki undan yuqori bo'lsa, bu formulalar argument $4x, 8x, \dots$ ga o'tgan holda bir necha bor takroran qo'llaniladi.
 
 ---
 
-### Qoida B: Har ikkala daraja juft bo'lganda (Darajani pasaytirish)
-Agar har ikkala daraja ham juft bo'lsa ($m = 2k, n = 2p$), differensial ostiga kiritish samara bermaydi. Bu holda faqatgina darajani pasaytirish formulalari yordamga keladi:
-$$\cos^2 x = \frac{1 + \cos 2x}{2}, \quad \sin^2 x = \frac{1 - \cos 2x}{2}, \quad \sin x \cos x = \frac{\sin 2x}{2}$$
+### 3. Tangens almashtirishi: $t = \operatorname{tg} x$ (Juftlik simmetriyasi)
 
-### 3-Misol (Juft daraja):
-Quyidagi integralni hisoblang:
-$$I = \int \cos^4 x \, dx$$
+Agar integral ostidagi funksiya $\sin x$ va $\cos x$ ning ishoralari bir vaqtda qarama-qarshisiga o'zgarganda o'z qiymatini saqlab qolsa:
+$$R(-\sin x, -\cos x) = R(\sin x, \cos x)$$
+Bu holda eng optimal usul $t = \operatorname{tg} x$ almashtirishidir.
 
-**Yechish:**
-1. $\cos^4 x = (\cos^2 x)^2 = \left(\frac{1 + \cos 2x}{2}\right)^2$:
-   $$\cos^4 x = \frac{1 + 2\cos 2x + \cos^2 2x}{4}$$
-2. Hosil bo'lgan $\cos^2 2x$ ning darajasini yana pasaytiramiz:
-   $$\cos^2 2x = \frac{1 + \cos 4x}{2}$$
-3. Umumiy ifodani birlashtiramiz:
-   $$\cos^4 x = \frac{1}{4} \left( 1 + 2\cos 2x + \frac{1 + \cos 4x}{2} \right) = \frac{1}{4} \left( \frac{3}{2} + 2\cos 2x + \frac{1}{2}\cos 4x \right) = \frac{3}{8} + \frac{1}{2}\cos 2x + \frac{1}{8}\cos 4x$$
-4. Har bir hadni alohida integrallaymiz:
-   $$I = \int \left( \frac{3}{8} + \frac{1}{2}\cos 2x + \frac{1}{8}\cos 4x \right) dx = \frac{3}{8}x + \frac{1}{4}\sin 2x + \frac{1}{32}\sin 4x + C$$
+**Asosiy bog'lanish formulalari:**
+$$x = \operatorname{arctg} t \implies dx = \frac{dt}{1 + t^2}$$
+$$\cos^2 x = \frac{1}{1 + \operatorname{tg}^2 x} = \frac{1}{1 + t^2}$$
+$$\sin^2 x = \frac{\operatorname{tg}^2 x}{1 + \operatorname{tg}^2 x} = \frac{t^2}{1 + t^2}$$
+$$\sin x \cos x = \frac{\operatorname{tg} x}{1 + \operatorname{tg}^2 x} = \frac{t}{1 + t^2}$$
+
+Ushbu almashtirish universal almashtirishga qaraganda hisoblash hajmini 3-4 barobar qisqartiradi!
 
 ---
 
-## 4. $\operatorname{tg} x = t$ almashtirishi ($R(-\sin x, -\cos x) = R(\sin x, \cos x)$)
+### 4. Universal trigonometrik almashtirish: $t = \operatorname{tg}\frac{x}{2}$ (Veyyershtrass almashtirishi)
 
-Agar integral ostidagi ifodada $\sin x$ va $\cos x$ ning ishoralari bir vaqtda qarama-qarshisiga o'zgartirilganda ifoda o'zgarmasa (ya'ni funksiya juft bo'lsa), universal almashtirish o'rniga $t = \operatorname{tg} x$ almashtirishi juda tez natija beradi.
+Agar yuqoridagi soddaroq usullar mos kelmasa (masalan, $\sin x$ va $\cos x$ kasr maxrajida 1-darajada chiziqli qatnashsa), universal trigonometrik almashtirish qo'llaniladi. Bu almashtirish har qanday trigonometrik ifodani algebraik ratsional kasrga aylantiradi.
 
-### Almashtirish formulalari:
-$$t = \operatorname{tg} x, \quad x = \operatorname{arctg} t, \quad dx = \frac{dt}{1 + t^2}$$
-$$\sin^2 x = \frac{t^2}{1 + t^2}, \quad \cos^2 x = \frac{1}{1 + t^2}, \quad \sin x \cos x = \frac{t}{1 + t^2}$$
-
-### 4-Misol ($\operatorname{tg} x$ almashtirishiga):
-Quyidagi integralni hisoblang:
-$$I = \int \frac{dx}{1 + 3\sin^2 x}$$
-
-**Yechish:**
-1. Agar bu yerda $t = \operatorname{tg}\frac{x}{2}$ universal almashtirish qilinsa, 4-darajali ko'phad hosil bo'lib, hisoblash juda cho'zilib ketadi.
-2. Ifoda juft darajali bo'lgani uchun $t = \operatorname{tg} x$ almashtirishini qo'llaymiz:
-   $$dx = \frac{dt}{1+t^2}, \quad \sin^2 x = \frac{t^2}{1+t^2}$$
-3. Qo'yamiz:
-   $$I = \int \frac{\frac{dt}{1+t^2}}{1 + 3\cdot\frac{t^2}{1+t^2}} = \int \frac{dt}{(1+t^2) + 3t^2} = \int \frac{dt}{1 + 4t^2}$$
-4. Jadval integrali ($\operatorname{arctg}$):
-   $$I = \int \frac{dt}{1 + (2t)^2} = \frac{1}{2}\operatorname{arctg}(2t) + C = \frac{1}{2}\operatorname{arctg}(2\operatorname{tg} x) + C$$
-Atigi 3 qatorda yechildi!
+**Almashtirish formulalari:**
+$$t = \operatorname{tg}\frac{x}{2} \implies x = 2\operatorname{arctg} t \implies dx = \frac{2\,dt}{1 + t^2}$$
+Trigonometrik yarim burchak formulalariga asosan:
+$$\sin x = \frac{2\sin\frac{x}{2}\cos\frac{x}{2}}{\cos^2\frac{x}{2} + \sin^2\frac{x}{2}} = \frac{2\operatorname{tg}\frac{x}{2}}{1 + \operatorname{tg}^2\frac{x}{2}} = \frac{2t}{1 + t^2}$$
+$$\cos x = \frac{\cos^2\frac{x}{2} - \sin^2\frac{x}{2}}{\cos^2\frac{x}{2} + \sin^2\frac{x}{2}} = \frac{1 - \operatorname{tg}^2\frac{x}{2}}{1 + \operatorname{tg}^2\frac{x}{2}} = \frac{1 - t^2}{1 + t^2}$$
 
 ---
 
-## 5. Turli argumentli trigonometrik ko'paytmalar
+### 5. Turli argumentli ko'paytmalar: $\sin(\alpha x)$, $\cos(\beta x)$
 
-Har xil burchaklar ko'paytmasi qatnashganda quyidagi trigonometrik formulalar qo'llaniladi:
+Turli argumentli trigonometrik funksiyalar ko'paytmasini integrallash uchun ular ko'paytmani yig'indiga aylantirish formulalari yordamida yoyiladi:
 $$\sin(\alpha x) \cos(\beta x) = \frac{1}{2}[\sin(\alpha - \beta)x + \sin(\alpha + \beta)x]$$
 $$\cos(\alpha x) \cos(\beta x) = \frac{1}{2}[\cos(\alpha - \beta)x + \cos(\alpha + \beta)x]$$
 $$\sin(\alpha x) \sin(\beta x) = \frac{1}{2}[\cos(\alpha - \beta)x - \cos(\alpha + \beta)x]$$
 
-**Misol:**
-$$\int \sin 5x \cos 3x \, dx = \frac{1}{2}\int (\sin 2x + \sin 8x) dx = -\frac{\cos 2x}{4} - \frac{\cos 8x}{16} + C$$
+---
+
+## 📝 Qadamma-qadam Yechilgan Universitet Misollari
+
+### 1-Misol: Toq darajani differensial ostiga kiritish
+Quyidagi noaniq integralni hisoblang:
+$$I = \int \sin^3 x \cos^4 x \, dx$$
+
+**Yechish:**
+1. Integraldagi darajalarni tahlil qilamiz: $\sin x$ ning darajasi $3$ (toq musbat son), $\cos x$ ning darajasi $4$ (juft son).
+2. Sinusdan bitta darajani ajratib, differensial belgisi ostiga kiritamiz:
+   $$\sin^3 x \, dx = \sin^2 x \cdot (\sin x \, dx) = \sin^2 x \cdot (-d(\cos x))$$
+3. Asosiy trigonometrik ayniyatdan foydalanib, $\sin^2 x = 1 - \cos^2 x$ deb olamiz:
+   $$I = \int (1 - \cos^2 x) \cos^4 x \cdot (-\, d(\cos x)) = -\int (\cos^4 x - \cos^6 x) \, d(\cos x)$$
+4. Qavslarni ochib, $t = \cos x$ almashtirishi bo'yicha darajali integrallarni olamiz:
+   $$I = -\int (t^4 - t^6) \, dt = \int (t^6 - t^4) \, dt = \frac{t^7}{7} - \frac{t^5}{5} + C$$
+5. Dastlabki $x$ o'zgaruvchisiga qaytamiz:
+   $$I = \frac{\cos^7 x}{7} - \frac{\cos^5 x}{5} + C$$
+
+**Javob:** $\frac{\cos^7 x}{7} - \frac{\cos^5 x}{5} + C$.
 
 ---
 
-## ⚠️ Talabalar eng ko'p yo'l qo'yadigan xatolar va tuzoqlar
+### 2-Misol: Juft darajani pasaytirish usuli
+Quyidagi integralni hisoblang:
+$$I = \int \sin^4 x \, dx$$
 
-1. **Universal almashtirishni hamma joyga tiqish xatosi:**
-   Ko'p talabalar $\int \sin^3 x dx$ yoki $\int \frac{dx}{\cos^2 x}$ kabi oddiy misollarga ham $t = \operatorname{tg}\frac{x}{2}$ ni qo'llashga urinishadi. Natijada yechish deyarli imkonsiz bo'lgan 6–8 darajali murakkab kasrlar paydo bo'ladi. Har doim dastlab daraja toqmi yoki juftligini tekshiring!
-2. **Differensialdagi koeffitsiyentni unutish:**
-   $t = \operatorname{tg}\frac{x}{2}$ qilinganda $dx = \frac{2dt}{1+t^2}$ bo'ladi. Suratdagi $2$ raqami ko'pincha tushirib qoldiriladi va yakuniy javob 2 barobar xato chiqadi.
-3. **$\cos 2x$ integrali ishorasi:**
-   Differensiallashda $(\cos 2x)' = -2\sin 2x$ manfiy chiqadi, lekin integrallashda $\int \cos 2x dx = +\frac{1}{2}\sin 2x + C$ bo'ladi! Bu ishora chalkashligi imtihonlarda eng ko'p ball yo'qotiladigan nuqtadir.
+**Yechish:**
+1. Sinusning darajasi $4$ — juft son. Darajani pasaytirish formulasini qo'llaymiz:
+   $$\sin^2 x = \frac{1 - \cos 2x}{2} \implies \sin^4 x = \left(\frac{1 - \cos 2x}{2}\right)^2 = \frac{1 - 2\cos 2x + \cos^2 2x}{4}$$
+2. Integralni uchta bo'lakka ajratamiz:
+   $$I = \frac{1}{4} \int (1 - 2\cos 2x + \cos^2 2x) \, dx = \frac{1}{4}x - \frac{1}{2} \int \cos 2x \, dx + \frac{1}{4} \int \cos^2 2x \, dx$$
+3. $\cos^2 2x$ ga yana bir bor darajani pasaytirish formulasini qo'llaymiz (argument $2x$ endi $4x$ ga aylanadi!):
+   $$\cos^2 2x = \frac{1 + \cos 4x}{2}$$
+4. O'rniga qo'yib hisoblaymiz:
+   $$I = \frac{x}{4} - \frac{1}{4}\sin 2x + \frac{1}{4} \int \frac{1 + \cos 4x}{2} \, dx$$
+   $$I = \frac{x}{4} - \frac{1}{4}\sin 2x + \frac{1}{8} \left( x + \frac{\sin 4x}{4} \right) + C$$
+5. O'xshash hadlarni ixchamlaymiz:
+   $$\frac{x}{4} + \frac{x}{8} = \frac{3x}{8}$$
+   $$I = \frac{3x}{8} - \frac{\sin 2x}{4} + \frac{\sin 4x}{32} + C$$
+
+**Javob:** $\frac{3x}{8} - \frac{\sin 2x}{4} + \frac{\sin 4x}{32} + C$.
 
 ---
 
-## ✏️ Mustaqil yechish uchun amaliy mashqlar va javoblar
+### 3-Misol: $t = \operatorname{tg} x$ almashtirishi
+Quyidagi integralni hisoblang:
+$$I = \int \frac{dx}{1 + 3\cos^2 x}$$
 
-1. $\int \frac{dx}{5 - 3\cos x}$ integralini universal almashtirish orqali hisoblang.
-   *Javob:* $\frac{1}{2}\operatorname{arctg}\left(2\operatorname{tg}\frac{x}{2}\right) + C$
-2. $\int \cos^3 x \, dx$ integralini differensial ostiga kiritish orqali hisoblang.
-   *Javob:* $\sin x - \frac{\sin^3 x}{3} + C$
-3. $\int \sin^2 x \cos^2 x \, dx$ integralini hisoblang.
-   *Javob:* $\frac{x}{8} - \frac{\sin 4x}{32} + C$
-4. $\int \frac{dx}{\sin^2 x + 2\cos^2 x}$ integralini $t = \operatorname{tg} x$ yordamida hisoblang.
-   *Javob:* $\frac{1}{\sqrt{2}}\operatorname{arctg}\left(\frac{\operatorname{tg} x}{\sqrt{2}}\right) + C$
+**Yechish:**
+1. Integral ostidagi ifodani tekshiramiz: agar $\cos x$ o'rniga $-\cos x$ qo'ysak, uning kvadrati tufayli ifoda o'zgarmaydi. Demak, $t = \operatorname{tg} x$ almashtirishi eng maqbul yo'ldir.
+2. Bu turdagi integrallarni yechishning ajoyib usuli — surat va maxrajni $\cos^2 x$ ga bo'lishdir:
+   $$I = \int \frac{\frac{dx}{\cos^2 x}}{\frac{1}{\cos^2 x} + 3}$$
+3. Ma'lumki, $\frac{dx}{\cos^2 x} = d(\operatorname{tg} x)$ va $\frac{1}{\cos^2 x} = 1 + \operatorname{tg}^2 x$. Shularni qo'yamiz:
+   $$I = \int \frac{d(\operatorname{tg} x)}{(1 + \operatorname{tg}^2 x) + 3} = \int \frac{d(\operatorname{tg} x)}{\operatorname{tg}^2 x + 4}$$
+4. $t = \operatorname{tg} x$ deb olsak, standart jadval integrali $\int \frac{dt}{t^2 + a^2} = \frac{1}{a}\operatorname{arctg}\frac{t}{a} + C$ ga kelamiz (bu yerda $a = 2$):
+   $$I = \int \frac{dt}{t^2 + 2^2} = \frac{1}{2}\operatorname{arctg}\left(\frac{t}{2}\right) + C = \frac{1}{2}\operatorname{arctg}\left(\frac{\operatorname{tg} x}{2}\right) + C$$
+
+**Javob:** $\frac{1}{2}\operatorname{arctg}\left(\frac{\operatorname{tg} x}{2}\right) + C$.
+
+---
+
+### 4-Misol: Universal trigonometrik almashtirish
+Quyidagi integralni hisoblang:
+$$I = \int \frac{dx}{5 + 4\cos x}$$
+
+**Yechish:**
+1. Maxrajda $\cos x$ birinchi darajada turibdi. Bu yerda darajani pasaytirish ham, surat-maxrajni bo'lish ham yordam bermaydi. Universal almashtirish $t = \operatorname{tg}\frac{x}{2}$ ni qo'llaymiz.
+2. Almashtirish qoidalariga ko'ra:
+   $$dx = \frac{2\,dt}{1 + t^2}, \qquad \cos x = \frac{1 - t^2}{1 + t^2}$$
+3. Integralga qo'yamiz:
+   $$I = \int \frac{\frac{2\,dt}{1 + t^2}}{5 + 4 \left(\frac{1 - t^2}{1 + t^2}\right)}$$
+4. Maxrajni umumiy maxrajga keltiramiz:
+   $$5 + 4 \left(\frac{1 - t^2}{1 + t^2}\right) = \frac{5(1 + t^2) + 4(1 - t^2)}{1 + t^2} = \frac{5 + 5t^2 + 4 - 4t^2}{1 + t^2} = \frac{9 + t^2}{1 + t^2}$$
+5. Maxrajdagi $(1 + t^2)$ suratdagi $(1 + t^2)$ bilan qisqarib ketadi:
+   $$I = \int \frac{2\,dt}{9 + t^2} = 2 \int \frac{dt}{t^2 + 3^2}$$
+6. Jadval integrali bo'yicha integrallaymiz:
+   $$I = 2 \cdot \frac{1}{3}\operatorname{arctg}\left(\frac{t}{3}\right) + C = \frac{2}{3}\operatorname{arctg}\left(\frac{t}{3}\right) + C$$
+7. Dastlabki $t = \operatorname{tg}\frac{x}{2}$ ga qaytamiz:
+   $$I = \frac{2}{3}\operatorname{arctg}\left(\frac{\operatorname{tg}(x/2)}{3}\right) + C$$
+
+**Javob:** $\frac{2}{3}\operatorname{arctg}\left(\frac{\operatorname{tg}(x/2)}{3}\right) + C$.
+
+---
+
+## ⚠️ Talabalar Eng Ko'p Yo'l Qo'yadigan Xatolar va Tuzoqlar
+
+1. **"Universal almashtirish fanatizmi":**
+   Eng keng tarqalgan xato — $\int \frac{dx}{1 + \sin^2 x}$ yoki $\int \sin^3 x \, dx$ kabi integrallarga $t = \operatorname{tg}\frac{x}{2}$ ni qo'llash. Bu holda integral 4-darajali ko'phadlarga aylanib, yechim 2-3 betga cho'ziladi va hisoblashda adashish ehtimoli 90% ga yetadi. Agar juft daraja bo'lsa — har doim $t = \operatorname{tg} x$ ni, agar toq daraja bo'lsa — differensial ostiga kiritishni qo'llang!
+
+2. **Daraja pasaytirishda burchakni ikki barobar oshirishni unutish:**
+   $\cos^2(2x)$ ning darajasini pasaytirayotganda talabalar tez-tez $\frac{1 + \cos 2x}{2}$ deb yozib qo'yishadi. Eslab qoling: daraja pasayganda argument **har doim 2 barobar kattalashadi**:
+   $$\cos^2(kx) = \frac{1 + \cos(2kx)}{2} \implies \cos^2(2x) = \frac{1 + \cos 4x}{2}$$
+
+3. **$t = \operatorname{tg} x$ da differensial $dx$ ni unutish:**
+   Surat va maxrajni $\cos^2 x$ ga bo'lganda $\frac{dx}{\cos^2 x} = dt$ bo'ladi. Lekin ba'zi talabalar $dx$ o'rniga shunchaki $dt$ qo'yib, maxrajdagi $\cos^2 x$ ni yo'qotib yuborishadi, bu mutlaqo xato javobga olib keladi.
+
+4. **Aniq integralda universal almashtirishning uzilish nuqtasi:**
+   $t = \operatorname{tg}\frac{x}{2}$ funksiyasi $x = \pi$ nuqtada aniqlanmagan ($\pm \infty$). Agar siz $\int_0^{2\pi} \frac{dx}{5 + 4\cos x}$ integralini hisoblayotgan bo'lsangiz, to'g'ridan-to'g'ri $t$ ga o'tib chegaralarni $\operatorname{tg} 0 = 0$ va $\operatorname{tg}\pi = 0$ deb qo'ysangiz, javob $0$ chiqadi (musbat funksiya integrali esa musbat bo'lishi shart!). Bunday hollarda integral simmetriyadan foydalanib $[0, \pi]$ oralig'iga keltiriladi yoki xosmas integral sifatida bo'lib olinadi.
+
+---
+
+## 🎯 Mustaqil Yechish Uchun Amaliy Mashqlar va Yechimlar
+
+### 1-Mashq
+Quyidagi integralni hisoblang:
+$$\int \sin^5 x \, dx$$
+
+<details>
+<summary>👉 Bosqichma-bosqich yechimni ko'rish</summary>
+
+1. Sinus darajasi toq ($5$), shuning uchun bitta $\sin x$ ni differensial ostiga kiritamiz:
+   $$\sin^5 x \, dx = \sin^4 x (\sin x \, dx) = (\sin^2 x)^2 (-d(\cos x))$$
+2. $\sin^2 x = 1 - \cos^2 x$ ayniyatini qo'yamiz:
+   $$- \int (1 - \cos^2 x)^2 \, d(\cos x)$$
+3. $t = \cos x$ deb qavsni ochamiz:
+   $$- \int (1 - 2t^2 + t^4) \, dt = \int (-1 + 2t^2 - t^4) \, dt$$
+4. Hadma-had integrallaymiz:
+   $$-t + \frac{2t^3}{3} - \frac{t^5}{5} + C$$
+5. $x$ ga qaytamiz:
+   $$-\cos x + \frac{2}{3}\cos^3 x - \frac{1}{5}\cos^5 x + C$$
+**Javob:** $-\cos x + \frac{2}{3}\cos^3 x - \frac{1}{5}\cos^5 x + C$.
+</details>
+
+---
+
+### 2-Mashq
+Quyidagi integralni hisoblang:
+$$\int \sin(3x) \cos(5x) \, dx$$
+
+<details>
+<summary>👉 Bosqichma-bosqich yechimni ko'rish</summary>
+
+1. Ko'paytmani yig'indiga aylantirish formulasidan foydalanamiz:
+   $$\sin(\alpha x) \cos(\beta x) = \frac{1}{2}[\sin(\alpha - \beta)x + \sin(\alpha + \beta)x]$$
+2. Argumentlarni qo'yamiz ($\alpha = 3, \; \beta = 5$):
+   $$\sin(3x) \cos(5x) = \frac{1}{2}[\sin(-2x) + \sin(8x)] = \frac{1}{2}[\sin(8x) - \sin(2x)]$$
+3. Integrallaymiz:
+   $$\int \sin(3x) \cos(5x) \, dx = \frac{1}{2} \int \sin(8x) \, dx - \frac{1}{2} \int \sin(2x) \, dx$$
+   $$= -\frac{1}{16}\cos(8x) + \frac{1}{4}\cos(2x) + C$$
+**Javob:** $\frac{1}{4}\cos(2x) - \frac{1}{16}\cos(8x) + C$.
+</details>
+
+---
+
+### 3-Mashq
+Quyidagi integralni hisoblang:
+$$\int \frac{dx}{2 + \cos x}$$
+
+<details>
+<summary>👉 Bosqichma-bosqich yechimni ko'rish</summary>
+
+1. Universal trigonometrik almashtirish $t = \operatorname{tg}\frac{x}{2}$ ni qo'llaymiz:
+   $$dx = \frac{2\,dt}{1 + t^2}, \qquad \cos x = \frac{1 - t^2}{1 + t^2}$$
+2. Integralga qo'yamiz:
+   $$\int \frac{\frac{2\,dt}{1 + t^2}}{2 + \frac{1 - t^2}{1 + t^2}} = \int \frac{2\,dt}{2(1 + t^2) + (1 - t^2)} = \int \frac{2\,dt}{2 + 2t^2 + 1 - t^2} = \int \frac{2\,dt}{t^2 + 3}$$
+3. Jadval integrali $\int \frac{dt}{t^2 + a^2} = \frac{1}{a}\operatorname{arctg}\frac{t}{a}$ ($a = \sqrt{3}$):
+   $$\frac{2}{\sqrt{3}}\operatorname{arctg}\left(\frac{t}{\sqrt{3}}\right) + C$$
+4. $t$ o'rniga $\operatorname{tg}\frac{x}{2}$ ni qo'yamiz:
+   $$\frac{2}{\sqrt{3}}\operatorname{arctg}\left(\frac{\operatorname{tg}(x/2)}{\sqrt{3}}\right) + C$$
+**Javob:** $\frac{2}{\sqrt{3}}\operatorname{arctg}\left(\frac{\operatorname{tg}(x/2)}{\sqrt{3}}\right) + C$.
+</details>
+
+---
+
+## 💡 Imtihon Layfhaklari va Tezkor Maslahatlar
+
+- **5 soniyali tanlash jadvali:**
+  Imtihonda integralni ko'rishingiz bilan quyidagi ketma-ketlikda tekshiring:
+  1. $\sin x$ yoki $\cos x$ ning darajasi toqmi? $\implies$ Darhol bittasini $dx$ ga berib, differensial ostiga kiriting.
+  2. Barcha darajalar juftmi? $\implies$ Darajani pasaytirish formulasini qo'llang.
+  3. Maxrajda faqat $\sin^2 x$, $\cos^2 x$ yoki $\sin x \cos x$ bormi? $\implies$ Surat va maxrajni $\cos^2 x$ ga bo'lib, $t = \operatorname{tg} x$ qiling.
+  4. Maxrajda $\sin x$ va $\cos x$ 1-darajadami? $\implies$ Universal almashtirish $t = \operatorname{tg}\frac{x}{2}$ ni ishlating.
+
+- **$\operatorname{tg}^n x$ va $\operatorname{ctg}^n x$ larni tez integrallash:**
+  $\int \operatorname{tg}^n x \, dx$ integrallarida har doim $\operatorname{tg}^2 x = \frac{1}{\cos^2 x} - 1$ formulasini ajrating:
+  $$\int \operatorname{tg}^n x \, dx = \int \operatorname{tg}^{n-2} x (\operatorname{tg}^2 x) \, dx = \int \operatorname{tg}^{n-2} x \left(\frac{1}{\cos^2 x} - 1\right) dx$$
+  $$= \int \operatorname{tg}^{n-2} x \, d(\operatorname{tg} x) - \int \operatorname{tg}^{n-2} x \, dx = \frac{\operatorname{tg}^{n-1} x}{n - 1} - \int \operatorname{tg}^{n-2} x \, dx$$
+  Bu rekurrent formula darajani 2 taga pasaytiradi va misolni 30 soniyada yechish imkonini beradi!

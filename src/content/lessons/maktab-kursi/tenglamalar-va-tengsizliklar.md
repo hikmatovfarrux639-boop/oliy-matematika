@@ -5,156 +5,406 @@ order: 2
 description: "Kvadrat tenglamalar, Viyet formulasi, Gorner sxemasi, modul qatnashgan tenglamalar va ratsional tengsizliklarni intervallar usulida yechish."
 ---
 
-## Kirish: Matematik modellashtirish kaliti
+## 📌 Kirish va Geometrik/Fizik Mohiyat
 
-Differensial hisobda funksiyaning o'sish-kamayish oraliqlari va qavariqlik sohalarini aniqlash, funksiya aniqlanish sohasini topish va ekstremumlarni izlash bevosita **tengsizliklarni yechish** va **intervallar usuliga** tayanadi. Agar talaba intervallar usulini mukammal o'zlashtirmasa, funksiyalarni to'liq tekshirish mavzusi doimiy qiyinchilik tug'diradi.
+Oliy matematika daryosi maktab algebrasining mustahkam qirg'oqlariga tayanadi. Matematik analiz, chiziqli algebra, optimallashtirish va differensial tenglamalar kurslarida muvaffaqiyat qozonishning birinchi raqamli kaliti — bu **tenglamalar va tengsizliklarni benuqson, tezkor va xatosiz yechish ko'nikmasidir**.
+
+Universitet darajasida tengsizliklar har bir qadamda uchraydi:
+1. **Matematik analiz:** Funksiyaning aniqlanish sohasini ($D(f)$) topish, funksiyaning o'sish va kamayish oraliqlarini birinchi hosila orqali aniqlash ($f'(x) > 0$), botiqlik va qavariqlik sohalarini ikkinchi hosila orqali tekshirish ($f''(x) > 0$).
+2. **Optimallashtirish va Iqtisodiyot:** Chiziqli va nochiziqli dasturlashda cheklovlar sistemalari aynan ko'p o'zgaruvchili tengsizliklar bilan beriladi.
+3. **Ehtimollar nazariyasi:** Ehtimollik zichligi funksiyasining $f(x) \ge 0$ sharti va tasodifiy miqdorning biror oraliqqa tushish ehtimolini hisoblash.
+
+### Geometrik falsafa
+- **Tenglama $f(x) = 0$:** $y = f(x)$ funksiya grafigining gorizontal $Ox$ o'qi bilan kesishish nuqtalarini (ildizlarini) topishdir.
+- **Tengsizlik $f(x) > 0$:** $y = f(x)$ grafigining $Ox$ o'qidan **yuqorida** joylashgan bo'laklarini, $f(x) < 0$ esa **pastda** joylashgan bo'laklarini topishdir.
+
+Ushbu darsda biz kvadrat tenglamalardan boshlab, yuqori darajali ko'phadlarni Gorner sxemasi orqali ko'paytuvchilarga ajratish, modulli ifodalar va eng asosiysi — oliy matematikaning poydevori bo'lgan **Umumlashgan intervallar usuli**ni chuqur o'rganamiz.
 
 ---
 
-## 1. Kvadrat tenglamalar va Viyet teoremasi
+## 📐 Asosiy Nazariya, Qoidalar va Teoremalar
+
+### 1. Kvadrat tenglamalar va Viyet teoremalari
 
 Kvadrat tenglamaning umumiy ko'rinishi:
 $$
-ax^2 + bx + c = 0 \quad (a \neq 0)
+a x^2 + b x + c = 0 \quad (a \neq 0)
 $$
+Diskriminant: $D = b^2 - 4ac$.
+- $D > 0 \implies$ ikkita haqiqiy turli ildiz: $x_{1, 2} = \frac{-b \pm \sqrt{D}}{2a}$.
+- $D = 0 \implies$ bitta karrali (ikkita teng) ildiz: $x_1 = x_2 = -\frac{b}{2a}$.
+- $D < 0 \implies$ haqiqiy ildizlar yo'q (ikkita qo'shma kompleks ildiz: $x_{1, 2} = -\frac{b}{2a} \pm i \frac{\sqrt{|D|}}{2a}$).
 
-### Diskriminant usuli
-Diskriminant:
-$$
-D = b^2 - 4ac
-$$
-- Agar $D > 0$ bo'lsa, ikkita haqiqiy turli ildiz bor:
-  
-$$
-  x_{1,2} = \frac{-b \pm \sqrt{D}}{2a}
-  
-$$
-- Agar $D = 0$ bo'lsa, bitta karrali (ikkita teng) haqiqiy ildiz bor:
-  
-$$
-  x_1 = x_2 = -\frac{b}{2a}
-  
-$$
-- Agar $D < 0$ bo'lsa, haqiqiy ildiz yo'q (lekin ikkita qo'shma kompleks ildiz mavjud).
-
-### Viyet teoremasi
-Keltirilgan kvadrat tenglama ($x^2 + px + q = 0$) uchun:
+**Viyet teoremasi:**
 $$
 \begin{cases}
-x_1 + x_2 = -p \\
-x_1 \cdot x_2 = q
+x_1 + x_2 = -\frac{b}{a} \\
+x_1 \cdot x_2 = \frac{c}{a}
 \end{cases}
 $$
-
-Umumiy ko'rinishdagi $ax^2 + bx + c = 0$ uchun:
+Keltirilgan kvadrat uchhadni chiziqli ko'paytuvchilarga ajratish:
 $$
-x_1 + x_2 = -\frac{b}{a}, \qquad x_1 \cdot x_2 = \frac{c}{a}
+a x^2 + b x + c = a(x - x_1)(x - x_2)
 $$
-
-> **Amaliy layfxak:** Ildizlarni og'zaki topishda $q$ning bo'luvchilarini ko'rib chiqish eng tez usuldir. Masalan,$x^2 - 7x + 12 = 0 \implies 3 \cdot 4 = 12$va$3 + 4 = 7 \implies x_1 = 3, x_2 = 4$.
 
 ---
 
-## 2. Yuqori darajali tenglamalar va Gorner sxemasi
+### 2. Yuqori darajali ko'phadlar, Bezu teoremasi va Gorner sxemasi
 
-Agar ko'phad darajasi 3 yoki undan yuqori bo'lsa:
+$n$ - darajali ko'phad:
 $$
-P_n(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 = 0
+P_n(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \quad (a_n \neq 0)
 $$
 
-Butun koeffitsiyentli tenglamalarning butun ildizlari faqat ozod had $a_0$ ning bo'luvchilari orasidan qidiriladi.
+**Bezu teoremasi:**  
+$P_n(x)$ ko'phadni $(x - c)$ ikkihadga bo'lgandagi qoldiq ko'phadning $c$ nuqtadagi qiymati $P_n(c)$ ga tengdir. Xususan, $c$ soni $P_n(x)$ ning ildizi bo'lsa ($P_n(c) = 0$), ko'phad $(x - c)$ ga qoldiqsiz bo'linadi.
 
-Bitta $x = x_0$ildiz topilgach, ko'phadni$(x - x_0)$ ga bo'lish uchun **Gorner sxemasi** qo'llaniladi.
+**Butun ildizlar haqidagi teorema:**  
+Agar butun koeffitsiyentli ko'phadning butun ildizi mavjud bo'lsa, u ozod had $a_0$ ning bo'luvchilaridan biri bo'ladi.
 
-### Misol: $x^3 - 4x^2 + x + 6 = 0$Ozod had$6$ning bo'luvchilari:$\pm 1, \pm 2, \pm 3, \pm 6$.
-- $x = -1$ni tekshiramiz:$(-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0$. Ildiz topildi!
-- Gorner jadvali:
-  Koeffitsiyentlar: $1, \quad -4, \quad 1, \quad 6$.
-  $x_0 = -1$:
-  - Birinchi son tushadi: $1$-$(-1) \cdot 1 + (-4) = -5$-$(-1) \cdot (-5) + 1 = 6$-$(-1) \cdot 6 + 6 = 0$ (qoldiq nol).
-
-Hosil bo'lgan kvadrat tenglama: $x^2 - 5x + 6 = 0 \implies (x - 2)(x - 3) = 0$.
-Demak, tenglama ildizlari: $x_1 = -1, \, x_2 = 2, \, x_3 = 3$.
+**Gorner sxemasi (Sintetik bo'lish):**  
+$P_n(x)$ ni $(x - c)$ ga bo'lganda bo'linma koeffitsiyentlari $b_i$ jadval orqali bir satrda topiladi:
+$$
+b_n = a_n, \quad b_{k} = c \cdot b_{k+1} + a_k \quad (k = n-1, \dots, 0)
+$$
+Oxirgi $b_0$ soni bo'lishdan qolgan qoldiqdir ($R = b_0$).
 
 ---
 
-## 3. Modulli tenglamalar va tengsizliklar
+### 3. Modulli (Absolyut qiymatli) tenglama va tengsizliklar
 
-Modul ta'rifi:
+Ta'rifga ko'ra:
 $$
-\lvert x \rvert = \begin{cases} x, & \text{agar } x \ge 0 \\ -x, & \text{agar } x < 0 \end{cases}
+|f(x)| = \begin{cases} f(x), & f(x) \ge 0 \\ -f(x), & f(x) < 0 \end{cases}
 $$
 
-### Asosiy qoidalar:
-1. $\lvert f(x) \rvert = a \quad (a > 0) \iff f(x) = a \quad \text{yoki} \quad f(x) = -a$.
-2. $\lvert f(x) \rvert = \lvert g(x) \rvert \iff f(x) = g(x) \quad \text{yoki} \quad f(x) = -g(x)$.
-3. $\lvert f(x) \rvert \le a \quad (a > 0) \iff -a \le f(x) \le a$.
-4. $\lvert f(x) \rvert \ge a \quad (a > 0) \iff f(x) \ge a \quad \text{yoki} \quad f(x) \le -a$.
+**Asosiy ekvivalent o'tishlar:**
+1. $|f(x)| = g(x) \iff \begin{cases} g(x) \ge 0 \\ f(x) = g(x) \quad \text{yoki} \quad f(x) = -g(x) \end{cases}$
+2. $|f(x)| \le g(x) \iff -g(x) \le f(x) \le g(x) \iff \begin{cases} f(x) \le g(x) \\ f(x) \ge -g(x) \end{cases}$
+3. $|f(x)| \ge g(x) \iff \left[ \begin{array}{l} f(x) \ge g(x) \\ f(x) \le -g(x) \end{array} \right.$
+4. $|f(x)| \le |g(x)| \iff f^2(x) \le g^2(x) \iff (f(x) - g(x))(f(x) + g(x)) \le 0$
 
 ---
 
-## 4. Ratsional tengsizliklar va Intervallar usuli
+### 4. Umumlashgan intervallar usuli (Method of Intervals)
 
-Ratsional tengsizliklar ko'rinishi:
+Ixtiyoriy kasr-ratsional tengsizlikni yechishning universal algoritmi:
 $$
-\frac{P(x)}{Q(x)} > 0, \quad \frac{P(x)}{Q(x)} \ge 0, \quad \frac{P(x)}{Q(x)} < 0, \quad \frac{P(x)}{Q(x)} \le 0
+\frac{P(x)}{Q(x)} \gtrless 0
 $$
 
-### Intervallar usulining aniq algoritmi:
-1. Barcha hadlarni chap tomonga o'tkazib, o'ng tomonda $0$ qoldiring.
-2. Surat va maxrajni chiziqli ko'paytuvchilarga ajrating: $(x - x_k)$.
-3. Suratning nollarini (tenglama ildizlari) va maxrajning nollarini (uzilish nuqtalari) toping.
-4. Topilgan sonlarni sonlar o'qiga tartib bilan joylashtiring:
-   - Maxraj nollari doimo **bo'sh (ochiq) doiracha** bilan belgilanadi ($Q(x) \neq 0$).
-   - Qat'iy tengsizliklarda ($>, <$) surat nollari ham bo'sh bo'ladi.
-   - Noqat'iy tengsizliklarda ($\ge, \le$) surat nollari **bo'yalgan (yopiq)** bo'ladi.
-5. Har bir oraliqda ifodaning ishorasini aniqlang:
-   - Agar chiziqli ko'paytuvchi toq darajali bo'lsa ($(x - x_0)^{2k+1}$), nuqtadan o'tganda ishora **o'zgaradi**.
-   - Agar chiziqli ko'paytuvchi juft darajali bo'lsa ($(x - x_0)^{2k}$), nuqtadan o'tganda ishora **o'zgarmaydi** (saqlanadi).
+**Qadamma-qadam qoidalar:**
+1. Barcha hadlar chap tomonga o'tkazilib, umumiy maxrajga keltiriladi (o'ng tomonda faqat $0$ qoladi).
+2. Surat va maxraj chiziqli ko'paytuvchilarga ajratiladi:
+   $$
+   \frac{A \cdot (x - x_1)^{k_1} (x - x_2)^{k_2} \dots (x - x_m)^{k_m}}{(x - y_1)^{p_1} (x - y_2)^{p_2} \dots (x - y_s)^{p_s}} \gtrless 0
+   $$
+3. Barcha nollar ($x_i$) va maxraj nollari ($y_j$) bitta sonlar o'qiga tartib bilan joylashtiriladi:
+   - Maxraj nollari ($y_j$) **har doim ochiq (bo'yalmagan)** aylanachalar bilan belgilanadi (nolga bo'lish mumkin emas!).
+   - Qat'iy tengsizliklarda ($>, <$) surat nollari ham ochiq bo'ladi.
+   - Noqat'iy tengsizliklarda ($\ge, \le$) surat nollari **to'q (bo'yalgan)** qilib belgilanadi.
+4. **Ildiz karraligi qoidasi (Oltin qoida):**
+   - Agar ildiz **toq karrali** bo'lsa ($k = 1, 3, 5, \dots$), ushbu nuqtadan o'tganda funksiya ishorasi **qarama-qarshisiga o'zgaradi** ($+ \to -$ yoki $- \to +$).
+   - Agar ildiz **juft karrali** bo'lsa ($k = 2, 4, 6, \dots$), ushbu nuqtadan o'tganda funksiya ishorasi **o'zgarmaydi** ($+ \to +$ yoki $- \to -$). Grafik o'qqa urinib qaytadi ("gulbarg").
+5. Eng o'ngdagi oraliq ishorasi barcha qavslardagi $x$ oldidagi ishoralar ko'paytmasi bilan aniqlanadi. So'ngra o'ngdan chapga qarab ishoralar navbatma-navbat qo'yib chiqiladi.
 
 ---
 
-## Amaliy misol: Intervallar usulini qo'llash
+## 📝 Qadamma-qadam Yechilgan Universitet Misollari
 
-Tengsizlikni yeching:
+### 1-misol: 4-darajali tenglamani Gorner sxemasi orqali yechish
+**Shart:** Tenglamani yeching:
 $$
-\frac{(x - 1)^2 (x + 3)}{(x - 4)} \le 0
+x^4 - 2x^3 - 7x^2 + 8x + 12 = 0
 $$
 
-**Yechilishi:**
-1. Surat nollari: $x = 1$(karraligi 2 — juft daraja!),$x = -3$ (karraligi 1 — toq daraja).
-2. Maxraj nollari: $x = 4$ ($x \neq 4$).
-3. Sonlar o'qida nuqtalarni belgilaymiz: $-3$(yopiq),$1$(yopiq),$4$ (ochiq).
-4. Oraliqlar:
-   - $(4; +\infty)$: masalan $x = 5 \implies \frac{(+)^2 (+)}{+} > 0$ ($+$).
-   - $(1; 4)$: masalan $x = 2 \implies \frac{(+)^2 (+)}{-} < 0$ ($-$).
-   - $(-3; 1)$: masalan $x = 0 \implies \frac{(-)^2 (+)}{-} < 0$ ($-$). Diqqat: $x = 1$nuqtadan o'tganda ishora o'zgarmadi, chunki$(x - 1)^2$ juft daraja!
-   - $(-\infty; -3)$: masalan $x = -4 \implies \frac{(-)^2 (-)}{-} > 0$ ($+$).
-5. Bizga $\le 0$ oraliqlar kerak:
-   Oraliqlar: $[-3; 1]$va$[1; 4)$, ya'ni birlashtirganda $[-3; 4)$.
-   $x = 1$ da ifoda nolga teng bo'ladi va shartni qanoatlantiradi.
+**Yechish:**
+1-qadam: Butun ildizlarni izlaymiz:
+Ozod had $a_0 = 12$. Uning bo'luvchilari: $\pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12$.  
+Tekshirib ko'ramiz:
+- $x = 1$: $1 - 2 - 7 + 8 + 12 = 12 \neq 0$.
+- $x = -1$: $(-1)^4 - 2(-1)^3 - 7(-1)^2 + 8(-1) + 12 = 1 + 2 - 7 - 8 + 12 = 0$.  
+Demak, $x_1 = -1$ tenglamaning birinchi ildizidir!
 
-**Javob:** $x \in [-3; 4)$
+2-qadam: Gorner sxemasi orqali $(x + 1)$ ga bo'lamiz:
+Boshlang'ich koeffitsiyentlar: $a_4 = 1, a_3 = -2, a_2 = -7, a_1 = 8, a_0 = 12$.  
+Ildiz: $c = -1$.
+
+| Koeffitsiyentlar | $a_4 = 1$ | $a_3 = -2$ | $a_2 = -7$ | $a_1 = 8$ | $a_0 = 12$ |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| $c = -1$ | $1$ | $-1(1) + (-2) = -3$ | $-1(-3) + (-7) = -4$ | $-1(-4) + 8 = 12$ | $-1(12) + 12 = 0$ |
+
+Hosil bo'lgan 3-darajali ko'phad:
+$$
+x^3 - 3x^2 - 4x + 12 = 0
+$$
+
+3-qadam: 3-darajali ko'phadni guruhlash usulida yechamiz:
+$$
+x^2(x - 3) - 4(x - 3) = 0 \implies (x - 3)(x^2 - 4) = 0
+$$
+$$
+(x - 3)(x - 2)(x + 2) = 0
+$$
+Qolgan ildizlar: $x_2 = 3, \quad x_3 = 2, \quad x_4 = -2$.
+
+Boshlang'ich tenglama ko'paytuvchilarga to'liq ajraldi:
+$$
+(x + 1)(x + 2)(x - 2)(x - 3) = 0
+$$
+
+**Javob:** $x \in \{-2, -1, 2, 3\}$.
 
 ---
 
-## Mustaqil yechish uchun mashqlar
+### 2-misol: Murakkab kasr-ratsional tengsizlik va juft karrali ildizlar
+**Shart:** Tengsizlikni intervallar usulida yeching:
+$$
+\frac{(x - 2)^2 (x + 3)^3 (x - 5)}{(x + 1) (x - 4)^4} \le 0
+$$
 
-1. $x^2 - 5x + 6 \le 0$ tengsizlikni yeching.
-2. $\lvert 2x - 3 \rvert < 5$ tengsizlikni yeching.
-3. $\frac{x - 2}{x + 5} \ge 0$ tengsizlikning yechimini oraliq shaklida yozing.
+**Yechish:**
+1-qadam: Ildizlarni va ularning karraligini aniqlaymiz:
+- **Surat nollari:**
+  - $x = 2$ — 2-karrali (**juft**, ishora o'zgarmaydi!), tengsizlik $\le 0$ bo'lgani uchun bo'yalgan nuqta;
+  - $x = -3$ — 3-karrali (**toq**, ishora o'zgaradi), bo'yalgan nuqta;
+  - $x = 5$ — 1-karrali (**toq**, ishora o'zgaradi), bo'yalgan nuqta.
+- **Maxraj nollari (har doim ochiq/teshik nuqtalar!):**
+  - $x = -1$ — 1-karrali (**toq**, ishora o'zgaradi), ochiq nuqta;
+  - $x = 4$ — 4-karrali (**juft**, ishora o'zgarmaydi!), ochiq nuqta.
 
-<details style="margin-top: 1rem; padding: 1rem; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); cursor: pointer;">
-<summary style="font-weight: 700; color: var(--primary);">Javoblarni tekshirish</summary>
+2-qadam: Sonlar o'qida joylashtiramiz:
+Ketma-ketlik: $-3$ (to'q), $-1$ (ochiq), $2$ (to'q), $4$ (ochiq), $5$ (to'q).
 
-**1-masala:** $(x - 2)(x - 3) \le 0 \implies x \in [2; 3]$.
+3-qadam: Oraliqlarning ishoralarini belgilaymiz:
+- $x > 5$ bo'lganda: barcha qavslar musbat, ishora: **$+$**.
+- $x = 5$ dan o'tganda (toq karrali): ishora o'zgaradi $\implies$ **$-$**.
+- $x = 4$ dan o'tganda (juft karrali, 4-daraja): ishora **o'zgarmaydi** $\implies$ **$-$**.
+- $x = 2$ dan o'tganda (juft karrali, 2-daraja): ishora **o'zgarmaydi** $\implies$ **$-$**.
+- $x = -1$ dan o'tganda (toq karrali): ishora o'zgaradi $\implies$ **$+$**.
+- $x = -3$ dan o'tganda (toq karrali, 3-daraja): ishora o'zgaradi $\implies$ **$-$**.
 
-    
+Ishoralar xaritasi:
+$$
+(-\infty, -3] \ (\mathbf{-}) \quad [-3, -1) \ (\mathbf{+}) \quad (-1, 2] \ (\mathbf{-}) \quad [2, 4) \ (\mathbf{-}) \quad (4, 5] \ (\mathbf{-}) \quad [5, +\infty) \ (\mathbf{+})
+$$
 
-**2-masala:** $-5 < 2x - 3 < 5 \implies -2 < 2x < 8 \implies -1 < x < 4$, ya'ni $(-1; 4)$.
+4-qadam: Shart $\le 0$ (manfiy va nol) sohalarni ajratamiz:
+- $(-\infty, -3]$;
+- $(-1, 4) \cup (4, 5]$ (diqqat: $x = 4$ maxraj noli bo'lgani uchun chiqarib tashlanadi, lekin $x = 2$ yechimga kiradi!).
 
-    
+Yakuniy yechimlar to'plami:
+$$
+x \in (-\infty, -3] \cup (-1, 4) \cup (4, 5]
+$$
 
-**3-masala:** Surat noli $x = 2$(yopiq), maxraj$x \neq -5$(ochiq). Natija:$(-\infty; -5) \cup [2; +\infty)$.
+**Javob:** $x \in (-\infty, -3] \cup (-1, 4) \cup (4, 5]$.
 
+---
+
+### 3-misol: Ikkita modul qatnashgan tengsizlik (Oraliqlar usuli)
+**Shart:** Tengsizlikni yeching:
+$$
+|2x - 3| - |x + 1| < 2
+$$
+
+**Yechish:**
+1-qadam: Modul ostidagi ifodalarning nollarini topamiz:
+- $2x - 3 = 0 \implies x = 1.5$
+- $x + 1 = 0 \implies x = -1$
+
+Ushbu nuqtalar sonlar o'qini 3 ta oraliqqa ajratadi:
+1) $x < -1$
+2) $-1 \le x < 1.5$
+3) $x \ge 1.5$
+
+2-qadam: Har bir oraliqda alohida yechamiz:
+
+**1-oraliq: $x < -1$**
+Bu oraliqda $2x - 3 < 0$ va $x + 1 < 0$. Ikkala modul ham ishorasini o'zgartirib ochiladi:
+$$
+-(2x - 3) - (-(x + 1)) < 2 \implies -2x + 3 + x + 1 < 2 \implies -x + 4 < 2 \implies -x < -2 \implies x > 2
+$$
+Shart bilan kesishamiz: $\begin{cases} x < -1 \\ x > 2 \end{cases} \implies \emptyset$ (yechim yo'q).
+
+**2-oraliq: $-1 \le x < 1.5$**
+Bu oraliqda $2x - 3 < 0$, lekin $x + 1 \ge 0$:
+$$
+-(2x - 3) - (x + 1) < 2 \implies -2x + 3 - x - 1 < 2 \implies -3x + 2 < 2 \implies -3x < 0 \implies x > 0
+$$
+Shart bilan kesishamiz: $\begin{cases} -1 \le x < 1.5 \\ x > 0 \end{cases} \implies x \in (0, 1.5)$.
+
+**3-oraliq: $x \ge 1.5$**
+Bu oraliqda ikkala modul ham musbat:
+$$
+(2x - 3) - (x + 1) < 2 \implies 2x - 3 - x - 1 < 2 \implies x - 4 < 2 \implies x < 6
+$$
+Shart bilan kesishamiz: $\begin{cases} x \ge 1.5 \\ x < 6 \end{cases} \implies x \in [1.5, 6)$.
+
+3-qadam: Olingan barcha yechimlarni birlashtiramiz:
+$$
+(0, 1.5) \cup [1.5, 6) = (0, 6)
+$$
+
+**Javob:** $x \in (0, 6)$.
+
+---
+
+### 4-misol: Irratsional tengsizlik
+**Shart:** Tengsizlikni yeching:
+$$
+\sqrt{2x^2 - 5x - 3} \ge x - 1
+$$
+
+**Yechish:**
+$\sqrt{f(x)} \ge g(x)$ ko'rinishidagi tengsizlik ikkita sistemalar birlashmasiga teng kuchlidir:
+$$
+\left[ \begin{array}{l}
+\begin{cases} g(x) < 0 \\ f(x) \ge 0 \end{cases} \quad \text{(A)} \\
+\begin{cases} g(x) \ge 0 \\ f(x) \ge g^2(x) \end{cases} \quad \text{(B)}
+\end{array} \right.
+$$
+
+1-qadam: (A) sistemani yechamiz:
+$$
+\begin{cases} x - 1 < 0 \\ 2x^2 - 5x - 3 \ge 0 \end{cases}
+$$
+$2x^2 - 5x - 3 = 0$ ning ildizlari: $D = 25 - 4(2)(-3) = 49$.  
+$x_1 = \frac{5 - 7}{4} = -0.5, \quad x_2 = \frac{5 + 7}{4} = 3$.  
+Demak: $2x^2 - 5x - 3 \ge 0 \iff x \in (-\infty, -0.5] \cup [3, +\infty)$.  
+$x < 1$ bilan kesishganda:
+$$
+x \in (-\infty, -0.5]
+$$
+
+2-qadam: (B) sistemani yechamiz:
+$$
+\begin{cases} x - 1 \ge 0 \implies x \ge 1 \\ 2x^2 - 5x - 3 \ge (x - 1)^2 \end{cases}
+$$
+Kvadratni ochamiz:
+$$
+2x^2 - 5x - 3 \ge x^2 - 2x + 1 \implies x^2 - 3x - 4 \ge 0
+$$
+Ildizlar: $(x - 4)(x + 1) \ge 0 \implies x \in (-\infty, -1] \cup [4, +\infty)$.  
+$x \ge 1$ bilan kesishganda:
+$$
+x \in [4, +\infty)
+$$
+
+3-qadam: (A) va (B) natijalarini birlashtiramiz:
+$$
+x \in (-\infty, -0.5] \cup [4, +\infty)
+$$
+
+**Javob:** $x \in (-\infty, -0.5] \cup [4, +\infty)$.
+
+---
+
+## ⚠️ Talabalar Eng Ko'p Yo'l Qo'yadigan Xatolar va Tuzoqlar
+
+1. **Tengsizlikning ikkala tomonini o'zgaruvchiga ko'paytirib yuborish:**
+   Masalan, $\frac{1}{x - 2} < 3$ tengsizlikni yechishda talabalar ikkala tomonni $(x - 2)$ ga ko'paytirib, $1 < 3(x - 2)$ deb yozishadi. Bu qo'pol xato! Chunki $x - 2$ manfiy bo'lishi ham mumkin, u holda tengsizlik ishorasi teskarisiga o'zgarishi kerak edi. Har doim barcha hadlarni chap tomonga o'tkazib, umumiy maxrajga keltirish shart!
+
+2. **Juft karrali ildizlarda ishorani almashtirib yuborish:**
+   $(x - 2)^2$ kabi ko'paytuvchi orqali o'tganda ishora o'zgarmasdan qoladi. Talabalar avtomatik ravishda $+ - + -$ deb ketishadi va butun oraliqlar xatosiga yo'l qo'yishadi.
+
+3. **Yakkalangan ildizlarni (Izolyatsiyalangan nuqtalarni) yo'qotib qo'yish:**
+   Masalan, $(x - 3)^2 (x + 1) \le 0$ tengsizlikda manfiy oraliq $x \in (-\infty, -1]$ bo'ladi. Lekin tenglik sharti ($\le 0$) tufayli $x = 3$ ham yechim hisoblanadi (chunki $0 \le 0$). Talabalar ko'pincha $\{3\}$ yakkalangan nuqtani javobga qo'shishni unutishadi.
+
+4. **Maxraj nolini yechimga qo'shib yuborish:**
+   Noqat'iy tengsizliklarda ($\le$ yoki $\ge$) talaba barcha nuqtalarni bo'yalgan qilib oladi va maxrajni nolga aylantiradigan nuqtani ham oraliqqa qo'shib qo'yadi. Matematikada nolga bo'lish qat'iyan man etiladi! Maxraj nollari har doim qat'iy ochiq qavs bilan chiqarib tashlanadi.
+
+---
+
+## 🎯 Mustaqil Yechish Uchun Amaliy Mashqlar va Yechimlar
+
+### 1-mashq
+Tengsizlikni intervallar usulida yeching:
+$$
+\frac{x^2 - 4x + 3}{x - 5} \ge 0
+$$
+
+<details>
+<summary>To'liq yechimi va javobi</summary>
+
+**Yechish:**
+1. Suratni ko'paytuvchilarga ajratamiz:
+   $x^2 - 4x + 3 = (x - 1)(x - 3)$.
+   Tengsizlik ko'rinishi:
+   $$
+   \frac{(x - 1)(x - 3)}{x - 5} \ge 0
+   $$
+2. Nollar: $x = 1$ (to'q), $x = 3$ (to'q), $x = 5$ (ochiq).
+   Barcha ildizlar toq karrali (1-daraja), demak har birida ishora o'zgaradi.
+3. $x > 5$ da ishora: $+$.
+   - $(5, +\infty) \to +$
+   - $(3, 5) \to -$
+   - $[1, 3] \to +$
+   - $(-\infty, 1] \to -$
+4. $\ge 0$ sohalarini olamiz:
+   $$
+   x \in [1, 3] \cup (5, +\infty)
+   $$
+
+**Javob:** $x \in [1, 3] \cup (5, +\infty)$.
 </details>
+
+---
+
+### 2-mashq
+Gorner sxemasi yordamida $P(x) = 2x^3 - 5x^2 - 4x + 12$ ko'phadni $(x - 2)$ ga bo'lgandagi bo'linma va qoldiqni toping.
+
+<details>
+<summary>To'liq yechimi va javobi</summary>
+
+**Yechish:**
+Koeffitsiyentlar: $a_3 = 2, a_2 = -5, a_1 = -4, a_0 = 12$.  
+Bo'luvchi: $c = 2$.
+
+| Koeffitsiyentlar | $a_3 = 2$ | $a_2 = -5$ | $a_1 = -4$ | $a_0 = 12$ |
+| :--- | :---: | :---: | :---: | :---: |
+| $c = 2$ | $2$ | $2(2) + (-5) = -1$ | $2(-1) + (-4) = -6$ | $2(-6) + 12 = 0$ |
+
+Qoldiq $R = 0$ (qoldiqsiz bo'lindi).  
+Bo'linma ko'phadi: $Q(x) = 2x^2 - x - 6$.
+
+**Javob:** Bo'linma: $2x^2 - x - 6$, qoldiq: $0$.
+</details>
+
+---
+
+### 3-mashq
+Tenglamani yeching:
+$$
+|3x - 6| = 2 - x
+$$
+
+<details>
+<summary>To'liq yechimi va javobi</summary>
+
+**Yechish:**
+1. O'ng tomon manfiy bo'lmasligi shart:
+   $$
+   2 - x \ge 0 \implies x \le 2
+   $$
+2. Modulni ochamiz:
+   - 1-hol: $3x - 6 = 2 - x \implies 4x = 8 \implies x = 2$.  
+     Shartni tekshiramiz: $2 \le 2$ (to'g'ri).
+   - 2-hol: $3x - 6 = -(2 - x) \implies 3x - 6 = -2 + x \implies 2x = 4 \implies x = 2$.
+3. Ikkala holatda ham bitta ildiz hosil bo'ldi: $x = 2$.
+
+**Javob:** $x = 2$.
+</details>
+
+---
+
+## 💡 Imtihon Layfhaklari va Tezkor Maslahatlar
+
+1. **Eng o'ng oraliq ishorasini 2 soniyada topish:**
+   Eng o'ng oraliq ishorasi har bir qavsdagi $x$ oldidagi barcha koeffitsiyentlar ishoralari ko'paytmasiga teng. Masalan, $(2 - x)(x + 3)^2$ ifodada $x$ ning oldida bitta manfiy $(-)$ va musbat $(+)$ bor, demak eng o'ng oraliq manfiy $(-)$ bo'ladi!
+
+2. **Sinov nuqtasi usuli (Sanity Check):**
+   Intervallar usulida ishoralarni qo'yib bo'lgach, shubha tug'ilgan oraliqdan bitta oddiy sonni (masalan, $x = 0$ yoki $x = 10$) olib, to'g'ridan-to'g'ri boshlang'ich ifodaga qo'yib ko'ring. Bu orqali butun jadval to'g'ri tuzilganiga 100% ishonch hosil qilasiz.
+
+3. **Irratsional tengsizlikda aniqlanish sohasini (ODZ) birinchi bo'lib yozing:**
+   Ildiz osti ifodasi har doim manfiy bo'lmasligi shart ($f(x) \ge 0$). Ushbu shartni yozmasdan kvadratga ko'tarish begona (soxta) oraliqlarni qo'shib yuborishga olib keladi.
