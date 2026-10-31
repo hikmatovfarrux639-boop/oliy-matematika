@@ -52,10 +52,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="presets-box">
           <label class="control-label">Namunaviy imtihon misollari:</label>
           <div class="presets-list">
-            <button class="preset-btn" data-preset="tatu-det">3×3 Determinant & A⁻¹</button>
-            <button class="preset-btn" data-preset="tatu-sle">3 noma'lumli ChTS (Kramer)</button>
-            <button class="preset-btn" data-preset="tatu-rank">Gauss: Matritsa rangi</button>
-            <button class="preset-btn" data-preset="tatu-eigen">Xos sonlar & Spektr</button>
+            <button class="preset-btn" data-preset="standard-det">3×3 Determinant & A⁻¹</button>
+            <button class="preset-btn" data-preset="standard-sle">3 noma'lumli ChTS (Kramer)</button>
+            <button class="preset-btn" data-preset="standard-rank">Gauss: Matritsa rangi</button>
+            <button class="preset-btn" data-preset="standard-eigen">Xos sonlar & Spektr</button>
             <button class="preset-btn reset-btn" data-preset="clear">🗑️ Tozalash</button>
           </div>
         </div>
@@ -839,6 +839,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       font-size: 1.1rem;
     }
 
+    @media (max-width: 420px) {
+      :global(.matrix-cell-input) {
+        width: 44px;
+        height: 42px;
+        font-size: 0.95rem;
+        padding: 2px;
+      }
+      .matrix-grid {
+        gap: 0.25rem !important;
+      }
+    }
+
     .matrix-grid {
       gap: 0.35rem;
       padding: 0.25rem;
@@ -971,7 +983,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // Presets definitions
     const PRESETS = {
-      'tatu-det': {
+      'standard-det': {
         size: 3,
         matrixA: [
           [2, 1, -1],
@@ -980,7 +992,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ],
         vectorB: [2, 5, 0]
       },
-      'tatu-sle': {
+      'standard-sle': {
         size: 3,
         matrixA: [
           [2, 1, 1],
@@ -989,7 +1001,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ],
         vectorB: [2, -7, 8]
       },
-      'tatu-rank': {
+      'standard-rank': {
         size: 3,
         matrixA: [
           [1, 2, 3],
@@ -998,7 +1010,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ],
         vectorB: [0, 0, 0]
       },
-      'tatu-eigen': {
+      'standard-eigen': {
         size: 2,
         matrixA: [
           [4, 1],
@@ -1623,56 +1635,75 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const m33 = A[0][0] * A[1][1] - A[0][1] * A[1][0];
             const sumMinors = m11 + m22 + m33;
 
-            // Solve cubic: lambda^3 - trA * lambda^2 + sumMinors * lambda - det = 0
+            // Characteristic equation:
+            // det(A - lambda E) = -lambda^3 + trA * lambda^2 - sumMinors * lambda + det = 0
+            // Monic: lambda^3 + c2 * lambda^2 + c1 * lambda + c0 = 0
             const c2 = -trA;
             const c1 = sumMinors;
             const c0 = -det;
+
+            // Cardano's analytical method (depressed cubic y^3 + p*y + q = 0)
+            const p = c1 - (c2 * c2) / 3;
+            const q = c0 - (c2 * c1) / 3 + (2 * c2 * c2 * c2) / 27;
+            const delta = (q * q) / 4 + (p * p * p) / 27;
+            const shift = -c2 / 3;
+
             let rootsLatex = '';
-            // Try integer/half-integer rational roots first
-            let r1: number | null = null;
-            for (let k = -40; k <= 40; k++) {
-              const cand = k / 2;
-              const val = cand * cand * cand + c2 * cand * cand + c1 * cand + c0;
-              if (Math.abs(val) < 1e-6) {
-                r1 = cand;
-                break;
+
+            if (delta < -1e-11) {
+              // 3 distinct real roots (casus irreducibilis)
+              const r = Math.sqrt(-Math.pow(p / 3, 3));
+              const phi = Math.acos(Math.max(-1, Math.min(1, -q / (2 * r))));
+              const m = 2 * Math.sqrt(-p / 3);
+
+              const r1 = m * Math.cos(phi / 3) + shift;
+              const r2 = m * Math.cos((phi + 2 * Math.PI) / 3) + shift;
+              const r3 = m * Math.cos((phi + 4 * Math.PI) / 3) + shift;
+
+              const sorted = [r1, r2, r3].sort((a, b) => b - a);
+              rootsLatex = ` \\implies \\lambda_1 = ${formatNum(sorted[0])}, \\; \\lambda_2 = ${formatNum(sorted[1])}, \\; \\lambda_3 = ${formatNum(sorted[2])}`;
+              if (action === 'eigen') {
+                heroTitleText = "Xos Sonlar: λ₁, λ₂, λ₃";
+                heroDescText = "3-tartibli xarakteristik tenglama ildizlari (3 ta haqiqiy ildiz):";
+                heroLatexText = `\\lambda_1 = ${formatNum(sorted[0])}, \\; \\lambda_2 = ${formatNum(sorted[1])}, \\; \\lambda_3 = ${formatNum(sorted[2])}`;
               }
-            }
-            if (r1 === null) {
-              // Newton-Raphson fallback for one real root
-              let x = trA / 3;
-              for (let iter = 0; iter < 50; iter++) {
-                const fx = x * x * x + c2 * x * x + c1 * x + c0;
-                const dfx = 3 * x * x + 2 * c2 * x + c1;
-                if (Math.abs(dfx) < 1e-9) break;
-                x = x - fx / dfx;
-              }
-              r1 = x;
-            }
-            if (r1 !== null) {
-              // Factor out (lambda - r1): lambda^2 + qb * lambda + qc = 0
-              const qb = c2 + r1;
-              const qc = c1 + qb * r1;
-              const disc = qb * qb - 4 * qc;
-              if (disc >= -1e-7) {
-                const dClamped = Math.max(0, disc);
-                const r2 = (-qb + Math.sqrt(dClamped)) / 2;
-                const r3 = (-qb - Math.sqrt(dClamped)) / 2;
-                rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_2 = ${formatNum(r2)}, \\; \\lambda_3 = ${formatNum(r3)}`;
+            } else if (delta > 1e-11) {
+              // 1 real root and 2 complex conjugate roots
+              const sqrtDelta = Math.sqrt(delta);
+              const uArg = -q / 2 + sqrtDelta;
+              const vArg = -q / 2 - sqrtDelta;
+              const u = uArg >= 0 ? Math.cbrt(uArg) : -Math.cbrt(-uArg);
+              const v = vArg >= 0 ? Math.cbrt(vArg) : -Math.cbrt(-vArg);
+
+              const r1 = u + v + shift;
+              const re = -((u + v) / 2) + shift;
+              const im = (Math.sqrt(3) / 2) * Math.abs(u - v);
+
+              if (im < 1e-6) {
+                rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)}`;
                 if (action === 'eigen') {
-                  heroTitleText = "Xos Sonlar: λ₁, λ₂, λ₃";
-                  heroDescText = "3-tartibli xarakteristik tenglama ildizlari:";
-                  heroLatexText = `\\lambda_1 = ${formatNum(r1)}, \\; \\lambda_2 = ${formatNum(r2)}, \\; \\lambda_3 = ${formatNum(r3)}`;
+                  heroTitleText = "Xos Sonlar: λ₁, λ₂";
+                  heroDescText = "Karrali haqiqiy xos sonlar:";
+                  heroLatexText = `\\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)}`;
                 }
               } else {
-                const re = -qb / 2;
-                const im = Math.sqrt(-disc) / 2;
                 rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)} \\pm ${formatNum(im)}i`;
                 if (action === 'eigen') {
                   heroTitleText = "Xos Sonlar: λ₁, λ₂,₃";
-                  heroDescText = "Haqiqiy va kompleks xos sonlar:";
+                  heroDescText = "Haqiqiy va kompleks qo'shma xos sonlar:";
                   heroLatexText = `\\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(re)} \\pm ${formatNum(im)}i`;
                 }
+              }
+            } else {
+              // Multiple real roots (delta ~ 0)
+              const u = -q / 2 >= 0 ? Math.cbrt(-q / 2) : -Math.cbrt(q / 2);
+              const r1 = 2 * u + shift;
+              const r2 = -u + shift;
+              rootsLatex = ` \\implies \\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(r2)}`;
+              if (action === 'eigen') {
+                heroTitleText = "Xos Sonlar: λ₁, λ₂,₃";
+                heroDescText = "Karrali haqiqiy xos sonlar:";
+                heroLatexText = `\\lambda_1 = ${formatNum(r1)}, \\; \\lambda_{2,3} = ${formatNum(r2)}`;
               }
             }
 
@@ -2078,7 +2109,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         const preset = PRESETS[pKey as keyof typeof PRESETS];
         if (preset) {
-          if (pKey === 'tatu-sle') {
+          if (pKey === 'standard-sle') {
             setMode('sle');
           } else {
             setMode('single');
@@ -2098,8 +2129,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
-    // Initial setup: TATU Det preset loaded by default
-    const initPreset = PRESETS['tatu-det'];
+    // Initial setup: standard Det preset loaded by default
+    const initPreset = PRESETS['standard-det'];
     setSize(3, initPreset.matrixA);
     runComputation('all');
   }

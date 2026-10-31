@@ -118,12 +118,12 @@ const {
         <div id="result-fraction" class="score-fraction-text">0 / 0 ta to'g'ri</div>
       </div>
 
-      <div class="hemis-grade-badge-box">
-        <div class="hemis-grade-label">Imtihon Bahosi:</div>
-        <div id="result-grade-pill" class="hemis-grade-pill grade-excellent">
+      <div class="exam-grade-badge-box">
+        <div class="exam-grade-label">Imtihon Bahosi:</div>
+        <div id="result-grade-pill" class="exam-grade-pill grade-excellent">
           A'lo (5 baho)
         </div>
-        <div id="result-feedback-text" class="hemis-feedback-desc">
+        <div id="result-feedback-text" class="exam-feedback-desc">
           Mukammal natija! Barcha oraliq va yakuniy nazoratlarga to'liq tayyorsiz.
         </div>
       </div>
@@ -468,7 +468,7 @@ const {
       if (resultPercentage) resultPercentage.textContent = `${percentage}%`;
       if (resultFraction) resultFraction.textContent = `${correctCount} / ${total} ta to'g'ri javob`;
 
-      // HEMIS Grading Scale:
+      // Akademik Baholash Mezoni (5, 4, 3, 2):
       // 86 - 100: 5 (A'lo)
       // 71 - 85: 4 (Yaxshi)
       // 55 - 70: 3 (Qoniqarli)
@@ -510,7 +510,7 @@ const {
 
       if (resultGradePill) {
         resultGradePill.textContent = gradeText;
-        resultGradePill.className = `hemis-grade-pill ${gradeClass}`;
+        resultGradePill.className = `exam-grade-pill ${gradeClass}`;
       }
 
       if (resultFeedbackText) {
@@ -1164,14 +1164,14 @@ const {
     margin-top: 0.4rem;
   }
 
-  .hemis-grade-badge-box {
+  .exam-grade-badge-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .hemis-grade-label {
+  .exam-grade-label {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-subtle);
@@ -1179,7 +1179,7 @@ const {
     letter-spacing: 0.05em;
   }
 
-  .hemis-grade-pill {
+  .exam-grade-pill {
     font-size: 1.25rem;
     font-weight: 800;
     padding: 0.4rem 1.25rem;
@@ -1210,7 +1210,7 @@ const {
     border: 1px solid rgba(239, 68, 68, 0.3);
   }
 
-  .hemis-feedback-desc {
+  .exam-feedback-desc {
     max-width: 500px;
     font-size: 0.95rem;
     color: var(--text-main);

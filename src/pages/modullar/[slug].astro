@@ -110,26 +110,35 @@ const { moduleData, lessons } = Astro.props;
 
 <script>
   function updateProgressAndStatus() {
-    const slug = window.location.pathname.split('/')[2];
-    if (!slug) return;
-    
     // Check completed lessons in localStorage
-    const completed: string[] = JSON.parse(localStorage.getItem('math_completed_lessons') || '[]');
+    let completed: string[] = [];
+    try {
+      completed = JSON.parse(localStorage.getItem('math_completed_lessons') || '[]');
+    } catch {
+      completed = [];
+    }
     
     // Highlight completed lessons
     const lessonCards = document.querySelectorAll('.lesson-item-card');
     let completedInThisModule = 0;
 
     lessonCards.forEach(card => {
-      const lessonSlug = card.getAttribute('data-lesson-slug');
-      if (lessonSlug && completed.includes(lessonSlug)) {
+      const lessonSlug = card.getAttribute('data-lesson-slug') || '';
+      const baseSlug = lessonSlug.split('/').pop() || '';
+      const isDone = (lessonSlug && completed.includes(lessonSlug)) || (baseSlug && completed.includes(baseSlug));
+      const pill = card.querySelector('.lesson-status-pill') as HTMLElement | null;
+
+      if (isDone) {
         completedInThisModule++;
-        const pill = card.querySelector('.lesson-status-pill') as HTMLElement | null;
         if (pill) {
           pill.className = 'lesson-status-pill badge';
           pill.style.cssText = 'display: inline-flex; background: var(--accent-light); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700;';
           pill.textContent = "✅ O'zlashtirildi";
         }
+      } else if (pill) {
+        pill.className = 'lesson-status-pill';
+        pill.style.cssText = 'display: none;';
+        pill.textContent = '';
       }
     });
 

@@ -584,6 +584,7 @@ const kLatex = katex.renderToString("k = \\operatorname{tg}\\alpha = f'(x_0)", {
 
         // Convert to LaTeX
         const fxTex = parsedExpr.toTex();
+        const rawDerivedTex = derived.toTex();
         const dfxTex = simplified.toTex();
 
         // Render KaTeX in result cards
@@ -619,20 +620,50 @@ const kLatex = katex.renderToString("k = \\operatorname{tg}\\alpha = f'(x_0)", {
             ruleName = "Logarifmik funksiya differensiallash qoidasi";
           }
 
-          const renderedRule = katex.renderToString(ruleLatex, { displayMode: false, throwOnError: false });
-          const renderedDfx = katex.renderToString(`f'(x) = ${dfxTex}`, { displayMode: false, throwOnError: false });
           const renderedFx = katex.renderToString(`f(x) = ${fxTex}`, { displayMode: false, throwOnError: false });
+          const renderedRaw = katex.renderToString(`\\frac{d}{dx}\\left[${fxTex}\\right] = ${rawDerivedTex}`, { displayMode: false, throwOnError: false });
+          const renderedDfx = katex.renderToString(`f'(x) = ${dfxTex}`, { displayMode: false, throwOnError: false });
+          const renderedRule = katex.renderToString(ruleLatex, { displayMode: false, throwOnError: false });
 
-          const descEl = ruleBanner.querySelector('div > div:nth-child(2)');
-          if (descEl) {
-            descEl.innerHTML = `
-              <div style="margin-top: 0.35rem; line-height: 1.6;">
-                <strong>1. Dastlabki funksiya:</strong> ${renderedFx} <br/>
-                <strong>2. Qo'llanilgan qoida (${ruleName}):</strong> ${renderedRule} <br/>
-                <strong>3. Natijaviy hosila:</strong> <span style="color: #dc2626; font-weight: 700;">${renderedDfx}</span>
+          const aiPrompt = encodeURIComponent(`f(x) = ${rawInput} funksiyasining hosilasini qadamma-qadam formulalari va grafigi bilan to'liq tushuntirib ber.`);
+
+          ruleBanner.innerHTML = `
+            <div style="width: 100%;">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+                <div style="font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--primary);">
+                  💡 Qadamma-qadam Differensiallash Jarayoni:
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <a href="/ai-yechuvchi?q=${aiPrompt}" class="btn btn-secondary" style="font-size: 0.8rem; font-weight: 700; color: #10b981; border-color: #10b981;" title="Sun'iy intellektdan batafsil yechim olish">
+                    ✨ AI orqali to'liq yechish
+                  </a>
+                  <a href="/dars/hosila/differensiallash-qoidalari-va-jadval" class="btn btn-secondary" style="font-size: 0.8rem; font-weight: 700;">
+                    📖 Hosila jadvali →
+                  </a>
+                </div>
               </div>
-            `;
-          }
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; font-size: 0.92rem; line-height: 1.5;">
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem;">
+                  <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">1-Qadam: Dastlabki ifoda</span>
+                  <div style="margin-top: 0.25rem; font-weight: 600; overflow-x: auto;">${renderedFx}</div>
+                </div>
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem;">
+                  <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">2-Qadam: Operatorni qo'llash (${ruleName})</span>
+                  <div style="margin-top: 0.25rem; font-weight: 600; overflow-x: auto;">${renderedRaw}</div>
+                </div>
+                <div style="background: var(--bg-surface); border: 1.5px solid #dc2626; border-radius: var(--radius-sm); padding: 0.65rem 0.85rem;">
+                  <span style="font-size: 0.75rem; font-weight: 700; color: #dc2626; text-transform: uppercase;">3-Qadam: Soddalashtirilgan hosila</span>
+                  <div style="margin-top: 0.25rem; font-weight: 700; color: #dc2626; overflow-x: auto;">${renderedDfx}</div>
+                </div>
+              </div>
+
+              <div style="margin-top: 0.75rem; font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                <span>📐 Asosiy nazariy formula:</span>
+                <span>${renderedRule}</span>
+              </div>
+            </div>
+          `;
         }
 
         // Prepare functions for plotting

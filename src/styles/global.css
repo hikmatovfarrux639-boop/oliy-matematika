@@ -767,6 +767,7 @@ html, body {
   .btn,
   .btn-primary,
   .btn-secondary,
+  .btn-icon,
   .mobile-drawer a,
   .module-nav-item a,
   .calc-action-btn,
@@ -776,6 +777,13 @@ html, body {
     min-height: 44px;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-icon {
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Visual touch feedback */

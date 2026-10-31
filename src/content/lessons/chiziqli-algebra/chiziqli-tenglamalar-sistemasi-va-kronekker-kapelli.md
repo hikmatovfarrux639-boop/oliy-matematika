@@ -1,8 +1,8 @@
 ---
-title: "Chiziqli tenglamalar sistemalari (CHTS) va Kronekker-Kapelli teoremasi"
+title: "Chiziqli tenglamalar sistemalari (ChTS) va Kronekker-Kapelli teoremasi"
 module: "chiziqli-algebra"
 order: 8
-description: "CHTS turlari, kengaytirilgan matritsa, yechim mavjudligi va soni haqidagi Kronekker-Kapelli teoremasi, umumiy yechim va parametrli sistemalar."
+description: "ChTS turlari, kengaytirilgan matritsa, yechim mavjudligi va soni haqidagi Kronekker-Kapelli teoremasi, umumiy yechim va parametrli sistemalar."
 ---
 
 ## Kirish: Tenglamalar sistemasini yechishdan oldin nimani bilish shart?
@@ -18,7 +18,7 @@ Ushbu tekshiruvni amalga oshiruvchi chiziqli algebraning eng buyuk qonuni — **
 
 ## 1. Asosiy tushunchalar va belgilar
 
-$m$ ta chiziqli tenglama va $n$ ta noma'lumdan iborat umumiy sistema (CHTS):
+$m$ ta chiziqli tenglama va $n$ ta noma'lumdan iborat umumiy sistema (ChTS):
 
 $$
 \begin{cases}

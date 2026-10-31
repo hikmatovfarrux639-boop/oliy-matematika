@@ -7,7 +7,7 @@ description: "Fazoda to'g'ri chiziq va tekislikning o'zaro joylashuvi, kesishish
 
 Analitik geometriya va 3D kompyuter grafikasida eng ko'p bajariladigan amallardan biri — uch o'lchamli fazodagi obyektlarni tekislikka proyeksiyalash, nurning sirt bilan to'qnashuv nuqtasini topish (ray tracing) hamda berilgan tekislikka nisbatan ko'zgu aksini (simmetriyasini) hisoblashdir.
 
-OTM imtihonlarida va HEMIS nazoratlarida bu mavzu bo'yicha talabalarga odatda 4 ta asosiy standart masala tushadi.
+Oliy matematika imtihonlarida va oraliq/yakuniy nazoratlarda bu mavzu bo'yicha talabalarga odatda 4 ta asosiy standart masala tushadi.
 
 ---
 
