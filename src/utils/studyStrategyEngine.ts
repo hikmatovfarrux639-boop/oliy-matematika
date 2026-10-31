@@ -66,7 +66,11 @@ export function normalizeQueryForStrategy(raw: string): string {
     .replace(/piramida|tetraidr|tetraedr/g, 'piramida')
     .replace(/asimtota|asimptota/g, 'asimptota')
     .replace(/furie|furye/g, 'fure')
-    .replace(/makloren|teylor/g, 'teylor');
+    .replace(/makloren|teylor/g, 'teylor')
+    .replace(/chebishev|chebyshev|chebishov/g, 'chebishev')
+    .replace(/rikati|rikkatti/g, 'rikkati')
+    .replace(/liapunov|laypunov/g, 'lyapunov')
+    .replace(/laplas|laplace/g, 'laplas');
 }
 
 export const STRATEGY_RULES: StrategyTopicRule[] = [
@@ -305,7 +309,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'vektor',
-    keywords: ['vektor', 'skalyar', 'aralash kopaytma', 'piramida', 'tetraedr', 'kollinear', 'ortogonal', 'komplanar', 'togri chiziq', 'tekislik', 'uchburchak', 'ellips', 'giperbola', 'parabola', 'masofa', 'ayqash', 'metrik masalalar'],
+    keywords: ['vektor', 'skalyar', 'aralash kopaytma', 'piramida', 'tetraedr', 'kollinear', 'ortogonal', 'komplanar', 'togri chiziq', 'tekislik', 'uchburchak', 'ellips', 'giperbola', 'parabola', 'masofa', 'ayqash', 'metrik masalalar', 'ikkinchi tartibli sirtlar', 'ellipsoid', 'giperboloid', 'paraboloid', 'afina', 'proyektiv', 'qavariq kopyoq', 'eyler xarakteristikasi'],
     plan: {
       id: 'vektor',
       topicTitle: 'Vektorlar Algebrasi va Analitik Geometriya',
@@ -390,7 +394,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'limit',
-    keywords: ['limit', 'aniqmaslik', 'ajoyib limit', 'ekvivalent', 'uzluksizlik', 'uzilish', '0/0', 'cheksiz'],
+    keywords: ['limit', 'aniqmaslik', 'ajoyib limit', 'ekvivalent', 'uzluksizlik', 'uzilish', '0/0', 'cheksiz', 'cheksiz kichik', 'ekvivalentlik jadvali', 'veyershtrass', 'bir tomonlama limit', 'tekis uzluksizlik', '7 turi'],
     plan: {
       id: 'limit',
       topicTitle: 'Limitlar, Aniqmasliklarni Ochish va Ajoyib Limitlar',
@@ -464,7 +468,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'hosila',
-    keywords: ['hosila', 'differensial', 'urinma', 'lopital', 'murakkab funksiya', 'zanjir qoidasi', 'ekstremum', 'osish', 'kamayish', 'teylor'],
+    keywords: ['hosila', 'differensial', 'urinma', 'lopital', 'murakkab funksiya', 'zanjir qoidasi', 'ekstremum', 'osish', 'kamayish', 'teylor', 'egrilik', 'egrilik radiusi', 'leybnits formulasi', 'n-tartibli hosila', 'frenet-serret', 'elastiklik'],
     plan: {
       id: 'hosila',
       topicTitle: 'Hosila, Differensial va Urinma Tenglamasi',
@@ -538,7 +542,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'integral',
-    keywords: ['integral', 'boshlangich funksiya', 'bolaklab', 'almashtirish', 'nyuton-leybnits', 'aniq integral', 'xosmas', 'ratsional kasr', 'yuza', 'simpson', 'trigonometrik integral', 'universal almashtirish', 'yoy uzunligi', 'aylanish sirti', 'fizik tatbiq'],
+    keywords: ['integral', 'boshlangich funksiya', 'bolaklab', 'almashtirish', 'nyuton-leybnits', 'aniq integral', 'xosmas', 'ratsional kasr', 'yuza', 'simpson', 'trigonometrik integral', 'universal almashtirish', 'yoy uzunligi', 'aylanish sirti', 'fizik tatbiq', 'chebishev', 'differensial binom', 'eyler almashtirishlari', 'ostrogradskiy usuli', 'guldin', 'parametrga bogliq integral'],
     plan: {
       id: 'integral',
       topicTitle: 'Aniqmas va Aniq Integrallarni Yechish Strategiyasi',
@@ -640,7 +644,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'differensial-tenglamalar',
-    keywords: ['differensial tenglama', 'koshi masalasi', 'ajraladigan', 'bernulli', 'lagranj variatsiya', 'eyler', 'runge-kutta', 'xarakteristik', 'klero', 'lagranj', 'ogibayushchaya', 'oralma', 'eyler differensial'],
+    keywords: ['differensial tenglama', 'koshi masalasi', 'ajraladigan', 'bernulli', 'lagranj variatsiya', 'eyler', 'runge-kutta', 'xarakteristik', 'klero', 'lagranj', 'ogibayushchaya', 'oralma', 'eyler differensial', 'toliq differensial', 'integrallovchi kopaytuvchi', 'rikkati', 'laplas almashtirishi', 'avtonom sistema', 'lyapunov', 'matematik fizika', 'fure usuli'],
     plan: {
       id: 'differensial-tenglamalar',
       topicTitle: 'Differensial Tenglamalarni Turlarga Ajratish va Yechish',
@@ -725,7 +729,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'ehtimollar-statistika',
-    keywords: ['ehtimol', 'kombinatorika', 'bayes', 'bernulli sxemasi', 'puasson', 'muavr-laplas', 'tasodifiy miqdor', 'dispersiya', 'statistika', 'tanlanma', 'regressiya', 'pirson', 'styudent', 'zichlik funksiyasi', 'uzluksiz tasodifiy', 'chebishev', 'markaziy limit', 'mann uitni', 'vilkokson'],
+    keywords: ['ehtimol', 'kombinatorika', 'bayes', 'bernulli sxemasi', 'puasson', 'muavr-laplas', 'tasodifiy miqdor', 'dispersiya', 'statistika', 'tanlanma', 'regressiya', 'pirson', 'styudent', 'zichlik funksiyasi', 'uzluksiz tasodifiy', 'chebishev', 'markaziy limit', 'mann uitni', 'vilkokson', 'tasodifiy vektor', 'kovariatsiya', 'kovariatsion matritsa', 'xarakteristik funksiya', 'markov zanjiri', 'stoxastik', 'ishonchlilik intervali', 'maksimal haqiqatga oxshashlik', 'mle', 'monte karlo'],
     plan: {
       id: 'ehtimollar-statistika',
       topicTitle: 'Ehtimollar Nazariyasi va Matematik Statistika Yo\'l Xaritasi',
@@ -821,7 +825,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'kompleks-sonlar',
-    keywords: ['kompleks', 'mavhum', 'trigonometrik shakl', 'eyler shakli', 'muavr', 'koshi-riman', 'laplas almashtirishi', 'loran', 'chegirma', 'koshi teoremasi', 'kontur integral', 'koshi integral formulasi'],
+    keywords: ['kompleks', 'mavhum', 'trigonometrik shakl', 'eyler shakli', 'muavr', 'koshi-riman', 'laplas almashtirishi', 'loran', 'chegirma', 'koshi teoremasi', 'kontur integral', 'koshi integral formulasi', 'golomorf', 'koshi-riman shartlari', 'konform', 'jukovskiy'],
     plan: {
       id: 'kompleks-sonlar',
       topicTitle: 'Kompleks Sonlar, Muavr Formulasi va TFKP',
@@ -895,7 +899,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'qatorlar',
-    keywords: ['qator', 'dalamber', 'koshi alomati', 'leybnits', 'yaqinlashish radiusi', 'makloren', 'fure', 'raabe', 'gauss alomati', 'nozik yaqinlashish', 'qosh faktorial'],
+    keywords: ['qator', 'dalamber', 'koshi alomati', 'leybnits', 'yaqinlashish radiusi', 'makloren', 'fure', 'raabe', 'gauss alomati', 'nozik yaqinlashish', 'qosh faktorial', 'loran qatori', 'maxsus nuqta', 'chegirmalar nazariyasi', 'cheksiz kopaytma', 'fure integrali', 'fure almashtirishi'],
     plan: {
       id: 'qatorlar',
       topicTitle: 'Sonli, Darajali va Fure Qatorlari Strategiyasi',
@@ -969,7 +973,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'kop-ozgaruvchili-karrali',
-    keywords: ['xususiy hosila', 'gradient', 'ekstremum ikki', 'karrali integral', 'ikki karrali', 'uch karrali', 'grin', 'stoks', 'divergensiya', 'rotor', 'urinma tekislik', 'sirt integrali', 'mhk', 'eng kichik kvadratlar', 'oqim', 'gauss ostrogradskiy'],
+    keywords: ['xususiy hosila', 'gradient', 'ekstremum ikki', 'karrali integral', 'ikki karrali', 'uch karrali', 'grin', 'stoks', 'divergensiya', 'rotor', 'urinma tekislik', 'sirt integrali', 'mhk', 'eng kichik kvadratlar', 'oqim', 'gauss ostrogradskiy', 'shartli ekstremum', 'lagranj kopaytuvchilari', 'yonalish boyicha hosila', 'gesse', 'oshkormas funksiya', 'yakobian', 'silindrik koordinata', 'sferik koordinata'],
     plan: {
       id: 'kop-ozgaruvchili-karrali',
       topicTitle: 'Ko\'p O\'zgaruvchili Funksiyalar va Karrali Integrallar',
@@ -1054,7 +1058,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'funksiyalar-grafiklar',
-    keywords: ['funksiya', 'aniqlanish sohasi', 'asimptota', 'qavariq', 'egilish nuqtasi', 'grafik yasash', 'juft', 'toq', 'giperbolik', 'uzluksizlik', 'uzilish nuqtasi', 'sakrash', 'eng katta qiymat', 'eng kichik qiymat', 'weierstrass'],
+    keywords: ['funksiya', 'aniqlanish sohasi', 'asimptota', 'qavariq', 'egilish nuqtasi', 'grafik yasash', 'juft', 'toq', 'giperbolik', 'uzluksizlik', 'uzilish nuqtasi', 'sakrash', 'eng katta qiymat', 'eng kichik qiymat', 'weierstrass', 'qutb koordinatalari', 'parametrik tenglamalar', 'sikloida', 'astroida', 'lemniskata'],
     plan: {
       id: 'funksiyalar-grafiklar',
       topicTitle: 'Funksiyani To\'liq Tekshirish va Grafik Yasash',
@@ -1128,7 +1132,7 @@ export const STRATEGY_RULES: StrategyTopicRule[] = [
   },
   {
     id: 'maktab-noldan',
-    keywords: ['noldan', 'boshidan', 'maktab', 'bazam bosh', 'nimadan boshlay', 'kvadrat tenglama', 'trigonometriya', 'logarifm', 'modul', 'progressiya', 'kasr', 'kombinatorika', 'faktorial', 'orinlashtirish', 'guruhlash'],
+    keywords: ['noldan', 'boshidan', 'maktab', 'bazam bosh', 'nimadan boshlay', 'kvadrat tenglama', 'trigonometriya', 'logarifm', 'modul', 'progressiya', 'kasr', 'kombinatorika', 'faktorial', 'orinlashtirish', 'guruhlash', 'matematik induksiya', 'olimpiada masalalari', 'nostandart tenglama'],
     plan: {
       id: 'maktab-noldan',
       topicTitle: 'Oliy Matematikani Noldan Boshlash (Maktab Poydevori + 1-Kurs)',
@@ -1315,6 +1319,8 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Trigonometriya asoslari](/dars/maktab-kursi/trigonometriya-asoslari)
 - [Ko'p qavatli kasrlar va jadvallar](/dars/maktab-kursi/kop-qavatli-kasrlar-va-trigonometrik-jadvallar)
 - [Kombinatorika: O'rinlashtirish, O'rin almashtirish va Guruhlash](/dars/maktab-kursi/kombinatorika-orinlashtirish-orin-almashtirish-va-guruhlash)
+- [Matematik induksiya metodi va isbotlash](/dars/maktab-kursi/matematik-induksiya-metodi-va-isbotlash-usullari)
+- [Olimpiada masalalari va nostandart tenglamalar](/dars/maktab-kursi/olimpiada-masalalari-va-nostandart-tenglamalar)
 
 2-Modul (Chiziqli algebra):
 - [Matritsalar tushunchasi va amallar](/dars/chiziqli-algebra/matritsalar-tushunchasi-va-chiziqli-amallar)
@@ -1339,6 +1345,9 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Fazoda va tekislikda masofalar (ayqash to'g'ri chiziqlar, nuqtadan tekislikkacha)](/dars/vektorlar-geometriya/fazoda-va-tekislikda-masofalar-metrik-masalalar)
 - [Uchburchakning 12 ta elementi](/dars/vektorlar-geometriya/tekislikda-uchburchak-va-chiziqli-tengsizliklar)
 - [Ikkinchi tartibli chiziqlar va sirtlar](/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar)
+- [Ikkinchi tartibli sirtlar kanonik tenglamalari](/dars/vektorlar-geometriya/ikkinchi-tartibli-sirtlar-kanonik-tenglamalari-va-kesimlar)
+- [Afina va proyektiv fazolar](/dars/vektorlar-geometriya/afina-va-proyektiv-fazolar-kompyuter-grafikasi)
+- [Qavariq ko'pyoqlar va Eyler xarakteristikasi](/dars/vektorlar-geometriya/qavariq-kopyoqlar-va-eyler-xarakteristikasi)
 
 4-Modul (Kompleks sonlar):
 - [Kompleks sonlar va amallar](/dars/kompleks-sonlar/kompleks-sonlar-amallar)
@@ -1346,12 +1355,19 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Muavr formulasi va ildiz chiqarish](/dars/kompleks-sonlar/muavr-formulasi-va-ildiz-chiqarish)
 - [Kompleks o'zgaruvchili funksiyalar integrallari va Koshi formulasi](/dars/kompleks-sonlar/kompleks-ozgaruvchili-funksiyalar-integrallari-va-koshi-teoremasi)
 - [TFKP va Koshi-Riman shartlari](/dars/kompleks-sonlar/tfkp-va-koshi-riman-shartlari)
+- [Koshi-Riman shartlari va golomorf funksiyalar](/dars/kompleks-sonlar/koshi-riman-shartlari-va-golomorf-funksiyalar)
+- [Kompleks integrallash va Koshi formulasi](/dars/kompleks-sonlar/kompleks-integrallash-va-koshi-formulasi)
+- [Konform akslantirishlar va Jukovskiy funksiyasi](/dars/kompleks-sonlar/konform-akslantirishlar-va-jukovskiy-funksiyasi)
 - [Operatsion hisob va Laplas almashtirishi](/dars/kompleks-sonlar/operatsion-hisob-va-laplas-almashtirishi)
 
 5-Modul (Limitlar):
 - [Limit nima va mohiyati](/dars/limitlar/limit-nima)
 - [Aniqmasliklar va ularni ochish](/dars/limitlar/aniqmasliklar-va-ularni-ochish)
 - [Cheksiz kichik funksiyalar va ekvivalentlik](/dars/limitlar/cheksiz-kichik-va-katta-funksiyalar)
+- [Cheksiz kichik miqdorlar va ekvivalentlik jadvali](/dars/limitlar/cheksiz-kichik-miqdorlar-va-ekvivalentlik-jadvali)
+- [Ketma-ketliklar limiti va Veyershtrass teoremasi](/dars/limitlar/ketma-ketliklar-limiti-va-veyershtrass-teoremasi)
+- [Bir tomonlama limitlar va tekis uzluksizlik](/dars/limitlar/bir-tomonlama-limitlar-va-tekis-uzluksizlik)
+- [Aniqmasliklarning 7 turi va universal strategiyalar](/dars/limitlar/aniqmasliklarning-7-turi-va-universal-strategiyalar)
 - [1^∞ va Ikkinchi ajoyib limit](/dars/limitlar/bir-ning-cheksiz-darajasi-va-ikkinchi-ajoyib-limit)
 - [Irratsional limitlar (Qo'shmaga ko'paytirish)](/dars/limitlar/irratsional-ifodalar-limitlari-qoshmaga-kopaytirish)
 
@@ -1360,12 +1376,18 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Funksiya uzluksizligi va uzilish nuqtalari](/dars/funksiyalar-grafiklar/funksiya-uzluksizligi-va-uzilish-nuqtalari)
 - [Kesmada eng katta va eng kichik qiymat](/dars/funksiyalar-grafiklar/kesmada-eng-katta-va-eng-kichik-qiymat)
 - [Egri chiziq asimptotalari](/dars/funksiyalar-grafiklar/egri-chiziq-asimptotalari-vertikal-gorizontal-ogma)
+- [Qutb koordinatalarida funksiyalar va grafiklar](/dars/funksiyalar-grafiklar/qutb-koordinatalarida-funksiyalar-va-grafiklar)
+- [Parametrik tenglamalar va mashhur egri chiziqlar](/dars/funksiyalar-grafiklar/parametrik-tenglamalar-va-mashhur-egri-chiziqlar)
 - [Funksiyani 7 bosqichda to'liq tekshirish](/dars/funksiyalar-grafiklar/funksiyani-toliq-tekshirish-sxemasi)
 
 7-Modul (Hosila va differensial):
 - [Differensiallash qoidalari va jadval](/dars/hosila/differensiallash-qoidalari-va-jadval)
 - [Murakkab funksiya hosilasi (Zanjir qoidasi)](/dars/hosila/murakkab-funksiya-hosilasi)
 - [Logarifmik differensiallash](/dars/hosila/logarifmik-differensiallash-usuli)
+- [Egri chiziq egriligi va egrilik radiusi](/dars/hosila/egri-chiziq-egriligi-va-egrilik-radiusi)
+- [Leybnits formulasi va n-tartibli hosilalar](/dars/hosila/leybnits-formulasi-va-n-tartibli-hosilalar)
+- [Vektor funksiya va Frenet-Serret formulalari](/dars/hosila/vektor-funksiya-va-frenet-serret-formulalari)
+- [Hosilaning iqtisodiy va fizik tatbiqlari](/dars/hosila/hosilaning-iqtisodiy-va-fizik-tatbiqlari)
 - [Urinma va normal tenglamalari](/dars/hosila/urinma-va-normal-tenglamalari-taqribiy-hisoblash)
 - [L'Opital qoidasi](/dars/hosila/lopital-qoidasi)
 
@@ -1373,41 +1395,67 @@ SAYTIMIZDAGI BARCHA MODULLAR VA ASOSIY DARSLAR XARITASI (Faqat shu markdown link
 - [Boshlang'ich funksiya va integral jadvali](/dars/integrallar/boshlangich-funksiya-va-aniqmas-integral)
 - [O'zgaruvchini almashtirish usuli](/dars/integrallar/integrallash-usullari-almashtirish)
 - [Bo'laklab integrallash](/dars/integrallar/bolaklab-integrallash)
+- [Chebishev differensial binomi integrallari](/dars/integrallar/chebishev-differensial-binomi-integrallari)
+- [Eyler almashtirishlari va irratsional integrallar](/dars/integrallar/eyler-almashtirishlari-va-irratsional-integrallar)
+- [Ostrogradskiy usuli (Ratsional kasrlar)](/dars/integrallar/ostrogradskiy-usuli-ratsional-kasrlar)
 - [Trigonometrik funksiyalarni integrallash](/dars/integrallar/trigonometrik-funksiyalarni-integrallash)
 - [Ratsional kasrlar integrali](/dars/integrallar/ratsional-kasrlar-va-xosmas-integrallar)
 - [Aniq integral va Nyuton-Leybnits](/dars/integrallar/aniq-integral-va-nyuton-leybnits)
+- [Aylanish sirtlari yuzi va Guldin teoremalari](/dars/integrallar/aylanish-sirtlari-yuzi-va-guldin-teoremalari)
+- [Parametrga bog'liq integrallar va Leybnits qoidasi](/dars/integrallar/parametrga-bogliq-integrallar-va-leybnits-qoidasi)
 - [Aniq integralning geometrik va fizik tatbiqlari](/dars/integrallar/aniq-integralning-geometrik-va-fizik-tatbiqlari)
 
 9-10-Modullar (Ko'p o'zgaruvchili funksiyalar va Karrali integrallar):
 - [Xususiy hosilalar](/dars/kop-ozgaruvchili-funksiyalar/xususiy-hosilalar)
 - [Ikki o'zgaruvchili funksiya ekstremumi](/dars/kop-ozgaruvchili-funksiyalar/ikki-ozgaruvchili-funksiya-ekstremumi)
+- [Shartli ekstremum va Lagranj ko'paytuvchilari](/dars/kop-ozgaruvchili-funksiyalar/shartli-ekstremum-va-lagranj-kopaytuvchilari)
 - [Gradient va yo'nalish bo'yicha hosila](/dars/kop-ozgaruvchili-funksiyalar/yonalish-boyicha-hosila-gradient-va-shartli-ekstremum)
+- [Teylor formulasi va Gesse matritsasi](/dars/kop-ozgaruvchili-funksiyalar/kop-ozgaruvchili-funksiya-uchun-teylor-formulasi-va-gesse-matritsasi)
+- [Oshkormas funksiyalar sistemasi va Yakobian](/dars/kop-ozgaruvchili-funksiyalar/oshkormas-funksiyalar-sistemasi-va-yakobian)
 - [Eng kichik kvadratlar usuli (MHK)](/dars/kop-ozgaruvchili-funksiyalar/eng-kichik-kvadratlar-usuli-mhk)
 - [Ikki karrali integral](/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash)
+- [Karrali integrallarda o'zgaruvchilarni almashtirish (Qutb)](/dars/karrali-integrallar/karrali-integrallarda-ozgaruvchilarni-almashtirish-qutb-va-umumiy)
+- [Uch karrali integrallar (Silindrik va sferik)](/dars/karrali-integrallar/uch-karrali-integrallar-silindrik-va-sferik-koordinatalar)
 - [Birinchi va ikkinchi tur sirt integrallari](/dars/karrali-integrallar/birinchi-va-ikkinchi-tur-sirt-integrallari)
 - [Egri chiziqli integral va Grin formulasi](/dars/karrali-integrallar/egri-chiziqli-integrallar-va-grin-formulasi)
+- [Gauss-Ostrogradskiy va Stoks teoremalari](/dars/karrali-integrallar/gauss-ostrogradskiy-va-stoks-teoremalari-vektor-tahlil)
 
 11-Modul (Qatorlar):
 - [Sonli qatorlar](/dars/qatorlar/sonli-qatorlar-va-yaqinlashish)
 - [Musbat hadli qatorlar (D'Alamber va Koshi)](/dars/qatorlar/musbat-hadli-qatorlar-alomatlari)
 - [Qatorlarning nozik yaqinlashish alomatlari (Raabe va Gauss)](/dars/qatorlar/qatorlarning-nozik-yaqinlashish-alomatlari-raabe-va-gauss)
 - [Darajali qatorning yaqinlashish radiusi](/dars/qatorlar/darajali-qatorning-yaqinlashish-radiusi-va-sohasi)
+- [Loran qatorlari va maxsus nuqtalar](/dars/qatorlar/loran-qatorlari-va-maxsus-nuqtalar)
+- [Chegirmalar nazariyasi va integrallarni hisoblash](/dars/qatorlar/chegirmalar-nazariyasi-va-integrallarni-hisoblash)
+- [Cheksiz ko'paytmalar va Eyler formulasi](/dars/qatorlar/cheksiz-kopaytmalari-va-eyler-formulasi)
 - [Fure qatorlari](/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma)
+- [Fure integrali va Fure almashtirishi](/dars/qatorlar/fure-integrali-va-fure-almashtirishi)
 
 12-Modul (Differensial tenglamalar):
 - [O'zgaruvchilari ajraladigan tenglamalar](/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar)
 - [1-tartibli chiziqli va Bernulli tenglamalari](/dars/differensial-tenglamalar/birinchi-tartibli-chiziqli-tenglamalar)
+- [To'liq differensialli tenglamalar va integrallovchi ko'paytuvchi](/dars/differensial-tenglamalar/toliq-differensialli-tenglamalar-va-integrallovchi-kopaytuvchi)
+- [Rikkati differensial tenglamasi](/dars/differensial-tenglamalar/rikkati-differensial-tenglamasi)
 - [2-tartibli o'zgarmas koeffitsiyentli tenglamalar](/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar)
 - [Eyler differensial tenglamasi](/dars/differensial-tenglamalar/eyler-differensial-tenglamasi)
 - [Klero va Lagranj tenglamalari](/dars/differensial-tenglamalar/klero-va-lagranj-tenglamalari)
+- [Laplas almashtirishi yordamida differensial tenglamalarni yechish](/dars/differensial-tenglamalar/laplas-almashtirishi-yordamida-differensial-tenglamalarni-yechish)
+- [Avtonom sistemalar va Lyapunov barqarorligi](/dars/differensial-tenglamalar/avtonom-sistemalar-va-lyapunov-barqarorligi)
+- [Matematik fizika tenglamalari va Fure usuli](/dars/differensial-tenglamalar/matematik-fizika-tenglamalari-va-fure-usuli)
 
 13-14-Modullar (Ehtimollar va Statistika):
 - [Kombinatorika va klassik ehtimollik](/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik)
 - [To'la ehtimol va Bayes formulalari](/dars/ehtimollar-nazariyasi/toliq-ehtimollik-va-bayes-formulalari)
 - [Tasodifiy miqdorlar (M(X), D(X))](/dars/ehtimollar-nazariyasi/tasodifiy-miqdorlar-va-taqsimot-qonunlari)
+- [Tasodifiy vektorlar va kovariatsion matritsa](/dars/ehtimollar-nazariyasi/tasodifiy-vektorlar-va-kovariatsion-matritsa)
+- [Xarakteristik funksiyalar va inversion formula](/dars/ehtimollar-nazariyasi/xarakteristik-funksiyalar-va-inversion-formula)
+- [Markov zanjirlari va stoxastik jarayonlar](/dars/ehtimollar-nazariyasi/markov-zanjirlari-va-stoxastik-jarayonlar)
 - [Uzluksiz tasodifiy miqdorlar, zichlik va taqsimot](/dars/ehtimollar-nazariyasi/uzluksiz-tasodifiy-miqdorlar-zichlik-va-taqsimot)
 - [Katta sonlar qonuni va markaziy limit teorema](/dars/ehtimollar-nazariyasi/katta-sonlar-qonuni-va-markaziy-limit-teorema)
 - [Statistik baholash va tanlanma](/dars/matematik-statistika/statistik-baholash-va-tavsiflar)
+- [Ishonchlilik intervallari va aniqlik bahosi](/dars/matematik-statistika/ishonchlilik-intervallari-va-aniqlik-bahosi)
+- [Maksimal haqiqatga o'xshashlik usuli (MLE)](/dars/matematik-statistika/maksimal-haqiqatga-oxshashlik-usuli-mle)
+- [Statistik modellashtirish va Monte-Karlo usuli](/dars/matematik-statistika/statistik-modellashtirish-va-monte-karlo-usuli)
 - [Parametrik bo'lmagan gipotezalar (Mann-Uitni, Vilkokson)](/dars/matematik-statistika/parametrik-bolmagan-gipotezalar-mann-uitni-vilkokson)
 
 SAYTNING INTERAKTIV ASBOBLARI:

@@ -1,11 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allLessons = await getCollection('lessons');
+const sortedLessons = allLessons.sort((a, b) => {
+  if (a.data.module !== b.data.module) return a.data.module.localeCompare(b.data.module);
+  return a.data.order - b.data.order;
+});
+const lessonsCatalogJson = JSON.stringify(sortedLessons.map(l => ({
+  slug: l.id.replace(/\.mdx?$/, ''),
+  title: l.data.title,
+  module: l.data.module
+})));
 ---
 
 <BaseLayout 
   title="AI Masala Yechuvchi va Mavzu Tashxisi — Oliy Matematika" 
   description="Oliy matematika bo'yicha ixtiyoriy misolni kiriting yoki rasmini yuklang — tizim uning qaysi mavzuga tegishli ekanini aniqlaydi, saytdagi kerakli darslarni tavsiya qiladi va qadamma-qadam yechib beradi."
 >
+  <div id="ai-lessons-catalog" data-catalog={lessonsCatalogJson} style="display: none;"></div>
   <div class="ai-solver-hero">
     <div class="ai-hero-header">
       <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
@@ -1693,67 +1706,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           }
         }
 
-        const availableLessonsMd = `
-Platformadagi mavjud rasmiy darslar ro'yxati (4-bo'limda aynan mos mavzuni markdown link qilib tavsiya qiling):
-- [Chiziqli dasturlash va simpleks usuli](/dars/chiziqli-algebra/chiziqli-dasturlash-va-simpleks-usuli)
-- [Transport masalasi va potensiallar](/dars/chiziqli-algebra/transport-masalasi-va-potensiallar)
-- [Matritsaning xos sonlari va xos vektorlari](/dars/chiziqli-algebra/matritsaning-xos-sonlari-va-xos-vektorlari)
-- [Kvadratik formalar va Silvestr mezoni](/dars/chiziqli-algebra/kvadratik-formalar-va-silvestr-mezoni)
-- [Kvadratik formani ortogonal almashtirish](/dars/chiziqli-algebra/kvadratik-formani-ortogonal-almashtirish)
-- [Gorner sxemasi va ko'phad ildizlari](/dars/chiziqli-algebra/gorner-sxemasi-va-kophad-ildizlari)
-- [Chiziqli operatorlar va o'tish matritsasi](/dars/chiziqli-algebra/chiziqli-operatorlar-va-otish-matritsasi)
-- [Chiziqli fazo va bazis](/dars/chiziqli-algebra/chiziqli-fazo-va-bazis)
-- [Chiziqli tenglamalar sistemasi va Kramer qoidasi](/dars/chiziqli-algebra/chiziqli-tenglamalar-sistemasi-va-kronekker-kapelli)
-- [Gauss usuli (Pog'onasimon shakl)](/dars/chiziqli-algebra/gauss-usuli-pogonasimon-va-teskari-yurish)
-- [Gauss-Jordan va matritsali tenglamalar](/dars/chiziqli-algebra/gauss-jordan-va-matritsali-tenglamalar)
-- [Matritsa rangi va pog'onasimon shakl](/dars/chiziqli-algebra/matritsa-rangi-va-pogonasimon-shakl)
-- [Determinantlar va geometrik ma'nosi](/dars/chiziqli-algebra/determinantlar-va-geometrik-manosi)
-- [Determinant xossalari va uchburchak shakl](/dars/chiziqli-algebra/determinant-xossalari-va-uchburchak-shakl)
-- [Teskari matritsa va topish](/dars/chiziqli-algebra/teskari-matritsa-mavjudlik-va-topish)
-- [Matritsalar tushunchasi va amallar](/dars/chiziqli-algebra/matritsalar-tushunchasi-va-chiziqli-amallar)
-- [Bir jinsli tenglamalar va FYS](/dars/chiziqli-algebra/bir-jinsli-tenglamalar-va-fys)
-- [Skalyar ko'paytma](/dars/vektorlar-geometriya/skalyar-kopaytma)
-- [Vektor va aralash ko'paytma](/dars/vektorlar-geometriya/vektor-va-aralash-kopaytma)
-- [Ikkinchi tartibli chiziqlar va sirtlar](/dars/vektorlar-geometriya/ikkinchi-tartibli-chiziqlar-va-sirtlar)
-- [Fazodagi tekislik va to'g'ri chiziq](/dars/vektorlar-geometriya/fazodagi-tekislik-va-togri-chiziq)
-- [Fazoda va tekislikda masofalar (Metrik masalalar)](/dars/vektorlar-geometriya/fazoda-va-tekislikda-masofalar-metrik-masalalar)
-- [Muavr formulasi va kompleks sonlar](/dars/kompleks-sonlar/muavr-formulasi-va-ildiz-chiqarish)
-- [Operatsion hisob va Laplas almashtirishi](/dars/kompleks-sonlar/operatsion-hisob-va-laplas-almashtirishi)
-- [Kompleks integrallar va Koshi integral formulasi](/dars/kompleks-sonlar/kompleks-ozgaruvchili-funksiyalar-integrallari-va-koshi-teoremasi)
-- [Limit nima? Ta'rif va mohiyat](/dars/limitlar/limit-nima)
-- [Aniqmasliklar (0/0 va ∞/∞) va ularni ochish](/dars/limitlar/aniqmasliklar-va-ularni-ochish)
-- [Ajoyib limitlar](/dars/limitlar/ajoyib-limitlar)
-- [Differensiallash qoidalari va hosilalar jadvali](/dars/hosila/differensiallash-qoidalari-va-jadval)
-- [Murakkab funksiya hosilasi](/dars/hosila/murakkab-funksiya-hosilasi)
-- [Lopital qoidasi](/dars/hosila/lopital-qoidasi)
-- [Funksiyani to'liq tekshirish va grafik yasash](/dars/funksiyalar-grafiklar/funksiyani-tekshirish-va-grafik-yasash)
-- [Kesmada eng katta va eng kichik (global) qiymat](/dars/funksiyalar-grafiklar/kesmada-eng-katta-va-eng-kichik-qiymat)
-- [Funksiyaning uzluksizligi va uzilish nuqtalari](/dars/funksiyalar-grafiklar/funksiya-uzluksizligi-va-uzilish-nuqtalari)
-- [Boshlang'ich funksiya va aniqmas integral](/dars/integrallar/boshlangich-funksiya-va-aniqmas-integral)
-- [Trigonometrik funksiyalarni integrallash](/dars/integrallar/trigonometrik-funksiyalarni-integrallash)
-- [O'zgaruvchini almashtirish usuli](/dars/integrallar/integrallash-usullari-almashtirish)
-- [Bo'laklab integrallash usuli](/dars/integrallar/bolaklab-integrallash)
-- [Aniq integral va Nyuton-Leybnits formulasi](/dars/integrallar/aniq-integral-va-nyuton-leybnits)
-- [Aniq integralning geometrik va fizik tatbiqlari](/dars/integrallar/aniq-integralning-geometrik-va-fizik-tatbiqlari)
-- [Eng kichik kvadratlar usuli (MHK)](/dars/kop-ozgaruvchili-funksiyalar/eng-kichik-kvadratlar-usuli-mhk)
-- [Ikki karrali integral](/dars/karrali-integrallar/ikki-karrali-integral-va-hisoblash)
-- [Uch karrali integral, silindrik va sferik koordinatalar](/dars/karrali-integrallar/uch-karrali-integral-va-silindrik-sferik)
-- [1- va 2-tur sirt integrallari](/dars/karrali-integrallar/birinchi-va-ikkinchi-tur-sirt-integrallari)
-- [Musbat hadli qatorlar: Dalamber va Koshi alomatlari](/dars/qatorlar/musbat-hadli-qatorlar-alomatlari)
-- [Qatorlarning nozik yaqinlashish alomatlari: Raabe va Gauss](/dars/qatorlar/qatorlarning-nozik-yaqinlashish-alomatlari-raabe-va-gauss)
-- [Darajali qatorlar, Teylor va Makloren](/dars/qatorlar/darajali-qatorlar-teylor-makloren)
-- [Fure qatorlari](/dars/qatorlar/fure-qatorlari-va-trigonometrik-yoyilma)
-- [O'zgaruvchilari ajraladigan differensial tenglamalar](/dars/differensial-tenglamalar/ozgaruvchilari-ajraladigan-tenglamalar)
-- [2-tartibli chiziqli differensial tenglamalar](/dars/differensial-tenglamalar/ikkinchi-tartibli-chiziqli-differensial-tenglamalar)
-- [Klero va Lagranj differensial tenglamalari](/dars/differensial-tenglamalar/klero-va-lagranj-tenglamalari)
-- [Eyler differensial tenglamasi](/dars/differensial-tenglamalar/eyler-differensial-tenglamasi)
-- [Kombinatorika va klassik ehtimollik](/dars/ehtimollar-nazariyasi/kombinatorika-va-klassik-ehtimollik)
-- [Uzluksiz tasodifiy miqdorlar, zichlik va taqsimot](/dars/ehtimollar-nazariyasi/uzluksiz-tasodifiy-miqdorlar-zichlik-va-taqsimot)
-- [Katta sonlar qonuni, Chebishev tengsizligi va MLT](/dars/ehtimollar-nazariyasi/katta-sonlar-qonuni-va-markaziy-limit-teorema)
-- [Parametrik bo'lmagan statistik mezonlar: Mann-Uitni va Vilkokson](/dars/matematik-statistika/parametrik-bolmagan-gipotezalar-mann-uitni-vilkokson)
-- [Kombinatorika asoslari: O'rin almashtirish, o'rinlashtirish va guruhlash](/dars/maktab-kursi/kombinatorika-orinlashtirish-orin-almashtirish-va-guruhlash)
-- [Tenglamalar va tengsizliklar](/dars/maktab-kursi/tenglamalar-va-tengsizliklar)
-- [Trigonometriya asoslari](/dars/maktab-kursi/trigonometriya-asoslari)`;
+        let availableLessonsMd = '';
+        const catalogEl = document.getElementById('ai-lessons-catalog');
+        if (catalogEl) {
+          try {
+            const list = JSON.parse(catalogEl.getAttribute('data-catalog') || '[]');
+            availableLessonsMd = "Platformadagi barcha mavjud darslar katalogi (4-bo'limda aynan shu ro'yxatdan eng mos mavzuni markdown link qilib tavsiya qiling):\n" +
+              list.map((l: any) => `- [${l.title}](/dars/${l.slug})`).join('\n');
+          } catch {
+            availableLessonsMd = '';
+          }
+        }
 
         let systemPrompt = '';
         if (currentPedagogy === 'socratic') {
